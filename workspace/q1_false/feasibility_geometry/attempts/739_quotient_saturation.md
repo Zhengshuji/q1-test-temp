@@ -24,7 +24,7 @@ $$\boxed{\dim E_H=\dim(U\cap T)+\operatorname{cls}.}$$
 3. 考虑线性映射
    $$\psi:\ T/(U\cap T)\longrightarrow(U+T)/U,\qquad t+(U\cap T)\longmapsto t+U .$$
    核为 $T\cap U=U\cap T$，像是 $(U+T)/U$，故 $\psi$ 是**同构**。
-4. 由 $t_i\equiv-H_iM\pmod U$，有 $\psi([t_i])=[-H_iM]$；这些类张成 $\operatorname{row}(HM)$ 在 $(U+T)/U$ 中的像，维数恰为
+4. 由 $t_i\equiv H_iM\pmod U$，有 $\psi([t_i])=[H_iM]$；这些类张成 $\operatorname{row}(HM)$ 在 $(U+T)/U$ 中的像，维数恰为
    $$\dim\frac{\operatorname{row}(HM)}{\operatorname{row}(HM)\cap U}=\operatorname{cls}.$$
 5. 于是 $\dim\operatorname{span}\{[t_i]\}=\operatorname{cls}$，代回第 1 步即得。$\square$
 

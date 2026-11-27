@@ -30,7 +30,7 @@ $$L=[\,H \mid (-3,-3,-3)^{\mathsf T} \mid 0\,]\in\mathbb C^{3\times4}.$$
 
 $A=RZH$（$R=(H^{\mathsf T}H)^{-1}H^{\mathsf T}$）：
 $$A=\begin{bmatrix}-7/5&2\\14/5&1\end{bmatrix},\qquad
-\sigma(A)=\Big\{\tfrac{-1\pm4\sqrt{11}\,i}{5}\Big\},$$
+\sigma(A)=\Big\{\tfrac{-1\pm4\sqrt{11}}{5}\Big\},$$
 两个特征值均为单重（几何重数 $1$），故 $g_\mu=1\le a=1$ ✓（725 成立）。
 
 ## 结论
@@ -46,7 +46,7 @@ $$\boxed{d'=2>t=1,\qquad \omega=2>s=1\ \text{且可行}.}$$
 
 - 方向性预筛选不能简化为 $d'\le t$；
 - “$\omega\le s$” 再次被否定（本实例 $\omega=2>s=1$）；
-- 说明小 $t$ 下仍可借助 $Z'$ 的非平凡作用（此处 $Z'$ 有复特征值）实现可行。
+- 说明小 $t$ 下仍可借助 $Z'$ 的非平凡作用（此处 $Z'$ 有无理特征值）实现可行。
 
 ## 预筛选链的检验
 
