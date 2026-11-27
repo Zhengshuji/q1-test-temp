@@ -325,3 +325,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   $d=2,a=0$ 的 33 个实例 $\operatorname{rank}(\Pi G)=0$（猜想）；引理 F 仍条件性。
 - [723](attempts/723_invariance_reformulation.md)：**等价改写**——$\Pi G=0\iff Z(\operatorname{im}H)\subseteq\operatorname{im}H$；
   猜想 $a=0\Rightarrow$ 不变性（$d=1$ 已证，39 例数值支持）；一般 $a$ 对应“缺陷 $\le a$”。
+- [724](attempts/724_a0_invariance_obstacle.md)：$a=0$ 不变性的证明尝试——障碍是“行-列桥接”：
+  $G$ 的行约束只给 $ZX\overline V$，不直接约束 $Z$ 在 $\operatorname{im}X$ 上的作用；需新引理。
