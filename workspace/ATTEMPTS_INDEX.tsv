@@ -772,3 +772,4 @@ num	file	title	direction	subdirection	strategy
 765	765_B_bezout_interface.md	B 的 Bézout 接口与 K(x) 陷阱	q1_false	feasibility_geometry	plan
 766	766_lean_orthogonal.md	Lean：(★) 的抽象正交补部分（BUILD=0）	q1_false	feasibility_geometry	lean
 767	767_d_eq_k_trivial_5a.md	d=k 时 (5a) 自动；非退化区域 d<k	q1_false	feasibility_geometry	prove
+768	768_FU_affine_geometry.md	F_U 的仿射几何与坏集 B_U	q1_false	feasibility_geometry	prove
