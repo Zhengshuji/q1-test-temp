@@ -754,3 +754,4 @@ num	file	title	direction	subdirection	strategy
 747	747_batch_733_family.md	625 例：B=Z'12 判别 733 族可行性；120 取等不可行	q1_false	feasibility_geometry	experiment
 748	748_factor_source.md	因子来源定理：T⊥ 特征向量强制不可行（d=k）	q1_false	feasibility_geometry	prove
 749	749_kernel_criterion.md	T⊥ 核判据：dim≥k−d+1 ⇒ 不可行（一般 d）	q1_false	feasibility_geometry	prove
+750	750_prefilter_v2.md	预筛选链 v2：并入 749 与联合判据	q1_false	feasibility_geometry	summary
