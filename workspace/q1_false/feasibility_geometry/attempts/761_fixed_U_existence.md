@@ -50,6 +50,19 @@ $$LW=H\,W_{\mathrm{top}}+M\,W_{\mathrm{bot}}=HW_{\mathrm{top}}+G'=G .$$
 $$F_U=\prod_i\big(T\cap(\mathbb C^2-H_iZ')\big)=T^q\ni G'=(-3,0)\text{ 的行},$$
 $\gcd=1$ ⇒ 定理判定可行 ✓（与 733 一致）。
 
+## 检验：$W_{\mathrm{top}}\ne0$ 的合成例
+
+取 $n=4,k=2$、$N$ 前两坐标、$Z'=\begin{bmatrix}1&2\\1&1\end{bmatrix}$、$W=\begin{bmatrix}1&0\\0&0\\1&0\\0&0\end{bmatrix}$（$W_{\mathrm{top}}\ne0$、$T=\operatorname{span}\{e_1\}$）、$A=N Z'+W$（其余列取 $A e_3=e_4$、$A e_4=0$）、$H$ 同 733、$Z''=Z'+W_{\mathrm{top}}=\begin{bmatrix}2&2\\1&1\end{bmatrix}$。
+
+取 $M=\begin{bmatrix}-3&0\\0&0\\0&0\end{bmatrix}$，$G'=MW_{\mathrm{bot}}=\begin{bmatrix}-3&0\\0&0\\0&0\end{bmatrix}\in T^q$，$L=[H|M]$。
+逐行解 $Z_iH=H_iZ''+G'_i$，精确计算得：
+
+- $LN=H$ ✓；$LW=\begin{bmatrix}-1&0\\-1&0\\2&0\end{bmatrix}=H W_{\mathrm{top}}+G'$ ✓；
+- $ZH=LAN=\begin{bmatrix}3&6\\-3&-3\\5&5\end{bmatrix}$ ✓；
+- $\operatorname{rank}[L;CA;C]=4$，且在 $\lambda=0,1,2,\tfrac12$ 处 $\operatorname{rank}[\lambda L-LA;CA;C]=4$ ✓。
+
+这说明 $W_{\mathrm{top}}\ne0$ 时 761 的 $(\Leftarrow)$ 构造确实产出合法的 $(5a)(5b)$ 候选（全 $\lambda$ 的 $\gcd$ 由子 agent 另行核验）。
+
 ## 与旧结果的关系
 
 - 678 是“固定 $H$”的版本；本定理把它提升为“固定 $U$”，并显式分离 $\mathcal F_U$；
