@@ -353,3 +353,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   $\dim E_H\le\dim(U\cap T)+\operatorname{cls}$（$\operatorname{cls}=\dim((\operatorname{row}HM+U)/U)$）；子 agent 342 例 0 反例、等式 342/342。
 - [739](attempts/739_quotient_saturation.md)：**商空间饱和引理**——$\dim E_H=\dim(U\cap T)+\operatorname{cls}$（等式，已证）；
   故 $d'\le\operatorname{rank}(HM)+\dim(U\cap T)+\operatorname{cls}$；数值 342/342 与之一致。
+- [740](attempts/740_lean_rank_core.md)：**Lean 内核**——`rank_sub_le`（734 的 $\operatorname{rank}(f-g)\le\operatorname{rank}f+\operatorname{rank}g$）与
+  `dim_sup_add_dim_inf`（739 的维数恒等式）在 `ChkRank6.lean` 单文件编译 EXIT=0；未入聚合构建图，故只标内核。
