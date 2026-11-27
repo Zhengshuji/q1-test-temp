@@ -201,3 +201,8 @@
 - [663](attempts/663_d1_classification.md)：**仿射铅笔 $d=1$ 完整分类**——$v|_K\ne0$ 不可行（$Z$ 必以 $u$ 为特征向量）；
 $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\iff E\ne0$；
   统一解释 629/631/638/657/661（661 = $E=0$ + 秩 $=q$ 障碍）。
+- [664](attempts/664_d2_framework.md)：ChatGPT 的 $d=2$ 框架与 $\lambda\in\mathbb C$ 澄清——
+  $d=2$ 的对象是二维行空间 $D\subseteq S\cap\ker Z'^{\mathsf T}$ + $U$ 仿射空间 + 复 gcd；
+  五条引理 A–E 与优先级；下一步实验：$k=2,3,4$ 枚举 $D,U$ 算复 gcd，找必要条件全满足但无 gcd=1 的反例。
+- [665](attempts/665_template_theorem.md)：**秩 $d$ 模板的完整判据**（$VZ'=0$）——可行 $\iff$ $\dim E\ge d$、
+  $q\ge d+1$、固定行匹配；$q=d$ 由 $\det(\lambda U-B)$ 必根排除；638 说明模板不是必要条件。
