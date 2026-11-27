@@ -691,3 +691,4 @@ num	file	title	direction	subdirection	strategy
 684	684_D_zero_sources.md	D≡0 的结构来源（m=1；S=0,d=k）与一般可行猜想	q1_false	feasibility_geometry	prove
 685	685_correction_5a_G.md	更正：G 受 (5a) 约束；661 只是 q=2 不可行	q1_false	feasibility_geometry	fix
 624	624_randomized_algorithms_direction.md	新研究方向存档：q1 的随机算法（泛型结构+随机化判定，未做）	q1_false	feasibility_geometry	plan
+686	686_Z_parametrization.md	修正判据：以 Z 为变量（(5a) 自动）；638/657/661 显式检查	q1_false	feasibility_geometry	prove
