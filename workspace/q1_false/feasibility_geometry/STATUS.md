@@ -309,3 +309,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   $T\cap U=U$ 时 $d'=1$ 可构造可行（$Zu=e_2$，$\operatorname{rank}M=2$）。
 - [715](attempts/715_d1_U_in_T.md)：**$d'=1$：可行 ⇒ $U\subseteq T$**（$v\in T$）；$T\cap U=0$ ⇒ 不可行。
   推广了 710 的论证；$d'\ge2$ 的 $\dim(T\cap U)$ 作用仍开放。
+- [716](attempts/716_lemmaE_proposal.md)：ChatGPT 的**引理 E**（$\operatorname{rank}(ZX-XA)\le a=\dim(U\cap T)$）与引理 F 提案；
+  记录商空间诱导算子的陷阱（需 $(U\cap T)Z'\subseteq T$）；引理 E 的证明有两处待核（左零空间维数、商空间良定义）。
