@@ -273,3 +273,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   693 是单特征值的紧例；核心转到 $\{G:\operatorname{rank}P(\mu)\ge d'\ \forall\mu\}$ 的交集。
 - [697](attempts/697_correction_T_compatibility.md)：**再次更正**——$(5a)$ 相容性应为 $H_iZ'\in U+T$（$T\subseteq S$）；
   638 的旧证书失效（$HZ'$ 第 2 行 $\notin U+T$），小范围搜索仅 1 个相容 $H$ 且 $T\cap U=0$ ⇒ 638 可行性未定；657/661 复核仍有效。
+- [698](attempts/698_638_recheck.md)：**撤回 638 的可行性**——按 $U+T$ 相容性，旧证书无效；已查的 $d'=2$ 类子式全为 $\lambda^2$ 倍数
+  （$\operatorname{rank}M=2<4$），其它 $U$ 与相容性矛盾；489/634/637 的“$\omega>s$”结论待重查。
