@@ -243,3 +243,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   参数空间中 $\{\tilde D\ne0\}$ 是 Zariski 开稠密；随机采样即得单边证书；复杂度关于 $d'$ 指数。
 - [683](attempts/683_feasibility_sampler.md)：682 算法的实现与测试——638/657 找到证书（⇒ 可行），661 在 300 次内未找到
   （与不可行一致，但非证明）。
+- [684](attempts/684_D_zero_sources.md)：**$D\equiv0$ 的两个结构性来源**——$m=1$（$q=k=d'$，518）与 $S=0,d'=k$（公共因子 $\det(\lambda I-Z')$，629）；
+  猜想其余情形 $D\not\equiv0$（一般可行）；抽样：$S\ne0$ 98/108 满秩，$S=0$ 0/76。

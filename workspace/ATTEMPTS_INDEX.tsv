@@ -689,3 +689,4 @@ num	file	title	direction	subdirection	strategy
 681	681_chart_reduction.md	图表归约：可行性化为有限 PIT 实例	q1_false	feasibility_geometry	prove
 682	682_fixed_d_RP.md	固定 d' 可行性属于 RP（随机化单边）；Zariski 稠密+Schwartz-Zippel	q1_false	feasibility_geometry	prove
 683	683_feasibility_sampler.md	通用可行性采样器（638/657 找到证书，661 未找到）	q1_false	feasibility_geometry	experiment
+684	684_D_zero_sources.md	D≡0 的结构来源（m=1；S=0,d=k）与一般可行猜想	q1_false	feasibility_geometry	prove
