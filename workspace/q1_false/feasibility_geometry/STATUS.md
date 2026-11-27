@@ -364,3 +364,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
 - [744](attempts/744_prefilter_theorem.md)：**统一预筛选定理**——704/726/725/690/695/734+739 七条必要条件（含 $d'\le\operatorname{rank}(HM)+\dim(U\cap T)+\operatorname{cls}$）。
 - [745](attempts/745_equality_opposite_outcomes.md)：**取等但相反**——638 与 733 都满足 $d'=\operatorname{rank}(HM)+\dim(U\cap T)+\operatorname{cls}=2$，
   638 不可行（$\rho_2=1$）、733 可行（$\rho_2=3,\gcd=1$）；方向性取等不是判据。
+- [746](attempts/746_prefilter_certificate.md)：**预筛选证书脚本**（`certificates/verify_prefilter_733_638.py`）精确复现：
+  638 与 733 均取等 $R+\dim V+\operatorname{cls}=2$，但 638 $\rho_2=1,\gcd=\lambda(\lambda-1),\operatorname{rank}M=2$；733 $\rho_2=3,\gcd=1,\operatorname{rank}M=4$。
