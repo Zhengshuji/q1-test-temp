@@ -762,3 +762,4 @@ num	file	title	direction	subdirection	strategy
 755	755_external_review_delta.md	外部复核：固定 U 的 (5a) 判据与 δ 预筛选	q1_false	feasibility_geometry	prove
 756	756_external_independent_review.md	外部独立评估（ChatGPT 读 GitHub）与 756-758 计划	q1_false	feasibility_geometry	summary
 757	757_fiber_base_correction.md	基础更正：G 纤维=HW_top+T^q；693 撤回	q1_false	feasibility_geometry	fix
+758	758_chatgpt_centering_audit.md	ChatGPT 对 757 的裁决与中心化审计清单	q1_false	feasibility_geometry	summary

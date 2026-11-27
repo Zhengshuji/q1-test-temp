@@ -388,3 +388,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   它建议顺序 756 固定 $U$ 存在性定理 → 757 仿射 gcd 存在性 → 758 独立证书审计；提醒 695+705 完备性未证。
 - [757](attempts/757_fiber_base_correction.md)：**基础更正**——$G=LW$ 的纤维是 $H W_{\mathrm{top}}+T^q$（$Z''=Z'+W_{\mathrm{top}}$），不是 $T^q$；
   **693 撤回**；638/733/747（$W_{\mathrm{top}}=0$）不受影响；692/697/726/749/753 需以 $(Z'',G')$ 重述。
+- [758](attempts/758_chatgpt_centering_audit.md)：**ChatGPT 对 757 的裁决**——确认中心化 $Z''=Z'+W_{\mathrm{top}}$、$G'=G-HW_{\mathrm{top}}$；
+  638/733/747 保留、661 改用 $Z''$、693 撤回待重算；726/749/753 需重述；审计清单已列。
