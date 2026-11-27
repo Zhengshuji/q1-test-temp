@@ -317,3 +317,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   强形式未被推翻（样本有限）。
 - [719](attempts/719_k4_search_empty.md)：$k=4$ 的引理 E 搜索——200 组随机样本 0 相容；随机搜索在 $k\ge4$ 效率低，
   需改用构造族（$Z'=0$ 或 $U+T=\mathbb C^k$）。
+- [720](attempts/720_lemmaE_Zp0.md)：**$Z'=0$ 时引理 E 成立**——$ZX=GV^+$、$\operatorname{rank}G\le a$、$ZX-XA=(I-XR)ZX$
+  ⇒ $\operatorname{rank}(ZX-XA)\le a$；一般 $Z'$ 仍为 M2 提案。
