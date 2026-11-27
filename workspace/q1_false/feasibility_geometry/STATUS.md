@@ -1,6 +1,6 @@
 # feasibility_geometry · 现状
 
-> 上级：[q1_false](../STATUS.md)。**当前活跃**（2026-11-27 起）：attempts 204 个文件（编号至 661）；早期 001–098 为历史。
+> 上级：[q1_false](../STATUS.md)。**当前活跃**（2026-11-27 起）：attempts 282 个文件（编号至 755）；早期 001–098 为历史；阶段固定见 [754](attempts/754_stage_freeze.md)。
 
 - 增广族参数化、$\Omega$-抽样、闭包与 $q_0$ 扫描、$Z$-生成。
 - 已撤回：闭包不是精确最小维数；$q_{\min}\in\{\mathrm{cl},\mathrm{cl}+1\}$ 被反例推翻。
@@ -382,3 +382,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   ⇒ 749 触发 ⇒ 695 失败（任意 $k,d',t,H$）；预筛选链可删去 749；752 的猜测被推翻。
 - [754](attempts/754_stage_freeze.md)：**阶段性成果固定**——677–753 的已证清单、关键更正、数据资产、五大缺口与 P1–P5 路线；
   核心判断：固定 $H$ 已多项式可判，$\exists H$ 的复杂度与结构完备性仍开放。
+- [755](attempts/755_external_review_delta.md)：**外部复核**——定理 1（固定 $H$ 的 $(5a)$ 判据 $UZ'\subseteq U+T$，等价于 697/751）与
+  定理 2（$\delta(U,Z')=\operatorname{rank}(\pi_U Z'|_U)\le t-a$）；ChatGPT 建议已逐条对照，无超出 754 的新证明。
