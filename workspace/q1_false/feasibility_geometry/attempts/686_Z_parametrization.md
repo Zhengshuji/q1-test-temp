@@ -13,12 +13,12 @@ $$ZH-HZ'\ \text{的行在 } S .$$
 
 于是
 $$\text{可行}\iff\exists H\ (\text{秩 }d',\ \text{含 }H_0),\ Z:\quad
-\operatorname{row}(ZH-HZ')\subseteq S,\quad \gcd(f_i)=1,$$
+\operatorname{row}(ZH-HZ')\subseteq T,\quad \gcd(f_i)=1,$$
 其中 $f_i$ 是 $\lambda H-ZH$ 的 $d'$-子项。
 
 ## 与 678 的对比
 
-- 678 用 $(H,G)$ 参数化，$G$ 的约束是仿射的但依赖 $H$（$G_i\in S\cap(U-H_iZ')$）；
+- 678 用 $(H,G)$ 参数化，$G$ 的约束是仿射的但依赖 $H$（$G_i\in T\cap(U-H_iZ')$）；
 - 现在用 $(H,Z)$ 参数化，$Z$ 的约束是线性的（固定 $H$），更便于求解/采样；
 - 两种参数化等价：给定 $(H,Z)$ 取 $G=ZH-HZ'$；给定 $(H,G)$ 解 $ZH=HZ'+G$。
 
@@ -33,14 +33,14 @@ $$\text{可行}\iff\exists H\ (\text{秩 }d',\ \text{含 }H_0),\ Z:\quad
 
 ## 复杂度含义
 
-- 固定 $H$ 时，$Z$ 的可行集是仿射空间（线性方程组 $Z_iH\in S+H_iZ'$ 的解）；
+- 固定 $H$ 时，$Z$ 的可行集是仿射空间（线性方程组 $Z_iH\in T+H_iZ'$ 的解）；
 - 若在 $(H,Z)$ 空间内可行点存在，$D_{d'}$ 的零点集仍是真闭集；若能有效采样该空间，682 的随机化思路可救；
 - 但 $H$ 的可行集本身是代数集（$H_iZ'$ 的可解性 + 秩条件），**采样 $H$ 的分布**仍是开放问题。
 
 ## 修正后的 RP 陈述（条件性）
 
 > 若存在一个多项式时间的采样器，能在
-> $$\mathcal V=\{(H,Z):\operatorname{row}(ZH-HZ')\subseteq S,\ \operatorname{rank}H=d',\ H_{1:r_0}=H_0\}$$
+> $$\mathcal V=\{(H,Z):\operatorname{row}(ZH-HZ')\subseteq T,\ \operatorname{rank}H=d',\ H_{1:r_0}=H_0\}$$
 > 上按足够一般的分布采样，则可行性 $\in$ RP。
 
 $\mathcal V$ 的结构（是否不可约、能否参数化）是下一步要研究的。
