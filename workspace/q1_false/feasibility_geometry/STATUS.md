@@ -299,3 +299,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   ⇒ $P$ 的行都在 2 维 $U$ 内 ⇒ $\rho_2\le1$ ⇒ 705 给 $\operatorname{rank}M\le2<4$；638 彻底撤回为反例。
 - [710](attempts/710_638_d1_infeasible.md)：**638 的 $d'=1$ 也不可行**——$v\in T$ 不相容；$v\notin T$ 时或 $u=0$ 或 $Zu=\mu u$ 掉秩；
   结合 709，638 正秩完全不可行；$q_{\min}=0$（$r_0=0$ 平凡解）。
+- [711](attempts/711_T_fiber_framework.md)：ChatGPT 的 $T$-纤维框架（$\mathfrak I(H)=(d,t,\dim(T\cap U),\rho_d,\deg\gcd)$、三层障碍）
+  与 693 的修正（$Z=-I$ 在 $\lambda=-1$ 降秩；改为 $Zu=e_2\notin\operatorname{span}u$，sympy 验证 $\operatorname{rank}M=2$）。

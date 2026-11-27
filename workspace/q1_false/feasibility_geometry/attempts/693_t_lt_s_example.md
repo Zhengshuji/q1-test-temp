@@ -26,8 +26,16 @@ $$G_i\in\operatorname{span}\{e_1\}\cap\operatorname{span}\{e_2\}=0\ \Rightarrow\
 
 ## $H_0=e_1^{\mathsf T}$：可行（$d'=1$）
 
-取 $H=u e_1^{\mathsf T}$（$u_1=1$）、$Z=-I$：$G=ZH-HZ'=-H=-u e_1^{\mathsf T}$，行在 $T=\operatorname{span}\{e_1\}$ ✓。
-$P(\lambda)=\lambda H-ZH=(\lambda+1)H$，秩 1 对一切 $\lambda$ ✓。故可行。
+取 $H=u e_1^{\mathsf T}$（$u=(1,0,1)$）。若取 $Z=-I$，则 $P=(\lambda+1)H$ 在 $\lambda=-1$ 处为零——**这是错的**（$(5b)$ 失败）。
+正确取法：令 $Z$ 满足 $Zu=e_2$，例如
+$$Z=\begin{bmatrix}0&0&0\\1&0&0\\0&0&0\end{bmatrix},\qquad Zu=e_2\notin\operatorname{span}\{u\}.$$
+则
+$$G=ZH=Zue_1^{\mathsf T}=e_2e_1^{\mathsf T}\quad(\text{行在 }T=\operatorname{span}\{e_1\}),$$
+$$P(\lambda)=(\lambda u-e_2)e_1^{\mathsf T},$$
+且 $\lambda u=e_2$ 无解（$u=(1,0,1)$、$e_2=(0,1,0)$ 不成比例）⇒ $\operatorname{rank}P(\lambda)=1$ 对所有 $\lambda$。
+sympy 验证：$\operatorname{rank}M=2=2d'$ ⇒ 可行 ✓。
+
+（$(5a)$：$H_A=ZH$ 的行在 $\operatorname{span}\{e_1\}=U$ ✓。）
 
 ## 意义
 
