@@ -303,3 +303,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   与 693 的修正（$Z=-I$ 在 $\lambda=-1$ 降秩；改为 $Zu=e_2\notin\operatorname{span}u$，sympy 验证 $\operatorname{rank}M=2$）。
 - [712](attempts/712_experiment_A_fiber.md)：实验 A（693 数据）——固定 $H$ 后 $LW$ 的变化空间恰为 $T=\operatorname{span}\{e_1\}$，
   严格小于 $S=\operatorname{span}\{e_1,e_2\}$；确认 692/697 的修正。
+- [713](attempts/713_stage_summary.md)：**阶段总结**——677/674/679/687/692/697/690/695/704/705/707-710/661/693 的 proved 清单、
+  预筛选链与开放问题（$T$-纤维、$\rho_d$ 分类、多 $\mu$、$\exists H$ 复杂度、665/689 的 $T$-版本）。

@@ -718,3 +718,4 @@ num	file	title	direction	subdirection	strategy
 710	710_638_d1_infeasible.md	638 d=1 也不可行（正秩完全不可行）	q1_false	feasibility_geometry	prove
 711	711_T_fiber_framework.md	ChatGPT 的 T-纤维框架与 693 修正	q1_false	feasibility_geometry	plan
 712	712_experiment_A_fiber.md	实验 A：LW 变化空间恰为 T（693 数据）	q1_false	feasibility_geometry	experiment
+713	713_stage_summary.md	阶段总结：T-纤维、ρ_d 障碍与预筛选链	q1_false	feasibility_geometry	summary
