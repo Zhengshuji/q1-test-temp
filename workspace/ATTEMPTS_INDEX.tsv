@@ -738,3 +738,4 @@ num	file	title	direction	subdirection	strategy
 730	730_cleanup_summary.md	清理汇总与 ChatGPT 的 S/T 分层建议	q1_false	feasibility_geometry	summary
 731	731_next_priority.md	清理收尾与下一优先级（方向性预筛选）	q1_false	feasibility_geometry	summary
 732	732_conjecture_d_le_t.md	猜想 d≤t：已知反例均为 t<d	q1_false	feasibility_geometry	conjecture
+733	733_counterexample_d_gt_t.md	d=2>t=s=1 可行：推翻 d≤t，恢复 ω>s	q1_false	feasibility_geometry	prove
