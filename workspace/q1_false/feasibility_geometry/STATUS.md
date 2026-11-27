@@ -226,3 +226,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   均未出现“秩 $<4$ 且可解”；猜想（$d=2$、$m\ge2$）$e_0\in\operatorname{col}M\Rightarrow\operatorname{rank}M=4$（仅抽样）。
 - [674](attempts/674_d2_theorem.md)：**$d=2$ 定理**——$\operatorname{rank}H=2$ 时 $(5b)\iff\operatorname{rank}M=4$；
   一般 $d$ 猜想：$(5b)\iff\operatorname{rank}M=2d$（$d=1,2$ 已证，$d=3$ 有抽样支持）。
+- [675](attempts/675_sylvester_rank_lemma.md)：一般 $d$ 的 **Sylvester 秩引理（猜想）**——$\operatorname{rank}\Phi=2d-\deg\gcd$；
+  若成立则 674 的猜想随 $\gcd=1$ 成立；证据：$d=2$ 证明、$d=3$ 铅笔样本、3000 组抽象三元组、5 组非平凡 gcd（秩 $=2d-\deg g$）。

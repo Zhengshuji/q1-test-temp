@@ -680,3 +680,4 @@ num	file	title	direction	subdirection	strategy
 672	672_full_rank_sufficient.md	满秩 M 的充分条件与一般层/退化层分裂	q1_false	feasibility_geometry	prove
 673	673_Dd_experiment.md	D_d 实验：未发现秩<4 且可解（d=2）	q1_false	feasibility_geometry	experiment
 674	674_d2_theorem.md	d=2 定理：可解⇔M 满秩；一般 d 猜想	q1_false	feasibility_geometry	prove
+675	675_sylvester_rank_lemma.md	Sylvester 秩引理（猜想）：rank Φ=2d−deg gcd	q1_false	feasibility_geometry	conjecture
