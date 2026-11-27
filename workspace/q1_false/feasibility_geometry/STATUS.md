@@ -301,3 +301,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   结合 709，638 正秩完全不可行；$q_{\min}=0$（$r_0=0$ 平凡解）。
 - [711](attempts/711_T_fiber_framework.md)：ChatGPT 的 $T$-纤维框架（$\mathfrak I(H)=(d,t,\dim(T\cap U),\rho_d,\deg\gcd)$、三层障碍）
   与 693 的修正（$Z=-I$ 在 $\lambda=-1$ 降秩；改为 $Zu=e_2\notin\operatorname{span}u$，sympy 验证 $\operatorname{rank}M=2$）。
+- [712](attempts/712_experiment_A_fiber.md)：实验 A（693 数据）——固定 $H$ 后 $LW$ 的变化空间恰为 $T=\operatorname{span}\{e_1\}$，
+  严格小于 $S=\operatorname{span}\{e_1,e_2\}$；确认 692/697 的修正。
