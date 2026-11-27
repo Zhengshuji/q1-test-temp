@@ -212,3 +212,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
 - [667](attempts/667_uniform_bezout_system.md)：Theorem U 的完整证明 + **统一 Bézout 系统**——
   $(5b)\iff\operatorname{rank}[M(H)\mid e_0]=\operatorname{rank}M(H)$；$M$ 为 $2d\times md$、条目次数 $\le d$；
   统一可行性 = 多项式方程（$(d+1)$-子式零）+ 行列式条件；638/641B/661 验证。
+- [668](attempts/668_bezout_rank_check.md)：Bézout 秩判据的数值验证——638（可行）$\operatorname{rank}M=4=[M\mid e_0]$；
+  641B（不可行）$2<3$，与 gcd 判据一致。
