@@ -289,3 +289,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   693 的 $e_2$ 情形由 $H_A=0$ 直接排除；建议放在预筛选链最前。
 - [705](attempts/705_proportional_minors_infeasible.md)：**比例子式型不可行**——若全部 $d$-子式是同一多项式的常数倍（$\rho_d=1$），
   则 $\operatorname{rank}M\le d<2d$ ⇒ 不可行；638 的 $d'=2$ 不可行归约到 $\rho_2=1$（待证）。
+- [706](attempts/706_rho2_stats.md)：638 的 $\rho_2$ 统计——44 个相容实例**全部** $\rho_2=1$（且 $e_1\notin U$）；
+  由 705 全部不可行；一般性证明待做。

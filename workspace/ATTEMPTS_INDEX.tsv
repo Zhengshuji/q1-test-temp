@@ -711,3 +711,4 @@ num	file	title	direction	subdirection	strategy
 703	703_chatgpt_exterior_framework.md	ChatGPT 外幂/系数秩框架与 T 的适用范围	q1_false	feasibility_geometry	plan
 704	704_lambda0_prefilter.md	λ=0 预筛选：rank H_A=d′	q1_false	feasibility_geometry	prove
 705	705_proportional_minors_infeasible.md	比例子式型不可行：ρ_d=1 ⇒ rank M≤d	q1_false	feasibility_geometry	prove
+706	706_rho2_stats.md	638 的 ρ2 统计：44/44 为 1（全部不可行）	q1_false	feasibility_geometry	experiment
