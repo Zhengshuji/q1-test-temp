@@ -406,3 +406,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   记录 $K(x)$ 泛型 gcd 陷阱（$f_1=(x\lambda+1)(\lambda+1)$ 例）；算法层仍开放。
 - [766](attempts/766_lean_orthogonal.md)：**Lean $({\star})$ 抽象部分**——$(U\sqcup T)^\perp=U^\perp\cap T^\perp$ 与 $\operatorname{finrank}(U\sqcup T)=k-\operatorname{finrank}(U^\perp\cap T^\perp)$；
   BUILD=0（9120 jobs），公理干净；$\operatorname{row}A^\perp=\ker A$ 的桥接待补。
+- [767](attempts/767_d_eq_k_trivial_5a.md)：**$d'=k$ 时 $(5a)$ 自动成立**——标准块形下 $\dim\operatorname{row}[L;CA;C]=(n-k)+d'$；
+  非退化区域恰为 $d'<k$（764 的实例）；733/747 只检验 $(5b)$。
