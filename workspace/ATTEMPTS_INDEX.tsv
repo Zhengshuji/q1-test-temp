@@ -668,3 +668,4 @@ num	file	title	direction	subdirection	strategy
 661	661_corrected_counterexample5.md	修正反例5：H0=e2^T 的实例级不可行（满足 651）	q1_false	feasibility_geometry	prove
 627	627_free_row_existential_correction.md	自由行是存在量词：自由行上的门不能约束求解者	q1_true	multiplication_gate	prove
 662	662_chatgpt_priority_assessment.md	ChatGPT 评估：优先级与仿射铅笔核心难点（M2）	q1_false	feasibility_geometry	plan
+663	663_d1_classification.md	仿射铅笔 d=1 完整分类（E=S∩(Z'^T)^{-1}S 判据）	q1_false	feasibility_geometry	prove

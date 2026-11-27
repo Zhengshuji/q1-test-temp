@@ -198,3 +198,6 @@
 - [662](attempts/662_chatgpt_priority_assessment.md)：ChatGPT 评估——q1 倾向 P 但谨慎；优先级：
   (1) 仿射铅笔 $d=1,2$ 的 gcd 分类（以 661 为测试），(2) 实例级不可行证书，(3) 秩层算法化；
   并警告位复杂度（DEC 调用次数 ≠ 复杂度）。
+- [663](attempts/663_d1_classification.md)：**仿射铅笔 $d=1$ 完整分类**——$v|_K\ne0$ 不可行（$Z$ 必以 $u$ 为特征向量）；
+$v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\iff E\ne0$；
+  统一解释 629/631/638/657/661（661 = $E=0$ + 秩 $=q$ 障碍）。
