@@ -404,3 +404,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   结构恒等式 $\operatorname{rank}[L;CA;C]=(n-k)+\operatorname{rank}H$ ⇒ 非退化 $\iff d'<k$。
 - [765](attempts/765_B_bezout_interface.md)：**B 的 Bézout 接口**——$\gcd=1\iff\exists u_j,\sum u_jf_j=1$；参数化后为有限系数方程组；
   记录 $K(x)$ 泛型 gcd 陷阱（$f_1=(x\lambda+1)(\lambda+1)$ 例）；算法层仍开放。
+- [766](attempts/766_lean_orthogonal.md)：**Lean $({\star})$ 抽象部分**——$(U\sqcup T)^\perp=U^\perp\cap T^\perp$ 与 $\operatorname{finrank}(U\sqcup T)=k-\operatorname{finrank}(U^\perp\cap T^\perp)$；
+  BUILD=0（9120 jobs），公理干净；$\operatorname{row}A^\perp=\ker A$ 的桥接待补。

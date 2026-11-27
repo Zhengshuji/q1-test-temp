@@ -770,3 +770,4 @@ num	file	title	direction	subdirection	strategy
 763	763_nondegenerate_obstruction.md	n=4,k=2 无非退化 (5a) 例；需 n≥5	q1_false	feasibility_geometry	prove
 764	764_nondegenerate_instance.md	非退化 (5a) 实例（n=6,k=2,d=1）与结构恒等式	q1_false	feasibility_geometry	experiment
 765	765_B_bezout_interface.md	B 的 Bézout 接口与 K(x) 陷阱	q1_false	feasibility_geometry	plan
+766	766_lean_orthogonal.md	Lean：(★) 的抽象正交补部分（BUILD=0）	q1_false	feasibility_geometry	lean
