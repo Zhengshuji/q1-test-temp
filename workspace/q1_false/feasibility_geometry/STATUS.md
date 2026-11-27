@@ -235,3 +235,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   $\exists H$（秩 $d'$、前 $r_0$ 行 $=H_0$）使 $D_{d'}(H,\cdot)$ 在 $S^q$ 上不恒为零；无自由行时退化为单点 $\operatorname{rank}M=2d'$。
 - [679](attempts/679_q_eq_r0_poly.md)：**$q=r_0$ 时可行 $\iff$ 固定铅笔最大子式 $\gcd=1$（多项式时间）**；
   因此 q1 的困难只在“选择自由行”（$\exists R$），不在给定 $L$ 的判定。
+- [680](attempts/680_free_row_random.md)：638 数据带自由行的随机搜索——找到可行点（秩 $M=4$），验证 678 判据；
+  随机搜索可作可行性 Monte Carlo，但不是多项式判定。

@@ -685,3 +685,4 @@ num	file	title	direction	subdirection	strategy
 677	677_lemmaS_proof.md	引理 S 证明（U=I∩C[λ]<2d）与一般 d 猜想成立	q1_false	feasibility_geometry	prove
 678	678_existsH_criterion.md	可行性判据：D_d 在 G 空间上不恒为零（∃H）	q1_false	feasibility_geometry	prove
 679	679_q_eq_r0_poly.md	q=r0 时可判定性为多项式时间（难度只在自由行）	q1_false	feasibility_geometry	prove
+680	680_free_row_random.md	带自由行的随机可行性搜索（638 数据）	q1_false	feasibility_geometry	experiment
