@@ -339,3 +339,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   给 16 个文件加审计横幅、修 661 标题与 699 正文；ChatGPT 建议 $S/T$ 分层（不盲目替换），先清理再攻方向性预筛选。
 - [731](attempts/731_next_priority.md)：清理收尾（678/682/683/686/688 正文 S→T）与 ChatGPT 的下一优先级——
   先攻方向性预筛选严格定理（从 $G_i\in T\cap(U-H_iZ')$ 出发），再推广 715，最后找 $\omega>s$。
+- [732](attempts/732_conjecture_d_le_t.md)：**猜想 $d'\le t=\dim T$**——$Z'=0$ 已证（$H_A=G\in U\cap T$）；
+  638（$t=1,d'=2$）与 661（$t=0$）均不可行，631 修正版（$t=k$）可行；一般情形待证。
