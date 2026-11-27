@@ -263,3 +263,7 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   标量 $Z'$ 完整结论：可行 $\Rightarrow d'\le s$（$d'=k,s<k$ 不可行）。
 - [692](attempts/692_correction_T_not_S.md)：**更正**——$G$ 的行空间是 $T=\{lW:lN=0\}\subseteq S$（$\dim T=t$），不是 $S$；
   678/682/690 的表述改为 $T$；测试数据 $t=s$，具体结论不变；638 在 $T$ 下仍可行（已验证）。
+- [693](attempts/693_t_lt_s_example.md)：**$t<s$ 实例**——$n=4,k=2$，$S=\operatorname{span}\{e_1,e_2\}$、$T=\operatorname{span}\{e_1\}$、$Z'=0$；
+  690 的 $t$-版本给 $d'\le1$；$H_0=e_2^{\mathsf T}$ 不可行（任何 $q$），$H_0=e_1^{\mathsf T}$ 可行。
+- [694](attempts/694_chatgpt_direction_obstruction.md)：ChatGPT 对 $T$ 更正与方向型障碍的评估——四条命题、
+  新版预筛选（$S,t$、651、690-$t$、$T\cap U$、gcd）；命题 2 待核，命题 3 已证（693 特例）。
