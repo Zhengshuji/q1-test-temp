@@ -688,3 +688,4 @@ num	file	title	direction	subdirection	strategy
 680	680_free_row_random.md	带自由行的随机可行性搜索（638 数据）	q1_false	feasibility_geometry	experiment
 681	681_chart_reduction.md	图表归约：可行性化为有限 PIT 实例	q1_false	feasibility_geometry	prove
 682	682_fixed_d_RP.md	固定 d' 可行性属于 RP（随机化单边）；Zariski 稠密+Schwartz-Zippel	q1_false	feasibility_geometry	prove
+683	683_feasibility_sampler.md	通用可行性采样器（638/657 找到证书，661 未找到）	q1_false	feasibility_geometry	experiment

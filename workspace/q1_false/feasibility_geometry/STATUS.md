@@ -241,3 +241,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   开放：图表数 $\binom{k}{d'}$ 与去随机化；若“可行 ⇒ 存在 Zariski 开图表集”成立，则 q1 可行性 $\in$ RP。
 - [682](attempts/682_fixed_d_RP.md)：**固定 $d'$ 的可行性 $\in$ RP**——可行 $\Rightarrow$ $\tilde D$ 的零点集真闭，
   参数空间中 $\{\tilde D\ne0\}$ 是 Zariski 开稠密；随机采样即得单边证书；复杂度关于 $d'$ 指数。
+- [683](attempts/683_feasibility_sampler.md)：682 算法的实现与测试——638/657 找到证书（⇒ 可行），661 在 300 次内未找到
+  （与不可行一致，但非证明）。
