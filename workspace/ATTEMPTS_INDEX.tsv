@@ -767,3 +767,4 @@ num	file	title	direction	subdirection	strategy
 760	760_centering_restatement.md	中心化重述（Z'',G'）与 693 不可行证书	q1_false	feasibility_geometry	prove
 761	761_fixed_U_existence.md	固定 U 的仿射存在性定理（F_U 与 gcd）	q1_false	feasibility_geometry	prove
 762	762_lean_rowspace.md	Lean：753 的 (★★) 入构建图（BUILD=0）	q1_false	feasibility_geometry	lean
+763	763_nondegenerate_obstruction.md	n=4,k=2 无非退化 (5a) 例；需 n≥5	q1_false	feasibility_geometry	prove

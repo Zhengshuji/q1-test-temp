@@ -398,3 +398,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   $U$ 可行 $\iff\mathcal F_U=\prod_i(T\cap(U-H_iZ''))\ne\varnothing$ 且 $\exists G'\in\mathcal F_U$ 使 $\gcd=1$；含 $L=[H|M]$ 构造与基不变性。
 - [762](attempts/762_lean_rowspace.md)：**Lean**——753 的 $({\star\star})$ $\operatorname{row}(HA)\subseteq\operatorname{row}A$ 入构建图；
   `lake build MyProof` BUILD=0（9119 jobs），公理干净；$({\star})$ 待形式化。
+- [763](attempts/763_nondegenerate_obstruction.md)：**非退化 $(5a)$ 的不可能性**（$n=4,k=2,q=3$）——秩亏强迫 $CA\propto C$，与 $\dim K_0=2$ 矛盾；
+  需 $n\ge5$；子 agent `nondeg-5a` 搜索中。
