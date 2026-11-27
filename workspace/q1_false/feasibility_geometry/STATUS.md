@@ -400,3 +400,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   `lake build MyProof` BUILD=0（9119 jobs），公理干净；$({\star})$ 待形式化。
 - [763](attempts/763_nondegenerate_obstruction.md)：**非退化 $(5a)$ 的不可能性**（$n=4,k=2,q=3$）——秩亏强迫 $CA\propto C$，与 $\dim K_0=2$ 矛盾；
   需 $n\ge5$；子 agent `nondeg-5a` 搜索中。
+- [764](attempts/764_nondegenerate_instance.md)：**非退化 $(5a)$ 实例**（$n=6,k=2,d'=1$，$W_{\mathrm{top}}\ne0$）——$\operatorname{rank}[L;CA;C]=5<6$、$(5a)$ 非平凡、$\gcd=1$；
+  结构恒等式 $\operatorname{rank}[L;CA;C]=(n-k)+\operatorname{rank}H$ ⇒ 非退化 $\iff d'<k$。
