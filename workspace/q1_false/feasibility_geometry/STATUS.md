@@ -343,3 +343,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   638（$t=1,d'=2$）与 661（$t=0$）均不可行，631 修正版（$t=k$）可行；一般情形待证。
 - [733](attempts/733_counterexample_d_gt_t.md)：**反例**——$d'=\omega=2>t=s=1$ 可行（$Z'=\begin{bmatrix}1&2\\1&1\end{bmatrix}$、$H$ 与 $Z$ 显式），
   推翻 732 的 $d'\le t$ 猜想；$\omega>s$ 重新成立。
+- [734](attempts/734_direction_rank_lemma.md)：**定理 B（方向性补偿秩）**——可行 ⇒ $d'\le\operatorname{rank}(H(\mu I-Z'))+\dim E_H$，
+  $E_H=\operatorname{span}\bigcup_i(T\cap(U-H_iZ'))$；标量 $Z'$ 给 $d'\le\dim E_H\le\dim(U\cap T)$；733 取等。
