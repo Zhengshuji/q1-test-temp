@@ -359,3 +359,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   `#print axioms` 仅 propext/Classical.choice/Quot.sound；`check_rules.sh` 仍有既有历史问题（与本文件无关）。
 - [742](attempts/742_lean_sub_le_of_le.md)：**Lean 内核收尾**——`q1_rank_sub_le_of_le`（734 的最终形式）入构建图，
   `lake build MyProof` BUILD=0（9118 jobs），公理干净；完整 734/739 仍为纸面。
+- [743](attempts/743_eq739_boundary.md)：**739 的边界**——子 agent 664 例（$k=5,6$，cls≥2）等式 664/664；
+  空 $F_i$ 使等式失败但本身不可行 ⇒ **可行 ⇒ 等式**；候选 A 说明 $\operatorname{cls}<\operatorname{rank}(HM)$。
