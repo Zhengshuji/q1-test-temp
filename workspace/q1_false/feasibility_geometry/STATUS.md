@@ -214,3 +214,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   统一可行性 = 多项式方程（$(d+1)$-子式零）+ 行列式条件；638/641B/661 验证。
 - [668](attempts/668_bezout_rank_check.md)：Bézout 秩判据的数值验证——638（可行）$\operatorname{rank}M=4=[M\mid e_0]$；
   641B（不可行）$2<3$，与 gcd 判据一致。
+- [669](attempts/669_U_corollaries_d1_d2.md)：Theorem U 的直接推论——$d=1$ 的干净重推（$(5b)\iff u$ 非 $Z$ 特征向量）、
+  $d=2$ 的 $M$ 显式 Sylvester 型结构（$4\times2m$，列成对移位）。

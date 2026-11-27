@@ -674,3 +674,4 @@ num	file	title	direction	subdirection	strategy
 666	666_uniform_rank_criterion.md	Theorem U：统一恒秩判据（最大子式理想/Bézout/Smith），665 为特例	q1_false	feasibility_geometry	prove
 667	667_uniform_bezout_system.md	Theorem U 完整证明与统一 Bézout 系统（2d×md 秩条件）	q1_false	feasibility_geometry	prove
 668	668_bezout_rank_check.md	Bézout 秩判据验证（638 可解、641B 不可解）	q1_false	feasibility_geometry	experiment
+669	669_U_corollaries_d1_d2.md	Theorem U 推论：d=1 重推与 d=2 的 M 结构	q1_false	feasibility_geometry	prove
