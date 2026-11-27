@@ -1,4 +1,6 @@
 # 690 特征值-秩必要条件：$\operatorname{rank}(\mu I-Z')\ge d'-s$
+> **更正（692）**：$\operatorname{rank}G\le t=\dim T$（不是 $s$）；条件应为 $\operatorname{rank}(\mu I-Z')\ge d'-t$。测试数据中 $t=s$，表中结论不变；标量 $Z'$ 的结论应写 $d'\le t$。
+
 
 > 2026-11-27。由 $P(\lambda)=\lambda H-HZ'-G$ 在特征值处的秩分解，得到一条新的必要条件；它解释了标量 $Z'$ 的不可行。
 > 状态：**[已证-纸面]**。

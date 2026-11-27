@@ -261,3 +261,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   $\operatorname{rank}(\mu I-Z')\ge d'-s$；解释标量 $Z'$（$d'>s$）不可行；$S=\mathbb C^k$ 自动成立。
 - [691](attempts/691_necessary_chain.md)：**必要条件合并**——$T_\infty$、690（特征值-秩）、$m=1$、$S=0$ 预筛选链；
   标量 $Z'$ 完整结论：可行 $\Rightarrow d'\le s$（$d'=k,s<k$ 不可行）。
+- [692](attempts/692_correction_T_not_S.md)：**更正**——$G$ 的行空间是 $T=\{lW:lN=0\}\subseteq S$（$\dim T=t$），不是 $S$；
+  678/682/690 的表述改为 $T$；测试数据 $t=s$，具体结论不变；638 在 $T$ 下仍可行（已验证）。
