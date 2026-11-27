@@ -355,3 +355,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   故 $d'\le\operatorname{rank}(HM)+\dim(U\cap T)+\operatorname{cls}$；数值 342/342 与之一致。
 - [740](attempts/740_lean_rank_core.md)：**Lean 内核**——`rank_sub_le`（734 的 $\operatorname{rank}(f-g)\le\operatorname{rank}f+\operatorname{rank}g$）与
   `dim_sup_add_dim_inf`（739 的维数恒等式）在 `ChkRank6.lean` 单文件编译 EXIT=0；未入聚合构建图，故只标内核。
+- [741](attempts/741_lean_integration.md)：**Lean 集成**——`Q1RankCore.lean` 进入构建图，`lake build MyProof` BUILD=0（9116 jobs），
+  `#print axioms` 仅 propext/Classical.choice/Quot.sound；`check_rules.sh` 仍有既有历史问题（与本文件无关）。
