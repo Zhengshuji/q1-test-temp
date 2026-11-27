@@ -731,3 +731,5 @@ num	file	title	direction	subdirection	strategy
 723	723_invariance_reformulation.md	a=0 强界 ⇔ Z 保持 imH 不变（与 715 统一）	q1_false	feasibility_geometry	prove
 724	724_a0_invariance_obstacle.md	a=0 不变性：证明障碍（行-列桥接）	q1_false	feasibility_geometry	plan
 725	725_lemmaE_proof.md	引理 E/F 完整证明（rank(ZX−XA)≤a；g_μ≤a）	q1_false	feasibility_geometry	prove
+726	726_a_ge_1.md	必要条件：可行 ⇒ a=dim(U∩T)≥1	q1_false	feasibility_geometry	prove
+727	727_631_correction.md	更正 631：W 满行秩需 T=S；反例 N=I,W=I	q1_false	feasibility_geometry	fix

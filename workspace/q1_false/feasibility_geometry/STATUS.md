@@ -329,3 +329,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   $G$ 的行约束只给 $ZX\overline V$，不直接约束 $Z$ 在 $\operatorname{im}X$ 上的作用；需新引理。
 - [725](attempts/725_lemmaE_proof.md)：**引理 E 的完整证明**——商空间桥接 $\operatorname{rank}\overline V=d-a$、$\Pi ZX\overline V=0$
   ⇒ $\operatorname{rank}(ZX-XA)\le a$；推论：$a=0\Rightarrow Z(\operatorname{im}H)\subseteq\operatorname{im}H$、引理 F（$g_\mu\le a$）。
+- [726](attempts/726_a_ge_1.md)：**新必要条件**——可行（$d>0$）⇒ $a=\dim(U\cap T)\ge1$（由引理 F：$g_\mu\le a$ 且 $g_\mu\ge1$）。
+- [727](attempts/727_631_correction.md)：**更正 631**——$W$ 满行秩不足以保证可行（需 $T=S$）；反例 $N=I,W=I$：$T=0$，$P=H(\lambda I-Z'-I)$ 必降秩。
