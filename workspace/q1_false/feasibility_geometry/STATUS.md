@@ -224,3 +224,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   $D_d(R)=\sum|2d\text{-子式}|^2\not\equiv0$ 是统一的符号判据；$D_d\equiv0$（如 $m=1$）落入退化层（661 即此）。
 - [673](attempts/673_Dd_experiment.md)：$D_d$ 实验——638 满秩可解；300 组随机 $Z$、26 个随机秩 2 $H$
   均未出现“秩 $<4$ 且可解”；猜想（$d=2$、$m\ge2$）$e_0\in\operatorname{col}M\Rightarrow\operatorname{rank}M=4$（仅抽样）。
+- [674](attempts/674_d2_theorem.md)：**$d=2$ 定理**——$\operatorname{rank}H=2$ 时 $(5b)\iff\operatorname{rank}M=4$；
+  一般 $d$ 猜想：$(5b)\iff\operatorname{rank}M=2d$（$d=1,2$ 已证，$d=3$ 有抽样支持）。
