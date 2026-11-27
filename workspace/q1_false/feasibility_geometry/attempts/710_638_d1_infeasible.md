@@ -19,12 +19,13 @@ $$w=(c,a,b).$$
 
 **(1) $v\in T$**（$v=\lambda e_1$）：$w=\lambda e_2\notin T$ ⇒ 不相容。
 
-**(2) $v\notin T$**：$w\in\operatorname{span}\{v\}+T$ ⇒ $w=\mu v+t$（$t\in T$）。
-$G_i=(Zu)_i v^{\mathsf T}-u_i w^{\mathsf T}=((Zu)_i-\mu u_i)v^{\mathsf T}-u_i t^{\mathsf T}$ 必须在 $T$。
-因 $v\notin T$，须 $(Zu)_i=\mu u_i$ 且 $u_i t=0$ 对所有 $i$。
-
-- 若 $t\ne0$：$u_i=0$ 对所有 $i$ ⇒ $u=0$，矛盾；
-- 若 $t=0$：$w=\mu v$，即 $v$ 是 $Z'^{\mathsf T}$ 的特征向量；此时 $Zu=\mu u$，故 $\lambda u-Zu=(\lambda-\mu)u$ 在 $\lambda=\mu$ 为零 ⇒ $(5b)$ 失败。
+**(2) $v\notin T$**：相容性给 $w=\mu v+t$（$t\in T$）。行条件
+$$G_i=\big((Zu)_i-\mu u_i\big)v^{\mathsf T}-u_i t^{\mathsf T}\in T .$$
+若 $u_i\ne0$，则 $v^{\mathsf T}$ 的系数必须为零（因 $v\notin T$），故 $(Zu)_i=\mu u_i$；若 $u_i=0$，同一条件给 $(Zu)_i=0=\mu u_i$。总之
+$$Zu=\mu u .$$
+于是
+$$P(\mu)=(\mu u-Zu)v^{\mathsf T}=0,$$
+$(5b)$ 在 $\lambda=\mu$ 处失败。
 
 ## 结论
 
