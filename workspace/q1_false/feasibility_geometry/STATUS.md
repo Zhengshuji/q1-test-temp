@@ -231,3 +231,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
 - [676](attempts/676_chatgpt_lemmaS_assessment.md)：ChatGPT 评估引理 S——统一判据的核心；停止逐 $d$ 分类；实设计 Bezout 证书可取实系数；$\operatorname{rank}H<d$ 时须按实际最高次数设证书空间；统一判据不解决 $\exists U$ 与多项式时间。
 - [677](attempts/677_lemmaS_proof.md)：**引理 S 的证明**——$U=I\cap\mathbb C[\lambda]_{<2d}$，故 $\operatorname{rank}\Phi=2d-\deg\gcd$；
   由此 **674 的一般 $d$ 猜想成立**：$\operatorname{rank}H=d$ 时 $(5b)\iff\operatorname{rank}M=2d\iff D_d\ne0$（开条件）。
+- [678](attempts/678_existsH_criterion.md)：**$\exists H$ 判据**——$H_A=HZ'+G$、$G\in S^q$ 自由；可行 $\iff$
+  $\exists H$（秩 $d'$、前 $r_0$ 行 $=H_0$）使 $D_{d'}(H,\cdot)$ 在 $S^q$ 上不恒为零；无自由行时退化为单点 $\operatorname{rank}M=2d'$。
