@@ -695,3 +695,4 @@ num	file	title	direction	subdirection	strategy
 687	687_Z_free_part.md	Z 的自由部分不改变铅笔；可行性化为 H 的条件	q1_false	feasibility_geometry	prove
 688	688_audit_650_654.md	复核 650/654 与修正后的证明版图	q1_false	feasibility_geometry	audit
 689	689_dk_q_gt_k_construction.md	d'=k,q>k 的显式构造（简单谱扰动）	q1_false	feasibility_geometry	prove
+690	690_eigenvalue_rank_necessary.md	特征值-秩必要条件 rank(μI−Z′)≥d′−s	q1_false	feasibility_geometry	prove

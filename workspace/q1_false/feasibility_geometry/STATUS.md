@@ -257,3 +257,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   给出修正后的证明版图与开放问题（$d'=k,q>k$、$d'<k$ 相容性、$\exists H$ 判定）。
 - [689](attempts/689_dk_q_gt_k_construction.md)：**$d'=k,q>k$ 的构造**——$H=[I_k;0]$、$A=Z'+C$（$C$ 行在 $S$）、$B$ 行在 $S$；
   若 $A$ 简单谱且 $B$ 杀死特征向量则可行；数值 $k=3,q=4$ 验证；标量 $Z'$ 需 $k\le2s$。
+- [690](attempts/690_eigenvalue_rank_necessary.md)：**特征值-秩必要条件**——可行 $\Rightarrow$ 对每个特征值 $\mu$，
+  $\operatorname{rank}(\mu I-Z')\ge d'-s$；解释标量 $Z'$（$d'>s$）不可行；$S=\mathbb C^k$ 自动成立。
