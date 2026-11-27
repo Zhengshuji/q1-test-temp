@@ -412,3 +412,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   并给出显式参数化 $G'_i(\theta)$ 与坏集 $\mathcal B_U$；B 等价于 $\mathcal B_U\ne K^{qa}$。
 - [769](attempts/769_paper_lean_reuse.md)：**阶段整理 + Paper I/II Lean 复用**——移植 `Q1BezoutDeg`/`Q1HyperplaneAvoid`/`Q1BezoutFamily`，
   `lake build MyProof` BUILD=0（9123 jobs），`exists_bezout_family` 公理干净；并列出可复用的行空间/秩/gcd 引理清单。
+- [770](attempts/770_self_assessment.md)：**阶段自评**——产出是“结构约化 + 精确维数 + 两个实例 + 更正”，非 Q1 答案；
+  ChatGPT 评估：以 761 为中心、739 为核心维数、764 为非退化实例；**768 的坏集应为构造集而非代数集**（已更正）。

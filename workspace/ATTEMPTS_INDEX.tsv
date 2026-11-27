@@ -774,3 +774,4 @@ num	file	title	direction	subdirection	strategy
 767	767_d_eq_k_trivial_5a.md	d=k 时 (5a) 自动；非退化区域 d<k	q1_false	feasibility_geometry	prove
 768	768_FU_affine_geometry.md	F_U 的仿射几何与坏集 B_U	q1_false	feasibility_geometry	prove
 769	769_paper_lean_reuse.md	阶段整理与 Paper I/II Lean 复用（Bézout 移植）	q1_false	feasibility_geometry	summary
+770	770_self_assessment.md	阶段自评：产出什么、ChatGPT 评估与收敛计划	q1_false	feasibility_geometry	summary

@@ -35,9 +35,12 @@ $$U\ \text{可行}\iff \mathcal F_U\ne\varnothing\ \text{且}\ \mathcal B_U\ne K
 
 ## 关键观察（与 765 呼应）
 
-- $\mathcal B_U$ 是**代数集**（$\gcd\ne1$ 等价于所有 $d'$-子式有公共根，可用结式/判别式表达）；
-- “存在 $\theta\notin\mathcal B_U$”**不能**由“泛型 $\theta$ 不在 $\mathcal B_U$”推出——765 的 $f_1=(x\lambda+1)(\lambda+1)$、$f_2=(x\lambda+1)(\lambda+2)$ 正是反例；
-- 因此需要研究 $\mathcal B_U$ 的**具体方程**，而不是只在函数域上算 gcd。
+- $\mathcal B_U$ 由“存在公共根”定义：令
+  $$\mathcal V=\{(\theta,\lambda):\ f_1(\lambda;\theta)=\cdots=f_m(\lambda;\theta)=0\},$$
+  则 $\mathcal B_U=\pi_\theta(\mathcal V)$。$\mathcal V$ 是代数集，但其投影（由 Chevalley 定理）一般只是**构造集**，不必是闭代数集；
+- **更正**：本文初稿称“$\mathcal B_U$ 是代数集”，这不成立。765 的例子 $f_1=(x\lambda+1)(\lambda+1)$、$f_2=(x\lambda+1)(\lambda+2)$ 给 $\mathcal B_U=\{x\ne0\}$，是 Zariski **开**集，不是闭集；
+- “存在 $\theta\notin\mathcal B_U$”**不能**由“泛型 $\theta$ 不在 $\mathcal B_U$”推出——765 的例子正是反例；
+- 因此需要研究 $\mathcal B_U$ 的**具体方程**与构造集结构，而不是只在函数域上算 gcd，也不能预设它是闭集。
 
 ## 待办（P1/P2）
 
