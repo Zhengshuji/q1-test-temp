@@ -687,3 +687,4 @@ num	file	title	direction	subdirection	strategy
 679	679_q_eq_r0_poly.md	q=r0 时可判定性为多项式时间（难度只在自由行）	q1_false	feasibility_geometry	prove
 680	680_free_row_random.md	带自由行的随机可行性搜索（638 数据）	q1_false	feasibility_geometry	experiment
 681	681_chart_reduction.md	图表归约：可行性化为有限 PIT 实例	q1_false	feasibility_geometry	prove
+682	682_fixed_d_RP.md	固定 d' 可行性属于 RP（随机化单边）；Zariski 稠密+Schwartz-Zippel	q1_false	feasibility_geometry	prove

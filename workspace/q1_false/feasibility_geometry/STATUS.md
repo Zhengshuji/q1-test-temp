@@ -239,3 +239,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   随机搜索可作可行性 Monte Carlo，但不是多项式判定。
 - [681](attempts/681_chart_reduction.md)：**图表归约**——可行 $\iff$ 有限个图表上的 PIT（多项式非零）；
   开放：图表数 $\binom{k}{d'}$ 与去随机化；若“可行 ⇒ 存在 Zariski 开图表集”成立，则 q1 可行性 $\in$ RP。
+- [682](attempts/682_fixed_d_RP.md)：**固定 $d'$ 的可行性 $\in$ RP**——可行 $\Rightarrow$ $\tilde D$ 的零点集真闭，
+  参数空间中 $\{\tilde D\ne0\}$ 是 Zariski 开稠密；随机采样即得单边证书；复杂度关于 $d'$ 指数。
