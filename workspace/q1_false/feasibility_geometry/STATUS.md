@@ -345,3 +345,7 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   推翻 732 的 $d'\le t$ 猜想；$\omega>s$ 重新成立。
 - [734](attempts/734_direction_rank_lemma.md)：**定理 B（方向性补偿秩）**——可行 ⇒ $d'\le\operatorname{rank}(H(\mu I-Z'))+\dim E_H$，
   $E_H=\operatorname{span}\bigcup_i(T\cap(U-H_iZ'))$；标量 $Z'$ 给 $d'\le\dim E_H\le\dim(U\cap T)$；733 取等。
+- [735](attempts/735_665_T_version.md)：**665 的 $T$-版本**——模板需 $\operatorname{row}(V)\subseteq E_T=T\cap\ker(Z'^{\mathsf T})$（不是 $S$）；
+  657（$E_T=1\ge d'$）通过，638（$E_T=0$）不可行，733 非模板。
+- [736](attempts/736_quotient_direction_conjecture.md)：ChatGPT 的猜想 (D)——$\dim E_H\le\dim(U\cap T)+\operatorname{rank}(H(\mu I-Z'))$；
+  若成立则 $d'\le\dim(U\cap T)+2\operatorname{rank}(HM)$；733 平凡成立，$t\ge2$ 待检验。
