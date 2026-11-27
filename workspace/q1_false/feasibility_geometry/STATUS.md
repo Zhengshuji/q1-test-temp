@@ -396,3 +396,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   693 的不可行证书：$H_1Z''=e_2\notin U+T$ ⇒ $(5a)$ 无解。
 - [761](attempts/761_fixed_U_existence.md)：**固定 $U$ 的仿射存在性定理**——在 $Z'',G'$ 下
   $U$ 可行 $\iff\mathcal F_U=\prod_i(T\cap(U-H_iZ''))\ne\varnothing$ 且 $\exists G'\in\mathcal F_U$ 使 $\gcd=1$；含 $L=[H|M]$ 构造与基不变性。
+- [762](attempts/762_lean_rowspace.md)：**Lean**——753 的 $({\star\star})$ $\operatorname{row}(HA)\subseteq\operatorname{row}A$ 入构建图；
+  `lake build MyProof` BUILD=0（9119 jobs），公理干净；$({\star})$ 待形式化。
