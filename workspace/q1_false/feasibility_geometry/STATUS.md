@@ -323,3 +323,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   $Z'=0$ 时 $G\in U\cap T$ 给 $r\le a$；一般 $Z'$ 的强界仍开放（$a=0$ 的 31 例中 $r=0$）。
 - [722](attempts/722_strong_bound_d1.md)：一般 $Z'$ 的强界——$d=1$ 已证（$\Pi G=(\Pi Zu)v^{\mathsf T}$，$v\notin T\Rightarrow Zu=\mu u$）；
   $d=2,a=0$ 的 33 个实例 $\operatorname{rank}(\Pi G)=0$（猜想）；引理 F 仍条件性。
+- [723](attempts/723_invariance_reformulation.md)：**等价改写**——$\Pi G=0\iff Z(\operatorname{im}H)\subseteq\operatorname{im}H$；
+  猜想 $a=0\Rightarrow$ 不变性（$d=1$ 已证，39 例数值支持）；一般 $a$ 对应“缺陷 $\le a$”。

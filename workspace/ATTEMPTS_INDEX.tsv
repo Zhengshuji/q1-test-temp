@@ -728,3 +728,4 @@ num	file	title	direction	subdirection	strategy
 720	720_lemmaE_Zp0.md	Z'=0 时引理 E 的证明（rank≤a）	q1_false	feasibility_geometry	prove
 721	721_lemmaE_reduction.md	引理 E 归约：r=rank((I−XR)GV^+)≤t；弱界与强界缺口	q1_false	feasibility_geometry	prove
 722	722_strong_bound_d1.md	强界：d=1 已证，d≥2 猜想（rank(ΠG)≤a）	q1_false	feasibility_geometry	prove
+723	723_invariance_reformulation.md	a=0 强界 ⇔ Z 保持 imH 不变（与 715 统一）	q1_false	feasibility_geometry	prove
