@@ -384,3 +384,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   核心判断：固定 $H$ 已多项式可判，$\exists H$ 的复杂度与结构完备性仍开放。
 - [755](attempts/755_external_review_delta.md)：**外部复核**——定理 1（固定 $H$ 的 $(5a)$ 判据 $UZ'\subseteq U+T$，等价于 697/751）与
   定理 2（$\delta(U,Z')=\operatorname{rank}(\pi_U Z'|_U)\le t-a$）；ChatGPT 建议已逐条对照，无超出 754 的新证明。
+- [756](attempts/756_external_independent_review.md)：**外部独立评估**（ChatGPT 直接读 GitHub）——项目已推送到 `1a094f5`；
+  它建议顺序 756 固定 $U$ 存在性定理 → 757 仿射 gcd 存在性 → 758 独立证书审计；提醒 695+705 完备性未证。
