@@ -402,3 +402,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   需 $n\ge5$；子 agent `nondeg-5a` 搜索中。
 - [764](attempts/764_nondegenerate_instance.md)：**非退化 $(5a)$ 实例**（$n=6,k=2,d'=1$，$W_{\mathrm{top}}\ne0$）——$\operatorname{rank}[L;CA;C]=5<6$、$(5a)$ 非平凡、$\gcd=1$；
   结构恒等式 $\operatorname{rank}[L;CA;C]=(n-k)+\operatorname{rank}H$ ⇒ 非退化 $\iff d'<k$。
+- [765](attempts/765_B_bezout_interface.md)：**B 的 Bézout 接口**——$\gcd=1\iff\exists u_j,\sum u_jf_j=1$；参数化后为有限系数方程组；
+  记录 $K(x)$ 泛型 gcd 陷阱（$f_1=(x\lambda+1)(\lambda+1)$ 例）；算法层仍开放。
