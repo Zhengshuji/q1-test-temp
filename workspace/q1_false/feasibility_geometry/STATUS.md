@@ -287,3 +287,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   结构性不可行判据（$\rho\le r<d$ 且 $\beta\le2r$）；690-T 与 695 一致；$T$ 的适用范围表；$H_0$ 预筛选 $\operatorname{rank}H_A=d'$。
 - [704](attempts/704_lambda0_prefilter.md)：$\lambda=0$ 预筛选——可行 ⇒ $\operatorname{rank}H_A=d'$；
   693 的 $e_2$ 情形由 $H_A=0$ 直接排除；建议放在预筛选链最前。
+- [705](attempts/705_proportional_minors_infeasible.md)：**比例子式型不可行**——若全部 $d$-子式是同一多项式的常数倍（$\rho_d=1$），
+  则 $\operatorname{rank}M\le d<2d$ ⇒ 不可行；638 的 $d'=2$ 不可行归约到 $\rho_2=1$（待证）。
