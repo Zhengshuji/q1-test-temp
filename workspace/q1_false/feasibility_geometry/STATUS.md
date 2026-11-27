@@ -216,3 +216,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   641B（不可行）$2<3$，与 gcd 判据一致。
 - [669](attempts/669_U_corollaries_d1_d2.md)：Theorem U 的直接推论——$d=1$ 的干净重推（$(5b)\iff u$ 非 $Z$ 特征向量）、
   $d=2$ 的 $M$ 显式 Sylvester 型结构（$4\times2m$，列成对移位）。
+- [670](attempts/670_M_rank_stratification.md)：$M$ 的秩分层——$(5b)\iff\exists r\le2d$：$\operatorname{rank}M=r$ 且
+  $\operatorname{rank}[M\mid e_0]=r$；层数 $\le2d+1$（与 $q,k$ 无关），每层是 $M$ 子式的构造集。
