@@ -220,3 +220,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   $\operatorname{rank}[M\mid e_0]=r$；层数 $\le2d+1$（与 $q,k$ 无关），每层是 $M$ 子式的构造集。
 - [671](attempts/671_d1_M_reduction.md)：$d=1$ 的 $M$ 显式约化（$M$ 列为 $v_j[-z_i;u_i]$）——精确复现 663 的
   “$u$ 非 $Z$ 特征向量”判据；列出 $d=2$ 的 $r=0..4$ 秩层条件；657 数值核验 $\operatorname{rank}M=2$ 可解。
+- [672](attempts/672_full_rank_sufficient.md)：满秩 $M$ 的充分条件——$\operatorname{rank}M=2d\Rightarrow$ 可行；
+  $D_d(R)=\sum|2d\text{-子式}|^2\not\equiv0$ 是统一的符号判据；$D_d\equiv0$（如 $m=1$）落入退化层（661 即此）。

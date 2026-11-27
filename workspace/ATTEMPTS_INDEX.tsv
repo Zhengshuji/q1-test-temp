@@ -677,3 +677,4 @@ num	file	title	direction	subdirection	strategy
 669	669_U_corollaries_d1_d2.md	Theorem U 推论：d=1 重推与 d=2 的 M 结构	q1_false	feasibility_geometry	prove
 670	670_M_rank_stratification.md	M 的秩分层（≤2d+1 层，与 q,k 无关）	q1_false	feasibility_geometry	prove
 671	671_d1_M_reduction.md	d=1 的 M 约化（复现 663）与 d=2 秩层条件	q1_false	feasibility_geometry	prove
+672	672_full_rank_sufficient.md	满秩 M 的充分条件与一般层/退化层分裂	q1_false	feasibility_geometry	prove
