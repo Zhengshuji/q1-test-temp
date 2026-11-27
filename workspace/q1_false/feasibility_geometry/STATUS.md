@@ -237,3 +237,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   因此 q1 的困难只在“选择自由行”（$\exists R$），不在给定 $L$ 的判定。
 - [680](attempts/680_free_row_random.md)：638 数据带自由行的随机搜索——找到可行点（秩 $M=4$），验证 678 判据；
   随机搜索可作可行性 Monte Carlo，但不是多项式判定。
+- [681](attempts/681_chart_reduction.md)：**图表归约**——可行 $\iff$ 有限个图表上的 PIT（多项式非零）；
+  开放：图表数 $\binom{k}{d'}$ 与去随机化；若“可行 ⇒ 存在 Zariski 开图表集”成立，则 q1 可行性 $\in$ RP。
