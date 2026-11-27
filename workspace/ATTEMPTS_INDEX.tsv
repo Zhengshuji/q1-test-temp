@@ -630,7 +630,6 @@ num	file	title	direction	subdirection	strategy
 620	620_stratum_checker.md	秩层判定器（脚本）与 598/613 输出	q1_false	feasibility_geometry	experiment
 621	621_stratum_specialization.md	层内特化：598 可行、613 附加条件定位（需递归分层）	q1_false	feasibility_geometry	experiment
 623	623_chatgpt_assessment_p_route.md	ChatGPT 评估：多项式规模规范分层是 q1∈P 的关键缺口	q1_false	feasibility_geometry	plan
-624	624_rank_potential.md	秩势 Φ：598/613 参数族仅 3 状态（猜想多项式状态界）	q1_false	feasibility_geometry	experiment
 625	625_rank_potential_more.md	秩势 Φ 枚举（续）：557 两状态、616 三状态	q1_false	feasibility_geometry	experiment
 626	626_state_count_refuted.md	状态数猜想被推翻（两块 598 有 6 状态）；判定只需按 ω	q1_false	feasibility_geometry	experiment
 628	628_free_satisfiable_audit.md	M2 审计：自由行 gadget 全为自由可满足型，q1_true 路线关闭	q1_true	multiplication_gate	prove
@@ -690,3 +689,5 @@ num	file	title	direction	subdirection	strategy
 682	682_fixed_d_RP.md	固定 d' 可行性属于 RP（随机化单边）；Zariski 稠密+Schwartz-Zippel	q1_false	feasibility_geometry	prove
 683	683_feasibility_sampler.md	通用可行性采样器（638/657 找到证书，661 未找到）	q1_false	feasibility_geometry	experiment
 684	684_D_zero_sources.md	D≡0 的结构来源（m=1；S=0,d=k）与一般可行猜想	q1_false	feasibility_geometry	prove
+685	685_correction_5a_G.md	更正：G 受 (5a) 约束；661 只是 q=2 不可行	q1_false	feasibility_geometry	fix
+624	624_randomized_algorithms_direction.md	新研究方向存档：q1 的随机算法（泛型结构+随机化判定，未做）	q1_false	feasibility_geometry	plan

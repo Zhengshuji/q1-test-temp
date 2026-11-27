@@ -245,3 +245,7 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   （与不可行一致，但非证明）。
 - [684](attempts/684_D_zero_sources.md)：**$D\equiv0$ 的两个结构性来源**——$m=1$（$q=k=d'$，518）与 $S=0,d'=k$（公共因子 $\det(\lambda I-Z')$，629）；
   猜想其余情形 $D\not\equiv0$（一般可行）；抽样：$S\ne0$ 98/108 满秩，$S=0$ 0/76。
+- [685](attempts/685_correction_5a_G.md)：**更正**——$G\in S^q$ 不自由；$(5a)$ 要求 $H_iZ'+G_i\in\operatorname{row}(H)$（$G_i\in S\cap(U-H_iZ')$）。
+  678 的判据须加此仿射约束；682 的 RP 降级为条件性；661 只是 $q=2$ 不可行（$q=3$ 可行，$q_{\min}=3$）；638/657 证书仍有效。
+- [624](attempts/624_randomized_algorithms_direction.md)：**新研究方向存档**（未做）——q1 的随机算法：
+  定位为“可行解空间的泛型结构 + 随机化判定”，三目标定理 A/B/C 与优先级见文；暂不推进。
