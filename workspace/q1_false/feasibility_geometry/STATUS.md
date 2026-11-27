@@ -228,3 +228,4 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   一般 $d$ 猜想：$(5b)\iff\operatorname{rank}M=2d$（$d=1,2$ 已证，$d=3$ 有抽样支持）。
 - [675](attempts/675_sylvester_rank_lemma.md)：一般 $d$ 的 **Sylvester 秩引理（猜想）**——$\operatorname{rank}\Phi=2d-\deg\gcd$；
   若成立则 674 的猜想随 $\gcd=1$ 成立；证据：$d=2$ 证明、$d=3$ 铅笔样本、3000 组抽象三元组、5 组非平凡 gcd（秩 $=2d-\deg g$）。
+- [676](attempts/676_chatgpt_lemmaS_assessment.md)：ChatGPT 评估引理 S——统一判据的核心；停止逐 $d$ 分类；实设计 Bezout 证书可取实系数；$\operatorname{rank}H<d$ 时须按实际最高次数设证书空间；统一判据不解决 $\exists U$ 与多项式时间。
