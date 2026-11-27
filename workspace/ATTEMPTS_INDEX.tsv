@@ -758,3 +758,4 @@ num	file	title	direction	subdirection	strategy
 751	751_third_class_search.md	第三类搜索：候选全被 695 收编（42768 组）	q1_false	feasibility_geometry	experiment
 752	752_why_695_dominates.md	t=1,d=2 时 695 必收编 749 的结构原因	q1_false	feasibility_geometry	prove
 753	753_749_dominated.md	749 被 695 完全支配（一般 k,d,t,H）	q1_false	feasibility_geometry	prove
+754	754_stage_freeze.md	阶段性成果固定与路线图（2026-11-27）	q1_false	feasibility_geometry	summary

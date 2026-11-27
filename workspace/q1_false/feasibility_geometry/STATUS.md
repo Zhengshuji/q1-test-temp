@@ -380,3 +380,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   独立性只可能在 $t\le d'-2$（如 $k=5,d'=4,t=2$）出现。
 - [753](attempts/753_749_dominated.md)：**749 被 695 完全支配**——$(\star)$ $\dim(\operatorname{row}A+T)=k-\dim(\ker A\cap T^\perp)$、$(\star\star)$ $\operatorname{row}(HA)\subseteq\operatorname{row}A$
   ⇒ 749 触发 ⇒ 695 失败（任意 $k,d',t,H$）；预筛选链可删去 749；752 的猜测被推翻。
+- [754](attempts/754_stage_freeze.md)：**阶段性成果固定**——677–753 的已证清单、关键更正、数据资产、五大缺口与 P1–P5 路线；
+  核心判断：固定 $H$ 已多项式可判，$\exists H$ 的复杂度与结构完备性仍开放。
