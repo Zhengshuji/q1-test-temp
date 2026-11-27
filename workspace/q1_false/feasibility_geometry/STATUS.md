@@ -315,3 +315,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   可证弱界为 $\operatorname{rank}(ZX-XA)\le k-d+a$；$\le a$ 的强形式仍是 M2 提案。
 - [718](attempts/718_lemmaE_search.md)：引理 E 的反例搜索——44 个相容实例中**无** $\operatorname{rank}(ZX-XA)>a$；
   强形式未被推翻（样本有限）。
+- [719](attempts/719_k4_search_empty.md)：$k=4$ 的引理 E 搜索——200 组随机样本 0 相容；随机搜索在 $k\ge4$ 效率低，
+  需改用构造族（$Z'=0$ 或 $U+T=\mathbb C^k$）。
