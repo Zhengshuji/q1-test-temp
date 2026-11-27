@@ -28,13 +28,15 @@
 | $B=0$，非标量 | 120 | $\lambda-d$ | 3 | 2 | **否** |
 | $B=0$，标量 $cI$ | 5 | $\lambda-c$ | 3 | 1 | **否** |
 
-## 机制（证明草稿）
+## 机制（证明草稿，已符号验证）
 
 - $B=0$ 时 $d=Z'_{22}$ 是特征值，\(P(d)\) 的第二列为 0 ⇒ 所有 2-子式在 $\lambda=d$ 为零 ⇒ $\gcd$ 含 $\lambda-d$，**对任意 $g$ 都不可行**；
-- $B\ne0$ 时有两个恒等式（记 $Z'=\begin{bmatrix}a&B\\c&d\end{bmatrix}$）：
-$$f_{12}=9(B+d-\lambda),\qquad
-f_{13}(B+d)=B\bigl(2(a-B+c-d)-3\bigr),$$
-对整数 $a,B,c,d$，括号内为奇数 $\ne0$ ⇒ $\gcd(f_{12},f_{13})=1$ ⇒ 可行。
+- $B\ne0$ 时（取 $g=(-3,-3,-3)$，$Z'=\begin{bmatrix}a&B\\c&d\end{bmatrix}$）：
+$$f_{01}=9(B+d-\lambda),\qquad
+f_{02}\big|_{\lambda=B+d}=B\bigl(2(a-B+c-d)-3\bigr)\ne0 .$$
+第一个式子使 $f_{01}$ 的唯一根为 $\lambda=B+d$；第二个式子说明该根不是 $f_{02}$ 的根（括号内是奇数 $\ne0$），故 $\gcd(f_{01},f_{02})=1$，从而 $\gcd(f_{01},f_{02},f_{12})=1$ ⇒ 可行。
+
+（这两条已用 sympy 对一般 $a,B,c,d$ 符号验证；证书脚本 `certificates/verify_747_identities.py`，输出残差 0、`gcd(f01,f02)=1`。）
 
 ## 重要提醒（与 687/746 的关系）
 

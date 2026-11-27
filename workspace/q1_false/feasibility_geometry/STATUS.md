@@ -368,3 +368,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   638 与 733 均取等 $R+\dim V+\operatorname{cls}=2$，但 638 $\rho_2=1,\gcd=\lambda(\lambda-1),\operatorname{rank}M=2$；733 $\rho_2=3,\gcd=1,\operatorname{rank}M=4$。
 - [747](attempts/747_batch_733_family.md)：**625 例枚举**——733 族中 $B=Z'_{12}$ 是判别量：$B\ne0$ 可行（500），$B=0$ 不可行（125），
   其中 **120 个取等却不可行**；并澄清 687 的“$\gcd$ 与 $Z$ 无关”只在 $G$ 固定时成立。
+- [748](attempts/748_factor_source.md)：**因子来源定理**（$d'=k$）——若 $Z'$ 有特征向量 $v\in T^\perp$，则 $P(\mu)v=0$ ⇒ 不可行；
+  解释 747 的 $B=0$ 与 661；733 因 $v_1\ne0$ 不适用（可行）。
