@@ -311,3 +311,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   推广了 710 的论证；$d'\ge2$ 的 $\dim(T\cap U)$ 作用仍开放。
 - [716](attempts/716_lemmaE_proposal.md)：ChatGPT 的**引理 E**（$\operatorname{rank}(ZX-XA)\le a=\dim(U\cap T)$）与引理 F 提案；
   记录商空间诱导算子的陷阱（需 $(U\cap T)Z'\subseteq T$）；引理 E 的证明有两处待核（左零空间维数、商空间良定义）。
+- [717](attempts/717_lemmaE_check.md)：引理 E 的小例检验（$\operatorname{rank}(ZX-XA)=0\le a=1$）与修正——
+  可证弱界为 $\operatorname{rank}(ZX-XA)\le k-d+a$；$\le a$ 的强形式仍是 M2 提案。
