@@ -693,3 +693,4 @@ num	file	title	direction	subdirection	strategy
 624	624_randomized_algorithms_direction.md	新研究方向存档：q1 的随机算法（泛型结构+随机化判定，未做）	q1_false	feasibility_geometry	plan
 686	686_Z_parametrization.md	修正判据：以 Z 为变量（(5a) 自动）；638/657/661 显式检查	q1_false	feasibility_geometry	prove
 687	687_Z_free_part.md	Z 的自由部分不改变铅笔；可行性化为 H 的条件	q1_false	feasibility_geometry	prove
+688	688_audit_650_654.md	复核 650/654 与修正后的证明版图	q1_false	feasibility_geometry	audit
