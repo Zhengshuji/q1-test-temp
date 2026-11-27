@@ -259,3 +259,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   若 $A$ 简单谱且 $B$ 杀死特征向量则可行；数值 $k=3,q=4$ 验证；标量 $Z'$ 需 $k\le2s$。
 - [690](attempts/690_eigenvalue_rank_necessary.md)：**特征值-秩必要条件**——可行 $\Rightarrow$ 对每个特征值 $\mu$，
   $\operatorname{rank}(\mu I-Z')\ge d'-s$；解释标量 $Z'$（$d'>s$）不可行；$S=\mathbb C^k$ 自动成立。
+- [691](attempts/691_necessary_chain.md)：**必要条件合并**——$T_\infty$、690（特征值-秩）、$m=1$、$S=0$ 预筛选链；
+  标量 $Z'$ 完整结论：可行 $\Rightarrow d'\le s$（$d'=k,s<k$ 不可行）。
