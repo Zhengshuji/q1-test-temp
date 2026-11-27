@@ -1,4 +1,6 @@
 # 741 Lean 集成：Q1RankCore 进入构建图
+> **已扩展（742）**：新增 `q1_rank_sub_le_of_le` 并入构建图，BUILD=0；本文件仍有效。
+
 
 > 2026-11-27。把 740 的单文件内核并入 `MyProof` 构建图，跑通 `lake build MyProof` 与公理审计。
 > 状态：**[Lean]**（内核层；`check_rules.sh` 仍有既有历史问题）。

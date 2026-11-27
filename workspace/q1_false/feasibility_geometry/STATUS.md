@@ -357,3 +357,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   `dim_sup_add_dim_inf`（739 的维数恒等式）在 `ChkRank6.lean` 单文件编译 EXIT=0；未入聚合构建图，故只标内核。
 - [741](attempts/741_lean_integration.md)：**Lean 集成**——`Q1RankCore.lean` 进入构建图，`lake build MyProof` BUILD=0（9116 jobs），
   `#print axioms` 仅 propext/Classical.choice/Quot.sound；`check_rules.sh` 仍有既有历史问题（与本文件无关）。
+- [742](attempts/742_lean_sub_le_of_le.md)：**Lean 内核收尾**——`q1_rank_sub_le_of_le`（734 的最终形式）入构建图，
+  `lake build MyProof` BUILD=0（9118 jobs），公理干净；完整 734/739 仍为纸面。
