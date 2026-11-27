@@ -206,3 +206,9 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   五条引理 A–E 与优先级；下一步实验：$k=2,3,4$ 枚举 $D,U$ 算复 gcd，找必要条件全满足但无 gcd=1 的反例。
 - [665](attempts/665_template_theorem.md)：**秩 $d$ 模板的完整判据**（$VZ'=0$）——可行 $\iff$ $\dim E\ge d$、
   $q\ge d+1$、固定行匹配；$q=d$ 由 $\det(\lambda U-B)$ 必根排除；638 说明模板不是必要条件。
+- [666](attempts/666_uniform_rank_criterion.md)：**Theorem U（统一恒秩判据）**——$\operatorname{rank}P(\lambda)=d\ \forall\lambda$
+  $\iff$ 所有 $(d+1)$ 子式恒零且 $d$ 子式 gcd=1 $\iff$ Bézout 证书 $\iff$ Smith 不变因子全为 1；
+  665 由 Cauchy–Binet 推出（模板是特例），661 由 $\gcd=\det P$ 直接判不可行；战略：放弃逐 $d$ 分类，转统一判据 + 设计变量系统。
+- [667](attempts/667_uniform_bezout_system.md)：Theorem U 的完整证明 + **统一 Bézout 系统**——
+  $(5b)\iff\operatorname{rank}[M(H)\mid e_0]=\operatorname{rank}M(H)$；$M$ 为 $2d\times md$、条目次数 $\le d$；
+  统一可行性 = 多项式方程（$(d+1)$-子式零）+ 行列式条件；638/641B/661 验证。

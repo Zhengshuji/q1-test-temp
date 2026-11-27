@@ -671,3 +671,5 @@ num	file	title	direction	subdirection	strategy
 663	663_d1_classification.md	仿射铅笔 d=1 完整分类（E=S∩(Z'^T)^{-1}S 判据）	q1_false	feasibility_geometry	prove
 664	664_d2_framework.md	ChatGPT 的 d=2 框架与 λ∈C 澄清（五引理 A–E）	q1_false	feasibility_geometry	plan
 665	665_template_theorem.md	秩 d 模板完整判据（VZ'=0 情形：dim E≥d、q≥d+1）	q1_false	feasibility_geometry	prove
+666	666_uniform_rank_criterion.md	Theorem U：统一恒秩判据（最大子式理想/Bézout/Smith），665 为特例	q1_false	feasibility_geometry	prove
+667	667_uniform_bezout_system.md	Theorem U 完整证明与统一 Bézout 系统（2d×md 秩条件）	q1_false	feasibility_geometry	prove
