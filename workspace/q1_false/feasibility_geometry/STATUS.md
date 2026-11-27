@@ -297,3 +297,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   $H_A=\Pi_U(HZ')$（沿 $T$ 投影）；638 的 $\rho_2$ 与 $Z$ 自由度无关。
 - [709](attempts/709_638_infeasible_proof.md)：**638 的 $d'=2$ 不可行（完整证明）**——707（$e_1\notin U$）+ 708（$H_A=\Pi_U(HZ')$）
   ⇒ $P$ 的行都在 2 维 $U$ 内 ⇒ $\rho_2\le1$ ⇒ 705 给 $\operatorname{rank}M\le2<4$；638 彻底撤回为反例。
+- [710](attempts/710_638_d1_infeasible.md)：**638 的 $d'=1$ 也不可行**——$v\in T$ 不相容；$v\notin T$ 时或 $u=0$ 或 $Zu=\mu u$ 掉秩；
+  结合 709，638 正秩完全不可行；$q_{\min}=0$（$r_0=0$ 平凡解）。

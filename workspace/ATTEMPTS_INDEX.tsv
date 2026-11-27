@@ -715,3 +715,4 @@ num	file	title	direction	subdirection	strategy
 707	707_638_e1_notin_U.md	638：相容秩2 H 必有 e1∉U（Z' 不变子空间论证）	q1_false	feasibility_geometry	prove
 708	708_HA_unique.md	U∩T=0 时 H_A 唯一确定（投影 Π_U）	q1_false	feasibility_geometry	prove
 709	709_638_infeasible_proof.md	638 d=2 不可行完整证明（707+708+705）	q1_false	feasibility_geometry	prove
+710	710_638_d1_infeasible.md	638 d=1 也不可行（正秩完全不可行）	q1_false	feasibility_geometry	prove
