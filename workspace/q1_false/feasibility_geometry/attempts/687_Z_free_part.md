@@ -1,4 +1,6 @@
 # 687 $Z$ 的自由部分不改变铅笔：可行性化为 $H$ 的确定性条件
+> **更正（692/697/728）**：$G=LW$ 的行空间是 $T=\{lW:lN=0\}\subseteq S$，故本文的 $S$ 应读作 $T$（相容性 $H_iZ'\in U+T$）。
+
 
 > 2026-11-27。由 686 的 $(H,Z)$ 参数化进一步简化：固定 $H$ 时，$(5a)$ 的解 $Z$ 只差一个不影响 $ZH$ 的自由部分。
 > 状态：**[已证-纸面]**。
@@ -6,7 +8,7 @@
 ## 命题
 
 固定 $H$。$Z$ 满足
-$$Z_iH-H_iZ'\in S\quad(i=1,\dots,q)$$
+$$Z_iH-H_iZ'\in T\quad(i=1,\dots,q)$$
 的解集（若非空）是仿射空间：若 $Z,Z'$ 都是解，则 $\Delta=Z-Z'$ 满足 $\Delta_iH=0$，
 即 $\Delta_i$ 属于 $H$ 的**左零空间** $\{v\in\mathbb C^q:\ vH=0\}$（维数 $q-\operatorname{rank}H$），而不是 $U^\perp$。
 于是
@@ -17,7 +19,7 @@ $$\Delta H=0\ \Rightarrow\ (ZH)-(Z'H)=\Delta H=0,$$
 
 $$\text{可行}\iff\exists H\ (\operatorname{rank}H=d',\ H_{1:r_0}=H_0):\
 \begin{cases}
-H_iZ'\in U+S\ \ \forall i & (\text{相容性})\\
+H_iZ'\in U+T\ \ \forall i & (\text{相容性})\\
 \gcd\big(d'\text{-子式 of }\lambda H-ZH\big)=1 & (\text{对任一解 }Z)
 \end{cases}$$
 

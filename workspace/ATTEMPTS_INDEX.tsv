@@ -734,3 +734,4 @@ num	file	title	direction	subdirection	strategy
 726	726_a_ge_1.md	必要条件：可行 ⇒ a=dim(U∩T)≥1	q1_false	feasibility_geometry	prove
 727	727_631_correction.md	更正 631：W 满行秩需 T=S；反例 N=I,W=I	q1_false	feasibility_geometry	fix
 728	728_audit_665_689.md	审计 665/689：G 行须在 T（非 S）	q1_false	feasibility_geometry	fix
+729	729_subagent_scan_cleanup.md	子 agent 扫描与清理：661 撤回、ω>s 重新开放	q1_false	feasibility_geometry	summary

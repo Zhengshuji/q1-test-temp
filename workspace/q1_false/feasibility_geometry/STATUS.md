@@ -333,3 +333,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
 - [727](attempts/727_631_correction.md)：**更正 631**——$W$ 满行秩不足以保证可行（需 $T=S$）；反例 $N=I,W=I$：$T=0$，$P=H(\lambda I-Z'-I)$ 必降秩。
 - [728](attempts/728_audit_665_689.md)：**审计 665/689**——$G$ 的行必须在 $T$（非 $S$）：665 的 $E$ 应为 $T\cap\ker Z'^{\mathsf T}$，
   689 的 $C,B$ 行须在 $T$（$T=0$ 时退化）；预筛选链加入 $T=0$、$a=0$ 排除与 $g_\mu\le a$。
+- [729](attempts/729_subagent_scan_cleanup.md)：**子 agent 扫描 + 主 agent 清理**——58 条 S/T/631/661 问题；697 曾为空文件（已重写）；
+  **661 因 $T=0$ 对 $d>0$ 不可行 ⇒ $\omega>s$ 重新开放**（638/661 均失效）；631 加反例横幅；691 改 $d'\le t$。
