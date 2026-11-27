@@ -713,3 +713,4 @@ num	file	title	direction	subdirection	strategy
 705	705_proportional_minors_infeasible.md	比例子式型不可行：ρ_d=1 ⇒ rank M≤d	q1_false	feasibility_geometry	prove
 706	706_rho2_stats.md	638 的 ρ2 统计：44/44 为 1（全部不可行）	q1_false	feasibility_geometry	experiment
 707	707_638_e1_notin_U.md	638：相容秩2 H 必有 e1∉U（Z' 不变子空间论证）	q1_false	feasibility_geometry	prove
+708	708_HA_unique.md	U∩T=0 时 H_A 唯一确定（投影 Π_U）	q1_false	feasibility_geometry	prove
