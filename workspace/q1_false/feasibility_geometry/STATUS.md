@@ -281,3 +281,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   $k=3,q=3,t=1,d'=2$ 的统计：46 个相容实例中 $\operatorname{rank}M$ 分布 $\{2:45,\ 4:1\}$——$\omega>s$ 稀有但存在。
 - [701](attempts/701_638_search_d2.md)：638 的 $d'=2$ 搜索——247 个相容 $H$ 中无一使 $\operatorname{rank}M=4$
   （很可能不可行，未证明）；$\omega>s$ 仍由 661 保证。
+- [702](attempts/702_638_minors_proportional.md)：638 的 2-子式**全部成比例**（同一二次式的常数倍），故 $\operatorname{rank}M=2$；
+  猜想这是 638 的结构性不可行机制（$\bigwedge^2P$ 秩 1），待证。
