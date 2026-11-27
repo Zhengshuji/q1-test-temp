@@ -319,3 +319,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   需改用构造族（$Z'=0$ 或 $U+T=\mathbb C^k$）。
 - [720](attempts/720_lemmaE_Zp0.md)：**$Z'=0$ 时引理 E 成立**——$ZX=GV^+$、$\operatorname{rank}G\le a$、$ZX-XA=(I-XR)ZX$
   ⇒ $\operatorname{rank}(ZX-XA)\le a$；一般 $Z'$ 仍为 M2 提案。
+- [721](attempts/721_lemmaE_reduction.md)：引理 E 的精确归约——$r=\operatorname{rank}((I-XR)GV^+)\le\operatorname{rank}G\le t$；
+  $Z'=0$ 时 $G\in U\cap T$ 给 $r\le a$；一般 $Z'$ 的强界仍开放（$a=0$ 的 31 例中 $r=0$）。

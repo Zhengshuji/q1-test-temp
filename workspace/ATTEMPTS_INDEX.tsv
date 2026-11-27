@@ -726,3 +726,4 @@ num	file	title	direction	subdirection	strategy
 718	718_lemmaE_search.md	引理 E 反例搜索（44 例无 r>a）	q1_false	feasibility_geometry	experiment
 719	719_k4_search_empty.md	k=4 随机搜索无相容实例（需构造族）	q1_false	feasibility_geometry	experiment
 720	720_lemmaE_Zp0.md	Z'=0 时引理 E 的证明（rank≤a）	q1_false	feasibility_geometry	prove
+721	721_lemmaE_reduction.md	引理 E 归约：r=rank((I−XR)GV^+)≤t；弱界与强界缺口	q1_false	feasibility_geometry	prove
