@@ -279,3 +279,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   是有效例子；638 撤回不影响该结论；随机 35 个相容实例中未再找到 $\omega>s$（稀有）。
 - [700](attempts/700_chatgpt_plan_and_stats.md)：ChatGPT 的下一轮计划（四类失败、引理 A/B/C、638 待定）与
   $k=3,q=3,t=1,d'=2$ 的统计：46 个相容实例中 $\operatorname{rank}M$ 分布 $\{2:45,\ 4:1\}$——$\omega>s$ 稀有但存在。
+- [701](attempts/701_638_search_d2.md)：638 的 $d'=2$ 搜索——247 个相容 $H$ 中无一使 $\operatorname{rank}M=4$
+  （很可能不可行，未证明）；$\omega>s$ 仍由 661 保证。

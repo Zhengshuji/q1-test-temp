@@ -706,3 +706,4 @@ num	file	title	direction	subdirection	strategy
 698	698_638_recheck.md	撤回 638 可行性：旧证书不满足 (5a)；omega>s 待重查	q1_false	feasibility_geometry	fix
 699	699_omega_gt_s_via_661.md	ω>s 仍成立：661(q=3) 有效；638 撤回不影响	q1_false	feasibility_geometry	prove
 700	700_chatgpt_plan_and_stats.md	ChatGPT 计划与 t=1 统计（rankM {2:45,4:1}）	q1_false	feasibility_geometry	plan
+701	701_638_search_d2.md	638 d=2 搜索：247 相容 H 无 rankM=4（很可能不可行）	q1_false	feasibility_geometry	experiment
