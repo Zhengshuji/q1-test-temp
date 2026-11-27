@@ -3,8 +3,9 @@
 > 更新：2026-11-26。501 篇 attempts 已按分类表迁入各子方向的 `attempts/`（见
 > [../ATTEMPTS_INDEX.tsv](../ATTEMPTS_INDEX.tsv)）。
 >
-> **优先级（2026-11-27，ChatGPT 评估；标准=推进 q1 的潜力）**：
-> 1 `arm_reduction` → 2 `rank_gates` → 4 `multiplication_gate`（全局序；本方向内按此顺序尝试）。
+> **路线状态（2026-11-27 更新）**：`arm_reduction` 关闭、`rank_gates` 冻结、`multiplication_gate` 的自由行 gadget 路线关闭（627/628）。
+> 本方向目前**没有可用的 hardness 归约**；仅剩 $W\ne0$ 的数据层结构分析（与 q1_false 主线的 629/631/639/651 相接）。
+> （旧优先级“1 arm_reduction → 2 rank_gates → 4 multiplication_gate”已失效，保留在历史记录中。）
 
 ## 一句话
 
