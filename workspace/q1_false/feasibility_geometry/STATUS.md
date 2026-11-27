@@ -361,3 +361,6 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   `lake build MyProof` BUILD=0（9118 jobs），公理干净；完整 734/739 仍为纸面。
 - [743](attempts/743_eq739_boundary.md)：**739 的边界**——子 agent 664 例（$k=5,6$，cls≥2）等式 664/664；
   空 $F_i$ 使等式失败但本身不可行 ⇒ **可行 ⇒ 等式**；候选 A 说明 $\operatorname{cls}<\operatorname{rank}(HM)$。
+- [744](attempts/744_prefilter_theorem.md)：**统一预筛选定理**——704/726/725/690/695/734+739 七条必要条件（含 $d'\le\operatorname{rank}(HM)+\dim(U\cap T)+\operatorname{cls}$）。
+- [745](attempts/745_equality_opposite_outcomes.md)：**取等但相反**——638 与 733 都满足 $d'=\operatorname{rank}(HM)+\dim(U\cap T)+\operatorname{cls}=2$，
+  638 不可行（$\rho_2=1$）、733 可行（$\rho_2=3,\gcd=1$）；方向性取等不是判据。
