@@ -1,5 +1,7 @@
 # 736 ChatGPT 的商空间方向性猜想 (D)
 > **已证（737）**：$\dim E_H\le\dim(U\cap T)+\operatorname{cls}\le\dim(U\cap T)+\operatorname{rank}(HM)$；见 737。
+> **加强（739）**：等式 $\dim E_H=\dim(U\cap T)+\operatorname{cls}$ 已证（739），D 的最强形式为等式。
+
 
 
 > 2026-11-27。ChatGPT 建议在定理 B（734）基础上证明 $E_H/(U\cap T)$ 被 $\operatorname{rank}(H(\mu I-Z'))$ 控制。

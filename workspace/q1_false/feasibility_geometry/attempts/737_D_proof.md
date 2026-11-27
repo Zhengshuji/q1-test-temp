@@ -1,4 +1,6 @@
 # 737 猜想 (D) 的证明：$\dim E_H\le\dim(U\cap T)+\operatorname{cls}$
+> **加强（739）**：$\dim E_H=\dim(U\cap T)+\operatorname{cls}$ 的等式已证（739）；本文只给 $\le$。
+
 
 > 2026-11-27。子 agent 的 342 例数值检验（0 反例）提示了精确结构；本文件给出纸面证明。
 > 状态：**[已证-纸面]**。

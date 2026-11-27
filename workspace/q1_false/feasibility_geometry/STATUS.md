@@ -351,3 +351,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   若成立则 $d'\le\dim(U\cap T)+2\operatorname{rank}(HM)$；733 平凡成立，$t\ge2$ 待检验。
 - [737](attempts/737_D_proof.md)：**猜想 D 的证明**——$F_i=t_i+(U\cap T)$、$t_i\equiv-H_iM\ (\mathrm{mod}\ U)$ ⇒
   $\dim E_H\le\dim(U\cap T)+\operatorname{cls}$（$\operatorname{cls}=\dim((\operatorname{row}HM+U)/U)$）；子 agent 342 例 0 反例、等式 342/342。
+- [739](attempts/739_quotient_saturation.md)：**商空间饱和引理**——$\dim E_H=\dim(U\cap T)+\operatorname{cls}$（等式，已证）；
+  故 $d'\le\operatorname{rank}(HM)+\dim(U\cap T)+\operatorname{cls}$；数值 342/342 与之一致。

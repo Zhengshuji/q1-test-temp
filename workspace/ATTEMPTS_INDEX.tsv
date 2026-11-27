@@ -743,3 +743,4 @@ num	file	title	direction	subdirection	strategy
 735	735_665_T_version.md	665 的 T-版本：E_T=T∩ker Z'^T	q1_false	feasibility_geometry	prove
 736	736_quotient_direction_conjecture.md	猜想 (D)：dim E_H≤dim(U∩T)+rank(HM)	q1_false	feasibility_geometry	conjecture
 737	737_D_proof.md	D 的证明：dim E_H≤dim(U∩T)+cls	q1_false	feasibility_geometry	prove
+739	739_quotient_saturation.md	商空间饱和：dim E_H=dim(U∩T)+cls（等式）	q1_false	feasibility_geometry	prove
