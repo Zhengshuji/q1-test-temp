@@ -1,7 +1,9 @@
 # 最小增广行数问题（q1）—— 项目入口
 
-> 最后更新：2026-11-10。规范见 [CLAUDE.md](CLAUDE.md)，现状见 [STATUS.md](STATUS.md)，项目脉络见 [HISTORY.md](HISTORY.md)，方向总表见 [ATTEMPTS.md](ATTEMPTS.md)，阶段论文见 [paper/](paper/README.md)，
+> 最后更新：2026-11-27。规范见 [CLAUDE.md](CLAUDE.md)，现状见 [STATUS.md](STATUS.md)，项目脉络见 [HISTORY.md](HISTORY.md)，方向总表见 [ATTEMPTS.md](ATTEMPTS.md)，阶段论文见 [paper/](paper/README.md)，
 > 证明 / Lean / 专家审的分工与下一步见 [workspace/ROADMAP.md](workspace/ROADMAP.md)。
+> **2026-11-27 主线**：算法侧活跃方向已迁到 [workspace/q1_false/feasibility_geometry](workspace/q1_false/feasibility_geometry/README.md)（编号 545–662）；
+> 硬度侧的“自由行 gadget”路线已关闭（见 [workspace/q1_true/multiplication_gate](workspace/q1_true/multiplication_gate/STATUS.md) 的 627/628）。
 
 ---
 

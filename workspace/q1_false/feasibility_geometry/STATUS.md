@@ -195,3 +195,6 @@
 - [661](attempts/661_corrected_counterexample5.md)：**修正 ChatGPT 反例5**——$H_0=e_1^{\mathsf T}$ 违反 651（$T_\infty=\operatorname{span}\{e_1\}$）；
   改用 $H_0=e_2^{\mathsf T}$ 得真正的实例级不可行（$k=q=2,r_0=1$，自由行 1）：秩1 逼 $Zu=0$、秩2 特征值障碍，
   满足 651 全部条件。
+- [662](attempts/662_chatgpt_priority_assessment.md)：ChatGPT 评估——q1 倾向 P 但谨慎；优先级：
+  (1) 仿射铅笔 $d=1,2$ 的 gcd 分类（以 661 为测试），(2) 实例级不可行证书，(3) 秩层算法化；
+  并警告位复杂度（DEC 调用次数 ≠ 复杂度）。

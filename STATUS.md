@@ -1,7 +1,10 @@
 # 项目现状（一页纸）
 
-> **更新**：2026-11-15。**定位**：本文件只讲“现在在哪、手里有什么、下一步试什么”。
+> **更新**：2026-11-27。**定位**：本文件只讲“现在在哪、手里有什么、下一步试什么”。
 > 项目脉络与论文框架见 [HISTORY.md](HISTORY.md)；尝试总表见 [ATTEMPTS.md](ATTEMPTS.md)。
+> **2026-11-27 进展**：算法侧主线迁到 `q1_false/feasibility_geometry`（545–662）：
+> $K_\infty/T_\infty$ 秩界、实例级不可行反例（661，满足 651 必要条件）、仿射铅笔问题（659/660/662）；
+> 硬度侧“自由行 gadget”路线关闭（627/628：自由行可任意满足门条件）。
 > **当前裁决**：[83 号：q1 路线](workspace/for_expert/archive/83_project_consolidation_q1_roadmap.md) + [315 落实](workspace/q1_true/arm_reduction/attempts/315_83_verdict_roadmap.md)。
 > **论文（2026-11-26 起）**：**Paper I / Paper II 只维护在 q1-functional-observer**
 > （本地 `../q1-functional-observer`；引用约定见 [README §1.5](README.md)）。

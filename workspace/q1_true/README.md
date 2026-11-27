@@ -7,7 +7,7 @@
 
 | 子目录 | 研究问题 | 状态 |
 |---|---|---|
-| [multiplication_gate/](multiplication_gate/README.md) | 构造 sound 的乘法门 $z=xy$，把 $\exists\mathbb R$-难问题归约到 $(5a)\wedge(5b)$ | **活跃**（唯一的在推方向） |
+| [multiplication_gate/](multiplication_gate/README.md) | 构造 sound 的乘法门 $z=xy$，把 $\exists\mathbb R$-难问题归约到 $(5a)\wedge(5b)$ | **自由行 gadget 路线关闭**（627/628）；只剩 $W\ne0$ 数据层分析 |
 | [rank_gates/](rank_gates/README.md) | 用 $\operatorname{rank}H$ 的秩门编码布尔/算术条件（$q=4,5$） | **冻结**（q=5 结构化秩门，2026-11-27）：495–505 的 no-go 与实验；一般 $q=5$ 未解决 |
 | [arm_reduction/](arm_reduction/README.md) | 用 Majumdar ARM(3) 的 gauge/composition 做翻译引理 | **关闭**：行包含接口 no-go（488）、谱机制无构造（489）；保留记录 |
 
