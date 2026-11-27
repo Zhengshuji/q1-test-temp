@@ -700,3 +700,4 @@ num	file	title	direction	subdirection	strategy
 692	692_correction_T_not_S.md	更正：G 的空间是 T⊆S（t=dim T）	q1_false	feasibility_geometry	fix
 693	693_t_lt_s_example.md	t<s 实例：690 的 t-版本紧；H0 方向决定可行性	q1_false	feasibility_geometry	prove
 694	694_chatgpt_direction_obstruction.md	ChatGPT 评估：T 更正、方向型障碍与新版预筛选	q1_false	feasibility_geometry	plan
+695	695_proposition2_proof.md	命题 2 证明：d'≤dim(row(H(μI−Z'))+T)	q1_false	feasibility_geometry	prove

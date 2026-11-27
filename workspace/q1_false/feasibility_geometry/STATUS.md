@@ -267,3 +267,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   690 的 $t$-版本给 $d'\le1$；$H_0=e_2^{\mathsf T}$ 不可行（任何 $q$），$H_0=e_1^{\mathsf T}$ 可行。
 - [694](attempts/694_chatgpt_direction_obstruction.md)：ChatGPT 对 $T$ 更正与方向型障碍的评估——四条命题、
   新版预筛选（$S,t$、651、690-$t$、$T\cap U$、gcd）；命题 2 待核，命题 3 已证（693 特例）。
+- [695](attempts/695_proposition2_proof.md)：**命题 2（强化 690）的证明**——可行 ⇒ $d'\le\dim(\operatorname{row}(H(\mu I-Z'))+T)$；
+  由行空间包含关系直接得到，是 690 的 $t$-版本的子空间强化。
