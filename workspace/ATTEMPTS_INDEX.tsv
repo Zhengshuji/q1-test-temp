@@ -723,3 +723,4 @@ num	file	title	direction	subdirection	strategy
 715	715_d1_U_in_T.md	d'=1：可行 ⇒ U⊆T（方向必要条件）	q1_false	feasibility_geometry	prove
 716	716_lemmaE_proposal.md	ChatGPT 引理 E/F 提案与商空间陷阱（M2）	q1_false	feasibility_geometry	plan
 717	717_lemmaE_check.md	引理 E 检验与弱界 k−d+a	q1_false	feasibility_geometry	experiment
+718	718_lemmaE_search.md	引理 E 反例搜索（44 例无 r>a）	q1_false	feasibility_geometry	experiment

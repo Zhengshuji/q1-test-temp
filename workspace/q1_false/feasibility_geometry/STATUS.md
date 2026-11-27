@@ -313,3 +313,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   记录商空间诱导算子的陷阱（需 $(U\cap T)Z'\subseteq T$）；引理 E 的证明有两处待核（左零空间维数、商空间良定义）。
 - [717](attempts/717_lemmaE_check.md)：引理 E 的小例检验（$\operatorname{rank}(ZX-XA)=0\le a=1$）与修正——
   可证弱界为 $\operatorname{rank}(ZX-XA)\le k-d+a$；$\le a$ 的强形式仍是 M2 提案。
+- [718](attempts/718_lemmaE_search.md)：引理 E 的反例搜索——44 个相容实例中**无** $\operatorname{rank}(ZX-XA)>a$；
+  强形式未被推翻（样本有限）。
