@@ -271,3 +271,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   由行空间包含关系直接得到，是 690 的 $t$-版本的子空间强化。
 - [696](attempts/696_equality_multimu.md)：695 的等号分析——单 $\mu$ 可达（$q\ge D$）；多 $\mu$ 同时是开放问题；
   693 是单特征值的紧例；核心转到 $\{G:\operatorname{rank}P(\mu)\ge d'\ \forall\mu\}$ 的交集。
+- [697](attempts/697_correction_T_compatibility.md)：**再次更正**——$(5a)$ 相容性应为 $H_iZ'\in U+T$（$T\subseteq S$）；
+  638 的旧证书失效（$HZ'$ 第 2 行 $\notin U+T$），小范围搜索仅 1 个相容 $H$ 且 $T\cap U=0$ ⇒ 638 可行性未定；657/661 复核仍有效。

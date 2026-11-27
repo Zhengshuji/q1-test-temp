@@ -702,3 +702,4 @@ num	file	title	direction	subdirection	strategy
 694	694_chatgpt_direction_obstruction.md	ChatGPT 评估：T 更正、方向型障碍与新版预筛选	q1_false	feasibility_geometry	plan
 695	695_proposition2_proof.md	命题 2 证明：d'≤dim(row(H(μI−Z'))+T)	q1_false	feasibility_geometry	prove
 696	696_equality_multimu.md	695 等号分析：单 μ 可达、多 μ 冲突开放	q1_false	feasibility_geometry	prove
+697	697_correction_T_compatibility.md	更正：相容性用 U+T；638 旧证书失效	q1_false	feasibility_geometry	fix
