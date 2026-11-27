@@ -386,3 +386,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   定理 2（$\delta(U,Z')=\operatorname{rank}(\pi_U Z'|_U)\le t-a$）；ChatGPT 建议已逐条对照，无超出 754 的新证明。
 - [756](attempts/756_external_independent_review.md)：**外部独立评估**（ChatGPT 直接读 GitHub）——项目已推送到 `1a094f5`；
   它建议顺序 756 固定 $U$ 存在性定理 → 757 仿射 gcd 存在性 → 758 独立证书审计；提醒 695+705 完备性未证。
+- [757](attempts/757_fiber_base_correction.md)：**基础更正**——$G=LW$ 的纤维是 $H W_{\mathrm{top}}+T^q$（$Z''=Z'+W_{\mathrm{top}}$），不是 $T^q$；
+  **693 撤回**；638/733/747（$W_{\mathrm{top}}=0$）不受影响；692/697/726/749/753 需以 $(Z'',G')$ 重述。
