@@ -222,3 +222,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   “$u$ 非 $Z$ 特征向量”判据；列出 $d=2$ 的 $r=0..4$ 秩层条件；657 数值核验 $\operatorname{rank}M=2$ 可解。
 - [672](attempts/672_full_rank_sufficient.md)：满秩 $M$ 的充分条件——$\operatorname{rank}M=2d\Rightarrow$ 可行；
   $D_d(R)=\sum|2d\text{-子式}|^2\not\equiv0$ 是统一的符号判据；$D_d\equiv0$（如 $m=1$）落入退化层（661 即此）。
+- [673](attempts/673_Dd_experiment.md)：$D_d$ 实验——638 满秩可解；300 组随机 $Z$、26 个随机秩 2 $H$
+  均未出现“秩 $<4$ 且可解”；猜想（$d=2$、$m\ge2$）$e_0\in\operatorname{col}M\Rightarrow\operatorname{rank}M=4$（仅抽样）。
