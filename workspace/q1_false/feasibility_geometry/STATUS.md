@@ -269,3 +269,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   新版预筛选（$S,t$、651、690-$t$、$T\cap U$、gcd）；命题 2 待核，命题 3 已证（693 特例）。
 - [695](attempts/695_proposition2_proof.md)：**命题 2（强化 690）的证明**——可行 ⇒ $d'\le\dim(\operatorname{row}(H(\mu I-Z'))+T)$；
   由行空间包含关系直接得到，是 690 的 $t$-版本的子空间强化。
+- [696](attempts/696_equality_multimu.md)：695 的等号分析——单 $\mu$ 可达（$q\ge D$）；多 $\mu$ 同时是开放问题；
+  693 是单特征值的紧例；核心转到 $\{G:\operatorname{rank}P(\mu)\ge d'\ \forall\mu\}$ 的交集。
