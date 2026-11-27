@@ -22,6 +22,17 @@ $$G=ZH-HZ'=\begin{bmatrix}-3&0\\-3&0\\-3&0\end{bmatrix}\quad(\text{行在 }T).$$
 $$-9(\lambda-3),\qquad -2\lambda^2+\lambda+5,\qquad \lambda^2+4\lambda-25,$$
 $\gcd=1$ ⇒ $\operatorname{rank}M=4=2d'$ ⇒ $(5b)$ 成立。
 
+## 显式 $L$ 与 725 的检验
+
+取
+$$L=[\,H \mid (-3,-3,-3)^{\mathsf T} \mid 0\,]\in\mathbb C^{3\times4}.$$
+验证：$LN=H$ ✓；$LW=(-3,-3,-3)^{\mathsf T}e_1^{\mathsf T}=G$ ✓；$LAN=HZ'+G=ZH$ ✓。
+
+$A=RZH$（$R=(H^{\mathsf T}H)^{-1}H^{\mathsf T}$）：
+$$A=\begin{bmatrix}-7/5&2\\14/5&1\end{bmatrix},\qquad
+\sigma(A)=\Big\{\tfrac{-1\pm4\sqrt{11}\,i}{5}\Big\},$$
+两个特征值均为单重（几何重数 $1$），故 $g_\mu=1\le a=1$ ✓（725 成立）。
+
 ## 结论
 
 $$\boxed{d'=2>t=1,\qquad \omega=2>s=1\ \text{且可行}.}$$
@@ -37,11 +48,21 @@ $$\boxed{d'=2>t=1,\qquad \omega=2>s=1\ \text{且可行}.}$$
 - “$\omega\le s$” 再次被否定（本实例 $\omega=2>s=1$）；
 - 说明小 $t$ 下仍可借助 $Z'$ 的非平凡作用（此处 $Z'$ 有复特征值）实现可行。
 
+## 预筛选链的检验
+
+- 704：$\operatorname{rank}H_A=2=d'$ ✓；
+- 690：$Z'$ 的特征值 $1\pm\sqrt2$ 处 $\operatorname{rank}(\mu I-Z')=1\ge d'-t=1$ ✓；
+- 695：$\dim(\operatorname{row}(H(\mu I-Z'))+T)=2\ge d'=2$ ✓（**恰好取等**）；
+- 726：$a=\dim(U\cap T)=1\ge1$ ✓；
+- 725：$g_\mu=1\le a=1$ ✓。
+
+即该实例**通过全部已知必要条件**，且真实可行——说明现有预筛选链在边界上是紧的。
+
 ## 待办
 
-1. 复核 $L$ 的显式实现（$LN=H$、$LW=G$），给出具体 $L$；
-2. 检查 725 的 $g_\mu\le a$ 在本例的取值；
-3. 用本例测试 690/695/704 预筛选链是否全部通过。
+1. ~~复核 $L$ 的显式实现~~（已完成）；
+2. ~~检查 725 的 $g_\mu\le a$~~（已完成，$g_\mu=1$）；
+3. ~~测试 690/695/704 预筛选链~~（已完成，全部通过，695 取等）。
 
 ## 状态
 
