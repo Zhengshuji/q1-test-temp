@@ -682,3 +682,4 @@ num	file	title	direction	subdirection	strategy
 674	674_d2_theorem.md	d=2 定理：可解⇔M 满秩；一般 d 猜想	q1_false	feasibility_geometry	prove
 675	675_sylvester_rank_lemma.md	Sylvester 秩引理（猜想）：rank Φ=2d−deg gcd	q1_false	feasibility_geometry	conjecture
 676	676_chatgpt_lemmaS_assessment.md	ChatGPT 评估引理 S 与统一判据（M2）	q1_false	feasibility_geometry	plan
+677	677_lemmaS_proof.md	引理 S 证明（U=I∩C[λ]<2d）与一般 d 猜想成立	q1_false	feasibility_geometry	prove
