@@ -54,14 +54,18 @@ $\gcd=1$ ⇒ 定理判定可行 ✓（与 733 一致）。
 
 取 $n=4,k=2$、$N$ 前两坐标、$Z'=\begin{bmatrix}1&2\\1&1\end{bmatrix}$、$W=\begin{bmatrix}1&0\\0&0\\1&0\\0&0\end{bmatrix}$（$W_{\mathrm{top}}\ne0$、$T=\operatorname{span}\{e_1\}$）、$A=N Z'+W$（其余列取 $A e_3=e_4$、$A e_4=0$）、$H$ 同 733、$Z''=Z'+W_{\mathrm{top}}=\begin{bmatrix}2&2\\1&1\end{bmatrix}$。
 
-取 $M=\begin{bmatrix}-3&0\\0&0\\0&0\end{bmatrix}$，$G'=MW_{\mathrm{bot}}=\begin{bmatrix}-3&0\\0&0\\0&0\end{bmatrix}\in T^q$，$L=[H|M]$。
+取 $M=\begin{bmatrix}-3&0\\-3&0\\-3&0\end{bmatrix}$，$G'=MW_{\mathrm{bot}}=\begin{bmatrix}-3&0\\-3&0\\-3&0\end{bmatrix}\in T^q$，$L=[H|M]$。
 逐行解 $Z_iH=H_iZ''+G'_i$，精确计算得：
 
-- $LN=H$ ✓；$LW=\begin{bmatrix}-1&0\\-1&0\\2&0\end{bmatrix}=H W_{\mathrm{top}}+G'$ ✓；
-- $ZH=LAN=\begin{bmatrix}3&6\\-3&-3\\5&5\end{bmatrix}$ ✓；
-- $\operatorname{rank}[L;CA;C]=4$，且在 $\lambda=0,1,2,\tfrac12$ 处 $\operatorname{rank}[\lambda L-LA;CA;C]=4$ ✓。
+- $LN=H$ ✓；$LW=\begin{bmatrix}-1&0\\-4&0\\-1&0\end{bmatrix}=H W_{\mathrm{top}}+G'$ ✓；
+- $ZH=LAN=\begin{bmatrix}3&6\\-6&-3\\2&5\end{bmatrix}$ ✓；
+- $\operatorname{rank}[L;CA;C]=4$，且在 $\lambda=0,3,\tfrac12$ 处 $\operatorname{rank}[\lambda L-LA;CA;C]=4$ ✓。
 
-这说明 $W_{\mathrm{top}}\ne0$ 时 761 的 $(\Leftarrow)$ 构造确实产出合法的 $(5a)(5b)$ 候选（全 $\lambda$ 的 $\gcd$ 由子 agent 另行核验）。
+**更正记录**：本文初稿把 $M$ 写成 $\begin{bmatrix}-3&0\\0&0\\0&0\end{bmatrix}$、却仍取 $G'$ 的三行都为 $(-3,0)$，导致 $MW_{\mathrm{bot}}\ne G'$（子 agent check-761 发现并给出最小修正）。上面的 $M$（三行都 $-3$）是修正后的版本；另一种等价修正是保留旧 $M$、取 $G'=MW_{\mathrm{bot}}=\begin{bmatrix}-3&0\\0&0\\0&0\end{bmatrix}$（此时 $G'$ 仍在 $T^q$、$\gcd$ 仍为 1）。
+
+子 agent 的完整核验（修正后）：$[P;CA;C]$ 的 4×4 子式为 $0,\ -9\lambda^2(\lambda-3),\ -9(\lambda-3),\ -2\lambda^2+3\lambda+3,\ \lambda^2+3\lambda-24$，$\gcd=1$ ⇒ $(5b)$ 成立。
+
+**限制**：该合成例中 $\operatorname{rank}[L;CA;C]=4=n$，故 $(5a)$ 对任意 $LA$ 自动成立，这个例子只检验了构造的代数一致性，**没有非平凡地检验 $(5a)$**。
 
 ## 与旧结果的关系
 
