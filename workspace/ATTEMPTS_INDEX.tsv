@@ -709,3 +709,4 @@ num	file	title	direction	subdirection	strategy
 701	701_638_search_d2.md	638 d=2 搜索：247 相容 H 无 rankM=4（很可能不可行）	q1_false	feasibility_geometry	experiment
 702	702_638_minors_proportional.md	638 的 2-子式全部成比例（结构性不可行猜想）	q1_false	feasibility_geometry	experiment
 703	703_chatgpt_exterior_framework.md	ChatGPT 外幂/系数秩框架与 T 的适用范围	q1_false	feasibility_geometry	plan
+704	704_lambda0_prefilter.md	λ=0 预筛选：rank H_A=d′	q1_false	feasibility_geometry	prove

@@ -285,3 +285,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   猜想这是 638 的结构性不可行机制（$\bigwedge^2P$ 秩 1），待证。
 - [703](attempts/703_chatgpt_exterior_framework.md)：ChatGPT 的外幂/系数秩框架——$\rho_d$（子式系数张成维数）、$\beta_d$、
   结构性不可行判据（$\rho\le r<d$ 且 $\beta\le2r$）；690-T 与 695 一致；$T$ 的适用范围表；$H_0$ 预筛选 $\operatorname{rank}H_A=d'$。
+- [704](attempts/704_lambda0_prefilter.md)：$\lambda=0$ 预筛选——可行 ⇒ $\operatorname{rank}H_A=d'$；
+  693 的 $e_2$ 情形由 $H_A=0$ 直接排除；建议放在预筛选链最前。
