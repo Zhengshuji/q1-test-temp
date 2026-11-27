@@ -6,7 +6,7 @@
 > $K_\infty/T_\infty$ 秩界、实例级不可行反例（661，满足 651 必要条件）、仿射铅笔问题（659/660/662）；
 > 硬度侧“自由行 gadget”路线关闭（627/628：自由行可任意满足门条件）。
 > **2026-11-27 更正与现状**：$G$ 受 $(5a)$ 约束（$G_i\in S\cap(U-H_iZ')$），678/682 的表述已修正；
-> 661 只是 $q=r_0+1$ 不可行（$q_{\min}=3$），非实例级不可行；687 证明 $Z$ 的自由部分不影响铅笔；
+> 661 因 $T=0$ 对 $d>0$ 不可行（$q_{\min}=0$）；733 给出 $d'=2>s=t=1$ 的可行例（恢复 $\omega>s$）；734 给出方向性补偿秩引理；687 证明 $Z$ 的自由部分不影响铅笔；
 > 677 证明 Sylvester 秩引理，故「一般 $d$：$(5b)\iff\operatorname{rank}M=2d$」成立；当前核心开放问题见 688。
 > **当前裁决**：[83 号：q1 路线](workspace/for_expert/archive/83_project_consolidation_q1_roadmap.md) + [315 落实](workspace/q1_true/arm_reduction/attempts/315_83_verdict_roadmap.md)。
 > **论文（2026-11-26 起）**：**Paper I / Paper II 只维护在 q1-functional-observer**
