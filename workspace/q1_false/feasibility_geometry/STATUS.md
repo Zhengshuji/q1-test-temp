@@ -218,3 +218,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   $d=2$ 的 $M$ 显式 Sylvester 型结构（$4\times2m$，列成对移位）。
 - [670](attempts/670_M_rank_stratification.md)：$M$ 的秩分层——$(5b)\iff\exists r\le2d$：$\operatorname{rank}M=r$ 且
   $\operatorname{rank}[M\mid e_0]=r$；层数 $\le2d+1$（与 $q,k$ 无关），每层是 $M$ 子式的构造集。
+- [671](attempts/671_d1_M_reduction.md)：$d=1$ 的 $M$ 显式约化（$M$ 列为 $v_j[-z_i;u_i]$）——精确复现 663 的
+  “$u$ 非 $Z$ 特征向量”判据；列出 $d=2$ 的 $r=0..4$ 秩层条件；657 数值核验 $\operatorname{rank}M=2$ 可解。
