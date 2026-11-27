@@ -378,3 +378,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   本族中 695 收编其余情形，未找到真正第三类；三候选 A/B/C 已记录。
 - [752](attempts/752_why_695_dominates.md)：**695 收编 749 的结构原因**——$t=1,d'=2$ 时 749 触发 ⇒ $\ker M\supseteq T^\perp$ ⇒ $M=ce_1^{\mathsf T}$ ⇒ $\operatorname{row}(HM)\subseteq T$ ⇒ 695 必失败；
   独立性只可能在 $t\le d'-2$（如 $k=5,d'=4,t=2$）出现。
+- [753](attempts/753_749_dominated.md)：**749 被 695 完全支配**——$(\star)$ $\dim(\operatorname{row}A+T)=k-\dim(\ker A\cap T^\perp)$、$(\star\star)$ $\operatorname{row}(HA)\subseteq\operatorname{row}A$
+  ⇒ 749 触发 ⇒ 695 失败（任意 $k,d',t,H$）；预筛选链可删去 749；752 的猜测被推翻。
