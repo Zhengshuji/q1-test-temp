@@ -1,0 +1,596 @@
+Symp. on Mathematical Theory of Networks and Systems, Leuven, Be lgium, July 5-9, 2004
+Reliable algorithms for computing minimal dynamic covers for desc riptor systems
+A. Varga
+German Aerospace Center
+DLR - Oberpfaffenhofen
+Institute of Robotics and Mechatronics
+D-82234 Wessling, Germany.
+E-mail: Andras.Varga@dlr.de
+Abstract
+Minimal dimension dynamic covers play an important role in s olving the structural synthesis prob-
+lems of minimum order functional observers or fault detecto rs, or in computing minimal order inverses
+or minimal degree solutions of rational equations. We propo se numerically reliable algorithms to com-
+pute two basic types of minimal dimension dynamic covers for a linear system. The proposed ap-
+proach is based on a special controllability staircase cond ensed form of a structured descriptor pair
+(A − λE, [B1, B2]), which can be computed using exclusively orthogonal similar ity transformations.
+Using such a condensed form minimal dimension covers and corr esponding feedback/feedforward ma-
+trices can be easily computed. The overall algorithm has a low computational complexity and is provably
+numerically reliable.
+1 Introduction
+Our motivation to address the computational aspects of dete rmining minimal dimension dynamic covers
+is the following concrete problem encountered in the design of minimal order fault detectors [8]: for a
+given linear descriptor system (A− λE, [B1, B2], C, [D1, D2]) with invertible E, one wants to compute a
+state feedback matrix F and a feedforward matrix G to achieve the cancellation of a maximum number of
+uncontrollable poles of the transfer-function matrix
+R(λ) = ( C + D1F )(λE− A− B1F )−1(B1G + B2) + (D1G + D2) (1)
+Different instances of this problem for the standard case E = I appear in solving various structural synthesis
+problems, as for example, the design of minimum order functional observers [3], determining minimal order
+inverses [1] or computation of minimal degree solutions of r ational equations [4]. The proposed solution
+procedures reformulate these problems as minimum dynamic cover problems, which can be solved using the
+”standard” method of [12] relying on subspace manipulation techniques employed in the geometric theory
+of linear systems [11]. This approach has been turned recent ly into an efﬁcient and numerically reliable
+algorithm [9] and can be also employed in the case of a general invertible E by replacing the matrices E,
+A, B1 and B2 by I, E−1A, E−1B1 and E−1B2, respectively.
+1
+From a numerical point of view it is advisable to avoid any matrix inversions in early phases of computa-
+tional algorithms, especially if rank decisions follow in a later stage. For our problem the explicit inversion
+of an ill-conditioned E can lead to severe loss of accuracy of the computed results. S ince rank decisions
+are performed later on the transformed data, such an accurac y loss can even lead to a complete failure of
+computations. It follows that employing the algorithms of [ 9] on the transformed matrices is not a satisfac-
+tory computational approach to determine minimal dynamic c overs in the case of a general E. Therefore,
+it is important to develop more general algorithms able to ad dress such computational problems without
+inverting E.
+In this paper we propose a numerically reliable and computat ionally efﬁcient approach to compute a
+feedback matrix F and a possibly nonzero feedforward matrix G to achieve the desired cancellation of
+maximum number of uncontrollable poles in (1). We solve the p roblems of determining both F and G or
+only F which lead to cancellation of maximum number of uncontrolla ble poles. Solving these problems in-
+volves to compute bases for subspaces representing minimal dimension dynamic covers of Type II and Type
+I, respectively (see [3]). The main computational ingredien t in these computations is bringing the system
+matrices in condensed forms which exhibit the structural in formation necessary to solve the problem. For
+the matrices in the resulting condensed forms the computati on of appropriate F and G is a simple, almost
+trivial task. The algorithm to compute the condensed form ha s two stages: (1) an orthogonal reduction of the
+structured descriptor pair (A− λE, [B1, B2]) to a special controllability staircase form followed by spe cial
+row/column block permutations; and (2) a non-orthogonal tr ansformation to zero additionally a minimum
+number of elements. The orthogonal reduction part is based o n employing techniques similar to that used
+in the controllability staircase form algorithms for descr iptor systems [5]. This part involves many rank de-
+cisions which can be computed by using reliable techniques ( e.g., singular values based rank evaluations).
+The non-orthogonal part of the reduction does not involve an y rank computations and is performed to al-
+low an easy computation of appropriate feedback/feedforwa rd matrices. The overall algorithm has a low
+computational complexity and is provably numerically reli able.
+In the last part we also address shortly the solution of minimum cover problems with stability constraints.
+In the case the minimum cover problem with stabilization is s olvable, we propose a reliable computational
+solution to this problem by exploiting the existing paramet ric freedom in the cover determination problem.
+2 Computation of Type II minimal dynamic covers
+The computational problem which we solve is the following: g iven the descriptor pair (A− λE, B) with
+A, E ∈ I Rn×n, B ∈ I Rn×m, and B partitioned as B = [ B1 B2 ] with B1 ∈ I Rn×m1, B2 ∈ I Rn×m2,
+determine the matrices F and G such that the pair (A + B1F− λE, B1G + B2) has maximal number of
+uncontrollable eigenvalues. This problem is essentially e quivalent [4] to compute a subspaceV having least
+possible dimension satisfying
+(A + B1F )V⊂V , span (B1G + B2)⊂V (2)
+where A = E−1A, B1 = E−1B1, and B2 = E−1B2. If we denote B1 = span B1 andB2 = span B2, then
+the above condition can be rewritten also as a condition deﬁn ing a Type II minimum dynamic cover [2, 3]
+2
+of the form
+AV ⊂ V +B1
+B2 ⊂ V +B1
+(3)
+The computation of the minimal dynamic covers relies on the r eduction of the descriptor pair (A−
+λE, [B1, B2]) to a particular condensed form, for which the solution of theproblem is simple. This reduction
+is performed in two stages. The ﬁrst stage is an orthogonal re duction which represents a particular instance
+of the descriptor controllability staircase procedure of [ 5] applied to the descriptor pair (A− λE, [B 1, B2]).
+This procedure can be seen as a generalized orthogonal varia nt of the basis selection approach of [3] and
+therefore will be useful to construct both Type II and Type I minimal covers. In the second stage, additional
+zero blocks are generated in the reduced matrices using non- orthogonal transformations and by applying
+appropriate feedback and feedforward matrices. In what fol lows we present in detail these two stages.
+Stage I: Special Controllability Staircase Algorithm
+0. Compute an orthogonal matrix Q such that QT E is upper triangular;
+compute A← QT A, E← QT E, B1← QT B1, B2← QT B2.
+Comment. Set Q = In for a standard system.
+1. Set j = 1 , r = 0 , k = 2 , ν (0)1 = m1, ν(0)2 = m2, A(0) = A, E(0) = E, B(0)1 = B1, B(0)2 = B2,
+Z = In.
+2. Compute the orthogonal matrix U1 to compress the matrix B (j−1)1 ∈ I R(n−r)×ν(j−1)1 to a full row rank
+matrix
+U T1 B(j−1)1 :=
+[
+Ak−1,k−3
+0
+]
+ν(j)1
+ρ(j)1
+ν(j−1)1
+3. Compute U T1 B(j−1)2 and partition it in the form
+U T1 B(j−1)2 :=
+[
+Ak−1,k−2
+X
+]
+ν(j)1
+ρ(j)1
+ν(j−1)2
+4. Compute the orthogonal matrix U2 to compress the matrix X∈ I R(n−r−ν(j)1 )×ν(j−1)2 to a full row rank
+matrix
+U T2 X :=
+[
+Ak,k−2
+0
+]
+ν(j)2
+ρ(j)2
+ν(j−1)2
+and compute the orthogonal matrix W1 such that diag(I, U T2 )U T1 E(j−1)W1 is upper triangular.
+Comment. Set W1 = U1diag(I, U2) in the standard case.
+3
+5. Compute diag (I, U T2 )U T1 A(j−1)W1, diag(I, U T2 )U T1 E(j−1)W1 and partition them in the form
+[
+I O
+O U T2
+]
+U T1 A(j−1)W1 :=
+
+
+Ak−1,k−1 Ak−1,k Ak−1,k+1
+Ak,k−1 Ak,k Ak,k+1
+B(j)1 B(j)2 A(j)
+
+
+ν(j)1
+ν(j)2
+ρ(j)2
+ν(j)1 ν(j)2 ρ(j)2
+[
+I O
+O U T2
+]
+U T1 E(j−1)W1 :=
+
+
+Ek−1,k−1 Ek−1,k Ek−1,k+1
+O E k,k Ek,k+1
+O O E (j)
+
+
+ν(j)1
+ν(j)2
+ρ(j)2
+ν(j)1 ν(j)2 ρ(j)2
+6. Ai,k−1W1 := [ Ai,k−1 Ai,k Ai,k+1 ]
+ν(j)1 ν(j)2 ρ(j)2
+and Ei,k−1W1 := [ Ei,k−1 Ei,k Ei,k+1 ]
+ν(j)1 ν(j)2 ρ(j)2
+,
+for i = 1, . . . , k− 2.
+7. Q← Q diag(Ir, U1) diag(Ir+ν(j)1 , U2), Z← Z diag(Ir, W1).
+8. r← r + ν(j)1 + ν(j)1 ; if ρ(j)2 = 0 then ℓ = j and Exit 1.
+9. If ν(j)1 + ν(j)2 = 0 then ℓ = j− 1, Exit 2; else, j← j + 1, k← k + 2, and go to Step 2.
+At the end of this algorithm ˆA− λ ˆE = QT (A− λE)Z and ˆB = QT B have the following form
+ˆA− λ ˆE =
+[
+Ac− λEc ∗
+O A c− λEc
+]
+r
+n− r
+r n − r
+, ˆB =
+[
+Bc
+O
+]
+r
+n− r
+where the pair (Ac−λEc, Bc) has only controllable ﬁnite eigenvalues, Ac−λEc contains the uncontrollable
+ﬁnite eigenvalues of A− λE, and ˆE is upper triangular. The pair (Ac, Bc) is in the special staircase form
+[
+Bc Ac
+]
+=
+
+
+A1,−1 A1,0 A11 A12 ··· A1,2ℓ−3 A1,2ℓ−2 A1,2ℓ−1 A1,2ℓ
+O A 2,0 A21 A22 ··· A2,2ℓ−3 A2,2ℓ−2 A2,2ℓ−1 A2,2ℓ
+O O A31 A32 ··· A3,2ℓ−3 A3,2ℓ−2 A3,2ℓ−1 A3,2ℓ
+O O O A 42 ··· A4,2ℓ−3 A4,2ℓ−2 A4,2ℓ−1 A4,2ℓ
+... ... ... ... . . . ... ... ... ...
+O O O O ··· A2ℓ−1,2ℓ−3 A2ℓ−1,2ℓ−2 A2ℓ−1,2ℓ−1 A2ℓ−1,2ℓ
+O O O O ··· O A 2ℓ,2ℓ−2 A2ℓ,2ℓ−1 A2ℓ,2ℓ
+
+ (4)
+4
+where A2j−1,2j−3∈ I Rν(j)1 ×ν(j−1)1 and A2j,2j−2∈ I Rν(j)2 ×ν(j−1)2 are full row rank matrices for j = 1 , . . . , ℓ.
+The resulting upper triangular matrix Ec has a similar block partitioned form
+Ec =
+
+
+E11 E12 ··· E1,2ℓ−1 E1,2ℓ
+O E 22 ··· E2,2ℓ−1 E2,2ℓ
+... ... . . . ... ...
+O O ··· E2ℓ−1,2ℓ−1 E2ℓ−1,2ℓ
+O O ··· O E 2ℓ,2ℓ
+
+
+Note that in the standard case Q = Z and ˆE = I.
+To compute a Type II minimal cover, in the second reduction st age we use non-orthogonal upper trian-
+gular left and right transformation matrices W = diag (Wc, In−r) and U = diag (Uc, In−r), respectively,
+to annihilate a minimum set of blocks in Ac and Ec. Assume Wc and Uc have block structures identical to
+Ec. The following procedure performs the second reduction sta ge by exploiting the full rank of submatrices
+A2j−1,2j−3 and E2j,2j to introduce zero matrices in the block row 2j− 1 of Ac and block column 2j of Ec,
+respectively.
+Stage II: Special reduction for Type II Covers
+Set W = I, U = I.
+for k = ℓ, ℓ− 1, . . . ,1
+Comment. Annihilate blocks E2k−1,2j, for j = k, k + 1, . . . , ℓ.
+for j = k, k + 1, . . . , ℓ
+Compute W2k−1,2j such that W2k−1,2jE2j,2j + E2k−1,2j = 0.
+A2k−1,i← A2k−1,i + W2k−1,2jA2j,i, i = 2j− 2, 2j− 1, . . . ,2ℓ .
+E2k−1,i← E2k−1,i + W2k−1,2jE2j,i, i = 2j, 2j + 1, . . . ,2ℓ .
+end
+if k > 1 then
+Comment. Annihilate blocks A2k−1,2j, for j = k− 1, k, . . . , ℓ.
+for j = k− 1, k, . . . , ℓ
+Compute U2k−3,2j such that A2k−1,2k−3U2k−3,2j + A2k−1,2j = 0.
+Ai,2j← Ai,2j + Ai,2k−3U2k−3,2j, i = 1, 2, . . . ,2k− 1 .
+Ei,2j← Ei,2j + Ei,2k−3U2k−3,2j, i = 1, 2, . . . ,2k− 3 .
+end
+end if
+end
+At the end of Stage II, the upper triangular matrices W and U contain the accumulated non-orthogonal
+transformations performed in the reduction. Let ~A := W ˆAU , ~E := W ˆEU , and ~B = [ ~B1 ~B2 ] := W ˆB be
+5
+the system matrices resulted at the end of Stage II. Deﬁne als o the feedback matrix ~F∈ I Rm1×n partitioned
+column-wise compatibly with ˆE
+~F = [ O F 2··· F2ℓ−2 O F 2ℓ O ]
+where F2j are such that A1,−1F2j +A1,2j = 0 for j = 1, . . . , ℓ. Choose also G such that A1,−1G+A1,0 = 0.
+With these matrices, we achieved that
+[
+~B1 ~B1G + ~B2 ~A + ~B1 ~F
+]
+=
+
+
+A1,−1 O A11 O ··· A1,2ℓ−3 O A1,2ℓ−1 O
+O A 2,0 A21 A22··· A2,2ℓ−3 A2,2ℓ−2 A2,2ℓ−1 A2,2ℓ
+O O A31 O ··· A3,2ℓ−3 O A3,2ℓ−1 O
+O O O A 42··· A4,2ℓ−3 A4,2ℓ−2 A4,2ℓ−1 A4,2ℓ
+... ... ... ... . . . ... ... ... ...
+O O O O ··· A2ℓ−1,2ℓ−3 O A2ℓ−1,2ℓ−1 O
+O O O O ··· O A 2ℓ,2ℓ−2 A2ℓ,2ℓ−1 A2ℓ,2ℓ
+
+ (5)
+E =
+
+
+E11 O E13 ··· E1,2ℓ−1 O
+O E 22 E23 ··· E2,2ℓ−1 E2,2ℓ
+O O E 33 ··· E3,2ℓ−1 O
+... ... ... . . . ... ...
+O O O ··· E2ℓ−1,2ℓ−1 O
+O O O ··· O E 2ℓ,2ℓ
+
+
+where the elements without bars have not been modiﬁed in Stag e II.
+Consider now the permutation matrix deﬁned by
+P T =
+
+
+O I ν(1)2 O O ··· O O O
+O O O I ν(2)2 ··· O O O... ... ... ... . . . ... ... ...
+O O O O ··· O I ν(ℓ)2 O
+Iν(1)1 O O O ··· O O O
+O O Iν(2)1 O ··· O O O... ... ... ... . . . ... ... ...
+O O O O ··· Iν(ℓ)1 O O
+O O O O ··· O O In−r
+
+ (6)
+If we deﬁne V = ZU P , L = P T W QT and F = ~F V −1, then overall we achieved that
+L(A + B1F− λE)V =
+
+
+˘A1− λ ˘E1 ∗ ∗
+O ˘A2− λ ˘E2 ∗
+O O Ac− λEc
+
+ , L (B2G + B1) =
+
+
+˘B1
+O
+O
+
+ (7)
+6
+where
+[
+˘B1 ˘A1− λ ˘E1
+]
+=
+
+
+A2,0 A2,2− λE2,2 A2,4− λE2,4 ··· A2,2ℓ− λE2,2ℓ
+O A4,2 A4,4− λE4,4 . . . A4,2ℓ− λE4,2ℓ
+... ... . . . . . . ...
+O O O A 2ℓ,2ℓ−2 A2ℓ,2ℓ− λE2ℓ,2ℓ
+
+
+˘A2− λ ˘E2 =
+
+
+A1,−1 A1,1− λE1,1 A1,3− λE1,3 ··· A1,2ℓ−1− λE1,2ℓ−1
+O A3,1 A3,3− λE3,3 . . . A3,2ℓ−1− λE1,2ℓ−1
+... ... . . . . . . ...
+O O O A 2ℓ−1,2ℓ−3 A2ℓ−1,2ℓ−1− λE2ℓ−1,2ℓ−1
+
+
+In the standard case we take W = U −1 to ensure W ˆEU = I. The resulting ~A and ~B satisfy (5).
+It follows by inspection that the pair ( ˘A1− λ ˘E1, ˘B1) is controllable. Thus, by the above choice of F and
+G, we made ∑ℓi=1 ν(i)1 of eigenvalues of the pair (A + B1F− λE, B2G + B1) uncontrollable, additionally
+to the n− r uncontrollable original eigenvalues. The ﬁrst nc = ∑ℓi=1 ν(i)2 columns of V1 satisfy
+AV1 = V1 ˘E−11 ˘A1− B1F V1, B2G = V1 ˘E−11 ˘B1− B1
+and thus, according to (3), span a Type II dynamic cover of dimension nc for the pair (A, [ B1 B2 ]). The
+following result can be shown using the results of [3]:
+Theorem 1 The Type II dynamic coverV = span V1 has minimum dimension.
+3 Computation of Type I minimal dynamic covers
+The computational problem which we solve in this section is t he following: given the descriptor pair (A−
+λE, B) with A, E ∈ I Rn×n, B ∈ I Rn×m, and B partitioned as B = [ B1 B2 ] with B1 ∈ I Rn×m1,
+B2∈ I Rn×m2, determine the matrix F such that the pair (A + B2F− λE, B1) has maximal number of
+uncontrollable eigenvalues. This problem is essentially e quivalent [12] to compute a subspace V having
+least possible dimension satisfying
+(A + B2F )V⊂V , span B1⊂V (8)
+This condition can be rewritten also as a condition deﬁning a Type I minimum dynamic cover [2, 3] of the
+form
+AV ⊂ V +B2
+B1 ⊂ V (9)
+To compute Type I covers, we perform ﬁrst the Stage I orthogonal reduction on the pair (A−λE, [B 1, B2]),
+as done in the previous section. However, at Stage II the non- orthogonal reduction annihilates a different
+set of blocks in Ac and Ec. The following procedure performs the second reduction sta ge by exploiting the
+full rank of submatrices A2j,2j−2 and E2j−1,2j−1 to introduce zero matrices in the block row 2j of Ac and
+block column 2j− 1 of Ec, respectively.
+7
+Stage II: Special reduction for Type I Covers
+Set W = I, U = I.
+for k = ℓ, ℓ− 1, . . . ,2
+Comment. Annihilate blocks A2k,2j−1, for j = k, k + 1, . . . , ℓ.
+for j = k, k + 1, . . . , ℓ
+Compute U2k−2,2j−1 such that A2k,2k−2U2k−2,2j−1 + A2k,2j−1 = 0.
+Ai,2j−1← Ai,2j−1 + Ai,2k−2U2k−2,2j−1, i = 1, 2, . . . ,2k .
+Ei,2j−1← Ei,2j−1 + Ei,2k−2U2k−2,2j−1, i = 1, 2, . . . ,2k− 2 .
+end
+Comment. Annihilate blocks E2k−2,2j−1, for j = k, k + 1, . . . , ℓ.
+for j = k, k + 1, . . . , ℓ
+Compute W2k−2,2j−1 such that W2k−2,2j−1E2j−1,2j−1 + E2k−2,2j−1 = 0.
+A2k−2,i← A2k−2,i + W2k−2,2j−1A2j−1,i, i = 2j− 2, 2j− 1, . . . ,2ℓ .
+E2k−2,i← E2k−2,i + W2k−2,2j−1E2j−1,i, i = 2j, 2j + 1, . . . ,2ℓ .
+end
+end
+Let ~A := W ˆAU , ~E := W ˆEU , and ~B = [ ~B1 ~B2 ] := W ˆB be the system matrices resulted at the end of
+Stage II. Deﬁne also the feedback matrix ~F∈ I Rm2×n partitioned column-wise compatibly with ˆE
+~F = [ F1 O F 3··· O F 2ℓ−1 O O ]
+where F2j−1 are such that A2,0F2j−1 + A2,2j−1 = 0 for j = 1, . . . , ℓ.
+Consider now the permutation matrix deﬁned by
+P T =
+
+
+Iν(1)1 O O O ··· O O O
+O O Iν(2)1 O ··· O O O... ... ... ... . . . ... ... ...
+O O O O ··· Iν(ℓ)1 O O
+O I ν(1)2 O O ··· O O O
+O O O I ν(2)2 ··· O O O... ... ... ... . . . ... ... ...
+O O O O ··· O I ν(ℓ)2 O
+O O O O ··· O O In−r
+
+
+If we deﬁne V = ZU P , L = P T W QT and F = ~F V −1, then overall we achieved that
+L(A + B2F− λE)V =
+
+
+˘A1− λ ˘E1 ∗ ∗
+O ˘A2− λ ˘E2 ∗
+O O Ac− λEc
+
+ , LB 1 =
+
+
+˘B1
+O
+O
+
+ (10)
+8
+where
+[
+˘B1 ˘A1− λ ˘E1
+]
+=
+
+
+A1,−1 A1,1− λE1,1 A1,3− λE1,3 ··· A1,2ℓ−1− λE1,2ℓ−1
+O A3,1 A3,3− λE3,3 . . . A3,2ℓ−1− λE1,2ℓ−1
+... ... . . . . . . ...
+O O O A 2ℓ−1,2ℓ−3 A2ℓ−1,2ℓ−1− λE2ℓ−1,2ℓ−1
+
+
+˘A2− λ ˘E2 =
+
+
+A2,0 A2,2− λE2,2 A2,4− λE2,4 ··· A2,2ℓ− λE2,2ℓ
+O A4,2 A4,4− λE4,4 . . . A4,2ℓ− λE4,2ℓ
+... ... . . . . . . ...
+O O O A 2ℓ,2ℓ−2 A2ℓ,2ℓ− λE2ℓ,2ℓ
+
+
+It follows by inspection that the pair ( ˘A1− λ ˘E1, ˘B1) is controllable. Thus, by the above choice of F ,
+we made ∑ℓi=1 ν(i)2 of eigenvalues of the pair (A + B2F− λE, B1) uncontrollable, additionally to the n− r
+uncontrollable original eigenvalues. The ﬁrst nc = ∑ℓi=1 ν(i)1 columns of V1 satisfy
+AV1 = V1 ˘E−11 ˘A1− B2F V1, B1 = V1 ˘E−11 ˘B1
+and thus span a dynamic cover Type I of dimension nc for the pair (A, [ B1 B2 ]). The following result can
+be shown using the results of [3]:
+Theorem 2 The Type I dynamic coverV = span V1 has minimum dimension.
+4 Numerical aspects
+The key reduction of system matrices to the special controll ability form can be performed by using exclu-
+sively orthogonal similarity transformations. It can be sh own that the computed condensed matrices ˆA, ˆE,
+and ˆB are exact for matrices which are nearby to the original matri ces A, E, and B, respectively. Thus this
+part of the reduction is numerically backward stable. In implementing the algorithm, the row compressions
+are usually performed using rank revealing QR-factorizations with column pivoting. To make rank determi-
+nations even more reliable, QR-decompositions and singula r value decompositions can be combined.
+To achieve an O(n3) computational complexity in Stage I reduction, it is essent ial to perform the row
+compressions simultaneously with maintaining the upper triangular shape of E during reductions. The basic
+computational technique, described in details in [5], cons ists in employing elementary Givens transforma-
+tions from left to introduce zero elements in the rows of B, while applying from right appropriate Givens
+transformations to annihilate the generated nonzero subdi agonal elements in E. By performing the rank re-
+vealing QR-decomposition in this way (involving also colum n permutations), we can show that the overall
+worst-case computational complexity of the special staircase algorithm is O(n3). In fact, when m≪ n, then
+the maximum number of required ﬂoating-point operations (ﬂ ops) is essentially the same as that required to
+compute the generalized Hessenberg form of the pair (A, E), by accumulating only the left transformation
+Z. This amounts to about 13/2n3 ﬂops. Note that for solving the problem (1), the accumulatio n of Z is not
+even necessary, since all right transformations can be dire ctly applied to C.
+9
+The computations at Stage II to determine a basis for the mini mal dynamic cover and the computation
+of feadback/feedforward matrices involve the solution of m any, generally overdetermined, linear equations.
+For the computation of the basis forV, we can estimate the condition numbers of the overall transf ormation
+matrices by computing ‖V‖2F =‖U‖2F and‖L‖2F =‖W‖2F . If these norms are relatively small (e.g., ≤
+10000) then practically there is no danger for a signiﬁcant loss of accuracy due to nonorthogonal reduction.
+Note that it is very important to compute these condition num bers, since large values of them provide a clear
+hint of possible accuracy losses. In practice, it sufﬁces to look at the large st magnitudes of elements of W
+and U used at Stage II to obtain equivalent information. For the co mputation of the feedback/feedforward
+matrices, condition numbers for solving the underlying equ ations can be also easily estimated. For the
+Stage II reduction, a simple operation count is possible by a ssuming all blocks 1× 1 and this indicates a
+computational complexity of O(n3).
+5 Minimum covers with stabilization
+In some applications it is important to achieve simultaneou sly that the resulting feedback is stabilizing. For
+a Type II cover, this amounts to determine F , G and V such that the resulting ˘A1− λ ˘E1 has all eigenvalues
+in an appropriate stability domain |C−. This goal can not always be achieved, but it is always possib le to
+move a maximum number of eigenvalues in this domain. To show h ow this is possible, consider the pair
+(P T ( ~A− λ ~E)P, P T ~B), where ~A, ~E, and ~B are the resulting matrices at the end of Stage II and P T is the
+permutation matrix (6). The matrices of the above pair have t he form
+P T ~B =
+
+
+O ~B12
+~B21 ~B22
+O O
+O O
+
+
+P T ( ~A− λ ~E)P =
+
+
+~A11− λ ~E11 ~A12 ~A13− λ ~E13 ∗
+~A21 ~A22− λ ~E22 ~A23− λ ~E23 ∗
+O ~A32 ~A33− λ ~E33 ∗
+O O O A¯c
+
+
+where the pair ( ~A11− λ ~E11, ~B12) is controllable, and ~B21 and has full row rank. Note that the Stage
+II special reduction achieves basically to zero the blocks ~A31 and ~E12, while the feedback matrix F and
+feedforward matrix G achieve additionally to zero ~A21 and ~B22, respectively, by exploiting the full rank
+property of ~B21.
+Consider the transformation matrices
+TY =
+
+
+I O O O
+Y I O O
+O O I O
+O O O I
+
+ , T X =
+
+
+I O O O
+X I O O
+O O I O
+O O O I
+
+
+10
+partitioned in accordance with the structure of P T ~AP . It follows that
+TY P T ~B =
+
+
+O ~B12
+~B21 B22
+O O
+O O
+
+
+TY P T ( ~A− λ ~E)P TX
+
+
+~A11 + ~A12X− λ ~E11 ~A12 ~A13− λ ~E13 ∗
+A21− λ( ~E22X + Y ~E11) A22− λ ~E22 A23− λE23 ∗
+~A32X ~A32 ~A33− λ ~E33 ∗
+O O O A¯c
+
+
+where we denoted with bars the changed quantities. If we choo se X such that ~A32X = 0, and determine Y
+such that ~E22X + Y ~E11 = 0, then we can preserve the structure of the original pair (P T ( ~A− λ ~E)P, P T ~B).
+Thus, deﬁning V as V = ZU P TX, and L = TY P T W QT , we can compute the feedback and feedforward
+matrices F and G exactly as before.
+With TX and TY chosen as above, the resulting ˘A1− λ ˘E1 is ~A11 + ~A12X− λ ~E11 and we can try to
+exploit this parametric freedom to move the eigenvalues of t his pencil to stable locations. The following
+straightforward computations are necessary for this purpo se:
+1. Compute XN with orthonormal columns such that span XN is the right nullspace of ~A32.
+2. Compute ~F to place a maximum number of eigenvalues of ~A11 + ~A12XN ~F− λ ~E11 into the stability
+domain |C−.
+3. Deﬁne X = XN ~F and Y =− ~E22X ~E−111 .
+All steps of this algorithms can be performed using numerica lly reliable computations. The computation
+of XN is straightforward, since ~A32 is part of a staircase form. Thus, no further rank determinat ion is
+necessary and XN results from an RQ-like decomposition of ~A32 which exploits the full row rank of its
+leading nonzero rows. To determine ~F , the most appropriate method is to apply a partial pole assig nment
+technique like that of [6]. This approach can easily accommo date with non-stabilizable pairs, by moving
+only the controllable unstable generalized eigenvalues of the pair ( ~A11, ~E11) into |C−. If the pair ( ~A11−
+λ ~E11, ~A12XN ) is stabilizable then this algorithm can assign all unstable eigenvalues to arbitrary stable
+locations using minimum norm local feedbacks. In this way, t he norm of X is minimized as well and thus
+also the condition number of the transformation matrix TX and implicitly that of TY . A similar approach
+can be devised for determining Type I minimal covers with sta bilization.
+A speciﬁc aspect of determining minimal dynamic covers is th e non-uniqueness of the resulting so-
+lution triple (F, G, V ). This non-uniqueness manifests at several points of the pro posed approach and
+can have negative or positive inﬂuence on the stabilizabili ty properties determined by the triple ( ~A11−
+λ ~E11, ~A12, ~A32). For example, selecting differently at Stage I the linearly independent columns in B (j−1)1
+and B(j−1)2 or computing differently the blocks of U at Stage II when solving the underdetermined linear
+systems can lead to different minimal covers and different s tabilizability properties. For numerical im-
+plementations, we recommend those solutions which ensure t he best numerical properties of the proposed
+approach (e.g., selecting independent columns using colum n pivoting or determining least-norm solutions
+of all underdetermined linear systems).
+11
+6 Conclusions
+We proposed efﬁcient algorithms to compute two types of mini mal dynamic covers, which have many
+important applications in various structural synthesis pr oblems of linear systems. The proposed algorithms
+rely on the extensive use of orthogonal transformations. Th e use of non-orthogonal transformations at the
+ﬁnal step of the reduction process allows to also obtain a pre cise estimation of possible accuracy losses
+induced by the overall reduction. Thus the proposed algorit hm, although not numerically stable, can be
+considered numerically reliable. An interesting open prob lem is how to determine F and G to ensure the
+maximum number of uncontrollable poles cancellation in the case when E is singular. This problem is
+relevant to computing least McMillan degree solutions of li near rational equations [10]. A solution of this
+problem in a particular setting has been provided in [10].
+The Stage I algorithm has been implemented in Fortran 77 and c an be used via a mex-ﬁle interface
+from MA TLAB. Furthermore, the Stage II of the proposed appro ach has been implemented in MA TLAB
+and underlies the implementation of methods to compute leas t order left or right inverses and least order
+solutions of linear rational equations [10]. All this software is part of the DESCRIPTOR SYSTEMS Toolbox
+for MA TLAB developed by the author [7].
+References
+[1] E. Emre and L. M. Silverman. Minimal dynamic inverses for linear systems with arbitrary initial states.
+IEEE Trans. Automat. Control, 21:766 – 769, 1976.
+[2] E. Emre, L. M. Silverman, and K. Glover. Generalized dyna mic covers for linear systems with appli-
+cations to deterministic identiﬁcation and realization pr oblems. IEEE Trans. Automat. Control, 22:26
+– 35, 1977.
+[3] G. Kimura. Geometric structure of observers for linear f eedback control laws. IEEE Trans. Automat.
+Control, 22:846–855, 1977.
+[4] A. S. Morse. Minimal solutions to transfer matrix equati ons. IEEE Trans. Automat. Control, 21:131–
+133, 1976.
+[5] A. V arga. Computation of irreducible generalized state -space realizations. Kybernetika, 26:89–106,
+1990.
+[6] A. V arga. On stabilization of descriptor systems. Systems & Control Letters, 24:133–138, 1995.
+[7] A. V arga. A D ESCRIPTOR SYSTEMS toolbox for M ATLAB . Proc. CACSD’2000 Symposium, Anchor-
+age, Alaska, 2000. http://www.robotic.dlr.de/control/num/desctool.html.
+[8] A. V arga. On computing least order fault detectors using rational nullspace bases. Proc. of IF AC Symp.
+SAFEPROCESS’2003, Washington D.C., 2003.
+[9] A. V arga. Reliable algorithms for computing minimal dyn amic covers. Proc. of CDC’2003, Maui,
+Hawaii, 2003.
+12
+[10] A. V arga. Computation of least order solutions of linear rational equations. Proc. of MTNS’04, Leuven,
+Belgium, 2004.
+[11] W. M. Wonham. Linear Multivariable Control: a Geometric Approach . Springer V erlag, New Y ork,
+1979.
+[12] W. M. Wonham and A. S. Morse. Feedback invariants of line ar multivariable systems. Automatica,
+8:93–100, 1972.
+13

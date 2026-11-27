@@ -1,0 +1,262 @@
+\section{Membership in the existential theory of the reals}\label{sec:existsr}
+
+This section places the decision problem at a prescribed order in the existential theory of the reals, and records the time bound that follows from the two algorithms.
+
+\begin{thm}\label{thm:existsr}
+For every fixed $q$, $\mathrm{DEC}(q)\in\exists\mathbb R$. Consequently the threshold problem $\mathrm{MINDEC}(Q)$ is in $\exists\mathbb R$ for every $Q$.
+\end{thm}
+
+\begin{proof}
+Appendix~\ref{app:encoding} constructs, for each $\omega=0,\dots,\min(q,k)$, an existential formula $\Phi_\omega$ with
+\begin{equation*}
+O(q\omega+\omega k+\omega q+(2\omega-1)\omega q)=O(n^3)
+\end{equation*}
+real variables and $O(n^3)$ equations of degree at most two, and with no enumeration of column sets. The disjunction
+\begin{equation}\label{eq:existsr-disj}
+\Phi=\bigvee_{\omega=0}^{\min(q,k)}\Phi_\omega
+\end{equation}
+has $O(k)$ branches of polynomial size, is built in polynomial time from the input, and its solutions correspond exactly to feasible $L$:
+\begin{equation*}
+\begin{aligned}
+&\Phi\ \text{satisfiable}\\
+&\iff\exists\,L=[L_0;R]\ \text{satisfying}\ \eqref{eq:5a}\ \text{and}\ \eqref{eq:5b}.
+\end{aligned}
+\end{equation*}
+Thus $\Phi$ is a polynomial-time reduction to the existential theory of the reals, so $\mathrm{DEC}(q)\in\exists\mathbb R$. Decidability of the target theory is a separate classical result and is not used here. For $\mathrm{MINDEC}(Q)$ take the finite disjunction \eqref{eq:mindec} over $q=r_0,\dots,Q$, which is a polynomial-time reduction of the same kind; hence $\mathrm{MINDEC}(Q)\in\exists\mathbb R$ for every $Q$.
+\end{proof}
+
+\begin{cor}\label{cor:time}
+For every $r\ge0$, the decision time in the bit model satisfies
+\begin{equation*}
+T\le\min\bigl\{\mathcal L^{O(q^2)},\ f(\kappa_{\rm obs})\operatorname{poly}(\mathcal L)\bigr\}.
+\end{equation*}
+\end{cor}
+
+\begin{proof}
+The two bounds available are those of Sections~\ref{sec:fixedq} and~\ref{sec:fpt},
+\begin{equation*}
+\begin{aligned}
+T&\le\mathcal L^{O(q^2)}\quad(q\ \text{fixed}),\\
+T&\le f(\kappa_{\rm obs})\operatorname{poly}(\mathcal L)\quad(\kappa_{\rm obs}\ \text{the parameter}),
+\end{aligned}
+\end{equation*}
+and both algorithms decide the same language, so either may be run and the smaller bound applies. For $r=0$ the second bound is $\operatorname{poly}(\mathcal L)$ by the test of Section~\ref{sec:zero}.
+\end{proof}
+
+
+\section{Conclusions}\label{sec:conclusions}
+
+The two upper bounds are parameterized, and a different parameter enters each:
+\begin{equation*}
+\begin{aligned}
+T&\le\mathcal L^{O(q^2)}\quad\text{(exponent governed by }q\text{)},\\
+T&\le f(\kappa_{\rm obs})\operatorname{poly}(\mathcal L)\quad\text{(factor governed by }\kappa_{\rm obs}\text{)} .
+\end{aligned}
+\end{equation*}
+The case of no free rows is decided in $\operatorname{poly}(\mathcal L)$ time by the test of Section~\ref{sec:zero}. Membership in the existential theory of the reals holds for both the prescribed-order and the threshold problem:
+\begin{equation*}
+\mathrm{DEC}(q)\in\exists\mathbb R,\qquad \mathrm{MINDEC}(Q)\in\exists\mathbb R .
+\end{equation*}
+The feasibility characterization itself is taken from \cite{fer10,dar25,fer26a,fer26b}; what is new here is the compression to $O(q^2)$ variables, independently of the state dimension, and the complexity bounds that follow from it.
+
+\subsection{Limitations and what is not claimed}\label{sec:limits}
+
+We do not claim that $q1\in\mathrm P$, that $\mathrm{DEC}$ is $\exists\mathbb R$-complete, or any hardness result, and hardness and gadget constructions are outside the scope of this paper. Neither parameter is bounded in the unrestricted problem, so the two bounds are compatible with all three outcomes
+\begin{equation*}
+\begin{aligned}
+&q1\in\mathrm P;\\
+&\mathrm{DEC}\ \text{is}\ \exists\mathbb R\text{-complete};\\
+&\mathrm{DEC}\ \text{has an intermediate parameterized classification},
+\end{aligned}
+\end{equation*}
+and the paper makes no claim among them; the unrestricted complexity of $\mathrm{DEC}$ remains open.
+
+Two audits remain open.
+\begin{enumerate}
+\item \textbf{The $r=0$ branch: resolved, with a residual audit.} For $r=0$ the two conditions reduce to a constant-rank test and to the constancy of the rank of the degree-one pencil $\lambda X-G$. Section~\ref{sec:zero} decides the latter by a finite rational linear system derived from the degree bound $2\omega-2$; the test is deterministic and exact,
+\begin{equation*}
+\text{unknowns}=\operatorname{poly}(q,\omega),\qquad
+\text{equations}=\operatorname{poly}(q,\omega),
+\end{equation*}
+and it returns an explicit witness. The remaining issue is to complete the explicit bit-complexity audit: the constants in the bit bound of Section~\ref{sec:zero} are standard Hadamard/elimination bounds but have not been checked line by line.
+\item \textbf{Coefficient bounds.} The coefficient-size lemma in Section~\ref{sec:fpt} is paper-level; its constants have not been independently audited.
+\end{enumerate}
+
+\subsection{The size of the parameter}\label{sec:paramsize}
+
+The parameter
+\begin{equation*}
+\kappa_{\rm obs}=r\operatorname{rank}[N\ AN]\le2rn
+\end{equation*}
+can be quadratic in $n$; when it is, the bound of Section~\ref{sec:fpt} is not useful in practice. That bound is therefore best read as a statement about the \emph{reduction}: $\mathrm{DEC}$ reduces, in time $f(\kappa_{\rm obs})\operatorname{poly}(\mathcal L)$, to a real-feasibility problem whose dimension is the number $rd_0$ of free real coordinates. Two remarks.
+
+\begin{enumerate}
+\item \emph{The reduction is where the work is.} Building the formula needs no enumeration of the $\binom q\omega\binom k\omega$ maximal minors (Cauchy--Binet, Section~\ref{sec:cb}), no enumeration of the $r_0$ fixed rows, and no chart over $\operatorname{Gr}(\omega,k)$; the construction cost is $f(\kappa_{\rm obs})\operatorname{poly}(\mathcal L)$, which is what separates the result from the trivial statement ``$\mathrm{DEC}$ is a $\kappa_{\rm obs}$-variable real problem''.
+\item \emph{The parameter is bounded on infinite families.} Take $p=n-1$, $C=[I_{n-1}\ 0]$, and $A$ whose last column lies in $\ker C$ (so that the last column of $CA$ vanishes). Then
+\begin{equation*}
+\begin{aligned}
+&\ker[C;CA]=\operatorname{span}\{e_n\},\qquad k=1,\\
+&d_0=\operatorname{rank}[N\ AN]\le2,
+\end{aligned}
+\end{equation*}
+and with one free row $\kappa_{\rm obs}=r d_0\le2$ while $n$ is unbounded, so Section~\ref{sec:fpt} gives $\operatorname{poly}(\mathcal L)$ time with no $n$-dependence in the exponent (checked for $n=4,\dots,8$ by exact computation).
+\end{enumerate}
+
+Whether $\kappa_{\rm obs}$ is optimal is open, and three levels of further reduction are worth separating.
+
+\begin{enumerate}
+\item \emph{The kernel quotient.} Since $\Phi(v)=(vN,vAN)$ gives $d_0=\dim\operatorname{im}\Phi$, this count is already the \emph{exact} dimension of the free-pair space, and no further reduction is possible at this level.
+\item \emph{Observer-row transformations.} The conditions depend on row spaces, hence are invariant under row operations of $L$. Those preserving $L_0$ are block lower-triangular,
+\begin{equation*}
+T=\begin{bmatrix}I_{r_0}&0\\ U&S\end{bmatrix},\qquad \det S\ne0;
+\end{equation*}
+the free coordinates may therefore contain redundant presentations of the same observer subspace, and a quotient by this symmetry could lower the parameter.
+\item \emph{Spectral invisibility.} One may hope to divide by directions that change neither the rank condition nor the finite spectrum. Such a quotient must preserve the interaction between $H$ and $H_A$, not only $\operatorname{rank}H$; a quotient preserving \eqref{eq:5a} but changing the spectrum would be invalid.
+\end{enumerate}
+
+A natural first refinement is not a spectral quotient but an affine-dimension count: some free-row directions may already be constrained by the fixed rows $L_0$, and the effective rank of the free-row map after imposing the fixed-row equations could be strictly smaller than $rd_0$. This is the first step to take; the existence of a spectral quotient, and the optimality of $\kappa_{\rm obs}$, are open.
+
+\paragraph*{Growth of the parameter-dependent factor}
+Renegar's bound is $(sD)^{O(N)}$ with
+\begin{equation*}
+sD=\operatorname{poly}(\kappa_{\rm obs}),\qquad N=\kappa_{\rm obs}+2\omega,
+\end{equation*}
+so $f(\kappa_{\rm obs})$ is roughly $\kappa_{\rm obs}^{O(\kappa_{\rm obs})}$. The result is primarily structural: it identifies a parameter governing the complexity bound, although the dependence on that parameter may limit practical applicability for large parameter values.
+
+\subsection{Reproducibility and evidence}\label{sec:repro}
+
+The results rest on three kinds of evidence, and the accompanying artifact records which statement rests on which.
+
+\begin{enumerate}
+\item \emph{Lean~4 with Mathlib.} The compression identity, the compression criterion, the space of attainable row pairs, the rank-consistency criterion, the B\'ezout core of the certificate, the degree-bounded B\'ezout lemma, the hyperplane-avoidance step of its argument and the rectangular left inverse built from the adjugate are formalized, and every declaration is checked by the kernel against only the three standard axioms (\texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}).
+\item \emph{Paper-level proofs.} The Cauchy--Binet compression, the degree bounds, the coefficient-size estimates and the existential-real encoding.
+\item \emph{Exact rational arithmetic.} The identities on which the constructions rest are re-checked, both on randomly generated instances and on the constructed families; this excludes arithmetic slips but does not replace the proofs.
+\end{enumerate}
+
+The Lean development and the exact-arithmetic scripts form the accompanying artifact and are kept at \url{https://github.com/Zhengshuji/q1-functional-observer}. Table~\ref{tab:evidence} gives the correspondence. The matrix-level identifications that the Lean core does not cover, namely the pencil/gcd bridge, the matrix form of $\mathcal T$, the Gram/rank identity, the linear system \eqref{eq:R0} and the encoding, are paper-level and are the ones re-checked by exact arithmetic.
+
+\begin{table*}[!t]
+\centering
+\caption{Where each statement of the paper is verified.}\label{tab:evidence}
+\small
+\begin{tabular}{@{}lll@{}}
+\toprule
+Statement & Evidence & Formal name \\
+\midrule
+Compression identity & Lean core & \texttt{finrank\_range\_prod} \\
+Compression criterion (Lemma~\ref{lem:compression}) & Lean core & \texttt{ker\_compressed\_iff} \\
+Space of row pairs & Lean core & \texttt{freePairSpace},
+\texttt{kappaObs\_eq\_mul\_freePairSpace} \\
+Rank consistency (Lemma~\ref{lem:rankcons}) & Lean core & \texttt{RankConsistency} \\
+B\'ezout with degree bound (Lemma~\ref{lem:bezout}) & Lean core & \texttt{exists\_bezout\_family} \\
+Rectangular left inverse & Lean core & \texttt{adjRowInverse\_mul} \\
+Gram certificate (Lemma~\ref{lem:window}) & proof, exact check & --- \\
+Zero-free-row test (Section~\ref{sec:zero}) & proof, exact check & --- \\
+Encoding (Theorem~\ref{thm:existsr}) & proof, witness check & --- \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\appendices
+\section{The existential-real encoding}\label{app:encoding}
+
+This appendix constructs the encoding used in the proof of Theorem~\ref{thm:existsr}. Throughout, $q$ is fixed and the notation is that of Section~\ref{sec:compressed}: $N$ is a basis matrix of $\ker[C;CA]$, $H=LN$, $H_A=LAN$, and $\omega=\operatorname{rank}H$.
+
+For fixed $q$, \eqref{eq:5b} is the condition that the $q\times\omega$ pencil
+\begin{equation}
+Q(\lambda)=\lambda X-G
+\end{equation}
+has rank $\omega$ for every $\lambda\in\mathbb C$. This is stronger than having rank $\omega$ over the fraction field $\mathbb C(\lambda)$: the latter does not give $\operatorname{rank}Q(\lambda)=\omega$ at every $\lambda$, as
+\begin{equation*}
+Q(\lambda)=\begin{bmatrix}\lambda\\ \lambda\end{bmatrix},\qquad
+\operatorname{rank}_{\mathbb C(\lambda)}Q=1,\qquad \operatorname{rank}Q(0)=0
+\end{equation*}
+shows.
+
+By the univariate Quillen--Suslin/B\'ezout argument, $Q$ has rank $\omega$ at every $\lambda$ iff its maximal minors generate the unit ideal in $\mathbb C[\lambda]$, equivalently iff there is a polynomial left inverse,
+\begin{equation*}
+\begin{aligned}
+&\operatorname{rank}Q(\lambda)=\omega\ \text{ for all }\lambda\\
+&\iff\langle f_I\rangle=\mathbb C[\lambda]\\
+&\iff\exists\,S\in\mathbb C[\lambda]^{\omega\times q}\ \text{with}\ S(\lambda)Q(\lambda)=I_\omega .
+\end{aligned}
+\end{equation*}
+
+The degree bound is $2\omega-2$. For each $\omega$-element row set $I\subseteq\{1,\dots,q\}$, let $Q_I=E_IQ$ be the corresponding $\omega\times\omega$ submatrix and $f_I=\det Q_I$. If $Q$ has rank $\omega$ at every $\lambda$, the $f_I$ have gcd one, and Lemma~\ref{lem:bezout} gives
+\begin{equation}
+\sum_I g_I f_I=1,\qquad \deg g_I<\omega .
+\end{equation}
+Let $S_I$ be the $\omega\times q$ matrix whose $I$-columns are $\operatorname{adj}(Q_I)$ and whose other columns are zero. Then
+\begin{equation*}
+S_IQ=\operatorname{adj}(Q_I)E_IQ=f_II_\omega,
+\end{equation*}
+so
+\begin{equation*}
+S=\sum_I g_I S_I\ \Longrightarrow\ SQ=I_\omega,\qquad
+\deg S\le2\omega-2,
+\end{equation*}
+because $\deg g_I<\omega$ and $\deg\operatorname{adj}(Q_I)\le\omega-1$.
+
+For the $\exists\mathbb R$ encoding the minors are not enumerated. For each $\omega=0,\dots,\min(q,k)$ introduce the blocks
+\begin{equation*}
+\begin{gathered}
+X\in\mathbb R^{q\times\omega},\qquad B\in\mathbb R^{\omega\times k},\\
+G\in\mathbb R^{q\times\omega},\qquad U\in\mathbb R^{\omega\times q},\\
+V\in\mathbb R^{k\times\omega},
+\end{gathered}
+\end{equation*}
+and the coefficients of $S(\lambda)=\sum_{j=0}^{2\omega-2}S_j\lambda^j$, where $S_j\in\mathbb R^{\omega\times q}$, and impose
+\begin{equation*}
+\begin{gathered}
+H=XB,\qquad H_A=GB,\\
+UX=I_\omega,\qquad BV=I_\omega,\\
+S(\lambda)(\lambda X-G)=I_\omega .
+\end{gathered}
+\end{equation*}
+The polynomial identity is linear in the coefficients $S_j$; comparing coefficients of $\lambda^j$ makes it the linear system \eqref{eq:R0}. The rank conditions $UX=I_\omega$ and $BV=I_\omega$ are polynomial equations, and $BV=I_\omega$ makes $B$ full row rank, hence
+\begin{equation}
+\operatorname{rank}P(\lambda)=\operatorname{rank}((\lambda X-G)B)
+=\operatorname{rank}(\lambda X-G)=\omega
+\end{equation}
+for all $\lambda$. Also $H_A=GB=(GU)XB=FH$ with $F=GU$, so \eqref{eq:5a} holds.
+
+It remains to tie $(H,H_A)$ to the input. The rows of $H=LN$, $H_A=LAN$ satisfy, with $h_i^0=(L_0N)_i$ and $g_i^0=(L_0AN)_i$,
+\begin{equation}
+X_iB=h_i^0,\qquad G_iB=g_i^0\qquad(1\le i\le r_0),
+\tag{B.1}\label{eq:B1}
+\end{equation}
+and, for the free rows, $(H_i,H_{A,i})\in\mathcal T=\operatorname{row}[N\ AN]$, equivalently
+\begin{equation}
+D\begin{bmatrix}(X_iB)^{\mathsf T}\\ (G_iB)^{\mathsf T}\end{bmatrix}=0
+\qquad(r_0<i\le q),
+\tag{B.2}\label{eq:B2}
+\end{equation}
+where $D$ is a rational matrix with $\ker D=\mathcal T$. Both are polynomial (in fact bilinear) equations. They are not optional: without \eqref{eq:B1}--\eqref{eq:B2} the encoding would accept arbitrary pairs $(H,H_A)$.
+
+The correctness splits into two independent statements.
+
+\paragraph*{Soundness}
+Suppose the system has a solution. Set $L$ with first $r_0$ rows $L_0$ and, for each $i>r_0$, a preimage $r_i$ with $(X_iB,G_iB)=r_i[N\ AN]$, which exists by \eqref{eq:B2}. Then
+\begin{equation*}
+\begin{aligned}
+H&=LN,\qquad H_A=LAN,\\
+H_A&=GB=(GU)XB=FH,\qquad F=GU,
+\end{aligned}
+\end{equation*}
+so \eqref{eq:5a} holds; and
+\begin{equation*}
+\operatorname{rank}(\lambda H-H_A)=\operatorname{rank}(\lambda X-G)=\omega
+\end{equation*}
+for all $\lambda$, which gives \eqref{eq:5b} and uses $BV=I_\omega$ (full row rank of $B$) together with $S(\lambda)(\lambda X-G)=I_\omega$.
+
+\paragraph*{Completeness}
+A feasible $L$ supplies $X,B,U,V$ from a rank factorization $H=XB$ with $B_{:,J}=I_\omega$, $G=FX$ with $H_A=FH$ (Lemma~\ref{lem:compression}), and $S$ from the left-inverse construction above; then \eqref{eq:B1} and \eqref{eq:B2} hold by construction, and the remaining equations are identities.
+
+The two constraints $UX=I_\omega$ and $BV=I_\omega$ are not redundant bookkeeping: the first produces the factorization $H_A=FH$, the second makes $\operatorname{rank}((\lambda X-G)B)=\operatorname{rank}(\lambda X-G)$ hold at every $\lambda$.
+
+The $\omega=0$ case is the branch $H=H_A=0$, which \eqref{eq:B1} forces when $L_0N=0$ and rejects otherwise; it is a separate algebraic branch, not a degree-negative instance of \eqref{eq:R0}. The number of variables is
+\begin{equation}
+O(q\omega+\omega k+q\omega+\omega q+k\omega+(2\omega-1)\omega q)
+=O(n^3),
+\end{equation}
+the number of equations is polynomial, and the degree of the left inverse is $2\omega-2\le2n$. The disjunction \eqref{eq:existsr-disj} over $\omega$ has at most $n+1$ branches. Hence the encoding has polynomial size. This proves $\mathrm{DEC}(q)\in\exists\mathbb R$ for every fixed $q$, and hence $\mathrm{MINDEC}(Q)\in\exists\mathbb R$.

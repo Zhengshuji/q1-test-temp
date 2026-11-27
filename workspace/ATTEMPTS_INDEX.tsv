@@ -1,0 +1,669 @@
+num	file	title	direction	subdirection	strategy
+01	01_p1_family.md	P1 §V 最小增广族的实现与 $(5a)$ 密度	q1_false	feasibility_geometry	experiment
+02	02_omega_construct.md	在 $(5a)$ 可行集内**构造式**抽样，并给出两个实例的精确 $q_{\min}$	q1_false	feasibility_geometry	experiment
+03	03_functional_observability.md	功能可观测性：上一轮"没找到"的真因，以及一个 $q_{\min}=$ 闭包 $+1$ 的规律	q1_false	feasibility_geometry	experiment
+04	04_zero_left_indices.md	闭包处 $(5b)$ 何时成立：零左指标计数给出必要条件 $h<q+r_1$	q1_false	feasibility_geometry	experiment
+05	05_expert_followups.md	按专家建议的三项推进：闭包更正、两阶差复现、B.9 加强	q1_false	feasibility_geometry	audit
+06	06_z_generator.md	Z-参数化：生成**任意阶**（含最小阶 $q_0$）的可行增广	q1_false	feasibility_geometry	experiment
+07	07_q0_scan.md	最小阶上的正确统计：$q_{\min}=q_0$（39/56 精确）	q1_false	feasibility_geometry	experiment
+08	08_failure_types.md	最小阶的失败分类：**全是 Type I（B.9）**，以及一个可检验的猜想 T	q1_false	feasibility_geometry	experiment
+09	09_T_proof_attempt.md	猜想 T 的证明尝试：因子化路线的中间结果与瓶颈	q1_false	feasibility_geometry	plan
+100	100_q_omega_plus_1_w2.md	q=ω+1, ω=2：可达块分类与"同一 S 一好一坏"	q1_false	c_stratification	experiment
+101	101_rp_k_omega.md	$k=\omega$ 的 RP 上界（有理输入）	q1_false	c_stratification	experiment
+102	102_free_fibre_criterion.md	自由区的充要判据（$q=3,\omega=2$）	q1_false	c_stratification	prove
+103	103_constrained_all_bad_proof.md	约束区 $n=5$ 实例：$q=3,\omega=2$ 整层全坏的证明	q1_false	c_stratification	prove
+104	104_p2_constrained_locus.md	$k=3,\omega=2,q=3$ 的 $\mathbb P^2$ 约束轨迹：首个正维混合例子	q1_false	c_stratification	experiment
+105	105_projective_constrained_theorem.md	$k=\omega+1$ 的投影约束定理（草稿）	q1_false	c_stratification	prove
+106	106_rectangular_determinantal_divisor.md	矩形行列式因子：用 Hermite 形把缺口补上	q1_false	c_stratification	experiment
+107	107_projective_constrained_theorem_v2.md	$k=\omega+1$ 投影约束定理：写实版	q1_false	c_stratification	prove
+108	108_layer_constancy.md	分层常值性：$\dim X_S$ 的秩公式	q1_false	c_stratification	experiment
+109	109_family_theorem_p1_mixed.md	族定理：$E=0,Z_1=0,Z_2=e_1$ 的 $\mathbb P^1$ 混合层	q1_false	c_stratification	prove
+10	10_expert_round2_closeout.md	上一轮专家建议的收尾：§10.5（几何与谱退化簇）与 Q1（零空间判据）	q1_false	feasibility_geometry	audit
+110	110_d2_all_bad_example.md	$d=2$ 的首个例子：整层全坏（与 $d=1$ 的混合相反）	q1_false	c_stratification	experiment
+111	111_qmin_check_and_d2_scan.md	$q_{\min}$ 检查与 $d=2$ 扫描：层 $\ne$ 阶的又一例	q1_false	c_stratification	experiment
+112	112_incidence_table.md	总 incidence 分层表（专家 52 号 §7 的目标计算）	q1_false	c_stratification	audit
+113	113_projective_theorem_corrected.md	$k=\omega+1$ 投影约束定理（修正版 v2，按专家 52/53 号）	q1_false	decision_algorithms	audit
+114	114_lifting_lemma.md	满行秩 lifting 引理	q1_false	c_stratification	prove
+115	115_k3_component_decomposition.md	$k=3$ 的秩层：一般线性性不成立（撤回）	q1_false	c_stratification	audit
+116	116_k3_e_positive.md	$k=3$, $e>0$ 的首批数据：$d=1$ 仍混合，$d=2$ 的“全坏”被打破	q1_false	c_stratification	experiment
+117	117_d2_e1_v0z2_criterion.md	$d=2,e=1$：更正——正确的充分条件是 $\operatorname{row}Z_1\cap\operatorname{row}Z_2=0$	q1_false	decision_algorithms	audit
+118	118_k_omega_plus_1_d2_attempt.md	$k=\omega+1$、$d=2$ 的充分全坏定理（$k>3$ 的第一步）	q1_false	c_stratification	prove
+119	119_general_case_vs_enumeration.md	一般情形：定理是 $k$-无关的，枚举只是例子	q1_false	c_stratification	prove
+11	11_type3_refutation.md	按专家 2026-11-03 答复推进：T 被推翻、坏 λ 定位、三项技术更正	q1_false	feasibility_geometry	audit
+120	120_base_component_bound.md	$k=\omega+1$、$d=2$：底空间分量个数的常数上界	q1_false	c_stratification	experiment
+121	121_hyperplane_vector_bundle.md	超平面情形的向量丛分解定理（$k=\omega+1$）	q1_false	c_stratification	prove
+122	122_invariant_eigenspace_obstruction.md	不变特征空间障碍：$\dim(K\cap\ker A)>k-\omega\Rightarrow$ 全坏	q1_false	c_stratification	experiment
+123	123_hyperplane_algorithm.md	超平面情形的判定算法：每个分量一个随机点	q1_false	c_stratification	experiment
+124	124_c2_degeneracy_loci.md	$c=2$ 的第一层：$\mathcal D_2/\mathcal D_3/\mathcal D_4$ 的结构	q1_false	c_stratification	experiment
+125	125_c2_structure_complete.md	$c=2$ 的结构补完：$\mathcal D_2$ 的 Jordan 丛与 $\mathcal D_3$ 的投影丛	q1_false	c_stratification	experiment
+126	126_c2_k0_truncation.md	$c=2$ 的 $K_0$ 截断：各分量的非空条件	q1_false	c_stratification	experiment
+127	127_c2_algorithm.md	$c=2$ 的判定算法：用 125/126 的分量表 + 每分量随机点	q1_false	decision_algorithms	experiment
+128	128_c3_structure.md	$c=3$ 的结构：层与递归（“谱控制”的归纳）	q1_false	c_stratification	experiment
+129	129_c3_jordan_truncation.md	$c=3$ 的 Jordan 组合与 $K_0$ 截断：归纳的“更好结论”	q1_false	c_stratification	experiment
+12	12_structured_gap_table.md	专家 §Q5 的数据表：结构化实例上"零阶差 vs 正阶差"的对比	q1_false	feasibility_geometry	audit
+130	130_general_induction_map_type.md	一般 $c$ 的归纳：线性映射型控制（并更正“不变子空间”说法）	q1_false	decision_algorithms	audit
+131	131_c2_d3_nilpotent_subtype.md	$c=2$ 分类修正：$\mathcal D_3$ 的幂零子型	q1_false	c_stratification	experiment
+132	132_c3_d4_d5_subtypes.md	$c=3$ 修正：$\mathcal D_4/\mathcal D_5$ 的“不变 / 非不变”两子型	q1_false	c_stratification	experiment
+133	133_type_control_theorem.md	一般 $c$ 的型控制定理（归纳的精确陈述）	q1_false	c_stratification	prove
+134	134_55_corrections_exact_fibre.md	55 号裁决落地：精确纤维条件、Kronecker 型、$c=2/c=3$ 的精确条件	q1_false	c_stratification	audit
+135	135_exact_fibre_theorem.md	精确 Grassmannian 纤维定理（专家 55 §1 / §9 Step 1）	q1_false	c_stratification	audit
+136	136_c2_rewrite.md	$c=2$ 重写：用精确纤维定理（专家 55 §4.2 / §9 Step 2）	q1_false	c_stratification	audit
+137	137_c3_repair.md	$c=3$ 重写：用精确纤维定理（专家 55 §4.3–§4.4 / §9 Step 3）	q1_false	c_stratification	audit
+138	138_kronecker_representation.md	Kronecker 表示与 incidence 表述（专家 55 §3 / §7 / §9 Step 4）	q1_false	decision_algorithms	audit
+139	139_type_control_conjecture.md	型控制猜想（专家 55 §6 / §9 Step 5）	q1_false	decision_algorithms	audit
+13	13_gap2_case.md	自有阶差 2 实例的细查：**两阶都由 Type I（B.9）解释**	q1_false	feasibility_geometry	experiment
+140	140_hyperplane_rank_identity.md	双曲秩恒等式：$\ker[P;Q]\cong\ker[v,Av]$（纸面证明 + Lean 计划）	q1_false	decision_algorithms	paper
+141	141_polynomial_certificate.md	多项式证书：$P Y P=P$ 的存在性与次数界（纸面）	q1_false	c_stratification	experiment
+142	142_general_incidence_theorems.md	两条一般 incidence 定理：有限 $(t,u)$ 分层与相对 Grassmannian	q1_false	c_stratification	prove
+143	143_c2_rigorous_parameterization.md	(no title)	q1_false	c_stratification	experiment
+144	144_c2_good_locus.md	(no title)	q1_false	c_stratification	experiment
+145	145_c2_good_locus_corrected.md	$c=2$ 的好性：正确的块形式与两个分支（更正 144 的维度错误）	q1_false	c_stratification	audit
+146	146_c3_rigorous_parameterization.md	$c=3$ 严格参数化：精确参数空间、互斥穷尽、非空条件	q1_false	c_stratification	experiment
+147	147_c2_component_bound.md	(no title)	q1_false	c_stratification	experiment
+148	148_c3_component_bound.md	(no title)	q1_false	c_stratification	experiment
+149	149_general_c_component_bound.md	(no title)	q1_false	c_stratification	experiment
+14	14_confinement_large_sample.md	大样本检验：$q_0+1$ 阶的"禁闭"与 $q_0$ 阶的薄性	q1_false	feasibility_geometry	experiment
+150	150_universal_pencil_descent.md	压缩铅笔对所有可容许 $V$ 都下降：块判据的统一形式（专家 57 号更正）	q1_false	decision_algorithms	audit
+151	151_lift_completion_theorem.md	精确提升完成定理：$q-\omega\le d_C$（专家 57 号 §1）	q1_false	decision_algorithms	audit
+152	152_lift_completion_fixed_l0.md	精确提升完成定理（含固定 $L_0$）：仿射形式与构造	q1_false	c_stratification	prove
+153	153_c2_complete_theorem.md	(no title)	q1_false	c_stratification	experiment
+154	154_c1_c2_c3_and_induction_failure.md	$c=1,2,3$ 的区别，以及“型控制归纳”为什么不可行	q1_false	c_stratification	experiment
+155	155_c2_top_pencil_obstruction.md	(no title)	q1_false	c_stratification	experiment
+156	156_c2_algorithm_spec.md	(no title)	q1_false	c_stratification	experiment
+157	157_existsR_checklist_audit.md	G.1 对照专家 00 号的 $\exists\mathbb R$ 检查清单	q1_false	decision_algorithms	audit
+158	158_c3_s23_audit.md	$c=3$ 的 $S_{2,3}$ 审计：它是**开集**，不是可疑的确定性子层	q1_false	c_stratification	audit
+159	159_c3_component_bound_corrected.md	(no title)	q1_false	c_stratification	experiment
+15	15_confinement_structural.md	公开例子的 $q_0+1$ 失败：**结构解释**（不是抽样观察）	q1_false	feasibility_geometry	experiment
+160	160_c3_degenerate_audit.md	$c=3$ 分量界的退化情形审计：每块“空或不可约”	q1_false	c_stratification	audit
+161	161_general_c_invariant_and_rank_strata.md	(no title)	q1_false	c_stratification	experiment
+162	162_direct_original_pencil_certificate.md	$\mathrm{DEC}(q)\in\exists\mathbb R$：直接对原铅笔 $Q(\lambda)$ 的证书（专家 58 号）	q1_false	decision_algorithms	audit
+163	163_58_verdict_implementation.md	专家 58 号裁决落实与两处待裁定分歧	q1_false	decision_algorithms	audit
+164	164_59_verdict_implementation.md	专家 59 号裁定落实：$W_L$ 接受、$S_{2,3}$ 条件恢复、不变界降级、$c=2$ 行列式判据	q1_false	c_stratification	audit
+165	165_c2_forced_plane_criterion.md	$c=2$、$q=3$、被迫平面情形：可行性判据与 16/21 的不可行证明	q1_false	c_stratification	prove
+166	166_c2_general_algorithm.md	$c=2$、$q=3$ 的一般可行性算法：$W_L$ 枚举 + $b$-强制判据 + 空空间搜索	q1_false	decision_algorithms	prove
+167	167_dimWL3_existence_criterion.md	$\dim W_L=c+1$ 的存在性判据：$\lambda_0$ 处的秩条件	q1_false	c_stratification	prove
+168	168_dimWL3_witness.md	$\dim W_L=c+1$ 的可行实例：$n=6$、$k=4$、$q=3$、$\dim W_L=3$	q1_false	c_stratification	experiment
+169	169_invariant_strata_irreducibility.md	不变层的不可约性：循环向量参数化（修复 161 的链论证）	q1_false	c_stratification	experiment
+16	16_gap_landscape.md	阶差的全景：三个算例、两种机制	q1_false	feasibility_geometry	experiment
+170	170_c3_strata_table.md	$c=3$ 的十一层精确清单（Deliverable 3）	q1_false	c_stratification	experiment
+171	171_Buv_rank_strata.md	$B_{u,v}$ 秩层：不可约性反例、二次 chart 与一致分量界（专家 60 号）	q1_false	c_stratification	audit
+172	172_forced_certificates.md	forced-plane 判据的精确证书：seeds 10/16/21（专家 60 号 Priority 3）	q1_false	decision_algorithms	audit
+173	173_lift_component_transfer.md	从压缩层到提升层：分量数的传递（专家 60 号 Priority 4）	q1_false	c_stratification	audit
+174	174_Buv_lean_kernel.md	$B_{u,v}$ 秩恒等式的 Lean 内核（专家 60 号形式化顺序第 1–2 步）	q1_false	decision_algorithms	audit
+175	175_c3_bound_via_Buv.md	$c=3$ 分量界：不变部分 + $B_{u,v}$ Bézout 界的显式形式	q1_false	decision_algorithms	experiment
+176	176_incidence_fibre_argument.md	incidence 纤维论证：$B_{u,v}$ 的分量到 exact $(t,u,v)$ 层（175 的完整化）	q1_false	c_stratification	experiment
+177	177_chart_degree_check.md	chart 表达式 $F_A(X)$ 的次数：精确验证（专家 60 号形式化顺序第 3–4 步）	q1_false	decision_algorithms	audit
+178	178_forced_criterion_lean.md	forced-plane 判据的 Lean 内核：行空间判据（专家 60 号 Priority 3）	q1_false	decision_algorithms	audit
+179	179_c2_scope.md	$c=2$ 算法的适用范围与完成度（防止过度声称）	q1_false	decision_algorithms	experiment
+17	17_z_determinacy.md	判定只依赖 $\\mathcal Z$：把问题完全归到 Grassmannian 上	q1_false	feasibility_geometry	experiment
+180	180_uniform_stratum_solver.md	统一层求解器：一个工具覆盖任意 $(q,\omega,c)$ 的参数化流程	q1_false	c_stratification	experiment
+181	181_solver_complexity_status.md	求解器的复杂性定位：随机性 ≠ P/NP，工具属于“带见证验证的搜索”	q1_false	c_stratification	experiment
+182	182_c1_infeasibility_lemma.md	$c=1$、$q=4$、$\omega=3$ 的结构性不可行引理（非特征线情形）	q1_false	c_stratification	prove
+183	183_c1_eigenlines.md	$c=1$ 层的特征线：显式计算（16/21）	q1_false	c_stratification	experiment
+184	184_q4_excluded.md	$q=4$ 的全部四层排除：16/21 的 $q_{\min}\ge5$	q1_false	c_stratification	experiment
+185	185_seeds_infeasible_all_q.md	16/21 对**所有** $q$ 不可行（项目约定下）	q1_false	c_stratification	experiment
+186	186_61_verdict_implementation.md	专家 61 号裁决落实：约定分层、$c=1$ 例外、求解器架构	q1_false	c_stratification	audit
+187	187_certificate_package.md	不可行证书包：seeds 16/21（专家 61 号建议）	q1_false	decision_algorithms	audit
+188	188_c1_outside_D.md	$c=1$ 引理在 $W_L\not\subseteq D$ 时的边界：机制失效	q1_false	c_stratification	prove
+189	189_c1_outside_D_feasible.md	$c=1$、$W_L\not\subseteq D$：可容许条件真空，可行性化为铅笔条件	q1_false	c_stratification	experiment
+18	18_gz_criterion.md	$(5a)$ 的 $\\mathcal Z$-层判据：$\\operatorname{row}\\mathcal L\\subseteq G_{\\mathcal Z}$	q1_false	feasibility_geometry	prove
+190	190_c1_decision_tree.md	$c=1$ 的判定流程：已闭合与开放的部分	q1_false	c_stratification	experiment
+191	191_c1_pencil_criterion.md	O1：$c=1$ 铅笔恒坏的判据（块分解）	q1_false	c_stratification	prove
+192	192_c1_pencil_block_algorithm.md	O1 的小算法：块量 $A_*,B_*$ + 子式 gcd（验证 191）	q1_false	decision_algorithms	experiment
+193	193_c1_O2_reduction.md	O2：$\dim W_L>1$ 的消元——化成“有限内点 + 开集”	q1_false	c_stratification	experiment
+194	194_62_verdict_implementation.md	专家 62 号裁决落实：O1 判据更正、O2 限定、无界 $c$ 硬度路线	q1_true	multiplication_gate	audit
+195	195_lift_individual_vs_simultaneous.md	188 的“个别提升”可以同时组装；全局条件是 $d'_C$ 不等式	q1_true	arm_reduction	experiment
+196	196_ARM3_reduction_plan.md	ARM(3) 归约的设计与障碍：第一步表达力引理	q1_true	arm_reduction	prove
+197	197_ARM3_expressiveness_limit.md	表达力引理的第一个限制：$H$ 的约束是“行空间型”，不是任意仿射型	q1_true	arm_reduction	prove
+198	198_V_chart_expressiveness.md	$V$-chart 路线的分析：约束是二次/incidence 型，不是仿射型	q1_true	arm_reduction	plan
+199	199_incidence_linearization.md	incidence 线性化实验：$A_{12}=0$ 给 Sylvester 型线性条件，但不是任意仿射	q1_true	arm_reduction	experiment
+19	19_q0_rescan_gz.md	用 $G_{\\mathcal Z}$ 判据重扫 $q_0$ 阶：命中率提升与新的统计	q1_false	feasibility_geometry	prove
+200	200_multiplication_gadget.md	乘法 gadget 的验证与 pair-space 更正（专家 63 号）	q1_true	multiplication_gate	audit
+201	201_pair_lift_theorem.md	pair-lift 定理：$\mathcal L_V=(V+AV)^\perp$	q1_true	multiplication_gate	prove
+202	202_gadget_naive_embedding.md	乘法 gadget 的朴素嵌入：谱条件使其不可行	q1_true	multiplication_gate	experiment
+203	203_invariance_theorem.md	不变性定理：$A(K_0)\subseteq K_0$ 时，可行 $V$ 必为 $A$-不变	q1_true	multiplication_gate	prove
+204	204_spectral_gadget_conditions.md	谱 gadget 的必要条件与扫描结果	q1_true	multiplication_gate	experiment
+205	205_AinvK0_impossible.md	(no title)	q1_true	multiplication_gate	experiment
+206	206_lean_pairlift_eigenvector.md	Lean 内核：pair-lift 与不变子空间特征向量（201/205）	q1_true	multiplication_gate	paper
+207	207_64_verdict_implementation.md	(no title)	q1_true	multiplication_gate	experiment
+208	208_pair_lift_fibre.md	pair-lift 纤维定理：固定 $V$ 的行对纤维与同时完成	q1_true	multiplication_gate	prove
+209	209_c1_leakage_branch.md	$c=1$ 泄漏分支：可容许真空后的铅笔障碍	q1_false	c_stratification	experiment
+20	20_gz_rank_and_lemma.md	$G_{\\mathcal Z}$ 的秩公式、$(5a)$ 自动成立的条件，以及一个实现更正	q1_false	feasibility_geometry	audit
+210	210_local_leakage_correction.md	更正：局部泄漏刚性的铅笔步骤不成立（seed 10 反例）	q1_true	multiplication_gate	audit
+211	211_leakage_gadget_attempt.md	泄漏 gadget 的构造尝试：条件、失败点与下一步	q1_true	multiplication_gate	plan
+212	212_assessment_information_essay.md	评估：`新建 文本文档.md`（信息论 + PBH/Hankel 文稿）	q1_true	multiplication_gate	experiment
+213	213_65_verdict_implementation.md	(no title)	q1_true	multiplication_gate	experiment
+214	214_66_verdict_template_valid.md	专家 66 号裁决落实：模板成立，$LAN$ 的行/列作用混淆已更正	q1_true	multiplication_gate	audit
+215	215_67_verdict_uniform_spectral.md	专家 67 号裁决落实：一致谱条件 = 过滤链 + 单位子式；剩余障碍是实现	q1_true	multiplication_gate	audit
+216	216_single_gate_normal_form.md	单门实现（一）：固定 $L_0$ 下的正确正规形 $H=C_0[h_0;g(X)]$	q1_true	multiplication_gate	experiment
+217	217_single_gate_q_lower_bound.md	(no title)	q1_true	multiplication_gate	experiment
+218	218_single_gate_omega3_architecture.md	单门实现（三）：$\omega=3$、$q=4$ 的架构与实现方程	q1_true	rank_gates	experiment
+219	219_single_gate_zero_column.md	单门实现（四）：$A(W)\subseteq S$ 架构与 $D$ 的零列障碍	q1_true	multiplication_gate	experiment
+21	21_expert_corrections.md	专家 2026-11-03 两条更正的核验与落实	q1_false	feasibility_geometry	audit
+220	220_template_perturbation_failure.md	单门实现（五）：模板的单参数变形在 $t\ne0$ 处失败	q1_true	multiplication_gate	experiment
+221	221_variable_kernel_family_test.md	单门实现（六）：$\dim W_L=3$ 的可行实例上，变量核族也是脆弱的	q1_true	multiplication_gate	experiment
+222	222_168_family_symbolic.md	单门实现（七）：168 实例的变量核族符号化——只有 $t=0$ 可行	q1_true	multiplication_gate	experiment
+223	223_enumeration_convention_issue.md	单门实现（八）：$\operatorname{Gr}(2,3)$ 枚举的约定问题与修正方案	q1_true	multiplication_gate	experiment
+224	224_fixed_kernel_lift_family.md	单门实现（九）：固定核 + 变量提升方向的可行族（绕过变量核障碍）	q1_true	multiplication_gate	experiment
+225	225_lift_params_cannot_encode.md	单门实现（十）：提升参数不能编码算术——概念更正	q1_true	multiplication_gate	audit
+226	226_coordinate_planes.md	单门实现（十一）：三个坐标平面的好性——只有 $V_{45}$ 可行	q1_true	multiplication_gate	experiment
+227	227_gr23_systematic_search.md	(no title)	q1_true	multiplication_gate	experiment
+228	228_68_69_verdict.md	专家 68/69 号裁决落实：撤回 217，接受 10 维族，转向 (5a) 行列式门	q1_true	multiplication_gate	audit
+229	229_gate_seed.md	(5a) 行列式门（一）：找到一个 $xy-z$ 子式，但尚未隔离	q1_true	multiplication_gate	experiment
+22	22_fernando_failure_type.md	公开例子的失败类型：$q_0$ 与 $q_0+1$ 都是 **Type I**（整数障碍）	q1_false	feasibility_geometry	experiment
+230	230_proportionality_gate.md	(5a) 行列式门（二）：比例型门的额外子式与结构错配	q1_true	multiplication_gate	experiment
+231	231_gate_channel_5b.md	(5a) 门（三）：$(5a)$ 不能强制秩一，$(5b)$ 可以——通道更正	q1_true	multiplication_gate	audit
+232	232_schur_pivot.md	(5b) 门（四）：秩单调性障碍与 Schur 枢轴的出路	q1_true	multiplication_gate	experiment
+233	233_no_drop_obstruction.md	(no title)	q1_true	multiplication_gate	experiment
+234	234_explicit_gate.md	(no title)	q1_true	multiplication_gate	experiment
+235	235_anchor_branch_search.md	(5a) 门（七）：锚定搜索失败与分支消除的结构限制	q1_true	multiplication_gate	experiment
+236	236_anchor_search_n6_plan.md	(5a) 门（八）：锚定搜索 500 例无果；$n=6$ 的秩强制方案	q1_true	multiplication_gate	experiment
+237	237_71_verdict.md	专家 71 号裁决落实：门的精确 $(5a)$ 轨迹、$(5b)$ 非自动、锚定方向	q1_true	multiplication_gate	audit
+238	238_anchored_pivot_attempts.md	(5a) 门（九）：固定枢轴的三种尝试与失败	q1_true	multiplication_gate	experiment
+239	239_72_missing_L0A.md	专家 72 号裁决落实：漏掉 $L_0A$ 行——条件门撤回，5 维实例无可行解	q1_true	multiplication_gate	audit
+23	23_type_is_integer.md	失败类型由整数决定：Type I ⟺ $\dim\pi(V)\ge q+r_1-s_0$	q1_false	feasibility_geometry	experiment
+240	240_full_5a_q2_structure.md	完整 $(5a)$ 的 $q=2$ 结构：$u\ne0$ 线性，$u=0$ 才是行列式门	q1_true	rank_gates	experiment
+241	241_73_verdict.md	(no title)	q1_true	multiplication_gate	experiment
+242	242_rank4_n5_impossible.md	(no title)	q1_true	multiplication_gate	experiment
+243	243_q2_omega2_no_go.md	(no title)	q1_true	multiplication_gate	experiment
+244	244_q3_feasible_absorbed.md	(no title)	q1_true	multiplication_gate	experiment
+245	245_q2_no_gate_theorem.md	$q=2$ 的门完全不可能：非平凡乘法门与 $(5b)$ 不可兼得	q1_true	rank_gates	experiment
+246	246_74_verdict.md	专家 74 号裁决落实：$q=2$ 门关闭、特征向量判据、$\\kappa_{\\rm obs}$ 与下一路线	q1_true	rank_gates	audit
+247	247_fixed_qc_tractable.md	(no title)	q1_true	multiplication_gate	experiment
+248	248_kappa_not_enough.md	(no title)	q1_true	multiplication_gate	experiment
+249	249_compact_certificate.md	(no title)	q1_true	multiplication_gate	experiment
+24	24_generic_no_type3.md	谱区（整数障碍不适用）的统计：**1501/1501 全部可行**，Type III 为 0	q1_false	feasibility_geometry	experiment
+250	250_eliminate_R_barrier.md	(no title)	q1_true	multiplication_gate	experiment
+251	251_coupled_plane_obstruction.md	(no title)	q1_true	multiplication_gate	experiment
+252	252_compact_certificate_instance.md	249 的显式证书：$QPR=I_2$（244 的铅笔）	q1_true	multiplication_gate	experiment
+253	253_coefficient_encoding_obstruction.md	(no title)	q1_true	multiplication_gate	experiment
+254	254_arm3_embedding.md	ARM(3) 嵌入的可行性分析：$q=3$ 的秩约束是自动的	q1_true	arm_reduction	experiment
+255	255_kappa_correction.md	$\\kappa_{\\rm obs}$ 的实际含义：它**确实**控制 $k$（修正 248/250）	q1_true	multiplication_gate	experiment
+256	256_invariant_gate_spectral_obstruction.md	不变平面门的精确实现：$(5a)$ 成立但 $(5b)$ 在特征值处掉秩	q1_true	multiplication_gate	experiment
+257	257_offset_absorption.md	(no title)	q1_true	multiplication_gate	experiment
+258	258_offset_gate_feasible.md	258 撤回：$2\times2$ 子式不是极大子式，$(5b)$ 实际失败	q1_true	multiplication_gate	audit
+259	259_true_offset_search.md	真偏移（$A[5][1]\\ne0$）的搜索：仍找不到 $(5a)(5b)$ 共存	q1_true	multiplication_gate	experiment
+25	25_type3_not_jordan.md	更正：Type III **不**由"$A$ 有重复特征值"导致；C4 的 $q_0$ 族整族失败	q1_false	feasibility_geometry	audit
+260	260_fpt_kappa.md	固定 $\\kappa_{\\rm obs}$ 的 FPT 定理（模标准 QE 界）	q1_false	decision_algorithms	prove
+261	261_fpt_formal.md	(no title)	q1_false	decision_algorithms	experiment
+262	262_bezout_qe_dependencies.md	依赖引理：有效 Bezout 界与实 QE 复杂度	q1_false	decision_algorithms	prove
+263	263_offset_line_impossibility.md	偏移线不可能性：$o\\notin U$ 时 $U$ 被钉死，$o\\in U$ 时 $(5b)$ 掉秩	q1_false	decision_algorithms	experiment
+266	266_q4_r0_decomposition.md	$q=4,r_0=2$ 的压缩分解：$(5a)$ = 固定行条件 + $RE\\in\\operatorname{row}H$	q1_false	decision_algorithms	experiment
+267	267_rank1_E_encoder.md	rank-1 $E$ 能编码什么：一个列条件 + 行空间包含	q1_false	decision_algorithms	experiment
+268	268_routeA_incidence_obstruction.md	路线 A 的结构困难：$E$ 只能编码“行空间包含”，不能编码任意仿射方程	q1_false	decision_algorithms	plan
+269	269_spectral_polarity.md	路线 B：$(5a)$ 编等式、$(5b)$ 编不等式——极性对了	q1_false	decision_algorithms	plan
+26	26_c4_proof.md	C4 实例在 $q_0$ 阶**整族不可行**：格拉斯曼层面的证明	q1_false	feasibility_geometry	prove
+270	270_nonzero_gadget.md	(no title)	q1_false	decision_algorithms	experiment
+271	271_shared_f_obstruction.md	(no title)	q1_false	decision_algorithms	experiment
+272	272_76_verdict.md	专家 76 号裁决落实：incidence 不是决定性障碍，改攻 rank-one 截面	q1_true	rank_gates	audit
+272	272_row_invariance_obstruction.md	行变换不变性：非零 gadget 不能依赖“某两行共享一个标量”	q1_true	multiplication_gate	experiment
+273	273_rowspace_invariant_tension.md	行空间不变量 gadget 的线性性张力	q1_true	multiplication_gate	experiment
+274	274_fixed_q_polynomial.md	路线 C：固定 $q$ 的多项式算法（$Z,U$ 量化 + 线性消去）	q1_false	decision_algorithms	plan
+275	275_rankone_section_gate.md	(no title)	q1_false	decision_algorithms	experiment
+276	276_77_audit_corrections.md	专家 77 号可靠性审计落实：修正 271/275/261/274	q1_false	decision_algorithms	audit
+277	277_gram_fpt.md	固定 $\\kappa_{\\rm obs}$ 的 FPT（Gram 证书版）：变量 $\\kappa_{\\rm obs}+2\\omega$	q1_false	decision_algorithms	experiment
+278	278_gram_certificate_instance.md	Gram 证书的精确实例（244 铅笔）	q1_false	decision_algorithms	experiment
+279	279_fixed_row_invariance.md	撤回：固定行不变性论证不成立	q1_false	decision_algorithms	audit
+27	27_bad_locus_blocking.md	Type III 的"坏点像"表述：何时一个阶被整族排除	q1_false	feasibility_geometry	experiment
+280	280_q4_spectral_tension.md	$q=4$ rank-one 门的谱张力：$E$ 放固定方向保行列式但掉秩，放自由方向保秩但破行列式	q1_true	rank_gates	experiment
+281	281_q4_gate_not_liftable.md	$q=4$ 压缩门同时满足 $(5a)(5b)$，但**不可提升**：$H_A$ 行混用了另一自由行	q1_true	rank_gates	experiment
+282	282_omega_le_r.md	必要条件 $\\omega\\le r=q-r_0$：固定行必须被自由行“吸收”	q1_false	decision_algorithms	experiment
+283	283_q4_r1_dichotomy.md	$q=4,r_0=1,\\omega=3$：固定行独立则谱失败，固定行被吸收则秩门消失	q1_true	rank_gates	experiment
+284	284_rank_window.md	可行实例的秩窗口：$\\operatorname{rank}H_0<\\omega<r$ 才可能有二次秩门	q1_false	decision_algorithms	experiment
+285	285_q5_gate_target.md	$q=5$ 候选门：$H_0$ 秩 1、$Y$ 三行给 $z=xy$；但 $E=0$ 被 205 排除	q1_true	rank_gates	experiment
+286	286_q5_spectral_compatibility.md	$q=5$ 候选门的谱兼容性：固定行必须落在自由行的 $P$-像中	q1_true	rank_gates	experiment
+287	287_lift_surjectivity.md	(no title)	q1_false	decision_algorithms	experiment
+288	288_lift_rank_bound.md	(no title)	q1_false	decision_algorithms	experiment
+289	289_liftable_q5_sample.md	(no title)	q1_false	decision_algorithms	experiment
+28	28_type3_at_boundary.md	更大的随机实例里出现的 Type III：**都恰在 $r_1=p+r$**	q1_false	feasibility_geometry	experiment
+290	290_linear_offset_search.md	线性偏移 + 无特征值 1：$q=5$ 门的符号族搜索受阻	q1_true	rank_gates	experiment
+291	291_l0_zero_row.md	改 $L_0=[e_1;0]$ 仍不足：线性偏移候选少且 gcd 掉秩	q1_false	decision_algorithms	experiment
+292	292_y1_dichotomy.md	二次秩门迫使 $Y_1=e_1$；而 $Y_1=e_1$ 又带回 $\\lambda-1$	q1_false	decision_algorithms	experiment
+293	293_q5_rank_gate_closure.md	$q=5$ rank 门的收束：三种情形都没有构造；建议转 $(5b)$ 谱门	q1_true	rank_gates	experiment
+294	294_270_not_5b_gadget.md	270 的非零 gadget 不是 $(5b)$ gadget：$H=fH_0$ 使 $\\operatorname{rank}H$ 随 $f$ 变化	q1_true	multiplication_gate	experiment
+295	295_78_audit_corrections.md	78 号审计更正：$\\omega\\le r$ 未证，$q=4$ 重新开放；FPT 与 $2\\times1$ gadget 保留	q1_true	multiplication_gate	audit
+296	296_nonzero_gadget_observer.md	$2\\times1$ 谱 gadget 的完整观测器实现：$(5b)\\iff f\\ne0$	q1_true	multiplication_gate	experiment
+297	297_direct_sum_gadgets.md	非零 gadget 的直和组合：$(5b)\iff f_1\ne0\ \wedge\ f_2\ne0$	q1_true	multiplication_gate	experiment
+298	298_shared_parameter.md	共享参数的直和：复制不增加表达力	q1_true	multiplication_gate	experiment
+299	299_mixed_gate.md	(no title)	q1_false	decision_algorithms	experiment
+29	29_anomaly_no_observer.md	一个异常实例：功能可观测，但在所有阶都没有 $(5a)\wedge(5b)$ 的增广	q1_false	feasibility_geometry	experiment
+300	300_shared_x_two_outputs.md	共享 $x$ 的两个乘法关系：$z_1=xy_1$、$z_2=xy_2$	q1_true	multiplication_gate	experiment
+301	301_fixed_x_barrier.md	固定 $x$ 的尝试：固定行只给线性关系，乘积必须用见证变量	q1_false	decision_algorithms	experiment
+302	302_input_x_attempts.md	输入固定 $x$ 的尝试：简单构造都退化，299/300 仍是见证变量门	q1_false	decision_algorithms	experiment
+303	303_79_verdict_lifts.md	(no title)	q1_false	decision_algorithms	experiment
+304	304_wiring_column_overlap.md	wiring 的列重合判据：$AN_j=N_l$ 强制 $H_{A,j}=H_l$	q1_true	multiplication_gate	prove
+305	305_wiring_obstruction.md	串联的 wiring 障碍：输出 $z$ 与输入 $y$ 在同一行，复制整行会破坏乘法	q1_true	multiplication_gate	experiment
+306	306_80_soundness_correction.md	80 号审计更正：303 的乘法门只是“实现”，不是 sound q1 gadget	q1_true	multiplication_gate	audit
+307	307_soundness_obligations.md	sound q1 gate 的三条证明义务；rank forcing 不足以救 303	q1_false	decision_algorithms	prove
+308	308_soundness_expressiveness.md	soundness 与表达力的张力：$k=\\operatorname{rank}H_0$ 时 sound 但线性；乘法需要变量行	q1_true	multiplication_gate	experiment
+309	309_port_rigidity.md	(no title)	q1_false	decision_algorithms	experiment
+30	30_occlusion_corrected.md	遮蔽判据的修正：需要 $h=n$，且用像的维数而非满射	q1_false	feasibility_geometry	prove
+310	310_moving_port.md	(no title)	q1_false	decision_algorithms	experiment
+311	311_81_verdict_routes.md	81 号裁决落实：固定子空间 no-go 收窄；固定 $q$ 有新算法；主线转 FPT	q1_true	multiplication_gate	audit
+312	312_fixed_q_proof_sketch.md	固定 $q$ 的多项式算法：$H=XB$ + 秩一致性的完整证明骨架	q1_false	decision_algorithms	prove
+313	313_fpt_proof_sketch.md	固定 $\\kappa_{\\rm obs}$ 的 FPT：完整引理链	q1_false	decision_algorithms	prove
+314	314_82_verdict.md	82 号裁决落实：$G=FX$ 简化、固定 $q$ 与 FPT 均获认可、$r=0$ 分支补上	q1_false	decision_algorithms	audit
+315	315_83_verdict_roadmap.md	83 号裁决落实：q1 三结局并存；主线算法，硬度转 ARM(3)	q1_true	arm_reduction	audit
+316	316_84_paper_verdict.md	84 号裁决落实：论文送审意见与修正	q1_false	decision_algorithms	audit
+317	317_85_verdict_r0.md	85 号裁决落实：$r=0$ 的精确铅笔测试（有限线性系统）	q1_false	decision_algorithms	audit
+318	318_paper_freeze_audit.md	论文冻结审计：剩余检查项逐条收口	q1_false	decision_algorithms	audit
+319	319_referee_report_revision.md	论文 referee report 落实：两处硬错误与结构性修订	q1_false	decision_algorithms	audit
+31	31_exhaustive_per_order.md	逐阶判定升级为穷举版：阶区间修正、图卡枚举、等价类先筛整数障碍	q1_false	feasibility_geometry	prove
+320	320_ieee_review_revision.md	87 号评审（学术版）落实：版式、摘要、措辞与若干修正	q1_false	decision_algorithms	audit
+320	320_left_inverse_degree.md	320 左逆证书次数 $\omega-1$ 猜想 与 固定 $q$ 的变量账本	q1_false	decision_algorithms	experiment
+321	321_expert93_verdict_and_degree_theorem.md	321 专家 93 号裁决落实：$d_{\min}=\nu-1$ 成为定理	q1_false	decision_algorithms	audit
+322	322_hyperplane_determinism_components.md	322 超平面情形：确定化不需要"掉落轨迹"，需要"全空间分量"	q1_false	c_stratification	experiment
+323	323_expert94_verdict.md	323 专家 94 号裁决落实：闭性证明更正；优先级改为"先做超平面分量定理"	q1_false	c_stratification	audit
+324	324_hyperplane_component_theorem.md	324 超平面层的有效分量定理：$\delta+1$ 成立，但分量不是底片	q1_false	c_stratification	prove
+325	325_theorem_c_cost_model.md	325 定理 C 的成本：整条超平面判定归约到一个 PIT	q1_false	c_stratification	prove
+326	326_eigenvector_form_of_badness.md	326 坏性的谱形式（**已更正**）：充分条件、行张成假设、以及"λ 随 v 移动"的三分	q1_false	decision_algorithms	audit
+327	327_lambda_movement_experiment.md	327 三分的实测：第 3 类（根随 $v$ 移动）真实存在	q1_false	c_stratification	experiment
+328	328_quotient_pencil_theorem.md	328 商铅笔定理（专家 95 号的 Result A）与三处更正	q1_false	decision_algorithms	audit
+329	329_forced_relations_quotient_pencil.md	329 商铅笔的强制关系：$C$ 的行落在 $U^\perp$ 里，白送 $p$ 个零组合	q1_false	c_stratification	experiment
+32	32_occlusion_applicability.md	遮蔽判据的适用范围：$z(x)\in K$ 的相容性条件	q1_false	feasibility_geometry	prove
+330	330_eigen_fibre_feasibility.md	330 特征纤维的可行性：一个好点就够（给出 $c=1$ 层的"是"实例）	q1_false	c_stratification	experiment
+331	331_eigenvector_criterion.md	331 这一族的 $c=1$ 层：判据就是"$K_0$ 里有没有特征向量"	q1_false	c_stratification	prove
+332	332_why_eigen_fibres_escape.md	332 为什么特征纤维逃得掉：强制关系 $\iff C\in\operatorname{row}L$	q1_false	c_stratification	experiment
+333	333_eigen_fibre_symbolic_certificate.md	333 特征纤维的符号证书：一整条 $\mathbb P^1$ 的行空间都给出 $\gcd=1$	q1_false	c_stratification	experiment
+335	335_expert96_verdict.md	335 专家 96 号裁决：非特征层全坏升为**定理**，判据降为临界维度的推论	q1_false	c_stratification	audit
+336	336_fibre_sufficiency_counterexample.md	336 纤维充分性猜想的**反例**：$K_0$ 含特征向量，整条特征纤维仍然全坏	q1_false	c_stratification	experiment
+337	337_lambda0_obstruction.md	337 $\lambda=0$ 障碍：命题、推论，以及"全坏可以有多个固定根"	q1_false	c_stratification	prove
+338	338_dimension_map_p1.md	338 维度图：$p=1$ 时非特征层**恒坏**；富余档只可能出现在 $p\ge2$	q1_false	c_stratification	experiment
+339	339_excess_regime_failed.md	339 富余档实验：没有造出合格层点（失败记录 + 一处被数值否掉的猜想）	q1_false	c_stratification	plan
+33	33_dimY_r1_test.md	$r=1$ 实例上检验遮蔽判据：可用的只有 3 个，但全部判对	q1_false	feasibility_geometry	prove
+340	340_excess_realization_result.md	340 富余档的反解实例：仍全坏——行约束比"行数账"更强	q1_false	c_stratification	experiment
+341	341_excess_regime_correction.md	341 富余档的更正：**可以好**——340 的全坏是 $A K_0\subseteq K_0$ 的退化情形	q1_false	decision_algorithms	audit
+342	342_expert97_audit.md	342 专家 97 号审计：两条承重结论被限定到"满行空间"；定理包与下一步	q1_false	decision_algorithms	audit
+343	343_stratified_cover_fix.md	343 Claim 1 的修复：判定只需要"有限个不可约块的覆盖"，不需要分量	q1_false	c_stratification	experiment
+344	344_three_theorems_and_two_level_criterion.md	344 三个正式命题（B / C / D）与"两级判据"框架	q1_false	c_stratification	paper
+345	345_pit_cost_n5_polynomial.md	345 两级判据的代价：$n=5$ 模式是**确定性多项式时间**可判的	q1_false	c_stratification	prove
+346	346_left_factor_incidence.md	346 左因子形式：坏 ⟺ $\operatorname{im}H$ 撞上 $S$ 的特征线（Claim 11 的几何形状）	q1_false	c_stratification	experiment
+347	347_excess_generic_theorem_instance.md	347 富余档：从"18/27 采样"到**该实例的定理**（Bézout 证书 + 两条一般定理）	q1_false	c_stratification	prove
+348	348_multi_instance_certificates.md	348 富余档证书的多实例化：3/5 有精确证书，2/5 未找到好点	q1_false	c_stratification	experiment
+349	349_fibre_all_bad_proved.md	349 整条纤维全坏（证明，不是采样）：generic gcd 在纤维参数空间上 $\ne1$	q1_false	c_stratification	prove
+34	34_q1_closed.md	Q1 闭合：零空间铅笔判据（专家 2026-11-03 §1）已核验；并修掉一个"抽样 λ"的 bug	q1_false	feasibility_geometry	audit
+350	350_admissible_v_are_eigenvectors.md	350 可容许的 $v$ 是**压缩矩阵的特征向量**——层参数其实离散	q1_false	c_stratification	experiment
+351	351_retract_instance_infeasibility.md	351 撤回 349 的过度结论：纤维全坏 $\ne$ 实例不可行（无理可容许方向救了 4245）	q1_false	c_stratification	audit
+352	352_number_field_decider.md	352 数域上的纤维判定器：YES 侧可用，三次域是性能墙	q1_false	c_stratification	experiment
+353	353_matlab_symbolic_speed.md	353 工具选择：MATLAB 的符号计算在"数域瓶颈"上比 sympy 快两个数量级	q1_false	c_stratification	experiment
+354	354_selfbuilt_number_field_decider.md	354 自建数域算术的判定器：4242/4245 可行，4246 仍无好点（非证明）	q1_false	c_stratification	prove
+355	355_resultant_false_positive.md	355 结式判据：修掉零系数 bug 后 4246 仍是"未判定"；4245 出现未解的不一致	q1_false	c_stratification	prove
+356	356_rational_conversion_bug.md	356 修掉有理数转换 bug：结式判据与点值判据现在一致	q1_false	c_stratification	prove
+357	357_rational_function_decider.md	357 $K(x)[\lambda]$ 上的 gcd：判定器双向完成，4246 被证明**不可行**	q1_false	c_stratification	prove
+35	35_consistency_checks.md	七条一致性检查落地（专家 2026-11-03 §8.6），并明确系数域与谱域	q1_false	feasibility_geometry	audit
+36	36_r1_algebraic_system.md	$r=1$ 的固定阶判定：显式代数系统与一个结构实验	q1_false	feasibility_geometry	experiment
+370	370_c1_layer_complexity.md	370 $c=1$ 层判定器的复杂度：**固定 $p$ 时多项式时间**	q1_false	c_stratification	experiment
+371	371_eigen_direction_soundness.md	371 判定器的可靠性修补：特征方向不能"跳过"	q1_false	c_stratification	experiment
+372	372_decider_complete.md	372 判定器补完：纤维参数维度取 $\rho$，覆盖特征方向	q1_false	c_stratification	experiment
+373	373_expert101_audit.md	373 专家 101 号审计：三处必须修正；核心方向被确认	q1_false	decision_algorithms	audit
+374	374_complete_parameterization.md	374 完整的超平面层参数化定理（专家 101 号 §17 的目标）	q1_false	c_stratification	audit
+375	375_stage2_bit_complexity.md	375 Stage 2：单谱时 $c=1$ 的判定是多项式时间（位复杂度）	q1_false	c_stratification	experiment
+376	376_repeated_eigenvalue_matters.md	376 重特征值确实要命：同一特征空间里不同方向给出不同结论	q1_false	c_stratification	experiment
+377	377_expert103_audit.md	377 专家 103 号审计：漏了预设行 $L_0$；相对 Graßmannian；三处修正	q1_false	decision_algorithms	audit
+378	378_parameterization_with_L0.md	378 带预设行的完整参数化定理（103 号 §7.8 修正的落实）	q1_false	c_stratification	audit
+379	379_prescribed_row_implementation.md	379 带预设行的实现：NO 证书跑通；YES 侧未找到	q1_false	c_stratification	experiment
+37	37_coordinate_rows.md	坐标行限制：一个组合化子问题（专家 §3.2 第 2 项）	q1_false	feasibility_geometry	audit
+380	380_chart_parametrization.md	380 图卡参数化：纠正 379 的"未找到"；$L_0=e_6,\ q=4$ 其实可行	q1_false	c_stratification	experiment
+381	381_m_ge_2_chart.md	381 $m\ge2$ 的图卡：结式判据；$L_0=e_6$ 在 $q=4,5,6$ 全部可行	q1_false	c_stratification	prove
+382	382_general_m_two_way.md	382 任意 $m$ 的双向判定：多变量 gcd 接上了	q1_false	c_stratification	experiment
+383	383_number_field_screen.md	383 数域接入（第一层）：方向筛在数域上可用	q1_false	c_stratification	experiment
+384	384_expert105_audit.md	384 专家 105 号审计：$L_0$ 的秩是硬错误；缺"满秩首项系数引理"	q1_false	decision_algorithms	audit
+385	385_L0_rank_resolution.md	385 $L_0$ 秩问题的解决：它是问题定义隐含的必要条件；并补满秩引理	q1_false	c_stratification	prove
+386	386_bit_complexity_proof.md	386 位复杂度：固定 $p$、几何单谱时的多项式时间（七步路线的落实）	q1_false	decision_algorithms	audit
+387	387_number_field_chart_gcd.md	387 数域上的图卡 gcd：实现与定理范围对齐	q1_false	c_stratification	prove
+388	388_expert106_structure.md	388 专家 106 号：论文框架的裁决与修订后的架构	q1_false	decision_algorithms	audit
+389	389_lean_inventory.md	389 Lean 现状盘点：本文、两篇姊妹稿、与 GitHub artifact 仓库	q1_false	decision_algorithms	audit
+38	38_certificates_and_domain.md	带证书的逐阶判定 + 谱域参数化（专家 §8.1、§8.4、§8.6 的落地）	q1_false	feasibility_geometry	audit
+390	390_arm_translation_analysis.md	352 ARM(3) → q1：前史清点与一次独立的可行性分析	q1_true	arm_reduction	experiment
+390	390_hyperplane_lean.md	390 Lean：超平面层论文的方向定理与预设行引理（已形式化）	q1_false	c_stratification	paper
+391	391_c_gt_1_entry.md	391 $c\ge2$ 的入口：历史工作盘点与一个必须先修的量（$\omega$ 的定义）	q1_false	decision_algorithms	audit
+391	391_multiplication_pinning.md	353 乘法门再试：钉住引理与"钉住 ⟹ 线性、不钉住 ⟹ 逃逸"的权衡	q1_true	multiplication_gate	prove
+392	392_expert107_audit.md	392 专家 107 号审计：我的纤维公式是错的；层号定为 $c=k-\rho$；先做 $K$-split 子类	q1_false	c_stratification	audit
+392	392_pinned_gadgets_cannot_multiply.md	354 钉住不可能给乘法：可行集是线性空间的 Zariski 开集	q1_true	multiplication_gate	experiment
+393	393_c2_fibre_and_base.md	393 Phase 3+4：修正后的纤维；$c=2$ 的底几何（三种谱情形）与"单谱有限可判"	q1_false	c_stratification	experiment
+393	393_maximality_lemma.md	355 极大性引理：可行点**不能被放大**——逃逸只有"缩小"一条路	q1_false	c_stratification	prove
+394	394_c2_total_charts.md	394 Phase 5：$c=2$（$K$-split）的总图卡与判定算法	q1_false	decision_algorithms	experiment
+394	394_expert98_audit.md	356 专家 98 号审计：三定理成立；两处结论收窄；"pinned no-go" 成为可直接引用的定理	q1_true	multiplication_gate	audit
+395	395_c2_to_q1.md	395 从 $c=2$ 到 $q1$：路线与诚实的障碍分析	q1_false	c_stratification	plan
+395	395_clp_single_row.md	357 候选线性原理（CLP）：$m=1$ 时成立（定理），$m\ge2$ 待测	q1_true	multiplication_gate	prove
+396	396_clp_counterexample.md	358 CLP 在 $m=2$ 的反例：降秩层是**奇异三次超曲面**，可行集不在任何线性空间里	q1_true	multiplication_gate	experiment
+396	396_layer_feasibility_probe.md	396 层可行性的实验：$V=U_D^\perp$ 全部坏；但那些 $q$ 上纤维是单点	q1_false	c_stratification	experiment
+397	397_layer_nomonotone.md	397 层号**不单调**：同一阶 $q=3$ 上 $c=2$ 可行而 $c=1$ 不可行	q1_false	c_stratification	experiment
+397	397_no_go_all_strata.md	359 完整 no-go：仿射线性解码下，**任何层**都编不出非平凡乘法	q1_true	multiplication_gate	experiment
+398	398_expert99_audit.md	360 专家 99 号审计：核心定理成立，四处更正；结论范围收窄	q1_false	decision_algorithms	audit
+398	398_unified_exists_theta.md	398 层程序的统一形式（$\exists\Theta$ 的一个具体化）与"一次判定"的障碍	q1_false	decision_algorithms	experiment
+399	399_layer_paperII_dictionary.md	399 层程序 ↔ Paper II 的 $W$-表述：字典成立，但消不掉参数	q1_false	c_stratification	experiment
+399	399_relation_gadgets_impossible.md	(no title)	q1_false	c_stratification	experiment
+39	39_elimination_attempt.md	§8.1 的正面进攻：消元器、单参数完整判定，以及一个未解决的 bug	q1_false	feasibility_geometry	experiment
+400	400_and_composition.md	362 新架构第一块砖：非空性条件可以 **AND 组合**（块对角直和）	q1_true	multiplication_gate	experiment
+400	400_rho_overload_fix.md	400 更正：$\rho$ 被重载（393/394 的 $\dim T_D$ 写错）；重根分量采样全坏	q1_false	decision_algorithms	audit
+401	401_and_soundness.md	363 AND 组合的 soundness：锚定保护住了"关块"攻击，但"匹配"攻击未排除	q1_true	multiplication_gate	experiment
+401	401_rank_one_A21.md	401 可控实例：$A_{21}$ 秩 1，使 $\Gr(2,E_1)$ 同时含 $r=0$ 与 $r=1$ 两层	q1_false	c_stratification	experiment
+402	402_two_block_soundness.md	364 两块、$m=2$ 的直和 **soundness 成立**（手算证明）	q1_true	multiplication_gate	prove
+402	402_two_strata_decide.md	402 两层的逐层判定：$r=0$ 层 gcd **次数会变**（1/2），但**正性一致**；两层都没找到可行点	q1_false	decision_algorithms	experiment
+403	403_k_block_soundness.md	365 $k$ 块直和的 AND soundness：结构引理 + 8 种模式验证 + 归纳假设	q1_true	multiplication_gate	prove
+403	403_lean_c2_and_selfcheck.md	403 $c=2$ 的 Lean 核验：$K$-split 纤维的三条引理；以及一轮过程自查	q1_false	c_stratification	audit
+404	404_expert108_audit.md	404 专家 108 号审计：三处真错误 + 两处撤退 + 一条新命题	q1_false	decision_algorithms	audit
+404	404_or_not.md	366 OR / NOT：NOT 可以免费拿到；OR 不通，障碍已定位	q1_true	multiplication_gate	experiment
+405	405_layer_separation_and_equations.md	(no title)	q1_false	c_stratification	experiment
+405	405_real_generic_point.md	405 实一般点判据（专家 108 号 Priority 2 第 5 项）：陈述与证明	q1_false	decision_algorithms	audit
+406	406_eliminate_W.md	406 消掉 $W$：铅笔只通过 $\Phi(W)\subseteq D^\circ$ 依赖 $W$（$c=2$ 时是 $\mathbb P^1$ 族）	q1_false	c_stratification	experiment
+406	406_expert100_audit.md	368 专家 100 号审计：$k$ 块合取被证明；"只给开条件"被撤回	q1_false	decision_algorithms	audit
+407	407_effective_charts.md	407 算法可实现性（专家 108 号 Priority 2 的 6、7）：系数域取 $\mathbb Q$ 即可；图卡可显式枚举	q1_false	decision_algorithms	audit
+407	407_mixed_anchor_equations.md	(no title)	q1_false	c_stratification	experiment
+408	408_c2_complexity.md	408 固定 $c=2$ 的复杂度定理（专家 108 号 Priority 3-10）：单谱 ⟹ $\mathrm{poly}(n,\tau)$	q1_false	c_stratification	audit
+408	408_equation_gate_layer_masking.md	370 等式门成立（层 1 $\iff t=0$），但决策对层取 $\exists$ 会遮住它	q1_true	multiplication_gate	experiment
+409	409_hardness_plan.md	409 规划记录：硬度那一支（专家 108 号 Priority 3-12），暂不启动	q1_true	multiplication_gate	audit
+409	409_usable_equation_gate.md	(no title)	q1_false	c_stratification	experiment
+40	40_sympy_elimination.md	sympy 可用：§8.1 的精确消元终于跑起来了（附可靠性条件）	q1_false	feasibility_geometry	experiment
+410	410_disjunction_obstruction.md	(no title)	q1_false	c_stratification	experiment
+410	410_general_c.md	410 更高阶的 $c$ 怎么处理	q1_false	c_stratification	experiment
+411	411_expert102_audit.md	373 专家 102 号审计：Route A（层 2 遮蔽）**错了**；等式门要改显示；析取墙降为"未决"	q1_true	multiplication_gate	audit
+411	411_expert109_audit.md	411 专家 109 号审计：可实现性要补维数不等式；II.5 的有理图卡**撤回**	q1_false	decision_algorithms	audit
+412	412_booleanity_gate.md	374 布尔性门：可行 $\iff x(x-1)=0$（即 $x\in\{0,1\}$）	q1_true	multiplication_gate	experiment
+412	412_rowspace_identity_proof.md	412 行空间恒等式的一般矩阵证明（专家 109 号 Priority 1 的收尾）	q1_false	decision_algorithms	audit
+413	413_equation_conjunction_and_mismatch.md	(no title)	q1_false	c_stratification	experiment
+413	413_exact_arithmetic_c2.md	413 $c=2$ 单谱定理的精确算术与位复杂度（专家 109 号 Priority 2）	q1_false	c_stratification	audit
+414	414_expert110_audit.md	414 专家 110 号审计：三值→**二值**（可证）；A.2 的谱分支补全；A.1 约定修正；成果固定	q1_false	decision_algorithms	audit
+414	414_witness_side_vacuous.md	(no title)	q1_false	c_stratification	experiment
+415	415_hardness_line_closure.md	(no title)	q1_false	c_stratification	experiment
+415	415_test_suite_spec.md	415 $c=2$ 的 10 类精确测试集：**规格说明**（供论文侧实现）	q1_false	c_stratification	paper
+416	416_dim_dual_annihilator_fix.md	416 **更正**：$\dim D^\circ=\omega$（不是 $c$）；铅笔整体落在 $D^\circ$ 里；有效参数受 $n-k\le2p$ 控制	q1_false	decision_algorithms	audit
+416	416_selfcheck_closure_retracted.md	378 自查：377 的"收束"不成立；硬度线**未**闭合	q1_true	multiplication_gate	audit
+417	417_expert104_audit.md	379 专家 104 号审计：撤回被认可；**活跃子空间刻画**成为新的中心定理	q1_false	decision_algorithms	audit
+417	417_test_data_fix_and_qb_counterexample.md	417 测试数据的更正 + Q-B 的一个反例：纤维条件**不能**化为维数比较	q1_false	c_stratification	audit
+418	418_active_subspace_first_check.md	380 里程碑 1–2：活跃子空间判据在布尔性门上 3/3 与暴力一致；**活跃 $W$ 随参数改变**	q1_true	multiplication_gate	prove
+419	419_active_set_discrete.md	381 里程碑 3：活跃 $W$ 集合是**离散且受参数控制**的；布尔值 $\leftrightarrow$ 坐标点	q1_true	multiplication_gate	experiment
+41	41_symbolic_chart_gcd.md	逐图卡符号 gcd 分析：§8.1 的谱层做到"无网格"	q1_false	feasibility_geometry	experiment
+420	420_multiactive_tension.md	382 里程碑 4 的前置分析：活跃集是什么类型的集合？（含一处自查更正）	q1_false	decision_algorithms	audit
+421	421_omega1_excluded.md	383 结构约束：$\omega=1$ 时活跃集**不可能**是多个孤立点	q1_false	c_stratification	experiment
+422	422_trivial_layer.md	384 解释 $r_0=0$ 全"不可行"：**$\omega=0$ 平凡层被我跳过了**	q1_false	c_stratification	experiment
+423	423_layer_table_check.md	385 完整层表（含 $\omega=0$）：$r_0=0$ 恒可行的确认；布尔性门判定不变	q1_true	multiplication_gate	experiment
+424	424_m4_probe.md	386 里程碑 4 的探针与结构性判断：多活跃点可能根本不存在	q1_false	c_stratification	experiment
+425	425_multi_active_found.md	387 里程碑 4：**多活跃点存在**（$\operatorname{Gr}(2,3)$ 上 2 个活跃 $W$）；386 的条件性判断被否	q1_false	c_stratification	experiment
+426	426_retract_multi_active.md	388 撤回 387：那两个"活跃 $W$"是**采样假象**；正确的单 $W$ 判据是"在 $T_W$ 内部采样"	q1_false	decision_algorithms	audit
+427	427_criterion_validated.md	389 判据验证通过；$\omega<k$ 的层**本质退化**（这才是 $\omega=2$ 撞不到的原因）	q1_false	c_stratification	prove
+428	428_expert105_audit.md	428 专家 105 号审计：相容轨迹是一个 Grassmannian（新定理）；全局开性是下一个关键	q1_false	decision_algorithms	audit
+429	429_p1_classification.md	429 $k=2,\omega=1$ 的活跃集分类定理：空 / 单点 / 开——**无孤立多点**	q1_false	c_stratification	prove
+42	42_symbolic_decision_closed.md	符号闭环：逐阶判定"可行给见证、不可行给 gcd 证书"	q1_false	feasibility_geometry	experiment
+430	430_omega2_exact.md	430 $\omega=2$（$k=3$）的精确搜索：全是"固定公因子"，与既有"非特征层恒坏"定理吻合	q1_false	c_stratification	prove
+431	431_top_layer_classification.md	431 顶层 $\omega=k$ 的精确分类：$r<k$ 与 $r=k$ 必坏；$r\ge k+1$ 可行，**除非数据强制出公因子**	q1_false	c_stratification	experiment
+432	432_top_layer_criterion.md	(no title)	q1_false	c_stratification	experiment
+433	433_drop_criterion.md	433 特征值降秩判据与它的**可编程构造**；以及它**不解释**中间层的死亡	q1_false	c_stratification	prove
+434	434_hardness_status.md	(no title)	q1_false	c_stratification	experiment
+435	435_characteristic_dead.md	(no title)	q1_false	c_stratification	experiment
+436	436_expert106_audit.md	436 专家 106 号审计：**中间层"恒不可行"被反例推翻**；顶层秩补全条件也错了	q1_false	c_stratification	audit
+437	437_eval_map_criterion.md	437 $E_\lambda$ 判据：可计算的**点态**必要条件；反例与特征族都被它解释	q1_false	c_stratification	prove
+438	438_sufficiency.md	(no title)	q1_false	c_stratification	experiment
+439	439_projection_shapes.md	439 投影条件在具体族上的形状：$\mathcal S$ 是"$B$ 的图"时 ⟺ $W$ 是 $B$-不变（**闭**）	q1_false	c_stratification	experiment
+43	43_drop_locus.md	更正：`deg≥1` 不等于"所有 $\theta$ 都失败"——可行点恰在 gcd 的**掉落轨迹**上	q1_false	feasibility_geometry	audit
+440	440_S_closed_subspaces.md	440 可行 $W$ 的代数身份：**$\mathcal S$-闭子空间**（图族 = 不变子空间，故可判）	q1_false	c_stratification	experiment
+441	441_projection_not_sufficient.md	(no title)	q1_false	c_stratification	experiment
+442	442_three_conditions.md	442 中间层的三条件图景：必要（$E_\lambda$）／充分（零配偶）／灰色带（有反例）	q1_false	c_stratification	experiment
+443	443_gray_band_has_feasible.md	443 灰色带**非空**（可行侧）：$(E)$ 不蕴含 $(F)$，$(Z)$ 也不必要	q1_false	c_stratification	experiment
+444	444_threshold_criterion.md	444 阈值数据支持判据：可行 $\iff\mathcal T_W=W\oplus W$（$\mathcal S\supseteq W\oplus W$）	q1_false	c_stratification	prove
+445	445_internal_conflict.md	445 自查发现**内部矛盾**：$(E)$ 与 $(F)$ 的数据不可信，需回到测试本身	q1_false	decision_algorithms	audit
+446	446_bug_located.md	446 bug 定位：`c385` 的 $(E)$ 实现错；构造性判定与 $(E)$ 一致；444 的判据得到支持	q1_false	decision_algorithms	prove
+447	447_criterion_summary.md	(no title)	q1_false	c_stratification	experiment
+448	448_criterion_corrected.md	448 再更正：判据不是"$\dim\mathcal T_W=2\omega$"，而是 $(E)$；$\dim=2\omega-1$ 也能满足 $(E)$	q1_false	decision_algorithms	audit
+449	449_expert107_audit.md	449 专家 107 号：中间层命题漏了 (R)（秩补全）；其余认可	q1_false	c_stratification	audit
+44	44_drop_locus_impl.md	掉落轨迹：概念、实现骨架与可靠性边界（未完成，但有明确结论）	q1_false	feasibility_geometry	experiment
+450	450_shadow_idea.md	450 从算法线借来的关键启发：**W-消去定理**（$\exists W$ 可以塌缩成低维搜索）	q1_false	decision_algorithms	prove
+451	451_split_collapse.md	451 迁移落实：split 设计下 (R)(E) 只通过 $\Phi(W)$ 依赖 $W$	q1_false	decision_algorithms	audit
+452	452_E_simplified.md	(no title)	q1_false	c_stratification	experiment
+453	453_fixed_point.md	(no title)	q1_false	c_stratification	experiment
+454	454_open_not_closed.md	(no title)	q1_false	c_stratification	experiment
+455	455_cross_line_impact.md	455 算法线 412 号对我这条线的影响：$W$-分解从"逐例算"升级为**一般定理**	q1_false	decision_algorithms	prove
+456	456_generic_fails.md	456 更正 454：条件**不是开**的；"测泛型 $W$"**失败**（0/5）	q1_false	decision_algorithms	audit
+457	457_constructible.md	457 类型的结构判断：条件是 $q$ 的**行列式型** ⟹ 可行集是**构造性集**（不是开）	q1_false	c_stratification	experiment
+458	458_constant_rank.md	458 分层结构的实测：$M(q)$ 在测试实例上**常秩**，但条件仍依赖 $q$ **有理地** ⟹ 构造性集	q1_false	c_stratification	experiment
+459	459_hardness_paths.md	459 硬度侧：我现在在做什么，以及还没试过的路径	q1_true	multiplication_gate	experiment
+45	45_bezout_rank.md	专家的 $(*)$ 判据落地：Bézout 系数矩阵的秩等式（C4 的第三个证明）	q1_false	feasibility_geometry	audit
+460	460_paper_review_lessons.md	460 从 Paper I/II 的专家评审里得到的三条hardness 侧工具	q1_false	decision_algorithms	audit
+461	461_whole_chart.md	(no title)	q1_false	c_stratification	experiment
+462	462_chart_check.md	462 实证：每卡一个泛型点 = 网格枚举（4/4）——461 的整卡判据可用	q1_false	c_stratification	prove
+463	463_expert108_audit.md	463 专家 108 号：记号冲突 + "整卡"论证过强；他给了更简单的泛型秩路线	q1_false	decision_algorithms	audit
+464	464_proposition_A.md	(no title)	q1_false	c_stratification	experiment
+465	465_Q_components.md	(no title)	q1_false	c_stratification	experiment
+466	466_rank_stratum_vacuous.md	(no title)	q1_false	c_stratification	experiment
+467	467_two_more_retractions.md	467 专家第 118 轮：**两处硬错被推翻**（命题 A 与"秩分层空转"）；低秩点可行	q1_false	c_stratification	audit
+468	468_three_levels_and_minimal_example.md	468 采纳专家的框架：$D_I(X)$、A1/A2 拆分、最小反例（$k=2,\omega=1,U=0$）	q1_false	decision_algorithms	audit
+469	469_D_I_general.md	469 一般 $D_I(X)$ 与同构定理：秩跳变就是 $\det D_I$ 的零点	q1_false	c_stratification	prove
+46	46_bezout_regression.md	P1：用 $(*)$ 判据做全回归（结果：只证了不可行方向，可行方向缺"按秩析取"）	q1_false	feasibility_geometry	prove
+470	470_explicit_R_E.md	(no title)	q1_false	c_stratification	experiment
+471	471_Z_parametrization.md	(no title)	q1_false	c_stratification	experiment
+472	472_linear_preimage_fails.md	472 撤回 471：线性原像**不**保持实点稠密（$2\times2$ 反例）；改为审查 $D_I$ 的结构	q1_false	decision_algorithms	audit
+473	473_three_steps.md	473 专家三步落实：$D_I$ 的块结构 / 最小模型分类 / 结论（**A2 保留**）	q1_false	decision_algorithms	audit
+474	474_minors_identities.md	474 专家校准（存档）+ 第一层：$2\times2$ 子式的代数恒等式	q1_false	c_stratification	audit
+475	475_b3_obstruction.md	475 第二层：$b=3$ 时**障碍确实出现**（旋转块），但该实例仍**有有理可行点**	q1_false	c_stratification	experiment
+476	476_feasible_ell_rank1.md	476 结构性引理：可行 $\ell$ **必须**落在秩 $\le1$ 层（搜索空间因此是有限的）	q1_false	c_stratification	prove
+477	477_eigenvector_theorem.md	(no title)	q1_false	c_stratification	experiment
+478	478_E_lambda_coupled.md	478 撤回 452：$E_\lambda(\mathcal T_W)\ne\lambda\pi_1+\pi_2$（投影是**耦合**的）；477 的实/复错配实例随之作废	q1_false	decision_algorithms	audit
+479	479_fixed_W_with_row_budget.md	479 自由行预算版判据 (FW)：**证明成立**（必要性 + 充分性 + 行数精确性）	q1_false	c_stratification	prove
+47	47_x_vs_xsp.md	$X$ 与 $X_{\rm sp}$ 的结构：**两类**实例，而不是"总是薄"	q1_false	feasibility_geometry	experiment
+480	480_grassmann_parameterization_of_FW.md	480 阶段 3A/3B：$\mathcal U$ 的 Grassmann 参数化 与 (R) 的秩条件（(FW) 的商空间形式）	q1_false	c_stratification	experiment
+481	481_pencil_gcd_and_specialization.md	(no title)	q1_false	c_stratification	experiment
+482	482_stage3D_realpoints.md	(no title)	q1_false	c_stratification	experiment
+483	483_realpoint_certificate.md	483 实点证书定理：$V(\mathbb R)$ 中的点**确实**给出真实的实数观测器设计	q1_false	c_stratification	prove
+484	484_exceptional_recursion.md	(no title)	q1_false	c_stratification	experiment
+485	485_existsR_encoding.md	(no title)	q1_false	c_stratification	experiment
+486	486_recursion_effectivity.md	(no title)	q1_false	c_stratification	experiment
+487	487_complexity_audit.md	487 复杂度审计：直接 $\exists\mathbb R$ 公式的规模；两条优先检查（一条成立、一条否定）	q1_false	decision_algorithms	audit
+48	48_rank_stratification_needed.md	快速充分判据的边界：**秩跌落太常见**，"满行秩 ⟹ 可行"几乎不触发	q1_false	feasibility_geometry	prove
+49	49_rank_stratified_impl.md	秩分层落地：在 "$\operatorname{rank}[V|Z]=\rho$" 的层上跑 $(*)$ 判据	q1_false	feasibility_geometry	prove
+50	50_decide_full_defect.md	`decide_full`（分层 + $(*)$ 的完整判定）：**未打通**，记录缺陷	q1_false	feasibility_geometry	plan
+51	51_tool_coverage_table.md	A 的收尾：工具覆盖表（哪些能用、哪些不能用、为什么）	q1_false	feasibility_geometry	experiment
+52	52_encoding_size_exponential.md	B：编码规模**指数增长**——"$\exists\mathbb R$ 成员性"这条路走不通	q1_false	feasibility_geometry	experiment
+53	53_expert3_corrections.md	专家 §4/§5 的更正与行动清单（2026-11-03 第三封）	q1_false	feasibility_geometry	audit
+54	54_theta_elimination.md	$\\theta$ 上的行列式消元：$(5a)$ 与 $(5b)$ 并成一个系统（C4 的第四个证明 + 26 实例的证书化判定）	q1_false	feasibility_geometry	prove
+55	55_qmin_sweep_slow.md	$q_{\\min}$ 的证书化扫描：能给出真实阶差，但**太慢**	q1_false	feasibility_geometry	experiment
+56	56_witness_scan.md	见证优先的快速扫描：89 个实例 48 秒，74 个给出 $q_{\\min}$ 的**上界**（带证书）	q1_false	feasibility_geometry	experiment
+57	57_gap_arithmetic.md	阶差能否由**纯算术量**预测？——73/74 命中，且"有阶差"方向无假阳性	q1_false	feasibility_geometry	experiment
+58	58_implicit_encoding.md	隐式多项式矩阵路线（专家 Q5 首选）：结构化编码是**多项式规模**的	q1_false	feasibility_geometry	audit
+59	59_observability_reduction.md	核验专家的**可观性归约**：固定候选的谱检验降为 $q$ 维可观性秩计算	q1_true	multiplication_gate	audit
+60	60_incidence_dimension.md	incidence variety 的维数与覆盖判据（专家 work package 4）	q1_false	feasibility_geometry	audit
+61	61_ii4_audit.md	II.4 的审计：两个被排除的轨迹与非闭像（专家 2026-11-04 §2）	q1_false	feasibility_geometry	audit
+62	62_structured_search.md	结构化搜索第二个整族 Type III 实例（专家 §Step 2）	q1_false	feasibility_geometry	audit
+63	63_reverse_construct.md	反向构造：整族 Type III **不是孤例**（第二个实例，且 gap=2）	q1_false	feasibility_geometry	experiment
+64	64_gadget_probe.md	gadget 探针：整族不可行是否对数据扰动能"撑住"？	q1_true	multiplication_gate	experiment
+65	65_single_lambda.md	单-λ 覆盖证书（B.13e）：整族不可行的可判充分条件，且恰好刻画探针族	q1_false	feasibility_geometry	prove
+66	66_scalar_gadget.md	标量情形：不可行 $\iff$ **一个二次方程**（gadget 构件，B.13f）	q1_true	multiplication_gate	experiment
+67	67_scalar_degenerate.md	构件 2 失败：$\dim V=\dim K=1$ 的标量情形是**退化**的（B.13f 的二次方程没有内容）	q1_false	feasibility_geometry	experiment
+68	68_dim2_boundary.md	$\dim V=\dim K=2$ 的可行性边界：$V\cap K=0$ 要求 $2p+r\ge n$	q1_false	feasibility_geometry	experiment
+69	69_base_quadrics.md	构件 3：底座上的不可行条件 = 一组二次方程（充分，不必要）	q1_false	feasibility_geometry	experiment
+70	70_t_star.md	落实专家 2026-11-04 对 13 号简报的意见：两处收紧 + 两个新结果	q1_false	feasibility_geometry	audit
+71	71_two_copy.md	两副本直和实验：阶差在第一个测试上可加（$q_0$ 与 $q_{\min}$ 都加倍）	q1_true	multiplication_gate	experiment
+72	72_lemmaA.md	Lemma A 的第一轮证明尝试：两副本的阶差可加**已证**（走单-λ 证书），且阶差无界	q1_false	feasibility_geometry	prove
+73	73_lean_lemmaAB.md	Lemma A / Lemma B 的 Lean 内核（两个文件，0 error 0 warning）	q1_false	feasibility_geometry	paper
+74	74_avoid.md	Q3 的定型：AVOID —— 带约束的"正则子铅笔"问题	q1_false	feasibility_geometry	experiment
+75	75_expert14.md	落实专家 2026-11-04 的评审：他独立导出同一基础定理 + 四条可执行建议	q1_false	feasibility_geometry	audit
+76	76_stratum.md	分层判据（B.16）：按 s = dim(V∩Z) = 按 rank(J_Z|_V) 分层	q1_false	feasibility_geometry	prove
+77	77_middle_strata.md	中间层：结构限制（A(V∩Z) ⊆ Z）+ 一个"铅笔不满秩但可行"的显式反例	q1_false	feasibility_geometry	experiment
+78	78_conjecture_refuted.md	"中间层永不失败"猜想：**被推翻**（并说明为什么它本来就不该成立）	q1_false	feasibility_geometry	experiment
+79	79_avoid_control.md	J5 对照实验：结构化的 $V,K$ 使谱失败率从 25% 升到 67%	q1_false	feasibility_geometry	experiment
+80	80_b17.md	落实专家评审（B.17 永久核与商铅笔判据 + 六点符号验证文档 + 措辞更正）	q1_false	feasibility_geometry	audit
+81	81_class_I.md	Class I（$p=r=1$）的结构测绘：$\rho=q-1$、Type I 的二分、$q=2$ 的强制候选不可容许	q1_false	feasibility_geometry	experiment
+82	82_class_I_gap.md	Class I（$p=r=1$）的阶差很大：$q_0,q_0+1,q_0+2$ 三阶全无可行增广	q1_false	feasibility_geometry	experiment
+83	83_class_I_image.md	B.18c：$p=r=1$ 的"坏像"落在 $\ker c$ 内；$d=1$ 的判据是**像的包含**	q1_false	feasibility_geometry	prove
+84	84_class_I_d1.md	Class I 的 $d=1$ 分类：可容许的直线**都在坏像里**（0/44 的采样证据）	q1_false	feasibility_geometry	experiment
+85	85_class_I_e_split.md	Class I 的 $d=1$：两半已证，第三半是猜想	q1_false	feasibility_geometry	experiment
+86	86_class_I_e_proved.md	Class I 的 $d=1$ 收束：第 3 条已证（次数论证）+ Lean 内核	q1_false	feasibility_geometry	paper
+87	87_lean_criteria.md	三条核心判据补 Lean：`Criterion.lean`（B.16b、B.17、B.13c 的内核）	q1_false	feasibility_geometry	paper
+88	88_expert_revision.md	按专家 2026-11-05 的审稿意见修订：B.8 拆分、B.9 等号情形、B.11d 边界、B.13f 措辞、标签制度、公理审计	q1_false	feasibility_geometry	audit
+89	89_equality.md	等号情形 $h=q+r_1$：新增 B.19（顶层与等号互斥，已证），等号排除仍开放	q1_false	feasibility_geometry	experiment
+90	90_b22.md	等号情形 $h=q+r_1$ 关闭：B.22（专家证明）+ B.8b/B.19/B.11d 全面修正 + Lean 内核	q1_false	feasibility_geometry	audit
+91	91_b23.md	Class I 的 $d\ge2$：先做出谱侧的统一因子化（B.23）	q1_false	feasibility_geometry	experiment
+92	92_workstream_A.md	Workstream A 完成：B.25（矩形铅笔 $D-\lambda U$ 判据）+ WorkA.lean（秩公式，exit=0）	q1_false	feasibility_geometry	prove
+93	93_class_I_qmin_theorem.md	Class I 的 $q_{\min}=n-1$ —— 从猜想变成定理（B.26 + B.27）	q1_false	feasibility_geometry	prove
+94	94_p1_general_r.md	$p=1$、任意 $r$：$q_{\min}=n-1$（B.29）——并修正专家对 $p=1,r=2$ 的一个猜测	q1_false	feasibility_geometry	audit
+95	95_delta_22.md	$(2,2)$ 与 $\delta$ 三分：中间层**可行**，Class I 是极端情形	q1_false	feasibility_geometry	experiment
+96	96_b31_certificate.md	中间层可行性的真正形式：B.31（必要条件）+ 显式证书	q1_false	feasibility_geometry	experiment
+97	97_narrow_intermediate.md	最窄中间层 $r_1=p+2$（$\rho=2$）：$\delta=1$ 层全可行、阶差 $\le2$	q1_false	feasibility_geometry	experiment
+98	98_two_stage.md	落实专家 §5.3/§5.4 与 §8.2：两阶段流程（可靠、省 44%）+ Δ 剖面与阶差	q1_false	feasibility_geometry	audit
+488	488_arm_interface_rowcount_nogo.md	行包含接口 X=[L;L_fix] 的 no-go：q1 不约束 rank L	q1_true	arm_reduction	prove
+489	489_spectral_rank_forcing.md	谱条件不提供秩上界；剩余靶子是谱秩强制 gadget	q1_true	arm_reduction	prove
+490	490_q4_family_probe.md	q=4 可提升族中 det H=0 不是门（12 个可行点）	q1_true	rank_gates	experiment
+491	491_k5_probe.md	k=5 随机探针：采样到不了秩退化轨迹（3/400，0 个 (5a)）	q1_true	rank_gates	experiment
+492	492_k5_span_subfamily.md	k=5 子族 r2∈span(e1,e2,r1) 恒不可行（(5a) 迫使 r14=r15=0）	q1_true	rank_gates	prove
+493	493_q4_k5_family_infeasible.md	q=4,k=5,L0=[e1;e2] 整族不可行（rank4 有特征值；rank3 两情形全灭）	q1_true	rank_gates	prove
+494	494_q4_L0e1e3_infeasible.md	q=4,k=5,L0=[e1;e3],A=J5 整族空集（(5a) 迫使 rank H=4）	q1_true	rank_gates	prove
+495	495_q5_natural_lift_fails.md	q=5 自然提升下 285 的门不可实现（(5a) 迫使 H[:,3] 冲突）	q1_true	rank_gates	prove
+496	496_eigenvector_obstruction.md	K0 内 A 的特征向量必须落在 ker H（否则 (5b) 失败）；q=5 扫描 0 可行	q1_true	rank_gates	prove
+497	497_q5_fullshift_rank3_open.md	q=5 完整移位 A：rank4 排除，rank3 构造 172 点全败但未解决	q1_true	rank_gates	experiment
+498	498_q5_rank3_excluded.md	q=5 完整移位 A：rank-3 分支关闭（(5a) 迫使 rank H_A≤2）	q1_true	rank_gates	prove
+499	499_q5_gate_kernel_conflict.md	285 的门在完整移位族不可提升（ker H 含自由 e2）	q1_true	rank_gates	prove
+500	500_q5_candidateA_forces_x_zero.md	候选 A 下 (5a) 迫使门参数 x=0	q1_true	rank_gates	prove
+501	501_q5_x_pinned_by_L0.md	285 门的 x 被 L0 钉死，不是自由参数	q1_true	rank_gates	prove
+502	502_gate_logic_omega2.md	门的逻辑：rank P≤ω；on-gate 需 ω=2 且 Z|W 无特征向量	q1_true	rank_gates	plan
+503	503_standard_kernel_Ainvariance.md	标准核向量的 A-不变性：ej∈ker H 且 Aej∈K0 ⇒ Aej∈ker H	q1_true	rank_gates	prove
+504	504_noncoordinate_kernel_fails.md	非坐标核门也失败（x=1 或 L e1=0 矛盾）	q1_true	rank_gates	prove
+505	505_q5_targeted_freeze.md	q=5 结构化秩门：定向实验 0 可行，冻结（一般 q=5 未解决）	q1_true	rank_gates	experiment
+506	506_composition_R0_spurious.md	303B 的 R=0 伪解引理与组合 soundness 条件	q1_true	multiplication_gate	prove
+507	507_R0_means_zeroing.md	R=0 的精确含义（门变量可置零）；固定行构造化为 l1AN∥l1N；k=2 枚举 0 命中	q1_true	multiplication_gate	prove
+508	508_fixed_row_linear_term_barrier.md	k=2 固定行的一次项障碍（产生 z 需除法）	q1_true	multiplication_gate	prove
+509	509_fixed_row_invariance.md	固定行 q=r0 的刻画：压缩行空间在 A 下不变	q1_true	multiplication_gate	prove
+510	510_fixed_row_scaling_barrier.md	k=3,r0=2 固定行：单个子式不能等于 c(z-xy)（缩放障碍）	q1_true	multiplication_gate	prove
+511	511_input_controlled_gate.md	首个输入控制的 (5a) 乘法门（(5a)⇔z=xy）；(5b) 全门失败（公共因子 q）	q1_true	multiplication_gate	prove
+512	512_row3_cannot_break_gcd.md	改 A 第三行不能打破 gcd：公共因子 Q 与 α 无关	q1_true	multiplication_gate	prove
+513	513_l1_locks_l2.md	l1=(z,x,0) 锁死 l2∥(1,0,1)（512 的 gcd 不可避免）	q1_true	multiplication_gate	prove
+514	514_l1_zx1_locked.md	l1=(z,x,1) 仍锁死 l2，且 D2 失去 z 项	q1_true	multiplication_gate	prove
+515	515_l1_shapes_symbolic.md	五种 l1 形状的符号消元：均未给出可用门	q1_true	multiplication_gate	experiment
+516	516_l2_linear_no_gate.md	l2 取 9 参数一次式仍无门（D2 含 x^2,xz 等杂项）	q1_true	multiplication_gate	experiment
+518	518_omega_q_obstruction.md	q=r0=2 乘积门必败：ω=q 的特征值障碍（511–517 的统一解释）	q1_true	multiplication_gate	prove
+519	519_q3_omega2_compressed_gate.md	q=3,omega=2 的压缩乘法门存在（可行⇔z=xy）；落地受 E 秩1限制	q1_true	multiplication_gate	prove
+520	520_sound_multiplication_gadget.md	首个 sound 乘法 gadget：q=3,n=5，可行⇔z=xy	q1_true	multiplication_gate	prove
+521	521_block_composition.md	块对角组合 sound：合取 + 变量共享自动（wiring 不需要额外 gadget）	q1_true	multiplication_gate	prove
+522	522_chain_and_scope.md	链式检查器成立；检查器 vs 变量编码器的关键区分（归约需要未知量在 R）	q1_true	multiplication_gate	prove
+523	523_naive_injection_fails.md	naive 变量注入失败：ker H=0，门消失	q1_true	multiplication_gate	prove
+524	524_unknown_encoding_constraints.md	未知量编码的结构约束：(5a) 对 R 线性，非线性只能来自 (5b)	q1_true	multiplication_gate	plan
+525	525_n3k2_too_permissive.md	n=3,k=2,q=3 族太宽松（438/486 可行），无门	q1_true	multiplication_gate	experiment
+526	526_lean_correction.md	Lean 核验 520 代数核心；发现坏超平面 x=-1/2（Res=64(2x+1)^2）	q1_true	multiplication_gate	prove
+528	528_no_bad_set_gadget.md	无坏集压缩 gadget（gcd=1 对所有 x）；p=1 落地不可能	q1_true	multiplication_gate	prove
+530	530_p2_realization.md	无坏集 sound gadget 落地（p=2,n=7,q=3）：可行⇔z=xy	q1_true	multiplication_gate	prove
+531	531_block_530.md	两个 530 gadget 块对角合取：sound 且无坏集继承；Lean 核验 530 版	q1_true	multiplication_gate	prove
+532	532_chain_square.md	链式/平方电路：530 块对角 + 共享变量成立	q1_true	multiplication_gate	prove
+533	533_unknown_interface_objection.md	未知量接口：ChatGPT 方案与 $L_0$ 固定的结构反驳	q1_true	multiplication_gate	plan
+534	534_degree_count_free_rows.md	次数计数：一个自由行只能给线性条件，乘法需 m>=2	q1_true	multiplication_gate	prove
+535	535_q5_redundant_rows.md	q=5 冗余自由行 ansatz：压缩层成立但门仍在固定数据上	q1_true	multiplication_gate	experiment
+536	536_free_row_gate_obstruction.md	自由行门的结构障碍：λ=0 秩约束与 u3 自由度	q1_true	multiplication_gate	prove
+537	537_homogeneity_obstruction.md	齐次性障碍：H_A0=0 时子式齐次，编码不了 z-xy	q1_true	multiplication_gate	prove
+538	538_graded_minors.md	分次精化：条目齐次，子式按自由行数分次；混合次数来自跨子式 gcd	q1_true	multiplication_gate	prove
+539	539_diagonal_ansatz_no_gate.md	对角 ansatz 的 gcd 恒为 1（无门）	q1_true	multiplication_gate	experiment
+540	540_nondiag_B_no_factor.md	非对角 B 第一例：resultant 不含 u3-u1u2 因子	q1_true	multiplication_gate	experiment
+541	541_freeze_linear_interface.md	B1≠B2 最后实验 0 命中；冻结线性行变换接口	q1_true	multiplication_gate	experiment
+542	542_nonlinear_lifting_kernel.md	非线性提升：核向量=自由行叉积，$(5a)$ 给三次方程	q1_true	multiplication_gate	prove
+543	543_cross_kernel_lean.md	叉积核向量的 Lean 核验（三重积恒等式）	q1_true	multiplication_gate	prove
+544	544_stage_summary.md	阶段总结：sound gadget/电路/未知量编码三重障碍	q1_true	multiplication_gate	plan
+546	546_projective_reduction.md	射影化归约：可行集是锥，目标改为齐次 zw=xy	q1_true	multiplication_gate	plan
+547	547_shared_variables_not_forced.md	共享变量 v=Mu 不能由实例强制（循环）	q1_true	multiplication_gate	prove
+548	548_projective_feasibility.md	射影化可行集的结构判定（固定 rank R，问多项式可判定性）	q1_false	feasibility_geometry	plan
+549	549_min_rank_layer_example.md	最小秩层例子：可行集=锥减超平面（r3≠0）；Lean 核验	q1_false	feasibility_geometry	prove
+550	550_m2_degenerate.md	m=2 同族例子 gcd=1：可行集是全空间（退化）	q1_false	feasibility_geometry	experiment
+551	551_enumeration_always_infeasible.md	n=4,k=2,m=1 枚举：该族恒不可行	q1_false	feasibility_geometry	experiment
+552	552_n5k3_always_infeasible.md	n=5,k=3,m=1 枚举：恒不可行（gcd=3 次，不依赖 r）	q1_false	feasibility_geometry	experiment
+553	553_rank_defect_counting.md	满秩 H0 的根补偿计数：一般 m>=k 才可能	q1_false	feasibility_geometry	prove
+554	554_feasibility_independent_of_R.md	k=2,m=2 枚举：可行性不随 R 变化（猜想）	q1_false	feasibility_geometry	experiment
+555	555_generic_gcd_criterion.md	可行性判据：(5a) 簇不在 gcd 跳变簇里（gcd 次数上半连续）	q1_false	feasibility_geometry	prove
+556	556_criterion_scope.md	判据作用域：固定数据、对 R 取一般点（区别于 530）	q1_false	feasibility_geometry	plan
+557	557_nontrivial_infeasible_example.md	非平凡 (5a) 例子：可行集为空（det P=λ(λ-1)²r3，Lean）	q1_false	feasibility_geometry	prove
+558	558_feasible_nontrivial_difficulty.md	可行且 (5a) 非平凡的难点：需 ω<q 且 Z 无特征向量	q1_false	feasibility_geometry	plan
+559	559_param_gate_feasible.md	参数化 520：可行且 (5a) 非平凡（w=0,v≠0,u≠v），Lean	q1_false	feasibility_geometry	prove
+560	560_param_family.md	参数族 diag(a,b)：完整可行条件（w=0 + 非零条件）	q1_false	feasibility_geometry	prove
+561	561_lean_param_family.md	参数族核心矛盾的 Lean 核验	q1_false	feasibility_geometry	prove
+562	562_second_param_family.md	第二参数族 AN=I：可行=w=0+非零条件（与 560 同构）	q1_false	feasibility_geometry	prove
+563	563_lean_second_family.md	第二参数族核心矛盾的 Lean 核验	q1_false	feasibility_geometry	prove
+564	564_decomposition_families.md	两族的 (5a) 簇与跳变簇完整分解（可行=秩层∩开集）	q1_false	feasibility_geometry	prove
+565	565_constructible_feasible_set.md	一般结构：可行集是构造集（可判定，复杂度未定）	q1_false	feasibility_geometry	prove
+566	566_irreducible_branches_557.md	557 的 (5a) 分支分解：开集+线性子空间，均被跳变簇覆盖	q1_false	feasibility_geometry	prove
+567	567_nontrivial_branch_obstacle.md	非平凡 (5a) 分支的可行性障碍（第三列必为零）	q1_false	feasibility_geometry	prove
+568	568_q3k3m1_no_nontrivial_feasible.md	q=3,k=3,m=1：非平凡 (5a) 与可行 (5b) 不可兼得	q1_false	feasibility_geometry	prove
+569	569_q4k3m2_scan.md	q=4,k=3,m=2 扫描：非平凡核的可行点未出现（0/15）	q1_false	feasibility_geometry	experiment
+570	570_trivial_extension.md	530 加 r∈ker N：非平凡可行但为平凡扩张	q1_false	feasibility_geometry	prove
+571	571_only_duplicate_rows_feasible.md	530 加自由行：仅重复行可行（谱不可见）	q1_false	feasibility_geometry	experiment
+572	572_redundant_row_lemma_draft.md	冗余行引理（草稿）：新行在 P0 行空间 ⇒ 已有行组合	q1_false	feasibility_geometry	prove
+573	573_rank_exactness_check.md	秩精确性复查：需 (ω+1) 子式为零；530 枚举结论不变（全冗余）	q1_false	feasibility_geometry	prove
+574	574_redundant_row_theorem.md	冗余行定理（非退化情形已证；530 退化情形未证）	q1_false	feasibility_geometry	prove
+575	575_530_degenerate_complete.md	530 退化情形：可扩展行必冗余（完整证明）	q1_false	feasibility_geometry	prove
+576	576_lean_coeff_compare.md	575 系数比较的 Lean 核验	q1_false	feasibility_geometry	prove
+577	577_new_start_eliminated.md	ChatGPT 的新起点被 (5a) 直接淘汰（核投影矛盾）	q1_false	feasibility_geometry	prove
+578	578_alignment_condition.md	对齐条件：H_A0 的核方向须与 r 平行（(5a) 限制到超平面）	q1_false	feasibility_geometry	prove
+579	579_alignment_example_fails.md	对齐例子在 λ=0 掉秩失败（b=0 损失一维）	q1_false	feasibility_geometry	prove
+580	580_effective_free_row.md	k=4,q=3 有效自由行例子（可行条件 + Lean）	q1_false	feasibility_geometry	prove
+581	581_mixed_row_degree.md	混合行次数分析：二次项只能在 3×3 子式的 λ² 系数里	q1_false	feasibility_geometry	prove
+582	582_3x3_construction_conflict.md	3×3 构造：r1r2 与 -z 两项的冲突分析	q1_false	feasibility_geometry	plan
+583	583_single_term_obstacle.md	单项 h 的因子障碍：-z 项总带 r1/r2 因子	q1_false	feasibility_geometry	prove
+584	584_det_route_linear_condition.md	3×3 det 路线：λ² 系数对，但 λ 系数给额外线性条件	q1_false	feasibility_geometry	prove
+585	585_homogeneous_det_obstacle.md	3×3 det（H_A=I）的齐次性障碍：S2/tr 不能同时 ∝ r1r2-z	q1_false	feasibility_geometry	prove
+586	586_q3omega3_nogo.md	q=ω=3 不可行（det P 非常数 ⇒ 有根）；q=3 需 ω≤2	q1_false	feasibility_geometry	prove
+587	587_584_criterion_error.md	584 判据错误：ω=2 时 det P 必须恒为零（584 恒不可行）	q1_false	feasibility_geometry	prove
+588	588_corrected_3x3_route.md	修正后 3×3 路线试算失败（det P=-r1λ(λ-1)，sympy 复核）	q1_false	feasibility_geometry	experiment
+589	589_q3_classification.md	q=3 分类（已被 590 推翻）	q1_false	feasibility_geometry	prove
+590	590_counterexample_q3omega2.md	反例：q=3,ω=2 可行（Z 特征向量在 im H 之外）	q1_false	feasibility_geometry	experiment
+591	591_product_inequality_gadget.md	乘积不等式 gadget：可行 iff r1r2≠z（Lean+精确验证）	q1_false	feasibility_geometry	prove
+592	592_composition_closure.md	≠ 门的组合闭包：只能合取二次型非零条件（开集）	q1_false	feasibility_geometry	plan
+593	593_product_equality_gadget.md	乘积等式 gadget：可行 iff r1r2=z ∧ r1³≠1（Lean+精确验证）	q1_false	feasibility_geometry	prove
+594	594_product_equality_clean.md	干净的乘积等式 gadget：可行 iff r1r2=z（无附加条件，Lean+精确验证）	q1_false	feasibility_geometry	prove
+595	595_block_conjunction_circuits.md	块对角合取与算术电路编码（乘积门+线性门，链验证）	q1_true	multiplication_gate	prove
+596	596_realizability_correction.md	重要更正：H_A=ZH 不可实现，594/595 门不成立；需右铅笔重做	q1_false	feasibility_geometry	fix
+597	597_right_pencil_no_gate.md	右铅笔（一）：零行 H + 幂零 Z' 无门	q1_false	feasibility_geometry	experiment
+598	598_right_pencil_product_gate.md	右铅笔乘积等式门：可行 iff r1r2=z（q1 可实现，Lean+精确验证）	q1_false	feasibility_geometry	prove
+599	599_right_pencil_conjunction_linear_gate.md	右铅笔合取 + 线性门障碍（猜想：不可能）	q1_false	feasibility_geometry	prove
+600	600_diagonal_linear_gate_impossible.md	对角 H 的线性门不可能（一般情形为猜想）	q1_false	feasibility_geometry	prove
+601	601_linear_gate_exists.md	线性门存在（非对角 H）：可行 iff r1=0；推翻 600 猜想	q1_false	feasibility_geometry	prove
+602	602_mixed_conjunction_circuits.md	混合合取（线性门+乘积门）：算术电路编码骨架	q1_true	multiplication_gate	prove
+603	603_qmin_monotonicity.md	q_min 单调性：q=Q 可行 iff q_min≤Q；可靠性开放	q1_true	multiplication_gate	prove
+605	605_reliability_counterexample_rank1.md	可靠性反例：全局秩 1 的 H 绕过所有门；编码不健全	q1_true	multiplication_gate	prove
+606	606_min_rank_trivial_5a.md	最小秩：H_A=HZ' 时 min rank=1，(5a) 无下界作用	q1_true	multiplication_gate	prove
+607	607_nontrivial_5a_rank1_blocked.md	非平凡 (5a)：H_A=HZ'+G 分解，秩1逃逸被阻断	q1_true	multiplication_gate	prove
+608	608_stage_summary_right_pencil.md	阶段总结：右铅笔门、可靠性缺口与修补方向	q1_true	multiplication_gate	plan
+609	609_rank1_classification.md	秩1逃逸的完整分类（情形 B 仍存活）	q1_true	multiplication_gate	prove
+610	610_rank1_J_vs_two_blocks.md	秩1：单块 J 阻断，两块对角仍有逃逸（需跨块 Z'）	q1_true	multiplication_gate	prove
+611	611_block_diagonal_obstruction.md	结构障碍：块对角 Z' 必有零首坐标左特征向量 → 秩1逃逸	q1_true	multiplication_gate	prove
+612	612_irreducible_Z_stopped.md	不可约 Z'（循环）一次性探索：无乘积门，按判据停止	q1_true	multiplication_gate	prove
+613	613_irreducible_gate.md	不可约 Z'（循环）的乘积门（带开条件，阻断秩1逃逸）	q1_true	multiplication_gate	prove
+614	614_irreducible_multi_gate_count.md	不可约 Z' 多门：λ=1 处核-超平面计数（二选一条件）	q1_true	multiplication_gate	plan
+615	615_six_cycle_no_gate.md	六阶循环 + 块对角 H：无门（精确验证）	q1_true	multiplication_gate	experiment
+616	616_coupled_H_no_gate.md	跨块耦合 H 仍无门，停止组合路线	q1_true	multiplication_gate	experiment
+617	617_evidence_polynomial.md	结构证据汇总：q1 更可能有多项式算法（M2 判断）	q1_false	feasibility_geometry	plan
+618	618_rank_stratum_algorithm.md	q1_false 秩层算法骨架（M2 计划）	q1_false	feasibility_geometry	plan
+619	619_stratum_check_598.md	598 检验 618：可行点在低维秩层，须逐层判定	q1_false	feasibility_geometry	prove
+620	620_stratum_checker.md	秩层判定器（脚本）与 598/613 输出	q1_false	feasibility_geometry	experiment
+621	621_stratum_specialization.md	层内特化：598 可行、613 附加条件定位（需递归分层）	q1_false	feasibility_geometry	experiment
+623	623_chatgpt_assessment_p_route.md	ChatGPT 评估：多项式规模规范分层是 q1∈P 的关键缺口	q1_false	feasibility_geometry	plan
+624	624_rank_potential.md	秩势 Φ：598/613 参数族仅 3 状态（猜想多项式状态界）	q1_false	feasibility_geometry	experiment
+625	625_rank_potential_more.md	秩势 Φ 枚举（续）：557 两状态、616 三状态	q1_false	feasibility_geometry	experiment
+626	626_state_count_refuted.md	状态数猜想被推翻（两块 598 有 6 状态）；判定只需按 ω	q1_false	feasibility_geometry	experiment
+628	628_free_satisfiable_audit.md	M2 审计：自由行 gadget 全为自由可满足型，q1_true 路线关闭	q1_true	multiplication_gate	prove
+629	629_invariant_K0_trivial.md	定理：A 保持 K0 时 q1 平凡（可行 iff L0N=0）	q1_false	feasibility_geometry	prove
+630	630_W_nonzero_decomposition.md	W≠0 分解：H 与 G 独立可控，G 行受 row(W) 限制	q1_false	feasibility_geometry	prove
+631	631_W_full_row_rank_feasible.md	定理：W 满行秩且有自由行时 q1 可行（无 hardness 入口）	q1_false	feasibility_geometry	prove
+632	632_rank_bound_by_W.md	猜想：可行 ⇒ rank H ≤ dim row(W)（左特征向量特例已证）	q1_false	feasibility_geometry	prove
+633	633_response_to_chatgpt_omega0.md	回应 ChatGPT：ω=0 强结论不成立；ω≤s 有支持	q1_false	feasibility_geometry	prove
+634	634_exhaustive_omega_s.md	穷举：ω=2>s=1 无可行解（0/7536），支持 ω≤s	q1_false	feasibility_geometry	experiment
+635	635_proof_attempt_omega_s.md	证明尝试：单式行列式论证不适用；障碍定位（未闭合）	q1_false	feasibility_geometry	prove
+636	636_counterexample_failed.md	反例尝试失败：G=0 时回到 629（ω=0），λ=0 掉秩	q1_false	feasibility_geometry	prove
+637	637_exhaustive_multi_Z.md	穷举（三种 Z'）：ω=2>s=1 全部 0/7536 可行	q1_false	feasibility_geometry	experiment
+638	638_counterexample_omega_gt_s.md	反例：ω=2>s=1 的可行 q1 实例，推翻 ω≤s	q1_false	feasibility_geometry	experiment
+639	639_K_infinity_theorem.md	定理：ω≤k−dim K∞（K∞ 为 Z' 在 S⊥ 内最大不变子空间）	q1_false	feasibility_geometry	prove
+640	640_converse_false.md	反向不成立：K∞ 上界必要不充分（逐 H）	q1_false	feasibility_geometry	prove
+641	641_two_extensions.md	实验：同一 K∞ 两扩展一可行一不可行（K∞ 不完整）	q1_false	feasibility_geometry	experiment
+642	642_bezout_system.md	Bézout 线性系统：gcd=1 的有限线性判定（A 可解/B 不可解）	q1_false	feasibility_geometry	experiment
+643	643_parametric_bezout.md	参数化 Bézout 矩阵：(5b) 的有限秩条件（复杂度开放）	q1_false	feasibility_geometry	prove
+644	644_reachability_conjecture.md	猜想：可行 iff rank H0 ≤ k−dim K∞（638 验证上界可达）	q1_false	feasibility_geometry	prove
+645	645_Kinfinity_corrected.md	更正 K∞ 计算；秩1不可能、秩2穷举0/7536（可达性猜想受挑战）	q1_false	feasibility_geometry	prove
+646	646_random_search_e1.md	随机搜索：e1 实例秩 2 仍 0/301 可行（支持不可行）	q1_false	feasibility_geometry	experiment
+649	649_necessary_conditions_H0.md	推论：可行 ⇒ H0 在 K∞ 上为零且 rank H0≤d	q1_false	feasibility_geometry	prove
+648	648_e1_instance_infeasible_proof.md	严格证明：e1 实例秩1/2 不可能；ω=0 可行（r0=0）	q1_false	feasibility_geometry	prove
+650	650_sufficiency_counterexample.md	反例：649 必要条件不充分（H0=e1^T 实例不可行）	q1_false	feasibility_geometry	prove
+651	651_Tinfinity_theorem.md	定理：T∞ 零化与秩界（比 K∞ 更强）	q1_false	feasibility_geometry	prove
+652	652_lifting_lemma.md	提升引理：H0|T=0 ⇒ 秩 d 扩展（充分性归约到 Z 构造）	q1_false	feasibility_geometry	prove
+653	653_Z_construction_reduced.md	Z 构造引理化为两条（逐行可解 + 特征向量避让）	q1_false	feasibility_geometry	prove
+654	654_Tinfinity_not_automatic.md	另一个 r0=1 不可行实例：幂零 Z'，T∞=C^3	q1_false	feasibility_geometry	prove
+655	655_grassmann_formulation.md	约束 Grassmann 集与条件化充分性（M2 猜想）	q1_false	feasibility_geometry	prove
+656	656_extremes_and_gap.md	极端情形与中间缺口（条件化充分性）	q1_false	feasibility_geometry	plan
+657	657_middle_case_positive.md	中间情形正面例子（k=2，秩1构造，sympy 验证）	q1_false	feasibility_geometry	prove
+658	658_rank1_template.md	秩一模板：H=uv^T，v∈S∩ker(Z'^T) 的构造	q1_false	feasibility_geometry	prove
+659	659_chatgpt_rank_d_template.md	ChatGPT 深入回答整理：秩 d 模板、行约束、T∞ 包含、反例4	q1_false	feasibility_geometry	prove
+660	660_affine_degenerate_example.md	仿射铅笔退化例子：B 被钉出零列，gcd=λ 必败	q1_false	feasibility_geometry	prove
+661	661_corrected_counterexample5.md	修正反例5：H0=e2^T 的实例级不可行（满足 651）	q1_false	feasibility_geometry	prove
+627	627_free_row_existential_correction.md	自由行是存在量词：自由行上的门不能约束求解者	q1_true	multiplication_gate	prove

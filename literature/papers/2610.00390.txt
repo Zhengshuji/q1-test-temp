@@ -1,0 +1,1035 @@
+Computational complexity of static output feedback stabilization ∗
+Zhaobo Liu
+Institute for Advanced Study, Shenzhen University
+Shenzhen 518060, China
+liuzhaobo@szu.edu.cn
+Abstract
+We study the computational complexity of static output feedback (SOF) stabilization
+for continuous-time linear systems. For rational plant data, we prove that this problem
+is complete for the existential theory of the reals: it is equivalent, under polynomial-time
+transformations, to deciding whether a system of polynomial equations and inequalities with
+integer coefficients has a real solution. This result holds even for controllable and observable
+integer plants with two inputs. We characterize the effective gain dimension as the minimum
+number of linear combinations of gain entries that determine the characteristic polynomial
+for every gain. When this dimension is fixed, both feasibility testing and the construction of
+a rational stabilizing gain, whenever one exists, can be performed in polynomial time. SOF
+stabilization also remains strongly NP-hard for a family of minimal single-input integer plants.
+Every feasible plant in this family admits a stabilizing gain with entries in{−1, 1}. For these
+gains, stability is preserved under simultaneous perturbations of all entries, provided that
+each perturbation has magnitude at most a uniform positive constant independent of the
+plant dimensions.
+Keywords:static output feedback; stabilization; computational complexity; existential theory
+of the reals; controller synthesis.
+1 Introduction
+Static output feedback (SOF) uses a constant gain acting on measured outputs without introduc-
+ing controller states. For continuous-time linear systems, the stabilization problem asks whether
+such a real gain can make the closed-loop matrix Hurwitz. Understanding the computational
+limits of this architecture helps assess what general synthesis methods can achieve and which
+system structures make exact design tractable. These questions have motivated extensive work
+on SOF (Syrmos et al., 1997; Sadabadi & Peaucelle, 2016).
+Existing methods approach SOF through algebraic conditions on the gain and stability
+certificates. Algebraic decision methods establish decidability (Anderson et al., 1975), and
+quantifier elimination can be used for stabilization and pole placement (Röbenack & Voßwinkel,
+2020). Other approaches exploit polynomial structure through convergent relaxations of matrix
+inequalities (Henrion & Lasserre, 2006) or numerical algebraic geometry with exact certification
+(Menini et al., 2025). A complexity classification addresses the underlying feasibility problem
+and helps distinguish the difficulty of a particular procedure from that of the problem itself.
+Incomplexityanalysis, unrestrictedstabilizationandstabilizationunderadditionalconstraints
+are distinct problems (Blondel & Tsitsiklis, 2000). Blondel and Tsitsiklis (1997) consider
+stabilization with prescribed intervals on gain entries, among other problems. Fu and Luo (1997)
+∗This work was supported in part by the National Natural Science Foundation of China under Grant 12401585,
+the Guangdong Basic and Applied Basic Research Foundation under Grant 2024A1515011542, and the General
+Program of Shenzhen Natural Science Foundation under Grant JCYJ20250604181037012.
+1
+arXiv:2610.00390v2  [math.OC]  3 Oct 2026
+establish hardness for coupled matrix inequalities arising in fixed-order output feedback design,
+and Fu (2004) considers placement of a specified set of poles. These constrained design problems
+do not determine the complexity of unrestricted SOF stabilization.
+The general complexity question also raises the question of which structural features permit
+efficient exact synthesis. With a single scalar gain, stabilizing values can be characterized by
+intervals determined by polynomial matrix zeros (Henrion et al., 2002). For matrix gains, counting
+all gain entries may obscure such tractable cases because some directions preserve the closed-loop
+characteristic polynomial for every gain. Existing studies of output feedback invariants and
+canonical forms concern equivalence classes of systems (Ravi et al., 2002; Yannakoudakis, 2019).
+Here the plant is fixed, and the relevant question is which gain directions can be removed without
+losing any attainable characteristic polynomial. Answering this question gives a measure of the
+number of variables needed for exact synthesis.
+Westudyrationalplantsencodedinbinaryandunrestrictedrealgains. Convertingpolynomial
+feasibility into stabilization requires addressing two obstacles. First, the characteristic polynomial
+is affine in each gain entry, which restricts how polynomial constraints can be encoded. Second,
+gains of unbounded magnitude may produce arbitrarily small constraint violations even when
+the encoded equations have no solution. Our construction represents the polynomial constraints
+through the closed-loop characteristic polynomial. Quantitative separation bounds ensure that
+approximate solutions of an infeasible equation system cannot yield a stabilizing gain. The
+contributions are as follows.
+1. WeprovethatSOFstabilizationwithrationalplantdatais ∃R-complete, thatis, polynomial-
+time equivalent to deciding whether a finite system of polynomial equations and inequalities
+with integer coefficients has a real solution. The reduction gives controllable and observable
+integer plants with two inputs.
+2. We remove the gain directions that preserve the characteristic polynomial for every gain.
+The effective gain dimensionκ is the minimum number of linear combinations of gain
+entries needed to determine the characteristic polynomial for every gain. For fixedκ, this
+yields polynomial-time exact decision and rational synthesis, even with many redundant
+gain entries. The bit complexity is(L + 1)O(1)(n + 1)O(κ+1), whereL is the input length
+andnthe state dimension.
+3. We give a polynomial-time construction of minimal single-input integer plants that estab-
+lishes strong NP-hardness through a reduction from 3-SAT. Each feasible plant produced
+by the reduction admits a stabilizing gain with entries in{−1, 1} that remains stabilizing
+when all entries are perturbed simultaneously by amounts bounded in magnitude by a
+uniform positive constant independent of the plant dimensions.
+Concurrent preprints by Löfberg (2026) and Barkai and Shames (2026) establish NP-hardness
+of unrestricted SOF stabilization via Betweenness and Subset Sum, respectively. Ahmadi et al.
+(2026) establish strong NP-hardness via 3-SAT in both continuous and discrete time, with
+their continuous-time single-output result also yielding single-input hardness by transposition.
+Their continuous-time proof uses matrix definiteness and Lyapunov-type conditions, whereas
+our single-input proof uses frequency separation and polynomial root counts. The present paper
+addresses the completeness classification of SOF stabilization and the role of effective gain
+dimension in exact synthesis.
+Section 2 defines the problem and its encoding, and Section 3 states the results. Section 4
+proves Theorem 1, and Section 5 proves Theorems 2 and 3. The appendices give technical details
+of the general reduction, bit bounds and the complete single-input construction.
+Notation R and Q denote the real and rational fields. For a real square matrixM, specM is
+its spectrum andα(M) = maxλ∈specMℜλ its spectral abscissa. We use∥M∥ max = maxi,j|Mij|
+2
+and∥M∥F for the maximum entry and Frobenius norms. For a row or column vectorx,
+∥x∥∞ = maxi|xi|. For an integerz, write bit(z) = max{1,⌈log 2(|z| + 1)⌉} for the binary length
+of its magnitude, assigning one bit to zero. The operatorscol and vec stack arguments and
+matrix columns vertically, respectively, and⊗denotes the Kronecker product.
+2 Problem formulation
+2.1 System model and stabilization problem
+Consider the continuous-time linear system
+˙x=Ax+Bu, y=Cx,
+where x∈R n, u∈R m, andy∈R p are the state, input, and measured output, respectively.
+The matricesA∈R n×n, B∈R n×m, andC∈R p×n are real, with positive dimensions. Under
+static output feedbacku =Ky, the closed-loop matrix isA +BKC. A real square matrixM is
+Hurwitz whenα(M)< 0. A minimal realization has the fewest states among realizations of the
+same transfer matrix. Equivalently, it is controllable and observable.
+Problem 1.The SOF stabilization decision problem, denoted bySOF, asks whether a given
+real plant(A,B,C)admits a real gainK∈R m×p such thatA+BKCis Hurwitz.
+2.2 Input encoding and complexity concepts
+For the complexity analysis, plant matrices have rational entries, while gains may be real. Every
+matrix entry, including zeros, is recorded explicitly as an integer numerator and a positive
+integer denominator, both encoded in binary. The total input length isL ≥2. Running
+times count elementary operations on binary digits, called bit operations, and thus account for
+the dependence of exact arithmetic costs on the lengths of the numbers involved. A control
+perspective on these concepts is given by Blondel and Tsitsiklis (2000, Sections 2.1 and 2.4).
+Suppose that each input of decision problem A can be converted, in polynomial time, into
+an input of decision problem B with the same YES or NO answer. We can then solve A by first
+performing this conversion and then applying an algorithm for B.
+Such a conversion, when performed by a deterministic algorithm, is called a polynomial-time
+many-one reduction (Arora & Barak, 2009, Chapter 2). Time is measured in terms of the
+encoded input length. The original input is called the source instance. All reductions below are
+of this type.
+Real polynomial feasibility asks whether there existsx∈Rd satisfying
+fi(x) = 0,i= 1,...,r, g j(x)≥0,j= 1,...,s,
+where fi and gj are polynomials with integer coefficients. Each polynomial is represented by
+an explicit list of its nonzero monomials, with coefficients and nonnegative integer exponents
+encoded in binary.
+Definition 1.The class∃R consists of decision problems reducible to real polynomial feasibility.
+A problem is∃R-complete if it belongs to∃R and real polynomial feasibility reduces to it
+(Schaefer et al., 2026).
+Definition 2.A decision problem is in NP if its YES inputs, and only those inputs, admit
+certificates accepted by a deterministic verifier, with certificate length and verification time
+bounded by polynomials in the input length. A problem is NP-hard if every problem inNP
+reduces to it (Arora & Barak, 2009, Chapter 2).
+For integer plant data, strong NP-hardness means that NP-hardness persists when the
+absolute values of all matrix entries are bounded by a polynomial in the plant dimensions.
+3
+UnlessP = NP, this also rules out a pseudo-polynomial-time algorithm, whose running time is
+polynomial in the dimensions and the largest absolute matrix entry (Ahmadi et al., 2026).
+SinceNP⊆∃R, every∃R-complete problem is NP-hard (Schaefer et al., 2026, Section 1.2).
+A standard problem used to establish NP-hardness is 3-SAT. Its input is a Boolean formula
+formed by the conjunction of clauses, each containing three literals,
+Φ =
+t⋀
+j=1
+(ℓj1∨ℓj2∨ℓj3).(1)
+Heret is the number of clauses,z1,...,z v are Boolean variables, and each literalℓjr is a variable
+or its negation. The symbol∨ means OR, so each clause requires at least one literal to be true.
+The symbol⋀ means AND, so every clause must hold. The 3-SAT problem asks whether such an
+assignment exists. We allow repeated literals, so clauses with one or two literals can be padded
+by repetition. The problem is NP-complete, meaning that it belongs toNP and is NP-hard
+(Arora & Barak, 2009, Chapter 2).
+2.3 Plant structure and gain redundancy
+SOF stabilization seeks a gain matrix withmp entries. Some gain directions may leave the closed-
+loop characteristic polynomial unchanged for every gain. We introduce structural quantities that
+describe the plant and these redundant directions.
+The transfer matrix isG(s) =C(sI−A )−1B. Its normal rankσ = nrankG is its rank over
+the field R(s)of rational functions ins with real coefficients. Equivalently, it is the maximum
+rank ofG(s)over values ofsfor whichsI−Ais invertible.
+ForK∈R m×p, define the closed-loop characteristic polynomialpK(s) = det(sI−A−BKC ).
+Definition 3.The set of gain directions that leave the characteristic polynomial unchanged for
+every feedback gain is
+Npole ={D∈R m×p :p K+tD =p K for allK,t},
+where K ranges over Rm×p, t ranges over R, and equality means equality of polynomials ins.
+Lemma 4 shows thatNpole is a linear subspace.
+Its codimension inRm×p is called the effective gain dimension,
+κ=mp−dimN pole.
+Lemma 4 also shows thatκ is the minimum number of linear combinations of gain entries
+needed to determine pK for every gain K. A parameterization using κ independent gain
+parameters therefore preserves every attainable closed-loop characteristic polynomial.
+3 Main results
+3.1 Complexity classification and exact synthesis
+Theorem 1.The decision problemSOF with rational plant data is∃R-complete under determin-
+istic polynomial-time many-one reductions. It remains∃R-complete when restricted to minimal
+integer plants with two inputs.
+Theorem 1 places SOF stabilization at the same computational difficulty as deciding whether
+a system of polynomial equations and inequalities has a real solution. Either problem can be
+converted to the other in polynomial time. Consequently, unlessP =NP, no exact algorithm
+can decide all SOF instances in time polynomial in the input length. This difficulty persists for
+controllable and observable plants with only two inputs. The proof is given in Section 4. The
+next theorem concerns the effective gain dimensionκdefined in Section 2.
+4
+Theorem 2.There exist an absolute constantc≥ 1and a deterministic exact algorithm that
+decides SOF stabilization for rational plant data within
+(L+ 1)c(n+ 1)c(κ+1) (2)
+bit operations. On a feasible input, it returns a rational stabilizing gain.
+With the numberκ of effective gain parameters fixed, Theorem 2 gives a polynomial-time
+method to decide feasibility and construct a stabilizing gain, even as the state dimension grows.
+In particular, the result applies when the input and output dimensions are fixed, sinceκ≤mp .
+Section 5.1 gives the algorithm and proves the complexity bound. Appendix B.2 augments the
+algorithm with an independently verifiable Lyapunov certificate and a bound on gain errors that
+preserve stability, within the complexity bound (2).
+3.2 Strong NP-hardness for single-input plants
+Theorem 1 establishes hardness with two inputs. A single-input plant can still have a growing
+number of outputs, so its gain need not have a fixed number of parameters. The next result gives
+a family of minimal integer plants for which this hardness holds together with binary stabilizing
+gains and a uniform tolerance to gain perturbations.
+Theorem 3.SOF stabilization is strongly NP-hard for minimal single-input integer plants.
+There exist a constantδ0> 0independent of the source instance and a polynomial-time reduction
+from 3-SAT to this class with the following property. Each feasible plant produced by the reduction,
+with v outputs, admits a gainK∗∈{− 1, 1}1×v such thatA +B(K∗ +D)C is Hurwitz for every
+D∈R 1×v satisfying∥D∥ max≤δ 0.
+Remark1.Theorem 3 shows that strong NP-hardness persists even when feasible instances
+admit stabilizing gains with a simple representation and a positive tolerance to simultaneous
+errors in all gain entries that is independent of the plant dimensions. Section 5.2 explains the
+reduction, and Appendix C gives its construction and quantitative bounds.
+4 Proof of Theorem 1
+4.1 Encoding equations in a characteristic polynomial
+We first encode equations of the following form into a closed-loop characteristic polynomial.
+Section 4.2 transforms the source feasibility problem into this form.
+ℓj(v)2 =h j(v),1≤j≤J 0,(3)
+where v∈R d, d≥ 1, andℓj,hj are affine forms with integer coefficients. For each1≤i≤d ,
+introducer i and the auxiliary pair
+v2i =r i,(v i + 1)2 =r i + 2vi + 1.(4)
+Takingri =v2i satisfies both equations and preserves exact feasibility. Writex = (v,r )and use
+ℓj(x)2 =hj(x)for the augmented list ofJ =J0 + 2d equations. The toleranceε in (A.1) is a
+positive rational number determined by the affine coefficients of this system.
+For the augmented list, choose positive integersej with distinct unordered pair sums, including
+repetitions, and an integerq >2 maxjej, as in Appendix A.1. Set
+a(s) =
+∑
+j
+ℓj(x)sej, b(s) = ∑
+j
+hj(x)s2ej +∑
+j<k
+cjksej +ek,
+5
+wherec jk∈Rare free parameters. Then
+det
+(
+sq +a b
+−1s q−a
+)
+=s 2q +b−a 2.
+Settingc jk = 2ℓj(x)ℓk(x)cancels the cross terms and gives
+s2q +
+J∑
+j=1
+(
+hj(x)−ℓ j(x)2)s2ej.
+This calculation places the equation residuals in polynomial coefficients. For an exact solution,
+the polynomial reduces tos2q.
+The remaining step is to incorporate all feedback gain entries into the reduction. Lemma 2 in
+Appendix A.1 constructs a minimal integer plant(A,B,C )with two inputs and uses the auxiliary
+equations (4) to control the additional terms contributed by its second gain row. The realization
+is scaled and shifted as in(A.11), so every exact solution gives a gain with all closed-loop poles
+at−1.
+For every gain satisfyingα(A +BKC ) < 1, the coefficient estimates in(A.5) give the
+following residual bound. The first2dentries in the first row ofKform a vectorxsatisfying
+|ℓj(x)2−hj(x)|≤ε(|ℓ j(x)|+ 2),1≤j≤J.(5)
+4.2 From residual bounds to source feasibility
+The residual bound(5) alone does not establish exact feasibility. We start from ETR-INV, a
+restricted form of the existential theory of the reals (ETR) using addition and inversion (INV).
+It asks whether a given finite list of equations of the forms
+xi +xj =x k, x ixj = 1
+has a simultaneous real solution with every variable in[1/2, 2]. The second form expresses
+xj = 1/xi. The original definition also allowsxi = 1, which can be replaced byx2i = 1on
+[1/2, 2]. Thus this form of the problem is∃R-complete (Abrahamsen et al., 2022, Definition 14
+and Theorem 16).
+Normalization and circle equationsu2i +v2i = 1give quadratic equations gj(w) = 0,1 ≤
+j≤s , inw = (u,v )∈R a, preserving feasibility and confining all exact solutions to[−1, 1]a
+(Appendix A.2). ForF (w) =∑sj=1gj(w)2, that appendix computes an integerχ of polynomial
+bit length such that every infeasible source satisfies
+F(w)>2 −χ, w∈[−2,2] a.(6)
+To make the normalized residual smaller than this positive lower bound, we generate a
+sufficiently large scale using polynomially many equations. Leth be a nonnegative integer to be
+specified, and defineT=t h through the chain
+(t0−5) 2 = 0, t 2i =t i+1,0≤i<h.(7)
+Introduce new variablesW = (U,V )∈R a representingT (u,v ). ForT >0, the equations to be
+encoded are
+T 2gj(W/T) = 0,1≤j≤s.
+Their left sides are quadratic polynomials inW,T . Appendix A.2 converts these equations to the
+form (3) using auxiliary square variables. Append(4) for all variables, including the auxiliary
+and chain variables.
+6
+Under the residual inequalities(5), the circle equations still ensureW/T∈ (−2, 2)a. Each
+auxiliary variable representing a square in(W,T )then differs from that square by at most
+ε(4T + 2). Substituting these bounds into the encoded quadratic equations and dividing byT 2
+gives|gj(W/T )|< 1/T. Appendix A.2 supplies the estimates and proves that every real vector
+satisfying (5) obeys, for1≤j≤s,
+T >22h+1, W/T∈(−2,2) a,|g j(W/T)|<1/T.
+Consequently,
+F(W/T)<s/T 2<2−χ,
+with the polynomially bounded choice ofh in (A.16), contradicting(6) for an infeasible source.
+Lemma 3 in Appendix A.2 gives the formal construction and proves that(5) implies source
+feasibility.
+Proof of Theorem 1.Apply Lemma 2 to the augmented system from Lemma 3, obtaining a
+minimal integer plant(A,B,C )with two inputs and p outputs. A feasible source gives a
+stabilizing gain by(A.2). Any gain withα(A +BKC )< 1gives (5), hence source feasibility by
+Lemma 3. Thus every infeasible source gives
+α(A+BKC)≥1for everyK∈R 2×p.
+Both constructions take polynomial bit time, proving∃R-hardness.
+For membership in∃R with rational plant data, introduceK∈R m×p and realn×n matrices
+M,P,L 0,R 0, withL0,R 0 lower triangular and having strictly positive diagonal entries. Set
+M=A+BKCand impose
+P=L 0LT0,−(M TP+PM) =R 0RT0.
+These are polynomially many linear or quadratic equations and strict inequalities. Cholesky
+factorization and the Lyapunov theorem make them feasible exactly when the plant has a
+Hurwitz SOF closed loop. Clearing the input denominators has polynomial cost.
+5 Proofs of Theorems 2 and 3
+5.1 Exact synthesis with reduced gain parameters
+Removing directions inNpole reduces the search toκ gain parameters while preserving every
+attainable characteristic polynomial. Lemma 4 in Appendix B gives the parameterization
+K(θ) =
+κ∑
+i=1
+θiEi, θ∈R κ,
+where each Ei is a matrix with one unit entry and zeros elsewhere. The matricesEi are
+computable in polynomial bit time from the plant data.
+Proof of Theorem 2.If κ = 0, returnK∗ = 0when A is Hurwitz and NO otherwise, since the
+gain does not affect the characteristic polynomial. Forκ> 0, letpθ(s) = det(sI−A−BK (θ)C).
+Clearing positive denominators from its leading Hurwitz determinants gives integer polynomials
+fj and the stability conditions
+fj(θ)>0,1≤j≤n.
+The parameterization in Lemma 4 preserves every attainable characteristic polynomial, so
+this system is feasible exactly when a stabilizing gain exists. The feasible set is open, so it
+contains a rational point whenever it is nonempty. The algorithm of Safey El Din and Zhi (2010),
+applied to these strict polynomial inequalities, decides whether the set is empty and returns
+a rational pointˆθ otherwise. SetK∗ =K(ˆθ)and verify the inequalities by exact substitution.
+Appendix B bounds construction, sampling, verification and output length by (2).
+7
+5.2 Encoding Boolean constraints in a single-input plant
+When nrankG = 1, Sylvester’s identity givesdet(I−KG ) = 1−tr (KG), so the characteristic
+polynomial is jointly affine in the gain. Classical single-input results characterize attainable
+prescribed polynomials (van der Woude, 1988; Narayanan & Narayanan, 2019). We encode
+Boolean constraints in an affine polynomial family and realize it as a single-input plant.
+Proof of Theorem 3.LetΦbe a nonempty Boolean formula of the form(1), withv occurring
+variables. Encode true and false by+1and−1, and writeζ∈{− 1, 1}1×v for a sign assignment.
+Writex∈R 1×v for the real feedback gain. Appendix C.1 constructs two cubics for each gain
+coordinate xi, with second Hurwitz determinants5− 4x2i and4 x2i− 3. Their positivity requires
+√
+3
+2 <|x i|<
+√
+5
+2 ,1≤i≤v.
+For clausej, letijr be the variable index of literalr, withϵjr = 1for a positive literal and−1
+for a negated literal. Its cubic has constant coefficient
+cj(x) = 2 +
+3∑
+r=1
+ϵjrxijr.
+At x = ζ, each true literal contributes1and each false literal contributes −1. Thus cj(ζ)
+equals−1for a violated clause and is at least1otherwise. Appendix C.1 verifies the remaining
+coefficient and Hurwitz conditions, showing that all cubics remain Hurwitz for∥x−ζ∥ ∞≤ 1/16
+whenζsatisfiesΦ.
+To preserve instability when combining the cubics, we use the wider intervals
+4
+5 <|x i|< 65,1≤i≤v.
+If any coordinate lies outside these wider intervals, a variable cubic has a second Hurwitz
+determinant at most−1/4. If all coordinates lie inside and their sign vector violates clause
+j, thencj(x) <− 1/4. These fixed negative bounds allow the aggregation below to preserve
+instability.
+Multiplying the cubics would combine their stability conditions but generally introduce
+products of gain parameters, violating affine gain dependence. Instead, shift the cubics to
+separated imaginary frequencies in conjugate pairs. Index the shifted copies bya, denote them
+byQ a(s,x), and putQ 0a(s) =Q a(s,0)andδ a =Q a−Q 0a. The aggregate polynomial is
+P0 =
+∏
+a
+Q0a, P=P 0 +∑
+a
+δa
+∏
+b̸=a
+Q0b.
+Each summand contains only one gain-dependent factor, soP is affine inx. Conjugate pairing
+makes its coefficients real.
+For∥x∥∞≤ 40, the frequency separation gives disjoint disks centered at the shifts. Rouché’s
+theorem gives three roots ofP in each disk. For a fixedη >0chosen in Appendix C.1, root counts
+in the portions of these disks withℜs>−η show thatP is Hurwitz whenever∥x−ζ∥ ∞≤ 1/16
+for an assignmentζ satisfyingΦ. If a coordinate lies outside the wider intervals or the gain
+signs violate a clause,P has a root with positive real part. For∥x∥∞> 40, a separate estimate
+gives a root with positive real part. Appendix C.1 proves these root comparisons. Hence every
+stabilizing gain has a sign vector satisfyingΦ.
+Appendix C.2 convertsP into a minimal single-input integer plant while preserving stability
+for every gain. Its dimension, encoding length and construction time are polynomial in the
+input length ofΦ. Moreover, withn = 6J, the construction gives∥A∥max =O(J 2),∥B∥max≤ 1,
+8
+and∥C∥max≤ 32. Thus the matrix entries are polynomially bounded in the state dimension,
+establishing strong NP-hardness. Every satisfying assignmentζgives
+α(A+B(ζ+D)C)<0
+for everyD∈R 1×v with∥D∥ max≤1/16. IfΦis unsatisfiable, no real gain stabilizes the plant.
+This proves Theorem 3 withδ0 = 1/16.
+6 Conclusion
+In this paper, we studied the computational complexity of SOF stabilization for rational plants.
+The general decision problem is∃R-complete even for minimal plants with two inputs, while
+fixing the effective gain dimensionκ permits polynomial-time exact decision and synthesis. By
+contrast, stabilization remains strongly NP-hard for minimal single-input plants, whose transfer
+normal rank is one. Thus the tractability result depends on how many independent linear
+combinations of gain entries determine the closed-loop characteristic polynomial, not simply
+on transfer rank. It remains open whether SOF stabilization at transfer normal rank one is
+∃R-complete and whether the exponent of the input length in an exact algorithm can be made
+independent ofκ.
+A Technical results for Theorem 1
+A.1 Construction of the two-input plant
+Lemma 1.Let M be a real matrix of positive orderN with trM = tr(M 2) = 0. Ifη >0and
+α(M)<η, then|λ|<2Nηfor every eigenvalue ofM.
+Proof. Write the eigenvalues asai +ibi, with algebraic multiplicity, and putti = η−a i > 0.
+The trace identities give∑iti =Nηand
+∑
+i
+a2i =∑
+i
+t2i−Nη 2≤N(N−1)η 2, ∑
+i
+b2i =∑
+i
+a2i.
+Thus|a i +ibi|2≤2N(N−1)η 2<4N 2η2.
+Lemma 2.For an integer system(3) augmented by(4), letLj be the linear coefficient row of
+ℓj in the augmented variablesx, and set
+DL = max{1,maxj ∥Lj∥1}, ε= 164 max{64,DL}.(A.1)
+One can construct, in polynomial bit time, a minimal integer plant(A,B,C )with two inputs.
+Letn and p be its state and output dimensions. Every exact solutionx extends to a real gainK
+such that
+det(sI−A−BKC) = (s+ 1) n.(A.2)
+For everyK∈R 2×p with α(A +BKC )< 1, the first2d entries of the first row ofK form a
+vectorxsatisfying(5).
+Proof. The construction uses exponents with distinct pair sums. Choose an odd primep0 with
+max{J,3}≤p 0<2 max{J,3}, and define
+bi =i+ 2p 0(i2 modp 0),0≤i<J.
+If bi +bj = bk +bℓ, reduction modulo2p0 gives i +j = k +ℓ. Subtraction and division by
+2p0 then givei2 +j2≡k 2 +ℓ2 (modp 0), henceij≡kℓ (modp 0). The pairs(i,j )and( k,ℓ )
+9
+therefore give the same roots, including multiplicities, of a quadratic over the finite fieldFp0
+with p0 elements. Since all indices lie in[0,p 0− 1], the unordered pairs coincide. Thus the pair
+sums, including repetitions, are distinct. Relabel the values asb1,...,b J. Their maximum is
+O(J 2), and the construction takes polynomial time.
+LetS= maxb i, and define
+M= 2S+ 1, e j =M+b j, E= 3S+ 1,q= 3E+ 3.(A.3)
+The intervals[M,E ],[2 M, 2E], and[3M, 3E]are pairwise disjoint and lie belowq. Uniqueness
+of the pair sums also gives2ej̸=e a +eb fora̸=b.
+For the augmented variablesx= (v,r)∈R 2d, write
+ℓj(x) =ℓ j0 +Ljx, h j(x) =h j0 +Hjx.
+The choice (A.1) gives0<ε≤1/4096andD Lε≤1/64.
+Write the full gain as
+K↑ =
+(
+xT wT cT
+yT zT ζT
+)
+,
+wherex,w,y,z∈R 2d andc,ζ∈R (J2), with the latter coordinates indexed by pairsj <k.
+For the augmented system in Section 4, define
+a0(s) =
+∑
+j
+ℓj0sej, b 0(s) =∑
+j
+hj0s2ej, F i(s) =∑
+j
+Ljisej, G i(s) =∑
+j
+Hjis2ej.
+Set
+D(s) =
+(
+sq +a 0(s)b 0(s)
+−1s q−a 0(s)
+)
+.
+The polynomial matrixN(s)has three consecutive row groups:
+(Fi,Gi)2di=1,(0,F i)2di=1,(0,s ej +ek), j <k.
+The matrixN has4 d +
+(J
+2
+)
+rows and degree belowq. Define the monic polynomial of degree2q
+pK↑(s) = det(D(s) +K↑N(s)).
+Direct multiplication gives
+D+K ↑N=
+(
+sq 0
+−1s q
+)
++
+∑
+j
+(
+ℓj(x)L jw
+Ljy L jz−ℓ j0
+)
+sej
++
+∑
+j
+(
+0h j(x)
+0H jy
+)
+s2ej +∑
+j<k
+(
+0c jk
+0ζ jk
+)
+sej +ek.(A.4)
+Let[s a]pdenote the coefficient ofsa inp. Degree separation and unique pair sums give
+[sq+ej]pK↑ =L j(x+z),
+[sq+2ej]pK↑ =H jy,
+[sej]pK↑ =L jw,(A.5)
+[s2ej]pK↑ =h j(x)−ℓ j(x)2 +ℓj(x)Lj(x+z)−(L jw)(Ljy).
+Suppose every nonleading coefficient ofpK↑ has magnitude at mostε. After the realization
+and scaling in(A.11), Lemma 1 will establish this bound fromα(A +BKC )< 1. The first three
+10
+identities in(A.5) bound Lj(x +z), Hjy, andLjw byε. For the auxiliary pair(4), Hjy equals
+yri and2y vi +yri, respectively, so∥y∥∞≤ε. The last identity and (A.1) then give
+|ℓj(x)2−hj(x)|≤ε(1 +|ℓ j(x)|+ε∥L j∥1)≤ε(|ℓ j(x)|+ 2).
+To obtain a plant with these residual coefficients, we realize−ND−1 after cancelling a power
+of s independent of the gain. Thed rows(0,Fi)associated with r vanish, whereas(4) ensures
+Fi̸= 0for each coordinate of v. Deleting these rows and the matching gain columns gives
+p = 3d +
+(J
+2
+)
+outputs andK∈R 2×p. Reinserting arbitrary gain columns at these positions
+preserves K↑N. Let g be the smallest exponent with a nonzero coefficient among theFi.
+Equation (A.3) givesM≤g≤E.
+For a retained row(fi,gi)define
+d0(s) =s 2q +b 0(s)−a 0(s)2,(A.6)
+νi(s) =f i(s)(sq−a 0(s)) +gi(s),
+ji(s) =−f i(s)b0(s) +gi(s)(sq +a 0(s)).
+Thus the retained transfer row is−(νi,ji)/d0 and
+νi(s)(sq +a 0(s))−j i(s) =f i(s)d0(s).(A.7)
+The common factor is determined by
+gcd(d0,ν 1,...,ν p) =s g.(A.8)
+The rows(0,Fi)supply νi =Fi and attain orderg at zero. All remainingνi andd0 have order at
+least2 M >g. A row(0,sej +ek)gives νi(s) =sej +ek̸= 0for s̸ = 0, excluding nonzero common
+roots.
+Cancelling this common factor gives the reduced denominatordr =d0/sg of degreen = 2q−g .
+Let Ar be its scalar controllable companion anden the last coordinate vector. The minimal
+integer realization is
+Br = [en,(A qr +a 0(Ar))en],(C r)i,: =−coef 0:n−1(νi/sg).(A.9)
+Here coef 0:n−1 lists coefficients in ascending powers ofs. The companion resolvent gives the first
+transfer column−νi/d0. For the second column, (A.7) gives(νi/sg)(sq +a 0)≡j i/sg (modd r).
+Since deg(ji/sg)<n , its entries are−ji/d0. The first input ensures controllability, and(A.8)
+ensures observability. ForKand its extensionK↑, the matrix determinant lemma gives
+det(sI−A r−BrKCr) = drd0 det(D+K ↑N) =s −gpK↑(s).(A.10)
+Let H0≥ 1bound the magnitudes of the affine coefficients. Distinct pair sums bound the
+coefficients ofa 20 anda 0Fi by2H 20. Also,
+deg(dr−sn)≤2E−g <n−q.
+The coefficients ofsn−1,...,s n−q in dr are zero, soAjren =en−j for0 ≤j≤q . Together with
+(A.6) and (A.9), these bounds give
+∥Ar∥max,∥Cr∥max≤H 0 + 2H20,∥B r∥max≤H 0.
+These exact polynomial operations have polynomial cost in the encoded input length.
+To obtain the required stability bounds, note that the two highest nonleading coefficients
+of pK↑ vanish by(A.3), and division bysg preserves this property. ForMr(K) =Ar +BrKCr,
+Newton’s identities givetrMr(K) = tr(Mr(K) 2) = 0. Setγ r = 4n2/εand define
+A=γ rAr−I, B=γ rBr, C=C r.(A.11)
+11
+For an exact solution, chooseK↑ with z =−x, y = w = ζ = 0, and cjk = 2ℓj(x)ℓk(x).
+Substitution in(A.4) givespK↑ =s2q. Equation (A.10) then gives det(sI−M r) =sn, so(A.11)
+yields (A.2).
+For any gain withα(A +BKC )< 1, we haveα(Mr)< 2/γr. Lemma 1 gives|λ|<ε/n for
+every eigenvalue ofMr. Itsjth nonleading characteristic coefficient is bounded by
+(
+n
+j
+)
+(ε/n)j≤ε j≤ε,1≤j≤n.
+Equation (A.10) transfers this bound topK↑. The estimate following(A.5) gives (5) forx, whose
+coordinates remain in the retained first row of the gain.
+The scaling and shift preserve minimality. Sinceε−1 andγr are positive integers of polynomial
+bit length, the realization above and(A.11) produce the integer plant in polynomial bit time.
+A.2 Recovery of exact feasibility
+Lemma 3.An ETR-INV instance can be transformed in polynomial bit time into an integer
+system (3). After (4) is appended, this system has an exact real solution if and only if the
+instance is feasible. The instance is also feasible whenever a real vectorx satisfies (5), withε
+chosen by(A.1).
+Proof. For an infeasible source, we derive a positive lower bound on the total residual. We then
+construct equations for which (5) would violate that bound.
+Recall that ETR-INV asks whether addition equationsxi +xj =xk and inversion equations
+xixj = 1have a simultaneous solution with all variables in[1/2, 2](Section 4.2). Adjoin a
+fresh variablex0 and the inversion equationx20 = 1to make the variable list nonempty without
+changing feasibility. Since x0 ∈ [1/2, 2], we use the equivalent linear equationx0− 1 = 0
+below. Renumber the original variables and substitutexi = (5 + 3ui)/4, mappingui∈ [−1, 1]to
+xi∈[1/2,2]. Clearing denominators gives
+4(x0−1) = 3u 0 + 1,
+4(xi +xj−xk) = 5 + 3ui + 3uj−3uk,
+16(xixj−1) = 9uiuj + 15ui + 15uj + 9.
+(A.12)
+For each normalized variable appendu2i +v2i − 1. Write w = (u,v )∈R a and collect the
+polynomials on the right of (A.12) and the circle constraints asg1,...,g s. The equations
+gj(w) = 0have all solutions in[−1, 1]a. Their u coordinates recover the ETR-INV solutions
+through xi = (5 + 3ui)/4. Eachgj has degree at most two, and the list has polynomial length.
+Recall F (w) = ∑sj=1gj(w)2. On an infeasible source,F is strictly positive on the larger box
+[−2,2]a.
+To obtain a lower bound onF, we bound its reciprocal by encoding z = 1/F (w)for
+w∈[−2,2] a in the zero set of the integer polynomial
+Q(w,ξ,z) = (zF(w)−1) 2 +
+a∑
+i=1
+(w2i +ξ 2i−4) 2.
+The circle constraints givedegF = 4, soQ has2 a + 1variables and degree ten. Compute its
+maximum coefficient bit lengthτ from the source. On an infeasible input the real zero set ofQ
+is compact because(w,ξ )is bounded and1 /F is continuous on the box. Everyw in the box
+extends to a zero ofQ. PutN= 11·10 2a and define the integer
+χ= bit(2a+ 1) + bit(N+ 1) + 2 +N(18a+ 11)[τ+ bit(N) + 7].
+12
+By Basu and Roy (2010, Theorem 1), every point of this compact zero set has Euclidean norm
+less than2 χ. Thus1 /F (w) = z < 2χ for everyw∈ [−2, 2]a on an infeasible source, which
+gives (6). Since logN =O(a), the integerχ is computable with polynomial bit length without
+deciding source feasibility.
+To construct the equations, leth be a nonnegative integer, to be chosen after the residual
+estimate.
+Use W = (U,V )∈R a and T = th as in Section 4.2. Each expression2T 2gj(W/T )is a
+homogeneous quadratic polynomial in(W,T ). Write its mixed products as linear combinations of
+squares using2ab = (a +b)2−a 2−b 2. For each distinct squaref(W,T )2, introduce one variable
+Zf with defining equationf(W,T )2 =Zf, reusing the same variable whenever the square recurs.
+Replacing each square byZf defines a linear formΛj(Z)with integer coefficients. Let ¯Z have
+components ¯Zf =f(W,T )2, and write∥Λj∥1 for the coefficientℓ1 norm. This substitution gives
+Λj( ¯Z) = 2T 2gj(W/T),∥Λ j∥1≤128.(A.13)
+For inversion equations, the squares(Ui +Uj)2,( Ui +T )2, and( Uj +T )2 have coefficients
+9, 15, 15, respectively. The coefficients ofU 2i,U 2j,T 2 are−24,− 24,− 12. Summing the absolute
+values of these six coefficients gives∥Λj∥1≤ 99< 128. The other equations give smaller bounds,
+and combining terms with repeated indices cannot increase the norm. For the defining square
+equations, the chain(7), and the auxiliary pairs(4),∥Lj∥1≤ 2and every affine coefficient has
+magnitude at most five. HenceDL,H 0≤ 128, whereH0 is the maximum magnitude of an affine
+coefficient in the augmented system.
+ImposeΛ j(Z) 2 = 0and append (4) for all variables in the square equations and chain (7).
+For an exact normalized source solutionw, taketi = 52i, W =thw, and the exact square
+values. Conversely, the exact square equations andΛj = 0give gj(W/T ) = 0, since the chain
+makesT >0. The auxiliary pairs in(4) preserve feasibility when each new variable is assigned
+the square of its corresponding construction variable.
+It remains to show that every vector satisfying(5) implies feasibility of the source. Equa-
+tion (A.1) givesε≤ 1/64and DLε≤ 1/64. Forz≥ 0, the inequalityz2≤ (z + 2)/64implies
+z <1/4.
+Applying this estimate to(t0−5) 2 = 0gives|t 0−5|<1/4, hencet 0>4. Fort i>4,
+ti+1≥t 2i−(ti + 2)/64>t 2i/2.
+Induction onti/2gives the uniform lower bound
+T >2 2h+1.(A.14)
+The circle equations bound the normalized variables. Applying the same scalar estimate to
+the doubled circle relation yields|ZUi +ZVi−ZT|< 1/8. Using the errors in the three defining
+square equations gives
+|U 2i +V 2i −T 2|< 18 +|Ui|+|V i|+T+ 664 .(A.15)
+Putr= (U 2i +V 2i )1/2. Ifr≥2T, thenT >4givesr>8, and
+1
+8 + 2r+T+ 664 <r< 34r2≤r 2−T 2.
+Since|Ui| +|Vi|≤ 2r, this contradicts(A.15). Thusr< 2T for every pair andW/T∈ (−2, 2)a.
+Consequently, every affine formf(W,T )defining a variableZf now has absolute value at most
+4T, so∥ ¯Z−Z∥ ∞≤ε (4T + 2). The residual constraint forΛj(Z)2 = 0gives |Λj(Z)|< 1/4by
+13
+the scalar estimate above. Since these equations belong to the augmented system,∥Λj∥1≤D L.
+Thus (A.13) yields
+2T 2|gj(W/T)|=|Λ j( ¯Z)|
+≤|Λ j(Z)|+D L∥ ¯Z−Z∥ ∞
+< 14 +DLε(4T+ 2)
+≤ 14 + 4T+ 264 <2T,
+so|g j(W/T)|<1/TandF(W/T)<s/T 2.
+To make this upper bound smaller than2−χ, choose
+h= bit
+(
+χ+ bit(s) + 2
+)
++ 1.(A.16)
+Then h is polynomially bounded and2h+1 + 2> χ+ bit(s). Combining this inequality with
+(A.14) gives
+F(W/T)<s/T 2<2−χ,
+contradicting (6) for an infeasible source.
+B Exact synthesis and certification
+This appendix proves the complexity bound in Theorem 2 and the certification guarantees in
+Section 5.1. Appendix B.3 gives a lower bound on the bit length of rational stabilizing gains.
+B.1 Gain reduction and exact synthesis
+Lemma 4.For every rational plant,
+Npole ={D:G(s)DG(s)≡0}.(B.1)
+Its dimension and a parameterizationK(θ) =∑κi=1θiEi are computable in polynomial bit time.
+Each Ei has one unit entry and zeros elsewhere, at a position selected from the plant data.
+The parameterization preserves every attainable characteristic polynomial. Moreover,κ is the
+minimum number of linear combinations of gain entries that determinepK for every gainK. If
+σ= nrankG, then
+σ2≤κ≤rankBrankC.(B.2)
+Proof. If G≡ 0, the characteristic polynomial is independent of the gain andκ = 0. Otherwise
+factor G =UV over Q(s)with both factors of rankσ. Sylvester’s identity givesdet(I−KG ) =
+det(I−VKU ). IfGDG = 0, left and right inverses of the rank factors giveVDU = 0, proving
+D∈N pole. Conversely, exclude the finitely many real poles ofG,U,V and points where either
+factor has rank belowσ. At every remaining real point, the mapK↦→VKU is onto Rσ×σ. The
+defining property ofNpole implies det(Y−tVDU ) = detY for every matrixY and realt. For
+every invertibleY, differentiation gives
+d
+dt det(Y−tVDU)
+⏐⏐⏐⏐
+t=0
+=−det(Y) tr(Y −1VDU) = 0.
+Since Y is any invertible matrix, this identity forcesVDU = 0. Infinitely many such evaluation
+points imply the rational identity in (B.1).
+The rational identity can be tested by finitely many linear equations inD. Let N(s) =
+Cadj (sI−A )B. Choose2 n− 1distinct integers ti from0 ,..., 3n− 2with det(tiI−A )̸= 0.
+Such nodes exist becausedet(sI−A )has at most n distinct roots. Since deg(NDN )≤ 2n− 2,
+14
+vanishing at these nodes is equivalent toNDN≡ 0. Using vec(GDG) = (GT⊗G ) vecD, we
+obtain
+H=
+
+
+G(t1)T⊗G(t 1)
+...
+G(t2n−1)T⊗G(t 2n−1)
+
+,vecN pole = kerH.
+The nodes haveO(log(n+ 1))bits, and cofactor bounds give polynomial bit length for the entries
+ofH. This matrix has(2n− 1)pm rows andmp columns, so fraction-free elimination computes
+its kernel and pivot columns in polynomial bit time (Bareiss, 1968). The pivot columns select
+the matrix unitsEi. Every gain differs from a unique gain in their span by an element ofNpole.
+At a real evaluation point where rankG (s) = σ, D↦→GDG has rank σ2, giving the
+lower bound in(B.2). The kernel ofD↦→BDC is contained inNpole and its codimension is
+rankBrankC, giving the upper bound.
+The quotient coordinates expresspK in terms ofκ linear combinations of gain entries. IfpK
+depends onK only through a linear mapL : Rm×p→R q, then kerL⊆N pole, soq≥κ . Thusκ
+is the minimum number of such linear combinations.
+Let q be the product of the positive denominators ofA,B,C , so bit(q) =O(L). Every entry
+of q2(sI−A−BK (θ)C)is an integer affine polynomial in(s,θ ). ChooseU≥ 1to bound the
+coefficient ℓ1 norm of each entry, withlog2U =LO(1). The determinant expansion bounds
+the coefficientℓ1 norm ofq2n det(sI−A−BK (θ)C)by n!Un. Its coefficients therefore have
+polynomial bit length inL.
+Sylvester’s identity applied to a rank factorization ofG shows that the total gain degree of the
+characteristic polynomial is at mostσ≤n . Separate rank-one perturbations give degree at most
+one in eachθi. Writepθ(s) =∑nj=0aj(θ)sn−j with a0 = 1, and putaj = 0outside0 ≤j≤n .
+The Hurwitz matrix has entriesa2b−a+1 for0≤a,b<n. For its leading determinants,
+deg ∆j≤jσ,deg θi ∆j≤j.
+The positive factorq2nj makesfj =q2nj∆j an integer polynomial. Applying the same coefficient
+bound to the Hurwitz determinants gives a common coefficient bit boundτ =LO(1). The
+bound degθifj≤n permits exact reconstruction of eachfj on the tensor grid{0,...,n} κ from
+exact characteristic polynomials and rational evaluations of the Hurwitz determinants. Their
+coefficients and the Lagrange interpolation denominators have polynomial bit length inL. Thus
+all fj are formed in(L + 1)O(1)(n + 1)O(κ+1) bit operations. Positive constant constraints may
+be discarded, while nonpositive constant constraints give NO. The remaining exact problem is
+fj(θ)>0for at mostninteger polynomials of degree at mostn 2.
+The feasible set is open and therefore contains a rational point whenever it is nonempty. For
+sets defined by strict polynomial inequalities, Proposition 2.5 and Corollary 2.6 in the author
+version (arXiv:0910.2973) of Safey El Din and Zhi (2010) give a deterministic routine that
+decides nonemptiness and returns a rational point when the set is nonempty. For the at mostn
+inequalities of degree at mostn2 above, the routine uses at most
+(τ+ 1) c1(n+ 1)c1(κ+1)
+bit operations for an absolute constantc1. Each coordinate has bit length at most
+(τ+ 1)(n+ 1) c1κ,(B.3)
+after increasingc1. The routine uses sampling of realizable sign conditions (see also Basu et al.,
+2006). Sinceτ =LO(1), these bounds give(2). The matrix units transfer the sample directly to
+K∗, and exact substitution checks the Hurwitz determinants in time polynomial in the combined
+encoding length of(A,B,C,K ∗). The caseκ= 0requires only checking the fixed polynomial.
+15
+B.2 Stability certificates
+For the gainK∗ constructed in the proof of Theorem 2, setM∗ =A+BK ∗Cand solve
+MT∗ P+PM ∗ =−I.(B.4)
+The rational solutionP≻0gives a Lyapunov functionV(x) =x TPx.
+Let hK bound the bit length of each nonzero gain entry. Clearing a common denominator
+forM∗ turns the Lyapunov equation on symmetric matrices into an integer linear system with
+n(n + 1)/2unknowns and entry bit lengthO(L +κhK + log(n + 1)). Hurwitzness makes this
+system nonsingular. Hadamard’s determinant bound and exact elimination give a boundhP on
+the bit length of each entry ofP, with
+hP =O
+(
+n2[L+κh K + log(n+ 1)]).(B.5)
+The certificate can be independently verified by the exact equality(B.4) and rationalLDLT
+decomposition. All entries ofP, and henceW=∥P∥ 2F∥B∥2F∥C∥2F,are rational. Take
+ρ= 14(1 +W) .(B.6)
+SinceW≥0and(1 +W) 2≥4W, the radius satisfies
+4ρ2W= W4(1 +W) 2≤ 116 <1.(B.7)
+The bit lengths ofWandρare polynomial inL+n 2hP. For everyD∈R m×p with∥D∥ F≤ρ,
+(M∗ +BDC) TP+P(M ∗ +BDC) =−I+ (BDC) TP+PBDC≺0,
+because the spectral norm of the added symmetric term is at most2∥P∥F∥B∥F∥C∥Fρ <
+1. Consequently, A+B(K ∗ +D)C is Hurwitz for all such gain errorsD. The Lyapunov
+equality (B.4) and radius bound (B.7) are checkable in time polynomial in the combined
+encoding length of(A,B,C,K ∗,P,ρ ). Equations (B.3), (B.5), and(B.6) account separately for
+the outputsK∗,P,ρ . After increasing the absolute exponent constant, all three output lengths
+are bounded by (2).
+B.3 Bit length of rational stabilizing gains
+Proposition 1.There is a family of feasible minimal rational plants, with∥A∥F,∥B∥F,∥C∥F≤
+1, such that every rational stabilizing gain has an entry whose numerator requires superpolyno-
+mially many bits in the plant input size.
+Proof. For each integerh≥ 1, apply Lemma 2 to the chain(7) with (4). The exact solution
+ti = 5 2i gives a feasible plant whose input length is polynomial inh. Every stabilizing gain
+contains chain coordinates satisfying the residual bounds(5). As in the derivation of(A.14),
+these bounds givet0> 4and ti+1>t 2i/2for0 ≤i<h , henceth> 22h+1. Lemma 2 retains this
+coordinate as an entry of the gain. Choose a power of twoq≥ 1of polynomial bit length such
+thatA′ =A/q,B ′ =B/qandC ′ =C/qhave Frobenius norms at most one. Then
+A′ +B′K′C′ =q−1(A+B(K ′/q)C)
+so every stabilizingK′ requires more than2h numerator bits in some entry. Minimality is
+preserved.
+16
+C Single-input hardness construction
+C.1 Polynomial construction and stability analysis
+LetΦbe a nonempty Boolean formula of the form(1), withv occurring variables andt clauses.
+Renumber the occurring variables consecutively. For literalℓjr, letijr be its variable index and
+set ϵjr = 1for zijr and ϵjr =−1for ¬zijr. Under a sign assignmentζ, the literal is true exactly
+whenϵ jrζijr = 1. SetJ= 2v+t. Forx∈R 1×v, use two cubic polynomials for each variable,
+qAi (s,xi) =s 3 + (4 + 2xi)s2 + (4−2x i)s+ 11,(C.1)
+qSi (s,xi) =s 3 + (4 + 2xi)s2 + (4 + 2xi)s+ 19 + 16xi,(C.2)
+and, for clausejofΦ, use
+qCj (s,x) =s 3 + 3s2 + 3s+ 2 +
+3∑
+r=1
+ϵjrxijr.(C.3)
+All coefficients are jointly affine in the free variables. For a monic cubics3 +as2 +bs+c, Hurwitz
+stability is equivalent toa,b,c> 0and∆ = ab−c> 0. WritecC for the constant coefficient of
+the clause cubic. Their second Hurwitz determinants are
+∆A = 5−4x 2i,∆ S = 4x2i−3,∆ C = 7−
+3∑
+r=1
+ϵjrxijr.(C.4)
+The Hurwitz conditions forqAi and qSi bound|xi| from above and away from zero, respectively,
+separating the two Boolean states.
+If ζ∈{− 1, 1}1×v satisfiesΦand ∥x−ζ∥ ∞≤ 1/16, substituting the interval bounds onxi
+into (C.1)–(C.4) gives, for every cubic,
+a,b,c≥1/4,∆≥1/4.
+For a clause, the bounds use the fact that at least one literal is true underζ. Thus all cubics
+remain Hurwitz throughout the closed gain cube.
+Conversely, if|xi|≥ 6/5, qAi has constant coefficient11and satisfies∆ A≤− 1/4. If some
+|xi|≤ 4/5, its polynomialqSi has∆ S≤− 1/4and constant coefficient at least1/4. Otherwise
+each coordinate lies in one of the two open bands4/5<|x i|< 6/5. If its sign vector violates a
+clause, then
+cC <2−3(4/5)<−1/4,∆ C = 9−c C >1/4.
+In each of these cases a cubic is non-Hurwitz and has
+|c|≥1/4,|ab−c|≥1/4.(C.5)
+Thus any gain outside the bands or violating a clause supplies such a cubic. For an unsatisfiable
+formula, this holds for every realx.
+LetQ consist of all cubics in(C.1)–(C.2) with xi∈ [−40, 40], together with all cubics in
+(C.3) whose three signed literal values range independently over[−40, 40]. Their coefficient
+triples form a compact set independent of the formula size. For∥x∥∞≤ 40, every cubic in the
+construction belongs toQ. The elementary bound
+|λ|≤2 max{1,|a|,|b| 1/2,|c| 1/3}
+therefore allows us to choose a fixed integerR≥ 10such that every root of everyq∈Q satisfies
+|s|≤R . Enumerate theJ cubics asq1,...,q J. Their baselines ¯qj(s) =qj(s, 0)have all roots in
+|s|≤8by the same bound.
+17
+Consider the members ofQ satisfying (C.5). None of these cubics vanishes on the imaginary
+axis: forq(iω) =U+iV,
+U=c−aω 2, V=ω(b−ω 2), ω(ab−c) =aV−ωU.
+A zero atω = 0would give c = 0, and a zero atω̸ = 0would give ab−c = 0. These members
+form a closed subset ofQ. Compactness on|ω|≤R + 1thus gives a fixed rational0<µ≤ 1
+such that, for every member of this subset,
+|q(iω)|≥µ,|ω|≤R+ 1.
+Choose a fixed rational0<η <1satisfying
+ηmax
+q∈Q
+|z|≤R+2
+|q′(z)|<µ/2.
+Here the maximum is taken over the entire familyQ. For eachq satisfying (C.5), integrating
+along the horizontal segment fromiωtou+iωgives
+|q(u+iω)|>µ/2(C.6)
+for|u|≤η and|ω|≤R + 1. Since all roots lie in|s|≤R , the relevant cubics have no roots in
+|ℜs|≤η . For∥x−ζ∥ ∞≤ 1/16with ζ satisfyingΦ, the cubics therefore have all roots to the
+left of−η, while each selected non-Hurwitz cubic has a root to the right ofη.
+To preserve these stability distinctions when combining the cubics, we bound their interactions
+under separated frequency shifts. Defineδj(s,x ) = qj(s,x )−¯qj(s)and put M =∥x∥∞. For
+r=|z|≥10, the cubic coefficients give
+|¯qj(z)|≥r 3−4r 2−4r−19≥r 3/2,
+|δj(z,x)|≤M(2r 2 + 2r+ 16)≤5Mr 2/2.
+Consequently, ⏐⏐⏐⏐⏐δj(z,x)¯qj(z) ⏐⏐⏐⏐⏐≤ 5M|z| ,|z|≥10.(C.7)
+Choose a fixed positive integerΓsuch that
+Γ> 3200(R+ 9) 3
+µ .
+Such an integer exists becauseR and µ are fixed. Sinceµ≤ 1and R≥ 10, this choice also gives
+Γ>2(R+ 1). It ensures separated root disks and the two Rouché comparisons below. Set
+H= ΓJ,Ω j =jH,1≤j≤J.
+All constants are chosen independently of the input formula. Index the conjugate frequency
+copies bya= (j,ϵ)withϵ∈{−1,1}, and writec a =iϵΩ j. Define
+Qa(s,x) =q j(s−c a,x), Q 0a(s) = ¯qj(s−c a).
+Withδ a =Q a−Q 0a, define
+P0 =
+∏
+a
+Q0a, P=P 0 +∑
+a
+δa
+P0
+Q0a.(C.8)
+Conjugate pairing makesP real. The polynomialP is monic of degree6J and jointly affine in
+allvparameters.
+18
+ForDa ={s :|s−c a|< R + 1} put Ga = ∏b̸=aQ0b. Where QaGa̸= 0, the aggregation
+formula gives
+P−Q aGa
+QaGa
+= Q0a
+Qa
+∑
+b̸=a
+δb
+Q0b.(C.9)
+Fors∈ Da and b̸ =a, one has|s−c b|≥H− (R + 1)>H/ 2> 10, soQ0b(s)̸= 0. Thus (C.7)
+gives
+∑
+b̸=a
+⏐⏐⏐⏐⏐δbQ0b⏐⏐⏐⏐⏐≤ 20JMH .(C.10)
+OnDa,|Q0a(s)|≤ (R + 9)3. Suppose first M≤ 40. On the circle|s−c a| = R + 1, all three
+roots ofQa are at distance at least one, so|Qa|≥ 1. Equations (C.9)–(C.10) bound the relative
+error by800(R+ 9) 3/Γ<1. Rouché’s theorem therefore gives exactly three roots ofPin each
+disk. The disks are disjoint and account for all6J roots. For cubics with∥x−ζ∥ ∞≤ 1/16and
+ζ satisfyingΦ, or non-Hurwitz cubics satisfying (C.5), (C.6) gives|Qa|> µ/2on the chords
+ℜs =±η ofDa, hence|Q0a/Qa|< 2(R + 9)3/µ. Sinceµ≤ 1, this bound also covers the circular
+arcs. TruncatingDa byℜs>−η orℜs>η therefore gives a boundary on which the relative
+error in (C.9) is at most
+2(R+ 9) 3
+µ
+20JM
+H < 12 <1.
+For∥x−ζ∥ ∞≤ 1/16with ζ satisfyingΦ, apply Rouché’s theorem onDa∩{ℜs >−η} . The
+comparison polynomialQaGa has no roots there, so neither doesP. The strict boundary estimate
+excludes roots onℜs =−η. Together with the count of three roots per disk, this proves that all
+roots ofPlie to the left of−η.
+For a selected non-Hurwitz cubic satisfying(C.5), apply the theorem onDa∩{ℜs>η} . The
+root ofQa to the right ofη is retained in the root count forP. Thus every gain with∥x∥∞≤ 40
+that violates an interval or clause condition leaves a root ofPwith real part greater thanη.
+For the remaining gains, letM =∥x∥∞≥ 40and choose i with|xi| = M. Use either
+frequency copy ofqAi and putw =s−c a. On the boundary ofEa ={s :|w− 1|< 1/2}, put
+r=|w|∈[1/2,3/2]. Since2|w−1|= 1,
+⏐⏐⏐⏐⏐ qAi (w,0)2w(w−1) ⏐⏐⏐⏐⏐≤r 2 + 4r+ 4 + 11r <30.
+The last bound follows by convexity inr and evaluation at the two endpoints. SinceEa⊂D a,
+the other baseline factors, and henceGa, are nonvanishing there. The aggregation formula(C.8)
+gives
+P−2x iw(w−1)G a =Q 0aGa
+
+1 +∑
+b̸=a
+δb
+Q0b
+
+.
+On the boundary, (C.10) therefore yields
+⏐⏐⏐⏐P−2x iw(w−1)G a2xiw(w−1)G a ⏐⏐⏐⏐<30 ( 1M + 20JH )<1.
+The first contribution is at most3/4because M≥ 40, and the second is less than1/4by H = ΓJ
+and the choice ofΓ. The comparison polynomial2xiw(w− 1)Ga has exactly one zero inEa,
+at w = 1. Rouché’s theorem gives exactly one root ofP in that disk, with real part greater
+than1 /2. The estimate holds for either sign ofxi and all remaining coordinates with|xj|≤M ,
+excluding every gain with∥x∥∞≥40.
+19
+C.2 System realization and size bounds
+We realize the aggregate polynomial using real blocks. For each baseline¯qj(s) =s3 +dj2s2 +
+dj1s+d j0, let
+A0j =
+
+ 0 1 00 0 1
+−dj0 −dj1 −dj2
+
+,
+and form real blocks
+Aj =
+(
+A0j −ΩjI3
+ΩjI3 A0j
+)
+,B j = (0,0,1,0,0,0) T.(C.11)
+Let hji(s)be the coefficient ofxi in qj. The rowcoef 0:2(hji)lists its coefficients of1,s,s 2, with
+zeros for missing terms. Set output rowion blockjto
+−2[ coef0:2(hji) 0 1×3 ].
+Let A = diagjAj, B = coljBj, and letC collect these rows. The real blocks in(C.11) combine
+the transfer functions at the two conjugate shifts, giving
+Ci(sI−A) −1B=− ∑
+j
+(
+hji(s−iΩ j)
+¯qj(s−iΩ j) + hji(s+iΩ j)¯qj(s+iΩ j)
+)
+.
+Sincedet(sI−A) =P 0, the matrix determinant lemma yields, for every real rowx,
+det(sI−A−BxC) =P(s,x).(C.12)
+Every companion pair is controllable. All shifted baseline spectra are disjoint because their
+unshifted root moduli are at most eight and the centers are separated byH >16. Complex
+block diagonalization and the PBH test therefore give controllability of(A,B).
+For observability, each cubic has an output numerator relatively prime to its baseline. The
+numerator associated withqAi ,2 s(s− 1), has roots0and1, where qAi (s, 0)takes the nonzero
+values11and20. Dividing qSi (s, 0)by s2 +s + 8gives remainder−7s− 5. The quadratic has
+discriminant−31, whereas the remainder has a real zero. Hence the numerator associated with
+qSi ,2( s2 +s + 8), is coprime toqSi (s, 0). For each clause at least one numerator is a nonzero
+constant, even with repeated literals, since three signed occurrences cannot all cancel. Each
+local pair is observable. Disjoint spectra again give observability of the complete plant.
+The plant is therefore minimal. By(C.12), every satisfying sign assignment stabilizes it
+throughout the gain cube of radius1/16, whereas an unsatisfiable formula gives an unstable
+closed loop for every real gain. All matrices are constructed directly from the literal list. They
+have ordern= 6J, one input andvoutputs, and satisfy
+∥A∥max =O(J 2),∥B∥ max≤1,∥C∥ max≤32.
+There areO(J)nonzero entries: each six-state block ofA has sixteen,B has one per block,
+andC has at most5v+ 3t. Each integer usesO(1 +log(J + 1))bits. Renumbering the occurring
+variables givesv,t =O(L)in the formula’s binary input lengthL, so the dense target encoding
+and its construction requireO(L2 log(L+2))bits and bit operations. Since the integer entries are
+polynomially bounded inn = 6J, the reduction establishes strong NP-hardness. This completes
+the quantitative reduction.
+20
+References
+Abrahamsen, M., Adamaszek, A., & Miltzow, T. (2022). The art gallery problem is∃R-complete.
+Journal of the ACM,69(1), 4:1–4:70.
+Ahmadi, A. A., Chaudhry, A., Narang, I., & Tang, Y. (2026). Complexity of output feedback
+stabilization. arXiv:2609.20636v2.
+Anderson, B. D. O., Bose, N. K., & Jury, E. I. (1975). Output feedback stabilization and related
+problems—solution via decision methods.IEEE Transactions on Automatic Control,20(1),
+53–66.
+Arora, S., & Barak, B. (2009).Computational Complexity: A Modern Approach. Cambridge
+University Press.
+Bareiss, E. H. (1968). Sylvester’s identity and multistep integer-preserving Gaussian elimination.
+Mathematics of Computation,22(103), 565–578.
+Barkai, G., & Shames, I. (2026). On the NP-hardness of unconstrained static output feedback
+stabilization. arXiv:2609.38728v1.
+Basu, S., Pollack, R., & Roy, M.-F. (2006).Algorithms in Real Algebraic Geometry(2nd ed.).
+Algorithms and Computation in Mathematics (Vol. 10). Springer, Berlin, Heidelberg.
+Basu, S., & Roy, M.-F. (2010). Bounding the radii of balls meeting every connected component
+of semi-algebraic sets.Journal of Symbolic Computation,45(12), 1270–1279.
+Blondel, V. D., & Tsitsiklis, J. N. (1997). NP-hardness of some linear control design problems.
+SIAM Journal on Control and Optimization,35(6), 2118–2127.
+Blondel, V. D., & Tsitsiklis, J. N. (2000). A survey of computational complexity results in
+systems and control.Automatica,36(9), 1249–1274.
+Fu, M. (2004). Pole placement via static output feedback is NP-hard.IEEE Transactions on
+Automatic Control,49(5), 855–857.
+Fu, M., & Luo, Z.-Q. (1997). Computational complexity of a problem arising in fixed order
+output feedback design.Systems & Control Letters,30(5), 209–215.
+Henrion, D., & Lasserre, J.-B. (2006). Convergent relaxations of polynomial matrix inequalities
+and static output feedback.IEEE Transactions on Automatic Control,51(2), 192–202.
+Henrion, D., Šebek, M., & Kučera, V. (2002). An algorithm for static output feedback simulta-
+neous stabilization of scalar plants.IFAC Proceedings Volumes,35(1), 19–22.
+Löfberg, J. (2026). Static output-feedback stabilization is NP-hard. arXiv:2609.16886v1.
+Menini, L., Possieri, C., & Tornambè, A. (2025). Exact certificates for the solvability of
+stabilization problems through numerical algebraic geometry.Automatica,182, 112523.
+Narayanan, H., & Narayanan, H. (2019). On the linear static output feedback problem: The
+annihilating polynomial approach.Linear Algebra and its Applications,579, 336–364.
+Ravi, M. S., Rosenthal, J., & Helmke, U. (2002). Output feedback invariants.Linear Algebra
+and its Applications,351–352, 623–637.
+Röbenack, K., & Voßwinkel, R. (2020). Eigenvalue placement by quantifier elimination—the
+static output feedback problem.Acta Cybernetica,24(3), 409–427.
+21
+Sadabadi, M. S., & Peaucelle, D. (2016). From static output feedback to structured robust static
+output feedback: A survey.Annual Reviews in Control,42, 11–26.
+Safey El Din, M., & Zhi, L. (2010). Computing rational points in convex semialgebraic sets and
+sum of squares decompositions.SIAM Journal on Optimization,20(6), 2876–2889.
+Schaefer, M., Cardinal, J., & Miltzow, T. (2026). The existential theory of the reals as a
+complexity class: A compendium. In Pach, J., & Tóth, G. (Eds.),Courses in Discrete
+and Computational Geometry(pp. 167–313). Bolyai Society Mathematical Studies (Vol. 31).
+Springer, Cham.
+Syrmos, V. L., Abdallah, C. T., Dorato, P., & Grigoriadis, K. (1997). Static output feedback—a
+survey.Automatica,33(2), 125–137.
+van der Woude, J. W. (1988). A note on pole placement by static output feedback for single-input
+systems.Systems & Control Letters,11(4), 285–287.
+Yannakoudakis, A. G. (2019). Static output feedback canonical forms.IMA Journal of
+Mathematical Control and Information,36(2), 537–567.
+22

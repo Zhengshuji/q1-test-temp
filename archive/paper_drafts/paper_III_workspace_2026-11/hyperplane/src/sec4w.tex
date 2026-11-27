@@ -1,0 +1,309 @@
+\section{Exact algebraic decision procedure}
+\label{sec4}\label{sec:decision}
+
+The compressed criterion of Section~\ref{sec:prelim} is decided by a greatest-common-divisor test on
+the maximal minors. The closedness of the bad locus, the generic-point criterion and the finite-cover
+principle that accompany it are results of \cite{companion1}, recalled below as black boxes. What they
+do not supply, and what this section develops, is the passage from a \emph{generic} point to an
+\emph{entire chart}, so that one computation per chart gives a verdict valid at every point of it. In
+the hyperplane layer that passage is supplied by a single invariant, $\rank H\equiv\omega$, which keeps
+a common factor from degenerating to a constant (Lemma~\ref{sec4:lem:fullrank}) --- the counterpart of
+its inherited use, which keeps common roots from escaping to infinity. No complexity assertion is made
+here; that is the content of Section~\ref{sec5}.
+
+\subsection{Standing notation}
+\label{sec4:notation}
+
+We follow Sections~\ref{sec:prelim} and~\ref{sec3}. Let $\mathcal L=\binom{L_0}{R}$ have $q$ rows and
+$V=\row\mathcal L$, let $V_0=\row L_0$, $N$ be a basis of $K_0$, and
+\[
+\begin{gathered}
+H=LN,\qquad H_A=LAN,\\
+P(\lambda)=\lambda H-H_A,\qquad \omega=\rank H ,
+\end{gathered}
+\]
+with $\omega=k-1$ in the hyperplane layer, $\rho=\rank[C;CA]$, $s=q-k+1$, and
+$\widetilde r=r(v)-\delta$ the rank of the quotient bundle. A parameter point $X$ of a chart gives
+$L(X)$, $H(X)=L(X)N$, $H_A(X)=L(X)AN$ and $P(X,\lambda)=\lambda H(X)-H_A(X)$, a $q\times k$ pencil of
+rank $\omega$ at every $X$. The index $I$ ranges over pairs of $\omega$ rows and $\omega$ columns, and
+$m_I(X,\lambda)$ is the corresponding maximal minor.
+
+\subsection{Inherited tools}
+\label{sec4:inherited}
+
+\begin{thm}[Inherited tools; \cite{companion1}]
+\label{sec4:thm:closed}
+\label{sec4:thm:generic}
+\label{sec4:prop:cover}
+Let the layer be covered by finitely many irreducible parameter pieces with $\rank H\equiv\omega$ and
+function field $K=\overline{\mathbb Q(\mathcal S)}$. Then:
+\begin{enumerate}[label=(\alph*),leftmargin=*]
+\item \label{it:closed} for every chart $\mathcal X$ the bad locus $\mathcal B\subseteq\mathcal X$ is
+Zariski closed;
+\item \label{it:generic} a piece $\mathcal S$ contains a good point if and only if
+$\deg_\lambda\gcd_I m_I=0$ in $K[\lambda]$;
+\item \label{it:cover} consequently $\mathcal X$ contains a good point if and only if some piece of the
+cover has a gcd of $\lambda$-degree zero.
+\end{enumerate}
+\end{thm}
+
+Closedness in \cite{companion1} is obtained as follows. Homogenize $\lambda=u/v$ to
+$[u{:}v]\in\mathbb P^1$ and let
+$\mathcal I=\{(X,[u{:}v]):\ m_I(X,u,v)=0\ \text{for all}\ I\}\subseteq\mathcal X\times\mathbb P^1$ be
+the incidence set of common roots, where $m_I(X,u,v)$ is the homogenization of $m_I$. Since every
+$m_I$ is polynomial in $(X,u,v)$ and equations are closed, $\mathcal I$ is closed; its image under the
+projection $\mathcal X\times\mathbb P^1\to\mathcal X$ is closed because $\mathbb P^1$ is proper
+\cite{bpr06}; and a common root at infinity, $[u{:}v]=[1{:}0]$, would force every leading coefficient,
+i.e.\ every $\omega\times\omega$ minor of $H(X)$, to vanish at $X$, which $\rank H=\omega$ excludes.
+Hence the image of $\mathcal I$ is exactly the locus where a finite common root exists, which is the
+bad locus $\mathcal B$. If $\mathcal X$ is irreducible, $\mathcal B$ is closed and distinct from
+$\mathcal X$ unless the gcd over the function field has positive degree; a nonzero $\gcd$ of positive
+degree gives a common factor, and a Bézout identity over the function field gives the converse
+\cite{lan02}, which is (b). The finite-cover statement (c) is the specialization to a finite union.
+Two consequences are used below: no decomposition into irreducible components is needed, because the
+charts of Section~\ref{sec4:charts} are affine spaces covering the layer by
+Theorem~\ref{sec3:thm:param}; and the criterion speaks of the \emph{generic} point only, which is the
+gap that Lemma~\ref{sec4:lem:fullrank} closes.
+
+\subsection{Charts and their size}
+\label{sec4:charts}
+
+\begin{defn}[Good points, and affine charts of the fibre]
+\label{sec4:defn:goodbad}
+\label{sec4:defn:charts}
+A parameter point $X$ is \emph{good} if $\rank P(X,\lambda)=\omega$ for every $\lambda\in\mathbb C$,
+and \emph{bad} otherwise; by the criterion of Section~\ref{sec:prelim} it is bad exactly when
+$\deg_\lambda\gcd_I m_I(X,\cdot)>0$. The charts are constructed as follows. Fix an admissible direction
+$[v]\in\mathbb P(E_\mu^0)$ and a basis $e_1,\dots,e_{\widetilde r}$ of
+$\mathcal Q_v/\overline V_{0,v}$. For $I\subseteq\{1,\dots,\widetilde r\}$ with $|I|=m=s-\delta$ put
+$J=\{1,\dots,\widetilde r\}\setminus I$ and let
+$\mathcal X_I\cong\mathbb C^{m\times(\widetilde r-m)}$ be the affine chart with coordinates
+$X=(X_{ij})_{i\in I,\,j\in J}$. The row space attached to $X$ is spanned by the base rows --- a basis
+of $V_0+D_v$, of which there are $(k-1)+\delta$ --- together with
+\[
+\row_i=e_i+\sum_{j\in J}X_{ij}\,e_j,\qquad i\in I .
+\]
+These are $(k-1)+\delta+m=(k-1)+s=q$ rows and they form $L(X)$. The chart count is
+$\binom{\widetilde r}{m}$, the parameter count is
+$d=m(\widetilde r-m)=(s-\delta)(r(v)-s)\le p^2$, and for $m=0$ the chart is a single point.
+\end{defn}
+
+The charts above are \emph{affine} and \emph{explicitly} parameterized: the rows are affine in $X$, so
+the minors are polynomials a computer can form, and each chart is irreducible by construction, so
+Theorem~\ref{sec4:thm:generic} applies without any decomposition. What they do not yet provide is a
+cover of the \emph{total} parameter space: when $\dim E_\mu^0>1$ the direction is itself a parameter and
+the rows of $L$ depend on it through $D_v$ and through a basis of the quotient. The next definition
+supplies the missing charts, so that the algorithm of Section~\ref{sec4:algorithm} enumerates a finite
+list rather than the points of a continuum.
+
+\begin{defn}[Charts of the total parameter space]
+\label{sec4:defn:totcharts}
+Fix a real eigenvalue $\mu$ with $K=\mathbb Q(\mu)$ and the real embedding selecting $\mu$, let
+$d_\mu^0=\dim E_\mu^0$, $h_\mu^0=\dim(E_\mu^0\cap\ker A_{21})$, and fix a $K$-basis
+$e_1,\dots,e_{d_\mu^0}$ of $E_\mu^0$. A chart of the total parameter space is a product of three
+factors, each a principal open subset of an affine space over $K$.
+\begin{enumerate}[label=(\roman*),leftmargin=*]
+\item \emph{Direction chart.} If $d_\mu^0=1$ the factor is a point. Otherwise, for each
+$j\in\{1,\dots,d_\mu^0\}$ let $v_j(x)=e_j+\sum_{i\ne j}x_i e_i$ with coordinates $x\in K^{d_\mu^0-1}$;
+these $d_\mu^0$ charts cover $\mathbb P(E_\mu^0)$. The eigen stratum
+$\mathbb P(E_\mu^0\cap\ker A_{21})$ is a projective subspace of dimension $h_\mu^0-1$; it is covered by
+the $h_\mu^0$ charts obtained in the same way from a $K$-basis of $E_\mu^0\cap\ker A_{21}$. The non-eigen
+stratum is covered by the intersections of the $v_j$-charts with the opens
+$\{(A_{21}v_j(x))_q\ne0\}$, one for each row index $q$ of $A_{21}$; the factors
+$\{(A_{21}v_j(x))_q\}$ are the pivot conditions of the trivialization.
+\item \emph{Trivialization chart.} On each direction chart the two functionals $\varphi_v,\varphi_{Av}$
+have entries that are affine in $x$, so $D_v=K_0\cap U_v^\perp$, $U_v^\perp$ and the quotient
+$\mathcal Q_v/\overline V_{0,v}$ are obtained by Gaussian elimination over $K(x)$; the pivots are
+specified minors of the $2\times k$ matrix $[\varphi_v;\varphi_{Av}]$ and of the analogous
+$2\times n$ matrix, and each choice of pivots gives a basis whose entries are rational functions of $x$
+with denominators equal to those minors. Refining the direction chart by those nonvanishing conditions
+gives a locally closed affine chart on which the basis is polynomial after clearing denominators.
+\item \emph{Fibre chart and rank chart.} On the trivialized chart, add a Grassmann chart of
+Definition~\ref{sec4:defn:charts} for the fibre, and refine by the condition that a specified
+$\omega\times\omega$ minor $\Delta$ of $H$ is nonzero; on that open set $\rank H=\omega$ identically.
+\end{enumerate}
+\end{defn}
+
+\begin{lem}[The total charts cover, and are finitely many]\label{sec4:lem:cover}
+Every admissible point of the layer lies in at least one chart of Definition~\ref{sec4:defn:totcharts};
+the number of charts is finite, and on each of them the entries of $L$, $H$ and $H_A$ are rational
+functions of the joint coordinates whose denominators are the pivot and rank minors, while
+$\rank H\equiv\omega$ holds identically.
+\end{lem}
+
+\begin{proof}
+An admissible point determines a real eigenvalue $\mu$, a direction $[v]\in\mathbb P(E_\mu^0)$, a point
+of the fibre over $[v]$ and a positive value of $\rank H$ equal to $\omega$; the direction lies in one
+of the direction charts, the elimination pivots are those of its own trivialization, some
+$\omega$-minor $\Delta$ of $H$ is nonzero there, and the fibre point lies in one Grassmann chart. Hence
+the point lies in the corresponding product chart. Finiteness follows because each of the three factors
+is indexed by a finite set: $d_\mu^0$ (or $h_\mu^0$) projective charts, finitely many pivot choices,
+finitely many $\omega$-minors and $\binom{\widetilde r}{m}$ Grassmann charts, and there are at most $k$
+real eigenvalues. The rationality statement is the content of (ii) and (iii): the elimination is
+performed over $K(x)$, so the basis entries are ratios of minors, and clearing denominators makes them
+polynomial on the refined open set; $\rank H=\omega$ is imposed by $\Delta\ne0$.
+\end{proof}
+
+\begin{lem}[Size of a chart]
+\label{sec4:lem:minorcount}
+On every chart of Definition~\ref{sec4:defn:charts} the entries of $L(X)$, hence of $H(X)$ and
+$H_A(X)$, are affine in $X$; every maximal minor satisfies $\deg_X m_I\le\omega$ and
+$\deg_\lambda m_I\le\omega$; and the number of maximal minors is
+$\binom{q}{\omega}\binom{k}{\omega}=\binom{q}{k-1}k=k\binom{q}{s}$.
+\end{lem}
+
+\begin{proof}
+$H(X)=L(X)N$ is affine in $X$ because $N$ is constant, and $m_I$ is an $\omega\times\omega$
+determinant, hence multilinear, so its degree is at most $\omega$ in each of $X$ and $\lambda$. The
+count is the number of ways of choosing $\omega$ of the $q$ rows and $\omega$ of the $k$ columns,
+with $\binom{k}{k-1}=k$ and $\binom{q}{k-1}=\binom{q}{s}$.
+\end{proof}
+
+\subsection{The full-rank leading-coefficient lemma}
+\label{sec4:fullrank}
+
+\emph{Why a generic test is not yet a decision.} Theorem~\ref{sec4:thm:generic} tests the generic point
+of an irreducible piece, which answers a question about almost every point, whereas a decision
+procedure needs an answer at every point: a chart whose generic point is bad may in principle contain
+good points. The gap is real for general families; what closes it here is the following, the main new
+result of this section.
+
+The coefficient of $\lambda^\omega$ in $m_I(X,\lambda)$ is the $\omega\times\omega$ minor of $H(X)$
+with the same index set. Since $\rank H(X)=\omega$ at every point of a chart, at least one of these
+minors is nonzero, that is,
+\begin{equation}
+\label{sec4:eq:fullrank}
+\text{for every }X\in\mathcal X_I\ \text{there is }I\text{ with }
+\deg_\lambda m_I(X,\cdot)=\omega .
+\end{equation}
+
+\begin{lem}[Full-rank leading coefficient; dichotomy on a chart]
+\label{sec4:lem:fullrank}
+\label{sec4:cor:dichotomy}
+Let $K$ be a field, $X=(X_1,\dots,X_d)$, and let $m_1,\dots,m_t\in K[X,\lambda]$ satisfy
+$\deg_\lambda m_i\le\omega$ and \eqref{sec4:eq:fullrank}. If
+$\deg_\lambda\gcd(m_1,\dots,m_t)>0$ in $K(X)[\lambda]$, then for \emph{every} $X_0$ the specialized
+polynomials $m_i(X_0,\cdot)$ have a nonconstant common factor. In particular, on a chart of the layer
+exactly one of the following holds: either $\deg_\lambda\gcd_I m_I=0$, in which case the chart contains
+a good point and its good points form a nonempty Zariski open subset; or
+$\deg_\lambda\gcd_I m_I>0$, in which case \emph{every} point of the chart is bad.
+\end{lem}
+
+\begin{proof}
+Let $g$ be the gcd in $K(X)[\lambda]$, of positive degree. By Gauss's lemma \cite{lan02} we may take
+$g$ primitive in $K[X][\lambda]$ and of positive degree, with $g\mid m_i$ in $K[X][\lambda]$ for every
+$i$; write $m_i=g\,h_i$ and $\omega_i=\deg_\lambda m_i$, $\gamma=\deg_\lambda g\ge1$. Fix $X_0$. If
+$g(X_0,\cdot)\equiv0$ then $m_i(X_0,\cdot)=g(X_0,\cdot)h_i(X_0,\cdot)\equiv0$ for every $i$,
+contradicting \eqref{sec4:eq:fullrank}. If $g(X_0,\cdot)$ is a nonzero constant then
+$\deg_\lambda m_i(X_0,\cdot)\le\deg_\lambda h_i\le\omega_i-\gamma\le\omega-\gamma<\omega$ for every
+$i$, again contradicting \eqref{sec4:eq:fullrank}. Hence $g(X_0,\cdot)$ is nonzero and nonconstant, and
+it is a common factor of all $m_i(X_0,\cdot)$. The dichotomy follows by applying this to the charts and
+Theorem~\ref{sec4:thm:generic} to the degree-zero alternative.
+\end{proof}
+
+Without \eqref{sec4:eq:fullrank} the implication is false: $m(X,\lambda)=X\lambda+1$ has gcd $m$, of
+degree $1>0$ over $K(X)[\lambda]$, yet at $X_0=0$ it specializes to the constant $1$, and
+\eqref{sec4:eq:fullrank} fails there. The lemma thus rests on the invariant $\rank H\equiv\omega$,
+which is what the layer supplies.
+
+\subsection{Real designs and certificates}
+\label{sec4:real}\label{sec4:certificates}
+
+\begin{prop}[Real designs and certificates]
+\label{sec4:prop:realpoints}
+\label{sec4:prop:sieve}
+\label{sec4:prop:dimineq}
+\label{sec4:prop:resultant}
+\label{sec4:prop:cert}
+The following hold, in decreasing logical strength.
+\begin{enumerate}[label=(\alph*),leftmargin=*]
+\item \label{it:real} Every chart $\mathcal X_I\cong\mathbb C^d$ carries the standard real structure
+$\mathbb R^d$, and so do the affine charts of $\mathbb P(E_\mu^0)$ because $\mu$ is real and $E_\mu^0$
+is defined by real linear equations. The real points of every chart are Zariski dense in it; if the
+good set of a chart is a nonempty Zariski open subset then it contains a real point, hence a real
+admissible design; and if $\deg_\lambda\gcd>0$ on a chart then every real point of it is bad.
+\item \label{it:sieve} If $E_\mu^0=\{0\}$ for every real eigenvalue $\mu$ of
+$M=\pi_{K_0}A|_{K_0}$, then the layer is infeasible.
+\item \label{it:dimineq} If the fibre over some $[v]\in\mathbb P(E_\mu^0)$ is nonempty then
+$\delta\le s\le r(v)$; if $\delta>s$, or $s>\rho$ on the eigen branch and $s>\rho-1$ on the non-eigen
+branch, the layer is infeasible.
+\item \label{it:resultant} If $\operatorname{Res}_\lambda(m_I,m_J)\not\equiv0$ in $K[X]$ for some pair
+$I,J$, then $\deg_\lambda\gcd_I m_I=0$ and the chart, hence the layer, is feasible. The converse fails:
+$f_1=\lambda(\lambda-1)$, $f_2=\lambda(\lambda-2)$ and $f_3=(\lambda-1)(\lambda-2)$ share a factor
+pairwise, respectively $\lambda$, $\lambda-1$ and $\lambda-2$, yet $\gcd(f_1,f_2,f_3)=1$; a nonzero
+resultant is a usable positive certificate, whereas failure to find one is not a negative certificate.
+\item \label{it:cert} A complete decision certificate consists of (i) the factorization of $\chi_M$ and
+a basis of $E_\mu^0$ over each irreducible factor, or the statement $E_\mu^0=0$; (ii) for every
+admissible direction and chart, the chart and parameter counts; (iii) for every chart either a
+\emph{good} alternative --- a Bézout identity $\sum_I a_I m_I=1$ with $a_I\in K[X][\lambda]$, checked
+by one multiplication --- or a \emph{bad} alternative --- a nonconstant $g\in K[X][\lambda]$ with
+division identities $g\,h_I=m_I$ for every $I$. If some chart reports ``good'' the layer is feasible;
+if every chart reports ``bad'' it is infeasible.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+(a) The zero set of a nonzero polynomial has empty interior in $\mathbb R^d$, so its complement is
+dense \cite{bpr06}; the good set is a non-vanishing set of a nonzero polynomial, so it meets
+$\mathbb R^d$, and the corresponding $L(X)$ is a real matrix with a real row space.
+(b) Every admissible direction lies in some $E_\mu^0$.
+(c) The fibre is $\Gr(m,\widetilde r)$ with $m=s-\delta$, nonempty exactly when
+$0\le m\le\widetilde r$.
+(d) A nonzero resultant makes $m_I$ and $m_J$ coprime in $K(X)[\lambda]$, so the gcd is $1$; the
+failure of the converse is the example displayed.
+(e) The good alternative certifies $\gcd=1$ without any gcd computation; for the bad alternative,
+Lemma~\ref{sec4:lem:fullrank} shows that $g$ is nonconstant and divides every minor at every point, so
+the whole chart is bad, and the cover is finite.
+\end{proof}
+
+\subsection{The decision algorithm}
+\label{sec4:algorithm}
+
+\begin{algo}[Exact decision for the entire layer]
+\label{sec4:algo:decide}
+\begin{enumerate}
+\item \emph{Pre-check.} If $\rank L_0<r_0$, output ``infeasible'' and stop: $\mathcal L$ must have
+full row rank, so $\rank L_0=r_0$ is necessary.
+\item Compute $K_0$, $N$ and $M=\pi_{K_0}A|_{K_0}$; factor $\chi_M$ and keep its real irreducible
+factors.
+\item For every real irreducible factor, enumerate the charts of Definition~\ref{sec4:defn:totcharts}:
+first the direction charts of \ref{sec4:defn:totcharts}(i), taking the eigen charts when
+$h_\mu^0\ge1$ and the non-eigen charts when $h_\mu^0<d_\mu^0$, and compute $\delta,s,m,\widetilde r$ on
+each; if $\delta>s$ or $s>r(v)$, skip that chart by Proposition~\ref{sec4:prop:dimineq}. This
+enumeration is finite by Lemma~\ref{sec4:lem:cover} and does \emph{not} sample individual directions.
+\item For every chart produced in step 3: trivialize the quotient as in
+Definition~\ref{sec4:defn:totcharts}(ii), attach a fibre chart \ref{sec4:defn:totcharts}(iii), build
+$L(X)$ over $K(x)$ with $x$ the joint coordinates, clear the denominators of the pivot and rank minors,
+form the $k\binom{q}{s}$ maximal minors of $P(X,\lambda)$, and compute their gcd over $K(x)[\lambda]$
+by the subresultant algorithm \cite{vzgg03}.
+\item If some chart has $\deg_\lambda\gcd=0$, output ``feasible'' and stop.
+\item If every chart has $\deg_\lambda\gcd>0$, output ``infeasible''.
+\item If the computation cannot be completed, output ``undecided'', never ``infeasible''.
+\end{enumerate}
+\end{algo}
+
+\begin{prop}[Correctness]
+\label{sec4:prop:correct}
+Whenever steps 1--6 are completed, the verdict of Algorithm~\ref{sec4:algo:decide} is correct.
+\end{prop}
+
+\begin{proof}
+Step 1 is the problem definition and step 3 is Proposition~\ref{sec4:prop:dimineq}. Step 3 is finite by
+Lemma~\ref{sec4:lem:cover}, and its charts cover the whole parameter space, so no admissible design is
+lost. In step 5 a chart with $\deg=0$ contains a good point by Theorem~\ref{sec4:thm:generic}; in step 6
+Lemma~\ref{sec4:cor:dichotomy} makes every chart entirely bad, and the cover is finite, so no good
+point exists. The ``undecided'' output of step 7 is not a verdict. Two implementation points belong to
+the proof as well: step 2 enumerates irreducible factors rather than roots, since eigenspaces of
+conjugate roots are Galois conjugate and conjugation preserves the $\lambda$-degree of the gcd; and
+all linear algebra in step 4 must be done over the \emph{same} field $K=\mathbb Q(\mu)$, because when
+$\mu\notin\mathbb Q$ the bases of $E_\mu^0$, $D_v$, $U_v^\perp$ and
+$\mathcal Q_v/\overline V_{0,v}$ have no rational coordinates, and one coefficient field is what makes
+the chain ``chart rows, minors, function-field gcd'' correct.
+\end{proof}
+
+Three statements of different strength are kept apart. \textbf{(i)} This section gives an exact
+decision for the entire layer and makes no complexity assertion. \textbf{(ii)} Polynomial time on the
+geometrically simple subclass belongs to Section~\ref{sec5}, and an input outside it can only be
+answered ``undecided''. \textbf{(iii)} The counterexample of Section~\ref{sec:counterexample} refutes
+the reduction ``one representative direction per eigenvalue''; it does not prove that the repeated
+case is hard, nor that geometric simplicity is necessary for polynomial solvability.

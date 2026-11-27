@@ -1,0 +1,107 @@
+{
+  "name": "counterexample_max_r_eps_rho_star_plus1",
+  "date": "2026-10-26",
+  "problem": "MIN-ROWS (q1)",
+  "n": 6,
+  "p": 1,
+  "r": 2,
+  "A": [
+    [
+      1,
+      -1,
+      -2,
+      2,
+      1,
+      1
+    ],
+    [
+      0,
+      0,
+      -1,
+      2,
+      1,
+      -2
+    ],
+    [
+      1,
+      -1,
+      -1,
+      2,
+      1,
+      -2
+    ],
+    [
+      -2,
+      -1,
+      2,
+      -1,
+      -1,
+      0
+    ],
+    [
+      -2,
+      -1,
+      -1,
+      2,
+      -1,
+      1
+    ],
+    [
+      -2,
+      0,
+      0,
+      -2,
+      0,
+      -1
+    ]
+  ],
+  "C": [
+    [
+      2,
+      0,
+      0,
+      2,
+      1,
+      1
+    ]
+  ],
+  "L0": [
+    [
+      10,
+      0,
+      0,
+      10,
+      5,
+      5
+    ],
+    [
+      0,
+      10,
+      2,
+      -16,
+      -4,
+      -10
+    ]
+  ],
+  "computed": {
+    "j": 2,
+    "d": 4,
+    "c0": 2,
+    "eps": 1,
+    "rho_star": 4,
+    "q_min": 6,
+    "dim_closure_J_under_A": 6,
+    "old_reduced_dimV": 4,
+    "J_A_invariant": false,
+    "C_whole_space_feasible": true,
+    "L0_feasible": false
+  },
+  "refutes": [
+    "q_min = max(r + eps, rho* + 1)",
+    "q_min = dim V + 1"
+  ],
+  "supports": true,
+  "proof": "row(L0) = J and J is not A-invariant, so (5a) makes V A-invariant; V >= J forces dim(V n J) = j = 2 and V >= <J>_A = C^n, hence V = C^n; C^n satisfies (5a)(5b) exactly, so q_min = n. rho* = d because C^n is the only feasible V.",
+  "verifier": "q1_true/scripts/c190_invariant_family.py (Q exact), c189_ledger.py",
+  "field_convention": "L rational (all searches in this project are rational)"
+}

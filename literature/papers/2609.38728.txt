@@ -1,0 +1,1570 @@
+1
+On the NP-Hardness of Unconstrained Static Output
+Feedback Stabilization
+Gal Barkai 1,Member, IEEE, Iman Shames 2,Member, IEEE
+Abstract—In this paper we give a polynomial-time reduction
+from the Subset Sum Problem to unconstrained static output
+feedback stabilization, establishing its NP-hardness. The con-
+struction uses two scalar building blocks to impose approximate
+discrete choices and a weighted-sum constraint. Once the problem
+is encoded, we relate the stability of theN+ 1decoupled
+loops encoding the problem to that of a coupled plant. This is
+accomplished by leveraging frequency separation via a band-
+pass transformation, and comparing the root counts of the
+true characteristic polynomial with that of the different blocks
+in different regions of the right half-plane. The construction
+then naturally bounds every stabilizing gain and gives explicit
+modulus-margin estimates, ensuring that the plant data have
+polynomial binary encoding length.
+I. INTRODUCTION
+Static output feedback stabilization is concerned with the
+question whether a static gain matrix renders a given linear
+time-invariant plant internally stable. The problem has been
+studied since the early 1960s; see the survey [1]. It is de-
+cidable, since the existence of a stabilizing gain is a first-
+order sentence over the reals and quantifier elimination applies,
+[2, Sec. IV] and [3, Sec. 3.4]. The complexity of related
+design problems has been the target of investigation for the
+last few decades. Checking robust nonsingularity of interval
+matrices [4] in addition to several robust stability analysis [5]
+problems are shown to be NP-hard. Deciding feasibility of
+bilinear matrix inequalities was proved to be NP-hard in [6].
+While, static output feedback stabilizability is equivalent to
+the feasibility of a bilinear matrix inequality, the hardness
+of the general bilinear matrix inequality problem does not
+address the complexity of the stabilization problem itself.
+NP-hardness of simultaneous stabilization by static output
+feedback was established in [6] and [7]. In [7], NP-hardness of
+stabilization by static state or output feedback when the entries
+of the gain matrix are constrained to given intervals is proved.
+Later, NP-hardness of static output feedback pole placement
+was proved in [8]. Pole placement prescribes closed-loop
+eigenvalues exactly, while stabilization requires only that all
+eigenvalues lie in the open left half-plane. In [8] it was stated
+that neither problem reduces to the other in an obvious way.
+The unconstrained stabilization problem remained open. It was
+posed as Open Problem 1 in [9, Ch. 11], and it was conjectured
+in [7, Sec. 1] that it is NP-hard. We prove its NP-hardness in
+this paper.
+Our reduction is motivated by two main ideas: i) the
+hardness argument of [7] gains with interval constraints, and
+1Universit´e de Lorraine, CNRS, CRAN, email:gal.barkai@univ-lorraine.fr.
+2University of Melbourne, Melbourne, Australia, email:
+iman.shames@unimelb.edu.au.
+ii) frequency domain notions such a frequency separation.
+Given an instance withNweights, we construct a rational
+plant with one input,Noutputs and10N+ 3states. Each
+output contains a band-pass copy of a scalar prototype whose
+stabilizing gains lie in two narrow intervals around1and2,
+together with a weighted copy of a shared summing block.
+The latter imposes a narrow constraint onW= Pi aiki in
+the comparison system. The interval widths leave enough slack
+to round a feasible real gain to a subset-sum solution. No gain
+constraint is imposed on the SOFS instance; the bounds needed
+in the analysis must follow from stability of the constructed
+plant. The scalar loops are coupled in the plant, so their
+stability conditions cannot simply be combined. We separate
+their frequency ranges and compare the true characteristic
+polynomial with one scalar factor at a time, retaining the
+other open-loop denominators. On each comparison contour,
+the selected return difference dominates the other loop terms
+whenever its modulus margin is large enough. Rouch ´e’s theo-
+rem then preserves the local right half-plane root count within
+each region. This local comparison is needed in the reverse
+direction, where some gains may lie near stability crossings
+and need not have positive margins. Bounds on all stabilizing
+gains and explicit scalar margin estimates allow the required
+frequencies to be chosen with polynomial binary encoding
+length.
+Section II gives the decision problems and rounding argu-
+ment. Sections III and IV construct the plant and establish the
+local comparison. Section V chooses its parameters and proves
+both directions of the reduction; the appendices contain the
+prototype calculations and frequency-separation estimates.
+Remark I.1(Novelty).The construction in this paper has
+been developing for approximately a year, during which the
+question of NP hardness has remained open. During the final
+revising stages of this manuscript, we have been made aware
+of two AI-assisted preprints addressing the same problem
+appearing in recent weeks, with [10] proposing a reduction
+from Betweenness, while [11] claims strong hardness via
+reduction from 3SAT.▽
+II. PROBLEM STATEMENTS AND THE CONTINUOUS
+RELAXATION
+Write C+ ={s∈C: Res≥0}andC − ={s∈C:
+Res <0}. A polynomial is Hurwitz if all its roots lie inC −,
+and a square matrix is Hurwitz stable if all its eigenvalues
+do. For a polynomialP,Z(P;S)counts its roots inSwith
+multiplicity. We writeZ + for the positive integers andx i for
+thei-th entry of a vectorx.
+arXiv:2609.38728v1  [eess.SY]  30 Sep 2026
+2
+We also use one algebraic tool to quantify how far scalar
+characteristic polynomials remain from imaginary-axis zeros.
+Forφ(y) = Pmi=0 φiyi andψ(y) = Pnj=0 ψjyj, withm, n≥
+1andφ mψn ̸= 0, theresultantRes y(φ, ψ)is the determinant
+of the Sylvester matrix. Its rows are the coefficient vectors of
+yn−1φ, . . . , φ, ym−1ψ, . . . , ψin the basisym+n−1, . . . ,1, and
+it vanishes exactly whenφandψhave a common complex
+root [12, Sec. 4.1, Theorem 4.1]. The subscript identifies the
+eliminated variable.
+The input data of the following decision problems have
+finite binary encodings;len(I)denotes the encoding length
+of an instanceI. Note that the feedback gain is allowed to be
+real and is not part of the input.
+Definition II.1(Unconstrained SOFS).GivenA∈Q n×n,
+B∈Q n×m andC∈Q ℓ×n, decide whether there existsK∈
+Rm×ℓ such thatA+BKCis Hurwitz stable.
+Definition II.2(Subset Sum Problem (SSP)).Given positive
+integersa 1, . . . , aN andS, decide whether there existsx∈
+{0,1} N such that Pi aixi =S.
+SSP is NP-complete [13, Problem SP13], and its input
+length is the total bit length ofSand thea i. We establish
+hardness of SOFS by mapping each SSP instance to a rational
+plant in polynomial time, preserving both YES and NO
+answers.
+Definition II.3(Karp reduction).A Karp reduction from a
+decision problemΠ 0 to a decision problemΠis a polynomial-
+time computable mapfsuch that an instanceIis a YES
+instance ofΠ 0 if and only iff(I)is a YES instance ofΠ.
+Time is measured in the binary input length.
+A problem is in NP if its YES instances have certificates
+of polynomial length, verifiable in polynomial time. It isNP-
+hardif every problem in NP admits a Karp reduction to it, and
+NP-completeif it is also in NP [14]. Since reductions can be
+composed, a Karp reduction from SSP suffices to prove that
+SOFS is NP-hard, it does not establish that SOFS is in NP.
+In our construction, one direction turns a SSP solution into a
+stabilizing gain, while the other direction must recover a SSP
+solution from any stabilizing real gain. The latter direction
+is essential because no constraints are imposed onKin
+Definition II.1. Polynomial-time construction also bounds the
+length of the rational plant data, even when their magnitudes
+are large.
+A. The continuous subset sum problem
+For a single-input plant withNoutputs, the gainK=
+(k1, . . . , kN )is a row vector. To connect its real entries with
+the discrete choices in SSP, we replace those choices by narrow
+open intervals and retain enough slack to round back to an
+exact solution. This is the continuous relaxation of SSP.
+Definition II.4(Continuous SSP (CSSP)).Givena∈Z N+ ,
+W ∗ ∈Z + and rationalϵ, δ∈(0,1), decide whether there
+existsK∈R 1×N withk i ∈(1−ϵ,1 +ϵ)∪(2−ϵ,2 +ϵ)for
+alliand| Pi aiki −W ∗|< δ.
+Lemma II.5(Rounding for CSSP).Let(a, W ∗, ϵ, δ)be a
+CSSP instance withδ+ϵ Pi ai <1. It is a YES instance if
+and only if there exists ˆK∈ {1,2}1×N with Pi aiˆki =W ∗.
+Proof.First, note that such a ˆKitself satisfies the CSSP
+constraints. Conversely, for any feasibleK, choose ˆki ∈ {1,2}
+with
+ki − ˆki < ϵ. Then
+Xi aiˆki −W ∗ ≤ Xi aiki −W ∗ + Xi ai ˆki −k i
+< δ+ϵ
+X
+i
+ai <1.
+Since the expression inside the absolute value is an integer, it
+is zero.
+For a given SSP instance, setW ∗ =S+ Pi ai,δ= 1/4and
+ϵ= 1/(8 Pi ai). These rational parameters have polynomial
+bit length and satisfyδ+ϵ Pi ai = 3/8<1. Withx i = ˆki −1,
+Lemma II.5 makes the two instances equivalent. in the sense
+that the CSSP instance is a YES instance if and only if the
+SSP instance is a YES instance. The shift to{1,2}matches
+the two stabilizing gain intervals of the scalar prototype in
+Section III. This rounding argument adapts [6, Lemma 1] to
+the shifted target and the stated slack.
+III. SCALAR BUILDING BLOCKS AND THE PLANT FAMILY
+As discussed in Sec. I, previous NP-hardness results, for
+example [7], establish hardness of stabilization problems in
+which the feedback gain is subject to prescribed interval con-
+straints. Inspired by these constructions, we seek to construct
+a family ofplantsthat enforce similar constraints through the
+requirement of closed-loop stability. The gainKis otherwise
+unconstrained, so these restrictions must hold for every stabi-
+lizing gain, rather than being imposed as part of the decision
+problem.
+To this end, we construct the plant family out of two
+particular scalar building blocks. First, we construct a scalar
+prototype, denotedH b, whose stabilizing gains form two
+narrow intervals around1and2. The prototype as well as the
+width of the stability intervals are parametrized byϵ, one of
+the two slackness parameters defined for the continuous SSP
+in § II-A. Next, we construct a second prototype,H sum, whose
+stabilizing gains form a narrow interval around the SSP target
+W ∗. The prototype is parameterized viaW ∗ andδ, the second
+slackness parameter, the latter also determines the width of
+the interval. We than introduce a band-pass transformation,
+allowing us generate frequency-separated copies ofH b with
+the same Nyquist plot and stability intervals. Independently
+closing these scalar loops would impose the desired constraints
+on the individual gains and their weighted sum.
+A. The two-interval prototype
+We first construct a scalar system whose stabilizing gains
+form two disjoint intervals around1and2. To this end, we
+prescribe the gains at which the closed-loop poles reach the
+3
+imaginary axis, and then verify that the intervening stability
+intervals are the desired ones. Forϵ∈(0,1/8], write
+Db(p) =p 5 +
+4X
+j=0
+djpj, N b(p) =−p 3 +
+2X
+j=0
+njpj,
+Pk :=D b +kN b.
+We choose the eight coefficients so that
+P1−ϵ(0) = 0, P 1+ϵ(j) = 0, P 2−ϵ(j
+√
+2) = 0,
+P2+ϵ(j
+√
+3) = 0, N b(3) = 0.
+Since the coefficients are real, these are eight real linear
+conditions. The first four prescribe imaginary-axis roots at the
+endpoints of the desired stabilizing intervals, while the last
+places a zero in the open right half-plane. The interpolation
+conditions have a unique solution for everyϵ∈(0,1/8], and
+we defineH b :=N b/Db using this solution. For rationalϵ, its
+coefficients are rational and can be computed in polynomial
+time with bit length polynomial in that ofϵ. The explicit con-
+struction is given in Appendix A, together with the verification
+that the prescribed crossings yield exactly the required stability
+intervals.
+Proposition III.1(PrototypeH b).Letϵ∈(0,1/8]. The
+prototype constructed above has the following properties.
+(i) For everyk∈R, the polynomialP k is Hurwitz if and
+only if
+k∈(1−ϵ,1 +ϵ)∪(2−ϵ,2 +ϵ).
+Moreover,P k has a root on the imaginary axis if and
+only ifk∈ {1−ϵ,1 +ϵ,2−ϵ,2 +ϵ}.
+(ii) The denominatorD b has exactly one root in C+; it is
+real and lies in(0,1). In particular,D b is not Hurwitz
+and has no roots on the imaginary axis.
+(iii) The numerator has the factorization
+Nb(p) =−(p−3)(p 2 +ζ 1p+ζ 0),
+ζ1 := 4ϵ+ 57(1−4ϵ) , ζ 0 := 4(2−11ϵ)7(1−4ϵ) .
+Sinceζ 1, ζ0 >0, the quadratic factor is Hurwitz. Thus
+p= 3is the only root ofN b in C+, and it is simple.
+(iv) The denominator has no roots in{p:|p−3| ≤7/8},
+and
+|Hb(p)| ≥ 1500 whenever 58 ≤ |p−3| ≤78 .
+(v) The coefficients satisfy
+0< d4 ≤ 67 ,7≤d 3 ≤9, S d :=
+4X
+j=0
+|dj| ≤19,
+Sn :=
+2X
+j=0
+|nj| ≤10.
+The individual coefficient bounds are given in Ap-
+pendix A.
+Note that only the first property encodes the two choices
+of a binary variable and that there are many possible other
+systems satisfying this property. The reason for the particular
+solution choice is to obtain the rest of the properties, is to
+facilitate the reduction, and will be explained in detail in the
+following sections.
+B. The summing block
+The following proposition constructs the block that con-
+strains the weighted gain sum.
+Proposition III.2(Summing blockH sum).LetW ∗ ∈Z + and
+δ∈(0,1), and setq 0 := (W ∗)2 −δ 2 >0.vDefine
+Hsum(s) := s2 −ss3 + 2W ∗s+q 0 =: Nsum(s)Dsum(s) .
+ThenD sum has no roots on the imaginary axis, and forW∈R
+the polynomial
+χsum(s, W):=D sum(s) +W Nsum(s)
+=s 3 +W s2 + (2W ∗ −W)s+q 0
+is Hurwitz if and only ifW∈(W ∗ −δ, W∗ +δ). Moreover
+χsum(s, W)has a root on the imaginary axis if and only if
+W∈ {W∗ −δ, W∗ +δ}.
+Proof.A monic cubics 3 +a 2s2 +a 1s+a 0 is Hurwitz if
+and only ifa 2 >0,a 0 >0, anda 2a1 > a0. Herea 2 =W,
+a1 = 2W ∗ −W,a 0 =q 0 >0, and
+a2a1 −a 0 =δ 2 −(W−W ∗)2.
+Let|W−W ∗|< δ. ThenW > W∗ −δ >0and2W ∗ −W >
+W ∗ −δ >0, becauseδ <1≤W ∗. All three conditions hold.
+If|W−W ∗| ≥δthena 2a1 ≤a 0 and the polynomial is not
+Hurwitz.
+Axis roots:χ sum(0, W) =q0 ̸= 0, so no root at the origin.
+Forν̸= 0,χ sum(jν, W) =
+ 
+q0 −W ν2 + jν 2W ∗ −W−ν 2.
+Both parts vanish exactly whenν 2 = 2W ∗ −W >0and
+W(2W ∗ −W) =q 0, that is(W−W ∗)2 =δ 2. Both conditions
+then hold, since2W ∗ −W=W ∗ ∓δ >0. AtW= 0the
+same formula showsD sum(jν)̸= 0for allν, soD sum has no
+roots on the imaginary axis.
+C. The band-pass transformation
+For prescribedB w >0and center frequencyω >0, define
+pω(s) := s2 +ω 2Bws , H ωb (s) :=H b pω(s).(1)
+The maps7→p ω(s)is the low-pass to band-pass transforma-
+tion of analog filter design; see [15, Sec. 7.3.4, eq. (7.42)].
+Thus,H ωb =N ω/Dω with
+Dω(s) :=
+5X
+j=0
+dj (s2 +ω 2)j (Bws)5−j,
+Nω(s) :=
+3X
+j=0
+nj (s2 +ω 2)j (Bws)5−j,
+(2)
+whered 5 := 1andn 3 :=−1. The polynomialD ω is monic of
+degree10. The polynomialN ω has degree8and is divisible
+bys 2, whileD ω(0) =ω 10. The blocks of the plant areH ib :=
+4
+H ωib withN i :=N ωi andD i :=D ωi. We further define the
+following modulus margin, which is required for the arguments
+of Section IV.
+Definition III.3(Margin).For a real rational strictly proper
+Fwith no poles on the imaginary axis and a gaing∈R, set
+mF (g) := infν∈R |1 +gF(jν)|.
+Writem b(k) :=m Hb (k)andm s(W) :=m Hsum (W).
+The following proposition collects the salient properties of
+the transformation that will be used later in the reduction.
+Proposition III.4(Band-pass block).Letϵ∈(0,1/8],B w >
+0,ω >0, andk∈R.
+(i) Fors̸= 0,Rep ω(s) = 1Bw Re(s) 1 +ω 2/|s| 2. Hencepω maps the open right half-plane to itself, the open left
+half-plane to itself, and the set{jν:ν∈R, ν̸= 0}to
+the imaginary axis.
+(ii) The 10 roots ofD ω +kN ω are exactly the solutionss
+ofs 2 −B wqs+ω 2 = 0, whereqranges over the roots
+ofD b +kN b. ConsequentlyD ω +kN ω is Hurwitz if and
+only ifD b +kN b is Hurwitz.
+(iii)inf ω′ |1 +kH ωb (jω′)|=m b(k).
+(iv) Let(A b, Bb, Cb)be the companion realization ofH b in
+controllable canonical form, of dimension5. Then
+Aω =
+ 0ωI
+−ωI B wAb
+
+, B ω =
+ 0
+Bb
+
+,
+Cω =
+0B wCb
+is a realization ofH ωb of dimension10, anddet(sI−
+Aω) =D ω(s).
+Proof.(i) It is a consequence of direct computation from
+pω(s) =
+ 
+s+ω 2/s/Bw andRe(1/s) = Re(s)/|s| 2.
+(ii) Letq 1, . . . , q5 be the roots ofD b +kN b, counted with
+multiplicity. The polynomial identity
+Dω(s) +kN ω(s) =
+5Y
+r=1
+ 
+s2 −B wqrs+ω 2
+shows that its roots are the corresponding quadratic roots. Zero
+is not a root, becasue ats= 0the product equalsω 10. If
+q∈C −, both solutions ofs 2 −B wqs+ω 2 = 0lie inC −,
+because a solution in C+ \ {0}would givepω(s)∈ C+ by (i),
+ands= 0is not a solution. Ifq∈ C+, both solutions lie in
+C+ by the same argument applied to the left half-plane. Hence
+Dω +kN ω is Hurwitz if and only ifD b +kN b is Hurwitz.
+(iii) Forω ′ >0,p ω(jω′) = jΩ(ω ′)withΩ(ω ′) =  ω′ −
+ω2/ω′/Bw. The mapΩincreases strictly from−∞to+∞on
+(0,∞). Hence{|1 +kH ωb (jω′)|:ω ′ >0}={|1 +kH b(jΩ)|:
+Ω∈R}. The value atω ′ = 0is1, and the right-hand set
+contains values arbitrarily close to1, since|1 +kH b(jΩ)| →1
+as|Ω| → ∞. Including this value therefore does not change
+the infimum. Negativeω ′ give the same set. The infima agree.
+(iv) In the Laplace domain the state equations aresz 1 =
+ωz2 andsz 2 =−ωz 1 +B wAbz2 +B bu. Eliminatingz 1
+givesp ω(s)z2 =A bz2 + 1Bw Bbu, hencey=B wCbz2 =
+Cb
+ 
+pω(s)I−A b
+−1
+Bbu=H b
+ 
+pω(s)
+
+u, sinceC b(pI−
+Ab)−1Bb =H b(p)for the companion realization. Fors̸= 0,
+the Schur complement of the blocksIinsI−A ω gives
+det(sI−A ω) = det(sI) det
+
+sI−B wAb + ω2s I
+= (Bws)5 det pω(s)I−A b
+= (Bws)5Db pω(s) =D ω(s),
+since the characteristic polynomial of the companion matrix
+Ab isD b, and the last equality is (2). Both sides are polyno-
+mials insthat agree fors̸= 0, hence for alls.
+Remark III.5.Parts of Proposition III.4 can be shown via
+different control theoretic arguments. In particular, it can be
+shown that under the frequency transformation the frequency
+response ofH ωb traverses the full Nyquist locus ofH b twice
+with the same orientation. Strict properness gives the common
+limiting value zero at the ends of these traversals. Due to the
+doubling of the poles, this implies the stability regions ofH ωb
+andH b are the same. Item (iii) can be deduced using the same
+arguments, since it is equivalent to the shortest Euclidean
+distance from the Nyquist plot and the critical point.▽
+D. The plant family
+H ω1b − k1y1
+H ω2b − k2y2
+H
+ωN
+b − kN
+yN
+...
+Hsum
+aN
+a2
+a1
+u= Pi kiyi
+Fig. 1. The plant structure: a parallel interconnection ofNband-pass copies
+ofH b each centered at a differentω i, plusa i timesH sum.
+Using the scalar building blocks introduced above, we
+construct single-input plants,m= 1, withℓ=Noutputs.
+For such plants the gain is a row vectorK= (k 1, . . . , kN )∈
+R1×N , minimizing the coupling between components without
+constraining the gain. The plant transfer function is chosen as
+G(s) =C(sI−A) −1B=−
+
+
+H 1b (s) +a 1Hsum(s)...
+H Nb (s) +a N Hsum(s)
+
+ ,(3)
+whereH sum =N sum/Dsum is the summing block of Propo-
+sition III.2 andH ib =N i/Di is the band-pass copy of the
+prototype of Section III-C centered at frequencyω i. The center
+frequencies0< ω 1 <· · ·< ωN will be constrained in
+Section IV and fixed in Definition V .4. Recall the determinant
+identity
+det
+ 
+sI−(A+BKC)
+
+= det(sI−A)
+ 
+1−KC(sI−A) −1B,
+(4)
+5
+which holds becausedet(I−uv T) = 1−v Tufor column
+vectorsu, v. Hence, for (3) we have
+χ(s,K) := 1−KG(s)
+= 1 +W Hsum(s) +
+NX
+i=1
+kiH ib(s), (5)
+whereW := PNi=1 aiki. LetD i andD sum be the denom-
+inators ofH ib andH sum which are monic of degrees10
+and3, respectively. DefineD tot :=D sum
+QN
+j=1 Dj, and the
+polynomial
+Ptrue(s,K) :=D tot χ(s,K)
+=D sum
+Y
+j
+Dj +W Nsum
+Y
+j
+Dj
++
+NX
+i=1
+kiNiDsum
+Y
+j̸=i
+Dj,
+(6)
+which is monic of degreed := 10N+ 3. Lemma III.6 realizes
+(3) in state space and identifiesP true as the closed-loop
+characteristic polynomial with gainK. All stability statements
+below are made for polynomials.
+Lemma III.6(Realization).Let(A b, Bb, Cb)be the compan-
+ion realization ofH b in controllable canonical form, and let
+(As, Bs, Cs)be the companion realization ofH sum in the
+same form.
+Let(A i, Bi, Ci) := (A ωi , Bωi , Cωi )be the realization of
+H ib of dimension10obtained from(A b, Bb, Cb)in Proposi-
+tion III.4(iv). DefineA := diag(A1, . . . , AN , As), letBstack
+the input matrices in the same order, and let rowiofCcontain
+−Ci in the block ofA i and−a iCs in the block ofA s, all other
+entries zero. Thenn= 10N+ 3, the transfer function is(3),
+and for everyK∈R 1×N
+det
+ 
+sI−(A+BKC)
+
+=P true(s,K).
+ConsequentlyA+BKCis Hurwitz stable if and only if
+Ptrue(s,K)is Hurwitz. Ifϵ,δ,B w, and theω i are rational,
+then the entries of(A, B, C)are rational, with bit length
+polynomial in the bit lengths of these parameters,W ∗, and
+thea i.
+Proof.The transfer function of the block-diagonal realization
+is (3) by construction, sinceC i(sI−A i)−1Bi =H ib by
+Proposition III.4(iv) andC s(sI−A s)−1Bs =H sum. The
+characteristic polynomial ofAis the product of the block
+characteristic polynomials. These aredet(sI−A i) =D i
+by Proposition III.4(iv) anddet(sI−A s) =D sum for the
+companion block, sodet(sI−A) =D tot. Identity (4) then
+givesdet(sI−A−BKC) =D totχ(s,K) =P true(s,K)as
+rational functions. Both sides are monic polynomials of degree
+d, so they are equal as polynomials. The stability equivalence
+follows.
+Bit length: the entries of(A b, Bb, Cb)and(A s, Bs, Cs)
+are the coefficients ofN b, Db and ofN sum, Dsum, which are
+rationals whose bit lengths are polynomial in the bit lengths
+ofϵ,δ, andW ∗. The construction of Proposition III.4(iv) adds
+the entries ofω iIand multiplications byB w, and the rows of
+CmultiplyC s by the integersa i.
+IV. COMPARISON,FREQUENCY SEPARATION AND LOCAL
+ROOT COUNTS
+The stability of (3) does not seem to immediately encode a
+solution to CSSP. However, the various blocksindependently
+do. To see this, consider the polynomial
+Pnom(s,K) :=  Dsum +W Nsum NY
+i=1
+ 
+Di +k iNi
+
+(7)
+which is also monic of degreed := 10N+ 3, and is the
+product of the closed-loop characteristic polynomials of the
+N+1decoupled scalar loops. By Propositions III.1(i), III.4(ii),
+and III.2, the polynomialP nom(·,K)is Hurwitz if and only
+ifKsatisfies the two constraints of Definition II.4 for the
+instance(a, W∗, ϵ, δ). WithW∗ =S+ Pi ai andδ+ϵ Pi ai <
+1, Lemma II.5 turns any suchKinto a solutionx∈ {0,1} N
+of the SSP instance(a, S), and conversely every solutionx
+gives the gain ˆK=1+xfor whichP nom is Hurwitz.
+In this section, we use those individual loops as acompar-
+ison systemwithP true, relating the right half-plane roots of
+Pnom with those ofP true in different regions. Fix the blocks
+of Section III and write
+L0 :=W Hsum, L i :=k iH ib,1≤i≤N,
+Then the two characteristic polynomials satisfy
+Ptrue
+Dtot
+= 1 +
+NX
+i=0
+Li =χ, PnomDtot =
+NY
+i=0
+(1 +L i).
+A natural approach would be to compare these polynomials
+directly on a contour enclosing their right half-plane roots, in a
+similar fashion to the Nyquist criterion. Frequency separation
+makes the other loop terms small near each selected band,
+but this alone does not give therelativebound required by
+Rouch´e’s theorem. To see the difficulty, consider the case
+N= 1, for whichχ−(1 +L 0)(1 +L 1) =−L 0L1.At a
+frequency whereL 1 =−1, the nominal product vanishes,
+while the coupled return difference equalsL 0. Thus, even an
+arbitrarily small nonzero tailL 0 prevents strict domination by
+the nominal product at that point. Near a crossing, a direct
+|s|(log)
+|Lj (jν)|
+L0 =W Hsum
+ω1 ω2 ωN
+band termsL i =k iH ib
+overlap
+of tails
+summing tail decays like1/|s|,
+band tails like1/|ω j −ν| 2
+Fig. 2. Schematic overlap of loop magnitudes away from their centers. The
+curves are illustrative, not frequency responses of the constructed blocks; the
+rigorous off-band estimates are given in Lemma B.3.
+comparison likewise requires a quantitative bound relative to
+the small scalar return difference. Such a comparison may be
+possible when every scalar loop has sufficient margin, as will
+be the case for the gains constructed from an SSP solution.
+6
+In the reverse direction, however, an arbitrary stabilizing gain
+may place some scalar factors at or near their crossing values.
+We therefore need a comparison that can determine the root
+count associated with one factor without requiring positive
+margins for all the others.
+To this end, we divide the closed right half-plane into
+regions and compare the plant withonescalar loop at a time.
+For a selected loopi, the perturbation of its return difference
+is preciselyχ−(1 +L i) = Pj̸=i Lj. We choose a region
+containing the selected factor’s right half-plane roots and none
+of the other block denominators’ roots, with a boundary on
+which the other loop terms are small. If this perturbation is
+smaller than the selected return difference on the boundary,
+Rouch´e’s theorem preserves the enclosed root count. Applying
+this argument separately in each region provides a rigorous
+way to use the familiar control-theoretic notion of frequency
+separation: each scalar loop determines the local root count
+when its margin is sufficient to dominate the interaction with
+the other loops. The comparison is made betweenP true and
+(1 +L i)Dtot, retaining all denominators so that the argument
+concerns polynomials and includes all internal modes.
+Throughout this section, assumemax i |ki| ≤κand|W| ≤
+w, whereκ, w≥1. These bounds arehypothesesof the
+comparison; suitable bounds for every stabilizing gain will be
+established in Section V. Choosing the regions requires both
+root-location bounds and estimates on the loop terms away
+from their assigned frequencies. For the former, set
+Q(κ) := 1 +S d +κ(1 +S n),
+RW (w) := 1 +w+ 2W ∗ + (W ∗)2, (8a)
+which bound the moduli of the roots ofD b +kN b and
+Dsum +W Nsum, respectively, under the stated gain bounds.
+HereS d, Sn are defined in Proposition III.1(v). For the decay
+estimates, set
+R := max{Sn,2S d}, R H := 2 1+2W ∗+(W ∗)2,(8b)
+and Lemma B.1 gives
+|Hb(p)| ≤ 4|p|2 ,|p| ≥R,
+|Hsum(s)| ≤4|s| ,|s| ≥R H .
+For a band-pass copy, moving sufficiently far below or above
+its band in modulus makes|p ωi (s)|large, so the prototype’s
+decay controls the transformed block there. The following
+assumption ensures that these root and decay bounds apply
+on the comparison regions.
+Assumption IV .1.For givenκ≥1andw≥1, the center
+frequencies satisfy
+(A1)ω i+1 ≥4ω i for1≤i≤N−1;
+(A2)ω 1 ≥4 max{B wQ(κ), RW (w), RH , BwR}.
+The first condition separates consecutive bands, while the
+second places the first band above the summing dynamics and
+makes each band sufficiently narrow relative to its center fre-
+quency for the required localization. In particular, Lemma B.2
+places all roots ofD sum andD sum +W Nsum in the disk
+|s| ≤ω 1/4, and all roots ofD i andD i +k iNi in the
+annulus2ω i/3≤ |s| ≤3ωi/2. We therefore define the larger
+comparison regions
+R0 :={s∈ C+ :|s| ≤ω1/2},
+Ri :={s∈ C+ :ω i/2≤ |s| ≤2ωi}, (9)
+for1≤i≤N, and let
+G := C+ \
+N[
+i=0
+Ri.
+Each region contains all right half-plane roots of its cor-
+responding scalar factor and none of the other block de-
+nominators, with a strict radial separation between the root-
+location sets and the circular boundaries. The regions have
+pairwise disjoint interiors, although adjacent regions may share
+a circular arc; see Fig. 3. To control the interaction on these
+Res
+Ims
+ω1/2
+2ω1 =ω 2/2
+2ω2
+R0
+R1 R2
+G
+Fig. 3. Comparison regions forN= 2andω 2 = 4ω1. Darker sets contain
+the right-half-plane roots of the block denominators and scalar closed-loop
+factors: orange for the summing block and blue for the band blocks. The
+lower half follows by reflection across the real axis; radii are not to scale.
+regions, define the common bound
+T := 8|W|ω1 + 2(N+ 1)κB 2wω21 .(10)
+The first term bounds the summing-loop contribution outside
+its region, while the second bounds the combined off-band
+contributions of the band loops. Under Assumption IV .1,
+Lemma B.3 shows thatTbounds the sum of the other
+loop magnitudes on each∂R i, the selected loop magnitude
+on its circular arcs, and the sum of all loop magnitudes
+inG. Thus increasing the first frequency, while maintaining
+the separation, reduces all three bounds uniformly over the
+prescribed gain set.
+The selected return difference is controlled differently on the
+two parts of the boundary. On the imaginary-axis segments its
+modulus is bounded below by the scalar modulus margin of
+Definition III.3, which the band-pass transformation preserves.
+On the circular arcs, decay gives|1 +L i| ≥1−T; see Fig. 4.
+Consequently, a selected margin greater thanT, together with
+T≤1/4, provides the domination needed for the local
+comparison. InG, all loop terms are small, which will exclude
+additional right-half-plane roots. The following theorem states
+7
+the resulting local counts and their simultaneous consequence;
+the supporting estimates are proved in Appendix B.
+Ims
+Res
+Ri
+2ωi
+ωi/2
+−ωi/2
+−2ωi
+Axis segments
+|1 +Li| ≥mb(ki)
+Circular arcs
+|Li| ≤T
+|1 +Li| ≥1−T
+Fig. 4. Boundary estimates for a band regionR i,i≥1. The modulus
+margin controls the axis segments, while decay controls the circular arcs. On
+the entire boundary, the sum of the other loop magnitudes is at mostT.
+Theorem IV .2(Region-by-region root counts).Let Assump-
+tion IV .1 hold withκ≥max i |ki|andw≥ |W|, and assume
+T≤1/4. Set
+Q0 :=D sum +W Nsum, Q i :=D i +k iNi,
+m0 :=m s(W), m i :=m b(ki),1≤i≤N.
+Then:
+(a)P true has no roots inG.
+(b) For everyi∈ {0, . . . , N}withmi > T,
+Z(Ptrue;R i) = Z(Qi; C+).
+(c) Ifm i > Tfor alli, then
+Z(Ptrue; C+) = Z(Pnom; C+).
+In particular,P true is Hurwitz if and only if allN+ 1
+factors ofP nom are Hurwitz.
+Proof.By Lemma B.2, every root ofQ i in C+ belongs toR i,
+and the other block denominators have no roots in that region.
+The same localization places all right-half-plane denominator
+roots away from the circular boundaries. Moreover,D sum and
+theD i have no imaginary-axis roots by Proposition III.2,
+Proposition III.1(ii), and the band-pass transformation. Thus
+Dtot is nonzero onGand on every region boundary.
+We first show how the tail estimates apply on these sets.
+By Lemma B.3(a) and (b),
+|L0(s)| ≤8|W|ω1 ,|s| ≥ω 1/2,
+|Lj(s)| ≤16κB2w9ω2j ≤ 2κB2wω21 ,|s| ≤ω j/2or|s| ≥2ω j.
+On a band region’s boundary, condition (A1) places every
+other band term outside its own band, and the summing-loop
+estimate also applies. On∂R 0, only the band terms contribute
+to the perturbation, and all satisfy their off-band estimate. The
+selected loop itself satisfies its decay estimate on the circular
+arcs, while every loop satisfies the corresponding estimate in
+G. Summing the relevant bounds gives the three conclusions
+of Lemma B.3(c)–(e), each bounded byT. In particular, onG,
+|χ−1| ≤
+NX
+j=0
+|Lj| ≤T≤ 14 .
+SinceD tot is nonzero there,P true =χD tot has no roots in
+G, proving (a).
+For (b), fixiwithm i > Tand set
+P (i) := (1 +L i)Dtot.
+This is the polynomialQ i multiplied by all other block
+denominators. On∂R i, the perturbation bound gives
+Ptrue −P (i) =|D tot|
+Xj̸=i Lj ≤ |Dtot|T.
+On the imaginary-axis segments,|1 +L i| ≥mi > T, using
+margin preservation under the band-pass transformation when
+i≥1. On the circular arcs,
+|1 +L i| ≥1− |Li| ≥1−T > T.
+SinceD tot is nonzero on the boundary, these inequalities givePtrue −P (i) < P (i) on∂R i.
+Rouch´e’s theorem [16, Thm. 10.43(b)] therefore yields
+Z(Ptrue;R i) = Z(P (i);R i) = Z(Qi; C+).
+The last equality follows from localization: the other denomi-
+nators contribute no roots inR i, and the region contains every
+root ofQ i in C+. The strict boundary inequality also excludes
+boundary roots, so the count on the closed region agrees with
+the interior count.
+If everym i > T, the local comparison applies to all regions.
+Together with (a), it excludes roots inGand on every region
+boundary, so shared boundaries cause no double counting.
+Summing the local counts gives
+Z(Ptrue; C+) =
+NX
+i=0
+Z(Qi; C+) = Z(Pnom; C+),
+which proves (c).
+Part (b) will be used in the reverse direction of the reduction,
+where it constrains a selected gain even if other gains lie near
+crossing values. Part (c) will be used for the gains constructed
+from an SSP solution, whose scalar margins all exceed the
+coupling bound
+V. THE REDUCTION
+Theorem IV .2 provides the root-count comparison needed
+to relate stability of the coupled plant to the scalar con-
+straints encoded byP nom. To apply it, we need bounds
+maxi |ki| ≤κand|W| ≤w, and center frequencies satisfying
+Assumption IV .1 for the corresponding root and decay bounds
+Q(κ),R W (w),R, andR H. We must also ensure that the
+coupling boundTis at most1/4and strictly smaller than the
+scalar margins used in the comparison. Once the gain bounds
+8
+and positive lower bounds on these margins are available,
+increasingω 1 and separating the subsequent frequencies makes
+the required comparisons possible.
+Recall that the feedback gain itself must be unconstrained,
+yet these bounds must always hold to facilitate the proposed
+reduction. Therefore, we must establish such bounds for any
+stabilizing gain from properties of the constructed plant. We
+accomplish this by boundingWthrough necessary conditions
+for stability in terms of the coefficients, and then use the proto-
+type’s right half-plane zero to bound every gain entry. On this
+bounded gain set, we establish explicit positive lower bounds
+on the scalar margins away from the crossing gains. Note that
+excluding small neighborhoods of these crossings is necessary
+because the margins vanish there. These neighborhoods do
+not obstruct the reverse implication. If a gain lies near a
+crossing, it already belongs to an enlarged stability interval,
+while outside these neighborhoods its margin is sufficiently
+large for Theorem IV .2 to imply stability of the corresponding
+scalar factor wheneverP true is Hurwitz. Thus, in either case,
+the gain satisfies the enlarged interval constraint.
+We then choose the interval widths, crossing neighbor-
+hoods, and center frequencies so that the required comparisons
+hold while the enlarged constraints still permit rounding by
+Lemma II.5. Exact gains in{1,2}will stabilize the plant for
+every YES instance, while any stabilizing gain will satisfy
+these enlarged constraints and hence yield a solution to the
+original SSP instance. Finally, we show that the resulting plant
+can be constructed in polynomial time and has polynomial bit
+length, completing the reduction.
+A. Enforcing bounds on stabilizing gains
+We first boundWwithout restricting the individual gains.
+The band-loop terms in (6) contribute neither to the coefficient
+of degree1nor to that of degreed−1, so positivity of these
+two coefficients gives necessary bounds involving onlyW.
+Proposition V .1(Necessary bounds onW).Letd 4 >0be
+thep 4 coefficient ofD b andq 0 = (W ∗)2 −δ 2, and letγ 1 and
+γd−1 denote the coefficients ofP true(s,K)of degrees1and
+d−1. Then
+γ1 =
+Y
+j
+ω10j
+h
+q0 d4Bw
+X
+i
+ω−2i + 2W ∗ −W i
+γd−1 =W+N d 4Bw.
+IfP true(s,K)is Hurwitz, then
+−N d4Bw < W <2W ∗ +q 0 d4Bw X
+i
+ω−2i .
+Proof.Each termk iNiDsum
+Q
+j̸=i Dj in (6) is divisible by
+s2 and has degree at mostd−2, so it contributes to neither
+coefficient. By (2),D i(0) =ω 10i , the coefficient ofsinD i
+isd 4Bwω8i , and its subleading coefficient isd 4Bw. Since
+Dsum =s 3 + 2W ∗s+q 0 andN sum =s 2 −s, the degree-
+one coefficient of(D sum +W Nsum) Qj Dj is
+Y
+j
+ω10j
+h
+q0d4Bw
+X
+i
+ω−2i + 2W ∗ −W i,
+while itsd−1coefficient isW+N d 4Bw. A monic real
+Hurwitz polynomial must have positive coefficients, so these
+identities give the stated strict bounds.
+The frequency conditions simplify the upper bound inde-
+pendently of the individual gains. Under Assumption IV .1,P
+i ω−2i ≤2/ω 21 by (A1). Also, (A2) givesω 1 ≥4R H =
+8(1 +W ∗)2 andω 1 ≥4B wR≥56B w, sinceR≥2S d ≥
+2d3 ≥14. Thus
+ω21 ≥448(1 +W ∗)2Bw > 127 (W ∗)2Bw ≥2q 0d4Bw,(11)
+whered 4 ≤6/7andq 0 <(W ∗)2. Consequently every
+stabilizing gain satisfies−N d 4Bw < W <2W ∗ + 1, and
+hence
+|W| ≤¯w:= 2W ∗ + 1 +N d4Bw.
+This controls the summing-loop contribution in the following
+argument, even if individual gain entries are large.
+Next, we use the prototype’s right half-plane zero to bound
+every stabilizing gain entry. Near the corresponding zero of
+a band copy, the term with largest absolute gain dominates
+the other loop terms when the frequencies are sufficiently
+separated. A polynomial comparison then forces a right half-
+plane root ofP true.
+Set
+µ := 1500 , κ ∗ := 2µ = 1000, T GB := 8 ¯wω1 + 2N B2wω21 ,
+whereµis the lower bound in Proposition III.1(iv).
+Proposition V .2(A priori gain bound).Let the frequencies
+satisfy Assumption IV .1 for(κ, w) = (1,¯w), and suppose that
+TGB ≤ µ4 . IfP true(s,K)is Hurwitz, thenmax i |ki| ≤κ∗.
+Proof.Suppose thatP true(s,K)is Hurwitz andM :=
+maxi |ki|> κ∗, and leti ∗ attain the maximum. By Proposi-
+tion V .1 and the preceding consequence of Assumption IV .1 we
+have|W| ≤¯w. Now, compare withki∗ H i∗b near its right-half-
+plane zero. The other band gains have modulus at mostM,
+while the summing gain has the independent bound¯w. Only
+the open-loop denominators are localized in this argument.
+Writeω :=ω i∗, and letz ′ be the root with positive
+imaginary part ofs 2 −3B ws+ω 2 = 0. Then|z ′|=ω,Rez ′ =
+3Bw/2, andp ω(z′) = 3. Sinceω≥ω 1 ≥4B wR≥56B w,
+the disk
+∆ :={s:|s−z ′| ≤3Bw/8}
+lies in the half-planeRes≥9B w/8and annulusω/2<|s|<
+2ω. Now, from (1) we have fors̸= 0,
+pω(s)−3 = (s−z ′)(s−¯z′)Bws .
+Usingω−9B 2w/(4ω)≤Imz ′ ≤ωgives
+|pω(s)−3| ≤ 38 2ω+ 3B w/8ω−3B w/8 ≤0.76,
+s∈∆,
+|pω(s)−3| ≥ 38 2ω−9B 2w/(2ω)−3B w/8ω+ 3B w/8
+≥0.74, s∈∂∆.
+9
+Note that the upper expression decreases and the lower in-
+creases withω/B w ≥56; and that their endpoint values are
+2697/3560<0.76and37479/50512>0.74respectively.
+Thusp ω(∆)lies in|p−3|<7/8, and its boundary image
+lies in5/8≤ |p−3| ≤7/8. Proposition III.1(iv) therefore
+excludes zeros ofD i∗ in∆and gives H i∗b  ≥µon∂∆.
+Lemma B.2, applied to the open-loop denominators, and
+(A1) place the roots of every other denominator at modulus at
+most3ω/8or at least8ω/3. HenceD tot has no zeros in∆. By
+Proposition III.1(iii), the only possible numerator zero there
+satisfiesp ω(s) = 3. Of its two preimagesz ′,¯z′, onlyz ′ be-
+longs to∆, and it is simple sincep ′ω(z′) = (z′−¯z′)/(Bwz′)̸=
+0. ConsequentlyD totH i∗b =N i∗ Dsum Qj̸=i∗ Dj is a polyno-
+mial with exactly one zero in∆.
+On∂∆, every other band is off-band by (A1), and|s|>
+ω1/2. Lemma B.3(a) and (b) give|H sum| ≤8/ω1 and
+H jb  ≤
+2B2w/ω21 forj̸=i ∗. Using (5), we obtainPtrue −k i∗ DtotH i∗b 
+≤ |Dtot|
+
+1 + 8 ¯wω1 + 2(N−1)M B2wω21 
+≤ |Dtot|(1 +T GB +M TGB)
+< M µ|Dtot| ≤
+ki∗ DtotH i∗b  .
+The strict inequality follows fromT GB ≤µ/4,M≥1, and
+M >2/µ, since1 +T GB +M TGB ≤1 +M µ/2< M µ.
+Both compared expressions are polynomials, andD tot ̸= 0
+on the boundary. Rouch ´e’s theorem [16, Thm. 10.43(b)] gives
+Z(Ptrue; ∆) = 1, contradicting the Hurwitzness.
+B. Explicit modulus margin bounds
+The preceding bounds restrict every stabilizing gain to
+ranges on which we can estimate the scalar modulus margins
+uniformly. To make the coupling smaller than these mar-
+gins using frequencies of polynomial bit length, we need
+computablelower bounds rather than qualitative positivity.
+The following bounds depend explicitly on the distance from
+the crossing gains, and Definition V .4 will use them at the
+exact gains of the forward direction and outside the crossing
+neighborhoods of the reverse direction.
+Lemma V .3(Explicit margin bounds).Letϵ∈(0,1/8],W ∗ ∈
+Z+ andδ∈(0,1/4]be the CSSP parameters.
+(a) Letκ≥1andR= max{S n,2S d}as in Section IV. Set
+CS = 14 + 7κ, Y= max{R 2,8κ},
+Mb(t) = t4114C 4SY 4 ,0< t≤1.
+For every realgwith|g| ≤κand distanceτ >0from
+{1−ϵ,1 +ϵ,2−ϵ,2 +ϵ}, setˆτ= min{τ,1}. Then
+mb(g)≥M b(ˆτ).
+(b) Letw≥1and set
+RH = 2
+ 
+1 + 2W∗ + (W ∗)2,
+Ys = max{R2H ,64w 2},
+Ds =
+ 
+1 + 2W∗ + (W ∗)2Y 2s ,
+Ms(t) = 15t232(w+ 1) 2Ds ,0< t≤1.
+For every realWwith|W| ≤wand distanceτ W >0
+from{W ∗ −δ, W∗ +δ}, setˆτ W = min{τ W ,1}. Then
+ms(W)≥M s(ˆτW ).
+Proof.For (a), writeP g =D b +gN b. As in Lemma A.1, with
+y=ν 2 ≥0,
+Pg(jν) =f(y) + jνh(y),
+f(y) =c 4y2 −c 2y+c 0, h(y) =y 2 −c 3y+c 1,
+|Pg(jν)|2 =f(y) 2 +yh(y) 2.
+SinceD b has no imaginary-axis zeros we can divide by
+|Db(jν)|and obtain the return difference. Fory >0, its
+numerator can be small only if bothf(y)andh(y)are small.
+We first rule out this simultaneous behavior quantitatively,
+then treat the origin separately because the weight ofh(y) 2
+vanishes there.
+The coefficient bounds (12) give
+|c4| ≤1,|c 3| ≤9 +κ,|c 2| ≤2 + 3κ,
+|c1|,|c 0| ≤4 + 4κ.
+ThusC S bounds both|c 4|+|c 2|+|c 0|and1 +|c 3|+|c 1|.
+Also, sinceλ≥5/4,
+|c0|= 12λ7 |g−(1−ϵ)| ≥ 157 τ≥ˆτ .
+The other three crossing gains appear in the resultant computed
+in Lemma A.1:
+|Resy(f, h)|= 8(4ϵ+ 5) 2(2−11ϵ) 249(1−4ϵ) 3
+· |(ϵ−g+ 1)(ϵ−g+ 2)(ϵ+g−2)|
+≥ 625392 τ 3 ≥ˆτ3.
+Here each linear factor has modulus at leastτ, while4ϵ+ 5≥
+5,2−11ϵ≥5/8and0<1−4ϵ≤1.
+As the resultant does not vanish there is no common zero.
+Nevertheless, a lower bound on the return difference requires
+a bounded polynomial identity. Sincec 4 =d 4 >0, bothf
+andhhave degree two. LetSbe their4×4Sylvester matrix
+with rows given byyf, f, yh, hin the basisy 3, y2, y,1. If
+(u1, u0, v1, v0)is the last row ofadjS, define the degree-at-
+most-one B ´ezout polynomials
+U(y) =u 1y+u 0, V(y) =v 1y+v 0.
+The identity(adjS)S= (detS)Igives
+U(y)f(y) +V(y)h(y) = Res y(f, h).
+Each coefficient ofU, Vis a signed3×3minor. Since each
+row norm ofSis at mostC S, Hadamard’s inequality bounds
+these coefficients byC 3S. Consequently, fory≥0,
+|U(y)|+|V(y)| ≤4C 3S max{1, y},
+max{|f(y)|,|h(y)|} ≥ ˆτ3
+4C 3S max{1, y}.
+This estimate controls intermediate frequencies. Near zero we
+usec 0, and beyondYthe decay ofH b suffices. Sety 0 =
+ˆτ /(2CS)≤1.
+10
+(a.1) Ify≥Y, thenν≥Rforν≥0and Lemma B.1 gives
+|gHb(jν)| ≤4κ/y≤1/2. Hence|1 +gH b(jν)| ≥1/2.
+(a.2) If0≤y≤y 0, then|f(y)| ≥ |c0| −(|c2|+|c 4|)y≥ˆτ /2.
+(a.3) Ify 0 ≤y≤Y, then
+f 2 +yh 2 ≥min{1, y}(f2 +h 2)
+≥y 0 max{f 2, h2} ≥ ˆτ732C 7SY 2 .
+In ranges (a.2) and (a.3),S d ≤19gives|D b(jν)| ≤(1 +
+Sd) max{1,|ν|} 5 ≤20Y 5/2. The moduli are even inν, so
+these three ranges cover all real frequencies and yield
+mb(g)2 ≥min
+ 1
+4 , ˆτ21600Y 5 , ˆτ712800C 7SY 7  .
+Sinceˆτ≤1andC S, Y≥1, the third entry is the smallest.
+Using12800≤114 2 bounds it below byM b(ˆτ)2, proving (a).
+For (b), putq 0 = (W ∗)2 −δ 2 ≥15/16. The summing
+numerator atjνhas the same formf(y) + jνh(y), now with
+f(y) =q 0 −W y, h(y) = 2W ∗ −W−y.
+Here elimination is immediate:f−W h= (W−W ∗)2 −δ 2.
+The two factors on the right have modulus at leastτ W , so for
+everyy≥0,
+max{|f(y)|,|h(y)|} ≥ ˆτ2W
+1 +w .
+We again combine a constant-term estimate near zero, this
+estimate at intermediate frequencies, and decay at high fre-
+quencies. Sety W = 15/(32(w+ 1))≤1.
+(b.1) Ify≥Y s, then|ν| ≥R H and|ν| ≥8w, so Lemma B.1
+gives|W Hsum(jν)| ≤4w/|ν| ≤1/2.
+(b.2) If0≤y≤y W , then|f(y)| ≥q0 −wy W ≥q 0 −15/32≥
+q0/2.
+(b.3) Ify W ≤y≤Y s, thenf 2 +yh 2 ≥y W max{f 2, h2} ≥
+yW ˆτ4W /(1 +w) 2.
+In the last two ranges,|D sum(jν)| ≤(1 + 2W ∗ +
+q0) max{1,|ν|} 3 ≤D s. SinceD sum has no imaginary-axis
+zeros by Proposition III.2, division is valid and
+ms(W)≥min
+ 1
+2 , q02Ds , √yW ˆτ2W(1 +w)D s  ≥M s(ˆτW ).
+The last inequality follows from √yW ≥y W ,ˆτW ≤1,q 0 ≥
+15/16andD s ≥1.
+C. Parameter choice
+The following definition fixes all parameters of the plant as
+functions of the SSP instance.
+Definition V .4(Parameter choice).Given an SSP instance
+(a, S)withκ ∗ = 1000as in Section V-A, set
+W ∗ :=S+ X
+i
+ai,
+δ := 14 ,
+ϵ := 18 Pi ai ,
+θ := ϵ2 ,
+θW := 116 ,
+Bw := 1.
+Moreover, set
+X θb := [
+c∈{1−ϵ,1+ϵ,2−ϵ,2+ϵ}
+(c−θ, c+θ),
+X θWs := [
+c∈{W ∗−δ, W∗+δ}
+(c−θ W , c+θ W ),
+the unions of the openθ-neighborhoods of the crossing gains
+and of the openθ W -neighborhoods ofW ∗ ±δ,
+¯m:= minMb(θ), Ms(θW )	,
+withM b from Lemma V .3(a) forκ=κ ∗ andM s from
+Lemma V .3(b) forw= ¯w, and chooseω 1 as the smallest
+power of two strictly greater than
+max
+n
+4Q(κ∗),4R W ( ¯w),4RH ,4R,
+2000
+ 
+8 ¯w+ 2N
+
+,
+ 
+8 ¯w+ 2(N+ 1)κ∗ max{4,1/¯m}o,
+andω i := 4 i−1ω1.
+The plant obtained from the parameter choice above is the
+realization of Lemma III.6 with these parameters.
+The next lemma states the properties of the parameter choice
+that the correctness proofs use.
+Lemma V .5(Properties of the parameter choice).The param-
+eter choice of Definition V .4 has the following properties.
+(a) Assumption IV .1 holds for every pair of boundsκ∈
+[1, κ∗]andw∈[1,¯w], and the hypotheses of Proposi-
+tion V .2 hold.
+(b)m b(1)≥¯m,m b(2)≥¯m, andm s(W ∗)≥¯m.
+(c) If|g| ≤κ ∗ andg /∈Xθb , thenm b(g)≥¯m. Additionally,
+if|W| ≤¯wandW /∈XθWs , thenm s(W)≥¯m.
+(d) For everyKwithmax i |ki| ≤κ∗ and|W| ≤¯w, the
+coupling boundTfor(κ, w) = (κ ∗,¯w)satisfiesT <
+min{¯m,1/4}.
+Proof.(a) (A1) holds sinceω i+1 = 4ωi. The functionsQand
+RW are increasing, so (A2) for the bounds(κ ∗,¯w)implies
+(A2) for all smaller bounds. WithB w = 1, the frequency
+ω1 exceeds4Q(κ ∗),4R W ( ¯w),4RH and4R= 4B wRby
+construction. For Proposition V .2:ω 1 >2000
+ 
+8 ¯w+ 2N
+
+together withω 1 ≥1gives
+TGB ≤ 8 ¯w+ 2Nω1 < 12000 = µ4 .
+(b), (c) Lemma V .3 applies withκ=κ ∗ andw= ¯w, since
+ϵ= 1/(8 Pi ai)≤1/8andδ= 1/4. The distance from
+1and from2to the crossing gains{1±ϵ,2±ϵ}isϵ, and
+the distance fromW ∗ to{W ∗ ±δ}isδ; both are at most
+1. A gain at distance at leastθfrom the crossing gains has
+ˆτ≥θ, becauseθ≤1. Likewiseˆτ W ≥θ W at distance at least
+θW . The functionsM b andM s are increasing on(0,1], since
+Mb(t)is a positive multiple oft 4 andM s(t)oft 2, andθ≤ϵ,
+θW ≤δ. The lemma therefore givesm b(1), mb(2)≥M b(ϵ)≥
+Mb(θ)≥¯mandm s(W ∗)≥M s(δ)≥M s(θW )≥¯m. The
+same monotonicity gives both implications of (c).
+(d) With these bounds,T≤8 ¯w/ω 1 + 2(N+ 1)κ ∗/ω21 ≤ 
+8 ¯w+ 2(N+ 1)κ∗/ω1, usingω 1 ≥1. By constructionω 1 > 
+8 ¯w+2(N+1)κ∗ max{4,1/¯m}, soT <min{¯m,1/4}.
+11
+D. Correctness
+The next proposition proves the forward direction of the
+reduction.
+Proposition V .6(Sufficiency).Assume the parameter choice
+of Definition V .4. If the SSP instance is a YES instance, then
+there exists ˆK∈ {1,2}1×N with Pi aiˆki =W ∗. For every
+such ˆKthe polynomialP true(s, ˆK)is Hurwitz, so the plant is
+stabilizable.
+Proof.If Pi aixi =Swithx∈ {0,1} N , then the row ˆKwith
+entries ˆki :=x i + 1satisfies Pi aiˆki =S+ Pi ai =W ∗.
+Let ˆK∈ {1,2}1×N satisfy Pi aiˆki =W ∗. AtK= ˆKthe
+boundsmax i
+ˆki ≤2≤κ ∗ and|W|=W ∗ ≤¯whold. The
+margins arem i ∈ {mb(1), mb(2)}andm 0 =m s(W ∗), and
+each is at least¯mby Lemma V .5(b). Lemma V .5(a) gives
+Assumption IV .1 with bounds(κ ∗,¯w), and Lemma V .5(d)
+givesT <min{¯m,1/4}. Theorem IV .2(c) applies, and
+every nominal factor is Hurwitz. The factorsD b + 1·N b
+andD b + 2·N b are Hurwitz by Proposition III.1(i), so
+Di + ˆkiNi is Hurwitz for everyiby Proposition III.4(ii),
+andD sum +W ∗Nsum is Hurwitz by Proposition III.2. Hence
+Z(Ptrue; C+) = 0.
+The next proposition proves the reverse direction.
+Proposition V .7(Necessity).Assume the parameter choice of
+Definition V .4. If someK∈R 1×N makesP true(s,K)Hurwitz,
+then the SSP instance is a YES instance.
+Proof.The hypotheses of Proposition V .2 hold by
+Lemma V .5(a), somax i |ki| ≤κ ∗. By Proposition V .1
+and Assumption IV .1, which holds by Lemma V .5(a), we get
+−N d4 < W <2W∗ + 1, hence|W| ≤¯w. By Lemma V .5(a)
+and (d), Assumption IV .1 with bounds(κ ∗,¯w)and the
+inequalityT <min{¯m,1/4}hold atK.
+Fixi∈ {1, . . . , N}. Eitherki ∈X θb , and thenk i lies within
+θof one of1±ϵ,2±ϵ, sok i ∈(1−ϵ ′,1+ϵ ′)∪(2−ϵ′,2+ϵ ′)with
+ϵ′ :=ϵ+θ. Ork i /∈Xθb . Then|k i| ≤κ∗, som b(ki)≥¯m > T
+by Lemma V .5(c), and Theorem IV .2(b) for the regionRi gives
+Z
+ 
+Di +k iNi; C+
+
+= Z
+ 
+Ptrue;R i
+
+= 0,
+becauseP true is Hurwitz. SoD i +k iNi is Hurwitz, and
+ki ∈(1−ϵ,1 +ϵ)∪(2−ϵ,2 +ϵ)by Propositions III.4(ii)
+and III.1(i). In particulark i lies in the enlarged intervals.
+The same dichotomy for the summing factor and the region
+R0, with|W| ≤¯w, the setX θWs , and Lemma V .5(c), gives
+|W−W ∗|< δ′ :=δ+θ W .
+The enlarged parameters satisfy
+δ′ +ϵ ′ X
+i
+ai = 14 + 116 + 316 = 12 <1.
+HenceKwitnesses that(a, W ∗, ϵ′, δ′)is a YES instance of
+CSSP, and Lemma II.5 gives ˆK∈ {1,2}1×N with Pi aiˆki =
+W ∗, that is Pi aixi =Sforx i = ˆki −1.
+The two directions combine into the reduction.
+Theorem V .8(Reduction).The map from SSP instances(a, S)
+to the plant(A, B, C)of Definition V .4 is computable in
+polynomial time, and an SSP instance is a YES instance if and
+only if its image is a YES instance of unconstrained SOFS.
+Proof.The equivalence is Propositions V .6 and V .7, together
+with Lemma III.6. For the size, Lemma III.6 gives that the
+bit length of(A, B, C)is polynomial in the bit lengths ofϵ,
+δ,W ∗, thea i,B w = 1, and theω i. The first four have bit
+length polynomial in the instance size. Forω i = 4 i−1ω1 it
+suffices thatlog 2 ω1 is polynomial in the instance size. This
+holds becauselog 2 ¯wis polynomial in the instance size. So is
+log2(1/¯m), by the explicit formulas of Lemma V .3 withθ=
+1/(16 Pi ai),θ W = 1/16,κ= 1000andw= ¯w. The rational
+bounds in Definition V .4 are obtained by rational arithmetic
+and comparisons on numbers of polynomial bit length. The
+smallest power of two strictly above their maximum is found
+from its binary length and an exact comparison, so it too is
+computable in polynomial time and has polynomial bit length.
+Hence the parameter choice is computable in polynomial time.
+The main result follows.
+Theorem V .9(NP-hardness).Unconstrained SOFS is NP-
+hard.
+Proof.SSP is NP-complete, hence NP-hard, and the map of
+Theorem V .8 is a Karp reduction from SSP to unconstrained
+SOFS. By composition of Karp reductions, this proves the
+claim.
+VI. CONCLUDING REMARKS
+Theorem V .9 states that unconstrained static output feedback
+stabilization is NP-hard. The reduction of Theorem V .8 maps
+a Subset Sum instance withNitems to a plant with one input,
+Noutputs, and10N+ 3states. Hardness transfers to plants
+withNinputs and one output. The matricesA+BKCand
+AT +C TKTBT have the same eigenvalues, andK7→K T is a
+bijection of the gain sets. Hence(A, B, C)is a YES instance
+of SOFS if and only if(A T, CT, BT)is. Composing the map
+of Theorem V .8 with the transposition therefore gives a Karp
+reduction whose images haveNinputs and one output.
+We conclude this paper by making a straightforward con-
+nection with another complexity class, namely PSPACE. First,
+we have the following definition.
+Definition VI.1(PSPACE [17, Defs. 4.1 and 4.5]).A decision
+problemΠis in PSPACE if there exist a polynomialπand a
+Turing machine that decidesΠand, on every instanceI, uses
+at mostπ(len(I))cells of its work tapes.
+Unconstrained SOFS lies in PSPACE. By Lyapunov’s theo-
+rem,A+BKCis Hurwitz stable if and only if there exists a
+symmetricP≻0with(A+BKC) TP+P(A+BKC)≺0.
+A symmetric matrix is positive definite if and only if it equals
+LLT for a lower-triangularLwith positive diagonal entries.
+An instance is therefore equivalent to an existential sentence
+over the reals. Its (quantified) variables are the entries ofK,
+ofP, and of two lower-triangular factors. Its constraints are
+polynomial equations and strict inequalities of degree at most
+two, with coefficients rational in the data, and its length is
+12
+polynomial in the instance size. Deciding such sentences is in
+PSPACE [18].
+Three questions remain open. The first is hardness in the
+strong sense. The constructed plant contains rationals whose
+magnitudes are exponential in the instance size. Two features
+of the parameter choice cause this. The frequencyω 1 exceeds
+a constant multiple of( Pi ai)4 by Definition V .4, since
+1/¯m≥1/M b(θ)withθ= 1/(16 Pi ai), so it is exponential
+in the bit length of thea i. The spacingω i = 4i−1ω1 makesω N
+exponential inN. A hardness proof in the strong sense would
+also need a source problem that is strongly NP-hard, which
+Subset Sum is not. It is not known whether unconstrained
+SOFS remains NP-hard when the magnitudes of all numerators
+and denominators of the plant entries are bounded by a
+polynomial in the instance size. The second is membership in
+NP, which would follow if every stabilizable rational instance
+admitted a stabilizing gain of bit length polynomial in the
+instance size. The YES instances of this note are stabilized by
+the integer gains ˆK∈ {1,2}1×N . The third is completeness for
+the existential theory of the reals. Deciding the solvability of
+a conjunction of strict polynomial inequalities is polynomial-
+time equivalent to the full theory [19, Thm. 4.1], so the
+openness of the set of stabilizing gains is no obstruction to a
+reduction in the converse direction. The present construction
+realizes only two constraint types, membership of a gain
+in a fixed union of two intervals and a two-sided bound
+on a weighted sum of the gains. A hardness proof for the
+existential theory would in addition need a block, driven by
+three gainsk a, kb, kc, that is closed-loop stable if and only if
+|kakb −k c|< δ, together with error control for the coupled
+blocks analogous to Theorem IV .2.
+DECLARATION ON GENERATIVEAI
+OpenAI ChatGPT 5.6 and Claude Opus 5 were used for
+adversarial review and writing assistance during the writing of
+this as well is writing the search scripts for finding the parame-
+ters of Definition V .4. They were not used for idea generation
+nor proof writing. The authors assume responsibility for all
+the content.
+APPENDIXA
+EXPLICIT CONSTRUCTION OF A PROTOTYPEH b
+We first solve the interpolation problem definingH b, and
+then verify the properties of Proposition III.1. Throughout,
+ϵ∈(0,1/8]. For
+Pk(p) =p 5 +c 4p4 +c 3p3 +c 2p2 +c 1p+c 0,
+the coefficients are
+c4 =d 4, c 3 =d 3 −k, c 2 =d 2 +kn 2,
+c1 =d 1 +kn 1, c 0 =d 0 +kn 0.
+At a nonzero imaginary frequency, settingy=ν 2 gives
+Pk(jν) =c 4y2 −c 2y+c 0 + jν(y2 −c 3y+c 1).
+Consequently, the interpolation conditions can be written as
+the following linear system withrationalcoefficients:
+d0 + (1−ϵ)n 0 = 0,
+d4y2 −(d 2 +gn 2)y+d 0 +gn 0 = 0,
+y2 −(d 3 −g)y+d 1 +gn 1 = 0
+for
+(y, g)∈ {(1,1 +ϵ),(2,2−ϵ),(3,2 +ϵ)},
+and
+n0 + 3n1 + 9n2 = 27.
+Order the unknowns as(d 0, . . . , d4, n0, n1, n2)and the equa-
+tions as displayed, taking the real equation before the imag-
+inary equation for each pair(y, g). The determinant of the
+coefficient matrix is42(4ϵ−1) 2, which is nonzero on(0,1/8].
+Thus the interpolation problem has a unique solution.
+Set
+λ := 2−11ϵ1−4ϵ .
+Sinceλ ′(ϵ) =−3/(1−4ϵ) 2, we haveλ∈[5/4,2). Solving
+the system gives
+Nb(p) =−p 3 + 8λ7 p2 + 8ϵ+ 11−4ϵ p+ 12λ7 ,
+and
+Db(p) =p 5 + 2(4ϵ+ 1)λ7 p4 + 7−21ϵ−4ϵ 21−4ϵ p3
+− 6(2−11ϵ)7 p2 + 4−23ϵ−8ϵ 21−4ϵ p− 12(1−ϵ)λ7 .
+These expressions can also be verified by substitution into the
+eight equations. For rationalϵ, they require a fixed number
+of rational arithmetic operations, and their numerators and
+denominators have bit length polynomial in that ofϵ. This
+proves the asserted effective construction. The interpolation
+conditions prescribe four crossing gains. The following lemma
+shows that there are no others.
+Lemma A.1(Crossing gains).Letϵ∈(0,1/8]. The polyno-
+mialP k =D b +kN b has a root on the imaginary axis if and
+only ifk∈ {1−ϵ,1 +ϵ,2−ϵ,2 +ϵ}.
+Proof.Sincec 0 =d 0 +kn 0 = 12λ7  k−(1−ϵ)  andλ >0,
+the polynomialP k has a root atp= 0if and only ifk= 1−ϵ.
+A root atp= jνwithν̸= 0means, withy :=ν 2 >0,
+f(y) :=c 4y2 −c2y+c 0 = 0andh(y) :=y 2 −c3y+c 1 = 0,
+because the real part ofP k(jν)equalsf(ν 2)and the imaginary
+part equalsν h(ν 2). A common root offandhleads to
+Resy(f, h) = 0. A direct computation gives
+Resy(f, h) =−8(4ϵ+ 5) 2(11ϵ−2) 249(4ϵ−1) 3
+·(ϵ−k+ 1)(ϵ−k+ 2)(ϵ+k−2).
+The prefactors do not vanish on(0,1/8]. Hence, ifP k has a
+rootjνwithν̸= 0, thenRes y(f, h) = 0, and consequently
+k∈ {1 +ϵ,2−ϵ,2 +ϵ}. Conversely, direct substitution gives
+f(1) =h(1) = 0atk= 1 +ϵ,f(2) =h(2) = 0atk= 2−ϵ,
+andf(3) =h(3) = 0atk= 2 +ϵ. SoP k has the roots±j,
+±j
+√
+2and±j
+√
+3at these three gains, and it has the root0at
+k= 1−ϵ.
+13
+Proof of Proposition III.1.We first establish the stabilizing
+intervals in (i). By Lemma A.1, the number of roots in the
+open right half-plane is constant on each connected component
+of
+R\ {1−ϵ,1 +ϵ,2−ϵ,2 +ϵ}.
+Indeed, the coefficients depend continuously onk, and no
+root crosses the imaginary axis within a component. Since
+Pk is monic of fixed degree, its roots remain bounded on
+every compact gain interval. It therefore suffices to determine
+stability at one gain in each of the five components. We use
+Routh’s criterion in the form of [20, V ol. 2, Ch. XV , Sec. 3,
+p. 180]. The first column of the Routh array is
+1, c 4, b 1, b 2, b 3, c 0,
+where direct calculation gives
+b1 = (4ϵ+ 5)(k c −k)4ϵ+ 1 ,
+kc := 2−5ϵ−4ϵ 21−4ϵ = 2 +ϵ+ 2ϵ1−4ϵ ,
+b2 = 8λ η(k)7(1−4ϵ)(k−k c) ,
+η(k) := (1−4ϵ)k 2 + (12ϵ−3)k
++ (4ϵ3 +ϵ 2 −10ϵ+ 2),
+and
+b3 = (4ϵ+ 5)((1 +ϵ)−k)((2 +ϵ)−k)(k−(2−ϵ))2η(k) .
+Each expression is used only where the preceding pivots are
+nonzero. We havec 4 >0,k c >2 +ϵ, and
+η(1−ϵ) =η(2 +ϵ) =−ϵ(1 + 2ϵ)<0.
+Sinceηis a quadratic with positive leading coefficient, it
+follows thatη <0on[1−ϵ,2 +ϵ].
+Atk= 1andk= 2, the pivotsb 1, b2, c0 are positive,
+and the numerator ofb 3 is negative. Thusb 3 >0and both
+polynomials are Hurwitz. Atk= 0, the constant coefficient
+is negative, which excludes Hurwitz stability. Atk= 3/2, the
+pivotsb 1, b2 are positive andb 3 <0, so the polynomial is not
+Hurwitz. Finally, atk=k c + 1, the pivotb 1 is negative, while
+the preceding pivots1, c 4 are positive, which again excludes
+Hurwitz stability.
+The gains0,1,3/2,2, andk c + 1belong to the five com-
+ponents, respectively. Constancy of the root count therefore
+identifies the two stabilizing components as(1−ϵ,1 +ϵ)and
+(2−ϵ,2 +ϵ). The four boundary gains have imaginary-axis
+roots by Lemma A.1, so none is Hurwitz. This proves (i),
+including the assertion about imaginary-axis roots.
+For (ii), we evaluate the same Routh array atk= 0. Since
+η(0) = 4ϵ3 +ϵ 2 −10ϵ+ 2>0,
+its first-column signs are
++,+,+,−,−,−.
+There are no imaginary-axis roots by Lemma A.1, and hence
+Routh’s theorem gives exactly one root in the open right half-
+plane. Since nonreal roots occur in conjugate pairs, this root
+is real. Moreover,
+Db(0) =− 12(1−ϵ)λ7 <0,
+Db(1) = 4(13−18ϵ−142ϵ 2)7(1−4ϵ) >0
+forϵ∈(0,1/8], so the root lies in(0,1).
+For (iii), define
+ζ1 := 4ϵ+ 57(1−4ϵ) ≥ 57 , ζ 0 := 4λ7 >0.
+Expanding the proposed factorization gives
+−(p−3)(p 2 +ζ1p+ζ 0) =−p 3 +(3−ζ 1)p2 +(3ζ1 −ζ0)p+3ζ 0.
+The identities
+3−ζ 1 = 8λ7 ,3ζ 1 −ζ 0 = 1 + 8ϵ1−4ϵ ,3ζ 0 = 12λ7
+show that this polynomial equalsN b. The quadratic factor is
+Hurwitz because both coefficients are positive, sop= 3is the
+only numerator root in C+ and is simple.
+We next establish the coefficient bounds in (v), together
+with the individual estimates used in the margin calculation:
+0< d4 ≤6/7,7≤d 3 ≤9,|d 2| ≤12/7,
+0< d1 ≤4,|d 0| ≤24/7,
+0< n2 ≤16/7,0< n 1 ≤4,0< n 0 ≤24/7.
+(12)
+The bounds ond 4, n2, n0, d0 follow fromλ∈[5/4,2)and
+4ϵ+ 1≤3/2. The bound ond 2 follows from0<2−11ϵ <2.
+Ford 3, the upper and lower bounds are equivalent to
+15ϵ≤2 + 4ϵ 2,4ϵ 2 ≤7ϵ,
+respectively, and both hold on(0,1/8]. The numerator4−
+23ϵ−8ϵ 2 is positive on this interval, andd 1 ≤4follows from
+7ϵ+ 8ϵ 2 ≥0. Finally,0< n 1 ≤4follows from1 + 8ϵ≤2
+and1−4ϵ≥1/2. Summing these estimates gives
+Sd ≤ 67 +9+ 127 +4+ 247 = 19, S n ≤ 167 +4+ 247 <10.
+It remains to prove (iv). The disk{p:|p−3| ≤7/8}lies
+in{p: Rep≥17/8}, whereas every root ofD b is either in
+C− or in(0,1)by (ii). ThusD b has no root in this disk. To
+obtain the lower bound onH b, consider5/8≤ |p−3| ≤7/8.
+ThenRep≥17/8and|p| ≤31/8. The discriminant of the
+quadratic numerator factor is
+ζ 21 −4ζ 0 =− 4912ϵ2 −2168ϵ+ 19949(1−4ϵ) 2 <0.
+Indeed, the polynomial in the numerator is decreasing on
+[0,1/8]and equals19/4atϵ= 1/8. The two quadratic roots
+therefore have real part−ζ 1/2≤ −5/14, and their distances
+frompare each at least17/8 + 5/14. Hence
+|Nb(p)| ≥58  178 + 514 2 > 154 .
+14
+The individual coefficient bounds give
+|Db(p)| ≤
+ 31
+8
+5
++ 67  318 4 + 9  318 3
++ 127  318 2 + 4  318  + 247 <1636.
+Consequently,
+|Hb(p)|> 156544 > 1500 ,
+which completes the proof.
+APPENDIXB
+ESTIMATES FOR FREQUENCY SEPARATION
+We prove the estimates used in Section IV, with the notation
+and parameter ranges introduced there. The scalar decay
+bounds control the loop contributions away from their assigned
+bands, while the root bounds ensure that each comparison
+region contains all relevant roots of its scalar factor.
+Lemma B.1.Letp, s∈C. The following hold:
+(i) If|p| ≥R, then|H b(p)| ≤4/|p|2.
+(ii) If|s| ≥R H, then|H sum(s)| ≤4/|s|.
+Proof.(i) For|p| ≥Rwe have|N b(p)| ≤ |p|3 +S n |p|2 ≤
+2|p| 3, sinceS n ≤R≤ |p|, and|D b(p)| ≥ |p|5 −S d |p|4 ≥
+|p|5 /2, since2S d ≤R≤ |p|. Hence|H b(p)| ≤4/|p|2.
+(ii) For|s| ≥RH we have
+s2 −s  ≤2|s| 2, since|s| ≥2,
+and
+|Dsum(s)| ≥ |s|3  1−2W ∗/|s| 2 −q 0/|s| 3 ≥ |s|3 /2,
+sinceR H = 2(1 +W ∗)2 andW ∗ ≥1give2W ∗/R2H ≤1/32
+andq 0/R3H ≤1/512. Hence|H sum(s)| ≤4/|s|.
+Lemma B.2(Root location).Assume (A2). For everyi∈
+{1, . . . , N}and everyk∈Rwith|k| ≤κ, all roots ofDi and
+ofD i +kN i lie in the annulus{2ω i/3≤ |s| ≤3ωi/2}. That
+annulus is contained in the interior of{ω i/2≤ |s| ≤2ωi}.
+For everyW∈Rwith|W| ≤w, all roots ofD sum and of
+Dsum +W Nsum satisfy|s| ≤RW (w)≤ω 1/4.
+Proof.By Proposition III.4(ii) the roots come in pairss, s ′
+withss ′ =ω 2i ands+s ′ =B wq, whereqis a root
+ofD b +kN b. The Cauchy root bound in the form|q| ≤
+1 + maxj |aj|, over the coefficientsa j of a monic polynomial,
+gives|q| ≤1 +S d +κ(1 +S n) =Q(κ). Then|s| ≤
+1
+2
+ 
+Bw |q|+
+q
+B2w |q|2 + 4ω2i  ≤B wQ(κ) +ω i ≤ 32 ωi, using
+BwQ(κ)≤ω 1/4≤ω i/2. From|s| |s′|=ω 2i and|s ′| ≤32 ωi
+we get|s| ≥ 23 ωi. The cubic bounds are the same root bound
+applied tos 3 +W s2 + (2W ∗ −W)s+q 0, whose coefficient
+moduli are at mostw,2W ∗ +wand(W ∗)2, together with
+(A2).
+Lemma B.3.Lets∈ C+. Items (a) and (b) hold under (A2).
+(a) If|s| ≥ω 1/2, then|H sum(s)| ≤8/ω1.
+(b) If1≤j≤Nand either|s| ≤ω j/2or|s| ≥2ω j, thenH jb (s) ≤16B 2w/(9ω2j ).
+Moreover, items (c), (d) and (e) hold under Assumption IV .1
+when|k j| ≤κfor alljand|W| ≤w.
+(c) Ifs∈ G, then PNj=0 |Lj(s)| ≤8|W|ω1 + 2N κB2wω21 .(d) Ifs∈∂R i for some0≤i≤N, then Pj̸=i |Lj(s)| ≤
+8|W|
+ω1 + 2N κB2wω21 .(e) Ifslies on a circular arc of∂R i for some0≤i≤N,
+then|L i(s)| ≤8|W|ω1 + 2N κB2wω21 .
+Proof.By (A2),|s| ≥ω 1/2≥2R H. Lemma B.1 gives
+|Hsum(s)| ≤4/|s| ≤8/ω1, implying item (a).
+Ats= 0we haveH jb (0) = 0, sinceN j is divisible bys 2
+andD j(0)̸= 0. So lets̸= 0andp :=p ωj (s). For anys̸= 0,s2 +ω 2j  ≥  |s|2 −ω 2j , so|p| ≥  |s|2 −ω 2j  /(Bw |s|). If
+|s| ≤ωj/2this gives|p| ≥ 34 ω2j /(Bw |s|)≥ 32 ωj/Bw. If
+|s| ≥2ωj it gives|p| ≥ 34 |s|/B w ≥ 32 ωj/Bw. Both lower
+bounds are therefore at least 32 ω1/Bw, which is at least6R
+by (A2), hence at leastR. For|p| ≥R, Lemma B.1 gives
+|Hb(p)| ≤4/|p| 2. Substituting the two lower bounds gives
+item (b).
+For items (c) and (d), note first that (b) and|k j| ≤κgive,
+wherever (b) applies,|L j(s)|=|k j|
+H jb (s) ≤2κB 2w/ω21,
+that (a) gives|L 0(s)|=|W| |Hsum(s)| ≤8|W|/ω1 wherever
+(a) applies. A sum of at mostNband terms and one summing
+term is therefore bounded by
+8|W|
+ω1
++ 2N κB2w
+ω21 .
+It remains to verify that the corresponding estimates apply on
+each of the stated sets.
+Lets∈ G. Then|s| ≥2ω1 ≥ω 1/2, so (a) applies toL 0. For
+1≤j≤N, the definition ofGgives|s| ≤ω j/2or|s| ≥2ω j,
+so (b) applies toL j. This proves (c).
+Lets∈∂R i withi≥1. Thenω i/2≤ |s| ≤2ωi, so (a)
+applies toL 0. Forj≥1withj̸=i, (A1) givesω j ≤ω i/4or
+ωj ≥4ω i, hence|s| ≥2ω j or|s| ≤ω j/2, so (b) applies to
+Lj. Lets∈∂R 0. Then|s| ≤ω 1/2≤ω j/2for everyj≥1,
+so (b) applies to every band term. This proves (d).
+Fori≥1the arcs are|s|=ω i/2and|s|= 2ω i, where (b)
+and|k i| ≤κgive|L i(s)| ≤2κB2w/ω21. Fori= 0the arc is
+|s|=ω 1/2, where (a) gives|L 0(s)| ≤8|W|/ω1. Combining
+both proves the bound in (e).
+REFERENCES
+[1] V . Syrmos, C. Abdallah, P. Dorato, and K. Grigoriadis, “Static output
+feedback—a survey,”Automatica, vol. 33, no. 2, pp. 125–137, 1997.
+[2] B. D. O. Anderson, N. K. Bose, and E. I. Jury, “Output feedback
+stabilization and related problems—Solution via decision methods,”
+IEEE Transactions on Automatic Control, vol. 20, no. 1, pp. 53–66,
+1975.
+[3] V . D. Blondel and J. N. Tsitsiklis, “A survey of computational com-
+plexity results in systems and control,”Automatica, vol. 36, no. 9, pp.
+1249–1274, 2000.
+[4] S. Poljak and J. Rohn, “Checking robust nonsingularity is np-hard,”
+Mathematics of Control, Signals and Systems, vol. 6, no. 1, pp. 1–9,
+Mar 1993. [Online]. Available: https://doi.org/10.1007/BF01213466
+[5] A. Nemirovskii, “Several np-hard problems arising in robust stability
+analysis,”Mathematics of Control, Signals and Systems, vol. 6, no. 2,
+pp. 99–105, Jun 1993.
+[6] O. Toker and H. ¨Ozbay, “On the NP-hardness of solving bilinear matrix
+inequalities and simultaneous stabilization with static output feedback,”
+inProceedings of 1995 American Control Conference - ACC’95, vol. 4,
+1995, pp. 2525–2526.
+15
+[7] V . Blondel and J. N. Tsitsiklis, “Np-hardness of some linear control
+design problems,”SIAM Journal on Control and Optimization, vol. 35,
+no. 6, pp. 2118–2127, 1997.
+[8] M. Fu, “Pole placement via static output feedback is NP-hard,”IEEE
+Transactions on Automatic Control, vol. 49, no. 5, pp. 855–857, 2004.
+[9] V . D. Blondel, E. D. Sontag, M. Vidyasagar, and J. C. Willems, Eds.,
+Open problems in mathematical systems and control theory, 1st ed., ser.
+Communications and Control Engineering Series. Guildford, England:
+Springer, Oct. 1999.
+[10] J. L ¨ofberg, “Static output-feedback stabilization is NP-hard,” 2026.
+[11] A. A. Ahmadi, A. Chaudhry, I. Narang, and Y . Tang, “Complexity of
+output feedback stabilization,” 2026.
+[12] B. Sturmfels,Solving Systems of Polynomial Equations, ser. CBMS
+Regional Conference Series in Mathematics. Providence, RI: American
+Mathematical Society, 2002, vol. 97.
+[13] M. R. Garey and D. S. Johnson,Computers and Intractability: A Guide
+to the Theory of NP-Completeness. San Francisco, CA: W. H. Freeman,
+1979.
+[14] O. Goldreich,P , NP , and NP-Completeness: The Basics of Computa-
+tional Complexity. Cambridge: Cambridge University Press, 2010.
+[15] L. Chaparro and A. Akan,Signals and Systems using MATLAB, 3rd ed.
+San Diego, CA: Academic Press, Nov. 2019.
+[16] W. Rudin,Real and Complex Analysis, 3rd ed. New York, NY:
+McGraw-Hill, 1987.
+[17] S. Arora and B. Barak,Computational Complexity: A Modern Approach.
+Cambridge: Cambridge University Press, 2009.
+[18] J. Canny, “Some algebraic and geometric computations in PSPACE,”
+inProceedings of the Twentieth Annual ACM Symposium on Theory of
+Computing (STOC ’88), New York, NY , 1988, pp. 460–467.
+[19] M. Schaefer and D. ˇStefankoviˇc, “Fixed points, Nash equilibria, and the
+existential theory of the reals,”Theory of Computing Systems, vol. 60,
+no. 2, pp. 172–193, 2017.
+[20] F. R. Gantmacher,The Theory of Matrices, Vol. Two. New York, NY:
+Chelsea Publishing Company, 1959.

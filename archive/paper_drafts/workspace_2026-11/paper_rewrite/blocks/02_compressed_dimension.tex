@@ -1,0 +1,210 @@
+\section{The compressed pencil}\label{sec:compressed}
+
+Both observer conditions depend on the free rows only through the products $LN$ and $LAN$, where $N$ is a basis matrix of the common kernel of $C$ and $CA$. This section performs that compression and rewrites \eqref{eq:5a} and \eqref{eq:5b} in terms of the compressed data.
+
+\subsection{The common kernel and the compression}\label{sec:compress}
+
+Let
+\begin{equation*}
+K_0=\ker\begin{bmatrix}C\\ CA\end{bmatrix},\qquad k=\dim K_0,
+\end{equation*}
+and let $N\in\mathbb R^{n\times k}$ be a basis matrix for $K_0$. Define
+\begin{equation*}
+H=LN\in\mathbb R^{q\times k},\quad H_A=LAN\in\mathbb R^{q\times k},\quad \omega=\operatorname{rank}H .
+\end{equation*}
+The compressions below rest on a single rank identity.
+
+\begin{lem}[Rank identity]\label{lem:rankid}
+Let $P\in\mathbb C^{m\times n}$ and let $N_P\in\mathbb C^{n\times r}$ be a basis matrix for $\ker P$. Then, for every $M\in\mathbb C^{p\times n}$,
+\begin{equation}\label{eq:rankid}
+\operatorname{rank}\begin{bmatrix}P\\ M\end{bmatrix}
+=\operatorname{rank}P+\operatorname{rank}(MN_P).
+\end{equation}
+\end{lem}
+
+\begin{proof}
+Set $\mathcal R_P=\operatorname{row}P$, $\mathcal R_M=\operatorname{row}M$ and $f(x)=xN_P$. Since $\operatorname{col}N_P=\ker P$,
+\begin{equation*}
+\ker f=(\ker P)^{\circ}=\mathcal R_P,\qquad
+\operatorname{im}\bigl(f|_{\mathcal R_M}\bigr)=\operatorname{row}(MN_P),
+\end{equation*}
+where $(\cdot)^{\circ}$ denotes the left annihilator. Rank--nullity applied to $f|_{\mathcal R_M}$, whose kernel is $\mathcal R_M\cap\mathcal R_P$, gives
+\begin{equation*}
+\begin{aligned}
+\dim(\mathcal R_P\cap\mathcal R_M)
+&=\dim\ker\bigl(f|_{\mathcal R_M}\bigr)\\
+&=\dim\mathcal R_M-\dim\operatorname{im}\bigl(f|_{\mathcal R_M}\bigr)\\
+&=\operatorname{rank}M-\operatorname{rank}(MN_P),
+\end{aligned}
+\end{equation*}
+and hence
+\begin{equation*}
+\begin{aligned}
+\operatorname{rank}\begin{bmatrix}P\\ M\end{bmatrix}
+&=\dim(\mathcal R_P+\mathcal R_M)\\
+&=\operatorname{rank}P+\operatorname{rank}M-\dim(\mathcal R_P\cap\mathcal R_M)\\
+&=\operatorname{rank}P+\operatorname{rank}(MN_P),
+\end{aligned}
+\end{equation*}
+which is \eqref{eq:rankid}.
+\end{proof}
+
+\subsection{The compression and the pencil criterion}\label{sec:compression}
+
+\begin{lem}[Compression and pencil criterion]\label{lem:compression}
+With $H$, $H_A$ and $\omega$ as above, the following statements hold.
+
+(i) Condition \eqref{eq:5a} holds if and only if $\operatorname{row}H_A\subseteq\operatorname{row}H$.
+
+(ii) If \eqref{eq:5a} holds, then there exists $F\in\mathbb R^{q\times q}$ such that $H_A=FH$.
+
+(iii) Assume \eqref{eq:5a}. Then \eqref{eq:5b} holds if and only if
+\begin{equation*}
+\operatorname{rank}(\lambda H-H_A)=\omega,\qquad \forall\lambda\in\mathbb C .
+\end{equation*}
+Equivalently, the $\omega\times\omega$ maximal minors of $P(\lambda)=\lambda H-H_A$ have no common complex root; equivalently, their greatest common divisor in $\mathbb C[\lambda]$ is a nonzero constant.
+
+(iv) If \eqref{eq:5a} and \eqref{eq:5b} hold, then $\operatorname{rank}H_A=\operatorname{rank}H$.
+\end{lem}
+
+\begin{proof}
+Set $P_0=[C;CA]$. Since $K_0=\ker P_0$, the matrix $N$ is a basis matrix for $\ker P_0$.
+
+\emph{(i)} The rows of $P_0$ occur among the rows of each matrix below, so Lemma~\ref{lem:rankid} with $P=P_0$, applied once with $M=[LA;L]$ and once with $M=L$, gives
+\begin{equation*}
+\begin{aligned}
+\operatorname{rank}\begin{bmatrix}LA\\ L\\ CA\\ C\end{bmatrix}
+&=\operatorname{rank}P_0+\operatorname{rank}\begin{bmatrix}H_A\\ H\end{bmatrix},\\
+\operatorname{rank}\begin{bmatrix}L\\ CA\\ C\end{bmatrix}
+&=\operatorname{rank}P_0+\operatorname{rank}H .
+\end{aligned}
+\end{equation*}
+The left-hand sides carry the same rows as the two matrices of \eqref{eq:5a}, so
+\begin{equation*}
+\eqref{eq:5a}
+\iff
+\operatorname{rank}\begin{bmatrix}H_A\\ H\end{bmatrix}=\operatorname{rank}H ,
+\end{equation*}
+which is equivalent to
+\begin{equation}\label{eq:5a-1}
+\operatorname{row}H_A\subseteq\operatorname{row}H .
+\end{equation}
+
+\emph{(ii)} By \eqref{eq:5a-1} every row of $H_A$ is a linear combination of the rows of $H$. Let $F$ have as its $i$-th row the coefficient vector of the $i$-th row of $H_A$; then
+\begin{equation}\label{eq:5a-2}
+H_A=FH .
+\end{equation}
+
+\emph{(iii)} Set
+\begin{equation*}
+M(\lambda)=[\lambda L-LA;CA;C],\qquad J=[L;CA;C].
+\end{equation*}
+Since $N$ annihilates both $C$ and $CA$,
+\begin{equation*}
+M(\lambda)N=\lambda H-H_A=P(\lambda),\qquad JN=H .
+\end{equation*}
+The rows of $P_0=[C;CA]$ occur among the rows of $M(\lambda)$ and of $J$, so that
+\begin{equation*}
+\operatorname{rank}\begin{bmatrix}P_0\\ M(\lambda)\end{bmatrix}=\operatorname{rank}M(\lambda),
+\qquad
+\operatorname{rank}\begin{bmatrix}P_0\\ J\end{bmatrix}=\operatorname{rank}J ,
+\end{equation*}
+and Lemma~\ref{lem:rankid} with $P=P_0$ yields
+\begin{equation*}
+\begin{aligned}
+\operatorname{rank}M(\lambda)&=\operatorname{rank}P_0+\operatorname{rank}P(\lambda),\\
+\operatorname{rank}J&=\operatorname{rank}P_0+\operatorname{rank}H .
+\end{aligned}
+\end{equation*}
+Hence \eqref{eq:5b} is equivalent to
+\begin{equation}\label{eq:5b-1}
+\operatorname{rank}P(\lambda)=\operatorname{rank}H=\omega
+\end{equation}
+holding for every $\lambda\in\mathbb C$. Assume now \eqref{eq:5a}. By \eqref{eq:5a-2},
+\begin{equation*}
+P(\lambda)=\lambda H-H_A=(\lambda I-F)H ,
+\end{equation*}
+so every row of $P(\lambda)$ is a linear combination of the rows of $H$, that is, $\operatorname{row}P(\lambda)\subseteq\operatorname{row}H$, and therefore
+\begin{equation}\label{eq:5b-2}
+\operatorname{rank}P(\lambda)\le\omega,\qquad \forall\lambda\in\mathbb C .
+\end{equation}
+Combining \eqref{eq:5b-1} with the bound \eqref{eq:5b-2}, condition \eqref{eq:5b} becomes the requirement that some $\omega\times\omega$ minor of $P(\lambda)$ be nonzero at every $\lambda$:
+\begin{equation*}
+\eqref{eq:5b}
+\iff
+\forall\lambda\in\mathbb C\ \ \exists\,\omega\times\omega\text{ minor } f_i:\ f_i(\lambda)\neq0 .
+\end{equation*}
+Thus the $\omega\times\omega$ maximal minors $f_1,\dots,f_s$ of $P(\lambda)$ have no common complex root, equivalently their greatest common divisor in $\mathbb C[\lambda]$ is a nonzero constant. For $\omega=0$ the condition is vacuous.
+
+\emph{(iv)} Assume \eqref{eq:5a} and \eqref{eq:5b}. By (iii), \eqref{eq:5b-1} holds for every $\lambda$; at $\lambda=0$, where $P(0)=-H_A$,
+\begin{equation*}
+\operatorname{rank}H_A=\operatorname{rank}P(0)=\operatorname{rank}H . \qedhere
+\end{equation*}
+\end{proof}
+
+\section{The effective free-row dimension}\label{sec:dimension}
+
+\subsection{The space of attainable row pairs}\label{sec:free}
+
+Each free row $r_i\in\mathbb R^{1\times n}$ of $R$ determines the row pair
+\begin{equation*}
+(H_i,(H_A)_i)=r_i\,[N\ \ AN].
+\end{equation*}
+A free row is therefore specified by its coordinates relative to a basis of the subspace of attainable pairs
+\begin{equation*}
+\mathcal T=\operatorname{row}[N\ \ AN]\subseteq\mathbb R^{2k},\qquad
+d_0=\dim\mathcal T=\operatorname{rank}[N\ \ AN],
+\end{equation*}
+and a rational basis of $\mathcal T$ represents each free row by exactly $d_0$ real coordinates.
+
+\begin{lem}[Attainable row pairs and the effective dimension]\label{lem:attainable}
+Every free row pair lies in $\mathcal T$, and writing the $r$ free rows in a basis of $\mathcal T$ represents them by
+\begin{equation}\label{eq:kappa}
+\kappa_{\rm obs}=r d_0
+\end{equation}
+coordinates. Moreover, when $r\ge1$,
+\begin{equation}\label{lem3-2}
+k\le d_0\le rd_0=\kappa_{\rm obs}.
+\end{equation}
+\end{lem}
+
+\begin{proof}
+The identity $(H_i,(H_A)_i)=r_i[N\ AN]$ places every free row pair in $\mathcal T$. Consider the linear map
+\begin{equation*}
+\Phi:\mathbb R^{1\times n}\to\mathcal T,\qquad \Phi(x)=x\,[N\ \ AN].
+\end{equation*}
+Its matrix relative to the standard basis of $\mathbb R^{1\times n}$ and a basis of $\mathcal T$ is $[N\ AN]$, so $\operatorname{rank}\Phi=\operatorname{rank}[N\ AN]$ and rank--nullity gives
+\begin{equation*}
+d_0=\dim\mathcal T=\dim\operatorname{im}\Phi=n-\dim\ker\Phi=\operatorname{rank}[N\ AN].
+\end{equation*}
+For the $r$ free rows set
+\begin{equation*}
+\Psi:(\mathbb R^{1\times n})^r\to\mathcal T^{\,r},\quad
+\Psi(r_1,\dots,r_r)=\bigl(\Phi(r_1),\dots,\Phi(r_r)\bigr).
+\end{equation*}
+Its image is $\mathcal T^{\,r}$, so the number of coordinates after parametrization is
+\begin{equation*}
+\dim\mathcal T^{\,r}=r\dim\mathcal T=rd_0=\kappa_{\rm obs}.
+\end{equation*}
+Since $N$ has full column rank,
+\begin{equation*}
+\operatorname{rank}N=k,\qquad \operatorname{rank}[N\ AN]\ge\operatorname{rank}N=k,
+\end{equation*}
+that is,
+\begin{equation}\label{lem3-1}
+k\le d_0 .
+\end{equation}
+For $r\ge1$, the inequality $d_0\ge0$ gives
+\begin{equation*}
+d_0\le rd_0=\kappa_{\rm obs},
+\end{equation*}
+which together with \eqref{lem3-1} is \eqref{lem3-2}.
+\end{proof}
+
+\begin{remark}[Basis invariance]
+If $N\mapsto NQ$ with $Q\in\mathbb R^{k\times k}$ nonsingular, then
+\begin{equation*}
+[N\ \ AN]\mapsto[N\ \ AN]\operatorname{diag}(Q,Q),
+\end{equation*}
+so $\mathcal T$ is unchanged and the coordinates of a free row transform by the nonsingular linear map $Q$. Hence $d_0=\dim\mathcal T$ and the number of parameters $\kappa_{\rm obs}=rd_0$ are basis-independent.
+\end{remark}

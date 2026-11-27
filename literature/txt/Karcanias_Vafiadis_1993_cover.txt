@@ -1,0 +1,592 @@
+Kybernetika
+Nicos Karcanias; Dimitris Vafiadis
+On the cover problems of geometric theory
+Kybernetika, Vol. 29 (1993), No. 6, 547--562
+Persistent URL: http://dml.cz/dmlcz/125037
+Terms of use:
+© Institute of Information Theory and Automation AS CR, 1993
+Institute of Mathematics of the Academy of Sciences of the Czech Republic provides access to digitized
+documents strictly for personal use. Each copy of any part of this document must contain these
+Terms of use .
+This paper has been digitized, optimized for electronic delivery and stamped with
+digital signature within the project DML-CZ: The Czech Digital Mathematics Library
+http://project.dml.cz
+KYBERNETIKA — VOLUME 29(1993), NUMBER 6, PAGES 547-562 
+ON THE COVER PROBLEMS OF 
+GEOMETRIC THEORY 
+Nicos KARCANIAS AND DIMITRIS VAFIADIS 
+For linear systems, a family of cover problems of the geometric theory are introduced as 
+extensions of the standard cover problem and a matrix pencil formulation of such problems 
+is given. It is shown that the solvability of such problems is reduced to a problem of 
+Kronecker Invariant Transformation by Matrix Pencil Augmentation and a Matrix Pencil 
+Realisation Problem. Necessary, as well as sufficient conditions for solvability of both 
+problems are given, which lead to a number of conditions for solvability of the partial, as 
+well as standard cover problem. The special cases of left regular, regular solutions of the 
+cover problem are investigated and a parametrisation of such families of solutions is given. 
+1. INTRODUCTION 
+The cover problems arise in the study of several control problems such the observer 
+design [14], the exact model matching, the disturbance decoupling, the identification 
+[2] and the squaring down problem [8]. For a partial realization approach to the cover 
+problem see [1]. 
+The standard cover problem that has been considered so far belongs to a more 
+general class of problems that arise within the general area of selection of input, 
+output schemes for a given system [5]. Althought the formulation of these problems 
+is geometric in nature (find a certain type of invariant subspace that covers a given 
+subspace and is contained in another one), their solvability and parametrisation of 
+solutions is closer in nature to problems of invariant structure assignment. The 
+matrix pencil framework [7,3] for the characterisation of invariant subspaces of the 
+geometric theory [12,13] seems to be more suitable for the study of such problems, 
+since it brings together the geometric and Kronecker invariant structure aspects of 
+the problem; furthermore, the constructive nature of the matrix pencil tools allows 
+the computation and parametrisation of solutions in a simple manner. Extending the 
+matrix pencil framework to this new family of geometric problems is essential in the 
+effort to provide unifying matrix pencil tools for the geometric synthesis methods. 
+The aim of this paper is to provide a classification and a matrix pencil formulation 
+of the family of cover problems of geometric theory, give necessary as well as sufficient 
+conditions for the existence of certain types of solutions and parametrise special 
+families of solution spaces. An integral part of this approach is the splitting of 
+
+548 N. KARCANIAS AND D. VAFIADIS 
+the overall problem into a Kronecker invariant transformation problem by matrix 
+pencil augmentation and a matrix pencil realisation problem. The first deals with 
+the study of the effect of adding matrix pencil columns to a given pencil on the 
+resulting Kronecker structure; the second is equivalent to a problem of generating a 
+given space restricted pencil [7] for a given system. For both problems, we produce 
+necessary, as well as sufficient conditions for their solvability. These conditions in 
+turn, provide criteria for the solvability of the original cover problems. Of special 
+interest are certain families of cover problems, referred to as left regular, regular, 
+families; for these families we provide also some parametrisation of the solution 
+spaces. 
+2. PRELIMINARY DEFINITIONS AND STATEMENT OF THE PROBLEM 
+Let 5(A,B,C) be the system characterised by the following state-space equations 
+x(0 = Ax(0 + Bu(0 (2Aa) 
+y(0 = Cx(0 (2Ab) 
+where A e l nxn ,B G Jt nx£ and C 6 E mxn . It is assumed that both matrices B 
+and C have full rank and that the system is controllable. If N is a left annihilator 
+of B (i.e. a basis matrix for the Ker^(B) ) and Bt is a left inverse of B (BtB = If), 
+then (2.1a,b) are equivalent to 
+Nx = NAx (2.1c) 
+u = Bt x-BtAx (2.Id) 
+where (2.1.c) is a "feedback free" system description and the associated pencil 
+R(s) = sN — NA is known as the restricted input-state pencil [7] of the system. A 
+family of cover problems of the geometric theory are defined below. 
+Definition 2.1. Let X be the state-space of the <S(A, B) system and let J C W C 
+X. Finding all subspaces V of X such that 
+(i) V is (A, B)-invariant, i. e. AVCV+B and 
+J C V C W (2.2) 
+is known as the standard cover problem [1,2]. 
+(ii) V is an almost (A, B)-invariant, controllability or almost controllability and 
+(2.2) is also satisfied, will be referred as extended cover problems. 
+(iii) V is any of the invariant types of subspaces in (i), (ii) and W = X, then the 
+problem will be called partial cover problem . 
+The extended cover problems form an integral part of the investigation of Model 
+Projection Problems (MPP) [5], which arise in the study of selection of control 
+
+On the Cover Problems of Geometric Theory 549 
+structures. Our approach is based on the matrix pencil characterization of the 
+(A, B)-invariant subspaces [3,4]. If V is a basis matrix of V, the nature of the 
+subspace V of the state space of the system as an invariant subspace is characterised 
+by the nature of the set of strict equivalence invariants (cf. [15]) of the V-restricted 
+matrix pencil R v(s) = sNV — NAV which is referred in short as a V-restriction 
+pencil. 
+Lemma 2.1. [3] A subspace V C X is an (A, B)-invariant subspace, if and only if 
+thepenCl1 sNV-NAV (2.3) 
+is characterised by c.m.i., f.e.d. and possibly zero r.m.i. In addition if sNV — NAV 
+is not characterised by f.e.d., then V is a controllability subspace (c.s). 
+A similar result has been established in [3] for the matrix pencil characterisation 
+of Almost (A,B)-invariant and almost controllability subspaces. In this paper, we 
+shall be mostly concerned with (A, B)-invariant subspaces, whereas almost (A, B)-
+invariant case is treated in a similar manner. 
+The main idea underlying the matrix pencil approach to the study of the cover 
+problems is the following: Let J be the basis matrix of the subspace to be covered. 
+Since V is the covering subspace, then V = J ® T where T is some appropriate 
+subspace, or in matrix form , 
+V — [J, T.J (^-4) 
+The restriction pencil of the covering subspace is then 
+R v(s) = sNV-NAV = (sN - NA)[J, T] (2.5) 
+From the above expression, it is clear that the general family of cover problems are 
+equivalent to problems of Kronecker structure assignment defined below. 
+Kronecker Structure Assignment Problem (KSAP): Given the ,7-restriction pencil 
+Hj(s) = sNJ-NAJ, find an appropriate T-restriction pencil R T(s) = sNT-NAT 
+such that the column augmented pencil Ry(s) in (2.5) has a certain type invariant 
+structure. 
+The general Kronecker structure assignment problem may be naturally divided 
+to the following two subproblems: 
+Matrix Pencil Augmentation Problem (MPAP): Given the pencil sF-G 6 E mxA: [ s], 
+find the conditions for the existence of a pencil sF - G G E mxp [s] such that the 
+pencil 
+P(s) = [sF-G,sF-G] (2.6) 
+has a given set of invariants. 
+Matrix Pencil Realisation Problem (MPRP): Given the pencil sN-NA G K( n-*)xnr sj 
+find the conditions under which there exists T £ IR nxP such that 
+sNT - NAT = sF - G (2 7) 
+
+550 N. KARCANIAS AND D. VAFIADIS 
+Note that a special case of MPRP has been recently examined in [6] and corresponds 
+to the case where sN — NA is free. The above two problems are integral parts of the 
+KSAP and will be examined here. With reference to the general cover problem, of 
+particular interest are the problems of determining the minimal dimension subspace 
+solutions, when such solution exist. 
+The above family of structure assignment problems deal with assignment of cer­
+tain types of invariants, rather than the assignment of exact values of pencil invari­
+ants; in this sense they are extensions of the zero assignment problems considered 
+so far [8]. In the following the standard cover problem corresponding to the (A, B)-
+invariant subspace case will be considered. The emphasis will be on the partial cover 
+problem. 
+3. KRONECKER INVARIANT TRANSFORMATION BY MATRIX PENCIL 
+AUGMENTATION 
+In this section, we examine a number of results related to the transformation of 
+the types of SE-invariants of a matrix pencil by addition of columns (rows). We 
+consider first an important property established for a general polynomial matrix by 
+[9] and presented for the case of matrix pencils. 
+Theorem 3.1. Let P(s) = sF — G be a matrix pencil and let sf — g be a column 
+pencil and let P'(s) = [sF - G, sf-g]. If 0 {(a), i= 1,..., k, Q(s), j=l,...,k 
+or k + 1 are the invariant polynomials of P(s), P'(s) respectively, then 
+(a) If rank]i(.){P(s)} < rankffi(.){P'(s)} then the following interlacing property holds 
+Ci(s)/e1(s)/c2(s)/e2(s)/.../ek(s)/<:k+i(s) (3.1) 
+(b) If ranki( 3){P(s)} = rank B(.){P'(s)} then the following interlacing property holds 
+e1(s)/Us)/02(s)/.../ek(s)/Ck+l(s) (3.2) 
+Note that in the above a/b denotes that a divides 6. Some obvious further result is 
+stated below: 
+Proposition 3.1. Let sF - G be a right regular pencil i.e. it is characterized only 
+by r.m.i., i.e.d. and f.e.d. Let sF — G be augmented by a single column sf — g such 
+that its rank is increased. Then the sets of the i.e.d. and f.e.d. of the original pencil 
+are subsets of the i.e.d. and f.e.d. of the augmented pencil. 
+Proof. From Theorem 3.1 it follows that the invariant polynomials of the origi­
+nal and the augmented pencils are related by the interlacing inequalities (3.1). The 
+invariant factors £,, i = 1,... ,£+ 1 and e,-, i = 1,.. .,£ can be factorized as follows: 
+C.(s) = (s - a*)*'.'(s - a, 2)^,,... (s _ a ^, ei (3 .3) 
+d(s) = (s- #)«•-(• - #)"<•-.. .(s - pfT'-*- (3-4) 
+
+On the Cover Problems of Geometric Theory 551 
+The factors (s - of )**•> and (s - /?J.)""-' are the f.e.d. of the augmented and the 
+original pencil respectively. 
+From the interlacing inequalities (3.1) it is clear that 
+£j (s)/0 + i(s) (3.5) 
+i.e. Cj+i(*) can be expressed as 
+Cj+i(s) = x j(s)sj(s) (3.6) 
+Q+l(s) = Xj[(s - p})^(s - $)»» ...(-- #)»*] (3-7) 
+The above yields that all the f.e.d. of sF — G are f.e.d. of the augmented pencil 
+[sF — G, sf — g] and the result follows. • 
+The case of the i.e.d. may be proved similarly, taking the "dual" pencil F — sG. 
+It should be mentioned that the multiplicities of the common elementary divisors of 
+the two pencils may be different, since the polynomial Xi(s) may have some of its 
+roots equal to the roots of £.(s). 
+An obvious consequence of the above is the following 
+Proposition 3.2. Consider the pencil [sF — G, sf — g]. 
+(i) If the additional column is linearly dependent on the columns of sF — G, the 
+number of the c.m.i. is increased by one and the number of the r.m.i. remains 
+unchanged. 
+(ii) If the additional column is linearly independent, then the number of the c.m.i 
+remains unchanged and the number of the r.m.i is reduced by one. 
+Proof. The number of c.m.i. and r.m.i. of sF — G is equal to the dimension of 
+the right and left null space of sF — G respectively. 
+(i) If the additional column sf — g is linearly dependent on the columns of sF — G 
+then rank(sF — G) = rank(sF — G, sf — g) and therefore the dimension of the 
+right null space of sF — G is increased by one while the dimension of the left null 
+space remains the same. From the above it follows that the number of the c.m.i. is 
+increased by one and the number of the r.m.i. remains unchanged. 
+(ii) In the case where the additional column is linearly independent from the columns 
+of sF — G we have that rank(sF — G, sf — g) = rank(sF — G) + 1 and therefore the 
+dimension of the right null space remains unchanged. The dimension of the left null 
+space is reduced by one since it is equal to the number of rows of the augmented 
+pencil minus the rank of that pencil. • 
+From the above proposition and Theorem-3.1 it follows that when the rank of the 
+pencil sF — G is increased by 1 with the addition of a single column, the result is the 
+elimination of one r.m.i. and the possible change of the structure of the f.e.d. /i.e.d. 
+
+552 N. KARCANIAS AND D. VAFIADIS 
+Thus, when we want to eliminate the r.m.i. of a pencil, it is necessary to augment 
+it by a number of linearly independent columns equal to the number of the r.m.i. 
+Consider now the general pencil sF — G and without loss of generality we may 
+assume to be in the Kronecker canonical form. 
+[sF-G,sF-G = 
+гo 0 0 0 0 
+0 L n(s) 0 0 0 
+0 0 L £(s) 0 0 
+0 0 0 Doo(s) 0 
+0 0 0 0 D ;(s)J 
+(3.8) 
+where the blocks L e, L n, Doo, D/ correspond to all the nonzero r.m.i., nonzero 
+c.m.i., i.e.d., f.e.d. respectively. 
+Proposition 3.3. The number of the zero r.m.i. of the augmented pencil [sF — 
+G, sF — G] cannot exceed the number of the zero r.m.i of the pencil sF — G. 
+Proof. The number of the z.r.m.i. of sF — G is equal to the dimension of the left 
+null space of the matrix [F, G] and the number of z.r.m.i of the augmented pencil is 
+the dimension of the left null space of the matrix [F, G, F, G]. But 
+N/{[F, G, F, G]} = Af t{[F, G]} n Aft{[f, G]} C N f{[F, G]} (3.9) 
+and therefore 
+dimN г {[F,G,F,G]} < dim.Л!i{[F,G]} 
+and the result follows. 
+Lemma 3.1. [9] Let sF — G be the restriction pencil of the system (2.1) on a 
+subspace V. If V is an (A, B)-invanant subspace then 
+or equivalently, 
+N/(F)CNť(G) 
+span{F} D col — span{G} 
+(3.10) 
+(3.11) 
+Proposition 3.4. The matrix pencil [sF — G, sF — G] is not characterised by i.e.d. 
+and n.z.r.m.i. only if 
+col - span{F, F} D col - span{G} (3.12) 
+
+On the Cover Problems of Geometric Theory 553 
+G,sF-G] = 
+0 0 
+0 L„(s) 
+0 0 
+0 0 
+.0 0 
+0 0 
+0 0 
+Le(s) 0 
+0 DooO) 
+0 0 
+0 
+0 
+0 
+0 
+D/0) 
+0 
+sK 2 -M 2 
+SK3-M3 
+sK 4 -M 4 
+SK5-M5. 
+. (3.13) 
+L£, Doo,D/ are the nonzero г.rn.i., nonzero c.m.i., i.e.d. and f e.d. blocks 
+Proposition 3.5. Necessary condition for the augmented pencil [sF — G, sF — G] 
+to have no i.e.d. and no n.z.r.m.i. is that the number of columns of sF — G is greater 
+or equal to the total number of the n.z.r.m.i. and i.e.d. of sF — G. 
+Proof. From Proposition 3.3 it follows that in order to eliminate the n.r.m.i., 
+we need at least equal number of linearly independent columns. Obviously, the 
+minimal number of the additional columns is obtained when the composite pencil 
+[sF — G,sF — G] has equal number of zero r.m.i., to the number of the z.r.m.i. of the 
+original pencil sF — G. From Proposition 3.1 it follows that as long as we augment 
+the pencil by linearly independent columns, the resulting pencil is characterised by 
+i.e.d. Since we keep the number of the z.r.m.i. unchanged, we can assume that the 
+composite pencil has the form 
+sF 
+respectively. 
+The structure of that pencil" as far as the n.z.r.m.i. and the i.e.d. are concerned, 
+is identical to the structure of the pencil 
+TO L„(s) 0 0 0 sK 2 -M 2 "| 
+0 0 L-0) 0 0 SK3-M3 
+0 0 0 Doo(s) 0 SK4-M4 
+L0 0 0 0 D/0) SK5-M5J 
+This matrix pencil cannot be characterised by zero r.m.i. since Afi{[F, G]} = {0}. 
+Therefore pencil (3.14) is not characterised by i.e.d. and n.r.m.i. only if the matrix 
+F is left regular. From the form of the pencil (3.14) we can see that the matrix F 
+can have full rank only if the matrix that consists of the rows of the pencil sF — G 
+that correspond to the bottom rows of the blocks of the n.r.m.i. and i.e.d. has full 
+rank. Since the number of the rows of that matrix is equal to the total number of 
+i.e.d. and n.r.m.i. of the pencil sF — G, the result follows. • 
+One of the major issues in characterising the solvability of the extended cover 
+problems is the investigation of the conditions under which the resulting pencil after 
+augmentation has no n.z.r.m.i. By assuming the pencil in the canonical form we 
+have: 
+sF-G = (3.14) 
+[sF-G,sF-G] = 
+0 0 0 0 0 sKi-Mг 
+0 M-0 0 0 0 sK 2 -M 2 
+0 0 L.0) 0 0 sK 3 -M 3 
+0 0 0 DooO) 0 SK4—M4 
+.0 0 0 0 D/0) sK 5 -M 5 . 
+(3.15) 
+Now it is obvious that necessary and sufficient condition for P'(s) to have any type 
+of r.m.i., is that the subpencil 
+
+554 N. KARCANIAS AND D. VAFIADIS 
+P» = Ц £:£;] M 
+to provide this type of r.m.i. since the rest of the blocks are left regular. We may 
+summarise as follows: 
+Proposition 3.6. Necessary and sufficient conditions for P"(s) to have all its 
+r.m.i. with values strictly less than those in the L n block, or P"(s) has no r.m.i. 
+are: 
+(i) If ft(Ki, Mi), U(K 2, M 2) are the E(s)-row spaces of the pencils sKi -Mi, sK 2-
+M 2 respectively, then 
+ft(Ki,Mi)nft(K->M2)--{0} (3.17) 
+(ii) The pencil [sK 2 - M 2, L,] is left regular. 
+(iii) All r.m.i. of sKi — Mi are strictly less than those of L,,, or the pencil 
+sKi — Mi is left regular if P"(s) has no r.m.i. 
+Proof. Lety'(s) = [yi( s)>y2(s)] be an E[s] vector in N/(P"(s)). Then we have 
+[yi(«).y-i(«)] [sKi-MisK 2 -M 2 ] = 0, y' 2(s)L,(s) = 0 
+or equivalently 
+y 2(s)L„(s)=0 (3.18) 
+y\(S)(SKx - MO = -y 2(s)(sK 2 - M 2) (3.19) 
+From condition (3.19) we see that either y 2(s) ^ 0, or y 2(s) = 0. We distinguish the 
+following cases: 
+(i) y 2(s) ^ 0. In this case, if n is the minimal of the degrees in L^(s) block, then 
+9{y 2(s)} > n . It is thus a necessary condition that y 2(s) = 0 for the degree of y(s) 
+to be less than n . 
+(ii) If y 2(s) = 0, then (3.19) is reduced to 
+yl(s)(sKi - Mi) = 0 (3.20) 
+and it is necessary that A/^(sKi —Mi) is either {0}, or if it is nonzero, then its r.m.i. 
+are strictly less than n . Thus necessary conditions are 
+y2(s) = 0 and ^i(sK t - Mi) = {0} 
+or the r.m.i. of sKi — Mi are strictly less than n. 
+For y 2(s) = 0 we must determine the necessary conditions for this to happen. 
+From equation (3.19) we have that: 
+(a) If y 2(s) ^ 0 and y* x(s) ^ 0 then 
+ft(Ki,Mi)nft(K2)M2)^{0} (3-21) 
+
+On the Cover Problems of Geometric Theory 555 
+(b) If y 2(s) ^ 0 and y\(s) = 0, then by (3.18) and y\(s) = 0 in (3.19) we have 
+y 2 (s)[sK 2 -M 2 ,L„(s)]=0 (3.22) 
+It is clear that from (a) and (b) above that for y 2(s) = 0 it is necessary that both 
+(3.21) and (3.22) conditions to be true, which proves the necessity. 
+To prove the sufficiency we argue as follows: 
+7e(K 1)Mi)n7e(K 2,M 2) = {o} (3.23) 
+implies that condition (3.19) yields 
+y' 1(*)(«K 1-M 1) = 0 (3.24) 
+y£(s)(sK 2 - M 2) = 0 (3.25) 
+and from (3.25) and (3.18) we have 
+y2(s)[sK 2 - M 2,L„(s)] = 0 (3.26) 
+which since [sK 2 — M2,L n(s)] is left regular implies y 2(s) = 0. Since sKi — Mi 
+is either left regular, or has r.m.i. with values strictly less than n the sufficiency is 
+established. 
+4. THE MATRIX PENCIL REALISATION PROBLEM 
+The analysis of the previous section has assumed that the pencil used in the aug­
+mentation process, sF — G , is arbitrary; however, this pencil is generated from the 
+input-state pencil of the system as 
+(sN - NA)T = sF - G (4.1) 
+or equivalently as a solution of the system 
+1] = [N N Л] T <«> G 
+The problem of matrix pencil realisation is equivalent to finding a T, when (N, A), 
+(F, G) are given such that (4.2) is satisfied. A more general form of this prob­
+lem is the "Invariant Realisation Problem", [4], where the pair (N, A) is also free. 
+Our present version of the problem is equivalent to generating an appropriate T-
+restriction pencil for the given system. Clearly, this problem, does not always have a 
+solution i. e. not any pair (F, G) may be created as a T-restriction of a pair (N, NA); 
+this problem is a generalisation of the zero assignment problems [6]. Clearly, the fam­
+ily of pairs (F, G) provide the necessary input to the Matrix Pencil Augmentation 
+Problem. 
+In the case of the cover problem the matrices F, G, N, A are given and the 
+problem is to find T such that (4.1) is satisfied. An obvious result for solvability of 
+this problem is: 
+
+556 N. KARCANIAS AND D. VAFIADIS 
+Remark 4.1. The matrix pencil realisation problem is solvable if and only if 
+col - span { [g] }c col-span {[^]}T (4.3) 
+Proposition 4.1. If n < 2£ the matrix pencil realisation problem is always solv­
+able. 
+Proof. Since the system S(A,B) is controllable, the pencil sN — NA is char­
+acterised only by c.m.i. and has the following canonical form. 
+sN - NA = block - diag 
+"s -1 0 0 -
+0 
+.0 0 s -1. 
+(4.4) 
+where the dimensions of the blocks are (<r, — 1) x <r,- and cr,- are the controllability 
+indices of the pair (A,B). From the form of the above pencil we can easily see 
+that the matrix [N*, A'N']* has always full rank. The dimensions of [N (, A*N'] ( 
+are (2n — 2^)xn. Then if n < 2£ the equation 
+fl fNl T (4.5) 
+GJ ~~ L NA 
+is always solvable with respect to T and the result follows 
+Remark 4.2. For controllable systems with n < 2£, any particular cover problem 
+is equivalent to a matrix pencil augmentation problem as discussed in the previous 
+section; otherwise, the Matrix Pencil Realisation Problem becomes an essential part 
+of the overall cover problem. 
+5. LEFT REGULAR SOLUTIONS AND THE OVERALL COVER PROB­
+LEM 
+In this section some special cases of the cover problem are investigated and some 
+sufficient conditions for the solvability of the general case of the cover problem 
+are given. The left regular cover problem is defined as that where the resulting 
+augmented pencil has no left null space. For such cases a parametrisation of the 
+solution spaces is also given. Note that a special case of the left regular case is when 
+the resulting pencil is square and regular. This is defined as the regular case. 
+First we tackle the cover problem corresponding to the case where the subspaces 
+are (A, B)-invariant subspaces and the restriction pencil has no r.m.i. at all. Some 
+preliminary results are given below: 
+
+On the Cover Problems of Geometric Theory 557 
+Proposition 5.1. If the restriction pencil sNJ — NAJ of the given subspace J 
+has no zero r.m.i., then the restriction pencil of any solution of the cover problem is 
+not characterised by r.m.i. at all. 
+Proof. From Proposition 3.4 it follows that, since the number of the z.r.m.i. if 
+sNJ — NAJ is zero, then any augmentation of that ^pencil is not characterised by 
+z.r.m.i. O 
+Proposition 5.2. Let C C lR n, dim{£} = n — t, L be a basis matrix of C. If the 
+restriction pencil has full rank (over M(s)) and has no i.e.d., then: 
+(i) C + J is a solution of the partial cover problem. 
+(ii) Any subspace defined as 
+C = C + C + J (5.1) 
+where C is arbitrary is also a solution of the partial cover problem. 
+Proof. Let L £ W ix^-n~t\ such that sNL — NAL is regular and has no i.e.d.; 
+clearly the restriction pencil [sNL - NAL, sNJ - NAJ] has no r.m.i. and thus C 
+is a solution of the partial cover problem which proves (i). 
+For any C £ W" xk matrix the augmented pencil 
+(sN - NA)[L, L, J] = [sNL - NAL, sNL - NAL, sNJ - NAJ] (5.2) 
+has an (n — £) x (n — I) subpencil, which is regular and thus, the pencil (sN — 
+NA)[L,L, J] has no r.m.i. Given that (sN — NA)L is regular and has no i.e.d., we 
+have that NL has full rank and thus also N[L,L, J]; the latter shows that (sN — 
+NA)[L,L, J] has also no i.e.d. The space C — C + C + J is thus a solution to the 
+partial cover problem. O 
+The specific solution defined by the space C for which the pencil sNL — NAL is 
+regular and has no i.e.d. will be referred to as a "squaring" solution and conditions 
+for it existence will be examined next. 
+Remark 5.1. The family C = C + C + J, where £ is a squaring solution does 
+not necessarily cover the hole set of solutions of the partial cover problem; even for 
+the squaring partial cover problem, different C squaring solutions, in general lead 
+to different families. The squaring partial cover problem mentioned above may be 
+formally stated as follows: Given the pencil sN — NA, find L such that 
+det(sN - NA)L ^ 0, det(NL) ^ 0 (5.3) 
+The above conditions combined yield that the squaring problem is solvable if and 
+only if L is such that 
+degdet{(sN-NA)L} = n-^ (5.4) 
+or equivalent^ det(NL) ^ 0 (5.5) 
+
+558 N. KARCANIAS AND D. VAFIADIS 
+Lemma 5.1. The matrix NL has full rank if and only if 
+CDB={0} (5.6) 
+Proposition 5.3. Necessary condition for (5.5) to be true is that 
+dim{C}<n-£ (5.7) 
+Theorem 5.1. The squaring partial cover problem is always solvable. 
+Proof. We can always find L such that (5.6) is satisfied. • 
+The solution of the squaring cover problem is considered next. Condition (5.6) is 
+equivalent to 
+det[B,L]^0 (5.8) 
+where L is the basis-matrix of C. The above is equivalent to 
+det{Q[B,L]}^0 (5.9) 
+where Q is any invertible matrix. Since rank(B) = £ we can always choose Q such 
+that 
+B* 
+u 0 
+where B* is an £ x £ invertible matrix. Then (5.8) is equivalent to 
+QB= 7 =B* (5.10) 
+Bî 
+o L; 
+det "1 ! Uö (5.11) 
+where 
+LІ|=QL = L* (5.12) 
+Relation (5.11) is equivalent to 
+det(B*) • det(L*,) (5.13) 
+det(L*,)#0 (5.14) 
+since B* is invertible. Note that L* is an arbitrary £x (n-£), L*. is an (n-£) x (n-£) 
+matrix. Let now, W be the basis matrix of W and w = dim(W). Then, since C C W 
+rank[W, L] = rank[W] (5.15) 
+rank[QW, QL] = rank[QW] • (5.16) 
+rank[W*,L*] = rank[W*] (5.17) 
+where 
+From (5.18) 
+W* = QW, L* = QL (5.18) 
+Гank ([w1 LІ]) = Гank ( Wł ) < 6Л9 ) 
+
+On the Cover Problems of Geometric Theory 559 
+The above is equivalent to the existence of a matrix K of dimensions w x (n — () 
+SUChthat W*K = L* (5.20) 
+[3]«-[-.] 
+W*K = L*, W;K = L; (5.22) 
+where L*. must be invertible. 
+Proposition 5.4. Necessary and sufficient condition for the invertibility of L*. is 
+that 
+rank(W*) = n-£ (5.23) 
+Proof. The necessity is obvious. For the sufficiency, if we assume that (5.23) 
+holds true, we can choose 
+K = (W*) ( (5.24) 
+and the result follows. D 
+The matrices K that satisfy the requirement of the invertibility of L*. can be 
+found as follows. From (5.22) we have that K must be such that the intersection 
+of its column space with the null space of W*. must be the zero space or, in matrix 
+form 
+det[W,K]^0 (5.25) 
+where W is the basis matrix of the null space of WJ and has dimensions w x (w — n + 
+t). From (5.23) we have that rank(W) = w — n + t. Then there exists a nonsingular 
+matrix P such that 
+PW=[^*]=W* (5.26) 
+where W* is an (w — n + l) x(w — n + t) invertible matrix. Now, (5.25) is equivalent 
+det <[T K0^° ( 5-27> 
+det(W*)det(K*.)^0 (5.28) 
+where T K"* 1 
+[K*J= PK ( 5-29) 
+Provided that (5.23) holds true, we can always find K such that L*. is invertible, by 
+choosing K*> to be invertible. The expression for the matrix L that satisfies (5.5) 
+and (5.15) simultaneously is 
+L = WP- 1 [ K i| (5.30) 
+
+560 N. KARCANIAS AND D. VAFIADIS 
+Next we are going to investigate (5.23) further and obtain an equivalent condition 
+in terms of the matrices B and W. Consider the matrix 
+[B,W] (5.31) 
+Then 
+Q[B,W]=[ B* J|J£R»« (5.32) 
+and B* is invertible. Obviously, rank[Bi,W*] = / and all the nonzero rows ofWj 
+are linearly independent of the rows of [B*, W*]. Thus, 
+rank[ B * ^H = rank[B*, W*] + rank[0, W*J (5.33) 
+and since B* is invertible 
+rank B* ™\ = rank[B*] + rank[W*J (5.34) 
+We may now state the following theorem 
+Theorem 5.2. Necessary and sufficient condition for the solvability of the squaring 
+cover problem is the following 
+dim{S}n{W}=^+w-n (5.35) 
+and the general solution is (5.30) where K* is completely arbitrary and K*, is an 
+arbitrary nonsingular matrix. 
+Proof. From (5.34) we get that (5.23) holds true if and only if rank{[B, W]} = n 
+or equivalently if and only if (5.35) holds true. O 
+Theorem 5.3. The left regular cover problem is solvable if and only if the subspace 
+W is an (A, B)-invariant subspace and the W-restricted pencil is not characterised 
+by z.r.m.i. If the problem is solvable, then the solutions have the following form 
+T = £ + J + £ (5.36) 
+where £ has a basis matrix given in (5.9) and C is an arbitrary subspace of W. 
+Proof. Let the left regular cover problem to be solvable. Then from Proposition 
+5.2. we have that the squaring problem is solvable. Let £ be a solution of the 
+squaring problem. Then there exists a subspace £ C W such that W = C © £ . 
+Since the £-restricted pencil is characterised by i.e.d. and r.m.i., it follows that the 
+W-restricted pencil does not have i.e.d. and r.m.i. and therefore W is an (A,B)-
+invariant subspace not characterised by r.m.i. 
+Conversely let W be a subspace such that the W-restricted pencil has neither 
+i.e.d. nor r.m.i. Then W is a solution to the problem and the result follows. • 
+
+On the Cover Problems of Geometric Theory 561 
+6. CONCLUSIONS 
+The results in this paper were mostly concerned with the partial realisation of the 
+standard cover problem. Extension of the results to the more general cases, where 
+the subspace V is almost (A, B)-invariant, controllability, almost controllability is 
+quite natural, using the present formulation of the problem and their treatment 
+is given in a forthcoming report. The present paper considers the case of proper 
+(regular) systems, which are also assumed to be controllable. The extension of the 
+results to the singular systems case is still under investigation. The matrix pencil 
+framework provides the appropriate tools for the study of the cover problems; the 
+present results are of a preliminary nature and current work is also directed towards 
+conditions which take into account the specific algebraic characteristics of the space 
+to be covered. 
+(Received March 23, 1993.) 
+REFERENCES 
+[1] A. C. Antoulas: New results on the algebraic theory of linear systems: the solution of 
+cover problems. Linear Algebra Appl. 50 (1983), 1-43. 
+[2] E. Emre, L. M. Silverman and K. Glover: Generalised dynamic covers for linear sys­
+tems with applications to deterministic identification problems. IEEE Trans. Automat. 
+Control A(7-22(1977), 26-35. 
+[3] S. Jaffe and N. Karcanias: Matrix pencil characterisation of almost (A, fl)-invariant 
+subspaces: a classification of geometric concepts. Internat. J. Control 33(1981), 51-93. 
+[4] N. Karcanias: Matrix pencil approach to geometric system theory. Proc. IEE 126 
+(1990), 585-590. 
+[5] N. Karcanias: The global role of instrumentation in systems design and control. The 
+concise Encyclopedia of Measurement and Instrumentation, Pergamon Press, to ap­
+pear. 
+[6] N. Karcanias: Proper invariant realisations of singular system problems. IEEE Trans. 
+Automat. Control AC-35 (1990), 230-233. 
+[7] N. Karcanias and B. Kouvaritakis: The output zeroing problem and its relationship to 
+the invariant zero structure: a matrix pencil approach. Internat. J. Control 30 (1979), 
+395-415. 
+[8] N. Karcanias and C. Giannacopoulos: Necessary and sufficient conditions for zero 
+assignment by constant squaring down. Linear Algebra Appl., Special issue on control 
+theory 122/123/124 (1989), 415-446. 
+[9] N. Karcanias and G. Kalogeropoulos: Geometric theory and feedback invariants of 
+generalized linear systems: a matrix pencil approach. Circuits Systems Signal Process. 
+5(1989), 3, 375-397. 
+[10] A. S. Morse: Minimal solutions to transfer matrix equations. IEEE Trans. Automat. 
+Control AC-18(1973), 346-354. 
+[11] R. C. Thompson: Interlacing inequalities for invariant factors. Linear Algebra Appl. 
+24 (1979), 1-31. 
+[12] J.C. Willems: Almost invariant subspaces: an approach to high gain feedback design 
+- Part I, almost controlled invariant subspaces. IEEE Trans. Automat. Control AC-26 
+(1981), 235-252. 
+[13] W. M. Wonham: Linear Multivariate Control: A Geometric Approach. Springer-
+Verlag, New York 1979. 
+
+562 N. KARCANIAS AND D. VAFIADIS 
+[14] W. M. Wonham and A.S. Morse: Feedback invariants for linear multivariable systems. 
+Automatica #(1972), 93-100. 
+[15] F. R. Gantmacher: The Theory of Matrices. Volume I, II. Chelsea, New York 1959. 
+Prof. Dr. Nicos Karcanias and Dr. Dimitris Vafiadis, Control Engineering Research 
+Centre, City University, Northampton Square, London EC1 V OHB. United Kingdom. 

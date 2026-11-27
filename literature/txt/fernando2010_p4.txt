@@ -1,0 +1,1039 @@
+IEEE TRANSACTIONS ON AUTOMATIC CONTROL, VOL. 55, NO. 5, MAY 2010
+
+So, Lemma 5 is suggesting that Condition 1 can still be satisﬁed
+without increasing the LHS and RHS of Condition 1 (i.e., (cid:0) (cid:0) (cid:2) (cid:0)
+(cid:0)(cid:0) (cid:0) (cid:2)(cid:0) ) if a new (cid:3) is formed by picking a row vector from (cid:0)(cid:2)(cid:4)(cid:0) (cid:3) (cid:0)
+(cid:0)(cid:2)(cid:4)(cid:0)(cid:5)(cid:6)(cid:3) (cid:2) (cid:0)(cid:2)(cid:5)(cid:6)(cid:3) and append it with (cid:3)(cid:0). In fact we could append
+the whole of (cid:4)(cid:0) to (cid:3)(cid:0) to form a new (cid:3) and still satisfy Condition 1
+without increasing its LHS and RHS.
+(cid:3)(cid:0)
+(cid:5)(cid:3)
+(cid:2)
+
+, (cid:7) (cid:3) (cid:4)(cid:6)(cid:8) (cid:7) (cid:7) (cid:7) (cid:8) (cid:9) (cid:5) (cid:0)(cid:0) (cid:6),
+
+Lemma 6: Let (cid:3)(cid:0)(cid:2)(cid:2) (cid:0)
+
+(cid:10) (cid:3) (cid:4)(cid:6)(cid:8) (cid:7) (cid:7) (cid:7) (cid:8) (cid:8)(cid:9)(cid:10)(cid:11)(cid:12)(cid:13)(cid:14)(cid:2)(cid:9) (cid:5) (cid:0)(cid:0) (cid:8) (cid:7)(cid:3)(cid:6), (cid:4)(cid:3)
+(cid:11)(cid:12)(cid:16)(cid:17) (cid:4)(cid:3)
+and
+
+(cid:3) (cid:0) (cid:18)(cid:12)(cid:19)(cid:17)(cid:2)(cid:5)(cid:6)(cid:3)(cid:3) (cid:0) (cid:11) and (cid:11)(cid:12)(cid:16)(cid:17) (cid:15)(cid:3)
+
+(cid:3) and (cid:15)(cid:3)
+
+(cid:3) be such that
+
+(cid:3) (cid:0) (cid:18)(cid:12)(cid:19)(cid:17) (cid:12) (cid:0)(cid:2)(cid:2)
+
+(cid:3)
+
+(cid:16)(cid:3) (cid:0) (cid:2)(cid:0) (cid:5) (cid:25)(cid:9)(cid:10)
+
+(cid:5)(cid:2)
+
+(cid:18)(cid:26)(cid:10)(cid:27)
+
+(cid:16)(cid:5)(cid:2)(cid:10)(cid:8) (cid:7)(cid:3) (cid:0) (cid:2)(cid:0) (cid:22) (cid:7) (cid:5) (cid:25)(cid:9)(cid:10)
+
+(cid:5)(cid:2)
+
+(cid:18)(cid:26)(cid:10)(cid:27)
+
+(cid:8)
+
+(cid:17)(cid:3)(cid:0) (cid:5) (cid:3)(cid:0)(cid:6)
+(cid:17)(cid:4)(cid:0) (cid:5) (cid:4)(cid:0) (cid:6)
+(cid:12)(cid:0)
+(cid:17)(cid:3)(cid:0) (cid:5) (cid:3)(cid:0)(cid:6)
+(cid:17)(cid:5)(cid:3)
+(cid:2) (cid:5) (cid:5)(cid:3)
+(cid:2) (cid:6)
+(cid:12)(cid:0)
+
+1271
+
+(25)
+
+(cid:8)
+
+(26)
+
+(cid:16)(cid:6)(cid:2)(cid:10)(cid:8) (cid:7)(cid:3) (cid:0) (cid:2)(cid:0) (cid:22) (cid:7) (cid:5) (cid:25)(cid:9)(cid:10)
+
+(cid:5)(cid:2)
+
+(cid:18)(cid:26)(cid:10)(cid:27)
+
+(cid:17)(cid:3)(cid:0) (cid:5) (cid:3)(cid:0)(cid:6)
+(cid:17)(cid:5)(cid:3)
+(cid:2) (cid:5) (cid:5)(cid:3)
+(cid:2) (cid:6)
+(cid:0)(cid:2)(cid:2) (cid:5) (cid:4) (cid:3)
+(cid:0)(cid:2)(cid:2) (cid:6)
+(cid:12)(cid:0)
+
+(cid:17)(cid:4) (cid:3)
+
+(cid:13)
+
+(27)
+
+(cid:20) (cid:4)(cid:3)
+
+(cid:3) (cid:15)(cid:3)
+
+(cid:3) (cid:21) (cid:0) (cid:7)
+
+(cid:5)(cid:6)(cid:3)
+(cid:12) (cid:0)(cid:2)(cid:2)
+(cid:3)
+
+(cid:13)
+
+(22)
+
+Remark 2: Suppose some (cid:3) satisﬁes Condition 1 but doesn’t satisfy
+Condition 2 then always LHS of Condition 2 is less than its RHS at
+some (cid:17) (cid:3) and will occur at some (cid:17) (cid:0) (cid:13)(cid:9)(cid:28)(cid:2)(cid:18)(cid:3)(cid:3) and (cid:18)(cid:3) is such that
+
+Also let
+
+For (cid:14) (cid:3) (cid:0)(cid:2)(cid:5)(cid:6)(cid:3), (cid:3) (cid:0)
+
+(cid:3)(cid:0)
+(cid:5)(cid:3)
+(cid:2)
+(cid:14)
+
+(cid:4) (cid:3)
+
+(cid:0)(cid:2)(cid:2) (cid:0) (cid:4)(cid:3)
+
+(cid:3)(cid:5)(cid:6)(cid:13)
+
+(23)
+
+satisﬁes Condition 1 for (cid:0) (cid:0) (cid:2) (cid:0)
+
+(cid:3)(cid:0)
+(cid:5)(cid:3)
+(cid:2)
+
+(cid:3)(cid:0)
+(cid:5)(cid:3)
+(cid:2)
+(cid:4) (cid:3)
+
+(cid:0)(cid:2)(cid:2)
+
+(cid:0)(cid:0) (cid:22) (cid:7) (cid:0) (cid:2)(cid:0) (cid:22) (cid:7) iff (cid:14) belongs to the row space of (cid:4) (cid:3)
+
+(cid:0)(cid:2)(cid:2) .
+
+So, Lemma 6 is suggesting that Condition 1 can still be satisﬁed
+without increasing the LHS and RHS of Condition 1 when (cid:0) (cid:0) (cid:2) (cid:0)
+(cid:0)(cid:0) (cid:22) (cid:7) (cid:0) (cid:2)(cid:0) (cid:22) (cid:7) if a new (cid:3) is formed by picking a row vector from
+(cid:0) (cid:4) (cid:3)
+
+(cid:0)(cid:2)(cid:2) (cid:0) (cid:0)(cid:2)(cid:4)(cid:3)(cid:5)(cid:6)(cid:3) (cid:2) (cid:0)(cid:2)(cid:5)(cid:6)(cid:3) and append it with (cid:3) (cid:0)
+
+.
+
+(cid:3)(cid:0)
+(cid:5)(cid:3)
+(cid:2)
+
+In fact we could append the whole of (cid:4) (cid:3)
+
+(cid:0)(cid:2)(cid:2) to (cid:3) (cid:0)
+
+to form
+
+a new (cid:3) and still satisfy Condition 1 without increasing its LHS and
+RHS.
+
+Remark 1: For (cid:3) (cid:0) (cid:3)(cid:0) and (cid:3) (cid:0)
+
+Condition 1 is satisﬁed
+
+(cid:3)(cid:0)
+(cid:4)(cid:0)
+
+for (cid:0) (cid:0) (cid:2) (cid:0) (cid:0)(cid:0) (cid:0) (cid:2)(cid:0). For (cid:3) (cid:0)
+
+(cid:3)(cid:0)
+(cid:5)(cid:3)
+(cid:2)
+
+and (cid:3) (cid:0)
+
+(cid:4)(cid:6)(cid:8) (cid:7) (cid:7) (cid:7) (cid:8) (cid:9) (cid:5) (cid:0)(cid:0) (cid:6), (cid:10) (cid:3) (cid:4)(cid:6)(cid:8) (cid:7) (cid:7) (cid:7) (cid:8) (cid:8)(cid:9)(cid:10)(cid:11)(cid:12)(cid:13)(cid:14) (cid:2)(cid:9) (cid:5) (cid:0)(cid:0)(cid:8) (cid:7)(cid:3)(cid:6) Condition 1 is
+satisﬁed for (cid:0) (cid:0) (cid:2) (cid:0) (cid:0)(cid:0) (cid:22) (cid:7) (cid:0) (cid:2)(cid:0) (cid:22) (cid:7).
+
+We can now introduce the concept of Functional Observability.
+Functional Observability is a test of whether linear functions of states
+of a system can be inferred by knowledge of external outputs and
+inputs of the system. For system matrices (cid:6) and (cid:5), and the function
+to be estimated (cid:3)(cid:4), Functional Observability can ascertain if (cid:3)(cid:4) can
+be estimated in a similar way that Observability of the pair (cid:2)(cid:6)(cid:8) (cid:5)(cid:3) can
+ascertain if all the states can be estimated.
+
+Deﬁnition 1: The triple (cid:2)(cid:6)(cid:8) (cid:5)(cid:8) (cid:3)(cid:4)(cid:3) is Functional Observable iff
+there exists an (cid:3) (cid:3) (cid:4)(cid:0)(cid:4)(cid:8) (cid:15) (cid:8) (cid:23)(cid:15) (cid:8) (cid:9) such that (cid:0)(cid:2)(cid:3)(cid:3) (cid:9) (cid:0)(cid:2)(cid:3)(cid:4)(cid:3)
+and (cid:3) satisﬁes conditions 1 and 2.
+
+Theorem 3: The triple (cid:2)(cid:6)(cid:8) (cid:5)(cid:8) (cid:3)(cid:4)(cid:3) is Functional Observable iff Con-
+
+dition 2 is satisﬁed for (cid:3) (cid:0)
+
+(cid:3)(cid:0)
+(cid:4)(cid:0)
+
+or one of (cid:3) (cid:0)
+
+(cid:4)(cid:6)(cid:8) (cid:7) (cid:7) (cid:7) (cid:8) (cid:9) (cid:5) (cid:0)(cid:0)(cid:6), (cid:10) (cid:3) (cid:4)(cid:6)(cid:8) (cid:7) (cid:7) (cid:7) (cid:8) (cid:8)(cid:9)(cid:10)(cid:11)(cid:12)(cid:13)(cid:14)(cid:2)(cid:9) (cid:5) (cid:0)(cid:0)(cid:8) (cid:7)(cid:3)(cid:6).
+
+(cid:3)(cid:0)
+(cid:5)(cid:3)
+(cid:2)
+(cid:4) (cid:3)
+
+(cid:0)(cid:2)(cid:2)
+
+, (cid:7) (cid:3)
+
+For (cid:7) (cid:3) (cid:4)(cid:6)(cid:8) (cid:7) (cid:7) (cid:7) (cid:8) (cid:9) (cid:5) (cid:0)(cid:0)(cid:6) and (cid:10) (cid:3) (cid:4)(cid:6)(cid:8) (cid:7) (cid:7) (cid:7) (cid:8) (cid:8)(cid:9)(cid:10)(cid:11)(cid:12)(cid:13)(cid:14)(cid:2)(cid:9) (cid:5) (cid:0)(cid:0)(cid:8) (cid:7)(cid:3)(cid:6) let
+(cid:16)(cid:0) (cid:10) (cid:24), (cid:16)(cid:3) (cid:10) (cid:24), (cid:16)(cid:5)(cid:2)(cid:10)(cid:8) (cid:7)(cid:3) (cid:10) (cid:24) and (cid:16)(cid:6)(cid:2)(cid:10)(cid:8) (cid:7)(cid:3) (cid:10) (cid:24) be the maximum
+difference between the RHS and LHS of Condition 2 when (cid:3) (cid:0) (cid:3)(cid:0) ,
+
+(cid:3) (cid:0)
+
+(cid:3)(cid:0)
+(cid:4)(cid:0)
+
+, (cid:3) (cid:0)
+
+(cid:3)(cid:0)
+(cid:5)(cid:3)
+(cid:2)
+
+and (cid:3) (cid:0)
+
+, respectively
+
+(cid:3)(cid:0)
+(cid:5)(cid:3)
+(cid:2)
+(cid:4) (cid:3)
+
+(cid:0)(cid:2)(cid:2)
+
+(cid:16)(cid:0) (cid:0) (cid:2)(cid:0) (cid:5) (cid:25)(cid:9)(cid:10)
+
+(cid:5)(cid:2)
+
+(cid:18)(cid:26)(cid:10)(cid:27)
+
+(cid:17)(cid:3)(cid:0) (cid:5) (cid:3)(cid:0)(cid:6)
+(cid:12)(cid:0)
+
+(cid:8)
+
+(24)
+
+(cid:3)(cid:6) (cid:0) (cid:18)(cid:0)(cid:12)(cid:0) (cid:22) (cid:18)(cid:3)(cid:3)(cid:13)
+
+(28)
+
+The values of (cid:16)(cid:0), (cid:16)(cid:3), (cid:16)(cid:5)(cid:2)(cid:10)(cid:8) (cid:7)(cid:3) (cid:10) (cid:24) and (cid:16)(cid:6)(cid:2)(cid:10)(cid:8) (cid:7)(cid:3) (cid:10) (cid:24) can be computed
+by considering the eigenvalues of (cid:18)(cid:3) corresponding to (cid:3). Since Con-
+dition 1 is satisﬁed, (cid:18)(cid:3) exists.
+
+(cid:3)
+
+Now let (cid:4)(cid:6)
+are
+there
+
+be a matrix formed by taking (cid:16)(cid:0) rows from
+(cid:4)(cid:0) ,
+(cid:18)(cid:12)(cid:19)(cid:17)(cid:2)(cid:4)(cid:0)(cid:3)
+choose (cid:16)(cid:0) possibilities
+for (cid:4)(cid:6) ,
+(cid:4)(cid:6)(cid:8) (cid:7) (cid:7) (cid:7) (cid:8) (cid:8)(cid:9)(cid:10)(cid:11)(cid:12)(cid:13)(cid:14)(cid:2)(cid:18)(cid:12)(cid:19)(cid:17)(cid:2)(cid:4)(cid:0)(cid:3)(cid:8) (cid:16)(cid:0)(cid:3)(cid:6). Also let (cid:29)(cid:4)(cid:6)
+so (cid:19)(cid:0)
+be
+(cid:0)(cid:2)(cid:2) ,
+(cid:7) (cid:3) (cid:4)(cid:6)(cid:8) (cid:7) (cid:7) (cid:7) (cid:8) (cid:9) (cid:5) (cid:0)(cid:0)(cid:6), (cid:10) (cid:3) (cid:4)(cid:6)(cid:8) (cid:7) (cid:7) (cid:7) (cid:8) (cid:8)(cid:9)(cid:10)(cid:11)(cid:12)(cid:13)(cid:14) (cid:2)(cid:9) (cid:5) (cid:0)(cid:0)(cid:8) (cid:7)(cid:3)(cid:6)
+choose (cid:16)(cid:5)(cid:2)(cid:10)(cid:8) (cid:7)(cid:3) possibilities for (cid:29)(cid:4)(cid:6) , so
+there are (cid:18)(cid:12)(cid:19)(cid:17) (cid:4) (cid:3)
+(cid:19)(cid:3) (cid:3) (cid:6)(cid:8) (cid:7) (cid:7) (cid:7) (cid:8) (cid:8)(cid:9)(cid:10)(cid:11)(cid:12)(cid:13)(cid:14) (cid:18)(cid:12)(cid:19)(cid:17) (cid:4) (cid:3)
+
+a matrix formed by taking (cid:16)(cid:5)(cid:2)(cid:10)(cid:8) (cid:7)(cid:3)
+
+from (cid:4) (cid:3)
+
+(cid:8) (cid:16)(cid:5)(cid:2)(cid:10)(cid:8) (cid:7)(cid:3)
+
+rows
+
+(cid:0)(cid:2)(cid:2)
+
+.
+
+(cid:0)(cid:2)(cid:2)
+
+Lemma 7: There exist either a (cid:4)(cid:6) such that (cid:3) (cid:0)
+
+(cid:3)(cid:0)
+(cid:4)(cid:6)
+
+satisﬁes
+
+Condition 2 or a (cid:29)(cid:4)(cid:6) such that (cid:3) (cid:0)
+
+, (cid:7) (cid:3) (cid:4)(cid:6)(cid:8) (cid:7) (cid:7) (cid:7) (cid:8) (cid:9) (cid:5) (cid:0)(cid:0)(cid:6),
+
+(cid:10) (cid:3) (cid:4)(cid:6)(cid:8) (cid:7) (cid:7) (cid:7) (cid:8) (cid:8)(cid:9)(cid:10)(cid:11)(cid:12)(cid:13)(cid:14)(cid:2)(cid:9) (cid:5) (cid:0)(cid:0) (cid:8) (cid:7)(cid:3)(cid:6) satisﬁes Condition 2 iff the triple
+(cid:2)(cid:6)(cid:8) (cid:5)(cid:8) (cid:3)(cid:4)(cid:3) is Functional Observable.
+
+, (cid:7) (cid:3)
+
+Theorem 4: Let (cid:4) (cid:3)
+
+(cid:0) (cid:0) (cid:4)(cid:6) such that (cid:3) (cid:0)
+
+satisﬁes Condi-
+
+(cid:3)(cid:0)
+(cid:4)(cid:6)
+
+(cid:3)(cid:0)
+(cid:5)(cid:3)
+(cid:2)
+(cid:29)(cid:4)(cid:6)
+
+(cid:3)(cid:0)
+(cid:5)(cid:3)
+(cid:2)
+(cid:29)(cid:4)(cid:6)
+
+tion 2 and let (cid:4) (cid:3)
+
+(cid:3) (cid:0) (cid:29)(cid:4)(cid:6) such that (cid:3) (cid:0)
+
+, (cid:7) (cid:3) (cid:4)(cid:6)(cid:8) (cid:7) (cid:7) (cid:7) (cid:8) (cid:9) (cid:5) (cid:0)(cid:0)(cid:6),
+
+(cid:10) (cid:3) (cid:4)(cid:6)(cid:8) (cid:7) (cid:7) (cid:7) (cid:8) (cid:8)(cid:9)(cid:10)(cid:11)(cid:12)(cid:13)(cid:14) (cid:2)(cid:9) (cid:5) (cid:0)(cid:0)(cid:8) (cid:7)(cid:3)(cid:6) satisﬁes Condition 2 for some (cid:10) (cid:0)
+(cid:10)(cid:3) with (cid:7) (cid:0) (cid:7)(cid:3) where (cid:7)(cid:3) is the minimum (cid:7). If the triple (cid:2)(cid:6)(cid:8) (cid:5)(cid:8) (cid:3)(cid:4)(cid:3) is
+Functional Observable then the minimum (cid:3) that satisﬁes Conditions
+1 and 2 is
+
+(cid:3)(cid:0)
+
+if (cid:16)(cid:0) (cid:0) (cid:24),
+
+(cid:3)(cid:0)
+(cid:4) (cid:3)
+(cid:0)
+(cid:3)(cid:0)
+(cid:5)(cid:3)
+(cid:2)
+(cid:4) (cid:3)
+(cid:3)
+
+if (cid:16)(cid:0) (cid:11)(cid:0) (cid:24)(cid:8) (cid:16)(cid:3) (cid:0) (cid:24),
+
+if (cid:16)(cid:0) (cid:11)(cid:0) (cid:24), (cid:16)(cid:3) (cid:11)(cid:0) (cid:24).
+
+Remark 3: Note that if we consider (cid:17) (cid:3) , (cid:12)(cid:2)(cid:17)(cid:3) (cid:10) (cid:24), instead
+of (cid:17) (cid:3)
+in (5b) and in (24)–(27), obviously the minimum (cid:3) that is
+obtained can only guarantee a stable observer, and also Theorem 3 then
+presents the conditions for Functional Detectability.
+
+Remark 4: The concept of Functional Observability/Detectability
+reduces to Observability/Detectability when (cid:3)(cid:4) (cid:0) (cid:20). It is easy to
+see that Functional Observability of the triple (cid:2)(cid:6)(cid:8) (cid:5)(cid:8) (cid:20)(cid:3) reduces to
+Observability of the pair (cid:2)(cid:6)(cid:8) (cid:5)(cid:3). Furthermore, if we consider the
+right half complex plane instead of the entire complex plane then
+criteria reported in Theorem 3 is Functional Detectability of the triple
+(cid:2)(cid:6)(cid:8) (cid:5)(cid:8) (cid:3)(cid:4)(cid:3). Again Functional Detectability of (cid:2)(cid:6)(cid:8) (cid:5)(cid:8) (cid:20)(cid:3) reduces to
+Detectability of (cid:2)(cid:6)(cid:8) (cid:5)(cid:3).
+
+1272
+
+IEEE TRANSACTIONS ON AUTOMATIC CONTROL, VOL. 55, NO. 5, MAY 2010
+
+VI. NUMERICAL EXAMPLES
+
+or
+
+Example 1: Consider
+
+(cid:10) (cid:15)(cid:3) (cid:16)(cid:3) (cid:11) (cid:0) (cid:8)
+
+(cid:19) (cid:3)
+(cid:5) (cid:0)
+(cid:19) (cid:3)
+(cid:5)
+
+(cid:22)
+
+(31)
+
+(cid:2)(cid:0)
+(cid:7) (cid:2)
+(cid:4)
+
+,
+
+(cid:19) (cid:0)
+(cid:2)
+(cid:17)
+
+(cid:0) (cid:0)
+
+(cid:3)
+
+(cid:3)
+
+(cid:2)
+
+(cid:3)
+
+(cid:5)
+
+(cid:3) (cid:0)(cid:4)
+
+(cid:0)(cid:5)
+(cid:2)
+(cid:3) (cid:0)(cid:2) (cid:5)(cid:6) (cid:2)(cid:7)(cid:4) (cid:0)(cid:4)(cid:8) (cid:0)(cid:4)(cid:8) (cid:0)(cid:2)(cid:5)(cid:7) (cid:0)(cid:6)(cid:2) (cid:2)(cid:2)(cid:5)
+(cid:2)
+(cid:5)
+(cid:0)(cid:7)
+(cid:0)(cid:2)
+(cid:3)
+(cid:2)
+(cid:0)(cid:2)
+
+(cid:2)
+(cid:3)
+(cid:3) (cid:0)(cid:5)
+(cid:2)
+(cid:3)
+(cid:7)
+(cid:2)
+(cid:2)
+(cid:5)
+(cid:3)
+(cid:2)
+(cid:3)
+(cid:2)
+
+(cid:2)
+(cid:0)(cid:5)
+(cid:3)
+(cid:3)
+(cid:0)(cid:2)
+(cid:3)
+(cid:0)(cid:7)
+
+(cid:3)
+(cid:5)
+(cid:0)(cid:2)
+(cid:0)(cid:2)
+(cid:8)
+(cid:0)(cid:5)
+(cid:0)(cid:2)
+
+(cid:3)
+(cid:3)
+(cid:3)
+(cid:2)
+(cid:0)(cid:9)
+(cid:0)(cid:7)
+(cid:5)
+
+(cid:3)
+(cid:2)
+(cid:3)
+(cid:2)
+(cid:2)
+(cid:3)
+(cid:8)
+
+(cid:3)
+(cid:7)
+(cid:3)
+(cid:3)
+(cid:3)
+(cid:2)
+(cid:3)
+
+(cid:3)
+(cid:2)
+(cid:2)
+(cid:3)
+(cid:3)
+(cid:2)
+(cid:2)
+
+(cid:0)
+
+(cid:10) (cid:2) (cid:8) (cid:2) (cid:5)(cid:2) (cid:0)(cid:2)(cid:4) (cid:0)(cid:2)(cid:4) (cid:0)(cid:6) (cid:0)(cid:2)(cid:9) (cid:5)(cid:3) (cid:11)
+
+(cid:2)(cid:0)
+and
+(cid:3) (cid:0) (cid:10) (cid:4)(cid:2)(cid:0)(cid:2)
+(cid:3)(cid:2)(cid:0)(cid:3) (cid:11). The system (cid:12)(cid:0)(cid:5) (cid:3)(cid:5) (cid:2)(cid:0)(cid:13) is functional ob-
+servable. From (19), (cid:2)(cid:0) (cid:0) (cid:2)(cid:0) and from (24), (cid:6)(cid:4) (cid:0) (cid:2). From (25),
+(cid:6)(cid:2) (cid:0) (cid:3) with (cid:7) (cid:2)
+(cid:4) (cid:0) (cid:10) (cid:2) (cid:3) (cid:3) (cid:0)(cid:4) (cid:3) (cid:2) (cid:3) (cid:5) (cid:0)(cid:5) (cid:11). From The-
+
+orem 4, a minimum (cid:2) that satisﬁes Conditions 1 and 2 is (cid:2) (cid:0)
+
+hence a second-order observer can be designed.
+
+, (cid:3) (cid:0) (cid:10) (cid:2) (cid:2) (cid:3) (cid:11) and
+
+Example 2: Consider (cid:0) (cid:0)
+
+(cid:0)(cid:2)
+(cid:3)
+(cid:3)
+(cid:3) (cid:0)(cid:2) (cid:3)
+(cid:5)
+(cid:3)
+(cid:3)
+(cid:2)(cid:0) (cid:0) (cid:10) (cid:2) (cid:5) (cid:3) (cid:11). This system is not Observable and also not De-
+tectable but Functional Detectable, therefore an observer to estimate
+(cid:2)(cid:0) can be designed. We note that for (cid:2) (cid:0) (cid:2)(cid:0) Condition 1 is satisﬁed
+and also Condition 2 is satisﬁed for (cid:8) (cid:2) , (cid:3)(cid:12)(cid:8)(cid:13) (cid:4) (cid:3), so a ﬁrst-order
+observer can be designed. The pole of the observer cannot be arbitrarily
+chosen, it is ﬁxed at (cid:8) (cid:0) (cid:0)(cid:2).
+
+VII. CONCLUSION
+
+The technical note has introduced the concept of Functional Observ-
+ability/Detectability that ascertains the ability to estimate a given linear
+function of the state vector using a dynamical observer. The necessary
+and sufﬁcient condition for a triple (cid:12)(cid:0)(cid:5) (cid:3)(cid:5) (cid:2)(cid:0)(cid:13) to be Functional Ob-
+servable/Detectable is reported in this technical note, and for systems
+which are Functional Observable/Detectable, a solution to the design
+of minimum-order observers has also been presented. It also emerges
+in the technical note that Observability is better expressed in a more
+general sense as a triple (cid:12)(cid:0)(cid:5) (cid:3)(cid:5) (cid:2)(cid:0)(cid:13) than a pair (cid:12)(cid:0)(cid:5) (cid:3)(cid:13).
+
+APPENDIX
+
+Proof of Theorem 1: If (4a)–(4b) are satisﬁed and also if (cid:9) is
+Hurwitz then (cid:10)(cid:12)(cid:11)(cid:13) (cid:5) (cid:3) for any (cid:12)(cid:12)(cid:11)(cid:13) and (cid:10)(cid:12)(cid:3)(cid:13) (hence for any (cid:13)(cid:12)(cid:3)(cid:13)
+and (cid:14)(cid:12)(cid:3)(cid:13) as well). If (cid:9) has some of its eigenvalues (cid:15)(cid:2) (cid:2) such that
+(cid:3)(cid:12)(cid:15)(cid:2)(cid:13) (cid:4) (cid:3) then even for (cid:13)(cid:12)(cid:3)(cid:13) (cid:0) (cid:3) and (cid:12)(cid:12)(cid:11)(cid:13) (cid:0) (cid:3), (cid:10)(cid:12)(cid:11)(cid:13) (cid:5) (cid:6) as (cid:11) (cid:5)
+(cid:6). If (4b) is not satisﬁed then a (cid:12)(cid:12)(cid:11)(cid:13) can be chosen to make (cid:10)(cid:12)(cid:11)(cid:13) (cid:7)(cid:5) (cid:3)
+as (cid:11) (cid:5) (cid:6). If (4a) is not satisﬁed then the uncontrollable states of (cid:13)(cid:12)(cid:11)(cid:13)
+(note they are all unstable) approach (cid:6) and the controllable states of
+(cid:13)(cid:12)(cid:11)(cid:13) can be arbitrarily chosen using (cid:12)(cid:12)(cid:11)(cid:13) to make (cid:10)(cid:12)(cid:11)(cid:13) (cid:7)(cid:5) (cid:3).
+
+Proof of Lemma 1: Since we require (cid:16)(cid:3) to remain constant for
+(cid:5) where (cid:18)(cid:3) (cid:2) (cid:4) , so (cid:17)(cid:0) can
+
+we choose (cid:17) from (cid:17) (cid:0) (cid:18)(cid:3) (cid:19) (cid:3)
+
+(cid:2) (cid:0)
+
+(cid:2)(cid:3)
+(cid:17)
+
+be written as
+
+So it follows iff (cid:17) (cid:2) (cid:9) (cid:15)(cid:3) (cid:19) (cid:3)
+then (cid:16)(cid:3) remains constant. Following
+(cid:5)
+along a similar way it can be shown that (cid:24)(cid:3) also remains constant iff (cid:17)
+belongs to the row space of (cid:17)(cid:3)(cid:15)(cid:3) (cid:19) (cid:3)
+(cid:5) . It now follows that (cid:24)(cid:3) increases
+but (cid:16)(cid:3) remains constant iff
+
+(cid:17) (cid:2) (cid:9) (cid:15)(cid:3) (cid:19) (cid:3)
+
+(cid:5) (cid:10) (cid:9) (cid:17)(cid:3)(cid:15)(cid:3) (cid:19) (cid:3)
+(cid:5)
+
+(cid:3)
+
+(cid:0) (cid:9)(cid:12)(cid:17)(cid:3)(cid:13)
+
+(cid:3)
+
+(cid:15)(cid:3) (cid:19) (cid:3)
+(cid:5) (cid:22)
+
+(32)
+
+Since
+
+is a full row rank matrix, (cid:24)(cid:3) can be increased by 1 for each
+
+(cid:19) (cid:3)
+(cid:2)
+(cid:18)(cid:3)
+
+(cid:17) up to (cid:24)(cid:3) (cid:14) (cid:19)(cid:20)(cid:21)(cid:22) (cid:12)(cid:18)(cid:3)(cid:13).
+
+Proof of Lemma 2: We choose elements from the row space of
+
+(cid:3)
+
+(cid:25)(cid:2) (cid:0) (cid:9) (cid:19) (cid:0)
+(an orthonormal basis), (cid:17) (cid:0) (cid:26)(cid:25)(cid:2) say, where
+(cid:2)
+(cid:26) (cid:2) (cid:27)(cid:5)(cid:4)(cid:6) , which satisfy (cid:17)(cid:0) being an element of the row space of
+
+(cid:17)(cid:0) (cid:0) (cid:26)(cid:25)(cid:2)(cid:0) (cid:0) (cid:28)(cid:19) (cid:0)
+
+(cid:2) (cid:14) (cid:15)(cid:17) (cid:0) (cid:28)(cid:19) (cid:0)
+
+(cid:2) (cid:14) (cid:15)(cid:26)(cid:25)(cid:2)(cid:22)
+
+(33)
+
+Multiplying on the right by (cid:25) (cid:7)
+we get
+
+(cid:2) and using (cid:25)(cid:2)(cid:25) (cid:7)
+
+(cid:2) (cid:0) (cid:4)(cid:5)(cid:4)(cid:6) , (cid:19) (cid:0)
+
+(cid:2) (cid:25) (cid:7)
+
+(cid:2) (cid:0) (cid:3)
+
+(cid:26) (cid:25)(cid:2)(cid:0)(cid:25) (cid:7)
+
+(cid:2) (cid:0) (cid:15)(cid:4) (cid:0) (cid:3)
+
+(34)
+
+which is to ﬁnd the left eigenvectors of (cid:25)(cid:2)(cid:0)(cid:25) (cid:7)
+be the left eigenvector of (cid:25)(cid:2)(cid:0)(cid:25) (cid:7)
+
+has the property that (cid:17)(cid:2)(cid:0) is in the row space of
+
+(cid:2). Let us deﬁne (cid:26)(cid:2) to
+(cid:2) then the corresponding (cid:17)(cid:2) (cid:0) (cid:26)(cid:2)(cid:25)(cid:2)
+(cid:19) (cid:0)
+(cid:2)
+(cid:17)(cid:2)
+
+. So (cid:2) (cid:0)
+
+(cid:2)(cid:0)
+(cid:17)(cid:2)
+
+increases (cid:24)(cid:0) by one and also increases (cid:16)(cid:0) by one for each (cid:17)(cid:2). For any
+(cid:2) (cid:0) (cid:2)(cid:5) that satisfy Condition 1, (cid:2) (cid:0) (cid:23)(cid:2)(cid:5) also satisﬁes Condition 1
+where (cid:23) is any non-singular square matrix of appropriate dimensions.
+Proof of Lemma 3: If (cid:17) (cid:2) (cid:9)(cid:12)(cid:3)(cid:13) then (cid:8)(cid:17) (cid:0) (cid:17)(cid:0) (cid:2) (cid:9)(cid:12)(cid:19)(cid:4)(cid:13), hence
+
+the LHS of Condition 2 is
+
+(cid:0) (cid:19)(cid:20)(cid:21)(cid:22)
+
+(cid:8)(cid:2) (cid:0) (cid:2)(cid:0)
+(cid:8)(cid:17) (cid:0) (cid:17)(cid:0)
+(cid:19)(cid:4)
+
+(cid:0) (cid:19)(cid:20)(cid:21)(cid:22)
+
+(cid:8)(cid:2) (cid:0) (cid:2)(cid:0)
+(cid:19)(cid:4)
+
+(cid:29) (cid:19)(cid:20)(cid:21)(cid:22)
+
+(cid:2)
+(cid:19)(cid:4)
+
+(cid:5)
+
+(cid:8) (cid:2) (cid:22)
+
+Proof of Lemma 4: If Condition 1 is satisﬁed for some (cid:2) then
+
+(cid:2)(cid:0) (cid:0) (cid:30)(cid:4)(cid:19)(cid:4) (cid:14) (cid:30)(cid:2)(cid:2)(cid:5) and the LHS of Condition 2 is
+
+(cid:0) (cid:19)(cid:20)(cid:21)(cid:22)
+
+(cid:0) (cid:19)(cid:20)(cid:21)(cid:22)
+
+(cid:0) (cid:19)(cid:20)(cid:21)(cid:22)
+
+(cid:8)(cid:2) (cid:0) (cid:2)(cid:0)
+(cid:19)(cid:4)
+(cid:4) (cid:30)(cid:4)
+(cid:4)
+(cid:3)
+(cid:12)(cid:8)(cid:4) (cid:0) (cid:30)(cid:2)(cid:13)(cid:2)
+(cid:19)(cid:4)
+
+(cid:22)
+
+(cid:0) (cid:19)(cid:20)(cid:21)(cid:22)
+
+(cid:12)(cid:8)(cid:4) (cid:0) (cid:30)(cid:2)(cid:13)(cid:2) (cid:0) (cid:30)(cid:4)(cid:19)(cid:4)
+(cid:19)(cid:4)
+
+(cid:12)(cid:8)(cid:4) (cid:0) (cid:30)(cid:2)(cid:13)(cid:2) (cid:0) (cid:30)(cid:4)(cid:19)(cid:4)
+(cid:19)(cid:4)
+
+(cid:17)(cid:0) (cid:0) (cid:18)(cid:3)(cid:19) (cid:3)
+
+(cid:5) (cid:0) (cid:0) (cid:0)(cid:20)(cid:3) (cid:19) (cid:3)
+
+(cid:5) (cid:14) (cid:21)(cid:4)(cid:22)
+
+However, if Condition 2 is not satisﬁed then
+
+(29)
+
+(cid:19)(cid:20)(cid:21)(cid:22)
+
+(cid:12)(cid:8)(cid:2)(cid:4) (cid:0) (cid:30)(cid:2)(cid:13) (cid:2)
+(cid:19)(cid:4)
+
+(cid:29) (cid:19)(cid:20)(cid:21)(cid:22)
+
+(cid:2)
+(cid:19)(cid:4)
+
+(35)
+
+It follows that (cid:16)(cid:3) remains unchanged (i.e., (cid:17) and (cid:17)(cid:0) belong to (cid:19)(cid:5)(cid:12)(cid:23)(cid:13))
+iff:
+
+where (cid:8)(cid:2) is some eigenvalue of (cid:30)(cid:2). Since Condition 1 is also satisﬁed
+if (cid:17) is included in (cid:2)
+
+(cid:21)(cid:4) (cid:0) (cid:10) (cid:18)(cid:3) (cid:20)(cid:3) (cid:11)
+
+(cid:19) (cid:3)
+(cid:5) (cid:0)
+(cid:19) (cid:3)
+(cid:5)
+
+(cid:0) (cid:3)
+
+(30)
+
+(cid:17)(cid:0) (cid:0) (cid:31)(cid:4)(cid:19)(cid:4) (cid:14) (cid:31)(cid:2)(cid:2) (cid:14) (cid:31)(cid:5)(cid:17)(cid:22)
+
+(36)
+
+IEEE TRANSACTIONS ON AUTOMATIC CONTROL, VOL. 55, NO. 5, MAY 2010
+
+With (cid:0) included in (cid:2), the minimum value of LHS of Condition 2 is
+
+where (cid:26)(cid:7)(cid:2) is such that (cid:2)(cid:3)(cid:4) (cid:0) (cid:26)(cid:7)(cid:0)(cid:5)(cid:0) (cid:12) (cid:26)(cid:7)(cid:2)(cid:2)(cid:3) (see Remark 2)
+
+1273
+
+(41)
+
+(cid:22)(cid:3)(cid:10)(cid:23)(cid:20) (cid:24)(cid:11) (cid:0) (cid:16)(cid:3) (cid:12) (cid:24) (cid:0) (cid:2)(cid:3)(cid:4)
+
+(cid:0)(cid:0)
+
+(cid:5)(cid:6)(cid:4)(cid:7)
+
+(cid:6) (cid:16)(cid:3) (cid:12) (cid:24) (cid:0) (cid:2)(cid:3)(cid:4)
+
+(cid:0)(cid:0)(cid:6)(cid:7)(cid:8)(cid:9) (cid:10)(cid:7) (cid:11)
+
+(cid:5)(cid:6)(cid:4)(cid:7)
+
+(cid:3)(cid:2)(cid:3) (cid:0) (cid:2)(cid:3)(cid:4)
+(cid:3)(cid:17)(cid:4)
+(cid:5) (cid:0) (cid:17)(cid:4)
+(cid:5) (cid:4)
+(cid:5)(cid:0)
+(cid:3)(cid:2)(cid:3) (cid:0) (cid:2)(cid:3)(cid:4)
+(cid:3)(cid:17)(cid:4)
+(cid:5) (cid:0) (cid:17)(cid:4)
+(cid:5) (cid:4)
+(cid:5)(cid:0)
+
+hence (cid:22)(cid:3)(cid:10)(cid:23)(cid:20) (cid:24)(cid:11) (cid:6) (cid:16)(cid:3) (cid:0) (cid:2)(cid:3)(cid:4)
+
+(cid:0)(cid:0)(cid:6)(cid:7)(cid:8)(cid:9) (cid:10)(cid:7) (cid:11)
+
+(cid:5)(cid:6)(cid:4)(cid:7)
+
+(cid:3)(cid:2)(cid:3) (cid:0) (cid:2)(cid:3)(cid:4)
+(cid:5)(cid:0)
+
+and from (40) it
+
+follows that (cid:22)(cid:3)(cid:10)(cid:23)(cid:20) (cid:24)(cid:11) (cid:6) (cid:22)(cid:0). The rest of the proof follows from Theorem
+3 and Lemma 7.
+
+(37)
+
+REFERENCES
+
+[1] D. G. Luenberger, “Observers for multivariable systems,” IEEE Trans.
+
+Autom. Control, vol. AC-11, no. 2, pp. 190–197, Apr. 1966.
+
+[2] T. E. Fortman and D. Williamson, “Design of a low order observer for
+linear feedback control laws,” IEEE Trans. Autom. Control, vol. AC-17,
+no. 3, pp. 301–308, Jun. 1972.
+
+[3] P. Murdoch, “Observer design of a linear functional of the state vector,”
+IEEE Trans. Autom. Control, vol. AC-18, no. 3, pp. 308–310, Jun.
+1973.
+
+[4] P. Murdoch, “Design of degenerate observers,” IEEE Trans. Autom.
+
+Control, vol. AC-19, no. 4, pp. 441–442, Aug. 1974.
+
+[5] J. R. Roman and T. E. Bullock, “Design of minimal-order stable ob-
+servers for linear functions of the state via realization theory,” IEEE
+Trans. Autom. Control, vol. AC-20, no. 5, pp. 613–622, Oct. 1975.
+[6] J. B. Moore and G. F. Ledwich, “Minimal-order observers for esti-
+mating linear functionals of a state vector,” IEEE Trans. Autom. Con-
+trol, vol. AC-20, no. 5, pp. 623–632, Oct. 1975.
+
+[7] K. Furuta and S. Kawaji, “Linear functional observer with possible
+minimal dimension,” IEEE Trans. Autom. Control, vol. AC-22, no. 6,
+pp. 977–980, Dec. 1977.
+
+[8] H. R. Sirisena, “Minimal-order observer for linear functions of the state
+
+vector,” Int. J. Control, vol. 29, pp. 235–254, 1979.
+
+[9] T. Kailath, Linear Systems. Englewood Cliffs, NJ: Prentice-Hall,
+
+1980.
+
+[10] K. Furuta and T. Suzuki, “Design of functional observer in transfer
+
+function form,” in Proc. Amer. Control Conf., 1999, pp. 4305–4309.
+
+[11] C.-C. Tsui, “On the order reduction of linear functional observers,”
+IEEE Trans. Autom. Control, vol. AC-31, no. 5, pp. 447–449, May
+1986.
+
+[12] C.-C. Tsui, “What is the minimum function observer order,” in Proc.
+3rd World Congress Intell. Control Autom., Hefei, China, 2000, pp.
+2811–2816.
+
+[13] B. D. O. Anderson, N. K. Bose, and E. I. Jury, “Output feedback sta-
+bilization and related problems-solution via decision methods,” IEEE
+Trans. Autom. Contol., vol. AC-20, no. 1, pp. 53–65, Feb. 1975.
+[14] R. D. Gupta, F. W. Fairman, and T. Hinamoto, “A direct procedure for
+the design of single functional observers,” IEEE Trans. Circuits Syst.,
+vol. CAS-28, no. 4, pp. 294–300, Apr. 1981.
+
+[15] J. T. Watson and K. M. Grigoriadis, “Optimal unbiased ﬁltering via
+linear matrix inequalities,” Syst. Control Lett., vol. 35, pp. 111–118,
+1998.
+
+[16] M. Darouach, “Existence and design of functional observers for linear
+systems,” IEEE Trans. Autom. Control, vol. 45, no. 5, pp. 940–943,
+May 2000.
+
+[17] J. O’Reilly, Observers for Linear Systems. New York: Academic,
+
+1983.
+
+(cid:0) (cid:2)(cid:3)(cid:4)
+(cid:0)(cid:0)
+
+(cid:5)(cid:6)(cid:4)(cid:7)
+
+(cid:0) (cid:2)(cid:3)(cid:4)
+(cid:0)(cid:0)
+
+(cid:5)(cid:6)(cid:4)(cid:7)
+
+(cid:0) (cid:2)(cid:3)(cid:4)
+(cid:0)(cid:0)
+
+(cid:5)(cid:6)(cid:4)(cid:7)
+
+(cid:6)
+(cid:8) (cid:9)
+(cid:8) (cid:8)
+
+(cid:3)(cid:2) (cid:0) (cid:2)(cid:4)
+(cid:3)(cid:0) (cid:0) (cid:0)(cid:4)
+(cid:5)(cid:0)
+(cid:8) (cid:7)(cid:0)
+(cid:8)(cid:0)
+(cid:6)
+(cid:10)(cid:3)(cid:6) (cid:0) (cid:7)(cid:2)(cid:11)(cid:2)
+(cid:0)(cid:8)(cid:2)(cid:2) (cid:12) (cid:10)(cid:3) (cid:0) (cid:8)(cid:3)(cid:11)(cid:0)
+(cid:5)(cid:0)
+
+(cid:10)(cid:3)(cid:6) (cid:0) (cid:7)(cid:2)(cid:11)(cid:2) (cid:0) (cid:7)(cid:0)(cid:5)(cid:0)
+(cid:0)(cid:8)(cid:2)(cid:2) (cid:12) (cid:10)(cid:3) (cid:0) (cid:8)(cid:3)(cid:11)(cid:0) (cid:0) (cid:8)(cid:0)(cid:5)(cid:0)
+(cid:5)(cid:0)
+
+(cid:2) (cid:5)(cid:6)(cid:4)(cid:7)
+
+(cid:10)(cid:3)(cid:2)(cid:6) (cid:0) (cid:7)(cid:2)(cid:11)(cid:2)
+(cid:5)(cid:0)
+
+(cid:12) (cid:9) (cid:9) (cid:5)(cid:6)(cid:4)(cid:7)
+
+(cid:2)
+(cid:0)
+(cid:5)(cid:0)
+
+(cid:10)
+
+Proof of Lemma 5: We choose elements from the row space of
+
+(cid:11)(cid:4), (cid:0) (cid:0) (cid:12)(cid:0)(cid:11)(cid:4) say, where (cid:12)(cid:0) (cid:3) (cid:13)(cid:2), so (cid:0)(cid:4) can be written as
+
+(cid:0)(cid:4) (cid:0) (cid:12)(cid:0)(cid:11)(cid:4)(cid:2) (cid:0) (cid:0)(cid:14)(cid:0)(cid:5) (cid:3)
+
+(cid:2) (cid:12) (cid:15)(cid:2)(cid:10)
+
+It follows that (cid:16)(cid:3) remains unchanged (and also (cid:17)(cid:3) ) iff:
+
+(cid:15)(cid:2) (cid:0) (cid:13) (cid:12)(cid:0)
+
+(cid:14)(cid:0) (cid:14)
+
+(cid:11)(cid:4)(cid:2)
+(cid:5) (cid:3)
+(cid:2)
+
+(cid:0) (cid:8)
+
+(38)
+
+(39)
+
+that is, iff a row vector (cid:13) (cid:12)(cid:0)
+(cid:13) (cid:15)(cid:0) (cid:16)(cid:0) (cid:14).
+
+(cid:14)(cid:0) (cid:14) is chosen from the row space of
+
+Proof of Lemma 6: Proof of Lemma 6 has steps identical to the
+
+proof of Lemma 5.
+
+Proof of Theorem 3: If Condition 2 is not satisﬁed for (cid:2) (cid:0)
+
+(cid:2)(cid:3)
+(cid:18)(cid:3)
+
+(cid:2)(cid:3)
+(cid:17)(cid:4)
+(cid:18) (cid:4)
+
+(cid:3)(cid:4)(cid:5)
+
+(cid:3)(cid:4)(cid:5)
+
+or (cid:2) (cid:0)
+
+then from Lemmas 3 and 4 it follows that Condition
+
+2 cannot be satisﬁed for any (cid:2) such that (cid:17)(cid:3) (cid:2) (cid:17) (cid:2) (cid:19). On the other
+
+(cid:2)(cid:3)
+(cid:17)(cid:4)
+(cid:18) (cid:4)
+
+(cid:3)(cid:4)(cid:5)
+
+(cid:3)(cid:4)(cid:5)
+
+hand, since (cid:2) (cid:0)
+
+(cid:2)(cid:3)
+(cid:18)(cid:3)
+
+and (cid:2) (cid:0)
+
+satisﬁes Condition 1,
+
+if either (cid:2) satisﬁes Condition 2 then an observer can be designed to
+estimate (cid:2)(cid:5).
+
+Proof of Lemma 7: From Theorem 3, if (cid:10)(cid:4)(cid:20) (cid:11)(cid:20) (cid:2)(cid:5)(cid:11) is not Func-
+tional Observable then (cid:2)(cid:5) cannot be estimated. If Condition 2 is satis-
+(cid:2)(cid:3)
+ﬁed for (cid:2) (cid:0)
+satisﬁes Condition 2 for at least
+(cid:18)(cid:6)
+
+then (cid:2) (cid:0)
+
+(cid:2)(cid:3)
+(cid:18)(cid:3)
+
+some (cid:21)(cid:0) (cid:3) (cid:4)(cid:9)(cid:20) (cid:18) (cid:18) (cid:18) (cid:20) (cid:19)(cid:3)(cid:4)(cid:20)(cid:21)(cid:22)(cid:23) (cid:10)(cid:5)(cid:21)(cid:24)(cid:25)(cid:10)(cid:18)(cid:3)(cid:11)(cid:20) (cid:22)(cid:0)(cid:11)(cid:5), otherwise (cid:2) (cid:0)
+
+cannot also satisfy Condition 2, which is a contradiction. Similarly, if
+
+(cid:2)(cid:3)
+(cid:18)(cid:3)
+
+Condition 2 is satisﬁed for (cid:2) (cid:0)
+
+then Condition 2 is satisﬁed
+
+(cid:2)(cid:3)
+(cid:17)(cid:4)
+(cid:5)
+(cid:18) (cid:4)
+
+(cid:3)(cid:4)(cid:5)
+
+for at least one (cid:26)(cid:18)(cid:6) (cid:20) (cid:21)(cid:2) (cid:3) (cid:9)(cid:20) (cid:18) (cid:18) (cid:18) (cid:20) (cid:19)(cid:3)(cid:4)(cid:20)(cid:21)(cid:22)(cid:23) (cid:5)(cid:21)(cid:24)(cid:25) (cid:18) (cid:4)
+
+(cid:3)(cid:4)(cid:5)
+
+(cid:20) (cid:22)(cid:3)(cid:10)(cid:23)(cid:20) (cid:24)(cid:11)
+
+cannot also satisfy Condition 2, which is a
+
+otherwise (cid:2) (cid:0)
+
+contradiction.
+
+(cid:2)(cid:3)
+(cid:17)(cid:4)
+(cid:5)
+(cid:18) (cid:4)
+
+(cid:3)(cid:4)(cid:5)
+
+Proof of Theorem 4:
+
+(cid:22)(cid:0) (cid:0) (cid:16)(cid:3) (cid:0) (cid:2)(cid:3)(cid:4)
+
+(cid:0)(cid:0)
+
+(cid:5)(cid:6)(cid:4)(cid:7)
+
+(cid:0) (cid:16)(cid:3) (cid:0) (cid:2)(cid:3)(cid:4)
+
+(cid:0)(cid:0)(cid:6)(cid:7)(cid:8)(cid:9) (cid:10)(cid:7) (cid:11)
+
+(cid:5)(cid:6)(cid:4)(cid:7)
+
+(cid:3)(cid:2)(cid:3) (cid:0) (cid:2)(cid:3)(cid:4)
+(cid:5)(cid:0)
+(cid:3)(cid:2)(cid:3) (cid:0) (cid:2)(cid:3)(cid:4)
+(cid:5)(cid:0)
+
+(40)
+
+

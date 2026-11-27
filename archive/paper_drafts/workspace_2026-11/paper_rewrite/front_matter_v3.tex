@@ -1,0 +1,142 @@
+\section{Introduction}\label{sec:intro}
+
+Estimating a linear function of the state, rather than the whole state, is often what a
+control loop actually needs. Functional observers do exactly this, and their appeal is
+quantitative: the order of a functional observer can be far below the order of a
+Luenberger observer for the same system, because only the directions that the functional
+sees have to be estimated. The design question is therefore an order question: given the
+system and the functionals to be estimated, what is the smallest number of observer rows
+for which a functional observer exists?
+
+For a linear system with measured output, Fernando, Trinh and Jennings \cite{fer10}
+reduced that question to two rank conditions on the observer matrix. Writing the observer
+rows as a block $L$ that contains the given functional rows $L_0$, the conditions are a
+rank equality for the algebraic part and a rank equality for every complex value of the
+spectral variable. They characterize the feasible rows for a prescribed order, but they do
+not address the cost of deciding whether such rows exist.
+
+The characterization itself has since been completed. A unified algebraic framework is
+given in \cite{dar25}. The two recent works \cite{fer26a,fer26b} determine, order by order,
+which orders are attainable: \cite{fer26a} identifies through functional observability
+indices the minimum dimension permitted by the algebraic condition, the complete family of
+augmentations attaining it, and necessary and sufficient spectral conditions for that
+dimension to be optimal, while \cite{fer26b} characterizes the interval between that
+minimum and the endpoint set by functional observability, using a nullspace representation
+of the algebraic condition and a matrix-pencil form of the spectral one. Neither work
+states a decision procedure with a running-time or bit-complexity bound, and the per-order
+conditions are existential statements over a chart and a parameter. The complexity of
+deciding feasibility at a prescribed order is therefore left open by the characterization
+literature. This paper takes the conditions as given and studies that complexity.
+
+Adjacent design problems are known to be hard, which makes the question natural but does
+not answer it. Choosing a minimal set of sensors that renders a system functionally
+observable, or structurally functionally observable, is NP-hard \cite{zha25}, and
+constrained sensor-placement variants are NP-complete \cite{dey21}. Static output feedback
+with a spectral predicate is NP-hard \cite{lof26,bar26} and, in its real feasibility form,
+$\exists\mathbb R$-complete \cite{liu26}; affine rank minimization is
+$\exists\mathbb R$-complete already at low rank \cite{maj26}. None of these results
+transfers. In sensor placement the quantified object is a subset of the rows of the output
+matrix, so the output matrix is itself a design variable, whereas here it is fixed and the
+design variable is the set of observer rows; the predicates also differ, a condition on the
+spectral abscissa of a closed loop against a constant-rank condition that has to hold for
+every complex value of the spectral variable. A reduction would moreover have to preserve
+the single block of free rows that occurs in both conditions, together with the common
+origin of the compressed matrices, whereas rank-constrained formulations leave every entry
+of the constrained matrix free.
+
+The approach of this paper is to make the decision problem finite-dimensional. Restricting
+row functionals to the common kernel of the output matrix and its product with the system
+matrix removes exactly the directions that those two matrices already account for, and
+turns the two conditions into a row-space inclusion and into the constant rank of a
+pencil. Every free observer row is then determined by its coordinates in the space of
+attainable row pairs, whose dimension is the effective dimension
+$\kappa_{\rm obs}=r\operatorname{rank}[N\ AN]$ of the free data, with $r$ the number of
+free rows and $N$ a basis of the common kernel. Two consequences are developed. First, the
+spectral condition is equivalent to the non-vanishing of a finite algebraic certificate,
+and Cauchy--Binet compresses that certificate to a matrix whose size depends on
+$\kappa_{\rm obs}$ rather than on the number of maximal minors. Second, deciding
+feasibility becomes a real-algebraic feasibility problem whose number of variables is
+controlled by either the prescribed order or the effective dimension, which yields the two
+parameterized upper bounds of this paper. The boundary case of no free rows is decided
+separately, by a finite rational linear system obtained from a polynomial left inverse.
+
+\subsection{Contributions and organization}\label{sec:contrib}
+
+The contributions are the following.
+
+\begin{enumerate}
+\item A compression of the two observer conditions to a row-space inclusion and to the
+constant rank of a pencil, together with the identification of the effective dimension
+$\kappa_{\rm obs}$ of the free observer data as the structural parameter of the problem.
+\item A finite algebraic certificate for the spectral condition, and its compression by
+Cauchy--Binet to a matrix of size controlled by $\kappa_{\rm obs}$; no enumeration of
+maximal minors is required.
+\item A decision algorithm for every fixed order, with a bit-complexity bound
+$\mathcal L^{O(q^2)}$ in the input length $\mathcal L$ and the prescribed order $q$.
+\item A decision algorithm that is fixed-parameter tractable in $\kappa_{\rm obs}$, with
+bound $f(\kappa_{\rm obs})\operatorname{poly}(\mathcal L)$, together with an exact
+polynomial-time test for the zero-free-row case.
+\item Membership of the prescribed-order decision problem, and of its finite threshold
+version, in the existential theory of the reals.
+\end{enumerate}
+
+The paper is organized as follows. Section~\ref{sec:prelim} fixes the notation and states
+the decision, optimization and construction problems. Section~\ref{sec:compressed} proves
+the compression, Section~\ref{sec:dimension} identifies the effective dimension, and
+Section~\ref{sec:certificate} develops the certificate. Sections~\ref{sec:fixedq}
+and~\ref{sec:fpt} give the two algorithms, Section~\ref{sec:existsr} records the
+existential-real membership, and Section~\ref{sec:conclusions} concludes.
+
+\section{Preliminaries}\label{sec:prelim}
+
+\subsection{Notation and conventions}\label{sec:notation}
+
+The system is $(A,C)$ with $A\in\mathbb Q^{n\times n}$ and $C\in\mathbb Q^{p\times n}$;
+the given functional rows form $L_0\in\mathbb Q^{r_0\times n}$, and $q\ge r_0$ is the
+prescribed observer order. The observer rows are the rows of $L=[L_0;R]$, where
+$R\in\mathbb R^{r\times n}$ collects the $r=q-r_0$ free rows; throughout, $L_0$ is fixed
+data and only $R$ is free. All input data are rational and encoded in binary, and
+$\mathcal L$ denotes the total input bit length; $q\le n$ throughout. A matrix $M$ acts on
+row vectors by $x\mapsto xM$; $\operatorname{rank}M$ is the dimension of its row space and
+$\operatorname{row}M$ that row space; $\ker M$ is the kernel of the map $v\mapsto Mv$. For
+a matrix pencil $P(\lambda)$, its $\omega\times\omega$ minors are the maximal minors when
+$\operatorname{rank}P(\lambda)=\omega$. Ranks are computed over $\mathbb C$, which for real
+matrices agrees with the rank over $\mathbb R$; the spectral variable is complex. If a
+complex observer is allowed, realification doubles the free coordinates and replaces every
+transpose by the conjugate transpose, which changes no bound below.
+
+\subsection{The observer conditions}\label{sec:conditions}
+
+A functional observer of order $q$ is a matrix $L=[L_0;R]\in\mathbb R^{q\times n}$ such
+that
+\begin{equation}\label{eq:5a}
+\operatorname{rank}\begin{bmatrix}LA\\ L\\ CA\\ C\end{bmatrix}
+=\operatorname{rank}\begin{bmatrix}L\\ CA\\ C\end{bmatrix},
+\end{equation}
+\begin{equation}\label{eq:5b}
+\operatorname{rank}\begin{bmatrix}\lambda L-LA\\ CA\\ C\end{bmatrix}
+=\operatorname{rank}\begin{bmatrix}L\\ CA\\ C\end{bmatrix}
+\qquad\text{for every }\lambda\in\mathbb C.
+\end{equation}
+These are the Fernando--Trinh--Jennings conditions \cite{fer10} (conditions (5a) and (5b)
+in the notation of that paper). Condition \eqref{eq:5a} is the algebraic one and
+\eqref{eq:5b} is the spectral one; the latter has to hold at every complex value of
+$\lambda$, including the finite spectrum of $A$.
+
+\subsection{Decision, optimization and construction}\label{sec:problems}
+
+The three questions associated with \eqref{eq:5a}--\eqref{eq:5b} are different, and this
+paper studies the first. The decision problem $\mathrm{DEC}$ asks, for given
+$(A,C,L_0)$ and $q$, whether some $R$ satisfies \eqref{eq:5a} and \eqref{eq:5b}; a witness
+is not required. The optimization problem $\mathrm{OPT}$ asks for the least such $q$, whose
+value is written $q_{\min}$, and the construction problem $\mathrm{FIND}$ asks for a
+witness $R$ at that order. Throughout, $q1$ denotes the complexity of the \emph{decision}
+problem $\mathrm{DEC}$. The threshold problem
+\begin{equation}\label{eq:mindec}
+\mathrm{MINDEC}(Q)=\bigvee_{q=r_0}^{\min(Q,n)}\mathrm{DEC}(q)
+\end{equation}
+asks whether some order up to $Q$ is feasible; it is a finite disjunction of decision
+instances. The algorithms below decide $\mathrm{DEC}$, and when they answer affirmatively
+the algebraic certificate they construct contains a witness, but no claim is made here
+about the complexity of $\mathrm{OPT}$ or $\mathrm{FIND}$, and monotonicity of
+$\mathrm{DEC}$ in $q$ is not used.

@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.tmp/
+*.bak
+*.aux
+*.log
+*.out
+*.synctex.gz
+paper/v2_test.tex
+paper/current/*副本*

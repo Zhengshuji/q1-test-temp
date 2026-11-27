@@ -1,0 +1,585 @@
+                                                                Static output-feedback stabilization is NP-hard
+
+                                                                                           Johan Löfberg
+                                                                                       Division of Automatic Control
+                                                                      Linköping University, Sweden (e-mail: johan.lofberg@liu.se)
+
+
+
+
+                          Abstract
+                          We prove that unrestricted static output-feedback stabilization is NP-hard, already in the single-input multiple-output case. More
+arXiv:2609.16886v1 [math.OC] 15 Sep 2026
+
+
+
+
+                          precisely, we give a polynomial-time many-one reduction from the NP-complete Betweenness problem. Given an instance with n
+                          elements and m betweenness constraints, the reduction constructs integer matrices A ∈ ZD×D , B ∈ ZD×1 , and C ∈ Zn×D such that the
+                          instance is satisfiable if and only if there exists an unrestricted real row vector K ∈ R1×n for which A + BKC is Hurwitz. The state
+                          dimension is D = 6(m + n), and every matrix entry has logarithmic bit length in the input size. The reduction uses one universal
+                          cubic source polynomial whose Routh determinant enforces the sign condition encoding betweenness, while fixed anchor values
+                          provide a mechanism for excluding spurious stabilizing gains of arbitrarily large magnitude. Frequency separation then compresses
+                          the simultaneous source conditions into one common affine polynomial, which is realized directly as the characteristic polynomial
+                          of A + BKC. As a by-product, deciding whether an affinely parameterized rational polynomial family contains a Hurwitz member
+                          on a rational box is NP-hard.
+                          Keywords: static output feedback, NP-hardness, computational complexity, Hurwitz stability, Betweenness, affine polynomial
+                          families
+
+
+                          1. Problem statement and main result                                       proved that static output-feedback pole placement is NP-hard,
+                                                                                                     while noting that this does not imply NP-hardness of stabiliza-
+                             A square matrix is Hurwitz if all its eigenvalues have strictly         tion [4].
+                          negative real part, and a polynomial is Hurwitz if all its roots              These distinctions are essential. NP-hardness of related
+                          have strictly negative real part. For a plant with rational matri-         problems, or nonconvexity and poor computational complex-
+                          ces A ∈ QD×D , B ∈ QD×1 , and C ∈ Qr×D , and with the output               ity of certain solution methods, does not by itself establish
+                          feedback gain ranging over K ∈ R1×r , we study the single-input,           NP-hardness of unrestricted static output-feedback stabiliza-
+                          multiple-output (SIMO) static output-feedback decision predi-              tion. These related results sometimes lead to a conflation of the
+                          cate                                                                       different questions, and one often encounters statements that
+                                                                                                     “static output-feedback stabilization is NP-hard” without spec-
+                                           SOF1 (A, B, C) :   ∃K : A + BKC is Hurwitz.
+                                                                                                     ifying the precise problem formulation.
+                             Static output-feedback stabilization is a fundamental and                  To the best of our knowledge, the theorem below resolves
+                          longstanding problem in control [8]. Blondel and Tsitsiklis                this unrestricted hardness question.
+                          proved NP-hardness when the gain is subject to prescribed in-              Theorem 1.1 (Main theorem). The decision problem SOF1 is
+                          terval constraints, but stressed that this says little about the un-       NP-hard. More precisely, from a Betweenness instance with
+                          restricted problem: interval-constrained state-feedback stabi-             n elements and m constraints one can construct in polynomial
+                          lization is also NP-hard, whereas unconstrained state-feedback             time integer matrices
+                          stabilization is solvable in polynomial time. They explicitly left
+                          the complexity of unrestricted static output-feedback stabiliza-                       A ∈ ZD×D ,           B ∈ ZD×1 ,    C ∈ Zn×D ,
+                          tion open, and their subsequent survey again highlighted its un-
+                          resolved status [1, 2].                                                    with
+                             Other hardness results concern closely related but different                                           D = 6(m + n),
+                          problems. Toker and Özbay proved NP-hardness of general                    such that
+                          bilinear matrix inequality feasibility and, independently, of si-
+                          multaneous stabilization of multiple plants by a common static                      the Betweenness instance is satisfiable
+                          output-feedback gain [9]. They explicitly noted that the latter                           ⇐⇒       ∃K ∈ R1×n : A + BKC is Hurwitz.
+                          does not settle the complexity of static output-feedback stabi-
+                          lization for a single plant. Fu and Luo subsequently proved NP-            Every matrix entry has O(log L) bits, where L is the encoding
+                          hardness of a nonconvex matrix-inequality feasibility problem              length of the Betweenness instance, and the complete dense ma-
+                          arising in fixed-order output-feedback design [5]. Later work              trix encoding has O(L2 log L) bits.
+  Hurwitz stability is invariant under transposition, and                   For an original triple (a, b, c) we substitute
+
+                   (A + BKC)⊤ = A⊤ + C ⊤ K ⊤ B⊤ .                                               u = xb − xa ,         v = xc − xb ,
+
+Thus the theorem also gives NP-hardness for multiple-input,                 so stability forces xb to lie between xa and xc . For the anchor
+single-output static output feedback. Padding B with zero                   (L, i, R) we obtain
+columns and C with zero rows embeds the SIMO instance into
+                                                                                                   u = xi ,        v = N − xi ,
+a general MIMO instance without changing feasibility, so unre-
+stricted MIMO stabilization is NP-hard as well.                             so the same Routh determinant becomes N xi (N − xi ) − 1; Hur-
+                                                                            witz stability of this anchor cubic therefore forces 0 < xi < N.
+1.1. The Betweenness problem                                                Equivalence between the original Betweenness instance and the
+   A Betweenness instance consists of a finite set V and a col-             simultaneous Hurwitz stability of all m + n source cubics is ex-
+lection T of ordered triples (a, b, c) of distinct elements of V.           act, and Lemma 2.2 gives a uniform defect for no-instances,
+A total order satisfies (a, b, c) if b lies strictly between a and c,       exploiting the compactness of the closed interval [0, N].
+i.e., either                                                                   The main step in Section 3 compresses the m + n simulta-
+                a<b<c             or      c < b < a.                        neous cubic stability conditions into a single real monic poly-
+                                                                            nomial P(s, x) whose coefficients are integer and affine in x.
+The decision problem asks whether there exists a total order of
+                                                                            Conjugate copies of the source cubics are shifted to widely sep-
+V that satisfies every triple in T . Opatrny proved this problem
+                                                                            arated imaginary frequencies and the exact product is truncated
+NP-complete [7]. We write
+                                                                            to the terms that are constant or linear in x. While doing this,
+                       n = |V|,         m = |T |,                           the initially exploited compact region for x is lost, but a tem-
+                                                                            porary bounded region can be chosen large enough to accom-
+and let L be the binary encoding length of the instance. Then               modate the necessary analysis. On a sufficiently large auxiliary
+n, m = O(L). Trivial empty instances can be handled separately,             bounded region, Rouché’s theorem transfers the relevant local
+so we assume n, m ≥ 1.                                                      root counts from each source cubic to P.
+   We use a convenient anchored form. Add two additional el-                   Section 4 then crucially removes the auxiliary-box restric-
+ements called anchor values L, R and, for every i ∈ V, append               tion. The anchor perturbation h(s) = s(s − N) has a fixed open-
+the ordinary Betweenness constraint                                         right-half-plane zero at s = N, and a local Rouché argument
+                                                                            shows that every sufficiently large gain gives the aggregate an
+                                (L, i, R).                                  open-right-half-plane root as needed.
+                                                                               Finally, Section 5 realizes the affine aggregate directly as
+This restriction remains NP-complete: any satisfying order of
+the original instance extends by placing L first and R last, while                     det sI − (A + BKC) ,         K = [x1 · · · xn ].
+                                                                                                            
+deleting the anchors from a satisfying augmented order leaves
+every original constraint satisfied. Thus the transformation is a           The resulting realization is sparse and is constructed directly
+polynomial-time equivalence.                                                from the Betweenness incidence data and a few polynomially
+   Throughout, n = |V| and m = |T | continue to denote the                  bounded constants.
+counts in the original instance. The anchored instance has n + 2               The reduction is largely self-contained and uses only the cu-
+elements and m + n constraints, but the anchors have fixed nu-              bic Routh–Hurwitz criterion [6], Rouché’s theorem [3], and el-
+merical values and introduce neither gain variables nor addi-               ementary inequalities and algebra. The only non-standard ex-
+tional free parameters.                                                     ternal result is the NP-completeness of Betweenness [7].
+
+1.2. Proof blueprint                                                        1.3. Root analysis tools
+  The reduction assigns one unrestricted real parameter xi to               Lemma 1.2 (Scaled cubic root bound). Let p(s) = s3 + as2 +
+each element i ∈ V. Put                                                     bs + c. Every root ζ of p satisfies
+                                                                                               |ζ| ≤ 2 max{1, |a| , |b|1/2 , |c|1/3 }.
+                           N := 2(n + 1).
+
+The added anchor constraints are represented by fixing the nu-              Proof. Since p(ζ) = 0, the triangle inequality gives
+merical values of L and R at 0 and N, respectively. These fixed                                   |ζ|3 ≤ |a| |ζ|2 + |b| |ζ| + |c| .
+anchors do not restrict x (the future feedback gain); rather, their
+source-cubic stability conditions will force every stabilizing re-          Set r := |ζ|. If
+alization into a bounded box. Section 2 uses one universal cubic
+                                                                                                r > 2 max{1, |a| , |b|1/2 , |c|1/3 },
+ q(s; u, v) = s + (N + u)s + N(N + v)s + N (N + u + v) + 1.
+               3            2                       2
+                                                                            then
+                                                                                             |a| |b| |c| 1 1 1
+Its only nontrivial cubic Routh determinant is                                             1≤    + 2 + 3 < + + < 1,
+                                                                                              r    r  r   2 4 8
+       N(N + u)(N + v) − N 2 (N + u + v) + 1 = Nuv − 1.
+                                                                           which is a contradiction.                                     □
+
+                                                                        2
+Lemma 1.3 (Local root-count transfer). Let S ⊂ C be a                             For each i ∈ V, the appended anchor (L, i, R) is represented
+bounded domain with piecewise smooth boundary, and let                          by u = xi and v = N − xi . Its cubic is
+P, Q, G be polynomials. Suppose that
+                                                                                     qiA (s, xi ) = s3 + (N + xi )s2 + N(2N − xi )s + (2N 3 + 1)
+                        G(s) , 0        (s ∈ S)                                                = q̄A (s) + xi h(s),                                (7)
+and                                                                             where
+          |P(s) − Q(s)G(s)| < |Q(s)G(s)|               (s ∈ ∂S).
+Then P and Q have the same number of roots in S, counted with                    q̄A (s) = s3 +N s2 +2N 2 s+2N 3 +1, h(s) = s2 −N s = s(s−N). (8)
+multiplicity, and neither has a root on ∂S.
+                                                                                Its Routh determinant is
+Proof. Rouché’s theorem gives the same root count for P and                                            ∆iA = N xi (N − xi ) − 1.                   (9)
+QG. Since G is nonvanishing on S, the roots of QG in S are ex-
+actly those of Q, with the same multiplicities. The strict bound-               thus Hurwitz stability of the anchor cubic requires 0 < xi < N.
+ary inequality forces QG to be nonzero there, and the reverse                     We can now prove our first step in our chain of equivalences
+triangle inequality then gives |P| > 0 on ∂S.                  □                by showing that our polynomials indeed encode Betweenness
+                                                                                problems via stability properties.
+
+2. Anchored Betweenness source cubics                                           Proposition 2.1 (Exact source equivalence). The          supplied
+                                                                                Betweenness instance is satisfiable if and only if there exists
+  Let V = {1, . . . , n} and let T contain the m original Between-              x ∈ Rn for which all m + n source cubics qtB and qiA are Hurwitz.
+ness triples. Set
+
+                     N = 2(n + 1)           (N ≥ 4).                  (1)       Proof. Suppose first that a satisfying total order is given. Let
+                                                                                π(k) denote the kth element in that order, and set
+The reduction assigns one real coordinate xi to each element
+i ∈ V. Write                                                                                       xπ(k) = 2k,        k = 1, . . . , n.
+                   x = (x1 , . . . , xn ) ∈ Rn .
+                                                                                Then 2 ≤ xi ≤ 2n < N. For every anchor,
+The anchor values are fixed at 0 and N and introduce no gain
+variables.                                                                                              N xi (N − xi ) ≥ 4Nn,
+   Define the universal source cubic which will do all the heavy
+lifting in representing Betweenness constraints. It is a monic                  so (9) is at least 15, since N ≥ 4 and n ≥ 1, and all anchor
+cubic in s with two real parameters u, v:                                       coefficients are positive. For a satisfied original triple, ut , vt are
+                                                                                nonzero even integers with the same sign, hence ut vt ≥ 4 and
+  q(s; u, v) = s3 + (N + u)s2 + N(N + v)s + N 2 (N + u + v) + 1 . (2)           (3) is at least 15, since N ≥ 4. Moreover
+                                                               
+
+For a monic cubic s3 + as2 + bs + c, the Routh–Hurwitz criterion                                   N + ut ≥ 4,         N + vt ≥ 4,
+is
+                                                                                and since ut + vt = xc − xa ≥ −2(n − 1),
+       a > 0,       b > 0,         c > 0,       ∆ = ab − c > 0.
+                                                                                               N 2 (N + ut + vt ) + 1 ≥ 4N 2 + 1 > 0.
+For (2), the nontrivial determinant ∆ cancels conveniently:
+                                                                                Thus every source cubic is Hurwitz.
+  ∆ = N(N + u)(N + v) − N 2 (N + u + v) + 1 = Nuv − 1. (3)
+                                              
+                                                                                  Conversely, if every anchor cubic is Hurwitz, (9) gives
+
+For a triple t = (a, b, c) ∈ T , put                                                                      N xi (N − xi ) > 1,
+
+                  ut = xb − xa ,        vt = xc − xb                  (4)       hence 0 < xi < N for every i. For an original triple all three
+                                                                                nonleading coefficients are then positive, and Hurwitz stability
+and define qtB (s, x) = q(s; ut , vt ). By (3), Hurwitz stability of qtB        gives
+requires                                                                                         N(xb − xa )(xc − xb ) > 1 > 0.
+                      N(xc − xb )(xb − xa ) > 1,
+                                                                                Thus xb lies strictly between xa and xc . Sorting the real num-
+which encodes the Betweenness constraint that xb lies strictly                  bers xi yields a total order satisfying every original triple. If
+between xa and xc . Its baseline and affine perturbation are                    some unrelated elements have equal values, break those ties ar-
+                                                                                bitrarily; no constrained triple contains a tie because its product
+            q̄B (s) := qtB (s, 0) = s3 + N s2 + N 2 s + N 3 + 1,      (5)
+                                                                                is strictly positive.                                            □
+qtB (s, x) − q̄B (s) = −xa (s2 + N 2 ) + xb (s2 − N s) + xc (N s + N 2 ).          The same structure gives a uniform defect for no-instances,
+                                                                      (6)       globally over all real parameter vectors.
+                                                                            3
+Lemma 2.2 (Global no-instance defect). If the Betweenness                   Proof. In every relevant case c ≥ 1, |a| ≤ A0 , and
+instance is unsatisfiable, then for every x ∈ Rn there is a source
+cubic whose Routh determinant satisfies                                                                      |ab − c| ≥ 1.
+
+                              ∆ ≤ −1.                                       At a satisfying realization the latter quantity is at least 15. Write
+
+The selected cubic can always be chosen with constant coeffi-                p(iω) = R(ω) + iI(ω),              R = c − aω2 ,             I = ω(b − ω2 ),
+cient c ≥ 1.
+                                                                            and put δ = ab − c. For ω , 0 the exact identity
+Proof. If some xi < [0, N], select its anchor. Then xi (N − xi ) ≤ 0,
+                                                                                                                    I
+so (9) gives ∆iA ≤ −1, while its constant coefficient is 2N 3 + 1.                                           δ=a      −R                              (14)
+  Otherwise all xi ∈ [0, N]. If every original triple had                                                           ω
+
+                      (xb − xa )(xc − xb ) > 0,                             holds. If |ω| ≤ (2A0 )−1/2 , then
+                                                                                                                              1
+sorting the xi would satisfy every Betweenness constraint, con-                                        R ≥ c − |a|ω2 ≥          ,
+tradicting unsatisfiability. Hence some original triple has prod-                                                             2
+uct at most zero and therefore ∆ ≤ −1. For that triple                      so |p(iω)| ≥ 1/2 > µ. Otherwise,
+                  c = N (N + xc − xa ) + 1 ≥ 1.
+                         2                                                                                       !
+                                                                                                          A0
+                                                                                                1 ≤ |δ| ≤     + 1 |p(iω)|
+                                                                  □                                       |ω|
+                                                                                                          √ 3/2
+                                                                                                        < 2A0 + 1 |p(iω)|
+                                                                                                                     
+2.1. Uniform source estimates on an auxiliary bounded region
+                                                                                                            ≤ (2A20 + 1)|p(iω)|.
+   The forthcoming aggregation needs uniform root and condi-
+tioning bounds on a bounded set. Define                                     This proves the stated gap. In the bad case δ ≤ −1, so the cubic
+                                          n                                 is not Hurwitz; the positive gap excludes imaginary-axis roots,
+         M0 := 100N,         B := {x ∈ R : ∥x∥∞ ≤ M0 }.         (10)
+                                                                            and therefore at least one root lies in the open right half-plane.
+Note that this box is only an analytical device to enable us to             □
+analyze the problem in B and its complement in two stages; the
+final gain remains unrestricted. Introduce the explicit constants
+                                                                            3. Frequency-separated affine aggregation
+              A0 := N + 2M0 = 201N,                             (11)
+                                                                               Let q1 , . . . , q J , where J = m + n, denote the m + n source cu-
+               R := 2A0 = 402N,          R0 := R + 1,           (12)
+                                                                            bics. Their total degree is 3J. Without the requirement of affine
+                       1                                                    dependence on x necessary to be able to construct our static
+               µ :=         .                                   (13)
+                    2A0 + 1
+                      2
+                                                                            output feedback instance in the end, simultaneous Hurwitz sta-
+Lemma 2.3 (Root disks). For x ∈ B, every root of every                      bility could be encoded exactly by their product. The product,
+source cubic and of either baseline cubic q̄B , q̄A lies in |s| ≤ R.        however, contains higher-order products of the parameters. Our
+                                                                            approach is to first shift conjugate copies of the cubics to widely
+Proof. For an original triple, |u|, |v| ≤ 2M0 , hence the coeffi-           separated imaginary frequencies, form the product but only re-
+cients of qtB satisfy                                                       tain the terms containing at most one parameter-dependent per-
+                                                                            turbation, and show that root counts are preserved.
+                   |N + u| ≤ A0 ,       |N(N + v)| ≤ 201N 2 ,                  Index the cubics and the two signs of their imaginary shifts
+      |N 2 (N + u + v) + 1| ≤ 401N 3 + 1.                                   by
+                                                                                             A = {( j, σ) : 1 ≤ j ≤ J, σ ∈ {−1, +1}}.
+For an anchor the corresponding bounds are 101N, 102N 2 ,
+and 2N 3 + 1. Thus, for every source cubic and baseline cu-                 Define the local conditioning constant
+bic, A0 dominates 1, the magnitude of the quadratic coefficient,
+                                                                                                   C∗ := (R0 + R)3 (2A20 + 1)                         (15)
+the square root of the linear coefficient, and the cube root of
+the constant coefficient. Lemma 1.2 gives the common bound                  and choose the integer separation
+R = 2A0 .                                                     □
+                                                                                                  H := 2R0 + 1024 J C∗ M0 .                           (16)
+Lemma 2.4 (Uniform imaginary-axis separation). Let
+p(s) = s3 + as2 + bs + c be either a source cubic at the                    Introduce the imaginary axis shifts
+satisfying realization from Proposition 2.1, or the bad source
+cubic selected by Lemma 2.2 for some x ∈ B. Then                                                  Ω j = jH,           c j,σ = iσΩ j .
+
+                     |p(iω)| ≥ µ      (ω ∈ R).                              For a = ( j, σ) ∈ A, define the shifted source cubics
+
+At the satisfying realization, p is Hurwitz. In the selected no-            Qa (s, x) = q j (s − ca , x),     Q0a (s) = q̄ j (s − ca ),    ∆a = Qa − Q0a .
+instance case, p has an open-right-half-plane root.                                                                                                 (17)
+                                                                        4
+Let                                     Y                                           On every local contour, the baseline roots satisfy |ρ| ≤ R, and
+                             P0 (s) =         Q0a (s).                            hence
+                                        a∈A                                                            |Q0a (s)| ≤ (R0 + R)3 .
+The aggregated affine polynomial is                                               On the outer circle |s−ca | = R0 , Lemma 2.3 gives |Qa (s, x)| ≥ 1.
+                                                                                  On an imaginary-axis diameter in one of the cases covered by
+                                         X                 P0 (s)
+                 P(s, x) = P0 (s) +            ∆a (s, x)           .   (18)       Lemma 2.4, |Qa (s, x)| ≥ µ. Therefore
+                                         a∈A
+                                                           Q0a (s)
+                                                                                                               Q0a
+Equivalently, P is the first-order truncation, in the perturbations                                                ≤ C∗                         (23)
+                                                                                                               Qa
+∆a , of the exact product
+              Y                Y                                                  on every full-disk contour for x ∈ B, and on every relevant
+                   Qa (s, x) =    Q0a (s) + ∆a (s, x) :
+                                                     
+                                                                                  right-half-disk contour.
+                 a∈A               a∈A                                               Distinct centers are separated by at least H > 2R0 . If s ∈ Da
+                                                                                  and b , a, then
+it retains the constant term and the terms containing exactly one
+∆a , and discards all terms containing two or more perturbations.                             |s − cb | ≥ H − R0 > 1024JC∗ M0 > 2R.
+Because the two frequency copies are conjugate, P has real in-
+teger coefficients. Every ∆a is affine in x and has degree at most                Combining (22), Lemma 3.1, and (23) gives the uniform strict
+two in s, so P is monic and affine in x with degree                               estimate
+                                                                                              P − Fa              64M0    1
+                            D = 6J = 6(m + n).                         (19)                          < C∗ (2J)           = < 1.                 (24)
+                                                                                                Fa             1024JC∗ M0 8
+  For a fixed cluster a, put                                                      Proposition 3.2 (Bounded frequency compiler). With a clus-
+                                                                                  ter separation H chosen by (16):
+  Da = {s : |s − ca | < R0 },            D+a = Da ∩ {s : Re s > 0}, (20)
+                                                                                   (i) at the satisfying integer realization xπ(k) = 2k, P(·, x) is
+and                                                                                    Hurwitz;
+                 Y
+      Ga (s) =         Q0b (s),      Fa (s, x) = Qa (s, x)Ga (s).      (21)       (ii) if x ∈ B and the source cubic selected by Lemma 2.2 has
+                 b,a                                                                   ∆ ≤ −1, then P(·, x) has an open-right-half-plane root.
+
+Since P0 = Q0aGa and Qa = Q0a + ∆a , direct cancellation gives                    Proof. Every baseline root is within R of its own center, while
+the exact relative-error identity                                                 the cluster separation gives |s − cb | > R for s ∈ Da and b , a;
+                                                                                  hence Ga has no roots in Da . Estimate (24) and Lemma 1.3 first
+                           P − Fa  Q 0 X ∆b                                       show that P and Fa = QaGa have the same number of roots in
+                                  = a         .                        (22)
+                             Fa    Qa b,a Q0b                                     Da . Since Ga has no roots there and Qa has exactly three roots
+                                                                                  in Da , Fa and Qa have the same count, namely three. Thus P
+The path forward now is that we want to use Rouché’s theorem                      has three roots in every full cluster disk. The 2J disjoint disks
+in Lemma 1.3 to compare P and Fa on the boundary of Da and                        therefore account for all 6J roots of P.
+infer roots of P from Fa . For this we have to bound the right-                      At a satisfying realization, Lemma 2.4 allows the same com-
+hand side of (22). The next lemma gives a uniform bound on                        parison on every right half-disk D+a . The shifted source cubic
+the relative error of the perturbation ∆b for b , a.                              Qa has no root there, so neither does P. Hence all roots of P lie
+                                                                                  in the open left half-plane.
+Lemma 3.1 (Normalized distant estimate). Let M = ∥x∥∞ .
+                                                                                     For (ii), choose the bad source from Lemma 2.2 and either
+For every source index j and every local variable z with |z| ≥
+                                                                                  frequency copy. Lemma 2.4 gives an open-right-half-plane root
+2R,
+                      ∆ j (z, x)                                                  of Qa and excludes roots on the imaginary-axis diameter. The
+                                   64M
+                                 ≤      .                                         same half-disk Rouché comparison transfers a positive right-
+                       q̄ j (z)     |z|                                           half-plane root count to P.                                    □
+Proof. For an original triple, (6) and |xi | ≤ M give, when |z| ≥ N,                 The bounded compiler already gives a useful intermediate
+                                                                                  complexity result. Since N = 2(n + 1), the relevant box is
+                             |∆ j (z, x)| ≤ 8M|z|2 .
+                                                                                                       C = [0, 2(n + 1)]n ⊂ B.
+For an anchor, |xi (z2 − Nz)| ≤ 2M|z|2 . Every baseline is monic                  Corollary 3.3 (Bounded affine Hurwitz-family feasibility).
+cubic and all its roots lie in |s| ≤ R, so for |z| ≥ 2R,                          The following decision problem is NP-hard:            given
+                                                     |z|3                         p0 , p1 , . . . , pn ∈ Q[s] such that
+                         |q̄ j (z)| ≥ (|z| − R)3 ≥        .
+                                                      8                                                                  n
+                                                                                                                         X
+                                                                                                    P(s, x) = p0 (s) +         xℓ pℓ (s)
+Division gives the stated common constant 64.                            □                                               ℓ=1
+
+                                                                              5
+is monic with degree independent of x, decide whether                       on ∂Ea . Rouché’s theorem therefore shows that Qa has the same
+                                                                            number of roots in Ea as xi h(w), namely one. Moreover,
+                   ∃x ∈ C : P(·, x) is Hurwitz.
+                                                                                   Q0a    η                                               96N
+                                                                                       ≤     < 2η                (η ≤ 12/25 < 1/2) ≤
+Proof. For a yes-instance, the satisfying realization xπ(k) = 2k                   Qa    1−η                                               M
+lies in C and Proposition 3.2(i) applies. For a no-instance and
+any x ∈ C, no anchor is needed to detect an out-of-range vari-              on ∂Ea .
+able; unsatisfiability itself implies that some original triple has           Since Ea ⊂ Da because 5N/4 < R0 , the frequency-separation
+(xb − xa )(xc − xb ) ≤ 0, hence ∆ ≤ −1. Proposition 3.2(ii) makes           argument above shows that Ga is nonzero on Ea . Thus Fa =
+the aggregate unstable. Thus the bounded family contains a                  QaGa also has exactly one root in Ea . For every b , a,
+Hurwitz member exactly for yes-instances. Section 6 verifies                                                      5N
+polynomial-time exact construction.                              □                             |s − cb | ≥ H −       > H − R0 ,
+                                                                                                                   4
+                                                                            and Lemma 3.1 gives
+4. Removing the auxiliary-box restriction
+                                                                                                    X ∆b             128JM
+   For a no-instance, the aggregate compiler already rules out                                                   ≤          .
+                                                                                                    b,a
+                                                                                                        Q0b          H − R0
+stabilizing gains x ∈ B via Rouché arguments. What remains
+is to rule out stabilizing gains outside the auxiliary analysis box         Using the relative-error identity (22),
+B. This is necessary because the aggregate is the first-order
+truncation of a product, not the exact product of the source cu-                       P − Fa   96N 128JM
+                                                                                              ≤
+bics. The key is that every variable has its own anchor source                           Fa      M H − R0
+and the anchor perturbation is                                                                   12288JN     3   3
+                                                                                              <           =    ≤   < 1.
+                                                                                                1024JC∗ M0 25C∗ 25
+                         h(s) = s(s − N)
+                                                                            A second application of Rouché’s theorem transfers the unique
+and this unstable root will dominate for sufficiently large xi .            root of Fa in Ea to P; since Ea lies in the open right half-plane,
+   The following lemma is the final step in the chain of equiva-            P has an open-right-half-plane root.                            □
+lences.                                                                       The crucial equivalence is established.
+Lemma 4.1 (Instability outside the auxiliary box). If                       Proposition 4.2 (Unrestricted affine-family equivalence).
+                                                                            The aggregate satisfies
+                        ∥x∥∞ ≥ M0 = 100N,
+                                                                                       the Betweenness instance is satisfiable
+then P(·, x) has an open-right-half-plane root.
+                                                                                              ⇐⇒       ∃x ∈ Rn : P(·, x) is Hurwitz.
+Proof. Let M = ∥x∥∞ ≥ M0 and choose i with |xi | = M. Select
+either shifted copy a of the anchor for i, write w = s − ca , and           Proof. For a yes-instance, use the satisfying realization xπ(k) =
+consider                                                                    2k and Proposition 3.2(i). Conversely, suppose the instance is
+                                        N                                 unsatisfiable and let x ∈ Rn . If ∥x∥∞ ≥ M0 , Lemma 4.1 gives
+                     Ea = s : |w − N| <      .
+                                          4                                 an open-right-half-plane root. If ∥x∥∞ < M0 , Lemma 2.2 sup-
+This disk lies in the open right half-plane. Since h(w) = w(w −             plies a source cubic with ∆ ≤ −1 and constant coefficient at
+N), it contains exactly one root of h. On the boundary,                     least one, and Proposition 3.2(ii) again gives an open-right-half-
+                                                                            plane root. Thus no real parameter vector makes the aggregate
+              3N         5N                       3N 2                      Hurwitz.                                                        □
+                 ≤ |w| ≤    ,          |h(w)| ≥        .
+               4          4                        16
+For N ≥ 4,                                                                  5. Realization as static output feedback
+       |q̄A (w)| ≤ |w|3 + N|w|2 + 2N 2 |w| + 2N 3 + 1 ≤ 9N 3 ,                The affine aggregate can be expanded as
+and hence                                                                                             D−1 
+                                                                                                      X
+                                                                                                                    n
+                                                                                                                     X
+                                                                                                                                 
+                          q̄A (w)                                                       P(s, x) = s +        pk0 +   pkℓ xℓ  sk ,
+                                                                                                   D                          
+                                  ≤ 48N.                         (25)
+                           h(w)                                                                            k=0           ℓ=1
+
+  First consider the selected shifted anchor factor                         and hence admits a standard companion realization. It is much
+                                                                            more instructive, however, to construct the plant directly from
+                   Qa (s, x) = q̄A (w) + xi h(w).
+                                                                            the source cubics.
+Set                                                                           For a strictly proper fraction r(s)/d(s) with
+                        q̄A (w)   48N 12
+                 η :=           ≤    ≤    <1                                    d(s) = s3 + d2 s2 + d1 s + d0 ,         r(s) = r0 + r1 s + r2 s2 ,
+                        xi h(w)    M   25
+                                                                        6
+recall its companion realization                                                                 6. Exact construction and main result
+                  r(s)
+                       = ccomp (r)(sI − Acomp (d))−1 bcomp .                      (26)
+                  d(s)                                                                             Recall that L is the binary encoding length of the Between-
+with state-space data                                                                            ness instance. Since n, m, J = O(L) and N = O(L), the explicit
+                                                                                           constants satisfy
+              0       1       0                  0                 r0 
+Acomp (d) =      0     0       1      , bcomp =   , ccomp (r) = r1  .
+                                                            0           ⊤
+                                                                                                                     M0 = O(N),      A0 = O(N),
+                                                                      
+                  −d0 −d1 −d2                               1                     r2
+                 
+                                                                                                                      R0 = O(N),
+  For source j let A0j = Acomp (q̄ j ) and define the real frequency-
+shifted block                                                                                                    µ−1 = O(N 2 ),      C∗ = O(N 5 ),
+                 " 0              #              "       #
+                   Aj     −Ω j I3                  bcomp                                                           H = O(JN 6 ),     Ω J = O(J 2 N 6 ).
+           Aj =                      ,      Bj =           .     (27)
+                  Ω j I3    A0j                      0
+                                                                                                 Therefore every integer appearing directly in A, B, C has
+For every parameter xi occurring in source j, let h ji (s) denote                                O(log L) bits. The matrices are obtained by evaluating these
+its coefficient polynomial in q j − q̄ j , and set                                               explicit integer formulas and placing the resulting blocks ac-
+                          C ji = 2[ ccomp (h ji )      01×3 ].                                   cording to the incidence pattern of the input triples. Since their
+                                                                                                 dimensions are polynomial in L and all arithmetic uses polyno-
+For an original triple t = (a, b, c),
+                                                                                                 mially many operations on O(log L)-bit integers, this construc-
+ ht,a = −(s2 + N 2 ),            ht,b = s2 − N s,            ht,c = N s+ N 2 , (28)              tion runs in polynomial time.
+while for the anchor of i,
+                                                                                                 Proposition 6.1 (Polynomial-time exact construction).
+                                   A
+                                  hi,i = s2 − N s.                                               The direct matrices (A, B, C) can be constructed exactly in
+   Order the J = m + n source blocks arbitrarily and set                                         polynomial time. Every matrix entry has O(log L) bits, and
+                                                                                                 their complete dense encoding has O(L2 log L) bits. If the
+       A = diag(A1 , . . . , A J ),            B = col(B1 , . . . , B J ).          (29)         coefficient representation of P is required for the separate
+                   n×6J                                                                          bounded affine-family problem, it can also be computed exactly
+Define C ∈ Z              blockwise by
+                                                                                                 in polynomial time and has polynomial encoding length.
+                                 Ci, block j = −C ji ,                              (30)
+with a zero block when xi does not occur in source j.
+                                                                                                 Proof. Every entry of A is zero, an integer coefficient of one of
+  Applying the block-diagonalization identity derived in Ap-
+                                                                                                 the two baseline companions, or ±Ω j ; every entry of B is zero
+pendix A gives
+                                                                                                 or one; and every entry of C is zero or one of the integer coef-
+                                        h ji (s − iΩ j ) h ji (s + iΩ j )                        ficients {−N 2 , −N, −1, 0, 1, N, N 2 } multiplied by the fixed factor
+          C ji (sI − A j )−1 B j =                       +                  .
+                                        q̄ j (s − iΩ j )   q̄ j (s + iΩ j )                      two from the output row. Hence every direct matrix entry has
+Consequently, if gi (s) denotes the sum of these two shifted                                     O(log L) bits. The dimensions are D × D, D × 1, and n × D with
+transfer terms over all source blocks containing xi , then                                       D = 6J = O(L), so the dense output uses O(L2 ) entries and
+                                                                                                 O(L2 log L) bits.
+                  C(sI − A)−1 B = −[g1 (s), . . . , gn (s)]⊤ .                                      For an explicit coefficient list of P, equation (18) contains
+Moreover det(sI − A) = P0 (s). Hence, for                                                        O(L) products of O(L) cubic factors. Their shifted coefficients
+                                                                                                 have polynomial magnitude and O(log L) bit length. Exact
+                                 K = [x1 · · · xn ],                                             polynomial multiplication therefore computes all coefficients
+the matrix determinant lemma gives                                                               using polynomially many integer operations with polynomially
+                                                                                                 bounded intermediate bit lengths. This expansion is not needed
+                                      n
+                                                   
+                                      X                                                          for the SOF construction itself though.                             □
+    det sI − (A + BKC) = P0 (s) 1 +   xi gi (s) = P(s, x).
+                                                
+                                   
+                                                      i=1                                           The main theorem of the paper now follows immediately
+                                                              (31)                               from Propositions 4.2 and 6.1.
+The determinant-lemma calculation is initially valid for s <                                     Proof of Theorem 1.1. Proposition 4.2 and (31) give
+σ(A). Both sides are polynomials in s, so the identity then
+holds identically. Thus the direct realization has state dimen-                                  Betweenness satisfiable ⇐⇒ ∃x ∈ Rn : P(·, x) Hurwitz
+sion D = 6(m + n). All entries of A, B, C are integers: the
+baseline companion coefficients are integer polynomials in N                                                                ⇐⇒ ∃K ∈ R1×n : A + BKC Hurwitz.
+of degree at most three, the frequency shifts are integer, and the
+                                                                                                 Proposition 6.1 proves polynomial-time exact construction
+numerator rows in (28) have integer coefficients. For fixed n, m,
+                                                                                                 and the stated encoding bounds. Since Betweenness is NP-
+the matrices A and B depend only on the prescribed block types
+                                                                                                 complete, this is a polynomial-time many-one reduction to
+and frequencies; the actual Betweenness incidence pattern en-
+                                                                                                 SOF1 .                                                 □
+ters through the sparse block pattern of C.
+                                                                                             7
+7. Conclusion                                                            The same similarity transformation gives
+
+   We have given a polynomial-time reduction from Between-                det sI − AΩ (A∗ ) = det((s − iΩ)I − A∗ ) det((s + iΩ)I − A∗ ).
+                                                                                           
+ness to unrestricted single-input, multiple-output static output-
+feedback stabilization. The reduction first represents each ob-          Applying these identities with A∗ = Acomp (q̄ j ), b∗ = bcomp , and
+ject by an unrestricted real parameter and uses a common cu-             c∗ = ccomp (h ji ) proves the transfer and determinant statements
+bic source gadget to encode both the ordering constraints and            used in Section 5. The factors in the determinant identity are
+auxiliary anchor constraints. The anchors serve two purposes:            the two conjugate frequency-shifted baseline cubics, while the
+they localize every feasible source realization, and they supply         transfer identity gives the corresponding pair of shifted numer-
+the mechanism that excludes spurious stabilizing gains of large          ator terms.
+magnitude after aggregation.
+   The central technical step combines all source conditions into
+one real monic polynomial whose coefficients remain affine in            Acknowledgments
+the gain parameters. Frequency separation permits local root-
+count comparisons between the aggregate and its source factors             The author acknowledges the financial support from the
+on a bounded region, while the anchor-based escape argument              Swedish Government Agency VINNOVA through the SEDDIT
+handles the complementary unbounded region. A bank of re-                competence center program.
+alified shifted cubic systems realizes the resulting affine poly-
+nomial directly as a SIMO static output-feedback characteristic          Declaration of generative AI and AI-assisted technologies in
+polynomial.                                                              the manuscript preparation process
+   The construction has integer data, state dimension 6(m + n),
+and logarithmic entry bit lengths. It therefore establishes                 OpenAI ChatGPT 5.6 and Claude Opus 5 were used in var-
+NP-hardness for unrestricted SIMO stabilization; transposition           ious stages of the manuscript preparation, including ideation,
+gives the corresponding MISO result, and zero padding extends            generation of numerical verification code, writing assistance,
+the result to general MIMO static output feedback. As a by-              and adversarial review. The author assumes responsibility for
+product, the bounded compiler proves NP-hardness of deciding             all content.
+whether an affinely parameterized rational polynomial family
+contains a Hurwitz member on a rational box.
+                                                                         References
+Appendix A. Identity for the real frequency-shifted block                [1] V. D. Blondel and J. N. Tsitsiklis, NP-hardness of some
+                                                                             linear control design problems, SIAM Journal on Control
+  Let A∗ be a real square matrix, b∗ a real column, c∗ a real row,
+                                                                             and Optimization, 35 (1997), pp. 2118–2127.
+and define
+             "
+               A∗ −ΩI
+                        #             " #
+                                        b                                [2] V. D. Blondel and J. N. Tsitsiklis, A survey of computa-
+  AΩ (A∗ ) =              , B(b∗ ) = ∗ , C(c∗ ) = 2[c∗ 0].                   tional complexity results in systems and control, Automat-
+               ΩI A∗                    0
+                                                                             ica, 36 (2000), pp. 1249–1274.
+Let I have the same dimension as A∗ and introduce the complex
+                                                                         [3] J. B. Conway, Functions of One Complex Variable I, vol. 11
+change of basis
+                                                                             of Graduate Texts in Mathematics, Springer, New York,
+                 "
+                    I   I
+                          #              "
+                                      1 I iI
+                                                #                            2nd ed., 1978.
+            S =             ,  S =
+                                 −1
+                                                  .
+                   −iI iI             2 I −iI
+                                                                         [4] M. Fu, Pole placement via static output feedback is NP-
+Direct block multiplication gives                                            hard, IEEE Transactions on Automatic Control, 49 (2004),
+                                                                             pp. 855–857.
+                              A + iΩI
+                            "                        #
+                                               0
+            S −1 AΩ (A∗ )S = ∗                         ,                 [5] M. Fu and Z.-Q. Luo, Computational complexity of a prob-
+                                 0          A∗ − iΩI
+                                                                             lem arising in fixed order output feedback design, Systems
+and transforms the input and output as                                       & Control Letters, 30 (1997), pp. 209–215.
+
+                                                                         [6] F. R. Gantmacher, The Theory of Matrices, vol. II, Chelsea
+                        " #
+                       1 b∗
+         S −1 B(b∗ ) =      ,     C(c∗ )S = 2[c∗ c∗ ].                       Publishing Company, New York, 1959.
+                       2 b∗
+
+Thus, if G(s) = c∗ (sI − A∗ )−1 b∗ , then                                [7] J. Opatrny, Total ordering problem, SIAM Journal on
+                                                                             Computing, 8 (1979), pp. 111–114.
+   C(c∗ ) sI − AΩ (A∗ ) −1 B(b∗ ) = c∗ (s − iΩ)I − A∗ −1 b∗
+                                                     
+                                                                         [8] V. Syrmos, C. Abdallah, P. Dorato, and K. Grigoriadis,
+                                       + c∗ (s + iΩ)I − A∗ −1 b∗
+                                                           
+                                                                             Static output feedback—a survey, Automatica, 33 (1997),
+                                  = G(s − iΩ) + G(s + iΩ).                   pp. 125–137.
+                                                                     8
+[9] O. Toker and H. Özbay, On the np-hardness of solving
+    bilinear matrix inequalities and simultaneous stabilization
+    with static output feedback, in Proceedings of 1995 Ameri-
+    can Control Conference - ACC’95, vol. 4, 1995, pp. 2525–
+    2526.
+
+
+
+
+                                                                  9
+

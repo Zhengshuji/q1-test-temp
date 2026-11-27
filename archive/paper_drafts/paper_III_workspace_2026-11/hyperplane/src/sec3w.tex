@@ -1,0 +1,310 @@
+% Section 3: geometry and parameterization of the hyperplane layer (merged).
+% Seven theorem-like environments; all historical labels are preserved so that external \ref's resolve.
+
+\section{Geometry and parameterization of the hyperplane layer}
+\label{sec3}
+The admissible designs form a finite union of \emph{relative Grassmann bundles}, with bases the real
+projective eigenspaces of the compression restricted by the prescribed rows and explicit Grassmannian
+fibres; feasibility in the layer is thereby reduced to an algebraic decision problem on finitely many
+parameter spaces (Section~\ref{sec4}). The inner product is the standard Euclidean one on
+$\mathbb{R}^n$ \cite{hj13}.
+
+The parameterization has two independent steps. First the \emph{direction}: the kernel direction must
+be an eigenvector of the compression (Lemma~\ref{sec3:lem:direction} and
+Theorem~\ref{sec3:thm:direction}), and the prescribed rows restrict it to a linear subspace of that
+eigenspace (Lemma~\ref{sec3:lem:prescribed}). Then the \emph{fibre} over a fixed direction: the
+admissible row spaces form a Grassmannian whose rank is read off from the eigen/non-eigen
+stratification (Proposition~\ref{sec3:prop:strata} and Lemma~\ref{sec3:lem:constantrank}).
+
+\subsection{Notation added here}
+\label{sec3:sub:notation}
+Section~\ref{sec:prelim} fixes $K_0$, $k$, $\rho$, $N$, $H$, $H_A$, $\omega$, $c$, $M$, $A_{21}$,
+$E_\mu$, $U_v$, $D_v$, $\mathcal Q_v$, $V_0$, $\delta$, $s$. Five symbols are added:
+$\operatorname{Spec}_{\mathbb R}(M)$ for the set of real eigenvalues of $M$,
+$E_\mu^0=E_\mu\cap\ker(L_0N)\cap\ker(L_0AN)$,
+$h_\mu^0=\dim(E_\mu^0\cap\ker A_{21})$, $d_\mu^0=\dim E_\mu^0$, and $\Gr(m,Z)$ for the Grassmannian of
+$m$-dimensional subspaces of a vector space $Z$.
+
+\noindent\emph{Standing assumption.} $\rank L_0=r_0$, which is forced by feasibility
+(Lemma~\ref{sec3:proc}).
+
+\subsection{The layer, its direction, and the direction theorem}
+\label{sec3:sub:struct}
+\label{sec3:sub:direction}
+A \emph{row space of the layer} is a $q$-dimensional subspace $V$ satisfying
+\begin{enumerate}[label=(S\arabic*),ref={(S\arabic*)},leftmargin=2.6em,itemsep=1pt,topsep=2pt]
+\item\label{sec3:S1} $V\subseteq U_v^\perp$, where $v\in K_0\setminus\{0\}$ is determined by $V$;
+\item\label{sec3:S2} $D_v\subseteq V$ (equivalently $\dim(V\cap K_0)=k-1$);
+\item\label{sec3:S3} $V_0\subseteq V$.
+\end{enumerate}
+Condition~\ref{sec3:S3} belongs to the problem definition, and \ref{sec3:S1} with \ref{sec3:S2} gives
+$V\cap K_0=D_v$.
+
+\begin{lem}[Structure of the layer]
+\label{sec3:lem:direction}
+\label{sec3:lem:Dv}
+\label{sec3:rem:omega}
+Let $\mathcal{L}$ be a design with $c=1$ satisfying \eqref{eq:5a}, and write
+$\varphi_v(u)=\langle u,v\rangle$, $\varphi_{Av}(u)=\langle u,Av\rangle$ for the two functionals on
+$K_0$. Then:
+\begin{enumerate}[label=(\roman*),leftmargin=*,itemsep=1pt,topsep=2pt]
+\item $\ker(\mathcal{L}|_{K_0})=K_0\cap V^\perp=\mathbb{R} v$ for a unique
+$v\in K_0\setminus\{0\}$, determined up to a nonzero scalar;
+\item $\mathcal{L}v=0$ and $\mathcal{L}Av=0$, that is, $V\subseteq U_v^\perp$; if moreover
+$V_0\subseteq V$ then $L_0v=L_0Av=0$;
+\item $\dim D_v=k-\rank\{\varphi_v,\varphi_{Av}\}\ge k-2$, and for a design of the layer
+$\dim D_v=k-1$;
+\item $\dim(V\cap K_0)\le\omega$, with equality if and only if $D_v\subseteq V$; so \ref{sec3:S2} is a
+normalization in the definition of a layer design, not a consequence of compression.
+\end{enumerate}
+\end{lem}
+\begin{proof}
+Since $\ker H$ is one-dimensional, so is $\{\mathcal{L}u=0,\ u\in K_0\}=N\ker H$; let $v$ generate it,
+which gives $\mathcal{L}v=0$, half of (ii). By \eqref{eq:5a} there is $X$ with $H_A=XH$, hence
+$H_Ac=XHc=0$ for every $c\in\ker H$; taking $c$ with $Nc=v$ gives $\mathcal{L}Av=0$, and if
+$V_0\subseteq V\subseteq U_v^\perp$ every row of $L_0$ lies in $U_v^\perp$, i.e.\ $L_0v=L_0Av=0$.
+Note that \eqref{eq:5a} enters only through $\ker H\subseteq\ker H_A$, that is, through
+$\row H_A\subseteq\row H$.
+
+For (iii), $K_0\cap U_v^\perp$ is the common kernel of the two functionals, whose dimension is $k$
+minus their rank. For (iv), $\omega=\dim\pi_{K_0}(V)$ and $V\cap K_0\subseteq\pi_{K_0}(V)$, so
+$\dim(V\cap K_0)\le\omega=k-1$; equality holds if and only if $D_v\subseteq V$, which is
+\ref{sec3:S2}. By (iii) a layer design therefore has $\rank\{\varphi_v,\varphi_{Av}\}=1$, the fact used in Lemma~\ref{sec3:lem:constantrank}.
+\end{proof}
+
+\begin{thm}[Direction theorem]
+\label{sec3:thm:direction}
+\label{sec3:rem:direction-set}
+\label{sec3:rem:equiv}
+Let $v\in K_0\setminus\{0\}$. Then $v$ is a kernel direction occurring in the layer, i.e.\ there is
+$V$ satisfying \ref{sec3:S1} with $\ker(\mathcal{L}|_{K_0})=\mathbb{R} v$, if and only if $v$ is an
+eigenvector of the compression: $Mv=\mu v$ for some $\mu\in\mathbb{R}$. Consequently the set of
+possible directions is the union of the projective eigenspaces
+$\mathbb{P}(E_\mu)$, $\mu\in\operatorname{Spec}_{\mathbb{R}}(M)$, and admissibility of $v$ is
+equivalent to each of: $Mv\in\mathbb{R} v$; $\varphi_{Av}\in\mathbb{R}\varphi_v$; $Av-\mu v\in K_0^\perp$
+for some real $\mu$.
+\end{thm}
+\begin{proof}
+\emph{(Sufficiency.)} If $Mv=\mu v$ then, for every $u\in K_0$,
+\begin{align*}
+\varphi_{Av}(u)=\langle u,Av\rangle
+&=\langle u,\pi_{K_0}(Av)\rangle=\langle u,Mv\rangle\\
+&=\mu\langle u,v\rangle=\mu\,\varphi_v(u),
+\end{align*}
+so $\varphi_{Av}=\mu\varphi_v$ and the two functionals have rank $1$ (as $v\neq0$ and the inner product
+is positive definite, $\varphi_v\neq0$). By Lemma~\ref{sec3:lem:direction}, $\dim D_v=k-1$. Choose $V$
+with $D_v\subseteq V\subseteq U_v^\perp$ and $\dim V=q$, possible if and only if
+$k-1\le q\le\dim U_v^\perp$, the nonemptiness condition of Lemma~\ref{sec3:lem:constantrank}. Then
+$\pi_{K_0}(V)\subseteq K_0\cap U_v^\perp=D_v$ and $\pi_{K_0}(V)\supseteq\pi_{K_0}(D_v)=D_v$, so
+$\pi_{K_0}(V)=D_v$ and $\omega=k-1$, that is, $c=1$, while
+$\ker(\mathcal{L}|_{K_0})=K_0\cap V^\perp=\mathbb{R} v$.
+
+\emph{(Necessity.)} If $v$ is the kernel direction of a design in the layer, then
+$V\subseteq U_v^\perp$ and $\dim(V\cap K_0)=k-1$ by Lemma~\ref{sec3:lem:direction} and
+\ref{sec3:S1}--\ref{sec3:S2}. Since $V\cap K_0\subseteq K_0\cap U_v^\perp=D_v$, we get
+$\dim D_v\ge k-1$; combined with Lemma~\ref{sec3:lem:direction}(iii) this gives
+$\rank\{\varphi_v,\varphi_{Av}\}\le1$. As
+$\varphi_v\neq0$ there is $\mu\in\mathbb{R}$ with $\varphi_{Av}=\mu\varphi_v$, i.e.\
+$\langle u,Av-\mu v\rangle=0$ for all $u\in K_0$, so $Av-\mu v\in K_0^\perp$. But
+$Av-\mu v=(Mv-\mu v)+A_{21}v$ with $Mv-\mu v\in K_0$ and $A_{21}v\in K_0^\perp$, so its
+$K_0$-component $Mv-\mu v$ must vanish: $Mv=\mu v$. Finally $\mu\in\mathbb{R}$ because $v$ and $M$ are
+real.
+
+Both directions concern the structural conditions only: the spectral condition \eqref{eq:5b} is an
+independent restriction tested on the fibre, so an eigen-direction is structurally admissible but not
+necessarily feasible.
+\end{proof}
+
+\subsection{Directions compatible with the prescribed rows}
+\label{sec3:sub:prescribed}
+\begin{lem}[Prescribed rows]
+\label{sec3:def:E0}
+\label{sec3:lem:prescribed}
+\label{sec3:cor:empty}
+\label{sec3:proc}
+\label{sec3:prop:rankcheck}
+Let $\mu\in\operatorname{Spec}_{\mathbb{R}}(M)$ and $v\in E_\mu^0\setminus\{0\}$, where
+$E_\mu^0=\{v\in E_\mu:\ L_0v=0,\ L_0Av=0\}$. Then:
+\begin{enumerate}[label=(\roman*),leftmargin=*,itemsep=1pt,topsep=2pt]
+\item $V_0\subseteq U_v^\perp$, $V_0\cap D_v=V_0\cap K_0$, and
+$\overline{V}_{0,v}:=(V_0+D_v)/D_v\subseteq\mathcal{Q}_v$ has dimension
+$\delta=\dim V_0-\dim(V_0\cap K_0)$, independent of $v$;
+\item if $E_\mu^0=\{0\}$ for every $\mu\in\operatorname{Spec}_{\mathbb{R}}(M)$ then the layer is empty
+and the instance is infeasible for every $q$;
+\item if $\rank L_0<r_0$ then no $\mathcal{L}=[L_0;R]$ has full row rank, so the instance is
+infeasible and the standing assumption $\rank L_0=r_0$ is forced, not imposed.
+\end{enumerate}
+\end{lem}
+\begin{proof}
+By Lemma~\ref{sec3:lem:direction} a direction occurring in a design with prescribed rows must satisfy
+$L_0v=L_0Av=0$, that is $v\in E_\mu^0$; conversely $L_0v=L_0Av=0$ says that every row of $V_0$
+annihilates $v$ and $Av$, i.e.\ $V_0\subseteq U_v^\perp$. Hence
+$V_0\cap D_v=V_0\cap K_0\cap U_v^\perp=V_0\cap K_0$, which does not involve $v$, so $\delta$ is fixed
+and $\dim\overline{V}_{0,v}=\dim V_0-\dim(V_0\cap D_v)=\delta$. For (ii), the kernel direction of a
+design in the layer belongs to $E_\mu^0$ for some real $\mu$ by Lemma~\ref{sec3:lem:direction}; no
+direction, no design. For (iii), $\dim V\le\rank L_0+(q-r_0)<q$ contradicts $\dim V=q$.
+\end{proof}
+
+\subsection{The fibre over a direction}
+\label{sec3:sub:strata}
+\label{sec3:sub:constrank}
+\label{sec3:sub:fibre}
+\begin{prop}[Eigen and non-eigen directions]
+\label{sec3:lem:eigen}
+\label{sec3:prop:strata}
+\label{sec3:lem:dimU}
+\label{sec3:rem:rankcases}
+Let $\mu\in\operatorname{Spec}_{\mathbb{R}}(M)$ and $v\in E_\mu\setminus\{0\}$. Then:
+\begin{enumerate}[label=(\roman*),leftmargin=*,itemsep=1pt,topsep=2pt]
+\item $Av\in\operatorname{span}(v)\iff A_{21}v=0$; the \emph{eigen directions} form the subspace
+$E_\mu^{\mathrm{eig}}=E_\mu\cap\ker A_{21}$, whose projectivization
+$\mathbb{P}(E_\mu^{\mathrm{eig}})\subseteq\mathbb{P}(E_\mu)$ is a projective subspace, while the
+\emph{non-eigen directions} form its complement, a nonempty Zariski-open subset whenever
+$E_\mu^{\mathrm{eig}}\ne E_\mu$;
+\item if $A_{21}v=0$ then $U_v=\operatorname{span}(v)$ and $\dim U_v=1$, whereas if $A_{21}v\ne0$ then
+$v,Av$ are independent and $\dim U_v=2$; accordingly $\dim U_v^\perp=n-1$ or $n-2$;
+\item with prescribed rows the two branches are $B_\mu^{\mathrm{eig}}=\mathbb{P}(E_\mu^0\cap\ker A_{21})$
+and $B_\mu^{\mathrm{non}}=\mathbb{P}(E_\mu^0)\setminus B_\mu^{\mathrm{eig}}$, which are disjoint and
+cover $\mathbb{P}(E_\mu^0)$; according to $\rank(A_{21}|_{E_\mu^0})$ the second is empty (rank zero),
+the first is empty (full rank), or both are nonempty—the first screening step of
+Section~\ref{sec4}.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+$Av=Mv+A_{21}v=\mu v+A_{21}v$ with $\mu v\in K_0$ and $A_{21}v\in K_0^\perp$, so
+$Av\in\operatorname{span}(v)\subseteq K_0$ if and only if the $K_0^\perp$-component $A_{21}v$ vanishes.
+As $\ker A_{21}$ is linear, its intersection with $E_\mu$ is linear and projectivization preserves the
+linear structure; the complement is open and nonempty if and only if
+$E_\mu^{\mathrm{eig}}\ne E_\mu$. For (ii), $A_{21}v=0$ gives $Av=\mu v$; otherwise $Av-\mu v\ne0$ and
+$\langle v,Av-\mu v\rangle=\langle v,A_{21}v\rangle=0$ (as $A_{21}v\in K_0^\perp$ and $v\in K_0$), so
+$v,Av$ are independent; the orthogonal complement has dimension $n-\dim U_v$. The two branches differ
+in $\dim U_v$, hence in the rank of the quotient bundle and in the fibre dimension, which is the
+content of Lemma~\ref{sec3:lem:constantrank}.
+\end{proof}
+
+\begin{lem}[Constant rank and the fibre]
+\label{sec3:lem:constantrank}
+\label{sec3:lem:fibre}
+\label{sec3:lem:fullrank}
+Over $\mathbb{P}(E_\mu^0)$ the assignment $v\mapsto D_v$ is a vector bundle of constant rank $k-1$. The
+quotient $\mathcal{Q}_v=U_v^\perp/D_v$ is \emph{not} of constant rank over all of $\mathbb{P}(E_\mu^0)$:
+its rank is $\rho$ on the eigen stratum $\mathbb{P}(E_\mu^0\cap\ker A_{21})$ and $\rho-1$ on the
+non-eigen stratum, and it is a vector bundle of that constant rank on each stratum separately. For a
+fixed direction
+$[v]$, the row spaces satisfying \ref{sec3:S1}--\ref{sec3:S3} with $\dim V=q$ are exactly
+$\{V:\ V_0+D_v\subseteq V\subseteq U_v^\perp,\ \dim V=q\}$, and $V\mapsto V/D_v$ identifies this set
+with $\Gr\bigl(s-\delta,\ \mathcal{Q}_v/\overline{V}_{0,v}\bigr)$, of dimension
+$(s-\delta)\bigl(r(v)-s\bigr)$, nonempty if and only if $\delta\le s\le r(v)$. Moreover, if a design
+in the layer exists with $\dim V\le q$ and $q\le\dim U_v^\perp$, then a design exists with $\dim V=q$
+and the same compressed pencil conditions.
+\end{lem}
+\begin{proof}
+By Theorem~\ref{sec3:thm:direction} the two functionals are proportional on $\mathbb{P}(E_\mu^0)$, so
+their rank is constantly $1$ and $\dim D_v$ is constantly $k-1$. Moreover
+$\dim\mathcal{Q}_v=\dim U_v^\perp-(k-1)=(n-\dim U_v)-(k-1)$, and $\dim U_v=1$ or $2$ according to the
+two strata of Proposition~\ref{sec3:prop:strata}; substituting $\rho=n-k$ gives the stated values, and
+constant rank gives the bundle structure. In particular $r(v)\le\rho\le2p$, the starting point of
+Section~\ref{sec5}.
+
+If $D_v\subseteq V\subseteq U_v^\perp$ then $V\cap K_0\subseteq K_0\cap U_v^\perp=D_v$, with the
+reverse inclusion from $D_v\subseteq V$, so \ref{sec3:S2} holds automatically; conversely
+\ref{sec3:S2} with $V\subseteq U_v^\perp$ gives $V\cap K_0=D_v$. Hence $V/D_v$ is an $s$-dimensional
+subspace of $\mathcal{Q}_v$ containing $\overline{V}_{0,v}=(V_0+D_v)/D_v$. The $s$-dimensional
+subspaces containing a fixed $\delta$-dimensional one correspond to the $(s-\delta)$-dimensional
+subspaces of $\mathcal{Q}_v/\overline{V}_{0,v}$, which is the Grassmannian above; its dimension is the
+standard formula $(s-\delta)(r(v)-s)$ and its nonemptiness condition is $0\le s-\delta\le r(v)-\delta$.
+The map $V\mapsto V/D_v$ is injective with exactly that image, so no admissible row space is lost.
+
+For the normalization, choose $\tilde V$ with $V\subseteq\tilde V\subseteq U_v^\perp$ and
+$\dim\tilde V=q$, possible because $q\le\dim U_v^\perp$. Then \ref{sec3:S1}--\ref{sec3:S3} and
+$\tilde V\cap K_0=D_v$ are preserved, so $\rank\tilde H=k-1=\omega$ and
+$\row\tilde H_A\subseteq\row\tilde H$; and \eqref{eq:5b} is preserved because enlarging the row space
+only adds rows to $P(\lambda)$, which cannot lower the rank below the structural bound $\omega$. We may
+therefore work with $q$-dimensional row spaces throughout: the row count and $\rank L_0=r_0$ are the
+only constraints on the dimension, and the normalization does not change the compressed pencil.
+\end{proof}
+
+\subsection{The complete parameterization}
+\label{sec3:sub:param}
+\begin{thm}[Complete parameterization]
+\label{sec3:thm:param}
+\label{sec3:rem:empty}
+\label{sec3:rem:dimension}
+\label{sec3:rem:realpoints}
+Assume $\rank L_0=r_0$ and $c=1$. Then the parameter space of row spaces of the hyperplane layer is
+the finite union
+\begin{gather*}
+\bigsqcup_{\mu\in\operatorname{Spec}_{\mathbb{R}}(M)}
+\Bigl(
+\Gr_{B_\mu^{\mathrm{eig}}}\bigl(s-\delta,\ \mathcal{Q}^{\mathrm{eig}}/\overline{V}_0\bigr)
+\\
+\sqcup\ \Gr_{B_\mu^{\mathrm{non}}}\bigl(s-\delta,\ \mathcal{Q}^{\mathrm{non}}/\overline{V}_0\bigr)
+\Bigr),
+\end{gather*}
+where $B_\mu^{\mathrm{eig}},B_\mu^{\mathrm{non}}$ are as in Proposition~\ref{sec3:prop:strata}, the
+bundles $\mathcal{Q}^{\mathrm{eig}},\mathcal{Q}^{\mathrm{non}}$ are the constant-rank quotient bundles
+of Lemma~\ref{sec3:lem:constantrank}, and $\overline{V}_0$ is the subbundle of
+Lemma~\ref{sec3:lem:prescribed}. Each stratum is an \emph{algebraic relative Grassmann bundle over a
+locally closed real algebraic base}, of dimension
+$\dim X_\mu^{\mathrm{eig}}=h_\mu^0-1+(s-\delta)(\rho-s)$ and
+$\dim X_\mu^{\mathrm{non}}=d_\mu^0-1+(s-\delta)(\rho-1-s)$, with nonemptiness conditions
+$\delta\le s\le\rho$ on the eigen stratum and $\delta\le s\le\rho-1$ on the non-eigen stratum. Every
+nonempty stratum is irreducible, its real points are Zariski dense, and its parameter dimension is
+$\le p^2$: a fibre has $(s-\delta)(r(v)-s)\le r(v)^2/4\le p^2$ parameters, and the base adds $d_\mu^0-1$
+(or $h_\mu^0-1$), which is zero in the geometrically simple case of Section~\ref{sec5} and grows with
+$n$ otherwise. Emptiness is decided by $(\delta,s,\rho,h_\mu^0,d_\mu^0)$ alone: if $h_\mu^0=0$ the eigen
+stratum is empty, and if $d_\mu^0=0$ both are.
+\end{thm}
+\begin{proof}
+By Theorem~\ref{sec3:thm:direction} the kernel direction lies in $\mathbb{P}(E_\mu)$ and, with
+prescribed rows, in $\mathbb{P}(E_\mu^0)$ by Lemma~\ref{sec3:lem:prescribed};
+Proposition~\ref{sec3:prop:strata} splits each $\mathbb{P}(E_\mu^0)$ into the two strata;
+Lemma~\ref{sec3:lem:constantrank} gives the fibre over each stratum and shows its dimension constant on
+the stratum, so the fibres form a relative Grassmann bundle. The bases are a projective space or an open
+subset of one, both irreducible over the reals, and a bundle with irreducible base and constant fibre
+dimension is irreducible; the dimension is that of the base plus that of the fibre, with base
+dimensions $h_\mu^0-1$ and $d_\mu^0-1$. The nonemptiness conditions follow by substituting the two
+values of $r(v)$ into $\delta\le s\le r(v)$. The bases and fibres carry rational real charts whose real
+points are Zariski dense, which is what lets Section~\ref{sec4} pass from a function-field condition to
+a real design.
+\end{proof}
+
+\subsection{Duality with the compressed formulation}
+\label{sec3:sub:duality}
+Let $\mathsf{M}=[N\ \ AN]$ and let $\Phi\colon\mathbb{R}^n\to\mathbb{R}^{k}\oplus\mathbb{R}^{k}$,
+$x\mapsto(xN,xAN)$, in the row-vector convention; for a row space $V$ write
+$W=\Phi(V)=\row(V\mathsf{M})\subseteq\mathbb{R}^{2k}$, let $\pi_1,\pi_2$ be the coordinate projections,
+and for $a\in\mathbb{R}^k$ put $a^\circ=\{h\in(\mathbb{R}^k)^*: h(a)=0\}$. In \cite{companion2} a
+feasible design is described by $W$ through $\pi_2(W)\subseteq\pi_1(W)$ and
+$\dim\pi_\lambda(W)=\dim\pi_1(W)$ for all $\lambda$, with $\pi_1(W)=\pi_2(W)=U$, $\dim U=\omega$ and
+$\omega+1\le\dim W\le 2\omega$.
+
+\begin{prop}[Direction duality and the fibres of $V\mapsto W$]
+\label{sec3:prop:duality}
+\label{sec3:prop:fibres}
+\label{sec3:rem:noalternative}
+Let $V$ be a row space of the layer with direction $v=Na$. Then $W\subseteq a^\circ\times a^\circ$; if
+moreover $\pi_1(W)=\pi_2(W)=U$ with $\dim U=k-1$, then $U=a^\circ$ and
+$[a]=\mathbb{P}(\Ann(U))$, so the common projection of the compressed formulation and the direction of
+this section are dual descriptions of the same object. As for the fibre of the map $V\mapsto W$:
+$\ker\Phi=\{x:\ xN=0,\ xAN=0\}=(K_0+AK_0)^\perp$, and with $T_W=\Phi^{-1}(W)$, $S=V_0+D_v\subseteq T_W$,
+the map $\Phi$ induces $\overline{\Phi}\colon T_W/S\to W/\Phi(S)$, the lifts of $W$ being exactly the
+subspaces $\overline{V}=V/S\subseteq T_W/S$ with $\overline{\Phi}(\overline{V})=W/\Phi(S)$ and
+$\dim\overline{V}=q-\dim S$; the set of lifts is thus a \emph{surjectivity locus} inside a
+Grassmannian, in general not the whole Grassmannian. Since $\ker\Phi$ is in general nonzero, the
+compressed formulation is more economical for deciding feasibility, while the ambient one retains what
+the prescribed rows and the row count need.
+\end{prop}
+\begin{proof}
+Since $V\subseteq U_v^\perp$, every row $x\in V$ satisfies $xv=0$ and $xAv=0$; with $v=Na$ this reads
+$xNa=0$ and $xANa=0$, so $W\subseteq a^\circ\times a^\circ$ and hence
+$\pi_1(W),\pi_2(W)\subseteq a^\circ$. If both equal $U$ with $\dim U=k-1=\dim a^\circ$, then
+$U=a^\circ$; the annihilator of $a^\circ$ is one-dimensional in $(\mathbb{R}^k)^{**}\cong\mathbb{R}^k$
+and spanned by $a$, so the projective point $[a]$ is determined by $U$.
+
+The description of $\ker\Phi$ is immediate from the definition, and $xN=xAN=0$ is equivalent to
+$x\perp K_0$ and $x\perp AK_0$. If $V\subseteq T_W$ then $\Phi(V)=W$ if and only if the image of $V$
+under $\Phi$ equals $W$; after passing to the quotient by $S$ this becomes
+$\overline\Phi(\overline V)=W/\Phi(S)$, and the dimension condition follows from $\dim V=q$ and
+$\dim S$.
+\end{proof}

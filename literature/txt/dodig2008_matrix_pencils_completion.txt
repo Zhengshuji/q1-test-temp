@@ -1,0 +1,2778 @@
+                                 Available online at www.sciencedirect.com
+
+
+
+
+                         Linear Algebra and its Applications 428 (2008) 259–304
+                                                                                      www.elsevier.com/locate/laa
+
+
+
+
+                     Matrix pencils completion problems
+                                               Marija Dodig 1
+                   Centro de Estruturas Lineares e Combinatórias, CELC, Universidade de Lisboa,
+                                 Av. Prof. Gama Pinto 2, 1649-003 Lisboa, Portugal
+
+                                 Received 28 February 2007; accepted 21 August 2007
+                                          Available online 22 October 2007
+                                              Submitted by R.A. Brualdi
+
+
+
+
+Abstract
+
+   In this paper we give a partial solution to the challenge problem posed by Loiseau et al. in [J. Loiseau,
+S. Mondié, I. Zaballa, P. Zagalak, Assigning the Kronecker invariants of a matrix pencil by row or column
+completion, Linear Algebra Appl. 278 (1998) 327–336], i.e. we assign the Kronecker invariants of a matrix
+pencil obtained by row or column completion. We have solved this problem over arbitrary fields.
+© 2007 Elsevier Inc. All rights reserved.
+
+AMS classification: 15A21; 15A22
+
+Keywords: Matrix pencils; Kronecker canonical form; Kronecker invariants; Completion
+
+
+
+1. Introduction
+
+   Problems of determining the properties of a matrix when some of its entries are prescribed
+and the others vary are studied for a long time and are related to a wide spectrum of different
+problems and areas. Majority of the existing work is done in the case when entries that vary form
+a submatrix. There are various results solving many interesting particular cases of this problem,
+see for example papers by de Oliveira [15–18], de Sá [22], Thompson [25], Zaballa [27–29], Silva
+[23,24], and the others [3,6,9,12,21,26].
+   All these problems can be generalized in the language of matrix pencils completions. The
+general matrix pencil completion problem is to determine the possible Kronecker invariants of
+
+
+   E-mail address: dodig@cii.fc.ul.pt
+ 1 The author is supported by Fundação para a Ciência e a Tecnologia/(FCT), grant no. SFRH/BPD/26607/2006.
+
+
+0024-3795/$ - see front matter ( 2007 Elsevier Inc. All rights reserved.
+doi:10.1016/j.laa.2007.08.029
+260                     M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304
+
+a matrix pencil (i.e., its strict equivalence class), when a subpencil is prescribed. Some partial
+solutions of this problem can be found in e.g. [2,4,5,22,25].
+   In this paper we study and completely solve the following problem:
+
+Problem 1. Let F be a field. Let A(λ) ∈ F[λ](n+p)×(n+l+m) be a matrix pencil. Give necessary
+and sufficient conditions for the existence of a matrix pencil X(λ) ∈ F[λ]l×(n+l+m) , such that the
+matrix pencil
+                      
+                  A(λ)
+      M(λ) =             ∈ F[λ](n+p+l)×(n+l+m)                                                  (1)
+                 X(λ)
+has prescribed strict equivalence class.
+
+   Moreover, the solution of this problem can be extended, involving various existential quantifi-
+cators, to a solution of the challenge problem of determining the possible strict equivalence class
+of a pencil when an arbitrary subpencil is prescribed, posed by Loiseau et al. in [13].
+   Because of the generality of the problem, the complexity of the conditions and of the proof
+was expected. However, Lemma 9 from Section 4 allows us to split the problem into two less
+general ones. Indeed, in order to give a complete solution to Problem 1, we first solve it in the
+case when both pencils A(λ) and M(λ) do not have row (column) minimal indices as Kronecker
+invariants. We give the solutions to both of these problems separately, and then we “glue” them
+together for the solution of Problem 1.
+   The paper is organized as follows: in Section 2 the basic definitions and properties that will
+be used throughout the paper are given. Since the main result uses the result given in [8], we
+shall state the most important theorems and definitions from it in Section 3. Section 4 is mostly
+technical one, where 8 lemmas are given. The most essential ones are Lemmas 8–11. In Sections
+5 and 6 partial solutions of Problem 1 are given. Indeed, in Section 5, we solve Problem 1 in the
+case when both pencils A(λ) and M(λ) do not have row minimal indices, and in Section 6, we
+solve Problem 1 in the case when both A(λ) and M(λ) do not have column minimal indices. In
+Section 7, these results are unified and the complete solution to Problem 1 is given. Finally, in
+Section 8, various corollaries of the main result are presented.
+
+2. Notation
+
+   Let F be a field. All the polynomials in this paper we consider to be monic. If f is a polynomial,
+d(f ) denotes its degree. Let f = λk − ak−1 λk−1 − · · · −a1 λ − a0 ∈ F[λ], k > 0, then C(f )
+denotes the following matrix
+                              T
+      C(f ) = [e2k · · · ekk a] ,
+where eik is ith column of the identity matrix Ik ∈ Fk×k and a = [a0 · · · ak−1 ]T . Also, we shall
+denote by
+      C(f ) := λIk + C(f ).
+   Throughout the paper, F[λ] denotes the ring of polynomials over the field F with variable λ,
+and F[λ]n×m denotes the ring of matrices of dimension n × m with entries from F[λ]. The ring
+of polynomials in two distinct variables λ and μ is denoted by F[λ, μ]. By f |g, where f, g ∈
+F[λ](or F[λ, μ]) we mean that g is divisible by f , i.e. that there exists h ∈ F[λ](or, respectively in
+F[λ, μ]) such that g = hf .
+                     M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304                 261
+
+   If ψ1 | · · · |ψr are invariant factors of a matrix B(λ) ∈ F[λ]n×m , with r = rank B(λ), then
+we make a convention that ψi = 1, for any i ⩽ 0, and ψi = 0, for any i ⩾ r + 1. Also, for
+any sequence of nonnegative integers satisfying c1 ⩾ · · · ⩾ cn , we assume c0 = ∞ and cn+1 =
+cn+2 = · · · = 0.
+   Here we briefly recall some basic definitions and properties of matrix pencils that will be used
+throughout the paper. For more details see chapter XII from [11]:
+
+   Let A, B ∈ Fn×m .
+
+Definition 1. A + λB ∈ F[λ]n×m is called the matrix pencil.
+
+Definition 2. Two matrix pencils A + λB ∈ F[λ]n×m , and A + λB  ∈ F[λ]n×m are said to be
+strictly equivalent if there exist invertible matrices P ∈ Fn×n and Q ∈ Fm×m , such that
+      P (A + λB)Q = A + λB  .
+
+Definition 3. The matrix pencil A + λB ∈ F[λ]n×m is called regular if n = m and the determinant
+|A + λB| is not identically equal to zero. Otherwise, A + λB is called singular.
+
+   Consider the matrix pencil A + λB ∈ F[λ]n×m , and denote by r = rank (A + λB). Let λ and
+μ be distinct indeterminates. Let α1 | · · · |αr be the (finite) invariant factors of A + λB and let
+      αi = λni + ani i −1 λni −1 + · · · + a1i λ + a0i ,   for i = 1, . . . , r.
+Then denote by ᾱ1 | · · · |ᾱr the following polynomials from F[λ, μ]
+      ᾱi = λni + ani i −1 λni −1 μ + · · · + a1i λμni −1 + a0i μni ,    for i = 1, . . . , r.
+   The invariant factors of two variable matrix pencil μA + λB are
+               Di (λ, μ)
+      α̃i =               ,    i = 1, . . . , r,   D0 (λ, μ) = 1,
+              Di−1 (λ, μ)
+where Di (λ, μ), i = 1, . . . , r, is the greatest common divisor of all the minors of order i of μA +
+λB. After splitting the polynomials α̃i , i = 1, . . . , r, into powers of irreducible homogeneous
+polynomials, we obtain the elementary divisors eα (λ, μ) of the matrix pencil μA + λB. Those
+eα (λ, μ) of the form μa , a > 0, are called the infinite elementary divisors of A + λB. If eα (λ, μ) is
+not an infinite elementary divisor of P (λ), then eα (λ) = eα (λ, 1) is an (finite) elementary divisor
+of A + λB. Conversely, for each       elementary divisor f (λ) of degree q of P (λ), the corresponding
+polynomial e(λ, μ) = μq f μλ is an elementary divisor of μA + λB.
+    Each of the polynomials α̃i can be written as α̃i = ᾱi μar−i+1 , i = 1, . . . , r, where either ai = 0
+or μai is an infinite elementary divisor of A + λB, i = 1, . . . , r, and a1 ⩾ · · · ⩾ ar .
+    Those α̃1 | · · · |α̃r will be called the homogeneous invariant factors of the matrix pencil A + λB.
+    By a monic homogeneous polynomial from F[λ, μ], we mean a homogeneous polynomial with
+a unit as a coefficient of the monomial with the biggest degree of λ.
+    Strict equivalence invariants for the regular matrix pencil are its finite and infinite elementary
+divisors, while strict equivalence invariants for the singular matrix pencils are its homogeneous
+invariant factors, column and row minimal indices, for details see [11].
+    Throughout the paper, we shall consider the pencils in the Kronecker canonical form for
+strict equivalence given in the following theorem. Although in standard references, like [11], the
+262                       M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304
+
+Kronecker canonical form is given over infinite fields, in [7] and [19] is proven that it can be
+obtained over arbitrary fields.
+
+Theorem 1. Let A(λ) ∈ F[λ](n+p)×(n+m+l) be a matrix pencil, with α1 | · · · · · · |αn , b1 ⩾ · · · ⩾
+bt > bt+1 = · · · = bk = 1, c1 ⩾ · · · ⩾ cc > cc+1 = · · · = cm+l = 0 and r1 ⩾ · · · ⩾ rr > rr+1 =
+· · · = rp = 0 as (finite) invariant factors, degrees of infinite elementary divisors, column and row
+minimal indices, respectively.
+     Then A(λ) is strictly equivalent to the following matrix pencil:
+         ⎡                                                                                                 ⎤
+           λI − N
+         ⎢               C1                                                           e1                   ⎥
+         ⎢                                                                                                 ⎥
+         ⎢                     ..                                                            ..            ⎥
+         ⎢                          .                                                             .        ⎥
+         ⎢                                                                                                 ⎥
+         ⎢                              Cc                                                            ec   ⎥
+         ⎢                                                                                                 ⎥
+         ⎢                                    R1                                                           ⎥
+         ⎢                                                                                                 ⎥
+         ⎢                                         ..                                                      ⎥
+         ⎢                                              .                                                  ⎥
+         ⎢                                                                                                 ⎥
+         ⎢                                                  Rr                                             ⎥
+         ⎢                                                                                                 ⎥,
+         ⎢                                                        B1                                       ⎥
+         ⎢                                                                                                 ⎥
+         ⎢                                                              ..                                 ⎥
+         ⎢                                                                   .                             ⎥
+         ⎢                                                                                                 ⎥
+         ⎢                                                                       Bk                        ⎥
+         ⎢                                                                                                 ⎥
+         ⎢                                                                                                 ⎥
+         ⎢                                    q1                                                           ⎥
+         ⎢                                         ..                                                      ⎥
+         ⎢                                              .                                                  ⎥
+         ⎢                                                                                                 ⎥
+         ⎣                                                  qr                                             ⎦
+
+
+                                                                                                           (2)
+
+where nonmarked entries are equal to zero. The number of zero columns is equal to the number
+of column minimal indices equal to zero, i.e. m + l − c, while the number of zero rows is equal
+to the number of row minimal indices equal to zero, i.e. p − r.
+    Here
+         N := C(αn−s+1 ) ⊕ · · · ⊕ C(αn ),
+where s is the number of nontrivial polynomials among α1 , . . . , αn , n = rank A(λ) =
+  n            m+l      p        k
+  i=1 d(αi ) + i=1 ci + i=1 ri + i=1 bi . Moreover,
+
+         Ci := C(λci ),       i = 1, . . . , c,
+         Ri := C(λ ),
+                    ri
+                             i = 1, . . . , r,
+                                    −1
+                                        
+                  C(λbi −1 ) ebbii −1
+         Bi :=                              , i = 1, . . . , t,
+                  (e1bi −1 )T     0
+         Bi := 1,    i = t + 1, . . . , k.
+
+   Finally, ei stands for eccii , i = 1, . . . , c and qi stands for (e1ri )T , i = 1, . . . , r.
+
+      Further on in this paper, the matrix (2) will be called the Kronecker canonical form of A(λ).
+      Also, we shall use the following notation related with the matrix (2):
+                       M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304                   263
+
+
+    Let A(λ) ∈ F[λ](n+p)×(n+m+l) and B(λ) ∈ F[λ]l×(n+m+l) be matrix pencils such that A(λ) is
+in its Kronecker canonical form (2). Let α1 | · · · |αn be invariant factors of A(λ) and c1 ⩾ · · · ⩾
+cc > cc+1 = · · · = cm+l = 0 be column minimal indices of A(λ). Consider the pencil
+             
+        A(λ)
+                .
+         B(λ)
+    Let x ∈ {1, . . . , l}, and let i ∈ {1, . . . , m + l}. By the j th position under the block correspond-
+ing to the column minimal index ci in the xth row of B(λ), we mean the entry (x, ni=1 d(αi ) +
+   i−1
+   k=1 ck + j ) in the matrix B(λ) if j ⩽ ci or (x, n + j ) if j = ci + 1, i = 1, . . . , c. Also, by the
+free column of the block corresponding to the column minimal index ci , we mean the column ei
+in the matrix (2) if ci > 0, or (i − c)th zero column if ci = 0, i = c + 1, . . . , m + l.
+
+3. Previous results
+
+  In [8] we solved the problem of determining the possible feedback invariants of a rectangular
+matrix with prescribed rows (see Theorem 2 below). That result is used in solving Problem 1.
+Thus, for easier reading we state here the basic definitions, lemmas and theorems from [8] (for
+more details see [8]).
+  The concept of (n, l)-feedback equivalence was introduced in [10]:
+
+Definition 4. Let A, A ∈ Fn×n , B, B  ∈ Fn×l and C, C  ∈ Fn×m . Two matrices
+      L = [A       B      C]    and    L = [A       B     C]
+are said to be (n, l)-feedback equivalent if there exists a nonsingular matrix
+            ⎡               ⎤
+              S     0     0
+      P = ⎣T U            0 ⎦ ∈ F(n+l+m)×(n+l+m) ,
+              V G H
+where S ∈ Fn×n , U ∈ Fl×l , such that L = S −1 LP .
+
+Lemma 1 [8,10]. The matrix L is (n, l)-feedback equivalent to a unique matrix
+      L = [A      B      C]
+where
+
+        A = C(αn−s+1 ) ⊕ · · · ⊕ C(αn ) ⊕ C(λν1 ) ⊕ · · · ⊕ C(λνρ )
+           ⊕C(λμ1 ) ⊕ · · · ⊕ C(λμl ) ∈ Fn×n ,
+      B  = [eνn1 +···+νρ +μ1 +p · · · eνn1 +···+νρ +μ1 +···+μl +p 0] ∈ Fn×l ,
+      C  = [eνn1 +p     eνn1 +ν2 +p · · · eνn1 +···+νρ +p 0] ∈ Fn×m ,
+
+ = ni=1 d(αi ), for some numbers μ1 ⩾ · · · ⩾ μl ⩾ 0, ν1 ⩾ · · · ⩾ νρ > 0 and some monic
+polynomials α1 | · · · |αn , s of them nontrivial.
+
+   The numbers μ1 , . . . , μl are called the minimal indices of the first kind of L; ν1 , . . . , νρ are
+called the minimal indices of the second kind of L; and the matrix L is called the canonical form
+for (n, l)-feedback equivalence of the matrix L. Note that α1 | · · · |αn and μ1 , . . . , μl , ν1 , . . . , νρ
+are finite invariant factors and column minimal indices, respectively, of the pencil
+264                         M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304
+
+       [λI − A        −B        −C].                                                                     (3)
+  Without loss of generality, the numbers μ1 , . . . , μl and ν1 , . . . , νρ will also be called the
+minimal indices of the first and of the second kind, respectively, of (3).
+
+Theorem 2 [8]. Let A ∈ Fn×n , B ∈ Fn×l and C ∈ Fn×m . Let μ1 ⩾ · · · ⩾ μl ⩾ 0 and ν1 ⩾ · · · ⩾
+νρ > 0 be minimal indices of the first and of the second kind, respectively, and let α1 | · · · |αn be
+invariant factors of
+       [λI − A        −B        −C].
+Let d1 ⩾ d2 ⩾ · · · ⩾ dρ̄ > 0 and γ1 | · · · |γn+l be positive integers and monic polynomials,
+respectively. There exist matrices D ∈ Fl×n , E ∈ Fl×l and F ∈ Fl×m such that the matrix pencil
+                                                      
+                           λI − A       −B        −C
+      λ In+l 0 − G =                                                                        (4)
+                               −D      λI − E −F
+has γ1 | · · · |γn+l as invariant factors and d1 ⩾ · · · ⩾ dρ̄ as nonzero column minimal indices if
+and only if the following conditions are valid:
+
+(i) ρ ⩽ ρ̄ ⩽ min{l + ρ, m},
+(ii) di ⩾ si , i = 1, . . . , ρ̄,
+(iii) γi |αi+ρ−ρ̄ |γi+l+ρ−ρ̄ , i = 1, . . . , n + ρ̄ − ρ,
+       hq           hq −q
+                   
+(iv)         fi −           di ⩽ d(πρ+l−ρ̄ ) − d(πρ+l−ρ̄−q ),             q = 1, . . . , ρ + l − ρ̄,
+       i=1           i=1
+       where hq = min{i|di−q+1 < fi },                    q = 1, . . . , ρ + l − ρ̄,
+                     
+                     n+j
+       and πj =             lcm(αi−j , γi+ρ̄−ρ ),          j = 0, . . . , ρ + l − ρ̄,
+                     i=1
+       
+       ρ+l          
+                    n                
+                                     ρ̄           
+                                                  n+l
+(v)          fi +         d(αi ) =         di +         d(γi ),
+       i=1          i=1              i=1          i=1
+
+       where f1 ⩾ · · · ⩾ fρ+l are the numbers μ1 + 1, . . . , μl + 1, ν1 , . . . , νρ in nonincreasing
+       order, while s1 ⩾ · · · ⩾ sρ̄ are the numbers ν1 , . . . , νρ , and μl−i+1 + 1, i = 1, . . . , ρ̄ − ρ,
+       in nonincreasing order.
+
+   Furthermore, in [8] was obtained very elegant way of defining the matrix [D E F ] in the
+case of one row completion when the only minimal index of the first kind is less than all minimal
+indices of the second kind of [A B C], i.e. when
+       ν1 ⩾ · · · ⩾ νρ ⩾ μ1 + 1.
+Indeed, consider [A B C] in its (n, 1)-feedback canonical form. In [8], for this particular
+case, the row w = [D E F ] was defined in the following way:
+   Let  = ni=1 d(αi ) and φ = n+l
+                               i=1 d(γi ) −
+                                             n
+                                             i=1 d(αi ), then
+                                               
+             t0 t1 · · · tρ tρ+1 0 · · · 0
+       w=                              ,
+                                                           l+m−1
+                           M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304                         265
+
+where
+                                                   
+        t0 = (−1)ρ x1                ···    (−1)ρ x ∈ F1× ,
+                                                                                                                     
+             0           · · ·0      (−1)ρ−i+1 x+1 · · ·                (−1)ρ−i+1 x+φ        (−1)ρ−i 0     ···   0
+        ti =                                                                                                
+                                                         p1i                                           p2i
+
+          ∈ F1×νi , i = 1, . . . , ρ, and
+                                                                     
+        tρ+1 = 0 · · · 0 x+1 · · ·                               x+φ ∈ F1×(μ1 +1)
+
+for some numbers x+1 , . . . , x+φ ∈ F. Here p1i and p2i , i = 1, . . . , ρ, are nonnegative integers
+satisfying
+                          ρ
+        μ1 + 1 ⩾ p1 ⩾ · · · ⩾ p12 ⩾ p11 ,                                                                            (5)
+                       ρ
+        p21 ⩾ · · · ⩾ p2 ,                                                                                           (6)
+
+νi = p1i + p2i , i = 1, . . . , ρ, for more details see the proof of Theorem 2 from [8].
+   Thus, in each of t1 , . . . , tρ , we have zeros at the last p2i − 1 entries. Since p2i = νi − p1i − 1
+and p1i ⩽ μ1 + 1, we have that in each ti there are zeros at least in the last
+        νi − μ1 − 2,              i = 1, . . . , ρ,                                                                  (7)
+positions.
+   The following lemma from [8], will be used in the induction step in Section 5.
+
+Lemma 2 [8]. Let α1 | · · · |αn and γ1 | · · · |γn+l be monic polynomials, such that
+
+        γi |αi |γi+l ,        i = 1, . . . , n.
+
+Let ν1 ⩾ · · · ⩾ νρ , μ1 + 1 ⩾ · · · ⩾ μl + 1 be positive integers such that
+
+        ν1 ⩾ · · · ⩾ νk1 −1 ⩾ μ1 + 1 ⩾ · · · ⩾ νki −i ⩾ μi + 1 ⩾ · · · ⩾ νρ ⩾ μl + 1,
+
+i = 2, . . . , l − 1. Let f1 , . . . , fρ+l be the numbers ν1 , . . . , νρ , μ1 + 1, . . . , μl + 1 in nonin-
+creasing order. Let d1 ⩾ · · · ⩾ dρ be positive integers. Let βi = lcm(αi−1 , γi ), i = 1, . . . , n + 1.
+Suppose that the following conditions are satisfied:
+
+(a.1) di ⩾ νi ,           i = 1, . . . , ρ,
+(a.2) hq = min{i|di−q+1 < fi } = kq ,                           q = 1, . . . , l,
+        hl = ρ + l,
+         hq           hq −q
+                        
+(a.3)          fi −               di ⩽ d(πl ) − d(πl−q ),              q = 1, . . . , l,
+         i=1             i=1
+                            
+                            n+j
+        where πj =                  lcm(αi−j , γi ),           j = 0, . . . , l,
+                              i=1
+         
+         ρ+l          
+                      n                    
+                                           ρ             
+                                                         n+l
+(a.4)          fi +            d(αi ) =           di +          d(γi ) = n + l.
+         i=1          i=1                  i=1           i=1
+266                             M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304
+
+                                                  
+Then there exist positive integers g1 , . . . , gρ+l−1 such that
+
+(b.1) gi ⩾ fi ,         i = 1, . . . , ρ + l − 1,
+(b.2) di ⩾ ν̄i ,         i = 1, . . . , ρ,
+         h̃q           h̃q −q
+                      
+(b.3)          g̃i −            di ⩽ d(πl ) − d(πl−q ),            q = 1, . . . , l − 1,
+         i=1           i=1
+        h̃j = min{i|di−j +1 < g̃i },                j = 1, . . . , l − 1,
+          
+         ρ+l−1           
+                         n+1                  
+                                              ρ+l          
+                                                           n
+(b.4)            g̃i +           d(βi ) =           fi +         d(αi ) = n + l,
+         i=1         i=1             i=1                   i=1
+(b.5) gh i = g̃h̃i , i = 1, . . . , l − 1,
+                                                                    
+        where g̃1 , . . . , g̃ρ+l−1 are the integers g1 , . . . , gρ+l−1  ordered so that g̃1 ⩾ · · · ⩾ g̃ρ+l−1 ,
+        and where {ν̄1 ⩾ · · · ⩾ ν̄ρ } = (g̃1 , . . . , g̃ρ+l−1 ) \ (g̃h̃1 , . . . , g̃h̃l−1 ).
+
+  Note that, by abuse of notation, by {ν̄1 ⩾ · · · ⩾ ν̄ρ } = (g̃1 , . . . , g̃ρ+l−1 ) \ (g̃h̃1 , . . . , g̃h̃l−1 ), we
+mean that ν̄1 ⩾ · · · ⩾ ν̄ρ result from the sequence g̃1 , . . . , g̃ρ+l−1 after removing g̃h̃1 , . . . , g̃h̃l−1 .
+  Finally, we state the following technical lemma from [8]:
+
+Lemma 3 [8]. Let x + 1 ⩾ y > 1. Let c ∈ F. Then the matrix
+                          y 
+     C(λy )       0     cey−1
+                                                                                                                  (8)
+             0          C(λx )          exx
+is strictly equivalent to the matrix
+                                
+          C(λy )     0        0
+                                  .                                                                               (9)
+             0     C(λx ) exx
+
+
+4. Technical lemmas
+
+   In this section, we give 8 lemmas. Among them, Lemmas 4–7 are purely technical, while
+Lemmas 8–11 are more essential. In fact, Lemmas 9 and 10 allow us to split Problem 1 into two
+simpler ones, involving only one type of minimal indices.
+   The proof of the following lemma is straightforward, thus will be omitted.
+
+Lemma 4. Let D(λ) ∈ F[λ](n+l)×m be a matrix pencil. Let A(λ), A (λ) ∈ F[λ]n×m be strictly
+equivalent matrix pencils. There exists a matrix pencil X(λ) ∈ F[λ]l×m , such that the matrix
+pencil
+            
+        A(λ)
+               ∈ F[λ](n+l)×m
+       X(λ)
+is strictly equivalent to D(λ), if and only if there exists a matrix pencil X  (λ) ∈ F[λ]l×m , such
+that the matrix pencil
+                    M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304               267
+             
+       A (λ)
+                ∈ F[λ](n+l)×m
+       X  (λ)
+is strictly equivalent to D(λ).
+
+   In order to make the writing of the proof of the results from Sections 5–7, as light as possible, the
+following technical lemmas are given. They explain most common strict equivalence operations
+that appear further on.
+
+Lemma 5. Let E ∈ Fn×n . Let E(λ) ∈ F[λ]m×n be a matrix pencil. Let C m = [C(λm )                  m] ∈
+                                                                                                 em
+F[λ]m×(m+1) . Then the matrix pencil
+                             
+                λI − E      0
+       W =                      ∈ F[λ](n+m)×(n+m+1)
+                 E(λ)      Cm
+is strictly equivalent to the following one
+                             
+                λI − E      0
+       W =                      .
+                   0       Cm
+
+Proof. We shall prove even more, i.e. that there exist matrices P ∈ Fm×n and Q ∈ F(m+1)×n such
+that                       
+        In   0      In     0
+                 W              = W.
+        P Im        Q Im+1
+   The proof goes by induction on m.
+   If m = 1, then E(λ) = a + λb, a, b ∈ F1×n and C 1 = [λ 1]. Thus,
+                   ⎡            ⎤
+                   In 0 0
+         In 0
+                 W⎣ 0      1 0⎦ = W ,
+       −b 1
+                    −x 0 1
+where x = a + bE ∈ F1×n .
+              that the statement of the lemma is valid for m − 1.
+  Now, suppose
+  Let E(λ) = Q(λ)
+               q(λ) , where Q(λ) ∈ F[λ]
+                                          (m−1)×n . By applying the induction hypothesis, there
+
+exist matrices P ∈ F(m−1)×n and Q ∈ Fm×n such that
+                                                                               
+        In     0    λI − E      0      In  0       λI − E                     0
+                                m−1             =                                       ,
+        P Im−1       Q(λ)     C        Q  I m         0                     C m−1
+where C m−1 = [C(λm−1 ) em−1
+                         m−1
+                             ]. Thus,
+     ⎡              ⎤ ⎡              ⎤ ⎡                                            ⎤
+       In    0    0      In    0 0       λI − E                         0         0
+     ⎣ P Im−1 0⎦ W ⎣Q Im 0⎦ = ⎣ 0      ⎢                                            ⎥
+                                                                   C m−1          0⎦ ,             (10)
+        0    0    1      0     0 1       t + λs                   λ(emm )T        1
+where t + λs = q(λ) + λ(emm )T Q, t, s ∈ F1×n . Hence
+     ⎡                ⎤ ⎡                         ⎤⎡                          ⎤
+        In     0    0     λI − E         0      0     In            0       0
+     ⎣0                 ⎢                         ⎥
+             Im−1 0⎦ ⎣ 0               C m−1    0⎦ ⎣ 0             Im       0⎦ = W ,
+        −s     0    1     t + λs      λ(em )T 1      −y             0       1
+                                             m
+
+where y = t + sE ∈ F    1×n
+                              . This, together with (10), finishes the proof.           
+268                    M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304
+
+
+Lemma 6. Let E ∈ Fn×n . Let E(λ) ∈ F[λ](m+1)×n be a matrix pencil. Let C m = [C(λm )           m] ∈
+                                                                                              em
+Fm×(m+1) . Then the matrix pencil
+            ⎡                   ⎤
+              λI − E       0
+     W =⎣                 C m ⎦ ∈ F[λ](n+m+1)×(n+m+1)
+               E(λ)       m+1 T
+                       (e1 )
+is strictly equivalent to the following one
+              ⎡                     ⎤
+                λI − E         0
+       W =⎣                  Cm ⎦ .
+                   0         m+1 T
+                           (e1 )
+
+Proof. Analogously as in the previous lemma one can prove even more: that there exist matrices
+P ∈ F(m+1)×n and Q ∈ F(m+1)×n such that
+                              
+        In   0         I      0
+                  W n              = W.                                                   (11)
+        P Im+1         Q Im+1
+      Proceed like in the proof of the previous lemma, by using the induction on m. 
+
+Lemma 7. Let c, x and y be positive integers, such that c − x ⩾ y − 1. Let A ∈ Fy×c and a ∈
+F1×c be such that their last c − x columns are equal to zero. Then the matrix pencil
+      ⎡                             ⎤
+         C(λc )     0        0 ecc
+      ⎢                       y     ⎥
+      ⎣ A         C(λy ) ey 0 ⎦                                                        (12)
+                      y
+             a      (e1 )T     0     0
+is strictly equivalent to
+        ⎡                                 ⎤
+           C(λc )     0        0    ecc
+        ⎢                      y       ⎥
+        ⎣ 0         C(λy )    ey     0⎦.                                                        (13)
+                      y
+             0      (e1 )T    0      0
+
+Proof. The proof is split in two cases:
+Case c − x ⩾ y: By applying the previous lemma, more precisely Eq. (11), on the subpencil
+      ⎡                     ⎤
+       C(λc )     0      0
+      ⎣ A       C(λy ) ey ⎦ ,
+                          y                                                             (14)
+                  y T
+          a     (e1 )    0
+we have that it is strictly equivalent to the same pencil with A = 0 and a = 0. Moreover, since
+c − x ⩾ y, these strict equivalence operations will not affect the unit in ecc in (12). Thus, (12) is
+strictly equivalent to (13), as wanted.
+Case c − x = y − 1: In this case, after applying the result from (11) on the submatrix (14), the
+matrix (12) becomes
+      ⎡                             ⎤
+         C(λc )    0       0    ecc
+      ⎢                    y       y⎥
+      ⎣ 0        C(λy ) ey bey ⎦                                                           (15)
+                      y
+             0      (e1 )T     0      0
+for some b ∈ F. Thus, it is strictly equivalent to (13), as wanted.         
+                            M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304     269
+
+Remark 1. Note that if in the previous lemma in the matrix (12) we have a = 0, then by the same
+argumentation, the statement of the lemma holds even if c − x = y − 2.
+
+Lemma 8. Let b̄1 ⩾ · · · ⩾ b̄m+1 > 0 and b1 ⩾ · · · ⩾ bm > 0 be positive integers. Let a > 0. Let
+B(λ) ∈ F[λ]ψ×ψ be a matrix pencil with only infinite elementary divisors, ψ = m        i=1 bi . Let
+b1 ⩾ · · · ⩾ bm be the degrees of infinite elementary divisors of B(λ).
+   If the following conditions are valid
+
+       b̄i ⩾ bi ⩾ b̄i+1 ,              i = 1, . . . , m,                                         (16)
+       
+       m                        
+                                m+1
+              bi + a =                b̄i ,                                                      (17)
+        i=1                     i=1
+
+then there exists a row p ∈ F1×ψ , such that the complete set of Kronecker invariants of the matrix
+pencil
+       ⎡                       ⎤
+         B(λ)          0
+       ⎣ 0                     ⎦ = λX + Y ∈ F[λ](ψ+a)×(ψ+a)                                   (18)
+                  Ia − λC(λa )
+          λp
+
+are its homogeneous invariant factors which are equal to μb̄m+1 | · · · |μb̄1 .
+
+Proof. First of all, note that for any row matrix p ∈ F1×ψ , the determinant of (18) is equal to
+one. Thus, for any p ∈ F1×ψ the pencil λX + Y is regular with all (finite) invariant factors equal
+to one. In other words, all invariant factors of two-variable matrix pencil λX + μY (λ and μ are
+distinct indeterminates), are of the form μx , for some x ⩾ 0. Hence, the matrix pencil X + μY
+has the same invariant factors as λX + μY . Thus, our problem is equivalent to defining a row
+p ∈ F1×ψ in (18), such that the matrix pencil X + μY has μb̄m+1 | · · · |μb̄1 as nontrivial invariant
+factors.
+   Moreover, after permuting rows and columns of X + μY , our problem becomes equivalent to
+defining a row matrix s ∈ F1×ψ , such that the matrix
+       ⎡                                 ⎤
+         B(μ)            0             0
+       ⎢ 0       μI + C(μa−1 ) ea−1   a−1 ⎥
+                                          ⎦ ∈ F[μ]
+                                                    (ψ+a)×(ψ+a)
+       ⎣                                                        ,                                (19)
+              s                   0                 μ
+
+has μb̄m+1 | · · · |μb̄1 as nontrivial invariant factors, where
+       
+       B(μ) = diag(N1 , . . . , Nm ) ∈ F[μ]ψ×ψ ,
+       Ni = μIbi + C(μbi ) ∈ F[μ]bi ×bi ,                  i = 1, . . . , m.
+
+   After deleting the last row in (19), the resulting matrix has μbm | · · · |μb1 as invariant factors
+and a − 1 as a column minimal index. From the conditions (16) and (17) follows:
+
+       μb̄i+1 |μbi |μb̄i ,        i = 1, . . . , m,
+              
+              m+1               
+                                m
+       a=               b̄i −         bi .
+                  i=1           i=1
+270                        M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304
+
+
+Hence, by Theorem 5.1 from [27], there exist s ∈ F1×ψ , r ∈ F1×(a−1) and q ∈ F, such that
+     ⎡                                ⎤
+       B(μ)          0              0
+     ⎢ 0       μI + C(μa−1 ) ea−1  a−1 ⎥
+     ⎣                                 ⎦,                                                 (20)
+             s                r               μ+q
+has μb̄m+1 | · · · |μb̄1 as invariant factors.
+      Moreover, if denote by
+                                                  
+                 μI + C(μa−1 )          a−1
+                                       ea−1
+        L=                                            ,
+                       r              μ+q
+then we have
+                                    m+1                                    m
+          
+      det(B(μ)) det L = μ           i=1 b̄i   ,   and         
+                                                          det(B(μ)) =μ     i=1 bi   .
+      Thus, det L = μa , so both q = 0 and r = [0             ···   0], as wanted.      
+
+   The following lemma shows that one row completion of a pencil can affect only row or only
+column minimal indices. This allowed splitting the initial Problem 1 into the problems considered
+in Sections 5 and 6, as we shall show in Lemma 10.
+
+Lemma 9. Let s(λ) ∈ F[λ]1×r be a matrix pencil. Let a1 , . . . , ac , ac+1 , b ∈ F be such that
+(a1 , . . . , ac , ac+1 , b) =
+                             / (0, . . . , 0).
+   Then the matrix pencil
+         ⎡                                             ⎤
+                  C(λc )             ecc
+         ⎢                                             ⎥
+         ⎢                                     C(λr )⎥
+         ⎢                                             ⎥                                   (21)
+         ⎣                                     (e1r )T ⎦
+             a1 · · · ac λb + ac+1              s(λ)
+is strictly equivalent to the following one
+        ⎡                                        ⎤
+              C(λc )            ecc
+        ⎢                                        ⎥
+        ⎢                                C(λr )⎥
+        ⎢                                        ⎥,                                                        (22)
+        ⎣                                (e1r )T ⎦
+          a1 · · · ac λb + ac+1
+where nonmarked entries are equal to zero.
+
+Proof. Without loss of generality, by using the form of the matrix pencil
+              
+       C(λr )
+                 ,
+       (e1r )T
+the matrix pencil s(λ) ∈ F[λ]1×r can be considered as a matrix from F1×r . For simplification, we
+shall denote it by s.
+                                                           / 0 and case 2, if b = 0.
+   The further proof is split into two cases: case 1, if b =
+
+Case 1. Since b =
+                / 0, it is enough to apply the result from Lemma 5 and to conclude the proof.
+
+Case 2. Since b = 0, and (a1 , . . . , ac , ac+1 , b) =
+                                                      / (0, . . . , 0), there exists j ∈ {1, . . . , c + 1}, such
+        / 0. Let i := max{j |aj =
+that aj =                          / 0}. Without loss of generality, we can assume
+                      M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304     271
+
+      ai = −1.
+
+   If i = 1, then apply Lemma 6, and finish the proof.
+   If c + 1 ⩾ i > 1, then consider the matrix obtained from (21) by adding its last row to the
+(i − 1)th one. Now, apply Lemma 5 on the submatrix
+       ⎡                 ⎤
+                   0
+         C(α)
+       ⎢          s(λ) ⎥
+       ⎢                 ⎥
+       ⎣         C(λr )⎦
+          0
+                 (e1r )T
+where α = λi−1 + ai−1 λi−2 − ai−2 λi−3 + · · · + (−1)i−3 a2 λ + (−1)i−2 a1 .
+  Hence, (21) is strictly equivalent to
+     ⎡                                                          ⎤
+            C(α)
+     ⎢                                                          ⎥
+     ⎢                         C(λc−i+1 )       c−i+1
+                                               ec−i+1           ⎥
+     ⎢                                                          ⎥
+     ⎢                                                          ⎥
+     ⎢                                                  C(λ )⎥ , if i =
+                                                              r          / c + 1,         (23)
+     ⎢                                                     r )T ⎥
+     ⎣                                                  (e 1 ⎦
+       a1 · · · ai−1 −1 0 · · · 0                          t
+and to
+         ⎡                                ⎤
+               C(α)
+         ⎢                                  ⎥
+         ⎢                          C(λr )⎥
+         ⎢                                  ⎥,   if i = c + 1.                            (24)
+         ⎣                          (e1r )T ⎦
+          a1   ···    ac     −1        t
+In both cases t ∈ F , and nonmarked entries are equal to zero.
+                      1×r
+
+        / c + 1, apply Lemma 6 on the submatrix
+   If i =
+       ⎡                                   ⎤
+                            c−i+1
+            C(λc−i+1 )     ec−i+1
+       ⎢                                   ⎥
+       ⎢                             C(λr )⎥                                              (25)
+       ⎣                                   ⎦.
+         −1 0 · · · 0                   t
+Thus, the matrix (21) is strictly equivalent to the following one
+      ⎡                                                             ⎤
+             C(α)
+      ⎢                                                             ⎥
+      ⎢                         C(λc−i+1 )          c−i+1
+                                                  ec−i+1            ⎥
+      ⎢                                                             ⎥
+      ⎢                                                             ⎥                     (26)
+      ⎢                                                     C(λr )⎥ .
+      ⎢                                                             ⎥
+      ⎣                                                     (e1r )T ⎦
+          a1   ···    ai−1     −1     0    ···    0
+   Moreover, if i = c + 1, the matrix (21) is trivially strictly equivalent to
+     ⎡                                 ⎤
+           C(α)
+     ⎢                                 ⎥
+     ⎢                         C(λr )⎥ .
+     ⎢                                 ⎥                                                  (27)
+     ⎣                         (e1r )T ⎦
+       a1 · · · ac −1
+   Hence, by adding the last row of (26) and of (27), multiplied by −1 to the (i − 1)th row, we
+obtain the matrix (22), as wanted. 
+272                         M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304
+
+   The following lemma will be used in the proof of the main result (Theorem 6, Section 7):
+
+Lemma 10. Let A(λ) ∈ F[λ](n+p)×(n+m+l) and B(λ) ∈ F[λ]l×(n+m+l) be matrix pencils, n =
+rank A(λ). Let
+                       
+                   A(λ)
+       M(λ) =             .
+                   B(λ)
+    Let
+       s = rank M(λ) − rank A(λ).
+    Then, there exist matrix pencils X(λ) ∈ F[λ]s×(n+l+m) and Y (λ) ∈ F[λ](l−s)×(n+l+m) , such
+that             ⎡        ⎤
+                    A(λ)
+       M  (λ) = ⎣X(λ)⎦ ,
+                    Y (λ)
+                                                                
+                                                                A(λ)
+is strictly equivalent to M(λ), and such that the matrix pencil X(λ) has rank equal to n + s, has
+the same row minimal indices as A(λ), and the same column minimal indices as M(λ).
+
+Proof. By Lemma 4, consider A(λ) in its Kronecker canonical form. Because of the form of the
+blocks of Ci ’s, Bi ’s and Ri ’s from (2), we can consider B(λ) to be of the following form:
+                                                    
+     B(λ) = W1 W2 W3 W4 (λ) W5 (λ) .
+                    n                                                                         m+l
+Here W1 ∈ Fl× i=1 d(αi ) is under the block λI − N of A(λ), W2 ∈ Fl× i=1 ci is under the block
+                                       p
+C1 ⊕ · · · ⊕ Cc of A(λ), W3 ∈ Fl× i=1 ri is under the block R1 ⊕ · · · ⊕ Rr of A(λ), and matrix
+                            k
+pencils W4 (λ) ∈ F[λ]l× i=1 bi and W5 (λ) ∈ F[λ]l×(m+l) are under the block B1 ⊕ · · · ⊕ Bk and
+under the last m + l columns of A(λ), respectively. Here by α1 | · · · |αn , b1 ⩾ · · · ⩾ bk , c1 ⩾
+· · · ⩾ cc > cc+1 = · · · = cm+l = 0 and r1 ⩾ · · · ⩾ rr > rr+1 = · · · = rp = 0 we have denoted
+invariant factors, degrees of infinite elementary divisors, column and row minimal indices of the
+pencil A(λ), respectively.
+     Also, let
+               ⎡ 1⎤
+                wi
+               ⎢ .. ⎥
+        Wi = ⎣ . ⎦ , i = 1, 2, 3,
+              wil
+        j               n            j             m+l      j           p
+where w1 ∈ F1× i=1 d(αi ) , w2 ∈ F1× i=1 ci , w3 ∈ F1×                  i=1 ri   , j = 1, . . . , l. And let
+              ⎡ 1 ⎤
+               wi (λ)
+              ⎢ .. ⎥
+     Wi (λ) = ⎣ . ⎦ , i = 4, 5,
+                    wil (λ)
+        j                       k           j
+where w4 (λ) ∈ F[λ]1×           i=1 bi   , w5 (λ) ∈ F[λ]1×(m+l) , j = 1, . . . , l.
+
+  The proof goes by induction on s. If s = 0, then rank A(λ) = rank M(λ) and so W2 = 0 and
+W5 (λ) = 0. Hence, Y (λ) := B(λ) satisfies the properties of the theorem.
+  Suppose now that theorem holds for s − 1. We shall prove that it holds for s.
+  Since s ⩾ 1, we have W2 = / 0 or W5 (λ) = / 0. Without loss of generality, by permuting rows of
+B(λ), we can assume that w21 =
+                             / 0 or w51 (λ) =/ 0. Denote by A (λ) the subpencil of M(λ) formed
+                            M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304          273
+
+by its first n + p + 1 rows, and by B  (λ) the subpencil of M(λ) formed by its last l − 1 rows.
+Then, by Lemma 9, A (λ) is strictly equivalent to the same pencil with w31 = 0. Thus A (λ) has
+the same row minimal indices as A(λ), and rank A (λ) = n + 1.
+   Hence, by applying induction hypothesis, we have that there exist pencils X  (λ) ∈
+F[λ](s−1)×(n+l+m) and Y  (λ) ∈ F[λ](l−s)×(n+l+m) such that the pencils
+                          ⎡  ⎤
+                         A (λ)
+         A (λ)
+                  and ⎣X (λ)⎦
+        B (λ)
+                            Y  (λ)
+                                                                                     
+are strictly equivalent, and such that rank XA(λ)  = (n + 1) + (s −  1) = n + s and   A (λ)
+                                                                                            has the
+                                                (λ)
+                                                                                  X (λ)
+same row minimal indices as A (λ) and the same column minimal indices as BA (λ)  (λ) .
+                                            
+                                           A (λ)
+   Since M(λ) is strictly equivalent to B  (λ) , we have that pencils
+                 1                                 
+                  w1 w21 0 w41 (λ) w51 (λ)
+       X(λ) :=
+                                 X  (λ)
+and Y (λ) := Y  (λ) satisfy the properties of the theorem.                       
+
+   The following lemma is used in the proof of Theorem 4 from Section 6. Its proof is straight-
+forward from Lemma 2 (see the proof of Lemma 4 from [8]), and thus will be omitted.
+
+Lemma 11. Let α̃1 | · · · |α̃n and γ̃1 | · · · |γ̃n+l be monic homogeneous polynomials such that
+      γ̃i |α̃i |γ̃i+l ,     i = 1, . . . , n.
+Let f1 ⩾ · · · ⩾ fρ+l and d1 ⩾ · · · ⩾ dρ be positive integers. Let β̃i = lcm(α̃i−1 , γ̃i ), i = 1, . . . ,
+n + 1. Suppose that the following conditions are satisfied
+       di ⩾ fi+l ,          i = 1, . . . , ρ,
+        hq            hq −q
+                     
+             fi −                di ⩽ d(π̃l ) − d(π̃l−q ),          q = 1, . . . , l, where
+       i=1                i=1
+                
+                n+j
+       π̃j =          lcm(α̃i−j , γ̃i ),          j = 0, . . . , l, and
+                i=1
+       hj = min{i|di−j +1 < fi },                   j = 1, . . . , l,
+       hl = ρ + l,
+       
+       ρ+l            
+                      n                     
+                                            ρ            
+                                                         n+l
+             fi +               d(α̃i ) =         di +         d(γ̃i ) = n + l.
+       i=1            i=1                   i=1          i=1
+
+                                                     
+Then there exist nonnegative integers g1 , . . . , gρ+l−1 such that
+
+       gi ⩾ fi , i = 1, . . . , ρ + l − 1,
+       di ⩾ g̃i+l−1 , i = 1, . . . , ρ,
+       h̃q            h̃q −q
+                     
+             g̃i −               di ⩽ d(π̃l ) − d(π̃l−q ),          q = 1, . . . , l − 1, where
+       i=1                i=1
+274                          M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304
+
+
+        h̃q = min{i|di−q+1 < g̃i },                q = 1, . . . , l − 1,
+         
+        ρ+l−1             
+                          n+1               
+                                            ρ+l          
+                                                         n
+                g̃i +           d(β̃i ) =         fi +         d(α̃i ),
+         i=1              i=1               i=1          i=1
+
+                                                                     
+where by g̃1 ⩾ · · · ⩾ g̃ρ+l−1 we denote the integers g1 , . . . , gρ+l−1 in nonincreasing order.
+
+5. Matrix pencils without row minimal indices
+
+   Before giving the complete solution to Problem 1, we shall solve it in the particular cases when
+both matrix pencils A(λ) and M(λ) do not have row or column minimal indices. In this section
+we consider only the case when both matrix pencils A(λ) and M(λ) do not have row minimal
+indices. The result is given in the following theorem:
+
+Theorem 3. Let A(λ) ∈ F[λ]n×(n+m+l) be a matrix pencil. Let α̃1 | · · · · · · |α̃n be homogeneous
+invariant factors and let c1 ⩾ · · · ⩾ cl+m be column minimal indices of A(λ), such that they
+form the complete set of its Kronecker invariants, n = rank A(λ) = ni=1 d(α̃i ) + l+m       i=1 ci . Let
+γ̃1 | · · · |γ̃n+l be homogeneous monic polynomials. Let d1 ⩾ · · · ⩾ dρ̄ > dρ̄+1 = · · · = dm = 0 be
+nonnegative integers. There exists a matrix pencil B(λ) ∈ F[λ]l×(n+m+l) , such that the matrix
+pencil
+                  
+             A(λ)
+                     ∈ F[λ](n+l)×(n+l+m)                                                           (28)
+             B(λ)
+has γ̃1 | · · · |γ̃n+l as homogeneous invariant factors and d1 ⩾ · · · ⩾ dm as column minimal indices,
+and such that these form the complete set of its Kronecker invariants, if and only if the following
+conditions are valid:
+   There exist l distinct indices j1 < · · · < jl from {1, . . . , l + m}, such that
+
+(i) ρ ⩽ ρ̄ ⩽ min{l + ρ, m},
+(ii) di ⩾ si , i = 1, . . . , ρ̄,
+(iii) γ̃i |α̃i+ρ−ρ̄ |γ̃i+l+ρ−ρ̄ ,       i = 1, . . . , n − ρ + ρ̄,
+        hj           hj −j
+                    
+(iv)         fi −            di ⩽ d(π̃ρ+l−ρ̄ ) − d(π̃ρ+l−ρ̄−j ),            j = 1, . . . , l + ρ − ρ̄, where
+       i=1           i=1
+       hj = min{i|di−q+1 < fi },                  j = 1, . . . , l + ρ − ρ̄, and
+               
+               n+j
+       π̃j =         lcm(α̃i−j , γ̃i+ρ̄−ρ ),         j = 0, . . . , ρ + l − ρ̄,
+               i=1
+       
+       m+l          
+                    n                 
+                                      m            
+                                                   n+l
+(v)          fi +         d(α̃i ) =         di +         d(γ̃i ) = n + l,
+       i=1          i=1               i=1          i=1
+
+where
+      {ν1 ⩾ · · · ⩾ νm } := (c1 , . . . , cl+m ) \ (cj1 , . . . , cjl ), ρ := {i|νi > 0},
+f1 ⩾ · · · ⩾ fm+l are the numbers ν1 , . . . , νm , cj1 + 1, . . . , cjl + 1 in nonincreasing order, and
+s1 ⩾ · · · ⩾ sρ̄ are the numbers ν1 , . . . , νρ , and cjl−i+1 + 1, i = 1, . . . , ρ̄ − ρ, in nonincreasing
+order.
+                            M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304         275
+
+Proof. Necessity: Let B(λ) be a matrix pencil such that the matrix pencil (28) has the pre-
+scribed class of strict equivalence. There exists an infinite field F̃ such that F ⊂ F̃. Thus, A(λ) ∈
+F̃[λ]n×(n+l+m) and B(λ) ∈ F̃[λ]l×(n+l+m) . So, by using the techniques from [4] (see also [5] and
+[6]), we reduce the problem to the case when both matrix pencils A(λ) and (28) do not have infinite
+elementary divisors. Since these techniques (for details see, e.g. [4–6]) preserve row and column
+minimal indices and divisibility among homogeneous invariant factors (as well as their degrees),
+we can apply the result from Theorem 2, and thus obtain the conditions (i)–(v), as wanted.
+    Sufficiency: Let b1 ⩾ · · · ⩾ bt > bt+1 = · · · = bk = 1 be degrees of the infinite elementary
+divisors of A(λ). Also, let b̄1 ⩾ · · · ⩾ b̄t  > b̄t  +1 = · · · = b̄k  = 1 be degrees of the infinite
+elementary divisors of (28) and let c1 ⩾ · · · ⩾ cc > cc+1 = · · · = cm+l = 0. By Lemma 4, we
+shall consider A(λ) in its Kronecker canonical form:
+       ⎡                                                                          ⎤
+          λI − N
+       ⎢             C1                                     e1                    ⎥
+       ⎢                                                                          ⎥
+       ⎢                   .                                       .              ⎥
+       ⎢                     ..                                      ..           ⎥
+       ⎢                                                                          ⎥
+       ⎢                         Cc                                        ec     ⎥,                (29)
+       ⎢                                                                          ⎥
+       ⎢                              B                                           ⎥
+       ⎢                                1                                         ⎥
+       ⎢                                     ..                                   ⎥
+       ⎣                                        .                                 ⎦
+                                                    Bk
+where nonmarked entries are equal to zero and the number of zero columns is equal to m + l − c
+(for details of notation see (2)).
+   The proof of the sufficiency of the conditions (i)–(v), will be split in two cases. In Section 5.1,
+we prove that they are sufficient in the case ρ = ρ̄, and in Section 5.2, we show how the case
+ρ < ρ̄ reduces to the case ρ = ρ̄.
+
+5.1. Case ρ = ρ̄
+
+   In this subsection we consider the case ρ = ρ̄. Under this assumption, the conditions (i)–(v)
+become:
+   There exist l distinct indices j1 < · · · < jl from {1, . . . , m + l}, such that
+       di ⩾ νi ,           i = 1, . . . , ρ,                                                         (30)
+       γ̃i |α̃i |γ̃i+l ,      i = 1, . . . , n,                                                      (31)
+        hj            hj −j
+                     
+              fi −             di ⩽ d(π̃l ) − d(π̃l−j ),          j = 1, . . . , l, where            (32)
+       i=1             i=1
+       hj = min{i|di−j +1 < fi },                   j = 1, . . . , l, and
+                
+                n+j
+       π̃j =          lcm(α̃i−j , γ̃i ),          j = 0, . . . , l,
+                i=1
+       
+       m+l            
+                      n                   
+                                          m            
+                                                       n+l
+              fi +            d(α̃i ) =         di +         d(γ̃i ) = n + l,                        (33)
+        i=1           i=1                 i=1          i=1
+
+where
+      {ν1 ⩾ · · · ⩾ νm } := (c1 , . . . , cl+m ) \ (cj1 , . . . , cjl ) and ρ = {i|νi > 0},
+while f1 ⩾ · · · ⩾ fm+l are the numbers ν1 , . . . , νm , cj1 + 1, . . . , cjl + 1 in nonincreasing order.
+276                          M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304
+
+   Thus, we are left with proving the sufficiency of (30)–(33). Note that the condition (31) can
+be split into two:
+      γi |αi |γi+l ,       i = 1, . . . , n,                                                          (34)
+and
+      b̄i ⩾ bi ⩾ b̄i+l ,           i = 1, . . . , n.                                                  (35)
+where α1 | · · · |αn and γ1 | · · · |γn+l are the (finite) invariant factors of the matrix pencils A(λ) and
+(28), respectively.
+   From (35), we have
+               
+             
+             k             
+                           k
+      a=           b̄i −           bi ⩾ 0.
+             i=1             i=1
+
+   If a = 0, then from (35) we have bi = b̄i , i = 1, . . . , k(= k  ). Thus, put zeros under the
+blocks B1 , . . . , Bk , in the matrix B(λ). By doing so, the condition (30) remains the same while
+the conditions (31)–(33) reduce to
+
+       γi |αi |γi+l ,        i = 1, . . . , n,
+       hj            hj −j
+                    
+             fi −             di ⩽ d(πl ) − d(πl−j ),            j = 1, . . . , l, where
+       i=1             i=1
+
+              
+              n+j
+       πj =          lcm(αi−j , γi ),            j = 0, . . . , l,
+               i=1
+
+       
+       m+l           
+                     n                  
+                                        m             
+                                                      n+l
+             fi +            d(αi ) =         di +           d(γi ) = n + l.
+       i=1           i=1                i=1            i=1
+
+   Put l λ’s in the free columns corresponding to column minimal indices cj1 , . . . , cjl , in the
+different rows of the matrix B(λ). Now, the upper conditions allow us to apply Theorem 2 and
+thus, we conclude the existence of a matrix pencil B(λ) with the wanted properties.
+   Hence, further on, we consider the case a > 0.
+   The proof of the sufficiency of the conditions (30)–(33) will go by induction on the number of
+added rows, l. In Section 5.1.1, we give the solution for the base of the induction, case l = 1, and
+in Section 5.1.2 we give the induction step.
+
+5.1.1. Case l = 1
+   If l = 1, our aim is to define the row matrix pencil B(λ) ∈ F[λ]1×(n+1+m) , such that
+              
+          A(λ)
+                                                                                                      (36)
+          B(λ)
+
+has d1 ⩾ · · · ⩾ dm as column minimal indices and γ̃1 | · · · |γ̃n+1 as homogeneous invariant factors.
+   From the condition (30) we have
+
+      di ⩾ fi+1 ,          i = 1, . . . , ρ,                                                          (37)
+                          M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304                            277
+
+and from the definition of h1 we have
+       di ⩾ fi ,       for all i < h1 .                                                                               (38)
+Also, the condition (32) together with (33) and (37), becomes:
+       di = fi+1         for i ⩾ h1 .
+Moreover, from the definition of fi ’s, the last is equivalent to
+       di = ci+1         for i ⩾ h1 .
+  Now, define a row B(λ), such that it has zeros under the blocks corresponding to ch1 +1 , . . . , cm+1 .
+This means that further on we can assume that
+       h1 = m + 1.
+                            k               k
+     Recall that a =        i=1 b̄i −        i=1 bi . From (33), we have
+
+                                                                            
+       
+       n                 
+                         k             
+                                       m+1             
+                                                       n+1              
+                                                                        k                 
+                                                                                          m
+              d(αi ) +          bi +         fi =            d(γi ) +           b̄i +           di ,
+        i=1              i=1           i=1             i=1              i=1               i=1
+
+and thus
+                         
+                         m                         
+                                                   n+1                
+                                                                      n
+       fm+1 ⩾ a +               (di − fi ) +             d(γi ) −           d(αi ) ⩾ a.                               (39)
+                          i=1                      i=1                i=1
+     First suppose that fm+1 > a. This implies
+       cm+1 ⩾ a.                                                                                                      (40)
+    The remaining proof shall be split into two parts: the one where we consider a pencil without
+infinite elementary divisors (Problem 2), and the one where we consider a pencil only with infinite
+elementary divisors (Problem 3). We shall first solve these problems, and then show how to “glue”
+them together.
+
+Problem 2. Let α1 | · · · |αn and γ1 | · · · |γn+1 be monic polynomials. Let c1 ⩾ · · · ⩾ cm and d1 ⩾
+· · · ⩾ dm be positive integers. Let cm+1 ⩾ a > 0.
+     Let
+                ⎡                                                           ⎤
+                  λI − N
+                ⎢             C1                               e1           ⎥
+                ⎢                                                           ⎥
+                ⎢                   ..                             ..       ⎥
+        W (λ) = ⎢                       .                             .     ⎥ , if cm+1 > a,
+                ⎢                                                           ⎥
+                ⎣                             Cm                         em ⎦
+                                                    C cm+1 −a
+or
+                   ⎡                                                                            ⎤
+                    λI − N                                       0
+               ⎢                       C1                        0      e1                      ⎥
+               ⎢                                                                                ⎥
+       W (λ) = ⎢                              ..                 ..              ..             ⎥,     if cm+1 = a,
+               ⎣                                   .              .                   .         ⎦
+                                                         Cm      0                         em
+278                                  M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304
+                                                                                                                        
+                                                          n                m+1               n            m+1
+                                                                  d(α )+         c −a ×          d(α )+         (c +1)−a
+be a matrix pencil from F[λ] i=1 i     i=1 i      i=1  i    i=1 i
+                                                                       (for details of
+notation see Theorem 1). Here the nonmarked entries are equal to zero and C cm+1 −a =
+               cm+1 −a         ¯
+[C(λcm+1 −a ) ecm+1 −a ]. Let f =
+                                  n
+                                  i=1 d(αi ) +
+                                               m+1
+                                               i=1 ci − a + 1 and x =
+                                                                          n
+                                                                          i=1 d(αi ) +
+  m+1
+  i=1 (ci + 1) − a.
+   If
+
+        di ⩾ ci ,          i = 1, . . . , m,                                                                                   (41)
+        γi |αi |γi+1 ,           i = 1, . . . , n,                                                                             (42)
+        
+        n                    
+                             m                                             
+                                                                           n+1               
+                                                                                             m
+                d(αi ) +                ci + (cm + 1 − a) =                       d(γi ) +         di ,                        (43)
+        i=1                      i=1                                       i=1               i=1
+
+define a row matrix y ∈ F1×x , such that in both of the cases the pencil
+                           
+                   W (λ)
+      W (λ) = y + λ(ex )T                                                                                                      (44)
+                        f¯
+
+has γ1 | · · · |γn+1 as invariant factors and d1 ⩾ · · · ⩾ dm as column minimal indices.
+
+Problem 3. Let b1 ⩾ · · · ⩾ bk and b̄1 ⩾ · · · ⩾ b̄k  be nonnegative integers. Let a ⩾ 1. Let C a−1 =
+[C(λa−1 ) ea−1
+            a−1
+                ].
+  If
+
+        b̄i ⩾ bi ⩾ b̄i+1 ,                  i = 1, . . . , k,
+        k
+                                
+                                 k
+                b̄i = a +                  bi ,
+        i=1                          i=1
+
+define a row matrix
+                   pencil
+                          λz, z ∈ F1×(n+m+1−x) , such that the matrix pencil T (λ) ∈
+               k                      k
+      (a+      i=1 bi )× a+           i=1 bi
+F[λ]                                              , given by
+        ⎡                                                             ⎤
+                   C a−1                                 0
+        ⎢                                                             ⎥
+        ⎢                                      B1                     ⎥
+        ⎢                                                ..           ⎥
+        ⎢              0                                      .       ⎥
+        ⎢                                                             ⎥     if a > 1,                                          (45)
+        ⎢                                                          Bk ⎥
+        ⎢                                                             ⎥
+        ⎢1                 ···                                        ⎥
+        ⎣         0                    0                              ⎦
+                                                     λz
+                       a−1
+
+or by
+        ⎡                                      ⎤
+          0       B1
+        ⎢ ..                ..                ⎥
+        ⎢.                       .            ⎥
+        ⎢                                     ⎥      if a = 1,                                                                 (46)
+        ⎣0                                 Bk ⎦
+          1                 λz
+has b̄1 , . . . , b̄k  as the degrees of its infinite elementary divisors, and these form a complete set of
+its Kronecker invariants. For details of notation see (2).
+                        M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304                   279
+
+Solution to Problem 2
+
+   The Kronecker invariants of W (λ), corresponding to this completion, are α1 | · · · |αn as invariant
+factors, cm+1 − a as a minimal index of the first kind and c1 ⩾ · · · ⩾ cm as minimal indices of
+the second kind. Moreover, we have that
+       c1 ⩾ · · · ⩾ cm ⩾ cm+1 − a + 1.
+Hence, since the condition (41)–(43) are valid, by Theorem 2, there exists a row y, such that the
+matrix (44) has γ1 | · · · |γn+1 as invariant factors and d1 ⩾ · · · ⩾ dm as column minimal indices.
+Moreover, as it is explained in (7), the row y has a special form. Let
+       y = [y0     y1      ···        ym   ym+1   ym+2 ],
+                     n
+where y0 ∈ F1×            , yi ∈ F1×ci , i = 1, . . . , m, ym+1 ∈ F1×(cm+1 −a+1) . Then, each of the
+                     i=1 d(αi )
+
+matrices yi has zeros in the last ci − cm+1 + a − 2, i = 1, . . . , m positions, while all entries in
+ym+2 are equal to zero.
+  Since ci ⩾ cm+1 , this means that at least a − 2 last positions in each yi , i = 1, . . . , m, are zero.
+
+Solution to Problem 3
+
+   The Kronecker invariants of the matrix pencil formed by the first a − 1 + ki=1 bi rows of
+T (λ) are infinite elementary divisors of degrees b1 , . . . , bk and one column minimal index equal
+to a − 1.
+   Since
+         
+       
+       k                 
+                         k
+             b̄i = a +         bi ,
+       i=1               i=1
+and
+       b̄i ⩾ bi ⩾ b̄i+1 , i = 1, . . . , k,
+and since T (λ) has the same form as the matrix (18), we can apply Lemma 8 and thus obtain the
+wanted row z ∈ F1×(n+m+1−x) , which solves Problem 3.
+   Now, we go back to the proof. From (30)–(33), we have that the conditions from Problems 2
+and 3 are satisfied. Thus, there exists a row y ∈ F1×x such that (44) has γ1 | · · · |γn+1 as invariant
+factors and d1 ⩾ · · · ⩾ dm as column minimal indices, and there exists a row z ∈ F1×(n+m+1−x)
+such that (45) has b̄1 , . . . , b̄k  as the degrees of its infinite elementary divisors, and that the infinite
+elementary divisors form a complete set of its Kronecker invariants.
+ Before proceeding, permutethe columns of A(λ), by inserting its last column into the position
+     n                    m+1
+     i=1 d(αi ) +         i=1 ci + 1 . Without loss of generality, denote such obtained matrix by A(λ).
+   Let
+       B(λ) = [−y0 −y1 · · · −ym −ym+1 (e1a )T λz ym+2 ].
+   For such defined B(λ) the matrix pencil
+                  
+           A(λ)
+                                                                                                           (47)
+           B(λ)
+has γ̃1 | · · · |γ̃n+1 as homogeneous invariant factors and d1 ⩾ · · · ⩾ dm as column minimal indices.
+   Indeed, by Lemma 6 we can make zeros instead of −y0 in the last row of (47), while the row y0
+appears in the f¯th row under the block λI − N . Moreover, because of the number of zeros in the
+280                         M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304
+
+rows y1 , . . . , ym , we can apply Lemma 7 m times in order to make zeros instead of −y1 , . . . , −ym
+in the last row of (47). These operations as a consequence have the appearing of the rows yi in
+the f¯th row under the blocks Ci , i = 1, . . . , m.
+    Furthermore, by strict equivalence operations we can put zeros instead of −ym+1 in the last
+row of (47), and consequently, we obtain the row ym+1 in the f¯th row of (47), in the columns
+   n                   m                   n            m
+   i=1 d(αi ) +        i=1 ci + 1, . . . , i=1 d(αi ) + i=1 ci + cm+1 − a + 1.
+    Now, add the last row in the resulting matrix multiplied by −1 to the f¯th one. As the result,
+we obtain the row −zλ in the f¯th row of our matrix. Finally, by applying Lemma 5, we can make
+zeros instead of it without affecting other parts of the matrix.
+    Hence, the matrix pencil (47) is strictly equivalent to the following one
+                           
+         W (λ)          0
+                              ,                                                                     (48)
+            0         T (λ)
+and thus has γ̃1 | · · · |γ̃n+1 as homogeneous invariant factors and d1 ⩾ · · · ⩾ dm as column minimal
+indices, as wanted.
+    Thus, we have solved the problem in the case when cm+1 ⩾ a (see (40)). However, from (39),
+if cm+1 < a we must have cm+1 = a − 1 and fm+1 = a, and so di = ci , i = 1, . . . , m and γi+1 =
+αi , i = 1, . . . , n. Thus, put zeros under the block λI − N and under the blocks corresponding
+to column minimal indices c1 , . . . , cm in B(λ). Then, the problem reduces to Problem 3, which
+completes the proof. 
+
+
+5.1.2. Case l > 1
+   Now suppose that l > 1 and that the conditions (30)–(33) are sufficient for the completion by
+l − 1 rows.
+   Let j1 , . . . , jl ∈ {1, . . . , l + m} be some l distinct indices for which the conditions (30)–
+(33) are satisfied, such that j1 < · · · < jl . Let {ν1 ⩾ · · · ⩾ νm } := (c1 , . . . , cl+m ) \ (cj1 , . . . , cjl ),
+ρ := {i|νi > 0}, and let f1 ⩾ · · · ⩾ fl+m be the numbers ν1 , . . . , νm , cj1 + 1, . . . , cjl + 1 in
+nonincreasing order. Denote the positions of cji + 1 in f1 ⩾ · · · ⩾ fm+l by ki , i = 1, . . . , l, i.e.
+
+       fki = cji + 1,         ki < ki+1 ,       i = 1, . . . , l.
+
+   From the condition (30), we have that ki ⩽ hi , for i = 1, . . . , l.
+   Furthermore, we can assume that hl = m + l. Indeed, since m + l ⩾ hl ⩾ kl , if hl < m + l is
+valid, then from the conditions (32) and (33), we would have
+
+       
+       hl            l −l
+                    h             
+                                   n+l              
+                                                    n                 
+                                                                      m+l               
+                                                                                        m
+             fi ⩽           di +         d(γi ) −         d(αi ) ⇒             fi ⩾               di .
+       i=1          i=1            i=1              i=1              i=hl +1          i=hl −l+1
+
+Since for i > kl , we have fi = ci , the last inequality becomes:
+
+         
+         m+l                
+                            m
+                 ci ⩾               di .
+       i=hl +1          i=hl −l+1
+
+This, together with the condition (30), implies that we must have equalities in the upper equations,
+i.e., di = ci+l for all i ⩾ hl − l + 1. So, we put zeros in B(λ) under the blocks corresponding to
+chl +1 , . . . , cm+l . Thus, we can assume hl to be the maximal, i.e., hl = m + l.
+                           M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304             281
+
+• First we shall suppose that hj = kj , j = 1, . . . , l. Let
+     β̃i := lcm(α̃i−1 , γ̃i ), i = 1, . . . , n + 1.
+   Such defined β̃1 | · · · |β̃n+1 satisfy
+       γ̃i |β̃i |γ̃i+l−1 , i = 1, . . . , n + 1,                                                        (49)
+       β̃i |α̃i |β̃i+1 , i = 1, . . . , n.                                                              (50)
+
+   Now define
+             
+            n+1+j
+     π̄j :=       lcm(β̃i−j , γ̃i ),               j = 0, . . . , l − 1.
+                 i=1
+Then we have
+            
+           n+1+j
+     π̄j =       lcm(α̃i−(j +1) , γ̃i ) = π̃j +1 ,                  j = 0, . . . , l − 1.               (51)
+                i=1
+   Since the conditions (30)–(33) are satisfied, and ki = hi , i = 1, . . . , l, we can apply Lemma
+2. Thus, there exist nonnegative integers gi , i = 1, . . . , m + l − 1, which satisfy the following
+conditions:
+
+       gi ⩾ fi ,        i = 1, . . . , m + l − 1,                                                      (52)
+       di ⩾ ν̄i ,        i = 1, . . . , m,                                                              (53)
+        h̃q           h̃q −q
+                     
+              g̃i −            di ⩽ d(π̃l ) − d(π̃l−q ),                                                (54)
+        i=1           i=1
+          for all q = 1, . . . , l − 1, where
+       h̃q = min{i|di−q+1 < g̃i }, q = 1, . . . , l − 1,
+        
+       ρ+l−1              
+                          n+1               
+                                            ρ+l          
+                                                         n
+                g̃i +           d(β̃i ) =         fi +         d(α̃i ),                                 (55)
+         i=1              i=1               i=1          i=1
+       g̃h̃i = gh i ,      i = 1, . . . , l.                                                           (56)
+
+where by g̃1 ⩾ · · · ⩾ g̃l+m−1 we denoted the integers gi ’s, i = 1, . . . , m + l − 1, in nonincreasing
+order, and {ν̄1 ⩾ · · · ⩾ ν̄m } = (g̃1 , . . . , g̃m+l−1 ) \ (g̃h̃1 , . . . , g̃h̃l−1 ).
+
+   Let g1 ⩾ · · · ⩾ gm+l−1 be the numbers ν̄1 , . . . , ν̄m , g̃h̃1 − 1, . . . , g̃h̃l−1 − 1 in nonincreasing
+order. Thus, from (56) we have that g1 ⩾ · · · ⩾ gm+l−1 is the union of the numbers (g1 , . . . ,
+ 
+gm+l−1  ) \ (gh 1 , . . . , gh l−1 ) and of the numbers gh 1 − 1, . . . , gh l−1 − 1.
+   From the definition of gi ’s and fi ’s, the condition (52) gives
+      gi ⩾ ci ,          i = 1, . . . , m + l − 1.                                                      (57)
+   Now, if we choose the index j1 = l + m, from (50), (55) and (57), we have that the numbers
+                                                                                1 := c
+νi := ci , i = 1, . . . , m + l − 1, and fi1 := ci , i = 1, . . . , m + l − 1, fm+l
+ 1
+                                                                                       m+l + 1, satisfy the
+conditions for one row prolongation (see Section 5.1.1). Thus, there exists a matrix pencil b(λ) ∈
+F[λ]1×(n+m+l) such that
+            
+        A(λ)
+                                                                                              (58)
+        b(λ)
+282                               M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304
+
+
+has β̃1 | · · · |β̃n+1 as homogeneous invariant factors and g1 , . . . , gm+l−1 as column minimal in-
+dices.
+     Now, let p1 < · · · < pl−1 be l − 1 indices from {1, . . . , m + l − 1}, such that gpi = g̃h̃i − 1,
+i = 1, . . . , l − 1. Then from (49), (53), (55) and (54) together with (51), the numbers {ν1l ⩾ · · · ⩾
+  l } := (g ⩾ · · · ⩾ g
+                           m+l−1 ) \ (gp1 , . . . , gpl−1 ), i.e. νi = ν̄i , i = 1, . . . , m, and the numbers f1 ⩾
+νm                                                                 l                                             l
+             1
+· · · ⩾ fm+l−1 defined as the numbers ν̄1 , . . . , ν̄m , g̃h̃1 , . . . , g̃h̃l−1 in nonincreasing order, i.e. fi =
+           l                                                                                                     l
+
+g̃i , i = 1, . . . , m + l − 1, satisfy the conditions for the l − 1 rows completion of (58) to (28).
+Hence, by induction hypothesis, there exists a matrix pencil X(λ) ∈ F[λ](l−1)×(n+m+l) such that
+the matrix pencil
+         ⎡         ⎤
+           A(λ)
+         ⎣ b(λ) ⎦
+          X(λ)
+has d1 , . . . , dm as column minimal indices and γ̃1 | · · · |γ̃n+l as homogeneous invariant factors.
+Thus, the matrix pencil
+                         
+                     b(λ)
+      B(λ) =                ,
+                    X(λ)
+has the wanted properties, which finishes the proof in this case.
+• Suppose that hi =    / ki for some i = 1, . . . , l. Now, the idea is to “choose artificially” fh1 , . . . , fhl
+instead of fj1 , . . . , fjl as distinguished elements, and then to apply the result from the previous
+                                         
+case. More precisely, let c1 , . . . , cm+l be such that
+        ch i := fhi − 1,            i = 1, . . . , l,
+and
+        ci := fi+j −1 ,           hj −1 + j − 1 < i < hj + j − 1,                 j = 1, . . . , l,   h0 = 0.
+      Now, let
+                        
+        {ν1 ⩾ · · · ⩾ νm                      
+                          } := (c1 , . . . , cm+l ) \ (ch 1 , . . . , ch l ),
+                       
+and let f1 ⩾ · · · ⩾ fm+l                                , c + 1, . . . , c + 1 in nonincreasing order.
+                           be the numbers ν1 , . . . , νm    h1              hl
+   Hence,
+         νi = fi+j −1 ,            hj −1 + j − 1 < i < hj + j − 1,                j = 1, . . . , l,   h0 = 0,   (59)
+         fi = fi ,          i = 1, . . . , m + l,                                                               (60)
+
+and so, hi = min{j |dj −i+1 < fj } = hi , i = 1, . . . , l. By definition of hi , i = 1, . . . , l, the con-
+ditions (30)–(33), and since (59) and (60) are valid, such defined νi ’s and fi ’s satisfy the following
+conditions:
+         di ⩾ νi ,          i = 1, . . . , m,                                                                   (61)
+         γ̃i |α̃i |γ̃i+l ,      i = 1, . . . , n,                                                                (62)
+          hq            hq −q
+                        
+                fi −             di ⩽ d(π̃l ) − d(π̃l−q ),        q = 1, . . . , l, where                       (63)
+         i=1             i=1
+                  
+                  n+q
+         π̃q =           lcm(α̃j −q , γ̃j ),        q = 0, . . . , l,
+                  j =1
+                            M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304                          283
+
+
+        
+        m             
+                      n+l               
+                                        m+l          
+                                                     n
+               di +         d(γ̃i ) =         fi +         d(α̃i ).                                                  (64)
+         i=1          i=1               i=1          i=1
+
+   Denote by I the set of all indices i ∈ {1, . . . , l} for which there exists j ∈ {1, . . . , l}, such
+that ki = hj , and denote by J the set of the corresponding indices j . Consider the sets I =
+{1, . . . , l} \ I and J = {1, . . . , l} \ J . Let I = {i1 , . . . , il  } and J = {j1 , . . . , jl  }, where l  is the
+number of the elements of the sets I , i.e. J , and i1 < · · · < il  and j1 < · · · < jl  . Note that
+kiq ⩽ hjq , q ∈ {1, . . . , l  }.
+   Let  = ni=1 d(αi ). Put l  λ’s on the positions (n + q, n + kjq ), q = 1, . . . , l  , and l  units on
+the positions (n + q, n + hjq ), q = 1, . . . , l  , and all other elements of these l  rows of (28), we de-
+fine to be zero. Denote the pencil formed by A(λ) and these l  rows by A (λ). Consider the subpencil
+                                                                                                  hj
+H (λ), formed by the first n rows of the pencil A (λ) except the rows  + i=1         q
+                                                                                         ci , q = 1, . . . , l  ,
+                                       
+and by the rows n + q, q = 1, . . . , l . This pencil has α̃1 | · · · |α̃n as homogeneous invariant factors
+                    
+and c1 ⩾ · · · ⩾ cm+l  as column minimal indices.
+   If we choose the l indices h1 , . . . , hl , among {1, . . . , m + l}, then with respect to these
+indices, the corresponding sets for c1 ⩾ · · · ⩾ cm+l    , are ν1 ⩾ · · · ⩾ νl and f1 ⩾ · · · ⩾ fm+l  .
+
+Since they satisfy the conditions (61)–(64), by the previous paragraph there exists a pencil
+E(λ) ∈ F[λ]l×(n+m+l) , such that the pencil
+                       
+                  H (λ)
+       G(λ) =
+                   E(λ)
+has γ̃1 | · · · |γ̃n+l as homogeneous invariant factors and d1 ⩾ · · · ⩾ dm as column minimal indices.
+                                                                                                  hj
+   By row permutations, we put the first l  rows of E(λ) to be the rows  + i=1
+                                                                               q
+                                                                                 ci , q = 1, . . . , l  ,
+of G(λ). Without loss of generality, such obtained pencil will also be denoted by G(λ).
+   Now, perform the following strict equivalent operations on G(λ): add the (n + q)th row to
+               hj                                                                 hj
+the ( + i=1  q
+                 ci )th one, q = 1, . . . , l  , and add the ( + i=1
+                                                                     q
+                                                                       ci )th column multiplied by −1
+                                         
+to the (n + kiq )th one, q = 1, . . . , l . By doing this, we have obtained units at the positions ( +
+   hjq                                                                hjq                                    
+   i=1 ci , n + hjq ) and also at the positions ( +                  i=1 ci − 1, n + kiq ), q = 1, . . . , l . Denote the
+                                                                
+subpencil formed by the first n rows of the resulting pencil by A(λ). By using the first set of units
+                                                                          hjq                             
+as pivots we can make all other entries of the ( +                       i=1 ci )th row, q = 1, . . . , l , equal to zero
+                                                     hj                 hjq                       
+except the λ’s at the positions ( + i=1
+                                       q
+                                         ci ,  +                       i=1 ci ), q = 1, . . . , l , without affecting the
+                    
+remaining rows of A(λ).
+   Now, by Lemma 3, by strictly equivalent operations we can make zeros instead of units at the
+                       hj
+positions ( + i=1   q
+                        ci − 1, n + kiq ), q = 1, . . . , l  (the second set of units from the above).
+   Hence, the subpencil formed by the first n rows of the resulting pencil is A(λ), while the
+resulting pencil is strictly equivalent to G(λ), and thus has γ̃1 | · · · |γ̃n+l as homogeneous invariant
+factors and d1 ⩾ · · · ⩾ dm as column minimal indices. This concludes our proof. 
+
+5.2. Case ρ̄ > ρ
+
+    Now consider the case ρ̄ > ρ. Put ρ̄ − ρ λ’s in the first ρ̄ − ρ rows of B(λ) such that
+they are under the free columns of the blocks corresponding to the column minimal indices:
+cjl , . . . , cjl−ρ̄+ρ+1 . Furthermore, put ρ̄ − ρ units in the first ρ̄ − ρ rows of the matrix B(λ) under
+the remaining zero columns of the matrix A(λ) (all in different columns). This is possible, since
+284                              M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304
+
+ρ̄ ⩽ m. Finally, all other elements in the first ρ̄ − ρ rows of the matrix B(λ), we define to be
+zeros. Denote the matrix pencil formed by such defined ρ̄ − ρ rows by A(λ).
+   Let n̄ := n + ρ̄ − ρ and l¯ := l − ρ̄ + ρ. Now consider the matrix pencil
+             
+         A(λ)                    ¯
+                ∈ F[λ]n̄×(n̄+m+l) .                                                         (65)
+         A(λ)
+                                                                               
+   Let α̃1 | · · · |α̃n̄ be homogeneous invariant factors and c1 ⩾ · · · ⩾ cm+ l¯
+                                                                                     be column minimal
+indices of (65).
+   Then, from the definition of A(λ), we have
+        α̃i = α̃i−ρ̄+ρ ,          i = 1, . . . , n̄,
+                   
+and c1 ⩾ · · · ⩾ cl+
+                   ¯ ρ̄ are the numbers s1 , . . . , sρ̄ , cj1 , . . . , cjl¯ in nonincreasing order, while
+                          
+         ¯ ρ̄+1 = · · · = cm+l¯ = 0.
+        cl+
+
+     Let q1 , . . . , ql¯ be l¯ distinct indices given by qi = ji , i = 1, . . . , l.     ¯ Moreover, define the numbers
+                by {ν  ⩾ · · · ⩾ ν  } := (c ⩾ · · · ⩾ c
+ν1 , . . . , νm          1              m       1                m+l¯
+                                                                      ) \ (c j1 , . . . , cjl¯ ), and the numbers f1 , . . . ,
+         as the numbers s1 , . . . , sρ̄ , cj1 + 1, . . . , cjl¯+1 in nonincreasing order, while fl+       
+fm+l                                                                                                        ¯ ρ̄+1 = · · · =
+ 
+fm+l = 0.
+   Then we have
+        νi = si ,       i = 1, . . . , ρ̄,
+and
+         {i|νi > 0} = {i|si > 0} = ρ̄.
+      Also,
+        fi = fi ,        i = 1, . . . , m + l.
+   From (i)–(v), we obtain that the following is valid:
+
+         di ⩾ νi , i = 1, . . . , ρ̄,
+         γ̃i |α̃i |γ̃i+l¯, i = 1, . . . , n̄,
+          h             hj −j
+         j
+                         
+               fi −             di ⩽ d(π̃l¯ ) − d(π̃l−j
+                                                      
+                                                      ¯ ),
+                                                                                      ¯ where
+                                                                       j = 1, . . . , l,
+         i=1             i=1
+         hj = min{i|di−j +1 < fi },                              ¯ and
+                                                    j = 1, . . . , l,
+                  
+                  n̄+j
+         π̃j =                
+                         lcm(α̃i−j , γ̃i ),                      ¯
+                                                  j = 0, . . . , l,
+                  i=1
+
+         
+         m+l             
+                         n̄                 
+                                            m            n̄+l¯
+                                                         
+               fi +           d(α̃i ) =         di +           d(γ̃i ).
+         i=1             i=1                i=1          i=1
+
+   Finally, since the number of nonzero νi ’s is equal to ρ̄, by the result from Section 5.1, there
+                                  ¯        ¯
+exists a matrix pencil B(λ) ∈ F[λ]l×(m+n̄+l) such that
+                       M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304          285
+
+      ⎡     ⎤
+       A(λ)
+      ⎣A(λ)⎦
+          B(λ)
+has γ̃1 | · · · |γ̃n+l as homogeneous invariant factors and d1 ⩾ · · · ⩾ dm as column minimal indices.
+Hence the matrix pencil
+                           
+                       A(λ)
+       B(λ) =
+                       B(λ)
+has the wanted properties, which finishes the proof.           
+
+6. Matrix pencils without column minimal indices
+
+  In this subsection, we consider Problem 1 in the case when both matrix pencils A(λ) and
+M(λ) do not have column minimal indices. By applying Lemma 4, A(λ) will be considered in its
+Kronecker canonical form given by
+             ⎡                                          ⎤
+               λI − N
+             ⎢            R1                            ⎥
+             ⎢                                          ⎥
+             ⎢                 ..                       ⎥
+             ⎢                    .                     ⎥
+             ⎢                                          ⎥
+             ⎢                       R                  ⎥
+             ⎢                         r                ⎥
+             ⎢                            B             ⎥
+             ⎢                              1           ⎥
+             ⎢                                 .        ⎥
+     A(λ) = ⎢                                    ..     ⎥,                             (66)
+             ⎢                                          ⎥
+             ⎢                                          ⎥
+                                                     Bk ⎥
+             ⎢
+             ⎢            q                             ⎥
+             ⎢              1                           ⎥
+             ⎢                 ..                       ⎥
+             ⎢                    .                     ⎥
+             ⎢                                          ⎥
+             ⎣                       qr                 ⎦
+
+
+where nonmarked entries are equal to zero (for details of notation see (2)). Note that in (66), we
+do not have blocks corresponding to column minimal indices and all its columns are nonzero,
+while the number of zero rows is equal to p − r.
+
+Theorem 4. Let A(λ) ∈ F[λ](n+p)×n be a matrix pencil whose Kronecker invariants are α̃1 | · · · |α̃n
+and r1 ⩾ · · · ⩾ rr > rr+1 = · · · = rp = 0 as homogeneous invariant factors and row minimal
+                                                                p
+indices, respectively, n = rank A(λ) = ni=1 d(α̃i ) + i=1 ri . Let γ̃1 | · · · |γ̃n be monic homo-
+geneous polynomials. Let r̄1 ⩾ · · · ⩾ r̄r̄ > r̄r̄+1 = · · · = r̄p = 0 be nonnegative integers. There
+exists a matrix pencil B(λ) ∈ F[λ]l×n such that the matrix pencil
+             
+         A(λ)
+                ∈ F[λ](n+p+l)×n                                                                   (67)
+         B(λ)
+has γ̃1 | · · · |γ̃n and r̄1 ⩾ · · · ⩾ r̄p as homogeneous invariant factors and row minimal indices,
+respectively, and such that these form the complete set of its Kronecker invariants, if and only if
+the following conditions are valid
+
+(i) r ⩽ r̄ ⩽ r + l,
+(ii) γ̃i |α̃i |γ̃i+r̄−r , i = 1, . . . , n,
+286                               M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304
+
+(iii) r̄i+r̄−r ⩽ ri ,             i = 1, . . . , r,
+        vj              vj −j
+                                     
+                                       n                     
+                                                             n
+(iv)            r̄i −           ri ⩽         d(α̃i ) −             d(lcm(γ̃i , α̃i−j ))
+         i=1             i=1           i=1                   i=1
+         for all j = 1, . . . , r̄ − r, where
+         vj = min{i|ri−j +1 < r̄i }, j = 1, . . . , r̄ − r,
+                                              
+        
+        p            
+                     n                    
+                                          p                
+                                                           n
+(v)           ri +            d(α̃i ) =            r̄i +         d(γ̃i ) = n.
+        i=1             i=1               i=1              i=1
+
+Proof. Necessity: Like in the proof of necessity of Theorem 3 from the previous section, there
+exists an infinite field F̃ such that F ⊂ F̃. So, by using the same techniques as in [4] (see also [5]
+and [6]), we reduce our problem to the case when A(λ) and (67) do not have infinite elemen-
+tary divisors. Thus, by applying Lemma 2 from [6] (see also [1,14]) we obtain the conditions
+(i)–(v).
+    Sufficiency: The proof of the sufficiency of the conditions is split into two cases. In Section
+6.1, we solve the problem in the case r̄ = r + l, and in Section 6.2, we solve the problem in the
+case r̄ < r + l.
+
+
+6.1. Case r̄ = r + l
+
+      In the case r̄ = r + l, the conditions (i)–(v) become
+
+         γ̃i |α̃i |γ̃i+l ,       i = 1, . . . , n,                                                     (68)
+         r̄i+l ⩽ ri ,           i = 1, . . . , r,                                                      (69)
+           vj            vj −j
+                                      
+                                        n                     
+                                                              n
+                 r̄i −           ri ⩽             d(α̃i ) −          d(lcm(γ̃i , α̃i−j )),             (70)
+          i=1            i=1            i=1                    i=1
+              for all j = 1, . . . , l, where
+         vj = min{i|ri−j +1 < r̄i },                       j = 1, . . . , l,
+          
+          p              
+                         n                   p             
+                                                             n
+                 ri +           d(α̃i ) =            r̄i +         d(γ̃i ) = n.                        (71)
+          i=1            i=1                 i=1             i=1
+
+    Let b1 ⩾ · · · ⩾ bt > bt+1 = · · · = bk = 1 and b̄1 ⩾ · · · ⩾ b̄t¯ > b̄t¯+1 = · · · = b̄k  = 1, be the
+degrees of the infinite elementary divisors of the matrix pencils A(λ) and (67), respectively. Also,
+let α1 | · · · |αn and γ1 | · · · |γn be the (finite) invariant factors of the matrix pencils A(λ) and (67),
+respectively.
+    Then the condition (68) splits into two
+         γi |αi |γi+l ,         i = 1, . . . , n,                                                      (72)
+and
+         b̄i ⩽ bi ⩽ b̄i+l ,            i = 1, . . . , n.                                               (73)
+                           M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304                          287
+
+   From (73), we have
+                              
+             
+             k              
+                            k
+      b=           bi −            b̄i ⩾ 0.
+             i=1             i=1
+   If b = 0, from (73), we have that b̄i = bi , i = 1, . . . , k = k  . Thus, put zeros in B(λ) ∈ F[λ]l×n
+under the blocks B1 , . . . , Bk . In this way, the condition (69) remains the same, while the conditions
+(68), (70) and (71) reduce to
+       γi |αi |γi+l ,        i = 1, . . . , n,
+        vj           vj −j
+                                   
+                                     n                  
+                                                        n
+             r̄i −           ri ⩽          d(αi ) −           d(lcm(γi , αi−j )),           j = 1, . . . , l where
+       i=1           i=1             i=1                i=1
+       vj = min{i|ri−j +1 < r̄i },                 j = 1, . . . , l,
+       
+       p             
+                     n                    p           
+                                                        m
+             ri +           d(αi ) =            r̄i +         d(γi ).
+       i=1           i=1                i=1             i=1
+
+Then, by Lemma 2 from [6], a matrix pencil with α1 | · · · |αn as invariant factors and r1 ⩾ · · · ⩾ rp
+as row minimal indices, can be completed by rows to a matrix pencil with γ1 | · · · |γn as invariant
+factors and r̄1 ⩾ · · · ⩾ r̄p as row minimal indices, as wanted.
+    Thus, from now on, suppose that b > 0.
+    The proof of the sufficiency of (68)–(71) will go by induction on the number of added rows,
+l. In Section 6.1.1, we give the base of the induction and in Section 6.1.2, we give the induction
+step.
+
+6.1.1. Case l = 1
+   Since k − 1 ⩽ k  ⩽ k, b̄k can be equal to zero. If there exists an index i ∈ {1, . . . , k}, such
+that b̄i = bi or b̄i−1 = bi , we put zeros under the block of bi and proceed. Thus, without loss of
+generality, we assume
+      b1 > b̄1 > b2 > b̄2 > · · · > b̄k−1 > bk > b̄k ⩾ 0.                                                            (74)
+                             n                 p                     n             p         
+   Let S(λ) ∈ F[λ]            i=1 d(αi )+       i=1 (ri +1)+b ×         i=1 d(αi )+   i=1 ri +b
+                                                                           be a matrix pencil whose Kro-
+                                                                                               
+necker invariants are α k b̄ +1 | · · · |αn as (finite) invariant factors, b = ki=1 bi − ki=1 b̄i > 0
+                          i=1  i
+as degree of the infinite elementary divisor and r1 ⩾ · · · ⩾ rp as row minimal indices. Consider
+S(λ) in its Kronecker canonical form:
+              ⎡                                                      ⎤
+                λI − N
+              ⎢              R1                                      ⎥
+              ⎢                                                      ⎥
+              ⎢                    ..                                ⎥
+              ⎢                       .                              ⎥
+              ⎢                                                      ⎥
+              ⎢                            R                         ⎥
+              ⎢                              r                       ⎥
+              ⎢                                                      ⎥
+              ⎢                                   C(λb−1 ) eb−1 ⎥
+                                                                b−1
+      S(λ) = ⎢⎢
+                                                                     ⎥ , if b > 1,
+                                                                     ⎥                              (75)
+              ⎢               q1                                     ⎥
+              ⎢                    ..                                ⎥
+              ⎢                       .                              ⎥
+              ⎢                                                      ⎥
+              ⎢                                                      ⎥
+              ⎢                            qr                        ⎥
+              ⎢                                                      ⎥
+              ⎣                                      b−1
+                                                   (e1 )  T          ⎦
+288                             M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304
+
+or
+                   ⎡                                                      ⎤
+                        λI − N
+                ⎢                       R1                             ⎥
+                ⎢                                                      ⎥
+                ⎢                                  ..                  ⎥
+                ⎢                                       .              ⎥
+                ⎢                                                      ⎥
+                ⎢                                            Rr        ⎥
+                ⎢                                                      ⎥
+         S(λ) = ⎢
+                ⎢                                                     1⎥
+                                                                       ⎥,          if b = 1.                       (76)
+                ⎢                       q1                             ⎥
+                ⎢                                                      ⎥
+                ⎢                                  ..                  ⎥
+                ⎢                                       .              ⎥
+                ⎢                                                      ⎥
+                ⎣                                            qr        ⎦
+
+
+In both matrices (75) and (76), nonmarked entries are equal to zero (for details of notation see (2)),
+                                                                                          p
+and the number of zero rows is p − r. Since n = ni=1 d(αi ) + ki=1 bi + i=1 ri , and since
+the polynomials γ k b̄ +1 | · · · |γn and positive integers r̄1 ⩾ · · · ⩾ r̄r̄ satisfy the conditions
+                              i=1 i
+
+         r̄ = r + 1,
+                                        
+                                      
+                                      k
+         γi |αi |γi+1 ,         i=           b̄i + 1, . . . , n,
+                                       i=1
+         r̄i+1 ⩽ ri ,         i = 1, . . . , r,
+         
+         v1              1 −1
+                        v             
+                                       n                            
+                                                                    n
+                r̄i −           ri ⩽          d(αi ) + b −                     d(γi ), where
+          i=1           i=1            i=1                          i=1
+         v1 = min{i|ri < r̄i },
+                                                        
+         
+         p              
+                        n                          
+                                                   p                
+                                                                    n
+                ri +          d(αi ) + b =                  r̄i +          d(γi ),
+          i=1           i=1                        i=1              i=1
+
+                                                                                                            n
+by Theorem 7.2 from [20] (see also [19]), there exists a row s(λ) = s + λ(eθθ )T , θ =                      i=1 d(αi ) +
+  p
+  i=1 ri + b, such that the matrix pencil
+           
+       S(λ)
+       s(λ)
+has γ k b̄ +1 | · · · |γn as invariant factors and r̄1 ⩾ · · · ⩾ r̄r̄ > r̄r̄+1 = · · · = r̄p = 0 as row min-
+       i=1 i
+imal indices.
+   Now, we define B(λ) according to the value of b̄k :
+
+Case 1. b̄k = 0
+
+      In this case, define the row matrix pencil B(λ) as
+         B(λ) = [(−1)k−1 s                                                                     −1 T
+                                                                                                      λ].
+                                                                          b̄            b̄
+                                            (e1b̄1 )T       ···      (e1k−2 )T        (e1k−1     )
+
+Case 2. b̄k > 0
+
+      In this case, define the row matrix pencil B(λ) as
+                       M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304         289
+
+
+       B(λ) = [(−1)k s         (e1b̄1 )T       ···   (e1b̄k )T ].
+
+  In both cases, by successive application of Lemmas 6 and 7 (by (74) the condition to apply
+Lemma 7 is always satisfied), we obtain that the matrix pencil
+           
+       A(λ)
+              ∈ F[λ](n+p+1)×n ,
+       B(λ)
+
+is strictly equivalent to
+       ⎡                                     ⎤
+          S(λ)
+       ⎣ s(λ)              0                 ⎦,
+            0    diag(Bb̄1 , . . . , Bb̄  )
+                                           k
+
+and thus has γ̃1 | · · · |γ̃n as homogeneous invariant factors and r̄1 ⩾ · · · ⩾ r̄p as row minimal
+indices, as wanted.
+
+Example 1. Due to the better understanding of the techniques used in the proof above, we give
+the following, simple, example:
+   Consider the matrix pencil whose Kronecker invariants are b1 = 7, b2 = 5 and b3 = 2 as the
+degrees of its infinite elementary divisors, in its Kronecker canonical form:
+                ⎡                                                           ⎤
+                  λ 1
+                ⎢      λ 1                                                  ⎥
+                ⎢                                                           ⎥
+                ⎢          λ 1                                              ⎥
+                ⎢                                                           ⎥
+                ⎢              λ 1                                          ⎥
+                ⎢                                                           ⎥
+                ⎢                  λ 1                                      ⎥
+                ⎢                                                           ⎥
+                ⎢                       λ 1                                 ⎥
+                ⎢                                                           ⎥
+                ⎢1                                                          ⎥
+      A(λ) = ⎢  ⎢
+                                                                            ⎥,
+                                                                            ⎥
+                ⎢                                 λ 1                       ⎥
+                ⎢                                     λ 1                   ⎥
+                ⎢                                                           ⎥
+                ⎢                                         λ 1               ⎥
+                ⎢                                                           ⎥
+                ⎢                                              λ 1          ⎥
+                ⎢                                                           ⎥
+                ⎢                                 1                         ⎥
+                ⎢                                                           ⎥
+                ⎣                                                     λ 1⎦
+                                                                       1
+
+nonmarked entries are equal to zero.
+  Our aim is to define a row B(λ) such that the pencil
+           
+       A(λ)
+                                                                                                (77)
+       B(λ)
+has r = 4 as a row minimal index, b̄1 = 6 and b̄2 = 4 as the degrees of infinite elementary divisors,
+and such that these form the complete set of its Kronecker invariants.
+   Let
+                                                                           
+      B(λ) = 0 0 0 0 1 0 0 0 0 0 1 0 0 λ .
+   Since 2 = b̄1 + b̄2 − b2 − b3 − 1 ⩾ b̄2 − b3 − 2 = 0, we can apply Lemma 7 on the subpencil
+290                   M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304
+       ⎡                                         ⎤
+         λ   1
+       ⎢     λ    1                             ⎥
+       ⎢                                        ⎥
+       ⎢          λ    1                        ⎥
+       ⎢                                        ⎥
+       ⎢               λ    1                   ⎥
+       ⎢                                        ⎥
+       ⎢                    λ   1               ⎥,                                                  (78)
+       ⎢                                        ⎥
+       ⎢                        λ    1          ⎥
+       ⎢                                        ⎥
+       ⎢1                                       ⎥
+       ⎢                                        ⎥
+       ⎣                                  λ    1⎦
+                            1             1
+
+of (77) formed by the rows 1, . . . , 7, 11, 15 and by the columns 1, . . . , 7, 11, 12. Thus, we make
+a zero instead of a unit at the position (9, 5) in (78), and we obtain −1 at the position (10, 5) in
+the pencil (77).
+   Also, since 3 = b3 + b2 − b̄2 ⩾ b3 = 2, we can apply Lemma 7 on the subpencil
+      ⎡                           ⎤
+         λ 1
+      ⎢      λ 1                  ⎥
+      ⎢                           ⎥
+      ⎢           λ 1             ⎥
+      ⎢                           ⎥
+      ⎢               λ           ⎥,                                                               (79)
+      ⎢                           ⎥
+      ⎢                    λ    1 ⎥
+      ⎢                           ⎥
+      ⎣                     1     ⎦
+                      1         λ
+
+of (77) formed by the rows 8, . . . , 11, 13, 14, 15 and by the columns 8, . . . , 11, 13, 14. Hence,
+we make zero instead of a unit at the position (3, 4) in (79).
+   Thus, the pencil (77) becomes
+      ⎡                                                                ⎤
+         λ 1
+      ⎢     λ 1                                                        ⎥
+      ⎢                                                                ⎥
+      ⎢         λ     1                                                ⎥
+      ⎢                                                                ⎥
+      ⎢               λ    1                                           ⎥
+      ⎢                                                                ⎥
+      ⎢                    λ    1                                      ⎥
+      ⎢                                                                ⎥
+      ⎢                         λ      1                               ⎥
+      ⎢                                                                ⎥
+      ⎢1                                                               ⎥
+      ⎢                                                                ⎥
+      ⎢                                    λ    1                      ⎥.                        (80)
+      ⎢                                                                ⎥
+      ⎢                                         λ   1                  ⎥
+      ⎢                                                                ⎥
+      ⎢                   −1                        λ                  ⎥
+      ⎢                                                                ⎥
+      ⎢                                                 λ 1            ⎥
+      ⎢                                                                ⎥
+      ⎢                                    1                           ⎥
+      ⎢                                                                ⎥
+      ⎢                                                          λ 1⎥
+      ⎢                                                                ⎥
+      ⎣                                                          1     ⎦
+                                                        1            λ
+
+   Now we can proceed. Since, 4 = b1 + b2 + b3 − b̄1 − b̄2 ⩾ b2 + b3 − b̄2 = 3, apply Lemma
+7 on the subpencil of (80) formed by the rows 1, . . . , 5, 8, 9, 10, 12 and the columns 1, . . . , 5, 8,
+9, 10. By doing so, we make a zero instead of a unit at the position (4, 5) in (80), while all other
+entries remain the same. Hence, after permutation of rows and columns, we obtain that the pencil
+(77) is strictly equivalent to
+                              M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304    291
+
+      ⎡                                                                                 ⎤
+          λ     1
+      ⎢         λ       1                                                                ⎥
+      ⎢                                                                                  ⎥
+      ⎢                 λ       1                                                        ⎥
+      ⎢                                                                                  ⎥
+      ⎢                         λ                                                        ⎥
+      ⎢                                                                                  ⎥
+      ⎢1                                                                                 ⎥
+      ⎢                                                                                  ⎥
+      ⎢                               λ       1                                          ⎥
+      ⎢                                                                                  ⎥
+      ⎢                                       λ    1                                     ⎥
+      ⎢                                                                                  ⎥
+      ⎢                                            λ     1                               ⎥,
+      ⎢                                                                                  ⎥
+      ⎢                                                  λ     1                         ⎥
+      ⎢                                                                                  ⎥
+      ⎢                                                        λ        1                ⎥
+      ⎢                                                                                  ⎥
+      ⎢                               1                                                  ⎥
+      ⎢                                                                                  ⎥
+      ⎢                                                                     λ   1        ⎥
+      ⎢                                                                                  ⎥
+      ⎢                                                                         λ   1    ⎥
+      ⎢                                                                                  ⎥
+      ⎣                                                                             λ   1⎦
+                                                                            1
+as wanted.
+
+
+6.1.2. Case l > 1
+   In order to prove the theorem in the case l > 1, we shall use the induction. For that we need
+the result from Lemma 11.
+   Like in Section 5, from the conditions (69)–(71), we can consider that vl = r + l. Indeed, if
+vl < r + l, then from (70) and (71), we would have
+      
+      vl               l −l
+                      v             
+                                     n                 
+                                                       n
+              r̄i ⩽           ri +         d(α̃i ) −         d(γ̃i ),
+      i=1             i=1            i=1               i=1
+
+and thus
+          
+          r+l                  
+                               r
+                r̄i ⩾                  ri .
+      i=vl +1            i=vl −l+1
+
+   From (69) we have
+      ri ⩾ r̄i+l ,            i = 1, . . . , r,
+and so we have
+      ri = r̄i+l ,            i > vl − l.
+Hence, put zeros in B(λ) under the blocks corresponding to rvl −l+1 , . . . , rp . Thus, we can assume
+      vl = r + l.
+   Let
+
+         ψ̃i := γ̃i , i = 1, . . . , n,
+         φ̃i := α̃i−l , i = 1, . . . , n + l,
+         δ̃i := lcm(ψ̃i−1 , φ̃i ),            i = 1, . . . , n.                                   (81)
+292                            M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304
+
+From the condition (68), we have
+      φ̃i |ψ̃i |φ̃i+l ,        i = 1, . . . , n.                                                         (82)
+   Now, the conditions (70) and (71) become
+       vj             vj −j
+                                    
+                                      n                  
+                                                         n
+              r̄i −            ri ⩽         d(φ̃i ) −           d(lcm(ψ̃i , φ̃i+l−j )),                  (83)
+        i=1           i=1             i=1                i=1
+         for all j = 1, . . . , l, where
+       vj = min{i|ri−j +1 < r̄i }, j = 1, . . . , l,
+                                             
+       
+       p              
+                      n                  
+                                         p               
+                                                         n
+              ri +          d(φ̃i ) =            r̄i +         d(ψ̃i ).                                  (84)
+        i=1           i=1                i=1             i=1
+
+     Hence, by (69), (82), (83) and (84), we can apply Lemma 11 for the polynomials ψ̃1 | · · · |ψ̃n ,
+φ̃1 | · · · |φ̃n+l , and for the integers r1 ⩾ · · · ⩾ rp and r̄1 ⩾ · · · ⩾ r̄p . So, there exist nonnegative
+                         
+integers g1 , . . . , gr+l−1  , such that:
+
+       gi ⩾ r̄i ,        i = 1, . . . , r + l − 1,                                                      (85)
+       ri ⩾ g̃i+l−1 ,            i = 1, . . . , r,                                                       (86)
+        ṽj           ṽj −j
+                                    
+                                      n                  
+                                                         n
+              g̃i −            ri ⩽         d(φ̃i ) −           d(lcm(ψ̃i , φ̃i+l−j )),                  (87)
+        i=1            i=1            i=1                 i=1
+          for all j = 1, . . . , l − 1, where
+       ṽj = min{i|ri−j +1 < g̃i }, j = 1, . . . , l − 1,
+        
+       r+l−1              
+                          n                 
+                                            p             
+                                                          n
+                g̃i +           d(δ̃i ) =          ri +          d(φ̃i ),                                (88)
+         i=1              i=1                i=1          i=1
+
+                                                                      
+where by g̃1 ⩾ · · · ⩾ g̃r+l−1 we denoted the integers g1 , . . . , gr+l−1 in nonincreasing order.
+  Let
+      β̃i = lcm(α̃i−l+1 , γ̃i ),             i = 1, . . . , n.
+Hence, we can translate the conditions (87) and (88) into
+       ṽj            ṽj −j
+                                    
+                                      n                  
+                                                         n
+              g̃i −            ri ⩽         d(α̃i ) −           d(lcm(β̃i , α̃i−j )),                    (89)
+        i=1            i=1            i=1                 i=1
+          for all j = 1, . . . , l − 1, where
+       ṽj = min{i|ri−j +1 < g̃i }, j = 1, . . . , l − 1,
+        
+       r+l−1              
+                          n                  
+                                             p            
+                                                          n
+                g̃i +           d(β̃i ) =          ri +          d(α̃i ),                                (90)
+         i=1              i=1                i=1           i=1
+
+respectively. Also, we have
+
+       β̃i |α̃i |β̃i+l−1 , i = 1, . . . , n,                                                             (91)
+       γ̃i |β̃i |γ̃i+1 , i = 1, . . . , n.                                                               (92)
+                     M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304                 293
+
+   Thus, the conditions (86), (89), (90) and (91), allow us to apply induction hypothesis and thus,
+there exists a matrix pencil X(λ) ∈ F[λ](l−1)×n such that
+             
+        A(λ)
+        X(λ)
+has β̃1 | · · · |β̃n as homogeneous invariant factors and g̃1 ⩾ · · · ⩾ g̃r+l−1 as row minimal indices.
+    Moreover, the conditions (71), (85), (90) and (92), allow us to apply the result for one row
+prolongation of the pencil with β̃1 | · · · |β̃n as homogeneous invariant factors and g̃1 ⩾ · · · ⩾
+g̃r+l−1 as row minimal indices to the pencil with γ̃1 | · · · |γ̃n as homogeneous invariant factors and
+r̄1 ⩾ · · · ⩾ r̄p as row minimal indices (see Section 6.1.1). Thus, there exists a row matrix pencil
+b(λ) ∈ F[λ]1×n such that the matrix pencil
+       ⎡           ⎤
+           A(λ)
+       ⎣X(λ)⎦
+           b(λ)
+has γ̃1 | · · · |γ̃n as homogeneous invariant factors and r̄1 ⩾ · · · ⩾ r̄r̄ > r̄r̄+1 = · · · = r̄p = 0 as
+row minimal indices. Finally, let
+                          
+                      X(λ)
+       B(λ) =                .
+                      b(λ)
+   This concludes our proof.
+
+6.2. Case r̄ < r + l
+
+   If r̄ − r < l, by the previous subsection, we can define a matrix B  (λ) ∈ F[λ](r̄−r)×n such that
+the matrix pencil
+               
+          A(λ)
+                                                                                                (93)
+         B  (λ)
+has prescribed Kronecker invariants. Then put
+                
+               B (λ)
+      B(λ) =          ∈ F[λ]l×n .
+                 0
+Obviously, the matrix pencil
+           
+      A(λ)
+       B(λ)
+has the wanted Kronecker invariants. This finishes the proof.           
+
+7. Main result
+
+   In this section we give complete solution to Problem 1, by unifying the results from the previous
+two sections. Since the obtained necessary and sufficient conditions are complicated, for the easier
+reading and due to better understanding of the techniques used in the proof, we first give Theorem
+5, which solves Problem 1 in the case l = 1, i.e., for the one-row completion.
+
+Theorem 5. Let A(λ) ∈ F[λ](n+p)×(n+1+m) be a matrix pencil with α̃1 | · · · · · · |α̃n , r1 ⩾ · · · ⩾
+rr > rr+1 = · · · = rp = 0 and c1 ⩾ · · · ⩾ cc > cc+1 = · · · = cm+1 = 0 as homogeneous invari-
+ant factors, row and column minimal indices, respectively. Here n = rank A(λ) = ni=1 d(α̃i ) +
+294                         M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304
+
+     p             m+1
+     i=1 ri +      i=1 ci . Let γ̃1 | · · · |γ̃n+s be monic homogeneous polynomials, 0 ⩽ s ⩽ 1. Let r̄1 ⩾
+· · · ⩾ r̄r̄ > r̄r̄+1 = · · · = r̄p+1−s = 0 and d1 ⩾ · · · ⩾ dρ̄ > dρ̄+1 = · · · = dm+1−s = 0 be non-
+negative integers. There exists a row matrix pencil B(λ) ∈ F[λ]1×(n+1+m) such that
+                            
+                        A(λ)
+        M(λ) =                 ∈ F[λ](n+p+1)×(n+m+1)                                                                (94)
+                        B(λ)
+has γ̃1 | · · · |γ̃n+s , r̄1 ⩾ · · · ⩾ r̄p+1−s and d1 ⩾ · · · ⩾ dm+1−s , as homogeneous invariant factors,
+row and column minimal indices, respectively, if and only if one of the following groups of
+conditions is valid:
+      (I) (I.1) s = 1,         and there exists j1 ∈ {1, . . . , 1 + m} such that
+         (I.2) ri = r̄i ,i = 1, . . . , p,
+         (I.3) ρ ⩽ ρ̄ ⩽ min{1 + ρ, m},
+         (I.4) di ⩾ si , i = 1, . . . , ρ̄,
+         (I.5) γ̃i |α̃i+ρ−ρ̄ |γ̃i+1+ρ−ρ̄ , i = 1, . . . , n − ρ + ρ̄,
+                  hj             hj −j
+                                
+         (I.6)          fi −             di ⩽ d(π̃ρ+1−ρ̄ ) − d(π̃ρ+1−ρ̄−j ),
+                  i=1            i=1
+                    for all j = 1, . . . , ρ − ρ̄ + 1, where
+                  hj = min{i|di−j +1 < fi }, j = 1, . . . , ρ − ρ̄ + 1, and
+                          
+                          n+j
+                  π̃j =          lcm(α̃i−j , γ̃i+ρ̄−ρ ),           j = 0, . . . , ρ + 1 − ρ̄,
+                          i=1
+                  
+                  p            
+                               n                 
+                                                 m+1               
+                                                                  p+1−s           
+                                                                                  n+s                
+                                                                                                    m+1−s
+         (I.7)          ri +         d(α̃i ) +             fi =           r̄i +         d(γ̃i ) +           di .
+                  i=1          i=1                   i=1           i=1            i=1                i=1
+
+where
+      {ν1 , . . . , νm } := (c1 , . . . , cm+1 ) \ cj1 , ρ := {i|νi > 0},
+and f1 , . . . , fm+l are the numbers ν1 , . . . , νm , cj1 + 1 in nonincreasing order, while s1 , . . . , sρ̄
+are the numbers ν1 , . . . , νρ , and cji + 1, i = 1, . . . , ρ̄ − ρ, in nonincreasing order.
+  (II) (II.1) s = 0,
+       (II.2) di = ci ,            i = 1, . . . , m + 1,
+         (II.3) r ⩽ r̄ ⩽ r + 1,
+         (II.4) γ̃i |α̃i |γ̃i+r̄−r , i = 1, . . . , n,
+         (II.5) r̄i+r̄−r ⩽ ri , i = 1, . . . , r,
+                  vj             vj −j
+                                              
+                                                n                 
+                                                                  n
+         (II.6)          r̄i −           ri ⩽         d(α̃i ) −          d(lcm(γ̃i , α̃i−j )),
+                   i=1            i=1           i=1               i=1
+                  for all j = 1, . . . , r̄ − r, where
+                  vj = min{i|r̄i−j +1 < ri }, j = 1, . . . , r̄ − r,
+                  
+                  p              
+                                 n                   
+                                                     m+1           
+                                                                  p+1−s            
+                                                                                   n+s                
+                                                                                                     m+1−s
+         (II.7)          ri +            d(α̃i ) +         fi =            r̄i +         d(γ̃i ) +           di .
+                   i=1           i=1                 i=1           i=1             i=1                i=1
+                     M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304                295
+
+Proof. Necessity: Let b1 ⩾ · · · ⩾ bt > bt+1 = · · · = bk = 1 be the degrees of infinite elementary
+divisors of A(λ). Let B(λ) be the wanted row matrix pencil. By Lemma 4, consider A(λ) in its
+Kronecker canonical form (2). Because of the form of the blocks of Ci ’s, Bi ’s and Ri ’s from (2),
+we can consider the row B(λ) to be of the following form:
+      [w1     w2     w3         w4 (λ)   w5 (λ)].
+                   n                                                                                m+1
+Here w1 ∈ F1×            is under the block λI − N of the matrix pencil A(λ), w2 ∈ F1× i=1 ci
+                   i=1 d(αi )
+                                                       p
+is under the block C1 ⊕ · · · ⊕ Cc of A(λ), w3 ∈ F1× i=1 ri is under the block R1 ⊕ · · · ⊕ Rr of
+                                                   t
+A(λ), and finally, the matrix pencils w4 (λ) ∈ F1× i=1 bi and w5 (λ) ∈ F[λ]1×(m+1) are under the
+block B1 ⊕ · · · ⊕ Bk and under the last m + 1 columns of A(λ), respectively.
+
+Remark 2. Note that
+      s = rank M(λ) − rank A(λ).
+   Also, if w2 = 0 and w5 (λ) = 0, then rank of (94) coincides with the rank of A(λ). Moreover,
+by Lemma 9, the rank of (94) is equal to rank A(λ) + 1 if and only if w2 =/ 0 or w5 (λ) =
+                                                                                        / 0.
+
+   Thus, we have two possible situations:
+   If w2 = 0 and w5 (λ) = 0, by Remark 2, s = 0. Also, the column minimal indices of A(λ) and
+of (94) coincide, i.e.,
+      di = ci ,    i = 1, . . . , m + 1,
+ρ̄ of them nonzero. Moreover, the problem reduces to the problem solved in Theorem 4. Since
+the conditions (II.3)–(II.7) coincide with the conditions from Theorem 4, we conclude that they
+are necessary, as wanted.
+    If w2 =              / 0, then by applying Lemma 5, we can consider w3 = 0.
+           / 0 or w5 (λ) =
+    Moreover, by Remark 2, the rank of the matrix (94) is equal to rank A(λ) + 1, and hence s = 1
+and p = p . Thus, we have r̄i = ri , i = 1, . . . , p. So, our problem reduces to the problem solved
+by Theorem 3. Since the conditions (I.3)–(I.7) coincide with the condition from Theorem 3, we
+obtain that they are necessary.
+    Sufficiency: By Lemma 4, consider A(λ) is in its Kronecker canonical form (2). We shall use
+the same notation as in the necessity part of the proof, i.e. we consider B(λ) in the following form
+      [w1     w2     w3         w4 (λ)   w5 (λ)],
+for details of notation see the necessity part of the proof.
+     Let the conditions (I) be valid. Then ri = r̄i , i = 1, . . . , p = p  . Thus, we put w3 to be zero.
+Now, the problem reduces to the problem of one-row completion of the matrix pencil with
+α̃1 | · · · |α̃n as homogeneous invariant factors and c1 ⩾ · · · ⩾ cm+1 as column minimal indices
+to the matrix pencil with γ̃1 | · · · |γ̃n+1 as homogeneous invariant factors and d1 ⩾ · · · ⩾ dm as
+column minimal indices. By applying the conditions and by applying Theorem 3, we finish the
+proof.
+     Now suppose that the conditions (II) are satisfied. In this case we have ci = di , i = 1, . . . , m +
+1, ρ̄ of them nonzero. Thus, put w2 = 0 and w5 (λ) = 0. Now our problem reduces to the problem
+of one-row completion of the matrix pencil with α̃1 | · · · |α̃n as homogeneous invariant factors and
+r1 ⩾ · · · ⩾ rp as column minimal indices to the matrix pencil with γ̃1 | · · · |γ̃n as homogeneous
+invariant factors and r̄1 ⩾ · · · ⩾ r̄p+1 as column minimal indices. By the conditions and by
+applying Theorem 4, we finish the proof. 
+296                            M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304
+
+Remark 3. In the course of the proof of the previous theorem, we have obtained that by adding
+one row to the matrix pencil A(λ) of the form (2), either the positions under the blocks Ri ,
+i = 1, . . . , r, we can consider equal to zero, and in that case the row minimal indices are left
+unchanged (ri = r̄i , i = 1, . . . , p = p  ); or the position under the blocks corresponding to column
+minimal indices c1 , . . . , cm+1 are equal to zero and in that case column minimal indices are left
+unchanged (ci = di , i = 1, . . . , m + 1).
+
+   Now we give the complete solution to Problem 1:
+
+Theorem 6. Let A(λ) ∈ F[λ](n+p)×(n+l+m) be a matrix pencil with α̃1 | · · · · · · |α̃n , r1 ⩾ · · · ⩾
+rr > rr+1 = · · · = rp = 0 and c1 ⩾ · · · ⩾ cc > cc+1 = · · · = cl+m = 0 as homogeneous invari-
+ant factors, row and column minimal indices, respectively. Let n = rank A(λ) = ni=1 d(α̃i ) +
+     p           m+l
+     i=1 ri +    i=1 ci . Let γ̃1 | · · · |γ̃n+s be homogeneous monic polynomials. Let r̄1 ⩾ · · · ⩾ r̄r̄ >
+r̄r̄+1 = · · · = r̄p+l−s = 0 and d1 ⩾ · · · ⩾ dρ̄ > dρ̄+1 = · · · = dm+l−s = 0 be nonnegative inte-
+gers. There exists a matrix pencil B(λ) ∈ F[λ]l×(n+l+m) such that
+                         
+                     A(λ)
+        M(λ) =              ∈ F[λ](n+p+l)×(n+m+l)                                                     (95)
+                     B(λ)
+has γ̃1 | · · · |γ̃n+s , r̄1 ⩾ · · · ⩾ r̄p+l−s and d1 ⩾ · · · ⩾ dm+l−s as homogeneous invariant factors,
+row and column minimal indices, respectively, if and only if the following conditions are valid:
+
+(o) 0 ⩽ s ⩽ l,
+       and there exist s distinct integers j1 < · · · < js from {1, . . . , l + m} such that
+(i) ρ ⩽ ρ̄ ⩽ min{s + ρ, m},
+(ii) di ⩾ si ,         i = 1, . . . , ρ̄,
+(iii) r ⩽ r̄ ⩽ r + l − s,
+(iv) r̄i+r̄−r ⩽ ri ,           i = 1, . . . , r,
+(v) γ̃i |α̃i+ρ−ρ̄ |γ̃i+s+r̄−r+ρ−ρ̄ ,               i = 1, . . . , n − ρ + ρ̄,
+        hj             hj −j
+                      
+(vi)          fi −             di ⩽ d(π̃ρ+s−ρ̄ ) − d(π̃ρ+s−ρ̄−j ),               j = 1, . . . , s + ρ − ρ̄, where
+        i=1            i=1
+         hj = min{i|di−j +1 < fi },                  j = 1, . . . , s + ρ − ρ̄,
+                 
+                 n+j
+         π̃j =          lcm(α̃i−j , γ̃i+ρ̄−ρ ),          j = 0, . . . , ρ + s − ρ̄ − 1, and
+                 i=1
+                                
+                                n                 
+                                                  l+m              
+                                                                   ρ̄
+         d(π̃ρ+s−ρ̄ ) =               d(α̃i ) +         ci + s −         di ,
+                                i=1               i=1              i=1
+         vj            vj −j
+                                    
+                                      n                 
+                                                        m+l               
+                                                                         m+l−s          
+                                                                                        n+s
+(vii)          r̄i −           ri ⩽         d(α̃i ) +         ci + s −           di −         d(lcm(γ̃i , α̃i−j −s )),
+         i=1            i=1           i=1               i=1                i=1          i=1
+         for all j = 1, . . . , r̄ − r, where
+         vj = min{i|ri−j +1 < r̄i }, j = 1, . . . , r̄ − r,
+                            M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304                      297
+
+
+          
+          n+s                                 
+                                              n                  
+                                                                 m+l               
+                                                                                  m+l−s
+(viii)          d(lcm(α̃i−s , γ̃i )) ⩽              d(α̃i ) +          ci + s −              di ,
+          i=1                                 i=1                i=1               i=1
+         
+         m+l          
+                      p            
+                                   n                  
+                                                     m+l−s              
+                                                                       p+l−s           
+                                                                                       n+s
+(ix)           fi +         ri +         d(α̃i ) =           di +              r̄i +         d(γ̃i ),
+         i=1          i=1          i=1                 i=1              i=1            i=1
+
+where
+
+         {ν1 ⩾ · · · ⩾ νm+l−s } := (c1 , . . . , cl+m ) \ (cj1 , . . . , cjs ),               ρ := {i|νi > 0},
+
+f1 ⩾ · · · ⩾ fm+l are numbers ν1 , . . . , νm+l−s , cj1 + 1, . . . , cjs + 1 in nonincreasing order, and
+s1 ⩾ · · · ⩾ sρ̄ are numbers ν1 , . . . , νρ , and cjs−i+1 +1 , i = 1, . . . , ρ̄ − ρ, in nonincreasing order.
+
+Proof. Necessity: Since s = rank M(λ) − rank A(λ), we have
+         0 ⩽ s ⩽ l.
+   By Lemma 10, there exist matrix pencils X(λ) ∈ F[λ]s×(n+l+m) and Y (λ) ∈ F[λ](l−s)×(n+l+m) ,
+such that
+                ⎡       ⎤
+                  A(λ)
+      M  (λ) = ⎣X(λ)⎦ ,
+                  Y (λ)
+is strictly equivalent to M(λ), and such that
+                   
+               A(λ)
+       rank             =n+s
+              X(λ)
+                             
+                              A(λ)
+and the matrix pencil X(λ)         has the same row minimal indices as A(λ), and the same column
+minimal indices as M(λ).                                                      
+                                                                              A(λ)
+    Denote by β̃1 | . . . |β̃n+s the homogeneous invariant polynomials of X(λ)     .
+    By applying the results from Theorems 3 and 4, we obtain the following conditions:
+    There exist s distinct integers j1 < · · · < js from {1, . . . , l + m} such that
+
+         ρ ⩽ ρ̄ ⩽ min{s + ρ, m},                                                                                  (96)
+         di ⩾ si ,       i = 1, . . . , ρ̄,                                                                       (97)
+         β̃i |α̃i+ρ−ρ̄ |β̃i+s+ρ−ρ̄ ,          i = 1, . . . , n − ρ + ρ̄,                                          (98)
+          hj            hj −j
+                       
+                                                        
+                fi −            di ⩽ d(π̃ρ+s− ρ̄ ) − d(π̃ρ+s−ρ̄−j ), j = 1, . . . , s + ρ − ρ̄, where             (99)
+          i=1           i=1
+         hj = min{i|di−j +1 < fi },                 j = 1, . . . , s + ρ − ρ̄, and
+                  
+                  n+j
+         π̃j =         lcm(α̃i−j , β̃i+ρ̄−ρ ),         j = 0, . . . , ρ + s − ρ̄,
+                  i=1
+
+          
+          m+l           
+                        n                  
+                                          m+l−s            
+                                                           n+s
+                fi +          d(α̃i ) =             di +         d(β̃i ),                                        (100)
+          i=1           i=1                i=1             i=1
+298                           M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304
+
+where
+      {ν1 ⩾ · · · ⩾ νm+l−s } := (c1 , . . . , cl+m ) \ (cj1 , . . . , cjs ),         ρ := {i|νi > 0},
+f1 ⩾ · · · ⩾ fm+l are the numbers ν1 , . . . , νm+l−s , cj1 + 1, . . . , cjs + 1 in nonincreasing order,
+while s1 ⩾ · · · ⩾ sρ̄ are the numbers ν1 , . . . , νρ , and cjs−i+1 + 1, i = 1, . . . , ρ̄ − ρ, in nonin-
+creasing order, and
+
+        r ⩽ r̄ ⩽ r + l − s,                                                                             (101)
+        r̄i+r̄−r ⩽ ri ,      i = 1, . . . , r,                                                          (102)
+        γ̃i |β̃i |γ̃i+r̄−r , i = 1, . . . , n + s,                                                      (103)
+        vj            vj −j
+                                   
+                                     n+s               
+                                                       n+s
+              r̄i −           ri ⩽         d(β̃i ) −         d(lcm(γ̃i , β̃i−j )),                      (104)
+        i=1           i=1            i=1               i=1
+        for all j = 1, . . . , r̄ − r, where
+        vj = min{i|ri−j +1 < r̄i }, j = 1, . . . , r̄ − r,
+        
+        p             
+                      n+s                
+                                        p+l−s            
+                                                         n+s
+              ri +          d(β̃i ) =            r̄i +         d(γ̃i ).                                 (105)
+        i=1           i=1                  i=1           i=1
+
+   Hence, the conditions (96), (97), (101) and (102) give the conditions (i)–(iv), respectively.
+Also, by unifying the conditions (98) and (103) we obtain the condition (v), and by unifying (100)
+and (105) we obtain (ix).
+   Moreover, from (98) and (103), we have
+      lcm(α̃i−s , γ̃i )|β̃i ,        i = 1, . . . , n + s,                                              (106)
+and from (100) we have
+        
+        n+s                 
+                            n                 
+                                              m+l                 
+                                                                 m+l−s
+              d(β̃i ) =           d(α̃i ) +         ci + s −              di .                          (107)
+        i=1                 i=1               i=1                 i=1
+   Thus, (106), (107), together with (99) give the condition (vi).
+   Analogously, from (104), we have (vii). Finally, from (106) and (107), follows the condition
+(viii).
+   Sufficiency: In order to define a matrix pencil B(λ) such that (95) has prescribed Kronecker
+invariants, we shall split the proof into two steps.
+   First, we shall define a matrix pencil X(λ) ∈ F[λ]s×(n+m+l) such that the row minimal indices
+of
+              
+          A(λ)
+                 ,                                                                         (108)
+         X(λ)
+and of A(λ) coincide (and are equal to r1 ⩾ · · · ⩾ rp ).
+   Furthermore, we shall define a matrix pencil Y (λ) ∈ F[λ](l−s)×(n+m+l) such that the column
+minimal indices of
+      ⎡       ⎤
+        A(λ)
+      ⎣X(λ)⎦                                                                              (109)
+        Y (λ)
+and of (108) coincide (and are equal to d1 ⩾ · · · ⩾ dm+l−s ).
+                             M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304               299
+
+   Finally, we shall define B(λ) as
+             
+       X(λ)
+                .                                                                                          (110)
+        Y (λ)
+  These problems are equivalent to the problem of defining some monic homogeneous polyno-
+mials β̃1 | · · · |β̃n+s such that they satisfy the following conditions:
+  There exist s distinct integers j1 < · · · < js from {1, . . . , m + l}, such that
+
+        β̃i |α̃i+ρ−ρ̄ |β̃i+s+ρ−ρ̄ ,          i = 1, . . . , n − ρ + ρ̄,                                    (111)
+        hj             hj −j
+                      
+                                                        
+              fi −              di ⩽ d(π̃ρ+s− ρ̄ ) − d(π̃ρ+s−ρ̄−j ),                                       (112)
+        i=1            i=1
+           for all j = 1, . . . , s + ρ − ρ̄, where
+        hj = min{i|di−j +1 < fi },        j = 1, . . . , s + ρ − ρ̄, and
+                 
+                 n+j
+        π̃j =         lcm(α̃i−j , β̃i+ρ̄−ρ ),             j = 0, . . . , ρ + s − ρ̄,
+                 i=1
+
+        
+        m+l            
+                       n                     
+                                            m+l−s           
+                                                            n+s
+              fi +             d(α̃i ) =            di +          d(β̃i ),                                 (113)
+        i=1            i=1                   i=1            i=1
+
+        γ̃i |β̃i |γ̃i+r̄−r ,     i = 1, . . . , n + s,                                                     (114)
+         vj           vj −j
+                                    
+                                      n+s               
+                                                        n+s
+              r̄i −            ri ⩽         d(β̃i ) −         d(lcm(γ̃i , β̃i−j )),                        (115)
+        i=1            i=1            i=1               i=1
+          for all j = 1, . . . , r̄ − r, where
+        vj = min{i|ri−j +1 < r̄i }, j = 1, . . . , r̄ − r,
+        
+        p             
+                      n+s                   
+                                           p+l−s           
+                                                           n+s
+              ri +           d(β̃i ) =             r̄i +         d(γ̃i ).                                  (116)
+        i=1            i=1                  i=1            i=1
+
+where
+      {ν1 ⩾ · · · ⩾ νm+l−s } := (c1 , . . . , cl+m ) \ (cj1 , . . . , cjs ),            ρ := {i|νi > 0},
+f1 ⩾ · · · ⩾ fm+l are the numbers ν1 , . . . , νm+l−s , cj1 + 1, . . . , cjs + 1 in nonincreasing order,
+and s1 ⩾ · · · ⩾ sρ̄ are the numbers ν1 , . . . , νρ , and cjs−i+1 + 1, i = 1, . . . , ρ̄ − ρ, in nonincreas-
+ing order.
+   Indeed, by the conditions (i), (ii), (111), (112) and (113), and by Theorem 3, there exists a pencil
+X(λ) ∈ F[λ]s×(n+m+l) such that the pencil (108) has β̃1 | · · · |β̃n+s as homogeneous invariant
+factors, d1 ⩾ · · · ⩾ dm+l−s as column minimal indices and r1 ⩾ · · · ⩾ rp as row minimal indices.
+Moreover, by the conditions (iii), (iv), (114), (115) and (116), and by Theorem 4, there exists a
+pencil Y (λ) ∈ F[λ](l−s)×(n+m+l) such that the pencil (109) has γ̃1 | · · · |γ̃n+s as homogeneous
+invariant factors, d1 ⩾ · · · ⩾ dm+l−s as column minimal indices and r̄1 ⩾ · · · ⩾ r̄p+l−s as row
+minimal indices.
+   The further proof is split into three cases. The most essential case 1 if ρ̄ − ρ < s and r̄ > r,
+case 2 if ρ̄ − ρ = s, and case 3 if r̄ = r.
+300                         M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304
+
+Case ρ̄ − ρ < s and r̄ > r
+  In this case, we define the polynomials β̃1 | · · · |β̃n+s as:
+       β̃i := lcm(α̃i−s , γ̃i ),      i = 1, . . . , n + s − 1,
+and
+       β̃n+s := ψlcm(α̃n , γ̃n+s ),            where ψ is a monic polynomial
+such that
+       
+       n+s                
+                          n                 
+                                            m+l               
+                                                              ρ̄
+              d(β̃i ) =         d(α̃i ) +          ci + s −         di .
+        i=1               i=1                i=1              i=1
+
+  By applying the condition (viii) we conclude that this choice of the polynomials β̃i is possible.
+Now, from the conditions (o)–(ix) we obtain the conditions (111)–(116), as wanted.
+
+Case ρ̄ − ρ = s
+  In this case, by definition of si ’s and by the conditions (ii) and (viii), we have
+       di = fi ,        i = 1, . . . , m + l − s.
+   Thus, define the polynomials β̃1 | · · · |β̃n+s as
+       β̃i := α̃i−s ,      i = 1, . . . , n + s.
+   Such defined polynomials satisfy the conditions (111)–(116), as wanted.
+Case r̄ = r
+  In this case, by the conditions (iv), (viii) and (ix), we have
+       ri = r̄i ,       i = 1, . . . , p + l − s.
+Thus, define the polynomials β̃1 | · · · |β̃n+s as
+       β̃i := γ̃i ,     i = 1, . . . , n + s.
+   Such defined polynomials satisfy the conditions (111)–(116), as wanted.                      
+
+
+8. Corollaries
+
+   First we give a generalization of the result from [27]:
+
+Theorem 7. Let γ̃1 | · · · |γ̃n+l be homogeneous monic polynomials. Let A(λ) ∈ F[λ]n×(n+l) be a
+matrix pencil whose Kronecker invariants are α̃1 | · · · |α̃n as homogeneous invariant factors and
+c1 ⩾ · · · ⩾ cl as column minimal indices. There exists a matrix pencil B(λ) ∈ F[λ]l×(n+l) , such
+that the matrix pencil
+             
+         A(λ)
+                ∈ F[λ](n+l)×(n+l)                                                            (117)
+         B(λ)
+is regular with γ̃1 | · · · |γ̃n+l as homogeneous invariant factors, if and only if
+
+(i) γ̃i |α̃i |γ̃i+l ,    i = 1, . . . , n,                                                          (118)
+(ii) (c1 + 1, . . . , cl + 1) ≺ (d(σ̃l ), . . . , d(σ̃1 )),                                         (119)
+                            M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304      301
+
+where
+                π̃i                   
+                                      i+n
+        σ̃i =       ,         π̃i =          lcm(α̃j −i , γ̃j ),     i = 1, . . . , l.
+              π̃i−1
+                                      j =1
+
+Proof. Since the matrix pencil (117) is regular, then ρ̄ = 0, and so hj = j, j = 1, . . . , l.
+  Thus, the conditions from Theorem 3 are, in this case, equivalent to the following ones:
+
+        γ̃i |α̃i |γ̃i+l ,    i = 1, . . . , n,                                                   (120)
+         
+         j
+                (ci + 1) ⩽ d(π̃l ) − d(π̃l−j )              for all j = 1, . . . , l, where      (121)
+         i=1
+                 
+                 n+j
+        π̃j =            lcm(α̃i−j , γ̃i ),      j = 0, . . . , l,
+                  i=1
+         
+         l                     
+                               n                   
+                                                   n+l
+                (ci + 1) +            d(α̃i ) =          d(γ̃i ).                                (122)
+         i=1                    i=1                i=1
+
+   Finally, the last two conditions are equivalent to the following one
+        (c1 + 1, . . . , cl + 1) ≺ (d(σ̃l ), . . . , d(σ̃1 ))
+where
+                  π̃i                 
+                                      i+n
+        σ̃i =         ,       π̃i =          lcm(α̃j −i , γ̃j ),     i = 1, . . . , l.
+                π̃i−1
+                                      j =1
+This concludes our proof.               
+
+   The following theorem follows straightforward from Theorem 4:
+
+Theorem 8. Let A(λ) ∈ F[λ]n×n be a regular matrix pencil with α̃1 | · · · |α̃n as homogeneous
+invariant factors. Then n = rank A(λ) = ni=1 d(α̃i ). Let γ̃1 | · · · |γ̃n be homogeneous monic
+polynomials. Let r̄1 ⩾ · · · ⩾ r̄r̄ > r̄r̄+1 = · · · = r̄l = 0 be nonnegative integers. There exists a
+matrix pencil B(λ) ∈ F[λ]l×n such that
+            
+        A(λ)
+               ∈ F[λ](n+l)×n                                                                    (123)
+        B(λ)
+has γ̃1 | · · · |γ̃n and r̄1 ⩾ · · · ⩾ r̄l as homogeneous invariant factors and row minimal indices,
+respectively, and such that these form the complete set of its Kronecker invariants, if and only if
+the following conditions are valid
+
+(i) γ̃i |α̃i |γ̃i+r̄ ,     i = 1, . . . , n,
+(ii) (r̄1 , . . . , r̄r̄ ) ≺ (d(σ̃r̄ ), . . . , d(σ̃1 )),
+
+where
+                  π̃i                 
+                                      i+n
+        σ̃i =         ,       π̃i =          lcm(α̃j −i , γ̃j ),     i = 1, . . . , r̄.
+                π̃i−1
+                                      j =1
+302                          M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304
+
+   In fact, the previous result corresponds to row completion of a regular matrix pencil to an
+arbitrary one (and analogously to the column completion of a regular matrix pencil to an arbitrary
+one). Indeed, by a row completion of a regular matrix pencil we always obtain a matrix pencil
+without column minimal indices.
+   Finally, here we give two direct corollaries of Theorems 4 and 6. The proofs of the following
+theorems are straightforward and thus will be omitted:
+
+Theorem 9. Let A(λ) ∈ F[λ](n+p)×(n+m) be a matrix pencil. Let α̃1 | · · · · · · |α̃n , r1 ⩾ · · · ⩾ rr >
+rr+1 = · · · = rp = 0 and c1 ⩾ · · · ⩾ cc > cc+1 = · · · = cm = 0 be homogeneous invariant
+factors, row and column minimal indices, respectively, of A(λ). Let n = rank A(λ) = ni=1 d(α̃i ) +
+   p           m
+   i=1 ri +    i=1 ci . Let r̄1 ⩾ · · · ⩾ r̄r̄ > r̄r̄+1 = · · · = r̄p+l−m = 0 be nonnegative integers. There
+exists a matrix pencil B(λ) ∈ F[λ]l×(n+m) such that
+             
+         A(λ)
+                ∈ F[λ](n+p+l)×(n+m)                                                                  (124)
+         B(λ)
+has r̄1 ⩾ · · · ⩾ r̄p+l−m as row minimal indices, while its homogeneous invariants factors are all
+equal to 1, and such that these form the complete set of its Kronecker invariants, if and only if
+the following conditions are valid:
+
+(i) r ⩽ r̄ ⩽ r + l − m,
+(ii) α̃i = 1, i = 1, . . . , n − r̄ + r,
+(iii) r̄i+r̄−r ⩽ ri ,         i = 1, . . . , r,
+        hj           hj −j
+                                     
+                                       n                       
+                                                               m
+(iv)         r̄i ⩽           ri +                  d(α̃i ) +         (ci + 1),
+       i=1           i=1            i=n−j −m+1                 i=1
+        for all j = 1, . . . , r̄ − r, where
+        hj = min{i|ri−j +1 < r̄i }, j = 1, . . . , r̄ − r,
+       
+       n                 
+                         m                   
+                                             p             
+                                                          p+l−m
+(v)          d(α̃i ) +         (ci + 1) +          ri =              r̄i .
+       i=1               i=1                 i=1           i=1
+
+
+Theorem 10. Let A(λ) ∈ F[λ](n+p)×(n+m) be a matrix pencil. Let α̃1 | · · · · · · |α̃n , r1 ⩾ · · · ⩾
+rr > rr+1 = · · · = rp = 0 and c1 ⩾ · · · ⩾ cc > cc+1 = · · · = cm = 0 be homogeneous invariant
+factors, row and column minimal indices, respectively of A(λ). Let n = rank A(λ) = ni=1 d(α̃i )+
+   p           m
+   i=1 ri +    i=1 ci . Let γ̃1 | · · · |γ̃n+m be monic homogeneous polynomials. Let r̄1 ⩾ · · · ⩾ r̄p be
+nonnegative integers. There exists a matrix pencil B(λ) ∈ F[λ]m×(n+m) such that
+             
+         A(λ)
+                ∈ F[λ](n+p+m)×(n+m)                                                                (125)
+         B(λ)
+has γ̃1 | · · · |γ̃n+m as homogeneous invariant factors and r̄1 ⩾ · · · ⩾ r̄p as row minimal indices,
+such that these form the complete set of its Kronecker invariants, if and only if the following
+conditions are valid
+
+(i) γ̃i |α̃i |γ̃i+m , i = 1, . . . , n,
+(ii) ri = r̄i , i = 1, . . . , p,
+(iii) (c1 + 1, . . . , cm + 1) ≺ (d(σ̃m ), . . . , d(σ̃1 )),
+                         M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304                            303
+
+where
+                 π̃i              
+                                  i+n
+       σ̃i =         ,    π̃i =          lcm(α̃j −i , γ̃j ),   i = 1, . . . , m.
+               π̃i−1
+                                  j =1
+
+    Also, as corollaries of the main result we obtain the results from [2,4] and [5] over an arbitrary
+field. Finally, by transposing the main result, Theorem 6, we assign the Kronecker invariants of
+a matrix pencil obtained by column completion, as well. Moreover, unification of these results
+gives the solution of the general pencil completion problem posed by Loiseau et al. in [13].
+Unfortunately, this solution is an implicit solution given in terms of the existence of an equivalence
+class able to behave as that of an intermediate pencil.
+
+Acknowledgments
+
+  The author is grateful to the referee, for careful reading and many valuable comments that have
+improved the presentation of the results in this paper.
+
+
+References
+
+ [1] I. Baragaña, Controllability and Brunovsky indices of matrix pair completions, preprint.
+ [2] I. Baragaña, Interlacing inequalities for regular pencils,Linear Algebra Appl., 121 (1989) 521–535.
+ [3] I. Baragaña, I. Zaballa, Column completion of a pair of a matrices, Linear and Multilinear Algebra 27 (1990)
+     243–273.
+ [4] I. Cabral, F.C. Silva, Unified theorems on completions of matrix pencils, Linear Algebra Appl. 159 (1991) 43–54.
+ [5] I. Cabral, F.C. Silva, Similarity invariants of completions of submatrices, Linear Algebra Appl. 169 (1992) 151–161.
+ [6] I. Cabral, F.C. Silva, I. Zaballa, Feedback invariants of a pair of matrices with prescribed columns, Linear Algebra
+     Appl. 332–334 (2001) 447–458.
+ [7] M.J. Dieudonné, Sur la réduction canonique des couples de matrices, Bull. Soc. Math. France 74 (1946) 130–146.
+ [8] M. Dodig, Feedback invariants of matrices with prescribed rows, Linear Algebra Appl. 405 (2005) 121–154.
+ [9] W. Fulton, Eigenvalues, invariant factors, highest weights, and Schubert calculus, Bull. Amer. Math. Soc. 37 (3)
+     (2000) 209–249.
+[10] S. Furtado, F.C. Silva, On the characteristic polynomial of matrices with prescribed rows, Linear Algebra Appl. 293
+     (1999) 51–72.
+[11] F.R. Gantmacher, The Theory of Matrices, vol. 2, Chelsea Publishing Company, New York, 1960.
+[12] I. Gohberg, M.A. Kaashoek, F. van Schagen, Eigenvalues of completions of submatrices, Linear and Multilinear
+     Algebra 25 (1989) 55–70.
+[13] J. Loiseau, S. Mondié, I. Zaballa, P. Zagalak, Assigning the Kronecker invariants of a matrix pencil by row or column
+     completion, Linear Algebra Appl. 278 (1998) 327–336.
+[14] S. Mondié, Contribution à l’Étude des Modifications Structurelles des Systèmes Linéares, Ph.D. thesis, Université
+     de Nantes, 1996.
+[15] G.N. de Oliveira, Matrices with prescribed characteristic polynomial and a prescribed III, Monatsh. Math. 75 (1971)
+     441–446.
+[16] G.N. de Oliveira, Matrices with prescribed characteristic polynomial and several prescribed submatrices, Linear and
+     Multilinear Algebra 2 (1975) 357–364.
+[17] G.N. de Oliveira, Matrices with prescribed characteristic polynomial and principal blocks, Proc. Edinburgh Math.
+     Soc. 24 (1981) 203–208.
+[18] G.N. de Oliveira, Matrices with prescribed characteristic polynomial and principal blocks II, Linear Algebra Appl.
+     47 (1982) 35–40.
+[19] A. Roca, Asignación de Invariantes en Sistemas de Control, Ph.D. thesis, Valencia 2003.
+[20] A. Roca, I. Zaballa, Feedback invariants via output injection, Linear Algebra Appl. 385 (2004) 407–442.
+[21] H.H. Rosenbrock, State-Space and Multivariable Theory, Thomas Nelson and Sons, London, 1970.
+304                      M. Dodig / Linear Algebra and its Applications 428 (2008) 259–304
+
+[22] E.M. Sá, Imbeding conditions for λ-matrices, Linear Algebra Appl. 24 (1979) 33–50.
+[23] F.C. Silva, Matrices with prescribed eigenvalues and principal submatrices,Linear Algebra Appl. 92 (1987) 241–250.
+[24] F.C. Silva, Matrices with prescribed eigenvalues and blocks, Linear Algebra Appl. 148 (1991) 59–73.
+[25] R.C. Thompson, Interlacing inequalities for invariant factors, Linear Algebra Appl. 24 (1979) 1–31.
+[26] H.K. Wimmer, Existenzsätze in Theorie der Matrizen und Lineare Kontrolltheorie, Monatsh. Math. 78 (1974)
+     256–263.
+[27] I. Zaballa, Matrices with prescribed rows and invariant factors, Linear Algebra Appl. 87 (1987) 113–146.
+[28] I. Zaballa, Matrices with prescribed invariant factors, Linear Algebra Appl. 27 (1990) 325–343.
+[29] I. Zaballa, Interlacing inequalities and control theory, Linear Algebra Appl. 101 (1988) 9–31.
+

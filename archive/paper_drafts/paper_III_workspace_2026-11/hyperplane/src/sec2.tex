@@ -1,0 +1,123 @@
+\section{Preliminaries and the compressed formulation}
+\label{sec:prelim}
+
+\subsection{Basic notation}
+\label{sec:prelim:notation}
+
+Let $A\in\mathbb R^{n\times n}$, $C\in\mathbb R^{p\times n}$ and $L_0\in\mathbb R^{r_0\times n}$. The
+design matrix is $\mathcal L=[L_0;R]\in\mathbb R^{q\times n}$, assumed to have full row rank, and its
+row space is $V=\row\mathcal L\subseteq\mathbb R^n$. Put
+\begin{equation}
+  \label{eq:K0}
+  K_0=\ker\left[\begin{smallmatrix}C\\ CA\end{smallmatrix}\right],\qquad
+  k=\dim K_0,\qquad
+  \rho=n-k,
+\end{equation}
+where $\rho=\rank[C;CA]$. Fix a basis $N\in\mathbb R^{n\times k}$ of $K_0$; Appendix~\ref{appB}
+describes a normalized
+choice. Here $\rho$ is the rank of the compressed data, whereas the layer index of this paper is $c$;
+the two are different quantities. For a row space $V$ put
+\begin{equation}
+  \label{eq:compressed-data}
+  H=LN,\qquad H_A=LAN,\qquad \omega=\rank H,\qquad c=k-\omega .
+\end{equation}
+The \emph{layer} is $c$. This paper treats only $c=1$, that is, $\omega=k-1$.
+
+\subsection{The compressed criterion}
+\label{sec:prelim:criterion}
+
+The matrix $\mathcal L$ is feasible, that is, it satisfies \eqref{eq:5a} and \eqref{eq:5b}, if and only
+if
+\begin{equation}
+  \label{eq:5ap}
+  \row H_A\subseteq\row H,
+\end{equation}
+\begin{equation}
+  \label{eq:5bp}
+  \rank(\lambda H-H_A)=\omega\qquad\text{for all }\lambda\in\mathbb C .
+\end{equation}
+This equivalence, the identity $\omega=\rank[\mathcal L;CA;C]$, and the reformulation of
+\eqref{eq:5bp} as the absence of a common root of the maximal minors of the pencil are established in
+\cite{companion1}; they are used here and not re-proved. Condition \eqref{eq:5ap} only confines the
+problem to a parameter space. What this paper adds to the criterion is a statement about \emph{which
+points} a generic test covers, which is Lemma~\ref{sec4:lem:fullrank}.
+
+\subsection{Standing assumptions}
+\label{sec:prelim:assumptions}
+
+Throughout the paper:
+\begin{enumerate}[label=(\roman*),leftmargin=*,itemsep=2pt]
+\item the standard Euclidean inner product is used, so restrictions to subspaces are automatically
+nondegenerate;
+\item input matrices are rational;
+\item the design matrix $\mathcal L$ has full row rank, hence $\rank L_0=r_0$; otherwise no admissible
+$\mathcal L$ exists at all, see Proposition~\ref{prop:rankprecheck};
+\item the parameterization requires a basis of $K_0$; if $N'=NT$ with $T\in\operatorname{GL}_k(\mathbb R)$
+is another basis, then $H'=HT$ and $H_A'=H_AT$, so $\lambda H'-H_A'=(\lambda H-H_A)T$. The change is
+\emph{right} multiplication by an invertible matrix, which preserves ranks and hence feasibility.
+\end{enumerate}
+
+\begin{prop}
+  \label{prop:rankprecheck}
+  If $\rank L_0<r_0$, then for every $q$ there is no matrix $\mathcal L=[L_0;R]$ of full row rank, so
+  the instance is infeasible.
+\end{prop}
+
+\begin{proof}
+  Such a matrix would satisfy
+  $q=\rank\mathcal L\le\rank L_0+(q-r_0)<r_0+(q-r_0)=q$, a contradiction.
+\end{proof}
+
+\subsection{Direction and the two functionals}
+\label{sec:prelim:direction}
+
+Let $V$ lie in the hyperplane layer. By \eqref{eq:compressed-data} and $c=1$ one has $\dim(V\cap K_0)=k-1$;
+hence $\ker H$ is a line $\mathbb R v$ with $v\in K_0\setminus\{0\}$, and $V\subseteq U_v^\perp$,
+where
+\begin{equation}
+  \label{eq:Uv}
+  U_v=\operatorname{span}\{v,Av\}.
+\end{equation}
+Denote the two linear functionals on $K_0$ by
+\begin{equation}
+  \label{eq:functionals}
+  \varphi_v(u)=\langle u,v\rangle,\qquad \varphi_{Av}(u)=\langle u,Av\rangle
+  \qquad(u\in K_0).
+\end{equation}
+The inclusion $V\subseteq U_v^\perp$ is equivalent to saying that every $x\in V$ annihilates both $v$
+and $Av$, that is, that $xN$ lies in the common kernel of the two functionals.
+
+\subsection{Quantities used below}
+\label{sec:prelim:quantities}
+
+\begin{equation}
+  \label{eq:compression}
+  \begin{aligned}
+    M&=\pi_{K_0}A|_{K_0},\qquad A_{21}=\pi_{K_0^\perp}A|_{K_0},\\
+    E_\mu&=\ker(M-\mu I),\\
+    E_\mu^0&=E_\mu\cap\ker(L_0N)\cap\ker(L_0AN),
+  \end{aligned}
+\end{equation}
+\begin{equation}
+  \label{eq:fibre-data}
+  \begin{aligned}
+    D_v&=K_0\cap U_v^\perp,\qquad \mathcal Q_v=U_v^\perp/D_v,\\
+    V_0&=\row L_0,\qquad s=q-k+1,\\
+    \delta&=\dim V_0-\dim(V_0\cap K_0),
+  \end{aligned}
+\end{equation}
+together with the rank $r(v)=\dim\mathcal Q_v$ of the fibre. Its two values are computed in
+Section~\ref{sec3}: $r(v)=\rho$ for eigen directions and $r(v)=\rho-1$ for non-eigen
+directions.
+
+\subsection{Parameter space and chart conventions}
+\label{sec:prelim:charts}
+
+The parameter space is taken to be a finite union of \emph{affine charts}: affine charts of projective
+spaces for the direction, affine charts of Grassmannians for the fibre, and -- when
+$\dim E_\mu^0>1$ -- affine charts of the direction base as well, combined with local trivializations of
+the quotient bundle. For a real algebraic eigenvalue $\mu$ these charts are constructed over the number
+field $K=\mathbb Q(\mu)$ equipped with the real embedding that selects $\mu$; their scalar extensions to
+$\mathbb R$ are affine spaces whose real points are Zariski dense. All chart polynomials and
+function-field gcd computations are performed over $K$. This convention is used in
+Section~\ref{sec4} to pass from a generic algebraic point to a realizable real design.

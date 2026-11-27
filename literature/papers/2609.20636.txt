@@ -1,0 +1,935 @@
+COMPLEXITY OF OUTPUT FEEDBACK ST ABILIZA TION
+AMIR ALI AHMADI∗, ABRAAR CHAUDHRY†, IJAY NARANG‡, AND YUKAI TANG∗
+Abstract. We show that unlessP = NP , there cannot be a polynomial-time (or even pseudo-
+polynomial-time) algorithm for output feedback stabilization of a linear dynamical system with a
+linear controller. This settles one of the best-known open problems in control theory. The result
+holds in both continuous and discrete time. We also present a family of stabilizable linear dynamical
+systems for which no polynomial-time algorithm can write down a stabilizing controller in its
+standard representation.
+AI Declaration:On August 2, 2026, the authors realized that ChatGPT 5.6 could produce a
+one-shot proof of NP-hardness of output feedback stabilization. However, this proof and its initial
+variants were long and hard to verify, relied on techniques unfamiliar to us, and offered little intuition.
+We have since worked hand in hand with this tool to simplify the proof, make it more interpretable,
+and base it on tools familiar to most control theorists. This involved proposing plausible proof
+techniques, checking the resulting arguments, and replacing some with our own. The current proof
+gives a reduction directly from 3SAT, making the combinatorial source of the hardness clear. It also
+relies on nothing but basic matrix analysis and linear systems theory. The same general approach
+was applied to all results in this paper and the authors assume responsibility for all content. We
+believe that, given the remarkable pace of AI’s progress in automated theorem proving, an emerging
+role for mathematicians is to teach AI which proofs come closer to being, as Erdős put it, from
+“The Book.”
+1.Introduction
+A real matrix isHurwitzif all its eigenvalues have negative real parts, andSchurif all its
+eigenvalues lie in the open unit disk in the complex plane. For matricesA∈Q N×N,B∈Q N×p, and
+C∈Q q×N, theoutput feedback stabilizationproblem in continuous time (resp. discrete time) asks
+whether there exists someK∈R p×q that makesA +BKC Hurwitz (resp. Schur). This amounts to
+asymptotically stabilizing the linear dynamical system˙x=Ax +Bu, y =Cx, or its discrete-time
+analogue, using a static linear control lawu =Ky that maps the observed outputy of the system to
+the controlu. When the answer to this question is positive, one often also hopes to find a stabilizing
+“feedback gain” matrixK.
+In their 1995 survey, Blondel, Gevers, and Lindquist [1] described output feedback stabilization
+as “the most often mentioned specific open problem” in systems and control theory. WhenC is
+the identity matrix, the problem reduces tostate feedback stabilizationand admits an efficient test
+based on the stabilizability of the pair(A,B )[ 8], or a polynomial-size semidefinite programming
+formulation that can also recover the feedback gain matrix [3, Section 7.2.1]. In general, one can
+reformulate the output feedback stabilization problem as the problem of testing the feasibility of a
+system of polynomial inequalities1 and hence the problem admits exponential-time algorithms; see,
+∗Princeton University, Department of Operations Research and Financial Engineering. Partially supported by
+the Princeton AI Lab Seed Grant, the Princeton SEAS Innovation Grant, and a Research Gift in Mathematical
+Optimization. Email:aaa@princeton.edu,yt3846@princeton.edu.
+†University of Colorado Boulder, Department of Applied Math. Email:abraar.chaudhry@colorado.edu.
+‡Georgia Institute of Technology, School of Computer Science. Email:inarang3@gatech.edu.
+1Such a formulation can be obtained, for example, by jointly searching for the controller matrixK and a quadratic
+Lyapunov function for the closed-loop system, and then invoking Sylvester’s criterion for matrix positive definiteness.
+1
+arXiv:2609.20636v2  [math.OC]  20 Sep 2026
+2 AMIR ALI AHMADI, ABRAAR CHAUDHRY, IJAY NARANG, AND YUKAI TANG
+e.g., [6]. However, no polynomial-time algorithm is known for output feedback stabilization. Blondel
+and Tsitsiklis [2] proved NP-hardness when the entries ofK are constrained to prescribed intervals,
+but left the complexity of the unrestricted problem open. Chaudhry [4] proved strong NP-hardness
+of the more general problem of deciding whether an affine subspace of matrices contains a Hurwitz
+(or a Schur) matrix. The affine subspaces in that reduction, however, do not have the specific form
+{A+BKC:K∈R p×q}required by output feedback stabilization.
+In this paper, we prove that output feedback stabilization is strongly NP-hard. This result is
+established both in continuous time (Section 2) and in discrete time (Section 3). The implication
+of this result is that unless P=NP, there is no polynomial-time (or even pseudo-polynomial-time)
+algorithm for output feedback stabilization. In Section 4, we also establish, in both continuous and
+discrete time, a representation obstruction to polynomial-time algorithms that is independent of any
+complexity-theoretic assumption: even when the system is stabilizable, a polynomial-time algorithm
+cannot, in general, write down a stabilizing feedback gain matrix in its natural representation.
+All results in this paper are in the Turing model of computation, where the input consists
+of the rational entries of the matricesA,B,C . Each entry is represented asa/b, where a is a
+signed integer andb is a positive integer. The input sizeL is the total number of bits needed to
+encode these numerators and denominators in binary, including the signs. LetM be the maximum
+of|a| and b over all entries ofA,B,C . An algorithm is polynomial-time if its running time is
+bounded by a polynomial inL, and pseudo-polynomial-time if its running time is bounded by a
+polynomial inM and the dimensions ofA,B,C . In particular, every polynomial-time algorithm is
+also pseudo-polynomial-time, though the converse is not true as pseudo-polynomial time algorithms
+can take exponential time inL. Our reductions establish NP-hardness even whenM is polynomially
+bounded in the matrix dimensions. On these instances, any pseudo-polynomial-time bound becomes
+a polynomial-time bound. Thus, our NP-hardness results are in the strong sense and rule out
+pseudo-polynomial-time algorithms unlessP = NP. See [5] for more details on these notions.
+2.Continuous-time hardness
+In this section, we prove the following theorem.
+Theorem 1.Given matrices A∈Z N×N, B∈Z N×p, andC∈Z 1×N, deciding if there exists a
+matrixK∈R p×1 that makesA+BKCHurwitz is strongly NP-hard.
+Note that the theorem establishes strong NP-hardness of output feedback stabilization even when
+the system has a single output. The result trivially extends to systems with any fixed number of
+outputs. The proof will further show the claim even whenC is binary, every entry ofA has absolute
+value at most256N2, and every entry ofBhas absolute value at most6.
+We shall prove Theorem 1 by a reduction from 3SAT which proceeds in two steps. In Step 1, which
+is the easier step, we reduce 3SAT to the problem of simultaneous output feedback stabilization
+of multiple dynamical systems by a common controller. In Step 2, which is more involved, we
+reduce these simultaneous-stabilization instances to output feedback stabilization of a single system.
+Since the closed-loop system in all cases is linear, its asymptotic stability can be shown with
+algebraic certificates involving quadratic forms. This allows Step 2 to be carried out by relating
+the algebraic certificates for the two stabilization problems. We note that (weak) NP-hardness
+of simultaneous output feedback stabilization, corresponding to Step 1, was previously shown
+by Blondel and Tsitsiklis [2]. However, we need a different reduction both to establish strong
+NP-hardness, and because the construction used in Step 2 is closely intertwined with the particular
+simultaneous-stabilization instances produced in Step 1.
+To present the proof formally, we begin by introducing some notation and establishing three
+technical lemmas.2 For a real matrixE, we write its transpose asET and sym(E) = (E +ET)/2.
+2The proof of Step 1 relies on Lemma 2 and Lemma 4, while Step 2 relies on Lemma 2, Lemma 3, and Lemma 4.
+OUTPUT FEEDBACK STABILIZATION 3
+We denote its kernel bykerE. We use the notationDiag for block-diagonal assembly,In for the
+n×n identity matrix, and∥·∥ for the Euclidean vector norm or its induced matrix norm. For a
+symmetric matrixX, the notationX⪰ 0(resp. X≻ 0) denotes thatX is positive semidefinite
+(resp. positive definite); i.e., it has nonnegative (resp. positive) eigenvalues. For a positive integer
+m, denote the set{1,...,m} by[m]. For a complex numberz∈C , we denote its real part byRe(z)
+and its conjugate by¯z. For a complex matrixE, we denote its conjugate transpose byE∗. We use
+the notation∨for Boolean OR and∧for Boolean AND.
+Let us defineJ =
+(0 0
+1 0
+)
+,e =
+(0
+1
+)
+. For real scalarsλi and vectorsui,vi∈R 2, i = 1,...,m , we
+defineD i =λ iI2−J, and
+D= Diag(D 1,...,D m)∈R 2m×2m, u=
+
+
+u1
+...
+um
+
+, v=
+
+
+v1
+...
+vm
+
+, c=
+
+
+e
+...
+e
+
+∈R 2m.(1)
+DefineM∈R 4m×4m andC∈R 1×4m by
+M=
+(
+0−D−uc T
+I2m −vcT
+)
+,C= (0 1×2m,c T).(2)
+The next lemma relates Hurwitzness ofM to Lyapunov-type positive (semi)definiteness conditions
+on symmetric matrices.
+Lemma 2(Hurwitzness of M).Let m be a positive integer,λ1,...,λ m be distinct real scalars,
+and ui,vi∈R 2 for i∈ [m]. LetD,u,v,c be defined as in(1) andM be defined as in(2). Suppose
+X=X T∈R 2m×2m satisfies
+Xc=v, DX−XD T =vu T−uv T.(3)
+Then the following claims hold:
+(i)IfMis Hurwitz, thenX⪰0.
+(ii)IfX≻0andsym(D+uc T)≻0, thenMis Hurwitz.
+Proof. We first prove (i). LetE =D +ucT,Y =DX +uvT, andC be defined as in(2). The second
+equation in(3) givesY =Y T =EX. DefineH = Diag(Y,X ). Since Xc =v, we observe that the
+matrix
+MH+HM T =−2(HC T)(HC T)T
+is negative semidefinite. Suppose for the sake of contradiction thatX̸⪰ 0. SinceX is a principal
+submatrix ofH, this impliesH̸⪰ 0. Hence, there existsz∈R 4m and ϵ> 0such that zTHz≤−ϵ .
+Along the trajectory of the system˙x=MTx starting atx(0) =z, the quadratic formV (x) =xTHx
+satisfies
+˙V(x) =x T(MH+HM T)x.
+SinceMH +HM T is negative semidefinite, ˙V (x)≤ 0. Thus,V (x(t))≤V (z)≤−ϵ for allt≥ 0.
+However,MT being Hurwitz implies thatx(t)→ 0, henceV (x(t))→ 0, which is a contradiction,
+proving (i).
+We now prove (ii). AssumeX≻0andE+E T≻0. We first show thatY≻0. Suppose for the
+sake of contradiction thatY̸≻ 0. SinceY is symmetric, there is a nonzero vectorz and λ≤ 0such
+thatYz=λz. Then, we have
+zT(X−1Y+YX −1)z= 2λz TX−1z≤0.
+This is a contradiction since
+X−1Y+YX −1 =E T +E≻0.
+4 AMIR ALI AHMADI, ABRAAR CHAUDHRY, IJAY NARANG, AND YUKAI TANG
+Therefore, Y≻ 0and H = Diag(Y,X )≻ 0. We next show that no eigenvector ofM lies in kerC.
+Suppose, for contradiction, that there existµ∈Cand(p T,q T)T∈C 4m\{0}such that
+M
+(p
+q
+)
+=µ
+(p
+q
+)
+,C
+(p
+q
+)
+=c Tq= 0.
+By the definition ofM, the eigenvalue equation gives
+−(D+uc T)q=µp, p−vc Tq=µq.
+Since cTq = 0, these equations reduce to−Dq = µp, p = µq, and hence Dq =−µ2q. Write
+q= (q T1,...,q Tm)T, withqj∈C 2. SinceD j =λ jI2−J, for everyj∈[m]we have
+(
+(λj +µ 2)I2−J)qj = 0.(4)
+If λj +µ2̸= 0, then sinceJ is nilpotent, we haveqj = 0. Since theλj are distinct, at most one
+block qi can be nonzero. Since(pT,q T)T̸= 0, there isi∈ [m]such that λi +µ2 = 0. Equation (4)
+givesJq i = 0. AskerJ= span{e}, we haveq i =αefor someα∈C. But then
+0 =c Tq=e Tqi =α,
+so qi = 0. Thusq = 0, and consequentlyp =µq = 0, contradicting(pT,q T)T̸= 0. Therefore every
+nonzero eigenvectorzofMsatisfiesCz̸= 0.
+Letµ∈C be an eigenvalue ofM, and letz∈C 4m\{ 0} be a corresponding eigenvector. We have
+−2z∗CTCz=z ∗MTH−1z+z ∗H−1Mz= ¯µz∗H−1z+µz ∗H−1z= 2 Re(µ)z ∗H−1z,
+where the second equality follows from the fact thatM is real. SinceH≻ 0, this givesRe(µ)≤ 0.
+If Re(µ) = 0, thenCz = 0, contradicting the fact we showed above. Hence every eigenvalue ofM
+has strictly negative real part, soMis Hurwitz.
+□
+Fora= (a 1,a 2)T∈R 2 andb= (b 1,b 2)T∈R 2, let us define the matrix
+G(a,b) =
+(a2b1−a 1b2 b1
+b1 b2
+)
+.(5)
+To motivate this definition, we note that
+G(a,b)e=b,−JG(a,b) +G(a,b)J T =ba T−ab T.
+Thus,Gi =G(ui,vi)is a natural solution of(3) whenm = 1. We now develop a ‘gluing’ lemma that
+allows one to combine these one-block solutions to obtain a matrixX satisfying the linear equations
+in (3). When parametersλi are sufficiently separated,X remains close to the block diagonal matrix
+G0 = Diag(G1,...,G m)while preserving the(1,1)entry of each diagonal block exactly.
+Lemma 3(Gluing lemma).Let m be a positive integer,λ1,...,λ m be distinct real scalars, and
+ui,vi∈R 2 for i∈ [m]. Let D,u,v,c be defined as in(1) andG(·,· )be defined as in (5). Let
+Gi = G(ui,vi)for i∈ [m], and G0 = Diag(G1,...,G m) ∈R 2m×2m. Then, there is a unique
+symmetric matrixX∈R 2m×2m satisfying (3). Furthermore, writingX = (Xij)mi,j=1 in2 × 2blocks,
+we have
+(Xii)11 = (Gi)11 (1≤i≤m).(6)
+Letβ= max 1≤i≤m{∥ui∥,∥v i∥}. In addition, ifh≥4and|λ i−λj|≥hfor alli̸=j,then
+∥X−G 0∥≤ 12mβ2h .(7)
+OUTPUT FEEDBACK STABILIZATION 5
+Proof. We first construct a solutionX to (3). Assume i,j∈ [m]and i̸ = j. By expanding the
+second equation in (3), the(i,j)blockX ij in a solutionXsatisfies
+(λi−λj)Xij−JX ij +XijJ T =v iuTj−uivTj.(8)
+The existence and uniqueness of the solution of equation(8) follow from the distinctness ofλi and
+λj by, e.g., [9, p.231]. Taking the transpose of(8) and exchangingi and j shows, by uniqueness,
+thatX ji =X Tij.
+It remains to construct the diagonal submatricesXii. Forz = (z1,z 2)T∈R 2, letΓ(z) =( 0z 1z1 z2).
+Set
+ti =
+∑
+1≤j≤m
+j̸=i
+Xije∈R 2.(9)
+We show thatXii = Gi− Γ(ti)will satisfy (3) and (6). For (6), sinceΓ( z)11 = 0, we have
+(Xii)11 = (Gi)11. For (3), direct calculation gives
+Gie=v i,−JG i +GiJ T =v iuTi −uivTi ,Γ(z)e=z, JΓ(z) = Γ(z)J T.
+Thus (9) enforcesXc=vandD iXii−XiiDTi =v iuTi −uivTi .
+Next we show that the symmetric solutionX is unique. SupposeX and ~X are two symmetric
+solutions of (3), and letZ=X− ~X. Then, we have
+Zc= 0, DZ−ZD T = 0.
+The off-diagonal blocks are zero by the uniqueness of the solution to(8). Fori∈ [m], write the(i,i )
+block ofZasZ ii =
+(a b
+b d
+)
+.ThenDZ−ZD T = 0gives
+−JZii +ZiiJ T =
+( 0a
+−a0
+)
+= 0,
+so a = 0. Since all off-diagonal blocks ofZ are0, Zc = 0gives Ziie = 0, and henceb =d = 0. Thus,
+Zii = 0for everyi, soZ= 0.
+We now show that the matrixX constructed above satisfies the bound in(7). Applying the
+triangle inequality to (8) yields
+|λi−λj|∥Xij∥≤∥JX ij∥+∥X ijJ T∥+∥v iuTj∥+∥u ivTj∥.
+By definition ofβ and the fact that∥J∥ = 1, we have(|λi−λj|− 2)∥Xij∥≤ 2β2. Since|λi−λj|≥h
+andh≥4, we have|λ i−λj|−2≥h/2, and hence
+∥Xij∥≤ 4β2h .(10)
+We then bound∥X−G 0∥. First we have
+∥Xii−Gi∥=∥Γ(t i)∥≤2∥t i∥≤2
+∑
+j̸=i
+∥Xij∥.
+SinceX−G 0 is symmetric, for any block vectorz= (zT1,...,z Tm)T we have
+⏐⏐zT (X−G 0)z⏐⏐≤∑
+i
+∥Xii−Gi∥∥zi∥2 +∑
+i̸=j
+∥Xij∥∥zi∥∥zj∥
+≤
+∑
+i
+
+∥Xii−Gi∥+ ∑
+j̸=i
+∥Xij∥
+
+∥zi∥2,
+6 AMIR ALI AHMADI, ABRAAR CHAUDHRY, IJAY NARANG, AND YUKAI TANG
+where the second inequality uses2∥zi∥∥zj∥≤∥z i∥2 +∥zj∥2 and∥Xij∥ =∥Xji∥. Therefore, using
+(10), we have
+∥X−G 0∥≤maxi
+
+∥Xii−Gi∥+ ∑
+j̸=i
+∥Xij∥
+
+≤3 max
+i
+∑
+j̸=i
+∥Xij∥≤ 12mβ2h .
+□
+The proof of Theorem 1 relies on a reduction from3SAT, which is well known to be (strongly)
+NP-hard [5]. Recall that3SATis a Boolean satisfiability problem in which a formula is expressed
+as a conjunction of clauses, where each clause consists of exactly three literals connected by logical
+OR. The problem asks whether there exists an assignment of truth values to the variables that
+makes every clause true. More specifically, a3SATinstanceΦwith variables x1,...,x n and clauses
+C1,...,C r is of the form
+Φ =C 1∧...∧C r,
+the jth clause readsCj =ℓj1∨ℓj2∨ℓj3. Here, eachℓjk is called a literal and is either one of the
+variablesx1,...,x n or the negation of one of these variables. We identify a Boolean assignment
+with a vectorx = (x1,...,x n)∈{± 1}n, wherexi = 1means that the ith variable is True and
+xi =−1means that it is False. The3SATinstanceΦis satisfiable if there exists such an assignment
+x∈{±1} n under which every clauseCj evaluates to True.
+For each clause indexj∈[r]and literal positionk∈[3], define
+yjk(x) =
+{
+xi, ℓ jk =x i,
+−xi, ℓ jk =¬x i.
+Then, yjk(x) = 1when ℓjk is true under the Boolean assignmentx, and equals−1when ℓjk is false.
+Forj∈[r], we define an affine clause score function
+Lj(x) = 3 + 2
+3∑
+k=1
+yjk(x).
+On Boolean inputs,Lj(x) =−3when clause Cj is false, whileLj(x)∈{ 1, 5, 9} when it is true. For
+i∈[n], we define
+ui(x) =
+( 1
+3xi
+)
+, vi(x) =
+(xi
+1
+)
+, Gi(x) =G(u i(x),vi(x)) =
+(3x2i−1x i
+xi 1
+)
+.(11)
+Forj∈[r], we define
+un+j(x) =
+(−1
+0
+)
+, vn+j(x) =
+( 0
+Lj(x)
+)
+, Gn+j(x) =G(u n+j(x),vn+j(x)) =L j(x)I2.(12)
+Lemma 4(Properties of the3SATencoding).SupposeΦis a3SATinstance with n variables
+and r clauses. Fori∈ [n +r]and x∈R n, letui(x),vi(x)and Gi(x)be defined as in(11) and (12).
+Then, the following statements hold:
+(i)Ifxis a satisfying Boolean assignment toΦ, then
+Gi(x)⪰ 13I2 (1≤i≤n+r)andmax 1≤i≤n+r{∥ui(x)∥,∥v i(x)∥}≤9.
+(ii)If there existsx∈R n such that(Gk(x))11≥0for allk∈[n+r], thenΦis satisfiable.
+Proof. If x is a satisfying Boolean assignment forΦ, then for i∈ [n], xi = ±1. Therefore,
+Gi(x) =
+(2 1
+1 1
+)
+or
+( 2−1
+−1 1
+)
+, both satisfyGi(x)⪰ 13I2. We have∥ui(x)∥ =√10and∥vi(x)∥ =√2.
+Since x is a satisfying Boolean assignment forΦ, for allj∈ [r]we have Lj(x)∈{ 1, 5, 9}. Thus,
+Gn+j(x)⪰ 13I2,∥u n+j(x)∥= 1and∥v n+j(x)∥≤9. This proves claim (i).
+OUTPUT FEEDBACK STABILIZATION 7
+If there existsx∈R n such that(Gk(x))11≥ 0for all k∈ [n +r], then3x2i− 1≥ 0for all i∈ [n]
+and Lj(x)≥ 0for all j∈ [r]. For every indexi∈ [n], we constructˆxi = sign(xi). We prove thatˆx
+is a satisfying assignment toΦ. Suppose for the sake of contradiction that there existsj∈ [r]such
+thatL j(ˆx)<0. Then we know that
+yj1(ˆx) =−1, yj2(ˆx) =−1, yj3(ˆx) =−1.
+Since|x i|≥ 1√3 > 12, we have
+yj1(x)<− 12, yj2(x)<− 12, yj3(x)<− 12.
+However, this givesLj(x)< 0, a contradiction. Thus,Lj(ˆx)≥ 0for all j∈ [r], which indicates that
+Cj is true under assignmentˆxfor allj∈[r]. This proves claim (ii).□
+We can now present the proof of Theorem 1.
+Proof of Theorem 1. Step 1: Simultaneous stabilization.
+Given a3SATinstanceΦwith n variables andr clauses, letm = n +r. Define h = 4096m
+and fori∈ [m]define λi =ih and Di =λiI2−J . Letui(x),vi(x), andGi(x)be defined as in(11)
+and (12). For notational convenience, fori∈ [n +r], we writeui(x) =u0i +Uix andvi(x) =v0i +Vix,
+where u0i,v 0i∈Z 2 and Ui,Vi∈Z 2×n. Construct the following matricesAi∈Z 4×4, Bi∈Z 4×n, and
+Ci∈Z 1×4:
+Ai =
+(
+0−D i−u 0ieT
+I2 −v0ieT
+)
+, B i =−
+(
+Ui
+Vi
+)
+, C i = (0,0,0,1).
+We show thatΦis satisfiable if and only if there existsx∈R n such thatAi +BixCi is Hurwitz for
+alli∈[m].
+IfΦis satisfiable, let x be a satisfying Boolean assignment. We claim that for everyi∈ [m],
+Ai +BixCi is Hurwitz. A straightforward calculation gives
+Ai +BixCi =
+(
+0−D i−ui(x)eT
+I2 −vi(x)eT
+)
+.
+One can verify that for alli∈ [m], we haveDiGi(x)−Gi(x)DTi =vi(x)ui(x)T−ui(x)vi(x)T and
+Gi(x)e=v i(x). By Lemma 4(i),Gi(x)≻0and∥u i(x)∥≤9for alli. Therefore,
+sym(Di +ui(x)eT)⪰(λ i−1−∥u i(x)∥)I2⪰(h−10)I 2≻0.
+Then, applying Lemma 2(ii) withλi,ui(x),vi(x),Di shows thatAi +BixCi is Hurwitz for alli∈ [m].
+Conversely, suppose there existsx∈R n such thatAi+BixCi is Hurwitz for alli∈ [m]. Lemma 2(i)
+shows thatGi(x)⪰ 0for all i∈ [m]. Thus,( Gi(x))11≥ 0for all i∈ [m]. Applying Lemma 4(ii)
+gives thatΦis satisfiable.
+Step 2: Output feedback stabilization.
+We now combine the matrices constructed in Step 1 in a specific way to conclude the proof. We
+define
+u0 :=
+
+
+u01
+...
+u0m
+
+∈Z 2m, v0 :=
+
+
+v01
+...
+v0m
+
+∈Z 2m, U:=
+
+
+U1
+...
+Um
+
+∈Z 2m×n, V:=
+
+
+V1
+...
+Vm
+
+∈Z 2m×n.
+For everyx∈R n, we writeu(x) =u0 +Ux and v(x) =v0 +Vx. LetD,c be defined as in(1) and
+N= 4m. Let
+A=
+(
+0−D−u 0cT
+I2m −v0cT
+)
+∈Z N×N, B=−
+(
+U
+V
+)
+∈Z N×n, C= (0 1×2m,c T)∈Z 1×N.
+8 AMIR ALI AHMADI, ABRAAR CHAUDHRY, IJAY NARANG, AND YUKAI TANG
+We claim thatΦis satisfiable if and only if there existsx∈R n such thatA +BxC is Hurwitz. By
+definition ofA,B, andC, we have
+A+BxC=
+(
+0−D−u(x)c T
+I2m −v(x)cT
+)
+.
+By Lemma 3, for everyx∈Rn there is a symmetric matrixX(x)∈R 2m×2m such that
+X(x)c=v(x), DX(x)−X(x)D T =v(x)u(x) T−u(x)v(x) T.
+WritingX(x) = (X ij(x))mi,j=1 in2×2blocks, we have(X ii(x))11 = (Gi(x))11 for alli∈[m].
+SupposeΦhas a satisfying Boolean assignmentx∈{±1} n. By Lemma 4(i),
+max
+1≤i≤m
+{∥ui(x)∥,∥v i(x)∥}≤9.
+Together with Lemma 3, we have
+∥X(x)−Diag(G 1(x),...,G m(x))∥≤ 12m·9 24096m = 2431024 < 14.(13)
+Also from Lemma 4(i), we know thatGi(x)⪰ 13I2 for alli∈ [m]. Combining with (13) gives
+X(x)≻ 112I2m. Since∥u(x)∥≤9 √mand∥c∥= √m, we have
+sym(D+u(x)c T)⪰(h−1−∥u(x)∥∥c∥)I 2m⪰(h−1−9m)I 2m≻0.
+Then applying Lemma 2(ii) gives thatA+BxCis Hurwitz.
+Conversely, suppose there isx∈R n such thatA +BxC is Hurwitz. By Lemma 2 (i),X(x)
+is positive semidefinite. By Lemma 3, fori∈ [m],( Gi(x))11 = (Xii(x))11≥ 0. Then applying
+Lemma 4(ii) shows thatΦis satisfiable.
+The reduction uses only polynomially bounded integers. We haveN= 4m,h= 4096m, and
+λi =ih≤λ m = 4096m2 = 256N 2.
+It is not difficult to verify that every entry ofA has absolute value at most256N 2, every entry of
+B has absolute value at most6, andC is binary. Therefore, the reduction can be carried out in
+polynomial time and establishes strong NP-hardness.
+□
+3.Discrete-time hardness
+In this section, we establish the discrete-time analogue of Theorem 1:
+Theorem 5.Given matrices Ad∈Q N×N, Bd∈Q N×p, andCd∈Q 1×N, deciding if there exists a
+matrixK d∈R p×1 that makesAd +BdKdCd Schur is strongly NP-hard.
+The key idea of the proof (modulo an important technical problem that we shall address) is to
+utilize the Cayley transform to transfer the reduction from the continuous-time case. The Cayley
+transform is a well-studied tool for passing between continuous and discrete time systems (see, for
+example, [7]).
+Lemma 6(Cayley transform).Let A∈Q N×N, B∈Q N×p, andC∈Q 1×N. Chooseβ∈Q , β >0,
+such thatβI−Ais invertible, and denote
+Rβ = (βI−A) −1, ˆD=CR βB, A d = 2βRβ−I, B d =R βB, C d = 2βCRβ.(14)
+OUTPUT FEEDBACK STABILIZATION 9
+LetKc denote the set of all stabilizing controllers of the system(A,B,C )in continuous time and
+Kd the set of all stabilizing controllers of the system(Ad,Bd,Cd)in discrete time. Then, the maps
+Ψc→d :K c−→Kd,Ψ c→d(Kc) = Kc
+1− ˆDKc,(15)
+Ψd→c :K d−→Kc,Ψ d→c(Kd) = Kd
+1 + ˆDKd,
+are inverses and provide a bijection between the rational stabilizing controllers.
+Proof. LetFc =A+BKcC andFd =Ad+BdKdCd. SinceRβ = (βI−A )−1, the matrix determinant
+lemma gives that
+det(βI−F c) = det(βI−A−BK cC) = det(βI−A)
+(
+1−CR βBKc
+)
+= det(βI−A)(1− ˆDKc),
+det(I+F d) = det
+(
+2βRβ + 2βRβBKdCRβ
+)
+= (2β)N det(Rβ) det(I+BK dCRβ)
+= (2β)N det(Rβ)(1 + ˆDKd).
+If Kc is stabilizing, thenFc must be Hurwitz and thusβ is not an eigenvalue ofFc. Therefore,
+1− ˆDKc̸= 0. Similarly, ifKd is stabilizing, thenFd must be Schur, and thus−1is not an eigenvalue
+of Fd, implying that1 + ˆDKd̸= 0. It follows thatΨc→d is well-defined for everyKc∈K c, and that
+Ψd→c is well-defined for everyKd∈K d. We next show that these mappings preserve stability.
+We begin by applying the Sherman–Morrison formula toβI−F c = (βI−A )−BKcC. This gives
+us
+(βI−F c)−1 =R β + RβBKcCRβ
+1− ˆDKc .(16)
+Using (14), (15), and (16), we have
+Fd = 2βRβ−I+ 2βR βBKdCRβ
+= 2β
+(
+Rβ + RβBKcCRβ
+1− ˆDKc
+)
+−I
+= 2β(βI−F c)−1−I= (βI−F c)−1(βI+F c).(17)
+Now, lets be an eigenvalue ofFc. Equation (17) shows that the corresponding eigenvalue ofFd
+is z = β+sβ−s. Conversely, every eigenvalue ofFd is obtained from an eigenvalue ofFc through this
+transformation. Since
+|β+s| 2−|β−s| 2 = 4βRes,
+andβ >0, we have
+|z|<1⇐⇒ |β+s|<|β−s| ⇐⇒Res<0.
+Therefore, Fc is Hurwitz if and only ifFd is Schur. The fact thatΨc→d andΨ d→c are mutual
+inverses follows from a direct computation:
+Ψd→c(Ψc→d(Kc)) =
+Kc
+1− ˆDKc
+1 + ˆD Kc
+1− ˆDKc
+= Kc
+1− ˆDKc + ˆDKc =K c,
+Ψc→d(Ψd→c(Kd)) =
+Kd
+1 + ˆDKd
+1− ˆD Kd
+1 + ˆDKd
+= Kd
+1 + ˆDKd− ˆDKd =K d.
+10 AMIR ALI AHMADI, ABRAAR CHAUDHRY, IJAY NARANG, AND YUKAI TANG
+Finally, sinceβI−A is an invertible rational matrix,Rβ = (βI−A )−1 and ˆD =CRβB are rational.
+Hence (15) shows that both transformations preserve rationality.□
+Since the inverse of a rational matrix can be computed in polynomial time, a direct application
+of Lemma 6 givesNP-hardness of output feedback stabilization in discrete time. For strongNP-
+hardness, however, this is not enough: the numerators and denominators of the transformed data
+must themselves have polynomial magnitude and this can in general fail under matrix inversion.
+To control these denominators, we modify the parametersλi used in the continuous-time con-
+struction. With the original choiceλi =ih, the blocks(I2 +Di)−1 involve denominators(1 +ih)2
+that vary withi. Although each denominator has polynomial magnitude, this alone does not control
+the denominators arising when the blocks are combined through the Sherman–Morrison formula.
+We therefore choose parameters for which these blocks share a common denominator of polynomial
+magnitude.
+Proof of Theorem 5.LetΦbe a 3SATformula withn≥ 1variables andr clauses, and setm =n+r
+andN = 4m. Letui(x)and vi(x)be the vectors defined in(11) and (12). Collect these vectors into
+u(x) =
+
+
+u1(x)
+...
+um(x)
+
+ =u 0 +Ux, v(x) =
+
+
+v1(x)
+...
+vm(x)
+
+ =v 0 +Vx.
+Here u0,v 0∈Z 2m contain the constant terms, andU,V∈Z 2m×n contain the coefficients ofx.
+By (11) and (12), every entry ofu0,v 0 has absolute value at most3, and every entry ofU,V has
+absolute value at most6.
+We modify the choice of parameters by setting
+h= 4096m, τ=hm(m+ 1), λ i = τi−1 (1≤i≤m).(18)
+As in (1), define
+Di =λ iI2−J, D= Diag(D 1,...,D m), c= (e T,...,e T)T,
+and
+A0 =
+( 0−D
+I2m 0
+)
+, b 0 =
+(
+u0
+v0
+)
+, B=−
+(
+U
+V
+)
+, C= (0 1×2m,c T), A=A 0−b 0C.
+For everyx∈R n, the matrixA+BxChas the formMin (2), withu=u(x)andv=v(x). Note
+that the parameters in (18) satisfy
+λi≥ τm−1 =h(m+ 1)−1≥h(i∈[m]),
+and, fori̸=j,
+|λi−λj|=τ |i−j|ij ≥ τm2 =h m+ 1m >h.
+One can verify that the argument in Step 2 of the proof of Theorem 1, using Lemmas 2, 3, and 4,
+applies wheneverλi≥h and|λi−λj|≥h for i̸ =j, withh = 4096m. Since the parameters in(18)
+satisfy these conditions, we obtain
+Φis satisfiable⇐⇒ ∃x∈R n :A+BxCis Hurwitz.
+Passing to discrete time.We now apply Lemma 6 withβ = 1. First, we verify thatIN−A is
+invertible. To invertIN−A 0, define
+Si := (I2 +Di)−1 (1≤i≤m), S:= Diag(S 1,...,S m) = (I2m +D)−1.
+OUTPUT FEEDBACK STABILIZATION 11
+Since1 +λ i =τ/iandJ 2 = 0, we have thatSi =(τiI2−J)−1 = iτI2 + i2τ 2J.Moreover,
+IN−A 0 =
+( I2m D
+−I2m I2m
+)
+,
+so block inversion gives
+R0 := (IN−A 0)−1 =
+(S S−I 2m
+S S
+)
+.
+The blocksu 0i,v 0i of the constant vectorsu0,v 0, obtained from (11) and (12), satisfy
+u0i =
+(
+ϵi
+0
+)
+, v 0i =
+(
+0
+ηi
+)
+,(ϵ i,ηi) =
+{
+(1,1),1≤i≤n,
+(−1,3), n<i≤m.
+The expressions forR0,C, andb 0 give
+CR0 = (cTS,c TS), τ 2eTSi = (i2,iτ).
+Consequently,
+1 +CR 0b0 = 1 + 1τ 2 m∑i=1(τηii+ϵ ii2).
+For convenience, define
+T:=τ 2R0, q:=τ 2 +
+m∑
+i=1
+(
+τηii+ϵ ii2).
+Becauseη i≥1,ϵ i≥−1, andτ >m≥i, we have thatτη ii+ϵ ii2≥i(τ−i)>0and therefore
+1 +CR 0b0 = qτ 2 >0.
+Thus the Sherman–Morrison denominator is nonzero. SinceIN−A = (IN−A 0) +b0C, the matrix
+IN−Ais invertible and the Sherman–Morrison formula gives
+R:= (I N−A)−1 =R 0− R0b0CR01 +CR 0b0.
+Set
+P:=qT−Tb 0CT,∆ :=τ 2q.
+ThenR=P/∆. The transformed matrices in Lemma 6, withβ= 1, are
+Ad = 2R−I N = 2P−∆I N∆ , B d =RB= PB∆ , C d = 2CR= 2CP∆ .
+Identifying the continuous-time controllerKc withx, Lemma 6 now gives
+Φis satisfiable⇐⇒ ∃K c∈R n×1 :A+BK cCis Hurwitz
+⇐⇒ ∃Kd∈R n×1 :A d +BdKdCd is Schur.
+It remains to show that these matrices can be computed in polynomial time and that the numerators
+and denominators of their entries have polynomial magnitude. We establish these properties using
+the explicit expressions above.
+We begin by observing that sinceτ and J are integral, our expression forSi gives thatτ 2Si =
+iτI 2 +i2J∈Z 2×2. It then follows from the block expression forR0 that T∈Z N×N. Moreover,
+since τ, ϵi, andηi are integers,q is a positive integer. ThusP∈Z N×N and∆ ∈Z >0. Now, since
+τ = O(m3), and N = 4m, we haveτ = NO(1). The expressions for Si and R0, together with
+τ >m≥i, give
+|Tab|≤τ 2 (1≤a,b≤N).
+12 AMIR ALI AHMADI, ABRAAR CHAUDHRY, IJAY NARANG, AND YUKAI TANG
+In addition, since every entry ofb0 has absolute value at most3andC is binary, we have the bounds
+|(Tb 0)a|≤3Nτ 2,|(CT) b|≤Nτ 2, and
+0<q≤(1 + 3N 2)τ 2.
+Consequently, the absolute value of each entry of the integer matrixP =qT−Tb 0CT is at most
+(1 + 6N2)τ 4 =N O(1) while the common positive denominator∆is at most(1 + 3N2)τ 4 =N O(1).
+Finally, every entry ofPB and CP is a sum of at mostN products. The entries ofB have
+absolute value at most6, whileC is binary. Therefore the integer numerators2P− ∆IN, PB, and
+2CP ofAd, Bd, andCd, respectively, and their common positive denominator∆all have magnitude
+NO(1). The displayed expressions can be evaluated using polynomially many arithmetic operations
+on integers of polynomially bounded magnitude. Reducing the resulting fractions to lowest terms
+also takes polynomial time and cannot increase these bounds. Hence the reduction is computable in
+polynomial time and establishes strongNP-hardness.□
+4.Representation obstruction to polynomial-time algorithms
+Independently of assumptions such as P̸=NP, we show in this section that there is a representation
+obstruction to polynomial-time controller synthesis: on some stabilizable instances, a polynomial-
+time algorithm cannot even write down a stabilizing controller (i.e. feedback gain matrix) in its
+standard representation. This also suggests that output feedback stabilization may not belong
+to NP, unless there is a polynomial-size certificate of stabilizability that avoids writing down the
+controller. The problem belongs toPSPACE, however, since we have already argued that it can be
+reduced to testing the feasibility of polynomial inequalities.
+Observe that if a stabilizing controller exists, a rational one exists as well. Indeed, the sets of
+Hurwitz and Schur matrices are open, andK↦→A +BKC is continuous. The set of stabilizing
+controllers is therefore open, and every nonempty open subset of a finite-dimensional real vector
+space contains a rational point.
+We encode an entrya/b of A,B, or C, witha∈Z , b∈Z >0, and gcd(|a|,b ) = 1, by writing its
+signed numerator and positive denominator explicitly in binary. Dense matrix encoding lists every
+entry, including zeros, which have constant encoding size. We use the elementary observation that
+fora,b∈Z >0 andε>0,
+0< ab≤ε=⇒b≥ε −1.(19)
+This follows froma≥ 1and applies after cancellation, so reducing a fraction cannot invalidate this
+denominator bound.
+Theorem 7(Continuous time).For each integer n≥ 1, matricesA∈Z N×N, B∈Z N×p, and a
+nonzero row vectorC∈{0,1} 1×N can be constructed in time polynomial inn, with
+N= 8n+ 12, p=n+ 2,max
+i,j
+|Aij|≤256N 2,max i,j |Bij|≤6,
+such that a rational stabilizing controller exists, but every (real) controllerK = (x0,...,x n,t )T for
+whichA+BKCis Hurwitz satisfies
+0<x n≤ 23 2−2n.(20)
+In particular, writingxn =a/b in lowest terms withb> 0for any rational stabilizing controller gives
+b≥ 32 22n; this denominator alone requires more than2n bits, while the input size isLn = Θ(n2).
+OUTPUT FEEDBACK STABILIZATION 13
+Proof. First, we describe the construction. We will use the definition ofJ,e, andG from Section 2.
+Setm= 2n+ 3,h= 4096m, and, fori= 1,...,m, setλ i =ihandD i =λ iI2−J. Let
+D= Diag(D 1,...,D m)∈R 2m×2m, c=
+
+
+e
+...
+e
+
+∈R 2m.
+ForK= (x 0,...,x n,t) T∈R p, defineui(K),vi(K)∈R 2 by
+uj+1 =
+(
+−xj
+0
+)
+, v j+1 =
+(
+0
+t
+)
+(0≤j≤n),
+un+2+j =
+(
+xj+1
+3xj
+)
+, v n+2+j =
+(
+xj
+t
+)
+(0≤j <n),
+um−1 =
+(
+6x0−t
+0
+)
+, v m−1 =
+(
+0
+t
+)
+,
+um =
+(
+t−2
+0
+)
+, v m =
+(
+0
+t
+)
+.
+(21)
+Stack these vectors vertically asu =u0 +UK and v =VK , withu0∈Z 2m and U,V∈Z 2m×p. The
+only nonzero entry ofu0 is its(2m−1)st entry, equal to−2. Define
+A=
+( 0−D−u 0cT
+I2m 0
+)
+, B=−
+(
+U
+V
+)
+, C= (0 1×2m,c T).
+Thus M = A +BKC is the matrixM of Lemma 2. For each controller, letGi =G(ui,vi)and
+G0 = Diag(G1,...,G m). Lemma 3 gives a symmetricX∈R 2m×2m satisfying
+Xc=v, DX−XD T =vu T−uv T,(X ii)11 = (Gi)11 (1≤i≤m).(22)
+Second, we show that any stabilizing controller must satisfy(20). SupposeM is Hurwitz. Since
+trM =−mt, we havet> 0, and by Lemma 2(i),X⪰ 0. ThusX has nonnegative diagonal entries.
+From(22), we then have that(Gi)11 = (Xii)11≥ 0for i = 1,...,m . Substituting the vectors in(21)
+gives
+txj≥0 (0≤j≤n),3x 2j−txj+1≥0 (0≤j <n), t(t−6x 0)≥0, t(2−t)≥0.
+Sincet>0, these inequalities yield:
+xj≥0 (0≤j≤n), x 0≤t/6,0<t≤2,
+txj+1≤3x 2j (0≤j <n). (23)
+Moreover, we claim thatxn> 0. Otherwise, the first coordinates ofun+1 andvn+1 vanish. In the
+state partition(ξ,η )∈R 2m×R 2m, the coordinates with indexq = 2n + 1then form the autonomous
+subsystem
+˙ξq =−λ n+1ηq,˙η q =ξ q.
+Its positive-definite energyξ2q +λn+1η2q is conserved, contradicting convergence of every trajectory
+to zero.
+Set zj = 3xj/t for j = 0,...,n . Equations (23) give0 ≤z 0≤ 1/2and0 ≤z j+1≤z 2j. Induction
+therefore gives
+0≤ xj
+t ≤ 13 2−2j≤ 16 (0≤j≤n).(24)
+Together withxn>0andt≤2, this proves (20). The denominator bound follows from (19).
+Third, we show the existence of a rational stabilizing controller. Choose
+t= 1, x j = 12−2j (0≤j≤n).(25)
+14 AMIR ALI AHMADI, ABRAAR CHAUDHRY, IJAY NARANG, AND YUKAI TANG
+To prove thatX≻0, setS i = Diag(di,1)andS= Diag(S 1,...,S m), where
+dj+1 =√xj (0≤j≤n), d n+2+j =x j (0≤j <n),
+dm−1 = 1/
+√
+2, d m = 1.
+Everydi lies in(0, 1]. Direct substitution shows that the matricesˆGi =S−1i GiS−1i are eitherI2 or
+F= ( 2 11 1 ). SinceF⪰ 13I2 and by the definitions ofSi,ui,vi, we have
+ˆG0 :=S−1G0S−1⪰ 13I2m, ˆβ:= max1≤i≤m{‖‖‖S−1i ui‖‖‖,‖‖‖S−1i vi‖‖‖}≤2.
+Write ˆX =S−1XS−1, ˆui =S−1i ui, andˆvi =S−1i vi. SinceS−1i JSi =diJ, the off-diagonal block
+equations are
+(λi−λj)ˆXij−diJ ˆXij +dj ˆXijJ T =ˆviˆuTj−ˆuiˆvTj (i̸=j).
+As di,dj≤ 1and |λi−λ j|≥h≥ 4, the triangle inequality gives
+‖‖‖ˆXij‖‖‖≤ 4ˆβ2/h. The diagonal
+correction also retains its form:
+ˆXii− ˆGi =−Γ
+
+∑
+j̸=i
+ˆXije
+
+,Γ(z) =
+( 0z 1
+z1 z2
+)
+.
+Indeed, Sie =e and S−1i Γ(Siz)S−1i = Γ(z). Using∥Γ(z)∥≤ 2∥z∥ and the block-row-sum bound as
+in Lemma 3, we obtain
+‖‖‖ˆX− ˆG0‖‖‖≤3 max1≤i≤m∑j̸=i‖‖‖ˆXij‖‖‖≤ 12mˆβ2h ≤ 3256 < 13.
+Thus ˆX≻0andX≻0. Also∥u∥≤2 √mand∥c∥= √m, so
+sym(D+uc T)⪰(h−1−2m)I 2m≻0.
+Therefore, by Lemma 2(ii), with the above choice ofK,Mis Hurwitz.
+Lastly, we note the encoding size of the construction. The displayed block assemblies produce
+integer matrices withO(n)nonzero entries. Their magnitudes are at mostλm = 4096m2 = 256N 2
+in A and at most6in B. There areΘ(n2)entries in the dense input and onlyO(n)nonzero entries,
+each withO(log(n + 1))bits. Consequently Ln = Θ(n2), and the construction takes polynomial
+time. □
+Theorem 8(Discrete time).For each integer n≥ 1, matricesAd∈Q N×N, Bd∈Q N×p, and a
+nonzero row vectorCd∈Q 1×N can be constructed in time polynomial inn, with
+N= 8n+ 12, p=n+ 2,
+and total size Ln,d = Θ(n2), such that a rational stabilizing controller exists, but every (real)
+controllerK d = (y0,...,y n,s) T for whichA d +B dKdCd is Schur satisfies
+0<y n≤ 23 2−2n.
+In particular, writingyn = a/b in lowest terms withb >0for any rational stabilizing controller
+givesb≥ 32 22n; this denominator alone requires more than2n bits.
+Proof. First, we describe the construction and use a correspondence between continuous and discrete
+time. To show that our construction admits a stabilizing controller, we will use the continuous-time
+OUTPUT FEEDBACK STABILIZATION 15
+matrices of Theorem 7 and the continuous-to-discrete transformation from Section 3, with parameter
+one. Fori= 1,...,m, leta i = 1 +λi and define
+Q0 = Diag1≤i≤m
+(
+I2
+ai
++ Ja2i
+)
+= (I2m +D)−1,
+δ= 1 +c TQ0u0 = 1− 2a2m >0, Q=Q 0− Q0u0cTQ0δ . (26)
+The Sherman–Morrison formula givesQ= (I2m +D+u 0cT)−1. Block multiplication then gives
+R:= (I N−A)−1 =
+(Q Q−I 2m
+Q Q
+)
+, c TQ= cTQ0
+δ .
+Set
+Ad = 2R−I N, B d =RB, C d = 2CR, f=CRB∈Q 1×p.(27)
+Note thatfis a row vector and thusfK=CRBKis a scalar for each controllerK∈R p×1.
+ForM=A+BKCandM d =A d +B dKdCd, the matrix determinant lemma gives
+det(IN−M) = det(I N−A)(1−fK),
+det(IN +M d) = 2N det(R)(1 +fK d).
+If M is Hurwitz, thenIN−M is invertible; ifMd is Schur, thenIN +Md is invertible. Thus the
+denominators1−fKand1 +fK d in the inverse controller maps
+Kd = K1−fK , K= Kd1 +fK d (28)
+do not vanish at stabilizing controllers. The Sherman–Morrison formula yields
+Md = 2(IN−M)−1−IN = (IN +M)(I N−M)−1.
+For any symmetric matrixP∈R N×N, we have
+M TdPM d−P= 2(I N−M)−T(M TP+PM)(I N−M)−1.
+Lemma 6 shows that(28) is a bijection between stabilizing controllers. It preserves rationality, so
+the controller (25) gives a rational Schur stabilizer.
+Second, we show that the entryyn of any Schur-stabilizing controller satisfies the claimed bound.
+For every continuous-time stabilizer,(23) and (24) givet >0and0 ≤x j≤t/ 6. Let u0i∈R 2 be
+block i of u0, and setwi =ui−u 0i +vi. From the definitions ofui and vi in (21) it follows that
+(wi)1≥−tand(w i)2≥tfor1≤i≤m. Equations (26)–(27) imply
+fK=− 1δ m∑i=1((wi)1a2i + (wi)2ai )<0,
+because each summand is at leastt(a−1i −a−2i )> 0. Thus1−fK > 1. Every Schur-stabilizing
+controller corresponds to such a continuous-time controller, and therefore
+0<y n = xn1−fK ≤x n≤ 23 2−2n.
+The denominator conclusion follows from (19).
+Lastly, we note the encoding size of the construction. Each row and column ofQ0 has at most
+two nonzero entries, all withO(log(n + 1))bits. Since Q0u0 has only two nonzero entries,(26)–(27)
+show thatQ,R,A d, andCd also haveO(n)nonzero entries, each with O(log(n + 1))bits. For
+W=U+V∈Z 2m×p, we have
+Bd =
+(
+V−QW
+−QW
+)
+, QW=Q 0W− (Q0u0)(cTQ0W)δ .
+16 AMIR ALI AHMADI, ABRAAR CHAUDHRY, IJAY NARANG, AND YUKAI TANG
+Every column ofW except its last has at most four nonzero entries. ThusBd has O(n)nonzero
+entries, each ofO(log(n + 1))bits, except possibly four entries in its last column. Those entries
+involve sums ofO(n)rational terms and haveO(nlog (n + 1))bits. Including all zero entries, the
+input size is thereforeLn,d = Θ(n2).□
+References
+[1] V. Blondel, M. Gevers, and A. Lindquist, Survey on the state of systems and control,European Journal of Control,
+1(1) (1995), 5–23.
+[2] V. Blondel and J. N. Tsitsiklis, NP-hardness of some linear control design problems,SIAM Journal on Control
+and Optimization,35(6) (1997), 2118–2127.
+[3] S. Boyd, L. El Ghaoui, E. Feron, and V. Balakrishnan,Linear Matrix Inequalities in System and Control Theory,
+SIAM Studies in Applied Mathematics, vol. 15, Society for Industrial and Applied Mathematics, Philadelphia,
+1994.
+[4] A. Chaudhry,Algebraic Methods in Convex Geometry, Nonlinear Optimization, and Learning Dynamical Systems,
+Ph.D. thesis, Princeton University, 2024.https://dataspace.princeton.edu/handle/88435/dsp01vt150n65n.
+[5] M. R. Garey and D. S. Johnson,Computers and Intractability: A Guide to the Theory of NP-Completeness, W. H.
+Freeman and Company, San Francisco, 1979.
+[6] D. Yu. Grigor’ev and N. N. Vorobjov, Jr., Solving systems of polynomial inequalities in subexponential time,
+Journal of Symbolic Computation,5(1988).
+[7] O. J. Staffans,Well-Posed Linear Systems, Encyclopedia of Mathematics and its Applications, vol. 103, Cambridge
+University Press, Cambridge, 2005.
+[8] W. M. Wonham,Linear Multivariable Control: A Geometric Approach, Springer-Verlag, New York, 1979.
+[9] R. Bellman,Introduction to Matrix Analysis, McGraw-Hill, New York, 1960.

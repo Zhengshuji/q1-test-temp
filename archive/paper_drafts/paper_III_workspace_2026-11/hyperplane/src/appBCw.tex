@@ -1,0 +1,255 @@
+\section{Proofs of the estimates}\label{appBC}\label{appB}\label{app:subresultant}
+
+This appendix proves the bounds that Section~\ref{sec5} states in $\poly$ form, recording the explicit
+estimates. Notation is that of Sections~\ref{sec:prelim} and~\ref{sec5}; $\tau$ is the encoding length
+of $(A,C,L_0,q)$; $\beta(x)$ is the largest bit length of the numerator and denominator of a rational
+$x$, extended entrywise to matrices; logarithms are to base $2$; constants are not optimized.
+
+Every field that occurs below is a number field in the representation of
+Definition~\ref{sec5:def:model}: $K=\mathbb{Q}[\theta]/(f_K)$ with $f_K\in\mathbb{Z}[\theta]$
+primitive of degree $d_K\le n$ and height $\beta_K=\poly(n,\tau)$, elements represented by coordinate
+vectors in the power basis, and the \emph{size} of an element meaning the largest bit length of those
+coordinates. Thus a statement such as ``height at most $\beta$'' always refers to that representation,
+and every bound below is uniform in the field because $d_K$ and $\beta_K$ are themselves bounded by
+$\poly(n,\tau)$ (Lemma~\ref{appBC:lem:bases}).
+
+\subsection{Proof of Lemma~\ref{sec5:lem:height}: heights}\label{appBC:sub:norm}
+
+Clear denominators in $[C;CA]$, multiplying by the least common multiple $D_0$ of the denominators:
+this gives an integer matrix $\widehat W$ with $\beta(\widehat W)\le\tau+2pn\tau=:\beta_W$, because
+$\beta(D_0)\le2pn\tau$. Its kernel is computed by Bareiss elimination, whose intermediate quantities
+are minors, and Hadamard's inequality bounds a $j\times j$ minor by
+$\log_2|\det|\le\frac{j}{2}\log_2 j+j\beta_W\le\frac{\rho}{2}\log_2\rho+\rho\beta_W$ for
+$j\le\rho$. Clearing denominators in the resulting coordinates and dividing each column by the gcd of
+its entries (the \emph{primitive normalization}) adds no bits and keeps $\det(N^{\mathsf T}N)$ an
+integer, without which a common rational factor of $N$ would inflate both parts of every entry of $M$
+\cite{hj13,vzgg03}.
+
+\begin{lem}[explicit form of Lemma~\ref{sec5:lem:height}(a)]\label{appBC:lem:norm}\label{appBC:lem:comp}\label{appBC:cor:comp}
+Let $\beta_W=\tau+2pn\tau$. Then
+\begin{enumerate}[label=(\roman*),leftmargin=*]
+\item $\beta(N)\le2\bigl(\frac{\rho}{2}\log_2\rho+\rho\beta_W\bigr)$, and $N$ is computable in bit
+complexity $\poly(n,\tau)$;
+\item $\beta(N^{\mathsf T}N)\le2\beta(N)+\log_2 n$ and
+$\beta(N^{\mathsf T}AN)\le2\beta(N)+\tau+2\log_2 n$;
+\item the entries of $M$ satisfy
+$\beta(M)\le(k-1)\bigl(\tfrac12\log_2 k+\beta(N^{\mathsf T}N)\bigr)+\beta(N^{\mathsf T}AN)+\beta\bigl(\det(N^{\mathsf T}N)\bigr)$,
+hence $\beta(M)\le c_1(n^{3}\tau+n^{2}\log_2 n)$ for a constant $c_1$.
+\end{enumerate}
+\end{lem}
+
+\begin{proof}
+(i) Each step has a polynomial arithmetic count in $n$ and acts on integers of $\poly(n,\tau)$ bits.
+(ii) The entries of $N^{\mathsf T}N$ (respectively $N^{\mathsf T}AN$) are sums of $n$ (respectively
+$n^{2}$) terms of size at most $2^{2\beta(N)}$ (respectively $2^{2\beta(N)+\tau}$). (iii) $N$ has full
+column rank, so $N^{\mathsf T}N$ is integral and positive definite and $\det(N^{\mathsf T}N)\ge1$; the
+numerator of $(N^{\mathsf T}N)^{-1}=\operatorname{adj}(N^{\mathsf T}N)/\det(N^{\mathsf T}N)$ is thus
+controlled by the adjugate bound alone, whose entries are $(k-1)$-minors bounded by Hadamard
+\cite{hj13,vzgg03}.
+\end{proof}
+
+\begin{lem}[explicit form of Lemma~\ref{sec5:lem:height}(b)--(d)]\label{appBC:lem:charpoly}\label{appBC:lem:root}\label{appBC:cor:root}\label{appBC:lem:bases}\label{appBC:sub:roots}
+Let $K=\mathbb{Q}(\mu)$ be represented as in Definition~\ref{sec5:def:model}, with
+$d_K=[K:\mathbb{Q}]\le n$ and $\beta_K=\beta(f_K)$.
+\begin{enumerate}[label=(\roman*),leftmargin=*]
+\item after clearing denominators and taking the primitive part,
+$\beta(\chi_M)\le k\bigl(\beta(M)+\tfrac12\log_2 k\bigr)+\beta(M)+k=\poly(n,\tau)$;
+\item every root $\mu$ of $\chi_M$ satisfies $d_K\le k\le n$ and
+$h(\mu)\le\beta(\chi_M)+\tfrac12\log_2(k+1)+1$, so $\beta_K\le\beta(\chi_M)+\tfrac12\log_2(k+1)+1$;
+the real roots are separable into pairwise disjoint rational intervals in bit complexity
+$\poly(n,\tau)$ \cite{bpr06};
+\item $E_\mu=\ker(M-\mu I)$ has over $K$ a primitive vector $a$ with
+$\beta(a)\le2\bigl(\tfrac k2\log_2 k+k(\beta(M)+\beta_K)\bigr)$, bases of $E_\mu^0$,
+$U_v^\perp$, $D_v=K_0\cap U_v^\perp$ and $\mathcal{Q}_v/\overline{V}_{0,v}$ are computable over $K$
+with element sizes $\poly(n,\tau)$, and the bit complexity of all these computations is
+$\poly(n,\tau)$.
+\end{enumerate}
+\end{lem}
+
+\begin{proof}
+(i) $\chi_M=\sum_i(-1)^{i}\sigma_i(M)t^{k-i}$ with $\sigma_i$ a sum of principal $i$-minors, each
+bounded by $(\sqrt i\,\|M\|_\infty)^{i}$; summing $\binom ki\le2^{k}$ terms and clearing denominators
+adds $\poly(n,\tau)$ bits, and Faddeev--LeVerrier or interpolation gives a polynomial arithmetic count.
+(ii) Cauchy's bound gives $|\mu|\le1+\max_i|a_i/a_k|\le2^{\beta(\chi_M)+1}$, so each conjugate
+satisfies $\log^{+}|\sigma(\mu)|\le\beta(\chi_M)+1$, and dividing by the degree gives the height bound
+\cite{hj13}. (iii) The vector $a$ spans $\ker(M-\mu I)$ over $K$ and its coordinates are ratios of
+$(k-1)$-minors over $K$ to a nonzero principal one, bounded by Hadamard together with
+$\beta(M),\beta_K$; each of the four spaces is a kernel, image, sum or quotient of matrices over $K$
+of size at most $n$, and all inner products lie in $K$; the complexity follows from $d_K\le n$, a
+polynomial arithmetic count, and arithmetic in $K$ at cost $\poly(d_K,\beta_K)$ bits
+\cite{lan02,vzgg03}.
+\end{proof}
+
+\begin{remark}[why the computation cannot be carried out over $\mathbb{Q}$]\label{appBC:rem:mustK}
+When $\mu\notin\mathbb{Q}$ the space $E_\mu$ is a line over $K$ but not over $\mathbb{Q}$: its trace
+over $\mathbb{Q}$ is a direct sum of $d$ conjugate lines. Computing the kernel over $\mathbb{Q}$ would
+split one direction into $d$ conjugate directions and change both the fibre and the pencil, so
+direction enumeration and fibre construction must take place in $K$. Since $\mu$ is never turned into a
+number, nothing here grows with the distance from $\mu$ to $\mathbb{Q}$.
+\end{remark}
+
+\subsection{Proof of Lemma~\ref{sec5:lem:chart}: sizes of the charts}\label{appBC:sub:chart}
+
+Fix a real eigenvalue $\mu$ and a direction $[v]\in\mathbb{P}(E_\mu^0)$; the fibre is
+$\Gr(m,\mathcal{Q}_v/\overline{V}_{0,v})$ with $m=s-\delta$, and $\widetilde r:=r(v)-\delta$ is the
+rank of the quotient bundle, where $r(v)=\rho$ for eigen directions and $\rho-1$ otherwise.
+
+\begin{lem}[explicit form of Lemma~\ref{sec5:lem:chart}]\label{appBC:lem:chart}\label{appBC:rem:poly}
+With $d_{\mathrm{chart}}=m(\widetilde r-m)$:
+\begin{enumerate}[label=(\roman*),leftmargin=*]
+\item $d_{\mathrm{chart}}\le\widetilde r^{2}/4\le p^{2}$;
+\item an $\omega\times\omega$ maximal minor has degree at most $\omega$ in $X$ and in $\lambda$;
+\item the number of minors is
+$\binom q\omega\binom k\omega=k\binom qs\le n\sum_{j\le2p+1}\binom nj=n^{O(p)}$;
+\item the chart cover of $\Gr(m,\widetilde r)$ has $\binom{\widetilde r}{m}\le2^{\widetilde r}\le2^{2p}$
+elements, with at most $k\le n$ pieces, hence at most $n\cdot2^{2p}$ charts;
+\item the dense size of a maximal minor, and of every subresultant below, is
+\begin{equation}\label{appBC:eq:denseminor}
+D=\binom{d_{\mathrm{chart}}+2\omega^{2}}{d_{\mathrm{chart}}},\qquad d_{\mathrm{chart}}\le p^{2},
+\end{equation}
+so $D\le\binom{p^{2}+2n^{2}}{p^{2}}=n^{O(p^{2})}$, a polynomial in $n$ once $p$ is fixed, the exponent
+involving $p^{2}$ only.
+\end{enumerate}
+\end{lem}
+
+\begin{proof}
+$\widetilde r\le\rho\le2p$ and $x\mapsto x(\widetilde r-x)$ is maximal at $x=\widetilde r/2$, giving
+(i); a chart row is affine in $X$ and the pencil is linear in $\lambda$, giving (ii);
+$\binom k\omega=k$ because $\omega=k-1$, and $\binom qs\le\sum_{j\le2p}\binom nj$ because
+$s\le\rho\le2p$, giving (iii); (iv) uses $\sum_j\binom{\widetilde r}j=2^{\widetilde r}$; (v) uses
+$\binom{d+\omega}d\le\bigl(e(d+\omega)/d\bigr)^{d}$ with $d\le p^{2}$ constant and $\omega\le n$.
+\end{proof}
+
+A resultant of two $\lambda$-polynomials of degree $\omega$ is a Sylvester determinant of order
+$2\omega$ with $X$-degree at most $\omega$ and height at most $\beta$, hence of bit length
+$\poly(\omega,\beta)$; the criterion built on it is only \emph{sufficient}, failure being no certificate
+that a chart is bad.
+
+\subsection{Proof of Lemma~\ref{sec5:lem:subres}: the subresultant chain}\label{appBC:sub:subres}
+
+\paragraph{Why naive Euclid fails}\label{appBC:sub:naive}
+Division with remainder directly in $K(X)[\lambda]$ is the wrong procedure: from the second step on the
+objects divided are rational functions, and each step multiplies the reciprocal of the leading
+coefficient of the divisor into the next denominator, so denominator degrees can double at every step.
+Take $K=\mathbb{Q}$ and one parameter $X$, with
+\[
+f=\lambda^{3}+X,\qquad g=\lambda^{2}+X\lambda+1 ,
+\]
+coprime over $\mathbb{Q}(X)[\lambda]$, and run the algorithm nevertheless. Dividing $f$ by $g$ gives
+\[
+q_1=\lambda-X,\qquad r_1=f-q_1g=(X^{2}-1)\lambda+2X ,
+\]
+with \emph{no} denominator; dividing $g$ by $r_1$ gives
+\[
+\begin{gathered}
+q_2=\frac{\lambda}{X^{2}-1}+\frac{X^{3}-3X}{(X^{2}-1)^{2}},\\
+r_2=g-q_2r_1=\frac{-X^{4}+4X^{2}+1}{(X^{2}-1)^{2}} ,
+\end{gathered}
+\]
+a nonzero constant in $\lambda$, so $\gcd(f,g)=1$. The denominator jumps from none to degree $4$ in a
+single step, and the numerator is exactly $\operatorname{Res}_\lambda(f,g)$; in general the quotient at
+step $i$ carries $1/\operatorname{lc}_\lambda(r_{i-1})$, so denominators accumulate multiplicatively and
+after $\omega$ steps can reach $2^{\Omega(\omega)}$. Direct Euclidean division over $K(X)[\lambda]$
+therefore cannot bound coefficient size by $\poly(n,\tau)$.
+
+\paragraph{The subresultant chain}
+The correct tool is the \emph{subresultant}, a determinant computed inside the polynomial ring, so no
+denominators arise. For $f=\sum_{i\le m}f_i\lambda^{m-i}$ and $g=\sum_{j\le n}g_j\lambda^{n-j}$ in
+$K[X][\lambda]$, the Sylvester matrix $\operatorname{Syl}(f,g)$ is the $(m+n)\times(m+n)$ matrix of
+shifted coefficient vectors with $\det=\operatorname{Res}(f,g)$, and for $0\le j<\min(m,n)$ the $j$-th
+subresultant $S_j$ is the determinant obtained by deleting the last $j$ rows of each block and the last
+$2j$ columns, so $S_0=\operatorname{Res}(f,g)$. Three properties matter: each $S_j$ lies in
+$K[X][\lambda]$ (\emph{fraction-free}, the decisive advantage over Euclid), $\deg_\lambda S_j\le j$
+(\emph{degree}), and with $j^{*}=\max\{j:S_j\neq0\}$ one has
+$\deg_\lambda\gcd_{K(X)[\lambda]}(f,g)=j^{*}$ (\emph{gcd degree}), so $f,g$ are coprime if and only if
+$S_0\neq0$. The sizes are as follows. The inputs satisfy
+\begin{equation}\label{appBC:eq:sizesin}
+\begin{gathered}
+\deg_\lambda f,\ \deg_\lambda g\le\omega,\qquad
+\deg_X f,\ \deg_X g\le\omega,\\
+\text{coefficient size}\le\beta ,
+\end{gathered}
+\end{equation}
+where $X$ carries $d\le p^{2}$ parameters and $\beta$ is measured in the representation of $K$. Hence
+\begin{enumerate}[label=(\alph*),leftmargin=*]
+\item $\operatorname{Syl}(f,g)$ has order $m+n\le2\omega$, and each of its entries is a coefficient of
+$f$ or $g$, so of $X$-degree $\le\omega$ and size $\le\beta$;
+\item the chain has $m+1\le\omega+1$ members $S_0,\dots,S_m$, and it is computed only up to the first
+vanishing member, so its length is at most $\omega$;
+\item each $S_j$ is a $(2\omega-j)\times(2\omega-j)$ determinant of such entries, hence
+\begin{equation}\label{appBC:eq:sizesout}
+\begin{gathered}
+\deg_X S_j\le2\omega^{2},\\
+\text{coefficient size}\le\beta_S,\\
+\beta_S:=2\omega\bigl(\beta+\omega\log_2(2\omega)\bigr)+\poly(d_K,\beta_K),
+\end{gathered}
+\end{equation}
+by Hadamard's inequality applied to the $2\omega$ rows;
+\item the dense size of such an object is
+\begin{equation}\label{appBC:eq:dense}
+\begin{gathered}
+D=\binom{d+2\omega^{2}}{d}=\binom{p^{2}+2\omega^{2}}{p^{2}},\\
+D=n^{O(p^{2})}\ \text{for fixed } p,
+\end{gathered}
+\end{equation}
+since $d\le p^{2}$ and $\omega\le n$; note that $D$ is polynomial in $n$ once $p$ is fixed, the
+exponent depending on $p^{2}$ only.
+\end{enumerate}
+The cost of the fraction-free chain is $\poly(D,\beta_S)$, i.e.\ polynomial in the number of
+coefficients and in their bit length, by (S4).
+
+\begin{prop}[iteration and cost]\label{appBC:prop:iter}\label{appBC:prop:cost}\label{appBC:rem:pairwise}
+Let $K$ be a number field in the representation of Definition~\ref{sec5:def:model}, and let
+$m_1,\dots,m_\ell\in K[X][\lambda]$ satisfy \eqref{appBC:eq:sizesin} with $\ell=n^{O(p)}$. Then:
+\begin{enumerate}[label=(\roman*),leftmargin=*]
+\item $\gcd(m_1,\dots,m_\ell)=\gcd\bigl(\gcd(m_1,\dots,m_{\ell-1}),m_\ell\bigr)$, and iterating in the
+order of the indices never increases the $\lambda$-degree or the $X$-degree;
+\item the coefficient size of every iterated primitive gcd, and of every intermediate subresultant, is
+at most $\beta_S$ of \eqref{appBC:eq:sizesout}, \emph{uniformly} over the iteration; it is bounded by
+the input data, not decreased by the iteration;
+\item the iterated algorithm computes the gcd within $\poly(\ell,D,\beta_S)$, and the test ``degree
+positive'' agrees with ``all $\ell$ polynomials have a nontrivial common factor'';
+\item a test based on \emph{pairwise} resultants would not do: for $f_1=\lambda(\lambda-1)$,
+$f_2=\lambda(\lambda-2)$, $f_3=(\lambda-1)(\lambda-2)$ every pairwise resultant vanishes, yet
+$\gcd(f_1,f_2,f_3)=1$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+(i) Associativity of the gcd; a gcd in $K[X][\lambda]$, taken primitive, divides its arguments in
+$K[X][\lambda]$, so its $\lambda$-degree and its $X$-degree are bounded by those of the arguments and
+never increase along the iteration. (ii) The primitive gcd of a step divides one of its arguments in
+the UFD $K[X][\lambda]$ (Gauss's lemma), so by the factor-height bound (S5) its coefficient size is at
+most the size bound attached to that argument, namely $\beta_S$ of \eqref{appBC:eq:sizesout}; the same
+bound applies to every intermediate subresultant by item (a) of the description of the chain. The bound
+is therefore uniform, but it is \emph{not} claimed to decrease from step to step: a gcd can be as
+large, in coefficient size, as the input it divides. (iii) There are $\ell-1$ steps, each costing
+$\poly(D,\beta_S)$ by (S4), and the total follows. (iv) Direct verification: $\lambda$ divides $f_1$,
+$f_2$; $\lambda-1$ divides $f_1,f_3$; $\lambda-2$ divides $f_2,f_3$; no factor divides all three.
+\end{proof}
+
+\paragraph{Relation to the implementation}\label{appBC:sub:impl}
+The complexity count of Section~\ref{sec5} is made for the subresultant chain, including its
+multi-polynomial version; the implementation that produced the certificates of
+Appendix~\ref{app:data} divides in $\mathbb{Q}(X)[\lambda]$ instead, which is feasible for the small
+instances ($\omega\le3$, $d\le4$) with normalized denominators but costs what the example above
+describes on large ones --- a limitation of the implementation, not of the theorem. Both compute the
+\emph{same} object, the gcd in $K(X)[\lambda]$, whose degree-zero test is unaffected by removing the
+content \cite{vzgg03}.
+
+One further step passes from the gcd to a decision. Over a general family a positive gcd degree does
+\emph{not} imply that every specialization has a common factor, since the factor may degenerate to a
+constant ($X\lambda+1$ degenerates to $1$ at $X=0$); here the full-rank leading-coefficient lemma of
+Section~\ref{sec4} supplies what is missing, because on a chart $\rank H\equiv\omega$, so at every
+point some maximal minor has $\lambda$-degree exactly $\omega$ and the primitive common factor cannot
+degenerate anywhere:
+\[
+\begin{gathered}
+\bigl(\deg_\lambda\gcd>0\bigr)\ \wedge\ \bigl(\rank H\equiv\omega\bigr)\\
+\Longrightarrow\quad \text{every point of the chart is bad}.
+\end{gathered}
+\]
+\emph{Computing} the gcd (this appendix) and \emph{using} it to judge a whole chart
+(Section~\ref{sec4}) are thus two separate matters.
+
+

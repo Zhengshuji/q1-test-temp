@@ -1,0 +1,331 @@
+\section{Rank factorization, consistency, and the finite certificate}\label{sec:certificate}
+
+This section derives the finite certificate for the spectral condition
+\eqref{eq:5b} in three steps: a pivot factorization of the rank-$\omega$
+block, a rank-consistency test for the linear system that the factorization
+leaves, and a compression of that test to a Gram matrix whose size is the
+parameter $\kappa_{\rm obs}$.
+
+\subsection{Rank factorization and consistency}\label{sec:consistency}
+
+\paragraph*{Pivot factorization}\label{sec:pivot}
+Let $\omega>0$. For a rank-$\omega$ matrix $H$ choose a pivot index set
+$J_{p}\subseteq[k]$, $|J_{p}|=\omega$, such that
+\[
+X=H_{:,J_{p}}\in\mathbb R^{q\times\omega}
+\]
+has full column rank. Then
+\[
+H=XB,\qquad B\in\mathbb R^{\omega\times k},\qquad B_{:,J_p}=I_\omega .
+\]
+If $H_A=FH$, put
+\[
+G=FX\in\mathbb R^{q\times\omega}.
+\]
+Then
+\[
+H_A=GB,\qquad P(\lambda)=(\lambda X-G)B .
+\]
+Conversely, if $H_A=GB$ and $X_LX=I_\omega$, where $X_L$ denotes a left
+inverse of $X$, then $F=GX_L$ satisfies
+\[
+FH=GX_LXB=GB=H_A .
+\]
+
+\paragraph*{Parametric linear system}\label{sec:param}
+Let $D$ be a rational matrix with $\ker D=\mathcal T$. For each fixed row
+$i$,
+\[
+X_iB=h_i^0,\qquad G_iB=g_i^0,
+\]
+and every free row satisfies
+\[
+D\begin{bmatrix}(X_iB)^{\mathsf T}\\ (G_iB)^{\mathsf T}\end{bmatrix}=0.
+\]
+After substituting $B_{:,J_p}=I_\omega$, these equations are linear in the
+remaining entries $b$ of $B$ and read
+\[
+M(X,G)b=c(X,G).
+\]
+
+\begin{lem}[Rank consistency]\label{lem:rankcons}
+	For real matrices $M,c$,
+	\[
+	\exists b:\ Mb=c
+	\]
+	if and only if
+	\[
+	\operatorname{rank}(MM^{\mathsf T})
+	=\operatorname{rank}(MM^{\mathsf T}+cc^{\mathsf T}).
+	\]
+	Equivalently, with $\Gamma=MM^{\mathsf T}$ and
+	$\Gamma'=MM^{\mathsf T}+cc^{\mathsf T}$,
+	\[
+	\bigvee_{t=0}^{d_1}
+	\left[e_t(\Gamma)>0\wedge e_{t+1}(\Gamma)=0\wedge e_{t+1}(\Gamma')=0\right],
+	\]
+	where $d_1=\min(\text{rows},\text{cols})$ of $M$ and $e_j$ is the
+	$j$-th elementary symmetric polynomial of the eigenvalues.
+\end{lem}
+
+\begin{proof}
+	The equation $Mb=c$ is consistent if and only if
+	$c\in\operatorname{im}M$, and
+	\[
+	\operatorname{im}[M\ c]=\operatorname{im}M+\operatorname{span}\{c\},
+	\]
+	hence
+	\[
+	\begin{aligned}
+	c\in\operatorname{im}M
+	&\iff \operatorname{im}[M\ c]=\operatorname{im}M\\
+	&\iff \operatorname{rank}[M\ c]=\operatorname{rank}M .
+	\end{aligned}
+	\]
+	Because $\operatorname{im}\Gamma=\operatorname{im}M$ and
+	$\operatorname{im}\Gamma'=\operatorname{im}[M\ c]$, the last equality
+	is exactly the equality of the two ranks displayed in the statement.
+
+	For a positive semidefinite matrix $\Gamma$,
+	\[
+	e_j(\Gamma)=\sum_{|I|=j}\det\Gamma_{I,I},
+	\]
+	and every principal minor of $\Gamma$ is nonnegative, so
+	\[
+	\begin{aligned}
+	e_j(\Gamma)=0
+	&\iff \text{all } j\times j \text{ principal minors of } \Gamma
+	\text{ vanish}\\
+	&\iff \operatorname{rank}\Gamma<j .
+	\end{aligned}
+	\]
+	Consequently
+	\[
+	e_t(\Gamma)>0\ \wedge\ e_{t+1}(\Gamma)=0
+	\iff \operatorname{rank}\Gamma=t ,
+	\]
+	whereas $e_{t+1}(\Gamma')=0$ forces $\operatorname{rank}\Gamma'\le t$,
+	while $\Gamma'\succeq\Gamma$ gives the reverse inequality. Thus the
+	displayed disjunction is equivalent to
+	$\operatorname{rank}\Gamma=\operatorname{rank}\Gamma'$.
+\end{proof}
+
+\paragraph*{Spectral reduction}\label{sec:spectral}
+Since $B$ has full row rank,
+\[
+\operatorname{rank}P(\lambda)
+=\operatorname{rank}\bigl((\lambda X-G)B\bigr)
+=\operatorname{rank}(\lambda X-G).
+\]
+Thus \eqref{eq:5b} is equivalent to
+\[
+\operatorname{rank}(\lambda X-G)=\omega,\qquad\forall\lambda\in\mathbb C .
+\]
+
+\subsection{The spectral certificate}\label{sec:spectrum}
+
+\begin{lem}[B\'ezout degree bound]\label{lem:bezout}\label{sec:bezout}
+	Let $\omega\ge1$, and let $f_1,\ldots,f_s\in\mathbb R[\lambda]$ have
+	degree at most $\omega$ and no common complex root. Then there exist
+	real polynomials $g_i$ with $\deg g_i<\omega$ such that
+	\[
+	\sum_i g_i f_i=1 .
+	\]
+\end{lem}
+
+\begin{proof}
+	Choose $a\in\mathbb R^s$ such that
+	\[
+	g=\sum_i a_if_i\neq0,
+	\]
+	which is possible because the $f_i$ have no common complex root. Let
+	$\alpha_1,\dots,\alpha_m$ be the distinct complex roots of $g$, and for
+	$b\in\mathbb R^s$ put
+	\[
+	h=\sum_i b_if_i,\qquad
+	h(\alpha_j)=\ell_j(b)+i\,m_j(b),
+	\]
+	where $\ell_j$ and $m_j$ are real linear forms. Some $f_i(\alpha_j)$ is
+	nonzero, since otherwise $\alpha_j$ would be a common root, so the pair
+	$(\ell_j,m_j)$ does not vanish identically and
+	\[
+	V_j:=\{b\in\mathbb R^s:\ h(\alpha_j)=0\}
+	=\ker\ell_j\cap\ker m_j\subsetneq\mathbb R^s .
+	\]
+	A finite union of proper subspaces cannot cover $\mathbb R^s$, hence
+	\[
+	\begin{gathered}
+	\exists\,b\in\mathbb R^s:\quad b\notin\bigcup_{j=1}^{m}V_j,\\
+	\text{that is,}\quad h(\alpha_j)\neq0\quad (j=1,\dots,m).
+	\end{gathered}
+	\]
+	Then $g$ and $h$ have no common root and are therefore coprime, so the
+	two-polynomial B\'ezout identity yields $u,v\in\mathbb R[\lambda]$ with
+	\[
+	\begin{gathered}
+	ug+vh=1,\\
+	\deg u<\deg h\le\omega,\qquad \deg v<\deg g\le\omega .
+	\end{gathered}
+	\]
+	Expanding $g,h$ in the $f_i$ and setting $g_i=ua_i+vb_i$ gives
+	\[
+	\sum_i g_i f_i=1,\qquad \deg g_i<\omega .
+	\]
+\end{proof}
+
+\begin{lem}[Window]\label{lem:window}
+	Let $f_1,\dots,f_s\in\mathbb R[\lambda]$ have degree at most $\omega$,
+	let $c_{i,a}$ be the coefficient of $\lambda^a$ (with $c_{i,a}=0$ for
+	$a<0$ or $a>\omega$), and let $Z$ be the matrix with rows $(i,j)$,
+	$0\le j<\omega$, columns $t=0,\dots,2\omega-1$, and
+	$Z_{(i,j),t}=c_{i,t-j}$. For a polynomial $p$ of degree at most
+	$2\omega-1$, let $\operatorname{coef}(p)\in\mathbb R^{2\omega}$ be its
+	coefficient vector in the basis $1,\lambda,\dots,\lambda^{2\omega-1}$.
+	Then
+	\[
+	\operatorname{row}Z=
+	\Bigl\{
+	\operatorname{coef}\Bigl(\textstyle\sum_i g_if_i\Bigr)
+	:\ \deg g_i<\omega
+	\Bigr\}.
+	\]
+\end{lem}
+
+\begin{proof}
+	Row $(i,j)$ of $Z$ is $\operatorname{coef}(\lambda^jf_i)$, because
+	\[
+	\lambda^jf_i=\sum_t c_{i,t-j}\lambda^t .
+	\]
+	For weights $y_{i,j}$, the linearity of $\operatorname{coef}$ on
+	polynomials of degree at most $2\omega-1$ gives
+	\[
+	\begin{aligned}
+	\sum_{i,j}y_{i,j}\operatorname{coef}(\lambda^jf_i)
+	&=\operatorname{coef}\Bigl(\sum_{i,j}y_{i,j}\lambda^jf_i\Bigr)\\
+	&=\operatorname{coef}\Bigl(\sum_i g_if_i\Bigr),
+	\qquad g_i=\sum_j y_{i,j}\lambda^j,
+	\end{aligned}
+	\]
+	with $\deg g_i<\omega$; conversely, every family $g_i$ with
+	$\deg g_i<\omega$ arises from its own coefficients $y_{i,j}$. Since
+	$\deg(\lambda^jf_i)\le\omega+j\le2\omega-1$, all coefficients fit in
+	the $2\omega$ columns, and the convention $c_{i,a}=0$ outside
+	$0\le a\le\omega$ makes the truncation automatic.
+\end{proof}
+
+\begin{prop}[Gram certificate]\label{prop:gram}\label{sec:gram}
+	Let $\omega\ge1$ and let $f_i$ be the maximal minors of $P(\lambda)$.
+	Form a matrix $Z$ whose rows are indexed by $(i,j)$, $0\le j<\omega$,
+	and whose columns are indexed by $t=0,\ldots,2\omega-1$, with
+	\[
+	Z_{(i,j),t}=c_{i,t-j},
+	\]
+	where $c_{i,a}$ is the coefficient of $\lambda^a$ in $f_i$, and let
+	$e_0=(1,0,\ldots,0)^{\mathsf T}\in\mathbb R^{2\omega}$. Then
+	\[
+	\eqref{eq:5b}
+	\iff e_0^{\mathsf T}\in\operatorname{row}Z
+	\iff\exists x\in\mathbb R^{2\omega}:\ Z^{\mathsf T}Zx=e_0 .
+	\]
+\end{prop}
+
+\begin{proof}
+	By construction, $\operatorname{coef}(\lambda^jf_i)$ is row $(i,j)$ of
+	$Z$, so Lemma~\ref{lem:window} gives
+	\[
+	\operatorname{row}Z=
+	\Bigl\{
+	\operatorname{coef}\Bigl(\textstyle\sum_i g_if_i\Bigr)
+	:\ \deg g_i<\omega
+	\Bigr\},
+	\]
+	and with $e_0^{\mathsf T}=\operatorname{coef}(1)$,
+	\[
+	e_0^{\mathsf T}\in\operatorname{row}Z
+	\iff
+	\exists\,g_i\in\mathbb R[\lambda],\ \deg g_i<\omega:\
+	\sum_i g_if_i=1 .
+	\]
+	The right-hand side is the B\'ezout representation of
+	Lemma~\ref{lem:bezout}, which exists if and only if the $f_i$ have no
+	common complex root, that is, if and only if \eqref{eq:5b} holds. Thus
+	$\operatorname{row}Z$ is the degree-windowed part of the ideal generated
+	by the $f_i$, not the whole ideal, and the window $\deg g_i<\omega$ is
+	exactly the one supplied by Lemma~\ref{lem:bezout}; no bound on the
+	degree of an arbitrary relation is needed. Finally, for real $Z$,
+	\[
+	\operatorname{row}Z=\operatorname{im}Z^{\mathsf T}
+	=\operatorname{im}(Z^{\mathsf T}Z),
+	\]
+	the last equality because $\ker Z=\ker(Z^{\mathsf T}Z)$; hence
+	$e_0^{\mathsf T}\in\operatorname{row}Z$ if and only if
+	$Z^{\mathsf T}Zx=e_0$ has a real solution.
+\end{proof}
+
+\paragraph*{Cauchy--Binet compression}\label{sec:cb}
+Define
+\[
+K(\lambda,\mu)=\sum_{|J|=\omega}
+\det\left(P(\lambda)_{:,J}^{\mathsf T}P(\mu)_{:,J}\right),
+\]
+where $J\subseteq[k]$. For each fixed column set $J$, Cauchy--Binet applied
+to the $\omega\times q$ matrix $P(\lambda)_{:,J}^{\mathsf T}$ and the
+$q\times\omega$ matrix $P(\mu)_{:,J}$ gives
+\[
+\det\!\left(P(\lambda)_{:,J}^{\mathsf T}P(\mu)_{:,J}\right)
+=\sum_{\substack{I\subseteq[q]\\ |I|=\omega}}
+f_{I,J}(\lambda)f_{I,J}(\mu),
+\]
+where $f_{I,J}$ is the minor on rows $I$ and columns $J$. Summing over $J$,
+\[
+K(\lambda,\mu)=\sum_{\substack{I\subseteq[q]\\ |I|=\omega}}
+\sum_{\substack{J\subseteq[k]\\ |J|=\omega}}
+f_{I,J}(\lambda)f_{I,J}(\mu),
+\]
+the Gram kernel of \textbf{all} maximal minors of $P$.
+
+Three consequences are used below.
+\begin{enumerate}[label=(\roman*)]
+	\item\label{item:cost} \emph{Cost.} Computing $K$ needs only
+	$\binom{k}{\omega}\le2^{\kappa_{\rm obs}}$ determinants of order
+	$\omega$, one per column set $J$; the
+	$\binom q\omega\binom k\omega$ individual minors are never enumerated,
+	and no hidden enumeration replaces them.
+	\item\label{item:coef} \emph{Coefficient identity.} Writing $S_{a,b}$
+	for the coefficient of $\lambda^a\mu^b$ in $K$ and $c_{i,a}$ for the
+	coefficient of $\lambda^a$ in $f_i$, one has
+	$S_{a,b}=\sum_i c_{i,a}c_{i,b}$. Hence, with the row indexing of
+	Lemma~\ref{lem:window},
+	\[
+	(Z^{\mathsf T}Z)_{t,t'}
+	=\sum_{j=0}^{\omega-1}\sum_i c_{i,t-j}c_{i,t'-j}
+	=\sum_{j=0}^{\omega-1}S_{t-j,t'-j}.
+	\]
+	\item\label{item:roots} \emph{Common roots.} Since the coefficients of
+	$P$ are real, specializing at $(\lambda,\mu)=(\alpha,\bar\alpha)$ gives
+	\[
+	K(\alpha,\bar\alpha)
+	=\sum_{I,J}\left|f_{I,J}(\alpha)\right|^2,
+	\]
+	so $K(\alpha,\bar\alpha)=0$ if and only if every maximal minor of $P$
+	vanishes at $\alpha$. This identity shows that the coefficient matrix of
+	$K$ encodes precisely the common-root condition; the algorithm below
+	nevertheless decides that condition at the coefficient level, without
+	evaluating $K$ at complex points.
+\end{enumerate}
+
+\begin{remark}[Algorithmic reading]\label{rem:algo}
+	The compression is computed in four steps:
+	(i) for each column set $J\subseteq[k]$, $|J|=\omega$, form the
+	$\omega\times\omega$ pencil $P(\lambda)_{:,J}^{\mathsf T}P(\mu)_{:,J}$;
+	(ii) compute its bivariate coefficients, of degree at most $\omega$ in
+	each variable;
+	(iii) sum the coefficients over $J$;
+	(iv) recover $Z^{\mathsf T}Z$ from the shifted identity of
+	item~\ref{item:coef}.
+	The identity is classical (an exterior-power Gram identity; see, e.g.,
+	\cite{emi99} for the B\'ezoutian/elimination background). What the
+	construction adds is the combination with the parameter-sized
+	certificate: by the cost bound of item~\ref{item:cost}, the certificate
+	matrix stays parameter-sized when $q$ is large and $k$ is bounded.
+\end{remark}

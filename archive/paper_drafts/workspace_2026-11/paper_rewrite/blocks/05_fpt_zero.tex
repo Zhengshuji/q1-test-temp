@@ -1,0 +1,459 @@
+\section{The fixed-parameter algorithm}\label{sec:fpt}
+
+The decision procedure underlying Theorem~\ref{thm:fpt} is
+Algorithm~\ref{alg:fpt}. It quantifies over the $\kappa_{\rm obs}$ free-row
+coordinates of \eqref{eq:kappa} and over the certificate of
+Lemma~\ref{lem:window}; the only non-polynomial factor is the number
+$\kappa_{\rm obs}$ of those coordinates.
+
+\begin{algorithm}[!t]
+\caption{Deciding $\mathrm{DEC}(q)$ in time $f(\kappa_{\rm obs})\operatorname{poly}(\mathcal L)$}
+\label{alg:fpt}
+\begin{algorithmic}[1]
+\Require $A,C,L_0,q$ as above; $r=q-r_0$.
+\Ensure \textsc{feasible} or \textsc{infeasible}.
+\If{$r=0$}
+  \State \Return the exact test of Proposition~\ref{prop:zero} on $L=L_0$
+\EndIf
+\State $N\gets$ basis of $\ker[C;CA]$;\quad $d_0\gets\operatorname{rank}[N\ AN]$;\quad
+$\kappa_{\rm obs}\gets rd_0$
+\State choose a rational basis $T$ of $\mathcal T=\operatorname{row}[N\ AN]$
+\State introduce $t\in\mathbb R^{\kappa_{\rm obs}}$, the coordinates of the $r$ free rows in $T$
+\State $H(t)\gets[L_0;R(t)]N$ and $H_A(t)\gets[L_0;R(t)]AN$
+\For{$\omega=0$ \textbf{to} $\min(q,k)$}
+  \State form $\Psi_\omega(t,x)$ with
+  \Statex \quad (i) $e_\omega(G_H)>0$ and $e_{\omega+1}(G_S)=0$, where
+           $G_H=H^{\mathsf T}H$ and $G_S=H^{\mathsf T}H+H_A^{\mathsf T}H_A$;
+  \Statex \quad (ii) $Z^{\mathsf T}Zx=e_0$, with $Z^{\mathsf T}Z$ computed from the kernel
+           $K(\lambda,\mu)$ by Cauchy--Binet (Lemma~\ref{lem:window}).
+  \If{$\Psi_\omega$ is real-feasible}
+    \State \Return \textsc{feasible}
+  \EndIf
+\EndFor
+\State \Return \textsc{infeasible}
+\end{algorithmic}
+\end{algorithm}
+
+\begin{thm}\label{thm:fpt}
+For rational input and every $r\ge0$, $\mathrm{DEC}$ is decidable in
+$f(\kappa_{\rm obs})\operatorname{poly}(\mathcal L)$ bit operations, where
+$\kappa_{\rm obs}=r\operatorname{rank}[N\ AN]=r d_0$ is the effective dimension
+of \eqref{eq:kappa} and $r$ is the number of free observer rows. For $r=0$ the
+bound sharpens to $\operatorname{poly}(\mathcal L)$.
+\end{thm}
+
+\begin{proof}
+The two cases are separated, because the free-row parametrization degenerates
+at $r=0$.
+
+\emph{Case $r=0$.} There are no free rows, hence $L=L_0$ is fixed and
+$\kappa_{\rm obs}=0$, and Proposition~\ref{prop:zero} decides \eqref{eq:5a} and
+\eqref{eq:5b} for this single $L$ in $\operatorname{poly}(n,\mathcal L)$ bit
+operations.
+
+\emph{Case $r\ge1$.} The $r$ free rows are parametrized by the
+$\kappa_{\rm obs}$ real coordinates $t$ of \eqref{eq:kappa}. For each
+$\omega=0,\dots,\min(q,k)$, form
+\begin{equation*}
+H(t)=[L_0;R(t)]N,\qquad H_A(t)=[L_0;R(t)]AN,
+\end{equation*}
+and impose
+\begin{equation*}
+\begin{gathered}
+G_H=H^{\mathsf T}H,\qquad G_S=H^{\mathsf T}H+H_A^{\mathsf T}H_A,\\
+e_\omega(G_H)>0,\qquad e_{\omega+1}(G_S)=0,
+\end{gathered}
+\end{equation*}
+together with the $2\omega$-variable certificate
+\begin{equation*}
+Z^{\mathsf T}Zx=e_0,\qquad x\in\mathbb R^{2\omega},
+\end{equation*}
+of Lemma~\ref{lem:window}, where $Z$ is built from the maximal minors of
+$P(\lambda)=\lambda H(t)-H_A(t)$ and $Z^{\mathsf T}Z$ is computed from
+$K(\lambda,\mu)$ by Cauchy--Binet. At $\omega=0$ the branch is the one of
+Section~\ref{sec:deg}: there $H=0$, \eqref{eq:5b} reads $H_A=0$, and
+Lemma~\ref{lem:window} is not applied.
+
+If a feasible $L=[L_0;R]$ exists, let $t$ be the coordinates of its free rows;
+then $H=LN$ and $H_A=LAN$, the Gram conditions encode \eqref{eq:5a} through the
+positivity of elementary symmetric functions, and the certificate encodes
+\eqref{eq:5b} by Lemma~\ref{lem:window}.
+
+Conversely, if the formula is true for some $t$, define $L$ by taking $L_0$ and,
+for each free row pair in $\mathcal T$, a preimage under $[N\ AN]$; then $H=LN$
+and $H_A=LAN$. The two Gram conditions give $\operatorname{rank}H=\omega$ and
+$\operatorname{row}H_A\subseteq\operatorname{row}H$, hence \eqref{eq:5a} by
+Lemma~\ref{lem:compression}(i), and the certificate gives \eqref{eq:5b} by
+Lemma~\ref{lem:window}. The formula is therefore equivalent to feasibility.
+
+The quantified variables and the data of the real-feasibility problem are
+\begin{equation}\label{eq:nvar}
+\begin{aligned}
+N&=\kappa_{\rm obs}+2\omega\le3\kappa_{\rm obs}=f(\kappa_{\rm obs}),\\
+s&=2\omega+O(1)=f(\kappa_{\rm obs}),\qquad
+D=\kappa_{\rm obs}+1=f(\kappa_{\rm obs}),\\
+B&=f(\kappa_{\rm obs})\operatorname{poly}(\mathcal L),
+\end{aligned}
+\end{equation}
+where the discrete choice of $\omega$ is a finite disjunction, not an
+existential real variable, and $B$ is the coefficient bit length of
+Lemma~\ref{lem:coeff}. Substituting \eqref{eq:nvar} into the bound
+\eqref{eq:rengar} of Section~\ref{sec:bitsize} gives
+\begin{equation*}
+\begin{gathered}
+T\le B(\log B)(\log\log B)(sD)^{O(N)}\\
+=\operatorname{poly}(\mathcal L)\cdot f(\kappa_{\rm obs})^{O(\kappa_{\rm obs})}\\
+=f(\kappa_{\rm obs})\operatorname{poly}(\mathcal L),
+\end{gathered}
+\end{equation*}
+bit operations, which is the stated bound.
+\end{proof}
+
+\begin{cor}\label{cor:arith}
+The same algorithm uses $f(\kappa_{\rm obs})\operatorname{poly}(\mathcal L)$
+arithmetic operations.
+\end{cor}
+
+\subsection{The bit model and the coefficient bound}\label{sec:bitsize}
+
+We use the standard bit model: the input has rational entries of total bit
+length $\mathcal L$, and $n,p,q\le n\le\mathcal L$. Renegar's Part II bit bound
+\cite{ren92} has the form
+\begin{equation}\label{eq:rengar}
+B(\log B)(\log\log B)(sD)^{O(N)},
+\end{equation}
+for integer-coefficient input, where $N$ is the number of real variables, $s$
+the number of polynomials, $D$ the maximum degree, and $B$ the maximum
+coefficient bit length. The exponential factor depends only on $N$; the
+coefficient-length contribution is polynomial in $\log B$.
+
+\begin{lem}[Coefficient sizes]\label{lem:coeff}
+Let the input entries have bit length at most $\mathcal L$, and let
+$n\le\mathcal L$. Then:
+\emph{(i)} the kernel basis $N$, the matrix $D$, and the entries of
+$H,H_A,G_H,G_S$ have bit length $\operatorname{poly}(n,\mathcal L)$;
+\emph{(ii)} every maximal minor $f_i$ of $P(\lambda)=\lambda H-H_A$, and every
+coefficient of $f_i$, has bit length $\operatorname{poly}(n,\mathcal L)$;
+\emph{(iii)} the entries of $Z^{\mathsf T}Z$ and of $e_j(G_H),e_j(G_S)$ for
+$j\le\kappa_{\rm obs}+1$ have bit length
+$f(\kappa_{\rm obs})\operatorname{poly}(\mathcal L)$.
+\end{lem}
+
+\begin{proof}
+Let $m=n^2+pn+r_0n$ be the number of rational input entries. Multiplying by the
+product of their denominators turns the input into an integer matrix
+$A_{\rm in}$ all of whose entries are bounded by $B_0$ in absolute value, where
+\begin{equation*}
+m\le3n^2=O(n^2),\qquad B_0=2^{O(m\mathcal L)}=2^{O(n^2\mathcal L)} .
+\end{equation*}
+Hadamard's inequality gives, for a $t\times t$ minor $M_{I,J}$ of $A_{\rm in}$
+with $t\le n$,
+\begin{equation*}
+\begin{aligned}
+|\det M_{I,J}|&\le(\sqrt t\,B_0)^t,\\
+\operatorname{bits}\det M_{I,J}
+&=O\bigl(t(\log B_0+\log t)\bigr)=O(n^3\mathcal L),
+\end{aligned}
+\end{equation*}
+which is $\operatorname{poly}(n,\mathcal L)$ because $n\le\mathcal L$.
+
+\emph{(i)} The kernel basis $N$ of $[C;CA]$, the row-space basis of $[N\ AN]$,
+and hence the matrix $D$ are obtained by Cramer's rule or by reduced row echelon
+form, so every entry is a ratio of such minors and the common denominator is a
+product of at most $n$ pivot minors:
+\begin{equation*}
+\operatorname{bits}N_{ij},\ \operatorname{bits}D_{ij}
+\le 2\cdot O(n^3\mathcal L)+O(\log n)=\operatorname{poly}(n,\mathcal L).
+\end{equation*}
+Each entry of $H=LN$ is a sum of $n$ products of an input entry with an entry of
+$N$, and each entry of $G_H$ or $G_S$ is a sum of at most $q$ such products, so
+passing from $N$ to $H$ and then to $G_H,G_S$ adds $O(\log n)$ and then
+$O(\log q)$ bits:
+\begin{equation*}
+\begin{aligned}
+\operatorname{bits}H_{ij}&\le\mathcal L+\operatorname{poly}(n,\mathcal L)+O(\log n),\\
+\operatorname{bits}(G_H)_{ij},\ \operatorname{bits}(G_S)_{ij}
+&\le2\operatorname{poly}(n,\mathcal L)+O(\log q).
+\end{aligned}
+\end{equation*}
+
+\emph{(ii)} A maximal minor $f_i$ of $P(\lambda)=\lambda H-H_A$ is a determinant
+of an $\omega\times\omega$ matrix whose entries are linear in those of $H,H_A$;
+Hadamard applied to its coefficient matrix bounds each of its $\omega+1$
+coefficients:
+\begin{equation*}
+\deg f_i\le\omega,\qquad
+\operatorname{bits}c_{i,a}=\operatorname{poly}(n,\mathcal L).
+\end{equation*}
+
+\emph{(iii)} $Z^{\mathsf T}Z$ is a sum of at most
+$\binom{k}{\omega}\le2^{\kappa_{\rm obs}}$ terms, each a product of two
+coefficients of the $f_i$, and $e_j$ is a sum of at most
+$k^{j}\le\kappa_{\rm obs}^{\kappa_{\rm obs}}$ principal minors. A sum of $T$
+terms of bit length $b$ has bit length $b+\log T$, hence
+\begin{equation*}
+\begin{aligned}
+\operatorname{bits}(Z^{\mathsf T}Z)_{ij}
+&\le2\operatorname{poly}(n,\mathcal L)+\kappa_{\rm obs},\\
+\operatorname{bits}e_j(G_H),\ \operatorname{bits}e_j(G_S)
+&\le\operatorname{poly}(n,\mathcal L)+\kappa_{\rm obs}\log\kappa_{\rm obs},
+\end{aligned}
+\end{equation*}
+which is $f(\kappa_{\rm obs})\operatorname{poly}(\mathcal L)$.
+\end{proof}
+
+It remains to count the cost of Algorithm~\ref{alg:fpt} at fixed
+$\kappa_{\rm obs}$. Assume $r\ge1$, so that
+\begin{equation*}
+k\le d_0\le\kappa_{\rm obs},\qquad j\le\omega+1\le\kappa_{\rm obs}+1,
+\end{equation*}
+the two inequalities being elementary rank-nullity bounds. The Gram matrices
+$G_H$ and $G_S$ are $k\times k$, hence of size at most
+$\kappa_{\rm obs}$, and their elementary symmetric polynomials are evaluated by
+determinant expansion in $k^{O(j)}=f(\kappa_{\rm obs})$ operations. The matrix
+$Z^{\mathsf T}Z$ is computed from the Cauchy--Binet kernel $K(\lambda,\mu)$: the
+sum has at most $\binom{k}{\omega}\le2^{\kappa_{\rm obs}}$ terms, each an
+$\omega\times\omega$ determinant, and all coefficients are rational of bit length
+$f(\kappa_{\rm obs})\operatorname{poly}(\mathcal L)$ by Lemma~\ref{lem:coeff}.
+The preprocessing therefore costs
+$f(\kappa_{\rm obs})\operatorname{poly}(\mathcal L)$ bit operations. The
+real-feasibility problem itself has
+\begin{equation*}
+\begin{gathered}
+N=\kappa_{\rm obs}+2\omega=f(\kappa_{\rm obs})\ \text{ variables},\\
+s\le2\omega+O(1)=f(\kappa_{\rm obs})\ \text{ equations},
+\end{gathered}
+\end{equation*}
+degree $D\le\kappa_{\rm obs}+1$, and coefficient bit length
+$B=f(\kappa_{\rm obs})\operatorname{poly}(\mathcal L)$, all as in
+\eqref{eq:nvar}; by \eqref{eq:rengar},
+\begin{equation*}
+B(\log B)(\log\log B)(sD)^{O(N)}
+=f(\kappa_{\rm obs})\operatorname{poly}(\mathcal L)
+\end{equation*}
+bit operations. The cases $k=0$ and $\omega=0$ are direct, and $r=0$ is decided
+separately by Proposition~\ref{prop:zero}; all degenerate cases are collected in
+Section~\ref{sec:deg}. For fixed $q$ the sharper parameter is $q$ itself, and the
+bound $\mathcal L^{O(q^2)}$ of Section~\ref{sec:fixedq} applies instead.
+
+\subsection{The zero-free-row case: an exact polynomial-time pencil test}\label{sec:zero}
+
+When $r=0$ there are no free rows: $L=L_0$ is fixed and $\kappa_{\rm obs}=0$.
+Only two conditions remain, and both are decidable without a
+parameter-dependent search. \eqref{eq:5a} is a constant-rank test on
+$H=L_0N$, $H_A=L_0AN$ (Lemma~\ref{lem:compression}(i)); \eqref{eq:5b} is the
+constancy of the rank of the degree-one pencil $\lambda X-G$. We first isolate
+the pencil statement.
+
+\begin{lem}\label{lem:zero}
+Let $X,G\in\mathbb Q^{q\times\omega}$ with $q\ge\omega\ge1$, and put
+$Q(\lambda)=\lambda X-G$. The following are equivalent:
+\emph{(i)} $\operatorname{rank}Q(\lambda)=\omega$ for every
+$\lambda\in\mathbb C$;
+\emph{(ii)} the maximal $\omega\times\omega$ minors of $Q$ have no common
+complex root;
+\emph{(iii)} the maximal minors do not all vanish and their gcd in
+$\mathbb Q[\lambda]$ is a nonzero constant;
+\emph{(iv)} there is $S(\lambda)\in\mathbb Q[\lambda]^{\omega\times q}$ with
+$S(\lambda)Q(\lambda)=I_\omega$ and $\deg S\le2\omega-2$;
+\emph{(v)} there exist matrices
+$S_0,\dots,S_{2\omega-2}\in\mathbb Q^{\omega\times q}$ satisfying the rational
+linear system
+\begin{equation}
+\tag{R0}\label{eq:R0}
+\begin{aligned}
+-S_0G&=I_\omega,\\
+S_{j-1}X-S_jG&=0\quad(1\le j\le2\omega-2),\\
+S_{2\omega-2}X&=0 .
+\end{aligned}
+\end{equation}
+\end{lem}
+
+\begin{proof}
+\emph{(i)$\Leftrightarrow$(ii).} Since $Q$ is $q\times\omega$,
+\begin{equation*}
+\operatorname{rank}Q(\lambda)<\omega
+\iff f_I(\lambda)=0\ \text{ for every } I\subseteq[q],\ |I|=\omega,
+\end{equation*}
+so a rank drop occurs exactly when all maximal minors vanish at the same point.
+
+\emph{(ii)$\Leftrightarrow$(iii).} The minors have rational coefficients and
+$\mathbb C$ is algebraically closed. A nonconstant gcd $g$ has a root
+$\alpha\in\mathbb C$, and $g\mid f_I$ gives $f_I(\alpha)=0$ for all $I$;
+conversely, if $f_I(\alpha)=0$ for all $I$, the minimal polynomial
+$m_\alpha\in\mathbb Q[\lambda]$ of $\alpha$ divides every $f_I$ and hence
+divides the gcd. Thus
+\begin{equation*}
+\begin{aligned}
+\gcd_I f_I\ \text{nonconstant}
+&\Longrightarrow\exists\alpha\in\mathbb C:\ f_I(\alpha)=0\ \ \forall I\\
+&\Longrightarrow m_\alpha\mid\gcd_I f_I ,
+\end{aligned}
+\end{equation*}
+with each implication reversible, and the clause that the minors do not all
+vanish excludes the zero gcd.
+
+\emph{(iii)$\Rightarrow$(iv).} This is the adjugate/B\'ezout construction of
+Appendix~\ref{app:encoding}. For each $\omega$-element row set
+$I\subseteq[q]$, let $E_I\in\mathbb Q^{\omega\times q}$ be the row selection,
+$Q_I=E_IQ$ and $f_I=\det Q_I$. Then
+\begin{equation*}
+\operatorname{adj}(Q_I)E_IQ=f_II_\omega,\qquad
+\sum_Ig_If_I=1\ \text{ with }\ \deg g_I<\omega
+\end{equation*}
+by Lemma~\ref{lem:bezout}, so that
+\begin{equation*}
+S=\sum_Ig_I\operatorname{adj}(Q_I)E_I
+\quad\text{satisfies}\quad
+S(\lambda)Q(\lambda)=I_\omega ,
+\end{equation*}
+and $\deg\operatorname{adj}(Q_I)\le\omega-1$ gives
+$\deg S\le(\omega-1)+(\omega-1)=2\omega-2$.
+
+\emph{(iv)$\Rightarrow$(v).} Write $S=\sum_{j=0}^{2\omega-2}S_j\lambda^j$. Then
+$S(\lambda)(\lambda X-G)=I_\omega$, and comparing the coefficients of
+$\lambda^0$, $\lambda^k$ ($1\le k\le2\omega-2$) and $\lambda^{2\omega-1}$ gives
+\begin{equation*}
+-S_0G=I_\omega,\qquad S_{k-1}X-S_kG=0,\qquad S_{2\omega-2}X=0,
+\end{equation*}
+which is \eqref{eq:R0}.
+
+\emph{(v)$\Rightarrow$(i).} Evaluating the polynomial identity
+$S(\lambda)Q(\lambda)=I_\omega$ at any $\lambda_0\in\mathbb C$ exhibits a left
+inverse of $Q(\lambda_0)$:
+\begin{equation*}
+S(\lambda_0)Q(\lambda_0)=I_\omega
+\Longrightarrow\operatorname{rank}Q(\lambda_0)\ge\omega,
+\end{equation*}
+while $\operatorname{rank}Q(\lambda_0)\le\omega$ because $Q(\lambda_0)$ has
+$\omega$ columns; hence $\operatorname{rank}Q(\lambda_0)=\omega$.
+\end{proof}
+
+The size of \eqref{eq:R0} is fixed by the degree bound $\deg S\le2\omega-2$.
+With $d=2\omega-2$ the unknowns are the entries of $d+1=2\omega-1$ matrices of
+size $\omega\times q$, and each of the $d+2=2\omega$ matrix equations contributes
+$\omega^2$ scalar equations, so
+\begin{equation*}
+N_{\rm var}=(2\omega-1)q\omega=O(q\omega^2),\qquad
+N_{\rm eq}=(2\omega)\omega^2=2\omega^3 .
+\end{equation*}
+All coefficients of \eqref{eq:R0} are entries of $X$, $G$, or $0,\pm1$, so
+clearing the denominators multiplies the system by an integer of bit length
+$O(\mathcal L_0)$, where $\mathcal L_0$ is the input length of $(X,G)$. Exact
+fraction-free elimination on the resulting integer system of size
+$M=N_{\rm var}+N_{\rm eq}=O(\omega^3+q\omega^2)$ then satisfies
+\begin{equation*}
+\begin{aligned}
+\text{entry bits}&=O(\mathcal L_0),\\
+\text{minor bits}&=O\bigl(M(\mathcal L_0+\log M)\bigr)\ \text{(Hadamard)},\\
+\text{arithmetic operations}&=O(M^3),\\
+\text{bit operations}&=O(M^3)\cdot O\bigl(M(\mathcal L_0+\log M)\bigr)^2\\
+&=\operatorname{poly}(M,\mathcal L_0).
+\end{aligned}
+\end{equation*}
+Hence consistency of \eqref{eq:R0} is decided in
+$\operatorname{poly}(q,\omega,\mathcal L_0)$ bit operations.
+
+\begin{remark}[Construction and algorithm]\label{rem:construction}
+The adjugate construction in (iii)$\Rightarrow$(iv) of Lemma~\ref{lem:zero}
+enumerates the $\binom q\omega$ maximal minors, which is exponential in $q$; it
+is used only to prove the existence of a certificate of degree at most
+$2\omega-2$. It applies to the rectangular pencil $Q$ because each $Q_I$ is
+square, so that $\deg S\le2\omega-2$ holds for every $q\ge\omega$ with no square
+assumption on $Q$. The algorithm never forms the sum: it searches for the
+coefficients of $S$ directly in \eqref{eq:R0}, whose size is polynomial in
+$q,\omega$. This is the step that turns a certificate-size statement into a
+decision algorithm.
+\end{remark}
+
+\begin{remark}[Higher degree]\label{rem:degree}
+The same argument applies to pencils of degree $d$: if the entries of $Q$ have
+degree at most $d$, then every maximal minor has degree at most $d\omega$,
+B\'ezout gives multipliers with $\deg g_I<d\omega$, and the adjugate contributes
+at most $d(\omega-1)$,
+\begin{equation*}
+\deg S\le(d\omega-1)+d(\omega-1)=2d\omega-d-1,
+\end{equation*}
+which is $2\omega-2$ for $d=1$. Degree bounds for polynomial-matrix left
+inverses are studied classically \cite{fab90}; the bound above is the elementary
+adjugate--B\'ezout one, and only the case $d=1$ is used in this paper. The
+general bound may be useful if the observer model is extended. For $d=0$ the
+pencil is constant and the statement is the rank test of
+Lemma~\ref{lem:compression}(iii).
+\end{remark}
+
+\begin{prop}\label{prop:zero}
+Let $r=0$, so $L=L_0$. Feasibility of $\eqref{eq:5a}\wedge\eqref{eq:5b}$ is
+decidable in $\operatorname{poly}(n,\mathcal L)$ bit operations.
+\end{prop}
+
+\begin{proof}
+Compute a basis $N$ of $\ker[C;CA]$ and set $H=L_0N$, $H_A=L_0AN$.
+
+\emph{Step 1.} Check $\operatorname{rank}[H_A;H]=\operatorname{rank}H$; if it
+fails, reject, since this is \eqref{eq:5a}
+(Lemma~\ref{lem:compression}(i)).
+
+\emph{Step 2.} Put $\omega=\operatorname{rank}H$. If $\omega=0$, then $H=0$ and
+\eqref{eq:5b} reads $\operatorname{rank}(\lambda H-H_A)=0$ for all $\lambda$,
+i.e.\ $H_A=0$; accept exactly in that case.
+
+\emph{Step 3.} Otherwise take a rank factorization $H=XB$ with
+$X\in\mathbb Q^{q\times\omega}$ of full column rank and
+$B\in\mathbb Q^{\omega\times k}$ of full row rank. Step 1 gives
+$\operatorname{row}H_A\subseteq\operatorname{row}H$
+(Lemma~\ref{lem:compression}(i)), hence $H_A=FH$ for some $F$; set $G=FX$, so
+$H_A=GB$.
+
+\emph{Step 4.} Run the test of Lemma~\ref{lem:zero} on $(X,G)$.
+
+\emph{Correctness.} Since $B$ is of full row rank,
+\begin{equation*}
+\operatorname{rank}(\lambda H-H_A)
+=\operatorname{rank}\bigl((\lambda X-G)B\bigr)
+=\operatorname{rank}(\lambda X-G)
+\end{equation*}
+for every $\lambda$, and \eqref{eq:5b} is
+$\operatorname{rank}(\lambda H-H_A)=\omega$ for all $\lambda$; thus
+Lemma~\ref{lem:zero} decides \eqref{eq:5b}. Step 1 is \eqref{eq:5a}, and step 2
+is the exact $\omega=0$ reading of the same identity. The zero-free-row decision
+is therefore the conjunction of one constant-rank test and one pencil test: if
+\eqref{eq:5a} fails, the instance is infeasible and the spectral question is not
+asked.
+
+\emph{Complexity.} Step 1 is one rank computation, step 3 a rank factorization
+and an exact linear solve, and step 4 costs
+$\operatorname{poly}(q,\omega,\mathcal L_0)\subseteq\operatorname{poly}(n,\mathcal L)$
+by Lemma~\ref{lem:zero}. Every step is a rank computation or an exact linear
+solve on a matrix of at most $2\omega+1$ rows and $q$ columns whose entries have
+bit length $\operatorname{poly}(n,\mathcal L)$ by Lemma~\ref{lem:coeff}, and
+Gaussian elimination over $\mathbb Q$ on such a matrix costs
+\begin{equation*}
+\operatorname{poly}(n,\mathcal L)\ \text{ bit operations};
+\end{equation*}
+the test returns the coefficients $S_0,\dots,S_{2\omega-2}$ explicitly.
+\end{proof}
+
+\begin{remark}[Kronecker canonical form]\label{rem:kronecker}
+The pencil $Q$ has full column rank at every finite complex value if and only if
+its Kronecker form (in the sense of \cite{bee88}) contains no right singular
+block and no finite regular elementary-divisor block. Left singular blocks and
+\emph{infinite} regular elementary divisors are permitted: they do not produce a
+rank drop at any finite $\lambda$. For instance
+\begin{equation*}
+Q(\lambda)=1,\qquad Q(\lambda)=I_2,\qquad
+Q(\lambda)=\begin{bmatrix}1&\lambda\\0&1\end{bmatrix}
+\end{equation*}
+all satisfy the condition, the first with an infinite elementary divisor of size
+one and the last with determinant the constant $1$. Equivalently, in the
+language of Appendix~\ref{app:encoding}, the condition is that the ideal
+generated by the maximal minors is the unit ideal; only the \emph{finite}
+spectrum is constrained.
+\end{remark}
+
+\begin{remark}[Witness]\label{rem:witness}
+If \eqref{eq:R0} is consistent, exact elimination returns
+$S_0,\dots,S_{2\omega-2}$, hence an explicit polynomial left inverse
+$S(\lambda)$, verifiable by multiplying the two polynomial matrices. The test is
+therefore not merely a yes/no decision.
+\end{remark}

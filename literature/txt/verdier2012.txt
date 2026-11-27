@@ -1,0 +1,1581 @@
+                                           REDUCTION AND NORMAL FORMS OF MATRIX PENCILS
+
+
+                                                                             OLIVIER VERDIER
+arXiv:1205.1138v1 [math.NA] 5 May 2012
+
+
+
+
+                                                 Abstract. Matrix pencils, or pairs of matrices, may be used in a variety of
+                                                 applications. In particular, a pair of matrices (E, A) may be interpreted as the
+                                                 differential equation Ex0 + Ax = 0. Such an equation is invariant by changes
+                                                 of variables, or linear combination of the equations. This change of variables
+                                                 or equations is associated to a group action. The invariants corresponding to
+                                                 this group action are well known, namely the Kronecker indices and divisors.
+                                                 Similarly, for another group action corresponding to the weak equivalence, a
+                                                 complete set of invariants is also known, among others the strangeness.
+                                                     We show how to define those invariants in a directly invariant fashion, i.e.
+                                                 without using a basis or an extra Euclidean structure. To this end, we will
+                                                 define a reduction process which produces a new system out of the original
+                                                 one. The various invariants may then be defined from operators related to
+                                                 the repeated application of the reduction process. We then show the relation
+                                                 between the invariants and the reduced subspace dimensions, and the relation
+                                                 with the regular pencil condition. This is all done using invariant tools only.
+                                                     Making special choices of basis then allows to construct the Kronecker
+                                                 canonical form. In a related manner, we construct the strangeness canonical
+                                                 form associated to weak equivalence.
+                                           15A03, 15A21, 15A22, 47A50, 34M03
+
+                                                                             1. Introduction
+                                         1.1. Equivalence. The primary study of this paper is that of pairs of matrices,
+                                         also called matrix pencils. In other words, we study pairs of operators (E, A) both
+                                         acting from a finite dimensional vector spaces M to a finite dimensional vector
+                                         space V .
+                                            A typical example we have in mind is the linear differential equation
+                                                                              dx
+                                         (1)                                   E  + Ax = 0.
+                                                                              dt
+                                         Such a model is clearly invariant by changes of variable, or by changing the order
+                                         of the equations. More precisely, it is invariant by simultaneous equivalence trans-
+                                         formation of the operators E and A. The corresponding equivalence relation is the
+                                         following: two pairs of operators (E1 , A1 ) and (E2 , A2 ) will be considered equivalent
+                                         if there exists invertible operators P and Q, operating on M and V respectively,
+                                         such that
+                                                                              E2 = PE1 Q,
+                                         (2)
+                                                                              A2 = PA1 Q.
+                                         This equivalence relation is associated to a group, which is simply GL(M )×GL(V ).
+                                         This is called strong equivalence in [1]. We are interested in properties which are
+                                         invariant with respect to that group action on the matrix pencil. In other words,
+                                         we are interested in quantities that label the orbit of the group action.
+                                                                                        1
+2                                  OLIVIER VERDIER
+
+
+   In fact, a complete set of invariants and a canonical form have been known
+since the works of [16] and [6]. Modern versions of those proofs may be found
+in [1, § XII.4] and in [2, § A.7]. The primary tool for obtaining those invariants
+is the Jordan canonical form. For that reason, those proofs are impossible to
+extend to nearby cases, for example to the infinite dimensional case, or to the
+parameter dependent case, not to mention the numerical difficulties associated with
+the computation of the Jordan canonical form.
+   As a result, alternative proof techniques were developed, most notably in [13]
+and [17]. Those authors observed indeed that using a Jordan canonical form is not
+suitable to compute the invariants other than the Jordan invariants, i.e., the Kro-
+necker indices and the “infinite elementary divisors” [13]. The idea is to transform
+the pair of matrices into a form which exhibits all the invariants but is not a canon-
+ical form. Those forms are known under the names of generalized Schur-staircase
+form, or GUPTRI (Generalized Upper Triangular Form). We refer to [4, §4.1] and
+[8] for more references on those algorithms.
+   Our approach is similar, although with a shift of focus towards the underlying al-
+gebraic structures as opposed to the algorithmic aspects. In particular, we attempt
+to define the invariants from the dimensions of subspaces which are themselves in-
+variants with respect to the equivalence relation at hand. The advantage of our
+approach is that a great deal of results are automatically independent of the choice
+of a basis, or any other structure (like a Euclidean structure).
+
+1.2. Invariants. A matrix pencil, when considered as a differential equation (1),
+may be decomposed in an intrinsic ordinary differential equation, and an extra
+structure. We will call the invariants of the underlying ordinary differential equa-
+tion the dynamical invariants, and we will call the remaining invariants the non-
+dynamical invariants. In the parlance of the Kronecker decomposition theorem as
+presented in [1], the dynamical invariants would be the finite elementary divisors
+(essentially a Jordan form), whereas the non-dynamical invariants would be the
+infinite elementary divisors along with the row and column minimal indices.
+   The dynamical invariants, i.e., the invariants of the intrinsic differential equations
+boil down to the Jordan invariant associated to similarity transformations, and are
+therefore of less interest to us. We will thus mostly focus on the non-dynamical
+invariants, which appear only when E is not invertible. Those invariants are well-
+known in control theory, and in the study of differential algebraic equations. In
+control theory, such invariants are the controllability and observability indices ([5,
+§ 6.3]), for differential algebraic equations (DAE), in the case of a regular pencil (see
+subsection 3.8), the most used non-dynamical invariant is the index ([3, VII.1]).
+   Our goal is to define the non-dynamical invariants in a invariant manner, without
+any other structure than the linear algebraic structure.
+
+1.3. Reduction. The crucial tool to the study of the invariants of a pencil is the
+concept of reduction, which we define precisely in Section 2.
+    This concept was gradually developed, under various names, or no name at all,
+first in [18] for the study of regular pencils, then in [17, §4] and [13] to prove the
+Kronecker decomposition theorem. It is also related to the geometric reduction of
+nonlinear implicit differential equations as described in [10] or [9]. In the linear
+case, those coincide with the observation reduction, as shown in [14]. It is also
+               REDUCTION AND NORMAL FORMS OF MATRIX PENCILS                            3
+
+
+equivalent to the algorithm of prolongation of ordinary differential equation in the
+formal theory of differential equations, as shown in [12].
+   The reduction procedure is an operation that, out of a pair of operators (E, A),
+creates a new, smaller one (E0 , A0 ). “Smaller” is in the sense that the reduced
+operators E0 and A0 are restrictions of E and A on subspaces of M and V , defined
+by V 0 := EM and M 0 := A−1 V 0 .
+   This process of reduction is iterated, producing systems (E(k) , A(k) ) and sub-
+spaces M (k) and V (k) . This process ultimately stops, and we will call the number
+of steps before it stops the index.     When the process stops, the system which
+is produced, denoted by (E(∞) , A(∞) ), is such that E(∞) is surjective. After run-
+ning the reduction algorithm once more on the dual of that reduced system, i.e.,
+on (E(∞)∗ , A(∞)∗ ), one obtains an isolated system (E(∞)∗(∞) , A(∞)∗(∞) ) such that
+E(∞)∗(∞) is now invertible.
+   At each step of the reduction, some information from the original system is lost.
+That information is encoded by integers called “defects”. Those defects are of three
+kinds: α, β + and β − . The defect α1 is defined as the dimension of the kernel of E,
+regarded as a quotient operator from M/M 0 to V 0 /V 00 . The defect β1+ is defined as
+the dimension of the cokernel of A, regarded as a quotient operator from M/M 0 to
+V /V 0 . The iterated reduction then generates the sequences of defects αk and βk+ .
+The defects βk− are defined as the β + defects of the system (E(∞)∗ , A(∞)∗ ).
+   Using those subspaces, defined in an invariant manner, we are able to show the
+following facts:
+     • the operator E is invertible if and only if all the defects vanish
+     • the pair (E, A) is a regular pencil if and only if the β + and β − defects vanish
+     • we show that the invariants defined in [7], like the strangeness, may also
+       be defined directly in an invariant manner, i.e., without using any extra
+       structure or basis
+  We also show that the defects and the system (E(∞)∗(∞) , A(∞)∗(∞) ) completely
+characterize the equivalence class corresponding to the equivalence relation (2).
+     • the defects are related to the Kronecker indices
+     • the invariants defined in [7] may be used to construct a corresponding
+       canonical form for weak equivalence: this connects the approaches of [17]
+       and [7]
+     • using the relation with the Kronecker decomposition theorem, we show
+       that the defects of the dual system (E∗ , A∗ ) are related to those of (E, A)
+       by switching the β + and β − defects.
+
+1.4. Outline. The layout of the paper is as follows.
+   In the first part, Section 2 and Section 3, we show how to derive the non-
+dynamical invariants. In Section 2 we define the reduction procedure. In Section 3
+we define the defects of a system, and study their properties. In particular, we give
+an original proof of the relation between the property of a pencil to be regular, and
+the presence of some of the defects.
+   In the second part, we show that the invariants obtain in the first part, namely
+the defects, supplemented by a Jordan structure, are the only invariants of the pair
+of matrices with respect to equivalence. Most of the results in this part are already
+in [17] and [13]. In Section 4 we prove the basic lemmas needed to construct
+canonical forms. In Section 5, we show how to use those tools to construct a
+4                                 OLIVIER VERDIER
+
+
+canonical form with respect to weak equivalence In Section 6 and Section 7 we
+show that the defects determine a complete canonical form. In Section 8 we study
+the relation with the existing Kronecker canonical form.
+
+                              2. System Reduction
+2.1. Setting.
+Definition 2.1. We will call a pair of linear operators (E, A) a linear system, or
+simply a system, if E and A have the same domain and codomain, both of finite
+dimension.
+   Given a system (E, A), we will denote the common domain of E and A by
+M(E,A) and the common codomain of E and A by V(E,A) , so a system (E, A) may be
+represented as
+
+                               E, A : M(E,A) −→ V(E,A) .
+
+2.2. Reduced spaces. The idea behind the reduction of a linear system (E, A) is
+to “disentangle” the spaces associated with the operators E and A. The strategy
+pursued is to try and make the operator E surjective, by successive reduction steps.
+In order to achieve this, we have to describe the lack of surjectivity of E, first
+independently of A, which leads to the definition of the subspace
+                                     V 0 := EM.
+The next step is now to describe the lack of surjectivity of E, with respect to A,
+which we measure using the subspace
+                                    M 0 := A−1 V 0 .
+Remark 2.2. Those definitions make sense when considering the differential equa-
+tion
+                                Ex0 + Ax = 0.
+Notice that any suitable initial condition for this equation must be in M 0 . If the
+initial condition is not in M 0 , there cannot be any solution stemming from that
+initial condition.
+    Let us put those definitions together:
+Definition 2.3. Given a linear system (E, A) we define its reduced codomain
+  0
+V(E,A) Reduced codomain as
+                                    0
+                                  V(E,A) := EM(E,A) ,
+                        0
+and its reduced domain M(E,A) as
+                  0              0
+                        := A−1 V(E,A)                       0
+                                       
+                 M(E,A)               = x ∈ M(E,A) : Ax ∈ V(E,A) .
+Remark 2.4. We will often drop the dependency on the system (E, A), and simply
+write M , M 0 , V and V 0 when the context is clear enough.
+Remark 2.5. As explained in [14, §5.1], the reduction of Definition 2.3 corresponds
+to the non-linear reduction of general systems of differential equations with con-
+straints. The study of differential equations is also the point of departure in [17].
+               REDUCTION AND NORMAL FORMS OF MATRIX PENCILS                           5
+
+
+Remark 2.6. One of the first occurrence of the definition of that subspace M 0 seems
+to be in [18, Lemma 2.1]. It is used to study systems which are regular pencils (see
+Definition 3.19).
+   Another explicit definition is to be found in [11, §7], although with a different
+purpose than ours, namely the study of linear, time-varying differential algebraic
+equations of index one.
+2.3. System Reduction. The subspaces M (k) and V (k) defined in Definition 2.3
+allow for defining a new system. This procedure will be called “reduction”.
+Proposition 2.7. Given a system (E, A), the operators E0 and A0 are uniquely
+defined by the following commuting diagram.
+                                        E, A
+                                  M               V
+
+
+                                        E0 , A0
+                                  M0              V0
+
+The vertical arrows are canonical injection from a subspace into the ambient space.
+  The operators E0 and A0 build up a new system (E, A)0 which we call the reduced
+system, and is defined by
+                                (E, A)0 := (E0 , A0 ).
+Proof. The proof rests on the observation that
+                    0         0                     0         0
+                  EM(E,A) ⊂ V(E,A)      and       AM(E,A) ⊂ V(E,A) .
+                                                                                      
+
+Remark 2.8. Consider the category which objects are vector spaces and arrows are
+systems as defined in Definition 2.1. The reduction operation, denoted by a prime,
+is an endofunctor in this category, i.e., a functor from that category to itself.
+   As we mentioned in the beginning of subsection 2.2, our goal is to obtain a
+reduced system such that E is surjective. It is only part of a general strategy to
+obtain a reduced system where E is invertible. It is therefore important that the
+reduction algorithm does not alter the injectivity of E. We observe that this is
+indeed the case.
+Proposition 2.9. If, in a system (E, A), E is injective, then E0 is also injective.
+Proof. It is a consequence of the observation that
+                                   ker E0 ⊂ ker E.
+                                                                                      
+
+   The pendant of that observation is the equally simple observation regarding the
+kernel of the operator A with respect to the reduced space M 0 :
+                                                                             0
+Proposition 2.10. Given a system (E, A), the null-space of A is included in M(E,A) ,
+i.e.,
+                                          0
+                               ker A ⊂ M(E,A) .
+6                                 OLIVIER VERDIER
+
+
+2.4. Iterated Reduction. We may iterate the reduction process described in
+subsection 2.3 on the new system (E, A)0 . This leads to a sequence of systems
+{(E, A)(k) }k∈N which is defined recursively as follows.
+Definition 2.11. The iterated of the reduction of a system (E, A) are defined
+recursively by
+                 (E(k+1) , A(k+1) ) := (E(k) , A(k) )0 , ∀k ≥ 0,
+and
+                              (E(0) , A(0) ) := (E, A).
+    We will make use of the straightforward notation, for k ∈ N.
+                                    (k)
+                                 M(E,A) := M(E,A)(k) ,
+(3)                                  (k)
+                                   V(E,A) := V(E,A)(k) .
+
+   The reduced operators E(k) and A(k) are essentially restrictions of the original op-
+erators E and A, so we may rewrite the definition of the iterated reduced subspaces
+M (k) and V (k) .
+Proposition 2.12. For a system (E, A) the following assertions hold for any integer
+k ≥ 0:
+                    ∀x ∈ M (k) E(k) x = Ex A(k) x = Ax,
+                                V (k+1) = EM (k) ,
+                       M (k+1) = x ∈ M (k) : Ax ∈ V (k+1) .
+                                
+
+Proof. The proof is a simple verification by induction on k.                         
+2.5. Totally Reduced Systems. As we shall notice in subsection 2.7, the re-
+peated operation of reduction transforms a system into one which cannot be re-
+duced anymore, or rather, for which the reduction does not create a new system.
+We call such systems “totally reduced”:
+Definition 2.13. We will say that a system (E, A) is totally reduced if
+                                   (E, A)0 = (E, A).
+   A practical characterisation of a totally reduced system is that V 0 = V . The
+verification is straightforward.
+Proposition 2.14. A system (E, A) is totally reduced if and only if
+                                     0
+                                   V(E,A) = V(E,A) .
+2.6. Almost Reduced System.
+Definition 2.15. We will say that a system (E, A) is almost reduced if
+                                   0
+                                  M(E,A) = M(E,A) .
+    The chosen vocabulary is supported by the following facts:
+      • a totally reduced system is also almost reduced, which follows from Defini-
+         tion 2.3.
+      • a system which is almost reduced will be totally reduced at the next step
+         of the reduction, since by Proposition 2.12: V 00 = EM 0 = EM = V 0 .
+                 REDUCTION AND NORMAL FORMS OF MATRIX PENCILS                                     7
+
+
+Remark 2.16. In the situation of a reduced system which is almost but not totally
+reduced, the following subspace sequences
+                                M (n+1) =M (n) ⊂ . . . ⊂ M 00 ⊂ M 0 ⊂ M
+                    V (n+2) = V (n+1) ⊂V (n) ⊂ . . . ⊂ V 00 ⊂ V 0 ⊂ V
+would be produced.
+   A concrete example where this happens is when A = 0 and E is not surjective.
+It is clear that M 0 = M but V 0 ( V . The corresponding system is thus almost
+reduced but not totally reduced.
+2.7. Index. The reduction procedure produces decreasing sequences of subspaces.
+When both sequences stall, the system is totally reduced. The number of reduction
+steps needed to transform a system into a totally reduced one is called the index of
+the system (E, A):
+Definition 2.17. The smallest integer n ∈ N for which the system (E(n) , A(n) ) is
+totally reduced is called the index of the system (E, A).
+   We will use the following notation for the index of the system (E, A):
+                 ind(E,A) := min n ∈ N : (E, A)(n+1) = (E, A)(n) .
+                                
+
+Remark 2.18. The index is always a finite integer1, and the reduced system (E0 , A0 )
+has an index dropped by one, i.e,
+                                    ind(E,A)0 = ind(E,A) −1.
+   Those observations will be used repeatedly to prove statements by induction on
+the index (e.g., in Proposition 3.20, Theorem 6.1 and Theorem 8.2).
+Remark 2.19. Using Proposition 2.14 we observe that
+                   ind(E,A) = min n ∈ N : V (n+1) = V (n) .
+                                 
+
+Remark 2.20. The index defined in Definition 2.17 is closely related to the geometric
+index defined in [10], [9] or [14, §5.1]. In fact, the geometric index would be the
+first integer n such that the system (E, A)(n) is almost reduced (Definition 2.15).
+As we shall see in Corollary 3.17 and Proposition 3.20, this minor difference is only
+relevant for singular pencils.
+2.8. Totally Reduced System.
+Definition 2.21. For a system (E, A) of index n = ind(E,A) we define the totally
+reduced system as
+                         (E(∞) , A(∞) ) := (E(n) , A(n) ).
+Remark 2.22. We could simply have defined, say E(∞) by the limit of the sequence of
+operators E(k) (because this sequence eventually stalls), which explains the notation
+“∞”.
+   We pointed out in subsection 2.2 that the idea behind the reduction procedure
+was to lead to a system where E is surjective. The reduction algorithm indeed
+achieves this goal:
+Proposition 2.23. The totally reduced operator E(∞) is surjective.
+    1as opposed to the differentiation index, which is infinite in the non-regular pencil case; see,
+e.g., [3, § VII.1].
+8                                    OLIVIER VERDIER
+
+
+Proof. The system (E(∞) , A(∞) ) is totally reduced so we may use Proposition 2.14
+to conclude that E(∞) M (∞) = (V (∞) )0 = V (∞) , so E(∞) is surjective.        
+
+                                         3. Defects
+3.1. Quotient Operators. At each step of the reduction some information is lost,
+by passing from the original system to the reduced one. We capture that informa-
+tion loss by two quotient operators defined on the quotient space M/M 0 .
+Proposition 3.1. The following commutating diagrams uniquely define the quo-
+tient operators [A] and [E] (the vertical arrows are the natural projections on a
+quotient space).
+                            A                                 E
+                    M                V                M               V0
+
+
+                           [A]                                [E]
+                  M/M 0            V /V 0           M/M 0           V 0 /V 00
+
+    Moreover, [A] is injective and [E] is surjective.
+Proof. The quotient operators [A] and [E] are well defined because AM 0 ⊂ V 0 and
+EM 0 ⊂ V 00 (since in fact, EM 0 = V 00 by definition). [E] is surjective because E is
+surjective onto V 0 by definition of V 0 . [A] is injective since, by definition of M 0 ,
+                                  Ax ∈ V 0 =⇒ x ∈ M 0 .
+                                                                                       
+
+3.2. Constraint and Observation Defects. Since [A] is injective and [E] is sur-
+jective, the information stemming from those operators are to be collected in the
+cokernel of [A] and the kernel of [E]. The dimension of those subspaces are impor-
+tant invariants of the system (E, A) which we now precisely define.
+Definition 3.2. Let [E] and [A] be defined as in Proposition 3.1. We measure the
+lack of surjectivity of [A] by the first observation defect β1+ (E, A), defined as
+(4)                              β1+ (E, A) := dim coker[A]
+and the lack of injectivity of [E] by the first constraint defect α1 (E, A), defined
+as
+(5)                               α1 (E, A) := dim ker[E].
+   Now we take advantage of the reduction procedure and define those defects
+recursively:
+Definition 3.3. The constraint defects αk (E, A) of a system (E, A) are defined
+for any integer k ≥ 1 by
+                                αk (E, A) := α1 ((E, A)(k−1) ).
+Similarly, the observation defects βk+ (E, A) are defined for any integer k ≥ 1 by
+                             βk+ (E, A) := β1+ ((E, A)(k−1) ).
+               REDUCTION AND NORMAL FORMS OF MATRIX PENCILS                        9
+
+
+3.3. Control Defects. There is another important kind of defect that will be
+needed. In is obtained by considering the dual of the totally reduced system ob-
+tained after repeated reductions. That totally reduced system (E(∞) , A(∞) ) is such
+that E(∞) is surjective, so E(∞)∗ is injective. So what happens for a system (E, A)
+such that E is injective? It turns out that such a system has no constraint defects.
+Proposition 3.4. Given a system (E, A), if E is injective, then the system has no
+constraint defects, i.e., for all integer k ≥ 1, αk (E, A) = 0.
+Proof. The proof proceeds by induction on the index.
+   (1) If the index is zero, then M 0 = M and V 0 = V , so dim ker[E] = 0.
+   (2) For a positive index, using Proposition 2.9 we may apply the induction
+       hypothesis and deduce that αk (E, A) = 0 for k ≥ 2.
+   (3) Now if x + M 0 ∈ ker[E] then Ex ∈ EM 0 . Since E is injective, this means
+       that x ∈ M 0 and thus that ker[E] = 0. We conclude that α1 (E, A) = 0.
+                                                                              
+  Let us introduce the notion of a dual system.
+Notation 3.5. Given a system (E, A) we define the dual system (E, A)∗ by the
+pair of adjoint operators (E∗ , A∗ ), i.e.,
+                                (E, A)∗ := (E∗ , A∗ ).
+Proposition 3.6. The dual (E(∞) , A(∞) )∗ of a totally reduced system has no con-
+straint defects, i.e.,
+                            α(E(∞)∗ , A(∞)∗ ) = 0.
+Proof. According to Proposition 2.23, the operator E(∞) is surjective, so E(∞)∗ is
+injective, and we conclude using Proposition 3.4.                               
+   This suggests that another set of defects is given by the observation defects of
+the dual of the totally reduced system (E(∞) , A(∞) ).
+Definition 3.7. Given a system (E, A), we define the control defects βk− (E, A)
+by
+                  βk− (E, A) := βk+ (E(∞)∗ , A(∞)∗ ) ∀k ≥ 1.
+3.4. Intrinsic Dynamical System. The reduction procedure may thus be used
+once to obtain a totally reduced system, and may then be applied again to the dual
+of that totally reduced system.
+    Starting with a system (E, A), we may completely reduce it to obtain the system
+   (∞)
+(E , A(∞) ). The operator E(∞)∗ is injective. The adjoint system (E(∞)∗ , A(∞)∗ )
+may be in turn completely reduced to obtain the system (E(∞)∗(∞) , A(∞)∗(∞) ).
+Using Proposition 2.23 and Proposition 2.9, we obtain the following result.
+Proposition 3.8. The operator E(∞)∗(∞) is invertible.
+   Since the operator E(∞)∗(∞) is invertible, its domain and co-domain have the
+same dimension. This dimension is the dimension of the intrinsic dynamics of the
+system.
+Definition 3.9. The dynamical dimension δ of the system (E, A) is defined by
+the integer
+                     δ := dim M (∞)∗(∞) = dim V (∞)∗(∞) .
+10                                OLIVIER VERDIER
+
+
+Remark 3.10. For a differential equation defined by the system (E, A), the system
+                               (E(∞)∗(∞)∗ , A(∞)∗(∞)∗ )
+corresponds to the underlying differential equation. In particular, the dynamical
+dimension δ determines the degrees of freedom for the choice of the initial condition.
+3.5. Dimensions of the Subspaces. In order to study the relations existing be-
+tween the defects and the various subspaces M (k) and V (k) , we define the following
+spaces, which measure the difference of dimension between each successive reduc-
+tion:
+Definition 3.11. Recalling Definition 2.11, for any integer k ≥ 1 we define the
+spaces
+                           ∆M (k) := M (k−1) /M (k)
+and
+                           ∆V (k) := V (k−1) /V (k) .
+   By definition of the defects in Definition 3.2 and using Proposition 3.1, one
+obtains the relations
+                   dim ∆M (k) = dim ∆V (k+1) + αk ,    ∀k ≥ 1,
+(6)
+                    dim ∆V (k) = dim ∆M (k) + βk+ ,   ∀k ≥ 1,
+between the dimensions of the spaces defined in Definition 3.11 and the defects.
+  For any integer k ≥ 1 this implies the inequalities
+     · · · ≤ dim ∆M (k+1) ≤ dim ∆V (k+1) ≤ dim ∆M (k−1) ≤ dim ∆V (k) ≤ · · · .
+Remark 3.12. This is the same sequence of inequalities as in [17, 5.2].
+   In particular, the dimensions of the spaces ∆M (k) and ∆V (k) may be expressed
+using the constraint and observation defects.
+Lemma 3.13. For any integer k ≥ 1, the dimensions of the spaces ∆M (k) and
+∆V (k) are related to the defects by the identities
+                                           X
+                            dim ∆V (k) =      (αj + βj+ ),
+                                          j≥k
+                                          X
+                                                       +
+                           dim ∆M (k) =         (αj + βj+1 ).
+                                          j≥k
+
+Proof. Those identities follow from an induction based on (6) and the observation
+that the integers dim ∆V (k) and dim ∆M (k) are zero when k is bigger than the
+index of the system.                                                            
+Remark 3.14. As we shall see in Theorem 5.1, the quantity defined in [7] as the
+“strangeness” s turns out to be the integer
+                                   s = dim ∆V 00 .
+Roughly speaking it expresses the number of constraints that, when differentiated,
+will help to reduce the system.
+   We may thus give the precise relation of the strangeness to the defects using
+Lemma 3.13, namely
+                                          ∞
+                                          X       ∞
+                                                  X
+                          s = dim ∆V 00 =   βk+ +    αk .
+                                          k=2         k=2
+               REDUCTION AND NORMAL FORMS OF MATRIX PENCILS                          11
+
+
+  The dimensions of the spaces M and V may also be expressed from the defects
+and the dynamical dimension δ (see Definition 3.9).
+Proposition 3.15. The dimensions of M , V , the defects α, β + and β − and the
+dynamical dimension δ are related by the formulae
+                               X          X         X
+                 dim M = δ +       kαk +     kβk− +     +
+                                                      kβk+1 ,
+                                  k≥1           k≥1            k≥1
+                                  X             X              X
+                                                                       −
+                    dim V = δ +         kαk +         kβk+ +         kβk+1 .
+                                  k≥1           k≥1            k≥1
+
+Proof. First observe that since dim V (k) = dim V (k+1) +dim ∆V (k+1) and dim M (k) =
+dim M (k+1) + dim ∆M (k+1) , we have
+                         X                                         X
+  dim M = dim M (∞) +        dim ∆M (k)       dim V = dim V (∞) +      dim ∆V (k) .
+                          k≥1                                                  k≥1
+
+Using Lemma 3.13 we obtain
+                                                X             X
+                     dim V = dim V (∞) +              kαk +         kβk+ ,
+                                                k≥1           k≥1
+
+and                                         X                 X
+                                                                      +
+                    dim M = dim M (∞) +               kαk +         kβk+1 .
+                                            k≥1               k≥1
+
+Now using the observation of Proposition 3.6 that α(E(∞)∗ , A(∞)∗ ) = 0, along with
+Definition 3.7 of the defects β − and Definition 3.9 of the dynamical dimension δ we
+readily obtain the result.                                                         
+
+3.6. Relation with the Index. The index is, as expected, a non-dynamical in-
+variant. More precisely, it is a function of the defects, as the following proposition
+shows:
+Proposition 3.16. The index ind(E,A) (see Definition 2.17) of a linear system
+(E, A) is given by
+       ind(E,A) = min n ∈ N : ∀k > n αk (E, A) = 0 and βk+ (E, A) = 0 .
+                     
+
+Proof. Following Remark 2.19, the index fulfills
+                          ind(E,A) = min dim ∆V (k+1) = 0.
+                                        k
+
+Using Lemma 3.13 we thus obtain
+                  dim ∆V (k) = 0 ⇐⇒ αj + βj+ = 0 ∀j ≥ k + 1,
+which proves the claim.                                                              
+
+  In the case of a system without observation defects we obtain readily:
+Corollary 3.17. The index of a system (E, A) without observation defects (i.e.,
+β + = 0) is the biggest index of non-zero constraint defects, i.e.,
+                                 
+                  ind(E,A) = min n ∈ N : ∀k > n αk (E, A) = 0 .
+  backgroundcolor=green!40]add remark on index for DAEs?
+12                                     OLIVIER VERDIER
+
+
+3.7. Defects and Invertibility. The choice of the name “defect” may seem overly
+negative, but those integers really measure how far this system is from a system
+where E is invertible. This is the essence of the following proposition.
+Proposition 3.18. For a given system (E, A) the following statements are equiva-
+lent.
+   (i) All the defects α, β + and β − are zero.
+  (ii) The operator E is invertible.
+Proof. E is surjective if and only if ∆V 0 = 0. By Lemma 3.13, that is equivalent
+to α = β + = 0. Since E is invertible if and only if both E and E∗ are surjective, we
+obtain the result using Definition 3.7.                                             
+3.8. Regular Pencils. A pencil is a polynomial on a ring of matrices. Since we are
+interested in pairs of matrices, our attention is restricted to first order polynomials,
+and to the property of such a polynomial to be regular.
+Definition 3.19. The system (E, A) is a regular pencil if there exists λ ∈ C such
+that λE + A is invertible.
+   There is a remarkable relation between the property of being regular and the
+defects:
+Proposition 3.20. The system (E, A) is a regular pencil if and only if all the
+defects β + and β − are zero.
+   We need first a lemma to understand how the pencil regularity property may be
+lost during the reduction.
+Lemma 3.21. The system (E, A) is a regular pencil if and only if both the following
+properties hold:
+  (i) β1+ (E, A) = 0
+ (ii) The reduced system (E, A)0 is a regular pencil
+Proof.       (1) Consider, for any λ ∈ C, the operator Sλ defined by
+                                         Sλ := λE + A.
+         Sλ can be decomposed into S0λ and [Sλ ] according to the following commut-
+         ing diagram:
+                            0         M0          M           M/M 0           0
+
+                                         S0λ           Sλ          [Sλ ]
+
+                            0         V0           V           V /V 0         0
+
+            Since both rows are exact sequence, out of the three operators S0λ , Sλ
+         and [Sλ ], if two of them are invertible then the third one is. One easy way
+         to prove this fact2 is by choosing bases in M and V which are compatible
+         with the subspaces M 0 and V 0 . The operator Sλ is then represented by a
+         block triangular matrix where the diagonal blocks are the matrices of S0λ
+         and [Sλ ]. Now it is easy to check that if two of those three matrices are
+         invertible, the third one is.
+   2This is a very general result that holds in other contexts as well, since one may also prove it
+by diagram chasing.
+               REDUCTION AND NORMAL FORMS OF MATRIX PENCILS                             13
+
+
+    (2) Notice that for any λ ∈ C, [Sλ ] = [A] (the operator [A] is defined in Propo-
+        sition 3.1), so [Sλ ] is invertible if and only if β1+ = 0. As a result, we obtain
+        the property
+             β1+ = 0 =⇒ ∀λ ∈ C Sλ invertible ⇐⇒ S0λ invertible .
+                                                                           
+
+    (3) For any λ ∈ C, the surjectivity of Sλ implies that of [Sλ ]. Since [Sλ ] does
+        not depend on λ, it means that if [Sλ ] = [A] is not surjective, then Sλ is
+        not surjective for any λ ∈ C. Now since, by definition, if β1+ 6= 0 then [A]
+        is not surjective, we conclude that
+                       β1+ 6= 0 =⇒ ∀λ ∈ C Sλ not invertible.
+  All the possibilities are covered and the claim is proved.                            
+Proof of Proposition 3.20.       (1) We first show by induction on the index that
+        (E, A) is a regular pencil if and only if β + = 0 and (E, A)(∞) is a regular
+        pencil. It is easy to show using Lemma 3.21.
+   (2) Now a system (E, A) is a regular pencil if and only if the dual system (E, A)∗
+        is a regular pencil, so we may apply on (E(∞)∗ , A(∞)∗ ) the claim just proved.
+        Because of Definition 3.7, we obtain that (E, A) is a regular pencil if and
+        only if β + and β − are zero, and (E(∞)∗(∞) , A(∞)∗(∞) ) is a regular pencil
+   (3) Since, by Proposition 3.8, E(∞)∗(∞) is invertible, the system (E(∞)∗(∞) , A(∞)∗(∞) )
+        is a regular pencil, and the claim is proved.
+                                                                                     
+
+                                     4. Coupling
+4.1. Motivation: coupling spaces. In Section 2 we showed how to define invari-
+ant subspaces for the system (E, A). “Invariant” means here that those subspaces
+are not arbitrarily chosen, they depend in a unique way from the system at hand.
+   In order to obtain a simple matrix representation of that system, we will need to
+choose supplementary spaces to the invariant subspaces M 0 and V 0 . In this section,
+we focus on such supplementary spaces for one reduction step only, and establish
+some results which will be needed in Section 6.
+   We first look at the case of supplementary subspaces to the subspace M 0 , i.e.,
+subspaces N 0 ⊂ M such that
+                                    M = M 0 ⊕ N 0.
+   The strategy is to try and choose N 0 in the same direction as the part of ker E
+that remains out of M 0 . First we define what this space is by decomposing the
+kernel of E in the part that is included in M 0 and some supplementary space. This
+is achieved by choosing any supplementary space K 0 such that
+                              ker E = (ker E ∩ M 0 ) ⊕ K 0 .
+Then since, by construction, K 0 ∩ M 0 = 0 one may complete M 0 by choosing a
+supplementary space C 0 such that
+                                 M = M 0 ⊕ C 0 ⊕ K 0.
+We now define N 0 as
+                                   N 0 := C 0 ⊕ K 0 .
+   The choice of C 0 will prove to be essential to obtain a complete decomposition
+of the system (E, A). The tool to choose C 0 appropriately will be Lemma 4.2.
+14                                   OLIVIER VERDIER
+
+
+
+   But notice now that no matter how we choose C 0 , the space K 0 roughly speaking
+corresponds to the variables that are decoupled from the rest of the system. They
+are sometimes called the algebraic constraints.
+Example 4.1. Let us illustrate the previous remark by a trivial example. Consider
+the simple system                    ( 0
+                                       x =x
+                                           y = 0.
+The variable y is decoupled from the rest of the system.
+4.2. Coupling Lemma for E. We will assume that some coupling space W 00 has
+already been chosen in the reduced system, and that will serve as a starting point
+for the choice of the coupling space at the present stage. More precisely, we assume
+that the reduced space V 0 is already decomposed as
+                                V 0 = EM = EM 0 ⊕ W 00 .
+That decomposition allows to construct the coupling spaces in an optimal manner,
+in one subspace C 0 coupled with W 00 , and complement with vectors in the null-space
+of E.
+   We state the result in a lemma, formulated outside the context of linear systems.
+Lemma 4.2. Assume that an operator E acting on a space M , and consider a
+subspace M 0 ⊂ M . For any subspace W 00 such that EM = EM 0 ⊕ W 00 there exists
+subspaces K 0 and C 0 such that
+                                    M = M 0 ⊕ C0 ⊕ K0
+and such that the sequence
+                                                    E
+                      0        K0       K0 ⊕ C0          W 00     0
+
+is exact. The exactness means here that ker E ∩ (K 0 ⊕ C 0 ) = K 0 and E(K 0 ⊕ C 0 ) =
+W 00 .
+   Moreover, for any choice of basis in W 00 one may choose a basis of C 0 such that
+its image by E is the basis in W 00 (see Figure 1).
+
+Proof.      (1) Consider
+                          C 0 := E−1 W 00 = x ∈ M : Ex ∈ W 00 .
+                                           
+
+         Observe that M 0 + C 0 = M , and EC 0 = W 00 .
+     (2) Pick x ∈ C 0 ∩M 0 . It implies that Ex ∈ W 00 ∩EM 0 , so Ex = 0, i.e., x ∈ ker E.
+         We conclude that C 0 ∩ M 0 ⊂ ker E.
+     (3) Choose C 0 such that C 0 = ker E ⊕ C 0 . It follows from the previous observa-
+         tion that C 0 ∩ M 0 = 0. This implies
+                                M = (M 0 + ker E) ⊕ C 0 .
+     (4) Decompose further ker E as
+                               ker E = (ker E ∩ M 0 ) ⊕ K 0 .
+         As a consequence, we obtain
+                                 M 0 + ker E = M 0 ⊕ K 0
+               REDUCTION AND NORMAL FORMS OF MATRIX PENCILS                          15
+
+
+                                                   M
+
+                                            M0                   C0   K0
+
+
+
+                       EM 0
+
+                  EM
+
+
+                        W 00
+
+
+
+
+         Figure 1. An illustration of Lemma 4.2. There is a basis choice
+         such that the operator E is represented as this matrix. Blue squares
+         are identity matrix blocks. Other areas are filled with zeros.
+
+
+        and K 0 ⊂ ker E.
+    (5) Finally we have EC 0 = EC 0 = W 00 , and C 0 ∩ ker E = 0. Moreover, since E
+        restricted on C 0 sends C 0 bijectively to W 0 , the inverse image of the basis
+        of W 00 is a basis of C 0 .
+                                                                                     
+
+4.3. Complementary subspaces. The definition of M 0 , in Definition 2.3, is the
+set of vectors in M such that Ax intersects with the image of E. We are now
+interested in the converse statement, namely, that if we choose a subspace N 0
+which does not intersect M 0 , its image AN 0 by A should not intersect the image of
+E. This is the gist of the following lemma.
+Lemma 4.3. Consider a linear system (E, A) and assume that N 0 is a subspace of
+                                0
+M(E,A) that does not intersect M(E,A) , i.e. such that
+                                            0
+                                     N 0 ∩ M(E,A) = 0.
+Then the property
+                                              0
+                                     AN 0 ∩ V(E,A) =0
+holds.
+  Note that this result is a consequence of Proposition 3.1. Indeed, the subspace N 0
+may be injected in M/M 0 and the result follows from the fact that [A] is injective.
+  We give also a direct proof of this elementary lemma.
+
+Proof. For general subspaces N 0 ⊂ M and W 0 ⊂ V , we have
+                               AN 0 ∩ W 0 = A(N 0 ∩ A−1 W 0 ).
+16                                   OLIVIER VERDIER
+
+
+With W 0 = V 0 and since by Definition 2.3, M 0 = A−1 V 0 , we obtain
+                                AN 0 ∩ V 0 = A(N 0 ∩ M 0 )
+from which the claim follows.                                                     
+4.4. Coupling Lemma for Systems. We may now combine Lemma 4.2 and
+Lemma 4.3 and obtain a fundamental Lemma that decouples the operators E and
+A on supplementary spaces to M 0 and V 0 .
+Lemma 4.4. Suppose that there is a decomposition
+                                     V 0 = V 00 ⊕ W 00 ,
+and that W 00 is equipped with a basis.
+  Then there exists decompositions
+                                      M = M 0 ⊕ N 0,
+                                         V = V 0 ⊕ W 0,
+and subspaces
+                                   C0 ⊂ M             D0 ⊂ V,
+                                 K0 ⊂ M               Z 0 ⊂ V,
+such that
+(7)                                   N 0 = C 0 ⊕ K 0,
+(8)                                   W 0 = D0 ⊕ Z 0 .
+     Those subspaces are such that the following sequences are exact:
+                                                        E
+                      0       K0           K0 ⊕ C0          W 00   0
+                                           | {z }
+                                              N0
+
+
+                                     A
+                      0       N0           D0 ⊕ Z 0         Z0     0
+                                           | {z }
+                                              W0
+and such that
+                                 AM ∩ Z 0 = 0.
+   Moreover, one may choose basis in the subspaces C 0 , K 0 , D0 and Z 0 such that
+the basis of D0 is the image by A of the basis of N 0 , and the basis on W 00 is the
+image by E of the basis of C 0 .
+Proof.       (1) By the assumption on W 00 , we have
+                          EM = V 0 = V 00 ⊕ W 00 = EM 0 ⊕ W 00 .
+          The subspace W 00 is moreover equipped with a basis by the induction hy-
+          pothesis.
+      (2) Appealing to Lemma 4.2 we obtain subspaces C 0 and K 0 such that
+                                    M = M 0 ⊕ C0 ⊕ K0
+          with
+                                          EC 0 = W 00
+          and
+                                           EK 0 = 0
+                REDUCTION AND NORMAL FORMS OF MATRIX PENCILS                        17
+
+
+          and
+                                    ker E ∩ C 0 = 0.
+          Note that, given a basis in W 00 we can choose a basis on C 0 such that E
+          sends that basis on that of W 00 .
+             Let us now define the subspace N 0 ⊂ M by
+
+                                   N 0 := C 0 ⊕ K 0 .
+
+          We choose an arbitrary basis of the space K 0 , and this provides us with a
+          basis for the space N 0 .
+      (3) Recall now that, according to Lemma 4.3,
+
+                                   AN 0 ∩ EM = 0,
+
+          and by Proposition 2.10, the operator A sends the basis of the space N 0 to
+          a set of independent vectors in the space V . We thus choose as a basis of
+          AN 0 the image of the basis of N 0 by A.
+      (4) Now choose a subspace Z 0 ⊂ V such that
+
+                                 V = EM ⊕ AN 0 ⊕ Z 0
+
+          and pick an arbitrary basis of that subspace. We define
+
+                                      D0 := AN 0
+
+          and
+                                   W 0 := D0 ⊕ Z 0 .
+                                                                                    
+
+Remark 4.5. The dimensions of the spaces introduced in Theorem 6.1 are related
+to the dimensions of the spaces introduced in Definition 3.11, and to the defects
+(Definition 3.2). The relations are given by
+
+                       dim W 0 = dim ∆V 0           dim Z 0 = α1 ,
+                       dim N 0 = dim ∆M 0          dim K 0 = β1+ .
+
+
+                                  5. Strangeness
+   In order to illustrate the power of reduction, and to show an application of
+Lemma 4.4, we show an intermediate result. Instead of looking at the equivalence
+classes for the equivalence of matrices, that is, pairs of invertible operators acting
+on (E, A) as (PEQ, PAQ), we look at the weak equivalence.
+   Weak equivalence is determined by another group, which elements consist of two
+invertible operators P and Q and an arbitrary operator R, acting on a system (E, A)
+as
+
+(9)                    (P, Q, R) · (E, A) := (PEQ, P(ER + AQ)).
+18                                          OLIVIER VERDIER
+
+
+5.1. Weak equivalence group. The group operation corresponding to weak equiv-
+alence is given by
+                (P2 , Q2 , R2 ) · (P1 , Q1 , R1 ) = (P2 P1 , Q1 Q2 , Q1 R2 + R1 Q2 ),
+where P1 , P2 are automorphisms of V , Q1 , Q2 are automorphisms on M , and R1 ,
+R2 are arbitrary endomorphisms on M .
+  The identity is then
+                                      (I, I, 0),
+and the inverse of an element (P, Q, R) is given by
+                           (P, Q, R)−1 = (P−1 , Q−1 , −Q−1 RQ−1 ).
+  Clearly, the elements of the form (P, Q, 0) form a subgroup corresponding to the
+equivalence relation. Another subgroup is given by elements of the form (I, I, R).
+  For the study of the orbits of the weak equivalence group, the identity
+(10)           (P, Q, R) = (P, Q, 0) · (I, I, RQ−1 ) = (I, I, Q−1 R) · (P, Q, 0)
+shows that we may restrict our attention to one subgroup at a time.
+5.1.1. Orbit Invariants. The orbits of the weak equivalence group action (9) were
+studied in [7], in which the authors exhibited a complete set of invariants. We give
+an alternative proof here, thereby shedding some light on the notion of strangeness.
+Theorem 5.1. A complete set of invariants for the group action (9) is given by
+  (1) d := dim V 00 ,
+  (2) a := dim ker[E] = α1 ,
+  (3) s := dim ∆V 00 .
+     The integer s is called “strangeness” in [7].
+Proof.        (1) First we have to check that the three integers are indeed invariants
+          of the group action. Clearly, they are invariants by transformations of the
+          form (P, Q, 0), which are merely equivalent transformation.
+             Let us examine the case of a transformation
+                           (E, A) = (I, I, R) · (E, A) = (E, ER + A).
+          We have
+                                        0
+                                       V = EM = EM = V 0 ,
+                                   0
+                                M := {x : Ax ∈ EM } = M 0 ,
+          so
+                                              0   0
+                                            (E , A ) = (E, A)
+          and
+                                              0
+                               V 00 = E M 0 = EM 0 = V 00 .
+          Using (10), this shows that the spaces V 0 , V 00 and M 0 are invariants of all
+          of the weak equivalence group transformations.
+             As a result, the spaces ∆V 00 and the operator [E] are also invariants, so
+          the integers d, a and s are invariants.
+      (2) Now we show that the integers d, a and s are the only invariants. In order to
+          show that, we show that a system (E, A) is weakly equivalent to a canonical
+          form that depends only on those three integers.
+             In order to achieve this, we decompose M and V using Lemma 4.4.
+              REDUCTION AND NORMAL FORMS OF MATRIX PENCILS                     19
+
+
+                                       M0                C0   K0
+
+
+
+                      V 00         d
+
+
+
+                     W 00                                s
+
+
+                                                         s
+                      D0
+                                                              a
+                          0
+                      Z
+
+        Figure 2. Canonical form of a matrix corresponding to the weak
+        equivalence. The matrix E is represented in blue, whereas the
+        matrix for A is represented in green. All such squares are identity
+        matrices. The rest is filled out by zero entries.
+
+
+        (a) Let us choose an arbitrary decomposition
+                                   V 0 = V 00 ⊕ W 00 .
+            We may now apply Lemma 4.4 to obtain spaces C 0 , K 0 , D0 and Z 0
+            equipped with appropriate bases. Using Remark 4.5 we obtain s =
+            dim W 00 and a = dim K 0 .
+        (b) Finally, define Π as a projector from M to M 0 along N 0 . Let F be a
+            right inverse for E on V 0 = EM .
+            Define
+                                   R := −FAΠ,
+            so ER + A = 0 on M 0 .
+            As a result, if we define the new system (E, A) by
+                                (E, A) := (E, ER + A),
+            then the restriction of A on M 0 is zero.
+        (c) Now we may choose a basis of M 0 and of V 00 = EM 0 such that E is
+            represented by the identity matrix on M 0 .
+            This provides us with complete basis of M and V such that the ma-
+            trices E and A take the form described in Figure 2.
+                                                                            
+
+
+                              6. Direct Decomposition
+6.1. Decomposition Theorem. In Section 2 we showed how to define invariant
+subspaces M (k) and V (k) for the system (E, A). In order to obtain a complete
+decomposition of the spaces M and V , it is necessary to construct subspaces that
+20                                    OLIVIER VERDIER
+
+
+bridge the gap between each invariant subspaces M (k) and V (k) . More precisely we
+construct spaces N (k) and W (k) such that
+
+                M (k) = M (k+1) ⊕ N (k+1) ,        V (k) = V (k+1) ⊕ W (k+1) .
+
+In a sense, the subspaces N (k) and W (k) correspond to the spaces ∆M (k) and ∆V (k)
+respectively, defined in Definition 3.11.
+   The construction of those supplementary spaces proceeds backwards, in the di-
+rection opposite to the reduction. One must first totally reduce the system (E, A).
+Assume that the index is n. One then chooses an arbitrary complementary space
+W (n) such that V (n−1) = V (n) ⊕ W (n) , and equip that space with an arbitrary
+basis. The rest is a repeated application of Lemma 4.4.
+   We now see how to choose those supplementary spaces N (k) and W (k) so that
+the operators E and A are simultaneously decomposed in an advantageous way.
+
+Theorem 6.1. Consider a system (E, A).
+   Recall the definitions of the subspaces M (k) and V (k) in (3).
+   For any integer k ∈ N there exists subspaces N (k+1) ⊂ M and W (k+1) ⊂ V such
+that
+
+
+                                 M (k) = M (k+1) ⊕ N (k+1) ,
+                                 V (k) = V (k+1) ⊕ W (k+1) ,
+
+     and for any integer k ≥ 1 there exists subspaces
+
+                                 C (k) ⊂ M          D(k) ⊂ V,
+                                 K (k) ⊂ M          Z (k) ⊂ V,
+
+such that
+
+(11)                                N (k) = C (k) ⊕ K (k) ,
+(12)                               W (k) = D(k) ⊕ Z (k) .
+
+   Those subspaces are such that for any integer k ≥ 1, the following sequences are
+exact (see Figure 3):
+                                                       E
+                  0      K (k)        K (k) ⊕ C (k)           W (k+1)     0
+                                      |     {z    }
+                                           N (k)
+
+
+                                  A
+                  0      N (k)         D(k) ⊕ Z (k)            Z (k)      0
+                                       |    {z    }
+                                           W (k)
+and such that
+                                   AM (k−1) ∩ Z (k) = 0.
+   Moreover, one may choose basis in the spaces C (k) , K (k) , D(k) and Z (k) such
+that the basis of D(k) is the image by A of the basis of N (k) , and the basis on W (k+1)
+is the image by E of the basis of C (k) .
+                       REDUCTION AND NORMAL FORMS OF MATRIX PENCILS                                                    21
+
+
+                         M (∞)            N 000       N 00                N0
+
+
+                                        C 000K 000   C 00    K 00    C0        K0
+
+
+                                                                                                        A = I, E = 0
+   V (∞)
+
+                                                                                                        E = I, A = 0
+       (4)       (4)
+   W         Z
+
+    W 000    D000                                                                                       E = I, A =?
+             Z 000
+
+
+    W 00
+             D00                                                                                        E = 0, A =?
+             Z 00
+
+                                                                                                        E = 0, A = 0
+     W   0    D0
+
+                                                                                                        E = 0, A = 0
+                 Z0
+
+
+
+
+                 Figure 3. An illustration of the decomposition described in The-
+                 orem 6.1. Noticing that no matter what bases we choose in M (∞)
+                 and V (∞) the matrix is block diagonal (see Corollary 6.4), we may
+                 choose those bases in such a way that E is represented as the iden-
+                 tity matrix on that block. Since we now that E(∞) is surjective
+                 (Proposition 2.23), that identity block stretches to fill V (∞) .
+
+
+
+Remark 6.2. For the reader averse to the language of exact sequences, the fact that
+the sequences of Theorem 6.1 are exact means in that case that
+                                                                    EC (k) = W (k+1) ,
+                                                                    EK (k) = 0,
+                                                                    AN (k) = D(k) ,
+                                                     ker A ∩ N (k) = 0.
+Remark 6.3. In the same spirit as Remark 4.5, we notice the relation between the
+dimensions of the various subspaces introduced in Theorem 6.1, and the dimensions
+of the spaces defined in Definition 3.11, and to the defects (Definition 3.2). For any
+integer k ≥ 1, the relations are given by
+                           dim W (k) = dim ∆V (k)                                    dim Z (k) = αk ,
+                            dim N (k) = dim ∆M (k)                                  dim K (k) = βk+ .
+
+Proof of Theorem 6.1. We proceed by induction on the index (see Figure 4). If the
+index is zero, all the spaces M (k) and V (k) are zero, and there is nothing to prove.
+Assume now that the statement holds for systems of index n − 1. Given a system
+(E, A) of index n, the reduced system (E0 , A0 ) has index n − 1, so we may apply the
+induction hypothesis on that reduced system.
+   For clarity, let us denote
+                                 (E, A) := (E0 , A0 ),                         M = M 0,   V = V 0.
+22                                         OLIVIER VERDIER
+
+
+                                  M0                         N0
+
+                             M (∞)         N 000 N 00       C0    K0           A = I, E = 0
+
+                                                                               E = I, A = 0
+                 (∞)
+             V
+                                                                               E = I, A =?
+     V0
+             W 000                                                             E = 0, A =?
+
+
+                 W 00                                                          E = 0, A = 0
+
+                                                                               E = 0, A = 0
+                      0
+     W   0        D
+
+                  Z0
+
+             Figure 4. An illustration of Theorem 6.1 and Lemma 4.4 on an
+             index three system. The grey shaded part pictures the previous
+             step of the recursion. Starting with W 00 , one constructs the space
+             C 0 such that EC 0 = W 00 , and a subspace K 0 such that K 0 ⊂ ker E
+             using Lemma 4.2, and defines N 0 := C 0 ⊕ K 0 . One then constructs
+             Z 0 such that V = V 0 ⊕ AN 0 ⊕ Z 0 . This in turn defines W 0 :=
+             AN 0 ⊕ Z 0 .
+
+The reduced system (E, A)0 consists of operators operating from M 0 to V 0 , so by
+the induction hypothesis we obtain a decomposition of the spaces M and V into
+             (k)   (k)
+subspaces W , N        as described in the statement of the theorem.
+   We have to shift the indices of all the spaces produced for the final statement to
+hold. For example, we define for any integer k ≥ 2
+                                                            (k−1)
+                                           W (k) := W               ,
+                                                        0
+so we may write the decomposition of V as
+                          V = V 0 = V (∞) ⊕ W (n) ⊕ W (n−1) ⊕ · · · ⊕ W 00 .
+  The reduced operators E0 and A0 being restrictions of E and A, the statements
+obtained from the induction hypothesis apply to the operators E and A.
+  Applying Lemma 4.4 yields the desired result.
+                                                                             
+
+6.2. Decomposition in invariant subspaces. A crucial consequence of Theo-
+rem 6.1 is that it provides us with decompositions of M and V such that E and A
+may be restricted on those subspaces:
+Corollary 6.4. Given the decomposition provided by Theorem 6.1, and defining
+M and V by
+                          M                  M
+                    M :=      N (k) ,   V :=     W (k) ,
+                                       k                                k
+               REDUCTION AND NORMAL FORMS OF MATRIX PENCILS                       23
+
+
+then, by construction,
+                         M = M (∞) ⊕ M ,        V = V (∞) ⊕ V ,
+and we have
+ (i)
+                          EM (∞) = V (∞)       AM (∞) ⊂ V (∞)
+ (ii)
+                                  EM ⊂ V       AM ⊂ V
+Proof. The fact that EM ⊂ V and AM ⊂ V follows from
+                                  EN (k) ⊂ W (k+1) ⊂ V
+and
+                                   AN (k) ⊂ W (k) ⊂ V .
+                                                                                  
+
+                                7. Dual Decomposition
+7.1. Dual space decomposition. Assume that a finite dimensional vector space
+M is decomposed in a direct sum of subspaces, i.e.,
+                                M = M1 ⊕ M2 ⊕ · · · ⊕ M n .
+   This decomposition induces the dual space decomposition
+                     M     ⊥ n                            M   o
+           (Mk )∗ :=    Mj     = ϕ ∈ M ∗ : hϕ, xi = 0 ∀x ∈   Mj .
+                         j6=k                                     j6=k
+
+   Although it is not reflected by the notation, it is clear that (Mk )∗ actually
+depends not only on Mk but on all the other spaces of the decomposition. It is a
+generalization of the notion of dual basis.
+   Assume further that M is equipped with a basis. We say that this basis is
+compatible with the decomposition if each subspace is the span of a subset of the
+basis.
+   If M is equipped with a basis B compatible with a subspace decomposition, then
+the dual basis is compatible with the dual space decomposition.
+   Indeed, consider a subspace Mk of the decomposition. Since the basis is com-
+patible with the decomposition, that subspace is spanned by a subset of the basis
+B, say SMk ⊂ B, i.e.,
+                                  Mk = span SMk .
+The dual decomposition is such that the associated subspace (Mk )∗ is the span of
+the dual basis with the same subset SMk , i.e.,
+                          (Mk )∗ = span e∗ : e ∈ SMk .
+                                       
+
+Here the covector e∗ is the element of the dual basis of B corresponding to e, i.e.,
+such that                                 (
+                                 ∗         0 if f 6= e
+                               he , f i =
+                                           1 if f = e
+24                                  OLIVIER VERDIER
+
+
+Lemma 7.1. Assume that A and B are subspaces of M that are part of a subspace
+decomposition of M , and that C is a subspace of V that is part of a subspace decom-
+position of V . Assume further that M and V are equipped with bases compatible
+with their decompositions. Take an operator S operating from M to V .
+   The following two statements are equivalent:
+  (i) The following sequence is exact:
+                                                            S
+                           0        A          A⊕B               C       0
+
+      Moreover, the operator S sends the basis of B on the basis of C.
+ (ii) The following “dual” sequence is exact:
+                                        S∗
+                       0         C∗           A∗ ⊕ B∗             A∗         0
+
+     and
+                                      S∗ V ∗ ∩ A∗ = 0.
+                                ∗
+     Moreover, the operator S sends the basis of C∗ on the basis of B∗ .
+Proof. Denote the basis on M and V by B(M ) and B(V ) respectively. Clearly, for
+any e ∈ B(M ) and f ∈ B(V ), we have
+                        hf ∗ , Sei = hS∗ f ∗ , ei = h(e∗ )∗ , S∗ f ∗ i
+where (e∗ )∗ is the dual basis of the dual basis of B.
+   The proof is now a simple verification by expressing each of the statements in
+terms of the bases. For example, SA = 0 may be written as
+                       hf ∗ , Sei = 0         ∀e ∈ SA       f ∈ B(V ),
+so one obtains
+                    h(e∗ )∗ , S∗ f ∗ i = 0      ∀e ∈ SA         f ∈ B(V ),
+which means that SA = 0 ⇐⇒ S∗ V ∗ ∩ A∗ = 0. The other statements are verified
+in the same fashion.                                                       
+7.2. Conjugate Decomposition. Consider a finite dimensional linear system (E, A)
+and its dual (E∗ , A∗ ). The corresponding domain and codomain are denoted by
+                                  M := M(E,A)∗ = V ∗ ,
+                                    V := V(E,A)∗ = M ∗ .
+   By applying Theorem 6.1 on the dual system (E∗ , A∗ ) one obtains a decomposi-
+tion of M and V as
+                                (∞)      0   0
+                        M =M        ⊕ K ⊕ C ⊕ ··· ,
+                                      (∞)       0       0
+                               V =V          ⊕ Z ⊕ D ⊕ ··· .
+   Moreover, all those subspaces are equipped with a suitable basis. By choosing a
+                       (∞)       (∞)
+basis for the spaces M     and V      we obtain compatible bases B(M ) and B(V )
+of M and V respectively.
+Theorem 7.2. Consider the decompositions produced by Theorem 6.1 for the dual
+system (E, A)∗ . The dual decompositions induce decompositions of the spaces M
+and V by the canonical isomorphism between a space and its bidual.
+               REDUCTION AND NORMAL FORMS OF MATRIX PENCILS                                  25
+
+
+
+  For any integer k ∈ N we have
+                                    (k)           (k+1)              (k+1)
+                               M∗          = M∗               ⊕ N∗
+                                    (k)          (k+1)               (k+1)
+                                  V∗       = V∗           ⊕ W∗               ,
+  Those subspaces are such that the following sequences are exact (see Figure 3):
+                          (k+1)        E          (k)          (k)                 (k)
+                0      W∗                       K∗ ⊕ C∗                          K∗      0
+                                                |  {z   }
+                                                        (k)
+                                                    N∗
+
+
+                            (k)                   (k)          (k)     A           (k)
+                0        Z∗                     D∗ ⊕ Z∗                          N∗      0
+                                                |  {z   }
+                                                      (k)
+                              (k)         (k)      W∗
+                                                  (k)                (k)                     (k)
+   Moreover, the basis of C∗ , K∗ , D∗ and Z∗ are such that the basis of N∗
+                                   (k)                   (k)
+is the image by A of the basis of D∗ , and the basis of C∗ is the image by E of
+              (k+1)
+the basis of W∗     .
+Proof. It is a direct application of Lemma 7.1.                                              
+
+Remark 7.3. The exact sequences of Theorem 6.1 are the same as those of Theo-
+rem 7.2 but with flipped arrows. It just reflects how the block structure of a matrix
+is related to the block structure of the transposed matrix.
+7.3. Second sweep of the decomposition. Remember that the constraint de-
+fects of the adjoint of the totally reduced system (E(∞)∗ , A(∞)∗ ) are zero (Proposi-
+tion 3.6). Along with Remark 6.3, we conclude that the corresponding subspaces
+K (k) produced in Theorem 6.1 are zero.
+   Now, using Corollary 6.4, we are in a position to use the decomposition of The-
+orem 6.1 for the dual system (E(∞)∗ , A(∞)∗ ) and obtain a decomposition of M (∞)∗
+and V (∞)∗ .
+Theorem 7.4. In addition to the decomposition given by Theorem 6.1, the spaces
+M (∞) and V (∞) may now be decomposed as (see Figure 5):
+                                                                       A
+                0        Z (k)                  Z (k) ⊕ D(k)                     N (k)   0
+                                                |     {z   }
+                                                    W (k)
+
+
+                                           E
+                0      W (k+1)                      Z (k)                         0
+
+Proof.                                                                                       
+
+Remark 7.5. The various defects defined in Definition 3.2 and Definition 3.7 may
+now be pictured clearly using the Theorem 7.4; see Figure 6.
+
+                                  8. Kronecker Indices
+8.1. Basis Arrangement. In this section we prove a result on the basis obtained
+in Theorem 6.1, which will be useful to determine the relation with the Kronecker
+decomposition theorem.
+26                                                              OLIVIER VERDIER
+
+
+                               (∞)∗000
+                         (∞)∗(4)          (∞)∗00       (∞)∗0
+                    V (∞)∗(∞)
+                         W∗ W∗           W∗        W∗           N 000   N 00             N0
+
+
+     M (∞)∗(∞)
+
+      N∗
+        (∞)∗000
+                                                                                                                       A = I, E = 0
+         (∞)∗00
+       N∗
+                                                                                                                       E = I, A = 0
+           (∞)∗0
+       N∗
+
+
+            W 000
+                                                                                                                       E = I, A =?
+
+                                                                                                                       E = 0, A =?
+            W 00
+
+
+                                                                                                                       E = 0, A = 0
+
+
+             W0                                                                                                        E = 0, A = 0
+
+
+
+
+                Figure 5. An illustration of the full decomposition of Theo-
+                rem 7.4. The first decomposition leads to M 00 and the correspond-
+                ing space V 000 = EM 00 , at which point the algorithm stalls. The
+                second step consists in transposing the reduced operators E(∞) and
+                A(∞) (indicated by the bold red frame on the figure), running the
+                same algorithm, and transposing back again. The upper left check-
+                ered area denotes the identity for E, and a non specific matrix for
+                A. Notice that this block is completely separated from the rest,
+                so one may now reduce the A to Jordan blocks by a similarity
+                transformation.
+
+Definition 8.1. For k ∈ N, k ≥ 1, we define a Nk -sequence to be a sequence
+                                                               mj ∈ M             1≤j≤k
+of k independent vectors in M , and a sequence
+                                                               vj ∈ V           1≤j≤k
+of k independent vectors in V such that Amj = vj for 1 ≤ j ≤ k, Emj = vj−1 for
+2 ≤ j ≤ k, Em1 = 0 and vk 6∈ Im E, which is summarized in the following diagram.
+                                   E                   A                E            E               A
+                           0                  m1               v1              ···            mk         vk 6∈ Im E
+
+     Similarly, for k ∈ N, k ≥ 1, we define a Lk -sequence to be a sequence
+                                                           mj ∈ M              1≤j ≤k−1
+of k − 1 independent vectors and a sequence
+                                                               vj ∈ V           1≤j≤k
+of k independent vectors which fulfill the conditions summarized in the following
+diagram.
+                                                   E                A                E               A
+                         Im A 63 v1                        m1               ···               mk−1        vk 6∈ Im E
+                REDUCTION AND NORMAL FORMS OF MATRIX PENCILS                                       27
+
+
+Theorem 8.2. Theorem 6.1 produces bases such that there are αk Nk -sequences,
+and βk+ Lk -sequences. Moreover, the end vectors v constitute a basis of W 0 .
+Proof.    (1) We proceed by induction on the index. Assume that the result holds
+       for the reduced system (E0 , A0 ).
+   (2) The basis of C 0 is precisely such that Emk+1 = vk . Besides, the basis of
+       AC 0 is chosen such that vn+1 = Amk+1 , so each Lk and Nk sequence is
+       extended with two elements, meaning that they build now Lk+1 and Nk+1
+       sequences.
+   (3) Each element m of the basis of K 0 produces a new N1 sequence (m, Av),
+       since Em = 0 and Am = v 6∈ Im E:
+                                       E         A
+                                   0        m            v 6∈ Im E
+
+         The dimension of K 0 being α1 , we produce α1 such sequences.
+   (4) Each element v of the basis Z 0 qualifies as a L0 sequence, since v 6∈ Im E
+       and v 6∈ Im A, so
+                                    Im A 63 v 6∈ Im E.
+       Since the dimension of Z 0 is β1+ , we produce β1+ such sequences.
+   (5) We conclude using Definition 3.3
+                                                                                                   
+
+8.2. Kronecker Decomposition. The Kronecker canonical form makes use of
+special blocks, each of which having a variant for the matrices E and A.
+Definition 8.3. The rectangular bidiagonal blocks LEk E part of the Kronecker
+L-blocks and LAk A part of the Kronecker L-blocks defined by
+                                                                            
+                 1                   
+                                                       0                        
+                                                                                 
+                0    1             
+                                                      1      0                
+                                                                                 
+                                   
+                                                                              
+                                                                                 
+         LEk := 
+                    ..     ..     
+                                       k,       LAk := 
+                                                             ..      ..       
+                                                                                   k.
+                       .    .     
+                                                              .      .      
+                                                                                
+                            0    1                                     1     0
+                                   
+                                                                              
+                                                                                 
+                                     
+                                                                                
+                                                                                 
+                                 0                                           1
+                                                                                
+
+   The nilpotent blocks NEk E part of the nilpotent blocks and NAk A part of the
+nilpotent blocks defined by
+
+                                                                                     
+            0    1                  
+                                                       1      0                          
+                                                                                          
+                 0    1                                      1      0
+                                                                                      
+                                                                                          
+                                  
+                                                                                       
+                                                                                          
+    NEk := 
+                    ..     ..    
+                                      k,        NAk := 
+                                                                    ..     ..        
+                                                                                              k.
+                       .    .    
+                                                                     .        .    
+                                                                                         
+                            0    1                                        1        0
+                                   
+                                                                                        
+                                                                                          
+                                                                                         
+                                                                                          
+                                 0                                                   1
+                                                                                         
+
+Definition 8.4. A Kronecker decomposition of the system (E, A) is a choice of
+basis of M and V such that E and A are decomposed in blocks of the same size
+                              I 0
+                                               
+                                              J 0
+                        E=          ,    A=         ,
+                              0 E            0 A
+28                                           OLIVIER VERDIER
+
+
+
+where J is a diagonal block of Jordan blocks, and E and A are in diagonal block
+form
+              E = diag(NEk1 , . . . , NEkm , LEk1 , . . . , LEkp , (LEk1 )T , . . . , (LEkq )T ),
+             A = diag(NAk1 , . . . , NAkm , LAk1 , . . . , LAkp , (LAk1 )T , . . . , (LAkq )T ),
+where the blocks of E and A have the same size.
+Theorem 8.5. A decomposition with defects α, β + , β − , produces a Kronecker
+decomposition which for all integer k ≥ 1 contains
+     • αk block of type Nk ,
+     • βk+ blocks of type Lk ,
+     • βk− blocks of type LTk .
+Proof. Recall the definition of Lk and Nk sequences in Definition 8.1. By regrouping
+the elements of an Lk sequence, one obtains a representation of E and A as a Lk -
+block, and similarly, by regrouping the elements of a Nk -sequence, one obtains a Nk
+block. Applying Theorem 8.2, and regrouping the basis elements stemming from
+the sequences Lk and Nk we obtain αk Nk -blocks and βk+ Lk -blocks, for k ≥ 1.
+   Now the basis on the sub-block M (∞) , V (∞) are obtained by transposing the
+decomposition given by Theorem 6.1. Using the previous step and Proposition 3.6,
+we obtain βk− transpose of Lk -blocks, for k ≥ 1.                                  
+Remark 8.6. It is remarkable that the decomposition obtained in Theorem 7.4
+produces basis vectors which are the same as for a Kronecker decomposition, only
+ordered differently. The necessary permutations may be visualised on Figure 6.
+
+8.3. Conjugate Decomposition. We may now show the relation between the de-
+fects α, β + and β − of a system (E, A) and the defects of the adjoint system (E∗ , A∗ ).
+It turns out that the constraint defects are the same and that the observation de-
+fects β + and the control defects β − are just switched. This fact would have been
+very difficult to prove from the results of Section 3 alone, so we need the full power
+of Theorem 7.4 and of its consequence, Theorem 8.5.
+Theorem 8.7. The conjugate decomposition switches the defects β + and β − , i.e.,
+it produces the defects
+                           α(E∗ , A∗ ) = α(E, A),
+                                         β + (E∗ , A∗ ) = β − (E, A),
+                                         β − (E∗ , A∗ ) = β + (E, A).
+Proof. It is a consequence of Theorem 8.5, for when putting the system in Kronecker
+form Definition 8.4 and transposing, the system is still in Kronecker form, but the
+bidiagonal blocks L and (L)T are switched.                                       
+8.4. Weierstraß decomposition. In the case of regular pencils (see subsection 3.8),
+the Kronecker decomposition is called the Weierstraß decomposition ([16, 1]) and
+is such that E and A take the matrix representation
+                                I 0
+                                                  
+                                                 C 0
+                         E=           ,    A=          ,
+                               0 N               0 I
+where C may be in Jordan normal form and N is a block diagonal matrix of blocks
+of type NE
+         k.
+                  REDUCTION AND NORMAL FORMS OF MATRIX PENCILS                                              29
+
+
+            −
+         δ β4     β3−           β2−               β1− α3           α2                   α1
+
+    δ
+                                                                                             A = I, E = 0
+            4 4
+              4         4
+                   3        3                                                                E = I, A = 0
+                        4             4
+                            3             3
+                                 2            2                                              E = I, A =?
+                                                      3    3
+   β3+                                                         3
+                                                           3            3                    E = 0, A =?
+                                                               3            3
+                                                                   2            2
+   β2+                                                                              2
+                                                                                             E = 0, A = 0
+                                                                        3
+                                                                            3                E = 0, A = 0
+                                                                                2
+                                                                                    2
+
+                                                                                        1
+   β1+
+
+
+         Figure 6. An illustration of the defects α, β + and β − and of the
+         Kronecker decomposition described in Theorem 8.5. The difference
+         of size of the squares is exactly given by the defects α, β + and β − .
+         The dark squares bearing the number j represent all the nilpotent
+         blocks Nj ; there are αj such blocks. The light squares in the lower-
+         right part bearing the number j represent the L-blocks Lj . There
+         are βj+ such blocks. The light squares in the upper-left part bearing
+         the number j represent the L-blocks LTj . There are βj− such blocks.
+         This figure also allows to check the formulae of Proposition 3.15.
+
+  The matrix block NMatrix of nilpotent blocks is a diagonal block matrix
+                    N = diag NE         E                E
+                                                               
+                               k1 (0), Nk2 (0), . . . , Nkm (0)
+
+where the blocks (NE
+                   k1 (0) are the nilpotent blocks defined in Definition 8.3.
+
+Corollary 8.8. The Weierstraß decomposition is such that for any integer k ≥ 1
+it contains αk blocks NEk .
+Proof. It is just a special case of Theorem 8.5 using Proposition 3.20.                                     
+
+                                                      9. Conclusions
+   We have defined the notion of defects and have related them to existing concepts,
+such as the regular pencil condition, the dimension of the reduced subspaces, or the
+notion of strangeness. We also showed how the defects define a normal form, and
+how that normal form relates to the existing one of Kronecker.
+   Note that some results, as Theorem 8.7, would be difficult to prove without using
+the canonical form. Nevertheless, we tried to wring the most out of the invariant
+objects defined in Section 3.
+   The advantage of such an approach is that it is extensible to nearby cases such
+as the parameter dependent case, or the infinite dimensional case (see [15]).
+30                                     OLIVIER VERDIER
+
+
+                                         References
+ [1] F. R. Gantmacher. The theory of matrices. Vols. 1, 2. Translated by K. A. Hirsch. Chelsea
+     Publishing Co., New York, 1959. 1, 2, 28
+ [2] I. Gohberg, P. Lancaster, and L. Rodman. Invariant subspaces of matrices with applications,
+     volume 51 of Classics in Applied Mathematics. Society for Industrial and Applied Mathe-
+     matics (SIAM), Philadelphia, PA, 2006. Reprint of the 1986 original. 2
+ [3] E. Hairer and G. Wanner. Solving ordinary differential equations. II, volume 14 of Springer
+     Series in Computational Mathematics. Springer-Verlag, Berlin, second edition, 1996. Stiff
+     and differential-algebraic problems. 2, 7
+ [4] S. Johansson. Canonical forms and stratification of orbits and bundles of system pencils.
+     Technical report, Umeå University, Department of Computing Science, 2005. 2
+ [5] T. Kailath. Linear Systems. Prentice-Hall Information and System Science Series. Prentice
+     Hall, November 1979. 2
+ [6] L. Kronecker. Algebraische Reduction der Schaaren bilinearer Formen. Sitzungberichte der
+     Königlich Preußischen Akademie der Wissenschaften zu Berlin, pages 1225–1237, 1890. 2
+ [7] P. Kunkel and V. Mehrmann. Canonical forms for linear differential-algebraic equations with
+     variable coefficients. J. Comput. Appl. Math., 56(3):225–251, 1994. 3, 10, 18
+ [8] B. e. Kågström and A. e. Ruhe. Matrix pencils. Proceedings of a Conference Held at Pite
+     Havsbad, Sweden, March 22-24, 1982. Lecture Notes in Mathematics. 973. Berlin-Heidelberg-
+     New York: Springer-Verlag. XI, 293 p. , 1983. 2
+ [9] P. J. Rabier and W. C. Rheinboldt. A geometric treatment of implicit differential-algebraic
+     equations. J. Differential Equations, 109(1):110–146, 1994. 2, 7
+[10] S. Reich. Beitrag zur Theorie der Algebrodifferentialgleichungen. PhD thesis, TU Dresden,
+     1990. 2, 7
+[11] S. Reich. Existence and uniqueness results for nonlinear differential-algebraic equations. Sem-
+     inar notes, Humboldt Universität zu Berlin, 1992. 5
+[12] G. J. Reid, P. Lin, and A. D. Wittkopf. Differential elimination-completion algorithms for
+     DAE and PDAE. Stud. Appl. Math., 106(1):1–45, 2001. 3
+[13] P. van Dooren. The computation of Kronecker’s canonical form of a singular pencil. Linear
+     Algebra Appl., 27:103–140, 1979. 2, 3
+[14] O. Verdier. Differential Equations with Constraints. Doctoral theses in mathematical sciences,
+     University of Lund, June 2009. 2, 4, 7
+[15] O. Verdier. Reductions of operator pencils. Technical report, NTNU, January 2011. Preprint
+     of Numerics. 29
+[16] Weierstrass. On the theory of bilinear and quadratic forms. (Zur Theorie der bilinearen und
+     quadratischen Formen.). J. Berl. Monatsber., 1868. 2, 28
+[17] J. Wilkinson. Linear differential equations and Kronecker’s canonical form. Recent advances
+     in numerical analysis, Proc. Symp., Madison/Wis. 1978, 231-265 (1978)., 1978. 2, 3, 4, 10
+[18] K.-T. Wong. The eigenvalue problem λT x + Sx. J. Differ. Equations, 16:270–280, 1974. 2, 5
+
+     Department of Mathematical Sciences, NTNU, 7491 Trondheim, Norway
+

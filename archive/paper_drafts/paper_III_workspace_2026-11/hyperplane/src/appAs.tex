@@ -1,0 +1,125 @@
+﻿\section{Complete data and exact certificates}
+\label{appA}\label{app:data}
+This appendix gives the complete input and the exact certificates for the counterexample of the
+preceding section; all arithmetic is over the rationals, with no rounding.
+\subsection{Input and derived quantities}
+\label{appA:input}\label{appA:derived}
+Take $n=8$, $p=2$, $q=4$ rows and $L_0$ empty ($r_0=0$), with
+\begin{equation}
+\label{appA:eq:C}
+C=\begin{bmatrix}1&0&0&0&0&0&0&0\\0&1&0&0&0&0&0&0\end{bmatrix},
+\end{equation}
+\begin{equation}
+\label{appA:eq:A}
+A=\begin{bmatrix}
+0&0&1&0&0&0&0&0\\0&0&0&1&0&0&0&0\\
+1&-2&1&0&-1&1&1&-1\\-1&2&1&0&2&-2&-1&2\\
+0&0&0&0&1&0&0&0\\0&0&0&0&0&1&0&0\\
+0&0&0&0&0&0&2&0\\0&0&0&0&0&0&0&3
+\end{bmatrix}.
+\end{equation}
+For the data of \eqref{appA:eq:C},
+\begin{equation}\label{appA:eq:rank}
+\rank\begin{bmatrix}C\\ CA\end{bmatrix}=4,\qquad k=4,\qquad \rho=4,\qquad \omega=3,
+\end{equation}
+and a basis of $K_0$, the compression, the characteristic polynomial and the complementary block are
+\begin{gather}
+\label{appA:eq:N}
+N=\begin{bmatrix}
+0&0&0&0\\0&0&0&0\\0&0&0&0\\0&0&0&0\\
+1&0&0&0\\0&1&0&0\\0&0&1&0\\0&0&0&1
+\end{bmatrix},\\
+M=(N^{\mathsf T}N)^{-1}N^{\mathsf T}AN=\operatorname{diag}(1,1,2,3),\\
+\label{appA:eq:chi}
+\chi_M(t)=(t-3)(t-2)(t-1)^2,\\
+A_{21}=\begin{bmatrix}
+0&0&0&0\\0&0&0&0\\-1&1&1&-1\\2&-2&-1&2\\
+0&0&0&0\\0&0&0&0\\0&0&0&0\\0&0&0&0
+\end{bmatrix}.
+\end{gather}
+Two rows of $A_{21}$ are nonzero; this is the map that distinguishes eigen from non-eigen directions.
+\subsection{The six directions}
+\label{appA:six}
+The eigenspace of $\mu=1$ is $E_1=\operatorname{span}\{e_1,e_2\}\subseteq\mathbb R^4$ in $K_0$
+coordinates, so $\mathbb P(E_1)\cong\mathbb P^1$; $(1,1)$ is the unique eigen direction
+($A_{21}(c_1,c_2,0,0)^{\mathsf T}=0\iff c_1=c_2$), and its fibre $\mathbb P^3$ has one parameter more
+than the fibres $\mathbb P^2$ of the other directions. The six directions and their verdicts are listed
+in Table~\ref{appA:tab:dirs}.
+\subsection{Chart variables, and the certificates in expanded form}
+\label{appA:certificates}
+For a non-eigen direction the fibre is $\mathbb P^2$ with homogeneous coordinates $(x_0\!:\!x_1\!:\!x_2)$;
+for the eigen direction $(1\!:\!1)$ it is $\mathbb P^3$ with $(x_0\!:\!x_1\!:\!x_2\!:\!x_3)$. Below,
+every maximal minor is written as a polynomial in $\lambda$ whose coefficients are polynomials in those
+coordinates with integer coefficients, so that each identity can be checked by expansion. All
+coefficients lie in $\mathbb Q$.
+
+\emph{Bad directions.} In each of the five non-eigen directions the maximal minors share the factor
+\begin{equation}\label{appA:eq:g}
+g(x,\lambda)=x_2(\lambda-1)(\lambda-3)=x_2\lambda^2-4x_2\lambda+3x_2 .
+\end{equation}
+For $(1\!:\!0)$ the two nonzero maximal minors are, explicitly,
+\begin{align}
+m_1(x,\lambda)&=(\lambda-1)(\lambda-2)(\lambda-3)=\lambda^3-6\lambda^2+11\lambda-6,
+\label{appA:eq:m1}\\
+m_2(x,\lambda)&=x_2(\lambda-1)(\lambda-3)=x_2\lambda^2-4x_2\lambda+3x_2,
+\label{appA:eq:m2}
+\end{align}
+and division in $\mathbb Q(x)[\lambda]$ gives, with zero remainders in both cases,
+\begin{equation}\label{appA:eq:divcert}
+m_1=g\cdot\frac{\lambda-2}{x_2},\qquad m_2=g\cdot 1 .
+\end{equation}
+For the remaining non-eigen directions the same factor $g$ occurs; the counts and the outcome of the
+divisions are collected in Table~\ref{appA:tab:cert}.
+
+\begin{table}[t]
+\centering
+\caption{Divisibility certificate per direction. ``Minors'' is the number of maximal minors that are not
+identically zero; ``division'' records whether $g\mid m_I$ with zero remainder for every one of them.}
+\label{appA:tab:cert}\label{appA:tab:dirs}
+\begin{tabular}{@{}c c c c l@{}}
+\toprule
+Direction & Minors & $\deg_\lambda g$ & Division & Verdict \\
+\midrule
+$(1,0)$  & 2 & 2 & yes & entirely bad \\
+$(0,1)$  & 2 & 2 & yes & entirely bad \\
+$(1,1)$  & 8 & 0 & --- ($\gcd=1$) & good at $\xi_0$ \\
+$(1,2)$  & 4 & 2 & yes & entirely bad \\
+$(2,-1)$ & 4 & 2 & yes & entirely bad \\
+$(3,1)$  & 4 & 2 & yes & entirely bad \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\emph{The good direction.} At the rational point
+\begin{equation}\label{appA:eq:xipoint}
+\xi_0=(1,2,3,4)\in\mathbb P^3
+\end{equation}
+of the fibre over $(1\!:\!1)$ the eight nonzero maximal minors specialize to
+\begin{gather}
+-(\lambda-1)(\lambda-2)(\lambda-3),\quad +(\lambda-1)(\lambda-2)(\lambda-3),\notag\\
+5(\lambda-1)(\lambda-2),\quad -5(\lambda-1)(\lambda-2),\notag\\
+(\lambda-1)(\lambda-3),\quad -(\lambda-1)(\lambda-3),\notag\\
+-5(\lambda-2)(\lambda-3),\quad 5(\lambda-2)(\lambda-3),\label{appA:eq:spec}
+\end{gather}
+in the order $m_1,\dots,m_8$, and the Bezout identity
+\begin{equation}\label{appA:eq:bezout}
+\frac{\lambda-4}{10}\,m_4+\frac{\lambda-4}{2}\,m_5-\frac{1}{10}\,m_7=1
+\end{equation}
+holds. Its left-hand side is
+$\frac{1}{2}\bigl[-(\lambda-4)(\lambda-1)(\lambda-2)+(\lambda-4)(\lambda-1)(\lambda-3)+(\lambda-2)(\lambda-3)\bigr]
+=\frac{1}{2}\bigl[-(\lambda^2-5\lambda+4)+(\lambda^2-5\lambda+6)\bigr]=1$,
+so \eqref{appA:eq:bezout} is an identity in $\mathbb Q[\lambda]$. Consequently
+$\gcd_I m_I(\xi_0,\lambda)=1$, and $\xi_0$ is a feasible point of that fibre.
+
+\emph{What these certificates establish.} Identities \eqref{appA:eq:divcert} and
+\eqref{appA:eq:bezout} are finite rational identities: expanding either side and cancelling verifies
+them in any exact arithmetic system, with no algebraic extension and no rounding. Together with the
+full-rank leading-coefficient lemma of Section~\ref{sec:decision} they give the two conclusions used in
+Section~\ref{sec:counterexample}: the fibres over the five non-eigen directions are entirely bad, and
+the fibre over $(1\!:\!1)$ contains a feasible design.
+\subsection{Reproduction}
+\label{appA:reproduction}
+Compute $N$, $M$, $\chi_M$, $A_{21}$ from $A$ and $C$ by rational elimination; for each direction build
+$D_v$, $\mathcal Q_v$ and the maximal minors of $P(\lambda)=\lambda H-H_A$; divide them by $g$ in
+$\mathbb Q(x)[\lambda]$ (fraction-free subresultants) to reproduce Table~\ref{appA:tab:cert}; substitute
+$\xi_0$ and expand to verify \eqref{appA:eq:spec} and \eqref{appA:eq:bezout}.

@@ -1,0 +1,953 @@
+.gitignore	30		
+ATTEMPTS.md	8238	.md	尝试总表
+CLAUDE.md	17882	.md	CLAUDE.md — 项目规范（2026-10-27）
+README.md	4349	.md	最小增广行数问题（q1）—— 项目入口
+STATUS.md	10960	.md	项目现状（一页纸）
+archive/README.md	2289	.md	archive/ 索引
+archive/attack_A2V0/01_upper_bound_skeleton.md	29971	.md	提升引理 §0–§14（拆分自 LEMMA_LIFT_2026-10-23.md）
+archive/attack_A2V0/02_corrections.md	14133	.md	提升引理 §14–§20（拆分自 LEMMA_LIFT_2026-10-23.md）
+archive/attack_A2V0/03_construction.md	21122	.md	提升引理 §20–§30（拆分自 LEMMA_LIFT_2026-10-23.md）
+archive/attack_A2V0/04_audit_gaps.md	23912	.md	提升引理 §30–§45（拆分自 LEMMA_LIFT_2026-10-23.md）
+archive/attack_A2V0/05_system_theory_and_literature.md	4922	.md	提升引理 §45–§47（拆分自 LEMMA_LIFT_2026-10-23.md）
+archive/attack_A2V0/ATTACK_LOG.md	107680	.md	攻击日志：$A^2V_0\subseteq V_0$
+archive/attack_A2V0/LEMMA_LIFT_2026-10-23.md	96801	.md	提升引理（Lift Lemma）—— 证明草稿
+archive/attack_A2V0/NP_QUESTION.md	4999	.md	组合形式与复杂度问题
+archive/attack_A2V0/OPEN_PROBLEM.md	5649	.md	开放问题（2026-10-23 收盘）
+archive/attack_A2V0/RESULTS.md	9811	.md	成果清单（2026-10-23 收盘）
+archive/attack_A2V0/TECHNICAL_QUESTIONS.md	14601	.md	一个行空间极小化问题：证明中遇到的四个技术问题
+archive/attack_A2V0/THE_MISSING_PIECE.md	8699	.md	剩下的一块：$A^2V_0\subseteq V_0$
+archive/attack_A2V0/TWO_DIRECTIONS.md	5819	.md	两个方向：证真（q1 = 假，多项式）与证伪（q1 = 真，NP-hard）
+archive/attack_A2V0/WORKFLOW_TWO_TRACKS.md	3897	.md	双轨工作协议：q1 = 假 ／ q1 = 真
+archive/attempts_2026-10/q1_false/00_the_lemma.md	25809	.md	THE_LEMMA —— 层紧性引理（Q1-FALSE 的承重引理）
+archive/attempts_2026-10/q1_false/01_dimV_plus_1.md	2128	.md	路线 1：$q_{\min}=\dim V+1$
+archive/attempts_2026-10/q1_false/02_layer_formula.md	1596	.md	路线 2：层公式（$q(\rho)$ 表）
+archive/attempts_2026-10/q1_false/03_middle_layer.md	1511	.md	路线 3：中间层
+archive/attempts_2026-10/q1_false/04_rho_ci.md	1826	.md	路线 4：$\rho_{ci}$ 的闭式
+archive/attempts_2026-10/q1_false/05_greedy_closure.md	1429	.md	路线 5：贪心 / 闭包算法
+archive/attempts_2026-10/q1_false/06_two_values.md	1316	.md	路线 6：两值假设
+archive/attempts_2026-10/q1_false/07_quadratic_criterion.md	2225	.md	路线 7：$\rho=d_0+1$ 层的二次型判据
+archive/attempts_2026-10/q1_false/08_floor_gap.md	3288	.md	路线 8：(5a) 地板 $\rho_{ci}$ 与真实 $\rho^*$ 的差距
+archive/attempts_2026-10/q1_false/archive_attack_log/01_D1-D6_A2V0_attack.md	22525	.md	攻击日志 · D1–D6（拆分自 ATTACK_LOG.md）
+archive/attempts_2026-10/q1_false/archive_attack_log/02_D7-D9_refutation.md	5502	.md	攻击日志 · D7–D9（拆分自 ATTACK_LOG.md）
+archive/attempts_2026-10/q1_false/archive_attack_log/03_D10-D16_layers.md	14009	.md	攻击日志 · D10–D16（拆分自 ATTACK_LOG.md）
+archive/attempts_2026-10/q1_false/archive_attack_log/04_D17-D26_structure.md	16556	.md	攻击日志 · D17–D26（拆分自 ATTACK_LOG.md）
+archive/attempts_2026-10/q1_false/archive_attack_log/05_D27-D35_formulas.md	15838	.md	攻击日志 · D27–D35（拆分自 ATTACK_LOG.md）
+archive/attempts_2026-10/q1_false/archive_attack_log/06_D36-D42_two_values.md	14326	.md	攻击日志 · D36–D42（拆分自 ATTACK_LOG.md）
+archive/attempts_2026-10/q1_false/archive_attack_log/07_D43-D52_q1false_night.md	17147	.md	攻击日志 · D43–D52（拆分自 ATTACK_LOG.md）
+archive/attempts_2026-10/q1_true/00_attempts_and_barriers.md	6992	.md	路线总清单（重建版）
+archive/attempts_2026-10/q1_true/01_matroid_tap.md	13403	.md	新引理：坐标 $\mathcal V$ + 对角 $A$ 时，$(5b)$ 是一个拟阵条件
+archive/attempts_2026-10/q1_true/02_minrank_cover.md	1802	.md	路线 2：min-rank / 覆盖 / 反馈设计
+archive/attempts_2026-10/q1_true/03_z_formulation.md	6921	.md	Z 形式：MIN-ROWS = 最大化一个子空间维数
+archive/attempts_2026-10/q1_true/04_speccut.md	1240	.md	路线 4：谱切割 / 块结构
+archive/attempts_2026-10/q1_true/05_graph_reduction.md	1552	.md	路线 5：图 / 超图归约（CYCLIC-COVER）
+archive/attempts_2026-10/q1_true/06_mixed_case.md	8410	.md	D1：代数部分与谱部分的分离（含一次失败的化简）
+archive/attempts_2026-10/q1_true/07_linear_section.md	1589	.md	路线 7：线性截面里的秩一矩阵（Lovitz 型）
+archive/attempts_2026-10/tests/PROTOCOL.md	4406	.md	反例验收协议与搜索策略
+archive/attempts_2026-10/tests/README.md	1392	.md	tests/ — 复现脚本（q1_false 方向）
+archive/attempts_2026-10/tests/results/candidate_r1_nontight.json	644	.json	{ "A": [ [ "-2", "-2", "2", "1", "-1", "-1" ], [ "-2", "2", "-1", "0", "1", "0" ], [ "-2", "-2", "0", "-2", "2
+archive/attempts_2026-10/tests/results/middle_k2_pinned.json	617	.json	{ "A": [ [ "0", "1", "-1", "0", "1" ], [ "1", "-1", "1", "-1", "0" ], [ "1", "1", "0", "0", "1" ], [ "-1", "1"
+archive/attempts_2026-10/tests/results/scan_certificate_middle_layer_194320.json	3146	.json	[ { "name": "certificate_middle_layer_t-1", "n": 6, "p": 2, "r": 1, "d": 2, "dimV": 1, "rho0": 1, "inV": false
+archive/attempts_2026-10/tests/rho1/compare_rho1.py	3578	.py	compare_rho1.py — rho=1 判定器 vs 搜索（对拍） 对每个实例： - 判定器：solve_case 是否给出 q=2, rho=1 的解 - 搜索：c166.find_solution(q=2, 
+archive/attempts_2026-10/tests/rho1/exact_r1_q3.py	4949	.py	exact_r1_q3.py — 精确判定 q=3,rho=1 层（Q1-FALSE） 定理 4.14 的证明与 q 无关：row 1 给 alpha0=u1 v、L0R0=y1 v，故 alpha0=0 时 v ∝ L
+archive/attempts_2026-10/tests/rho1/hunt_r1_nontight.py	3137	.py	hunt_r1_nontight.py — 搜 r=1 的非紧最小层（Q1-FALSE） 目标实例：r=1、L0 不是解、q=2 精确不可行（D47 判定器）、但存在 q=3,rho=1 的解。 若存在：q_min=3,
+archive/attempts_2026-10/tests/rho1/rho1_characterization.py	4626	.py	rho1_characterization.py — rho=1 层的结构刻画（Q1-FALSE） 推导 ---- 取 q=2、rank(LN)=1 的解 L。令 M=LN=u v^T（u∈R^2, v∈R^d 非零），
+archive/attempts_2026-10/tests/rho1/rho1_solver.py	5891	.py	rho1_solver.py — rho=1 层的多项式判定/构造（Q1-FALSE） 依据 THE_LEMMA §4.7：q=2、rank(LN)=1 时 (5b) <=> 存在 u∈R^2\\{0}, v∈R^d\\
+archive/attempts_2026-10/tests/rho1/test_two_mechanisms.py	2842	.py	test_two_mechanisms.py — 检验"两个机制取大"（Q1-FALSE） 区域：d=1（rho 只能是 0 或 1）、L0 的行在 J=row[C;CA] 里（故 rho0=0）、L0 本身不是解。 此
+archive/attempts_2026-10/tests/rho2_middle/coupled_scan.py	4005	.py	coupled_scan.py — 从 middle_layer 出发的耦合扩展扫描（Q1-FALSE） 目标：造出第一个**真正的中间层 k=2** 实例（dimV=3，q(2)=3，q=2 无解）。 做法：把 n=6
+archive/attempts_2026-10/tests/rho2_middle/exact_k2_layer.py	2761	.py	exact_k2_layer.py — k=2 层的精确判定（Q1-FALSE） 对非退化实例（beta ∦ alpha0），Sigma 唯一（定理 4.15）。于是： gcd_{Q(s)[λ]}(铅笔子式) = 1 =
+archive/attempts_2026-10/tests/rho2_middle/find_middle_k2.py	3257	.py	find_middle_k2.py — 定向搜索"中间层 k=2"实例（Q1-FALSE） 目标：找 (A,C,L0) 使 dim V = 3, q(2) = 3（即 q=3 有 rho=2 的解），且 q=2 无解（r
+archive/attempts_2026-10/tests/rho2_middle/k2_V_scan.py	5615	.py	k2_V_scan.py — k=2 时 V 是否被线性结构钉住？（Q1-FALSE） 问题：k=1 时 L0 的数据把 v 定死。k=2 时 V 是含 alpha0 的 2-平面（d>=3 时是连续的）。 线性结构（L
+archive/attempts_2026-10/tests/rho2_middle/k2_pinned.py	4009	.py	k2_pinned.py — k=2 层：行 1 约束把 Sigma 钉住（Q1-FALSE） 定理（待验证）：设 q=3, k=2, beta = L0R0 + A'^T alpha0。 若 beta 与 alpha0
+archive/attempts_2026-10/tests/rho2_middle/verify_t20.py	3843	.py	verify_t20.py — 复现并验证 k2_pinned 中 t=20 的实例（Q1-FALSE） 若它满足 dim V=3、存在 q=3,rho=2 的解、且 q=2 无解，则是第一个真正的中间层 k=2 实例。
+archive/attempts_2026-10/tests/scans/param_scan.py	3556	.py	param_scan.py — 对紧性引理的对抗性检验（Q1-FALSE 方向） 用法 ---- python q1_false/tests/param_scan.py --seed certificate_middle
+archive/attempts_2026-10/tests/scans/pencil_diag.py	3716	.py	pencil_diag.py — 诊断 k=2 铅笔：坏在哪里（Q1-FALSE） 对 candidate 的不同 V(t)，取线性系统的一个解 L，算出 (U,Y)，检查 rank(U), rank(Y), 铅笔 λU
+archive/attempts_2026-10/tests/scans/q4_scan.py	2688	.py	q4_scan.py — Q4 的实例级检验（Q1-FALSE） 取实例 A 的一个 q=3, rho=1 的解 V（它是 W⊆K0 的情形）。 V 内部所有含 K0=row(L0) 的 2 维子空间形如 V' = sp
+archive/attempts_2026-10/tests/scans/rank_drop_analysis.py	4784	.py	rank_drop_analysis.py — 中间层证书的"降 rho"机制分析（Q1-FALSE） 问题：下降算法保持 rho，遇到中间层就停。那中间层证书里的 q=3, rho=2 -> q=2, rho=1 这一
+archive/attempts_2026-10/tests/scans/rho_k_structure.py	3590	.py	rho_k_structure.py — 验证一般 rho=k 的结构方程（Q1-FALSE） 对任意解 L（rank(LN)=k），令 M=LN=U V^T（U: q×k, V: d×k），W=A'^T V。 则 (5
+archive/attempts_2026-10/tests/scans/symbolic_t.py	4069	.py	symbolic_t.py — candidate 的 d=3 符号消元尝试（Q1-FALSE） 目标：把 t 当符号，解线性系统 (L,U,Y)，算铅笔子式的 gcd，得到"好 t"的精确集合。 若 sympy 能完成
+archive/attempts_2026-10/tests/sigma/exact_sigma.py	3083	.py	exact_sigma.py — 固定 Sigma 时的精确判定（专家四步法的实现） 对固定 Sigma： 1. 解线性系统，得到 (L,U,Y) 的一般解（自由参数当符号 s）； 2. 算铅笔 λU-Y 的各 2×2 
+archive/attempts_2026-10/tests/sigma/lemma43_positive.py	6300	.py	lemma43_positive.py — 给引理 4.3 找数值正例（Q1-FALSE） 目标 ---- 引理 4.3（THE_LEMMA §4.3）：若 K0^⊥ ⊄ F，则存在超平面 H ⊇ K0，H 是解。 要验
+archive/attempts_2026-10/tests/verify/combined_check.py	2491	.py	combined_check.py — q=2 精确 + q=3,rho=1 精确，交叉判定（Q1-FALSE） 反例条件： (a) L0 不是解（=> q>=r+1=2 不够，需 q>=2 且 q=1 不可能）； (b
+archive/attempts_2026-10/tests/verify/cp_check.py	4745	.py	cp_check.py — 压缩引理的判定与验证（Q1-FALSE） 理论（推导见 q1_false/THE_LEMMA.md §4.3）： 设 V 是解（dim q），K = ker[C;CA]，K0 = row(L0
+archive/attempts_2026-10/tests/verify/descent_algorithm.py	6552	.py	descent_algorithm.py — 局部下降算法（Q1-FALSE 候选） 算法： 1. 取一个初始解 V（用 §21 构造，dim = dimV+1；失败则搜索） 2. while K0^⊥ ⊄ F(V): 
+archive/attempts_2026-10/tests/verify/verify_candidate.py	4573	.py	verify_candidate.py — 构造并复核候选反例（Q1-FALSE） 对 q1_false/tests/results/candidate_r1_nontight.json： 重建 q=3,rho=1 的符
+archive/attempts_2026-10/tests/verify/verify_refute_formula.py	2494	.py	verify_refute_formula.py — 独立验证 Q1-TRUE 交来的层公式反例（Q1-FALSE） 实例：n=5, p=2, r=2, 声称 d=1, dimV=1, rho0=0, q_min=3, 
+archive/attempts_2026-10/tests/zform/zform_check.py	3587	.py	zform_check.py — 交叉验证 Z-FORM 与 V-形式（Q1-FALSE × Q1-TRUE 交接） Z-FORM（见 Q1_TRUE_HANDOFF.md）： q_min = n - p - d_max
+archive/expert_correspondence/GAP_两个缺口_给专家.md	11934	.md	最小增广行数问题中的两个技术缺口
+archive/expert_correspondence/GAP_追问_self-bounded与多值情形.md	5169	.md	追问：self-bounded 的定义原文；以及多值情形下 Gap 1 的论证
+archive/expert_correspondence/Q1_FOR_EXPERT - Answer.md	23478	.md	Q1：计算最小阶功能观测器 \\(q\_{\min}\\) 是多项式可解还是 NP-hard？
+archive/expert_correspondence/Q1_FOR_EXPERT.md	11597	.md	Q1 证明中未解决的技术问题
+archive/expert_correspondence/Q1_FOR_EXPERT_2.md	7429	.md	最小阶功能观测器：需要咨询的四个具体问题
+archive/expert_correspondence/Q1_FOR_EXPERT_3.md	3651	.md	一个 conditioned-invariant 子空间的维数优化问题
+archive/expert_correspondence/Q1_FOR_EXPERT_4.md	5679	.md	conditioned-invariant 维数优化：补充数据与具体问题
+archive/expert_correspondence/Q1_FOR_EXPERT_5.md	6653	.md	MIN-ROWS：工作总结、当前障碍与拟定方向
+archive/expert_correspondence/Q1_FOR_EXPERT_6.md	7862	.md	MIN-ROWS：已证结果、反例、核心猜想与具体问题（第二版）
+archive/expert_correspondence/Q1_FOR_EXPERT_7.md	10707	.md	MIN-ROWS：成果、反例、瓶颈与具体问题（第三版）
+archive/expert_correspondence/Q1_FOR_EXPERT_8.md	8729	.md	MIN-ROWS：当前证明方案与待核查的环节
+archive/expert_correspondence/Q1_FOR_EXPERT_9.md	8316	.md	MIN-ROWS：本轮修正、$c_0=1$ 的循环向量刻画与待解的结构问题
+archive/expert_correspondence/expert_qa_2026-10-24/QUESTIONS.md	14601	.md	一个行空间极小化问题：证明中遇到的四个技术问题
+archive/expert_correspondence/expert_qa_2026-10-24/README.md	3339	.md	专家问答归档（2026-10-24）
+archive/expert_correspondence/expert_qa_2026-10-24/REPLY.md	13574	.md	专家回复（原文归档）
+archive/framework_map/README.md	5381	.md	旧框架 → 新框架 对照表
+archive/gap_analyses/GAP1_非饱和lift_详细.md	25935	.md	Gap 1：非饱和的 lift 是否必能压到一行？
+archive/gap_analyses/LEMMA_GAP2.md	2590	.md	命题 C（上界）
+archive/handovers/HANDOVER_2026-10-23.md	4707	.md	交接总览（2026-10-23 凌晨）
+archive/handovers/HANDOVER_2026-10-26.md	14041	.md	MIN-ROWS 移交文档（2026-10-26）
+archive/handovers/HANDOVER_2026-10-26b.md	17922	.md	MIN-ROWS 移交文档（2026-10-26，修正版 b）
+archive/handovers/HANDOVER_2026-10-29.md	5054	.md	交接：MIN-ROWS / $q1$ 项目现状（2026-10-29）
+archive/handovers/Q1_FALSE_TO_Q1_TRUE.md	4015	.md	给 Q1-TRUE 方向的回执（来自 Q1-FALSE）
+archive/handovers/Q1_FALSE_TO_Q1_TRUE_IDEA5.md	5702	.md	给 Q1-TRUE 的思路 5：从"谱条件"做归约
+archive/handovers/Q1_TRUE_HANDOFF.md	5154	.md	给 Q1-FALSE 方向的交接（来自 Q1-TRUE 的尝试）
+archive/handovers/Q1_TRUE_TO_Q1_FALSE_REFUTE.md	6093	.md	给 Q1-FALSE 方向：层公式的反例（2026-10-25）
+archive/handovers/STATUS_2026-10-25.md	9034	.md	q1_true 状态与下一步（2026-10-25 末）
+archive/handovers/STATUS_2026-10-26.md	5428	.md	q1_true 状态（2026-10-26，第二版）
+archive/methodology/04_形式化验证方法.md	107793	.md	04 形式化验证方法：Lean 4 / Coq / Isabelle / SMT / 数值穷举，以及它们对本题到底能做什么
+archive/old_scripts/core/README.md	15382	.md	scripts/core — 可运行脚本（41 个）
+archive/old_scripts/core/attack_chart_rigorous.py	5866	.py	第②项**严格收尾**：把 M(λ) 与 [M|b](λ) 的 6×6 子式插值成 λ 的多项式 逻辑： rank M(λ) = 6 ⟺ M 的某个 6×6 子式 ≠ 0 若 M 的**全部** 6×6 子式 ≡ 0 ⟹
+archive/old_scripts/core/batch_c6p_k.py	7655	.py	batch_c6p_k.py —— 在 **k>=1**（项目设定 q0 = r+k）下批量验证 c6′ 设定：L 是 q0×n，q0 = r+k；L0 = 前 r 行。 (A) ⟺ rk[LA;L;C;CA] == r
+archive/old_scripts/core/c125_rho1_criterion.py	5235	.py	c125_rho1_criterion.py -- 验证 ρ≤1 的刻画 刻画：ρ≤1 可达 ⟺ (i) α0 ∈ im R0ᵀ (ii) L0 A N = 0 (iii) (5b) 测试方式：对每个随机实例，枚举 L0
+archive/old_scripts/core/c130_intersection_basis.py	6791	.py	c130_intersection_basis.py -- 修正版判据检验：直接算 W ∩ row(R0) 的基 对交集基的每个向量（及其小幅倍数）尝试构造，验证 ρ=1 与 (5a)(5b)。
+archive/old_scripts/core/c131_phi_closure.py	4964	.py	c131_phi_closure.py -- 检验 Φ-闭包猜测：ρ_min = dim(Φ-闭包 of span{α0}) Φ(A) = { ℓ N : ℓ N ∈ A 且 ℓ A N ∈ A }
+archive/old_scripts/core/c134_exhaustive_beta.py	7810	.py	c134_exhaustive_beta.py -- 穷尽 β 扫描（β ∈ P¹） 对 d=3： A = span{α0, β}, β ∈ R³/span{α0} ≅ R² ⟹ β 的参数空间是 P¹ 用补空间的一组基
+archive/old_scripts/core/c137_cyclic_candidate.py	7352	.py	c137_cyclic_candidate.py -- 新候选：rho_min =? min over s in S of dim(A' - cyclic space of {alpha0, s}) 对每个实例： 1. 
+archive/old_scripts/core/c138_S_extension.py	7246	.py	c138_S_extension.py -- 新候选：A = A_* + <s>（A_* = A'-闭包 of alpha0，s ∈ S） 关键：这个 A **不是** A'-不变的（因为 sA' ∈ A_* + S 但
+archive/old_scripts/core/c139_liftability_scan.py	6898	.py	c139_liftability_scan.py -- 卡点扫描：固定实例下，逐个合格子空间 A 判定 "(b)-liftable" 背景：见 proof/H_卡点定位_2026-10-20.md。 * 坐标形式：$\m
+archive/old_scripts/core/c140_p6b_counterexample.py	3531	.py	c140_p6b_counterexample.py -- P6b 的反例（可复核） P6b（`OPEN_PROBLEM.md` P6b / `RESULTS.md` §2.8）断言： $$\mathcal A\math
+archive/old_scripts/core/c141_invariant_family.py	5533	.py	c141_invariant_family.py -- 检验新假设：$A'$-不变族里是否总有解？ 背景（2026-10-20）： P6b（$\mathcal AA'\subseteq\mathcal A\Rightar
+archive/old_scripts/core/c142_rho1_family.py	3749	.py	c142_rho1_family.py -- $\rho=1$ 层：构造 $\beta_0\propto\alpha_0$ 的实例，检验 $q=2$ 是否可 liftable 动机（proof/J）：$\mathcal 
+archive/old_scripts/core/c143_rho1_family_n7.py	3509	.py	c143_rho1_family_n7.py -- 在维数计数允许的区域里批量构造 $\rho=1,\ q=2$ 的解 依据（proof/K）： $$q=\rho+1\ \text{的解得存在}\ \Longrighta
+archive/old_scripts/core/c144_filter_by_functional.py	3348	.py	c144_filter_by_functional.py -- 按"功能泛函不恒零"筛实例，再测 $q=2$ 依据（proof/K §6）： $\rho=1$、$q=2$ 时两行必须对一切 $\lambda$ 成比例；写
+archive/old_scripts/core/c145_construct_with_intersection.py	4207	.py	c145_construct_with_intersection.py -- 按 $S\cap\mathrm{span}\{\alpha_0\}\ne0$ **正面构造** $\rho=1,q=2$ 依据（proof/K
+archive/old_scripts/core/c146_q2_family.py	3212	.py	c146_q2_family.py -- 可构造的 $q_{\min}<\mathrm{obs}+1$ 实例（$\rho=1,\ q=2$） 背景： P1 的构造只保证 $q\le\mathrm{obs}+1$；项目曾用
+archive/old_scripts/core/c147_family_by_perturbation.py	3028	.py	c147_family_by_perturbation.py -- 命中实例的邻域：$q=2$ 是孤立点还是开集现象？ 做法：取 `c146` 的命中实例（seed 1080），对 $(A,C)$ 做单元素 $\pm1$
+archive/old_scripts/core/c148_alpha0_linear.py	4490	.py	c148_alpha0_linear.py -- 把 $\alpha_0$ 的网格搜索换成**解方程**，并统计维数 对 $\mathcal A=\operatorname{span}\{\alpha_0\}$、$\di
+archive/old_scripts/core/c149_real_spectrum.py	4192	.py	c149_real_spectrum.py -- 检验猜想：$q=2$（$\rho=1$）$\iff$ 商映射 $\mathbb{R}^d/S$ 有**实**特征值 理由（$\rho=1$ 时 $\mathcal A=\
+archive/old_scripts/core/c150_S_full.py	3611	.py	c150_S_full.py -- $S=\mathbb{R}^d$（$R_0$ 满秩）区：$q=2$ 是否同样普遍？ 此时 $S=\mathbb{R}^d$，故 * $K_0=\{\alpha_0:\alpha_0A'
+archive/old_scripts/core/c151_rho2_rescue.py	3883	.py	c151_rho2_rescue.py -- 在 P7 判据为假（$q=2$ 不可能）的实例上测 $q=3$（$\rho=2$） 问题：$q_{\min}$ 的判定是逐层的。第一层（$\rho\le1$）已由 **P7*
+archive/old_scripts/core/c152_q4_test.py	3471	.py	c152_q4_test.py -- $q_{\min}$ 停在哪：在 $q=2,3$ 都失败的实例上测 $q=4$（$\rho=3$） 背景： * P7 解决 $q=2$（$\rho=1$）； * [N](../pro
+archive/old_scripts/core/c153_m_scan.py	2541	.py	c153_m_scan.py -- $\rho=2$ 的自由度只存在于 $\beta_0\parallel\alpha_0$ 的薄集：扫 $m$，看能否救回 P7 假者 逻辑： * $\beta_0\not\parall
+archive/old_scripts/core/c154_verify_rho_min_formula.py	4172	.py	c154_verify_rho_min_formula.py -- 重验项目那条**未验完**的公式（`c136` 的 0/560，第 68 处） 公式（`history/52` §7.114.0）： $$\rho_{\
+archive/old_scripts/core/c155_dimension_law.py	3447	.py	c155_dimension_law.py -- 验证维数下界定理（[proof/S](../proof/S_维数下界定理_2026-10-21.md)） 定理： $$\dim\{\ell N:\ \ell\in V_{
+archive/old_scripts/core/c156_modular_lift.py	7652	.py	c156_modular_lift.py -- 模素数版 lift 检验器（快速；用于大 n 的 (p,d) 覆盖） 有理数精确运算在 n=11 时太慢（>10 分钟）。本脚本改在 F_p 上做： * 秩 / 零空间 /
+archive/old_scripts/core/c157_modular_gcd.py	8379	.py	c157_modular_gcd.py -- 模素数版 lift 检验器（**正确版**：用多项式 gcd 判 (b)） 背景：`c156` 用"随机 λ 采样"判 (b)，而 (b) 的失败集是**有限个** λ ⟹ 
+archive/old_scripts/core/c158_lower_bound_audit.py	4466	.py	c158_lower_bound_audit.py -- 下界的**单一验证入口**（一条命令跑完全部检查） 对应 [proof/S](../proof/S_维数下界定理_2026-10-21.md)： [C1] 维数恒
+archive/old_scripts/core/c159_admissibility_equivalence.py	3920	.py	c159_admissibility_equivalence.py -- 验证 §1.5 的核心等价（单条命令） 命题（[proof/S](../proof/S_维数下界定理_2026-10-21.md) §1.3–1.
+archive/old_scripts/core/c160_gap2_construction.py	5846	.py	c160_gap2_construction.py -- Gap 2 的显式构造检验 **目标**（[proof/S](../proof/S_维数下界定理_2026-10-21.md) §7）： 对固定的 admissi
+archive/old_scripts/core/c161_R_family.py	5610	.py	c161_R_family.py -- 构造落在 R 里的实例：r 的 Krylov 维数 = 2（即 rA'^2 ∈ span{r, rA'}） **背景**（[GAP1](../GAP1_非饱和lift_详细.md)
+archive/old_scripts/core/c161_upper_bound_grid.py	6281	.py	c161_upper_bound_grid.py -- 上界构造在任意 (p,d) 上的验证（推广 c160） **目标**：对给定的 $(p,d,n)$，构造 $$\mathcal A\ \ (\dim=d+1-p,\
+archive/old_scripts/core/c163_construct_algorithm.py	5083	.py	c163_construct_algorithm.py — 按 LEMMA_LIFT §21 的构造实现 q = dim V + 1 的解 算法： 1. 算 d, N, A', R0, S, V, rho, p 2. 检
+archive/old_scripts/core/c165_recheck.py	5178	.py	c165_recheck.py — 用可信验证器（c164）重跑两项关键验证 任务 1：ρ=0 层 ⟺ conditioned invariant（旧验证用了采样 λ，需精确重做） 任务 2：ρ=dim V 层的 q_m
+archive/old_scripts/core/c39_construction.py	11506	.py	c39_construction.py -- ⭐⭐⭐⭐⭐ 验证 YES 侧的**显式构造** 【构造】 取 α_i = e_i（i=1..d）—— 可行因 L ↦ L·N 满射到 ℝ^{d×d} ⟹ A0 = I_d ⟹
+archive/old_scripts/core/c43_diagnose_necessity.py	7989	.py	c43_diagnose_necessity.py -- 诊断：α0∉V 时究竟哪条条件失败？ 【目的】找到了机制才有希望证明必要性 对 (obs<d ∧ α0∉V) 的实例完全枚举，统计： · rank(A0) 的分布
+archive/old_scripts/core/c44_rank_vs_5a.py	6026	.py	c44_rank_vs_5a.py -- 检验机制假设： α0∉V 时，rank(A0)=obs 的候选**必过不了 (5a)** 【若成立】则机制为： (5a) 迫使 A1 = ΛA0 ⟹ A1 的每行 ∈ rowsp
+archive/old_scripts/core/c79_LAW_PROOF.py	6406	.py	c79_LAW_PROOF.py -- 🎉 定律的证明验证：(5b) ⟹ ρ ≤ obs（经 PBH 测试） 证明链： ① (5b) ⟺ rank[Λᵀ−λI | N] = q ∀λ [A11′，已证] ② 由上 ⟺ (
+archive/old_scripts/core/c80_NECESSITY_PROOF.py	8539	.py	c80_NECESSITY_PROOF.py -- 🎉 判据必要性的证明验证 定理：(5a)∧(5b) ⟹ α₀ = L₀N ∈ V 证明链： ① (5a) ⟹ F = ΛM ⟹ im Fᵀ ⊆ im Mᵀ ② (5b)
+archive/old_scripts/core/c81_AUDIT_pbh.py	6614	.py	c81_AUDIT_pbh.py -- 审计：直接验证 A19 的步 1-2（一般 ρ） 待验： (5b) ⟺ rank[Λᵀ − λI | N] = q ∀λ 即：铅笔 λM−F 的 ρ 阶子式 gcd 为常数 ⟺ [
+archive/old_scripts/core/c86_RECHECK.py	7934	.py	c86_RECHECK.py -- 用修复版 (5b) 判据重查核心结论 重点：α₀∉V ⟹ NO（判据必要性）是否仍成立？ 若旧 bug 造成假阴性，则可能出现"原本判 NO、修复后其实有解"的反例。
+archive/old_scripts/core/c87_AUDIT_FIXED.py	3863	.py	c87_AUDIT_FIXED.py -- 用修正版判据重跑 A19 步 1-2 的审计（含 ρ<d） 旧版 c82 报 2/40 不一致，已定位为 **cond_5b 的 gcd bug**（假阴性）， 不是数学问题。
+archive/old_scripts/core/check_C1_on_affine.py	3307	.py	在仿射退化集上判定 (A)∧(S) —— 直接检验猜想 (C1) 形状 n=6,p=2,r=1,q0=2（k=1, d_CA=q0=2, dimTheta=2）： {rank H < q0} = {det H = 0}，
+archive/old_scripts/core/decide_caseII_empty.py	6051	.py	决定性判定：那 4 个『未找到』的实例中，{rank H < q0} 到底是空还是优化器失败？ 设定：d_CA = q0 = 2，dimTheta = 2 ⟹ H 是 2x2，{rank H < q0} = {det H
+archive/old_scripts/core/exact_count_14_elim.py	13033	.py	C：k=1, p=1 时 (A) 的**精确单变量消元** —— 求 Omega* 的精确解数 铅笔形式（scripts/core/verify_pencil_v2.py）： P(Θ) = B21·Θ − B22 (p 
+archive/old_scripts/core/exact_count_thm7.py	11544	.py	(r=p=k=1, s=3) 情形的**严格解数**：直线 ∩ 圆锥曲线，用判别式精确判定。 定理 7 给出 (A) <=> f1(θ)=0 且 f2(θ)=0，其中 f1 一次、f2 二次。 本脚本精确计算这两个多项式
+archive/old_scripts/core/exact_gcd.py	9396	.py	exact_gcd.py -- 共享的多项式 gcd 与 (5b) 判据（**修正版**） ⚠️ 本模块的存在理由（第 40 处更正，见 PROOF_AUDIT.md §7）： 旧实现有一个致命 bug： ps = [所
+archive/old_scripts/core/gen_A_system.py	5609	.py	通用 (A)-系统构造器（适用于任意 q0 = r + k） (A) ⟺ ∃Λ ∈ Q^{q0×q0}, G0, G1: L·A = Λ·L + G0·C + G1·CA （L = [L0; R]） 投影形式（π = 到
+archive/old_scripts/core/mainline_witness2.py	6812	.py	mainline_witness2.py —— 稳健地找并核验一个支 B 的 (A)∧(S) 见证 策略：从实例端搜索（多种 n/p/mpow/seed），对每个支 B 实例枚举 ℓ， 一旦找到 (A)∧(S) 见证就*
+archive/old_scripts/core/recompute_rho_fixed.py	3453	.py	修正后重算 rank(R·N_C·K)（真正的矩阵乘法：mm(RNC, K)） 同时对照两个判据： 判据 A： rk(RNC · K) < k （K 是 d_C × m_K） 判据 B： ∃0≠y : y^T(RNC) 
+archive/old_scripts/core/reliable_S_test.py	12133	.py	可靠版 (S) 判据 + 分支 A 的分情形实验。 (S) 判据（可靠）： P(λ) = λH − F (q0 × d_CA) ρ = rank H = P(λ) 的一般秩 (S) <=> rank P(λ) = ρ 对
+archive/old_scripts/core/test_C1_wider.py	3861	.py	推广检验猜想 (C1)：情形 II（d_CA >= q0）中是否**恒存在** (A)∧(S)∧rank H < q0 的点？ （即 ν_min = q0 恒为 YES） 形状不锁定，dimTheta <= 2，多起点优
+archive/old_scripts/core/test_S0_conjecture.py	6518	.py	测试猜想 (S0)：rank H(Theta) = d_CA 是否对所有 Theta 成立？ 方法：对 H 的全部 d_CA 阶子式（Theta 的多项式）做数值最小化 sum(minors^2)。 · 若最小值 ~ 0
+archive/old_scripts/core/test_caseII_YES.py	7421	.py	B 的决定性实验：情形 II (d_CA >= q0) 中，ν_min = q0 是否可能为 YES？ 即是否存在 Θ 使 (A) ∧ (S) ∧ rank H < q0。 方法： 1. 多起点浮点最小化 sum(所有 
+archive/old_scripts/core/test_star3_fast.py	5868	.py	决定性实验（快速版）：见证能否**只**存在于秩跳变点（rank H < d_CA）？ 若找到这样的见证 Θ*：rank H(Θ*) < d_CA 且 (A)∧(S) 成立， 而**附近所有常秩点 (rank H = d
+archive/old_scripts/core/verify_T12.py	3378	.py	验证 T12： 情形 II 且 k=1 时，若 π(L0·A) ∦ π(L0)，则**不存在**满足 T5a ∧ (A) 的 L ⟹ 由 T6，(S) 必失败 ⟹ 判定恒 NO（多项式可判，chart-free） 验证方
+archive/old_scripts/core/verify_T12_full.py	4365	.py	verify_T12_full.py -- D8: 用**完整平行判据**复核 T12（含 r>=2） 【T12】(q0 = r+k, k=1)：若 pi(L0) != 0 且 rank[pi(L0); pi(L0 A)
+archive/old_scripts/core/verify_T12_r2.py	3181	.py	verify_T12_r2.py -- D8: 定向搜 r>=2 的 T12 实例（用完整判据） 策略：小 n + L0 = C A^m 构造，放宽 seed 范围，先**找到** r>=2 且 k=1 的实例。
+archive/old_scripts/core/verify_all.py	11395	.py	verify_all.py -- ⭐ 本会话关键论断的**一键复现** 【独立性】 不 import 项目的任何库（exact_count_thm7 / linalg_exact / test_caseII_YES 都不
+archive/old_scripts/core/verify_equivalences.py	7882	.py	verify_equivalences.py -- ⭐ 本会话**等价关系**的一键复现（独立实现） 覆盖本会话确立的四条等价/蕴含（每条都给出两侧样本）： E1: (5a) ⟺ ker(L·N) ⊆ ker(L·A·N
+archive/old_scripts/core/verify_family.py	7155	.py	verify_family.py -- ⭐⭐⭐ 验证**实例族**：任意 n ≥ 4 都有 YES 实例（情形 II, k=1） 【族】 n ≥ 4, p = 1, r = 1 C = e₁ᵀ A 的第 1,2,3 行 
+archive/old_scripts/core/verify_pencil_v2.py	4335	.py	从头重做并严格验证铅笔既约形式。 推导： γ ∈ span{Y_J(Θ), B_2} （Y_J = [I_k | Θ]） <=> ∃z,w: γ = z Y_J + w B_2 <=> γ1 = z + w B21, γ
+archive/old_scripts/core/verify_witness2_independent.py	8046	.py	verify_witness2_independent.py -- ⭐⭐⭐ **k=1** 见证的完全独立验证 【显式实例（可手算！）】 n=6, p=1, r=1, q0=2, k=1, d_CA=4（情形 II） C
+archive/old_scripts/core/verify_witness_independent.py	8417	.py	verify_witness_independent.py -- ⭐⭐⭐ 用**完全独立**的实现复核见证 独立性： · 不 import 项目的任何库（exact_count_thm7 / linalg_exact 都
+archive/old_scripts/core/witness_branchB.json	1121	.json	{ "n": 6, "p": 1, "r": 1, "q0": 3, "k": 2, "A": [ [ "1", "0", "1", "0", "1", "0" ], [ "0", "0", "-1", "-1", "-
+archive/old_scripts/core/witness_caseII_parallel_YES.json	915	.json	{ "n": 6, "p": 1, "A": [ [ "1", "-1", "1", "1", "0", "0" ], [ "0", "1", "1", "1", "1", "0" ], [ "1", "1", "1",
+archive/old_scripts/fix_katex.py	5725	.py	修复 KaTeX 报错：把**含中文的数学片段**转成纯文本/Unicode。 原则： · 只处理**包含 CJK 字符**的 $...$ / $$...$$ 片段（纯数学片段不动，KaTeX 能正常渲染） · 去掉 $
+archive/old_scripts/lean/ABridge.lean	3390	.lean	(A) 的秩形式 ⟺ 分解 —— **桥接完成**
+archive/old_scripts/lean/Admissible.lean	1350	.lean	admissibility 的推论链（命题 B 的踏脚石）
+archive/old_scripts/lean/B2.lean	2993	.lean	B2：引理 A / 引理 B / 组装（**条件定理**，全部机器验证）
+archive/old_scripts/lean/Basic.lean	6026	.lean	项目 q 的形式化基础（第一、二批）
+archive/old_scripts/lean/Bridge.lean	2669	.lean	D3-桥接：(A) ⟹ 分解 —— **机理已完全查清**
+archive/old_scripts/lean/C6.lean	23617	.lean	The last step of the c6' skeleton
+archive/old_scripts/lean/C6A.lean	5487	.lean	c6′：以 **(A)** 为唯一结构假设 + 秩亏机制
+archive/old_scripts/lean/C6Mech.lean	10561	.lean	c6′：**完整机制**（(A) + $A$-不变 + 代数闭域）
+archive/old_scripts/lean/CaseII.lean	1722	.lean	T6 : in case II the good set is empty when `rank H = q0`
+archive/old_scripts/lean/Closure.lean	2557	.lean	$A'$-闭包 $V=\langle S\rangle_{A'}$
+archive/old_scripts/lean/CriterionCore.lean	1596	.lean	theorem le_trans_of_le_of_finrank_eq
+archive/old_scripts/lean/D4.lean	8238	.lean	def pi1
+archive/old_scripts/lean/Decomp.lean	2137	.lean	From the decomposition (A) to `F = Lam ∘ H`
+archive/old_scripts/lean/Decomp2.lean	7184	.lean	(A) 的分解：**已机器验证的砖块**
+archive/old_scripts/lean/DimCount.lean	2492	.lean	维数计数引理（本会话 §7.24.85 的形式化）
+archive/old_scripts/lean/DimIdentity.lean	2762	.lean	两条被反复使用、但此前只在纸面上的引理
+archive/old_scripts/lean/DotVecMul.lean	1202	.lean	行向量 / 矩阵 / 列向量的结合律
+archive/old_scripts/lean/EigenRankDrop.lean	2309	.lean	特征值 ⟹ 降秩（T2 的 (iii)+(iv) 组装）
+archive/old_scripts/lean/Factor.lean	5811	.lean	(A) ⟹ 分解：**核心引理**
+archive/old_scripts/lean/Foundations.lean	5963	.lean	theorem F1_rank_nullity
+archive/old_scripts/lean/Lemma31.lean	1566	.lean	引理 3.1：商映射的特征值
+archive/old_scripts/lean/LowerBound.lean	1814	.lean	下界 $q\ge\dim V+1$ —— 核心引理的形式化
+archive/old_scripts/lean/PaperCore.lean	4094	.lean	theorem krylov_image_le
+archive/old_scripts/lean/Pencil.lean	1721	.lean	T5' and T2 (pencil form)
+archive/old_scripts/lean/README.md	16176	.md	scripts/lean — 命题 q 的 Lean 4 形式化
+archive/old_scripts/lean/RankDrop.lean	1572	.lean	秩下降引理（T2 的核心）
+archive/old_scripts/lean/RowFamily.lean	2287	.lean	T2 的行族形式（消掉矩阵翻译）
+archive/old_scripts/lean/Spectral.lean	2813	.lean	T5 : the spectral characterisation of condition (S)
+archive/old_scripts/lean/UpperBound.lean	5497	.lean	The upper bound of (5b): the rank can only drop, never rise
+archive/old_scripts/lean/WellDefined.lean	1551	.lean	良定义性引理（T2 的 (i) 的抽象核心）
+archive/old_scripts/q1_true_routes/c169_family_scan.py	3368	.py	c169_family_scan.py — 扫描 R-族（Krylov 维数 2）随 d 的行为 背景：record/COUNTEREXAMPLE_2026-10-22.md 断言 「这一族 q_min = 3 对任意 
+archive/old_scripts/q1_true_routes/c170_matroid_check.py	2718	.py	c170_matroid_check.py — 验证：坐标 V + 对角 A 时，(5b) 是否等价于一个拟阵条件 猜想（本会话）：设 A 对角、特征值互异，J 为任意子空间，V = span{e_i : i in S}
+archive/old_scripts/q1_true_routes/c171_cyclic_cover.py	3162	.py	c171_cyclic_cover.py — CYCLIC-COVER 的小规模实验 问题：给定线性拟阵 M（n 个元素，秩 r）与 S0，求 min |S| s.t. S ⊇ S0 且 S 无 coloop（即 S 是
+archive/old_scripts/q1_true_routes/c172_coordinate_vs_full.py	2712	.py	c172_coordinate_vs_full.py — 非坐标 V 会不会比坐标 V 更好？ 设 A = diag(1..n)（互异）、J 随机、K0 = span{e_0}。 - q_coord：坐标 V = spa
+archive/old_scripts/q1_true_routes/c173_search_counterexample.py	2499	.py	c173_search_counterexample.py — 批量搜索 (T) 的反例（J 必须可实现） (T)：min_V dim V = min_{坐标 V} dim V（A 对角互异、K0 坐标）。 做法：随机 
+archive/old_scripts/q1_true_routes/c174_n5_counterexample.py	2715	.py	c174_n5_counterexample.py — n=5 上继续搜 (T) 的反例（J 可实现） (T)：min_V dim V = min_{坐标 V} dim V。 对每个随机可实现实例（A 对角互异、J = 
+archive/old_scripts/q1_true_routes/c175_realizable_J.py	2289	.py	c175_realizable_J.py — 量化缺口 B：哪些子空间 J 可写成 row[C;CA]？ A = diag(1..n) 互异。J 可实现 ⟺ ∃C 使 row[C;CA] = J。 本脚本对随机的 2 维
+archive/old_scripts/q1_true_routes/c176_verify_fernando_8c.py	3340	.py	c176_verify_fernando_8c.py — 独立验证 (5b) <=> (8c) (5b): rank[lam L - LA; CA; C] == rank[L; CA; C] for all lam (8
+archive/old_scripts/q1_true_routes/c177_n6_grid.py	2914	.py	c177_n6_grid.py — n=6 上对 (T) 做网格穷举 对每个随机可实现实例（A=diag(1..6)、J=row[C;CA]、K0=span{e_0}）： 1. 算 q_coord； 2. 若 q_coo
+archive/old_scripts/q1_true_routes/c178_verify_counterexample.py	2850	.py	c178_verify_counterexample.py — 复现并验证 c177 的 (T) 反例（trial 47） 重放 c177 的随机流，取出 trial 47 的 (A, C)，再重做 dim-2 搜索拿到
+archive/old_scripts/q1_true_routes/c179_verify_idea5.py	3319	.py	c179_verify_idea5.py — 验证 IDEA5 的核心化归 断言：M = LN = U V^T（rank k），W = A'^T V，LR0 = -U W^T + Y V^T（Y 唯一）， 且 (5b) 
+archive/old_scripts/q1_true_routes/c180_idea5_diag.py	2645	.py	c180_idea5_diag.py — IDEA5 靶子 A 的最小版本：A' = diag(mu_1..mu_d) 构造同 c161/c169：n=d+2, N=[I_d;0], C=e_n^T, A' 对角互异, 
+archive/old_scripts/q1_true_routes/c181_scan_u.py	2416	.py	c181_scan_u.py — 在 p=1, d=3 上扫 u（R0 = u (x) r）的结构 固定 A' = [[0,1,0],[1,0,0],[0,0,3]]（交换块 + 1 维块）、r = e1、 N = [I
+archive/old_scripts/q1_true_routes/c182_blocks_d6.py	2441	.py	c182_blocks_d6.py — d=6, p=2, A' = 三个 2x2 交换块 目标是看 q_min 是否依赖"r 覆盖了哪些块"（即 V 的块结构）， 并找是否有 rho* < dimV 的实例（中间层的块
+archive/old_scripts/q1_true_routes/c184_spec_cut.py	3981	.py	c184_spec_cut.py — 检验：spec_cut > 0 是否只在 E∩K 可行时发生 A,C,L0 取 F_3 上的小整数矩阵；枚举 F_3^4 的全部子空间（作为有理子空间）； - d_alg = max
+archive/old_scripts/q1_true_routes/c185_directed_speccut.py	2560	.py	c185_directed_speccut.py — 定向构造：固定 n=5, C=e5^T, 让 E∩K 可控 对每个实例：枚举 F_3^5 的全部子空间，算 d_alg = max dim Z, Z ⊆ E, A(Z
+archive/old_scripts/q1_true_routes/c185b.py	2637	.py	c185_directed_speccut.py — 定向构造：固定 n=5, C=e5^T, 让 E∩K 可控 对每个实例：枚举 F_3^5 的全部子空间，算 d_alg = max dim Z, Z ⊆ E, A(Z
+archive/old_scripts/q1_true_routes/c186_speccut.py	3400	.py	c186_speccut.py — 定向：n=6, p=2, r=1；E 3维、K 2维、E∩K 1维 C = [e6; e5]，L0 支撑在 e1..e4 上；A 使 A e1, A e2 的后两坐标为 0（⇒ e1,
+archive/old_scripts/q1_true_routes/c187_span4.py	2498	.py	c187_span4.py — 定向搜索：可行集 Plücker 张成维数 = 4（斜倍增需要的维数） n=4, p=3, C 单行；随机 A, L0；对每个实例： 1. 先按 (5a) 过滤 2-平面（便宜的秩判定）；
+archive/old_scripts/q1_true_routes/spectral_gap.py	4917	.py	spectral_gap.py — D1 统计：代数部分 vs 谱条件，砍了多少维？ 对每个实例（来自 record/layer_audit_seed*.json 与 lit/ 证书）计算： n, p, r dim E,
+archive/paper_drafts/FINAL.md	67449	.md	0. 一句话结论
+archive/paper_drafts/PAPER.md	13923	.md	命题 q1 的判定：可行性判据及其证明
+archive/paper_drafts/TECHNICAL_REPORT_2026-10-29.md	13324	.md	技术报告：最小行数问题（MIN-ROWS / $q1$）的已证结果与已否定路线
+archive/problem_statements/OPEN_PROBLEM.md	22040	.md	一个最小维数问题：almost controlled invariant 子空间 + 铅笔正则性
+archive/problem_statements/q1.md	9149	.md	q1 — 原始命题（`q.txt`）
+archive/problem_statements/q2.md	3879	.md	q2 — 候选族约束变体
+archive/problem_statements/q3.md	5694	.md	q3 — 秩条件变体（**已完全证明**）
+archive/problem_statements/q4.md	9767	.md	q4 — 阈值分解变体
+archive/problem_statements/q_now.md	6812	.md	q_now — 扩维版本（阶谱上的最小谱可行阶）
+archive/problem_statements/q_now_MFOSP.md	6751	.md	问题名称：最小阶功能观测器谱可行性判定问题（MFOSP）
+archive/problem_statements/问题陈述_最小增广行数_2026-10-22.md	20898	.md	问题陈述：最小增广行数问题（q1）的两个精确缺口
+archive/process_logs/CLAUDE_旧记忆_2026-10-23前.md	82551	.md	CLAUDE.md — 工作记忆
+archive/process_logs/COUNTEREXAMPLE_2026-10-22.md	18822	.md	⚠️ 一个验证过的反例：$q_{\min}$ 的闭式不是 $\mrx(3,d+2-p)$
+archive/process_logs/DIRECTIONS_2026-10-23.md	4987	.md	三个方向（按顺序尝试）
+archive/process_logs/LAYER_AUDIT_2026-10-24.md	7192	.md	层公式审计：D33 的「1/70」到底是什么
+archive/process_logs/LEMMA_A.md	1752	.md	命题 A
+archive/process_logs/LEMMA_B.md	1740	.md	命题 B
+archive/process_logs/Q1FALSE_2026-10-24.md	10962	.md	Q1-FALSE 工作记录（2026-10-24 晚）
+archive/process_logs/REVIEW_LOG.md	44622	.md	评审日志（2026-10-22）
+archive/process_logs/STATUS_2026-10-24_from_q1_false_line.md	17662	.md	Q1-FALSE 状态（2026-10-24 收盘）
+archive/process_logs/evidence_notes_from_q1_true_line.md	1478	.md	间接证据（只读引用）
+archive/process_logs/layer_audit_r23_s22.json	8788	.json	[ { "name": "rand_s22_r2_0", "n": 4, "p": 1, "r": 2, "d": 2, "dimV": 2, "rho0": 1, "inV": true, "qmin": 3, "rh
+archive/process_logs/layer_audit_r2_s21.json	10376	.json	[ { "name": "rand_s21_r2_0", "n": 4, "p": 2, "r": 2, "d": 0, "dimV": 0, "rho0": 0, "inV": true, "qmin": 2, "rh
+archive/process_logs/layer_audit_seed21.json	16430	.json	[ { "name": "rand_s21_r1_0", "n": 4, "p": 2, "r": 1, "d": 0, "dimV": 0, "rho0": 0, "inV": true, "qmin": 1, "rh
+archive/process_logs/layer_audit_seed3.json	7068	.json	[ { "name": "rand_s3_0", "n": 4, "p": 1, "r": 1, "d": 2, "dimV": 2, "rho0": 1, "inV": true, "qmin": 3, "rhosta
+archive/process_logs/layer_audit_seed5.json	8272	.json	[ { "name": "rand_s5_0", "n": 6, "p": 2, "r": 1, "d": 2, "dimV": 2, "rho0": 1, "inV": true, "qmin": 3, "rhosta
+archive/process_logs/layer_audit_seed9.json	6589	.json	[ { "name": "rand_s9_0", "n": 5, "p": 2, "r": 1, "d": 1, "dimV": 1, "rho0": 1, "inV": true, "qmin": 2, "rhosta
+archive/project_reports/make_report.py	11043	.py	make_report.py — 生成项目报告 .docx 用法：用 bundled Python 运行： <py> -B make_report.py
+archive/proof_audits/E_审查与撤回清单.md	16860	.md	13 — 支 A 证明的严格审查
+archive/proof_audits/G_独立复核_2026-10-20.md	5523	.md	G — 独立复核（2026-10-20）
+archive/proof_audits/H_卡点定位_2026-10-20.md	5111	.md	H — 卡点定位（2026-10-20）
+archive/proof_audits/M_与既有工作对齐_2026-10-20.md	3860	.md	M — 与既有工作的对齐（2026-10-20）
+archive/proof_audits/PROOF_AUDIT.md	13805	.md	证明审计（Proof Audit）
+archive/proof_notes_dimV_line/00_证明索引.md	14173	.md	定理 → 文件位置对照
+archive/proof_notes_dimV_line/A_分支A的完整证明.md	22602	.md	14 — 分支 A 的完整证明（分情形）
+archive/proof_notes_dimV_line/B_地基检查与交付结论.md	10961	.md	17 — 地基检查（A）与当前可交付结论（D）
+archive/proof_notes_dimV_line/C_情形II的结构.md	11345	.md	C — 情形 II 的结构
+archive/proof_notes_dimV_line/D_支B的精确解数.md	6520	.md	20 — C：支 B 的精确解数（$(1,3)$ 校准成功；$(1,4)$ 解数很小）
+archive/proof_notes_dimV_line/F_待办任务A与B.md	15924	.md	F — 待办任务 A 与 B（本项目的剩余全部工作）
+archive/proof_notes_dimV_line/I_P6b_反例_2026-10-20.md	4405	.md	I — P6b 的反例（2026-10-20）
+archive/proof_notes_dimV_line/J_不变族检验_2026-10-20.md	3989	.md	J — $A'$-不变族的检验（2026-10-20）
+archive/proof_notes_dimV_line/K_维数计数_2026-10-20.md	7550	.md	K — 一个小而硬的必要条件：$\dim V_{\mathcal A}=n-2(d-\rho)$ 的计数（2026-10-20）
+archive/proof_notes_dimV_line/L_小q族_2026-10-20.md	8809	.md	L — $q_{\min}<\mathrm{obs}+1$ 的可复现实例（2026-10-20）
+archive/proof_notes_dimV_line/N_从P7到rho2_2026-10-20.md	5965	.md	N — 从 P7 到 $\rho\le2$：机制、为什么 P7 能多项式、以及 $\rho=2$ 的障碍（2026-10-20）
+archive/proof_notes_dimV_line/OLD_20_theorems_A1-A20.md	1947	.md	旧框架的 20 条定理（A1–A20，节选）
+archive/proof_notes_dimV_line/O_qmin分层_2026-10-20.md	5618	.md	O — $q_{\min}$ 的分层结论：为什么 $q$ 会从 2 跳到 $\mathrm{obs}+1$（2026-10-20）
+archive/proof_notes_dimV_line/P_rho_min公式重验_2026-10-20.md	5340	.md	P — $\rho_{\min}$ 公式的独立重验（2026-10-20）
+archive/proof_notes_dimV_line/Q_d2_定理_2026-10-20.md	8687	.md	Q — $d=2$ 的严格定理；$d=3$ 的部分定理（2026-10-20）
+archive/proof_notes_dimV_line/R_跳层定理_2026-10-20.md	12098	.md	1. 定理
+archive/proof_notes_dimV_line/S_维数下界定理_2026-10-21.md	55184	.md	1. 设定与主定理
+archive/proof_notes_dimV_line/T_Gap1_非饱和lift.md	10338	.md	Gap 1：非饱和的 lift 是否必可压到一行？
+archive/proof_notes_dimV_line/U_Gap2_上界存在性.md	14811	.md	Gap 2：上界——lift 的显式构造与剩下的一个代数条件
+archive/session_history/27_solver_bug_and_caseII_recheck.md	23323	.md	本轮记录：求解器缺陷修正 + 情形 II 的独立复核（2026）
+archive/session_history/28_problem_reading_and_branchB_counterexample.md	8303	.md	0. 一句话
+archive/session_history/29_B2_result.md	6285	.md	29 — B2 的结果：支 B 的 (A)-解集是**单点/层**，且"解数"口径需澄清
+archive/session_history/30_B2_proof_skeleton.md	12874	.md	30 — B2：$k=1$ 时 $\Omega^\star_J=\{\Theta=0\}$，但 **$k\ge2$ 时是正维数**！
+archive/session_history/31_back_to_mainline.md	5978	.md	31 — 回到主线：B2 的结果如何改变支 B 的复杂度问题
+archive/session_history/32_branchB_witness_found.md	5250	.md	0. 一句话
+archive/session_history/33_mainline_unification.md	6504	.md	33 — 主线的关键统一：**支 B 与情形 II 归结为同一个问题**
+archive/session_history/34_P_final_form.md	5550	.md	34 — 主线：$\mathcal P$ 的最终形式与频率数据
+archive/session_history/35_reduction_design.md	6540	.md	35 — 归约设计：从 1-in-3-SAT 到 $\mathcal P$
+archive/session_history/36_two_routes.md	20807	.md	36 — 主线的两条路线（记录）与方向 1 的攻坚
+archive/session_history/37_D4_progress.md	5516	.md	0. 一句话
+archive/session_history/38_bridge_obstacle.md	5326	.md	0. 一句话
+archive/session_history/39_route_C_insight.md	6134	.md	0. 一句话
+archive/session_history/40_routeC_final.md	6429	.md	40 — 路 C 的最终形式 + 我的两处更正
+archive/session_history/41_D6_structure.md	5727	.md	0. 一句话
+archive/session_history/42_session_summary.md	8112	.md	42 — 本轮总结（2025 续）：D4 完成 · D6 深挖 · 三处更正
+archive/session_history/43_bridge_mechanism.md	6249	.md	43 — D3 桥接：**机理已完全查清**（本轮的决定性结果）
+archive/session_history/44_bridge_complete.md	6206	.md	0. 一句话
+archive/session_history/45_c6p_complete.md	6221	.md	45 — ⭐⭐⭐ **c6′ 端到端完成**（$CA^2=0$ + 代数闭域）
+archive/session_history/46_weakest_condition.md	5301	.md	46 — c6′ 的**最弱可证条件** + 一般 $A$ 的诚实状态
+archive/session_history/47_c6p_refuted.md	8323	.md	47 — 🎉🎉🎉 **c6 / c6′ 被显式见证证伪**（本轮最重要的发现）
+archive/session_history/48_refutation_scope.md	8416	.md	48 — ⭐ 证伪的**精确范围**：非退化平行 ⟹ $k=0$（定理）
+archive/session_history/49_degenerate_reduction.md	5181	.md	0. 一句话
+archive/session_history/50_boundary_is_invariance.md	5856	.md	50 — ⭐⭐⭐ **A-不变性正是分界线**（本会话的最终结论）
+archive/session_history/51_hand_verifiable_counterexample.md	10743	.md	51 — ⭐⭐⭐ **可手算的反例**：c6′ 在 $k\ge1$ 范围也假
+archive/session_history/52_session_conclusion.md	495827	.md	52 — ⭐ **本会话最终状态汇总**（给下一个接手者）
+archive/session_history/53_final_summary.md	7376	.md	53 — 本会话最终汇总（可导航版）
+archive/session_history/54_handoff.md	6799	.md	54 — 交接单（Handoff）
+archive/session_history/CLAUDE_旧版.md	12017	.md	CLAUDE.md — 工作记忆 / 证明作战计划
+archive/session_history/README.md	7902	.md	归档原因与内容
+archive/session_history/README_旧版_24KB.md	24771	.md	⚡ 最新交付状态（本会话定稿，**请先读这里**）
+archive/session_history/SESSION_LOG_2026-10-21.md	11123	.md	会话日志（2026-10-20 → 22）
+archive/session_history/c6-lean-milestone.md	32521	.md	c6′ 的 Lean 形式化里程碑（2025-10-15）
+archive/session_history/docs/ANSWER_2026-10-20.txt	33703	.txt	我看完了你上传的《一个关于最小行 我看完了你上传的《一个关于最小行数的问题》。这个问题的关键不是可行性判定，而是：在所有满足条件 (a)、(b) 且首行为固定 L0L_0L0 的矩阵 L\mathcal LL 中，如何找
+archive/session_history/docs/DIRECTIONS_2026-10-18.md	86578	.md	0. 主线与已知的归结
+archive/session_history/docs/README.md	1224	.md	history/docs — 归档的文档
+archive/session_history/problems_txt/q.txt	119	.txt	找到行数最小的R，使得将矩阵L变成矩阵[L;R]时，方程(5a)和(5b)得到满足，这个问题是NP-hard
+archive/session_history/problems_txt/q2.txt	15398	.txt	======================================================================== q2.txt —— 增加候选族约束后的命题（记录） ===========
+archive/session_history/problems_txt/q3.txt	6021	.txt	======================================================================== q3.txt —— 添加简化条件后的命题（已证明） ===========
+archive/session_history/problems_txt/q4.txt	19270	.txt	======================================================================== q4.txt —— 按阈值分解后的命题（一半已证明，一半未决） =====
+archive/session_history/problems_txt/q_now_旧版_292行.md	12343	.md	q_now.md — 当前问题的精确陈述
+archive/session_history/proof/01_初始审查.md	34450	.md	04 — 「最小行数 $R」问题的复杂度分析（修订版）
+archive/session_history/proof/02_约束影响与q1q2关系.md	8582	.md	07 — 候选族约束的真实影响，以及 q2 对 q1 的意义
+archive/session_history/proof/03_证伪尝试.md	13187	.md	08 — 命题 q 的证伪：`q.txt` 的 NP-hard 断言为假
+archive/session_history/proof/04_完整数学证明尝试.md	16060	.md	09 — 命题 q 的完整数学证明
+archive/session_history/proof/05_PDF前提假设清单.md	10421	.md	10 — 三篇 PDF 的前提假设清单（命题 q 的真正基础）
+archive/session_history/proof/06_重新审查.md	12233	.md	11 — 命题 q 的重新审查：定位困难的真正来源
+archive/session_history/proof/07_0-1现象与多项式算法.md	8159	.md	12 — 命题 q 的判定：0/1 现象与多项式算法
+archive/session_history/proof/08_S的几何刻画.md	5746	.md	13 — q1 的核心结构：(S) 的几何刻画与复杂度定位
+archive/session_history/proof/09_实现缺陷定位与结论修正.md	5519	.md	本轮结论：一个被定位的实现缺陷，及对既有结论的影响
+archive/session_history/proof/10_本轮发现与修正.md	5907	.md	本轮结论：一个被定位的错误论证 + P1 定理的实证确认
+archive/session_history/proof/11_P1闭式实现与随机方法失效.md	27683	.md	本轮重大发现：P1 闭式的成功实现，及随机方法的失效
+archive/session_history/proof/12_命题q的数学推导.md	17059	.md	12 — 命题 q 的数学推导（非实验部分）
+archive/session_history/proof/15_分支A最终结论.md	9753	.md	15 — 分支 A 最终结论（定稿）
+archive/session_history/proof/16_分支A的确定结论.md	7759	.md	16 — 分支 A 的确定结论（含无条件二分）
+archive/session_history/proof/18_情形II的可能性实验.md	3816	.md	18 — 情形 II（$d_{CA}\ge q_0$）的**可能性**实验：答案可以为 YES
+archive/session_history/proof/19_情形II的仿射结构.md	6874	.md	19 — 情形 II 的结构：$H$ 的子式关于 $\Theta$ 的**次数 ≤ k**（$k=1$ 时仿射）
+archive/session_history/proof/c6-strategy_2026-10-16.md	9866	.md	0. 待证命题
+archive/session_history/scripts/2026_10_experiments/D6_final.py	2940	.py	D6_final.py -- D6：用**生成器实例**检验各种候选公式 【候选】 F1: q0 == dim(C + span{L0 A^k})，C = row[C;CA;...;CA^{n-1}] F2: q0 ==
+archive/session_history/scripts/2026_10_experiments/D6_hand.py	2219	.py	D6_hand.py -- 手算小例验证"q0 = 最小 Ā-不变子空间维数" 【例】A = [[0,1,0],[0,0,0],[0,0,2]]，C = [1,0,0]（p=1） C = span{e1} rank 1 
+archive/session_history/scripts/2026_10_experiments/D6_verify3.py	3421	.py	D6_verify3.py -- D6（正确版）：q0 == 最小 Ā-不变子空间维数 【模论形式（正确）】 C := row[C; CA; ...; CA^{n-1}]（**完整**可观测空间，A-不变 ✓） (A) 
+archive/session_history/scripts/2026_10_experiments/FILES.md	12063	.md	
+archive/session_history/scripts/2026_10_experiments/P_expressivity.py	4968	.py	P_expressivity.py —— 归约的可行性分析：$(A)$ 条件能表达哪些约束？ 【问题】归约要成功，必须能用 (A) 的 $(\\rho{+}1)$ 阶子式编码 NP-hard 问题的约束。 但 (A) 的
+archive/session_history/scripts/2026_10_experiments/P_inverse.py	4546	.py	P_inverse.py —— 逆问题：给定目标二次形式，求 (Ā,B̄) 【做法】 对 $(r,k,s,d_C)$，把 $\bar A,\bar B$ 的条目视为符号，算出子式中二次项的 系数（作为 $\bar A,\
+archive/session_history/scripts/2026_10_experiments/P_surjectivity.py	5176	.py	P_surjectivity.py —— 归约的关键一步：二次形式的**系数映射是否满射**？ 【问题】模板 M(Θ) 的子式 = Θ 的二次形式，系数由 (Ā, B̄) 决定 需问：(Ā,B̄) ↦ (二次形式) 是否
+archive/session_history/scripts/2026_10_experiments/README.md	3557	.md	history/scripts/2026_10_experiments — 实验脚本归档（258 个）
+archive/session_history/scripts/2026_10_experiments/b1_check_contradiction.py	4030	.py	b1_check_contradiction.py —— 查清矛盾：切空间说"孤立点"，扰动说"正维数" 做法：固定实例（与 b1_dim_omega.py 相同），在 Θ₀=(0,0) 附近**精细网格**上 逐点检验
+archive/session_history/scripts/2026_10_experiments/b1_dim_omega.py	5602	.py	b1_dim_omega.py —— 任务 B1：确定 dim Ω*（在已知 (A)-点处的切空间维数） 【判据】 Ω* 在 Θ₀ 处的 **Zariski 切空间** = ⋂_Δ ker(∇Δ(Θ₀))，其中 Δ 跑遍
+archive/session_history/scripts/2026_10_experiments/b1_dim_scan.py	6019	.py	b1_dim_scan.py —— 任务 B1（**修正版**）：在**多个** Ω* 非空的支 B 实例上测 dim Ω* ⚠️ 上一版 probe_B_final.py 的"9.2% 命中"是 bug：扰动 rand
+archive/session_history/scripts/2026_10_experiments/b1_resolve.py	4313	.py	b1_resolve.py —— 用**同一个实例**同时做"精细网格"与"±1/32 扰动"两种测试， 定位之前矛盾（孤立点 vs 9% 命中）的根源。
+archive/session_history/scripts/2026_10_experiments/b2_arbitrate.py	4968	.py	b2_arbitrate.py —— 仲裁：Groebner 基 {t0,t2} vs 数值 (A) 在 (0,1,0) 处为 False 做法：对该实例，逐个 (ρ+1) 阶子式在 (0,1,0) 与 (0,0,0) 
+archive/session_history/scripts/2026_10_experiments/b2_bound.py	5813	.py	b2_bound.py —— 任务 B2：给出 Ω*_J 的**解数上界**并与实际解数比较 【关键事实（b2_elim.py 已测）】 定义 (A) 的多项式在 Θ 上**次数 ≤ 2**（与 s 无关）。 ⟹ **B
+archive/session_history/scripts/2026_10_experiments/b2_compare.py	5221	.py	b2_compare.py —— 决定性对照：同一实例上 ① 项目的 `exact_count_14_elim.exact_count` 报的解数 ② 我的 Groebner 法在 (A)-系统上算出的**不同 Θ-解数
+archive/session_history/scripts/2026_10_experiments/b2_criterion.py	4014	.py	b2_criterion.py —— 引理 A 的**精确判据**验证 【推导】 设 δ 是"一阶保持"方向（即 J·δ = 0）。 可证 δ ∈ row[W(0);B;W(0)Ā]（因为 v(εδ) 必须在行空间中）。
+archive/session_history/scripts/2026_10_experiments/b2_criterion2.py	5092	.py	b2_criterion2.py —— 引理 A 的正确判据（直接对 J） 【修正】 上一条"δ ∈ row[W(0);B;W(0)Ā]"是**错的** ✗（θ-块秩恒为 1，判据 0/12） 正确的判据就是 J 本身的
+archive/session_history/scripts/2026_10_experiments/b2_divisibility.py	5652	.py	b2_divisibility.py —— 引理 B 的**可除性**形式 若每个高次子式 $I_j$ 都被某个**线性部分** $L$（或线性部分的组合）整除， 则 $L=0\Rightarrow I_j=0$ ⟹ 引
+archive/session_history/scripts/2026_10_experiments/b2_elim.py	6077	.py	b2_elim.py —— 任务 B2：符号消元求"消元后一元多项式的次数"（= 孤立解个数上界） 【做法（k=1）】 条件 (A) ⟺ [W;B;WĀ] 的全部 (ρ+1) 阶子式 = 0，其中 ρ = rk[W;B]
+archive/session_history/scripts/2026_10_experiments/b2_final3.py	5473	.py	b2_final3.py —— 三条证据链的最终一致性核验（**全部用正确的 WJ_of 构造**） 对每个实例同时给出： ① 数值：整数格扫描的 (A)-点数 ② 数值：直线 (0,a,0)（及一般直线）上的有理点检验
+archive/session_history/scripts/2026_10_experiments/b2_final_check.py	3915	.py	b2_final_check.py —— 决定性核验：该实例的 (A)-解集到底是单点还是直线？ 对同一实例： ① 直接数值检验 (A) 在 Θ=(0, t1, 0)（t1 ≠ 0）处是否成立 ② 整数格扫描 ③ Gro
+archive/session_history/scripts/2026_10_experiments/b2_independent_check.py	5213	.py	b2_independent_check.py —— 对"Ω*_J 是单点"做**独立复核** 三个独立判据： ① Groebner 基是否全为一次式（⟹ 单点） ② 数值求解 (A)-系统（用 sympy 的数值求解 
+archive/session_history/scripts/2026_10_experiments/b2_jacobian.py	6469	.py	b2_jacobian.py —— 引理 A 的显式结构验证 【推导出的结构】 M(Θ) := [W(Θ); B; W(Θ)Ā]，W(Θ) = W(0) + V(Θ)（V 线性） 子式 I_α(Θ) = det M(Θ)
+archive/session_history/scripts/2026_10_experiments/b2_k2.py	4451	.py	b2_k2.py —— 把"Ω*_J 单点"的检验扩到 **k ≥ 2** k≥2 时 Θ 是 k×(s−k) 矩阵（m = k(s−k) 个变量），W_J(Θ) 的后 k 行含 Θ 的行。 检查：Groebner 基是
+archive/session_history/scripts/2026_10_experiments/b2_k2_dim.py	7877	.py	b2_k2_dim.py —— 钉死 k=2 实例的 Ω*_J 结构（有限？正维数？） 用与 b1 相同的方法： ① 切空间维数（定义子式的梯度矩阵秩） ② 非零随机扰动命中率（**必须排除零扰动**！） ③ 沿各坐标轴
+archive/session_history/scripts/2026_10_experiments/b2_k2_gen.py	6189	.py	b2_k2_gen.py —— 用项目自己的 **L0 = CA^m 生成器**造 k>=2 的支 B 实例 （随机搜索几乎总给出 eta=1，即 k=0；项目 CLAUDE.md §4 已记录此事实） 目标：拿到 (k
+archive/session_history/scripts/2026_10_experiments/b2_k_dim_scan.py	6703	.py	b2_k_dim_scan.py —— 支 B 上 Ω*_J 的维数随 k 的变化（关键结论） 对 (k=1) 与 (k>=2) 分别统计： ① 整数格上 (A)-点的"频率"（正维数 ⟹ 频率 > 0 且随格变细趋于常
+archive/session_history/scripts/2026_10_experiments/b2_lemmaA.py	5152	.py	b2_lemmaA.py —— 引理 A 的精确判据：线性部分的**系数矩阵是否可逆**？ 若线性子式恰好是 m 个、且其 m×m 系数矩阵行列式 != 0，则 线性部分的唯一零点是 Θ=0 ✓ 本脚本：① 数线性子式个
+archive/session_history/scripts/2026_10_experiments/b2_lemmaA_check.py	5420	.py	b2_lemmaA_check.py —— 核实 (1,4) 上"线性部分不满秩"的实例：真实解集到底是什么？ ① 线性部分的零点（正维数？） ② 全部子式的零点（Groebner） ③ 高次部分是否在线性零点集上恒零？
+archive/session_history/scripts/2026_10_experiments/b2_lemmaA_explicit.py	6027	.py	b2_lemmaA_explicit.py —— 引理 A 的显式形式 【结构】 (A) ⟺ rank[W(Θ);B;W(Θ)Ā] = rank[W(Θ);B] = ρ 令 M(Θ) := [W(Θ);B;W(Θ)Ā]（
+archive/session_history/scripts/2026_10_experiments/b2_mechanism.py	5328	.py	b2_mechanism.py —— 两层机制的精确定式 设 L = {线性子式的公共零点}（可能是正维数线性子空间） H = {高次子式的集合} 观察到的两层结构： (层1) L 非空（Θ=0 ∈ L） (层2) H 
+archive/session_history/scripts/2026_10_experiments/b2_proof_step1.py	5005	.py	b2_proof_step1.py —— 探明"基恒线性"的**代数来源**：子式是否都是**线性因子之积**？ 从 b2_verify.py 的输出看（(1,3) 实例）： 4(5t0+6t1)/39 , -(4t0²
+archive/session_history/scripts/2026_10_experiments/b2_proof_step2.py	5464	.py	b2_proof_step2.py —— 真机制探测：二次子式在"线性子式的公共零点"上是否**自动为零**？ 若成立，则 (A) 的零点集 = 线性子式的零点集 ⟹ 只需解**线性方程组** ⟹ Θ 唯一。
+archive/session_history/scripts/2026_10_experiments/b2_proof_step3.py	5636	.py	b2_proof_step3.py —— 关键判据的普遍性检验： ① 全部子式的**线性部分**是否张成 m 维（⟹ 线性部分唯一确定 Θ）？ ② 全部**高次部分**是否在 (线性部分=0) 的点上自动消失？ 若 ①+
+archive/session_history/scripts/2026_10_experiments/b2_redo.py	5257	.py	b2_redo.py —— 用**正确的 W 构造**（WJ_of，行长度 = dC）重做全部检验 ⚠️ 之前的 b2_mechanism.py / b2_lemmaA_check.py 手写 W 时只造了 3 列（dC
+archive/session_history/scripts/2026_10_experiments/b2_shapes.py	2505	.py	b2_shapes.py —— 打印 build_norm_T / W_J 的精确形状，搞清约定
+archive/session_history/scripts/2026_10_experiments/b2_structure.py	4858	.py	b2_structure.py —— 支 B 的真解集结构：Ω*_J 是否**恒为单点**？基是否**恒为线性**？ 对每个 (k=1, s=3/4) 实例： ① 算 (A)-系统的 Groebner 基（lex） ② 
+archive/session_history/scripts/2026_10_experiments/b2_symbolic.py	5871	.py	b2_symbolic.py —— 任务 B2：用 sympy **符号地**求消元后一元多项式的次数 ⟹ 给出"孤立解个数"的 Bézout 型上界 【命题（B2）】 固定层 J（|J| = k）。条件 (A) 的**
+archive/session_history/scripts/2026_10_experiments/b2_verify.py	4806	.py	b2_verify.py —— 核验：Ω*_J 到底有几个解？（与项目 (1,3)=2 对照） 做法： ① 用 Groebner 基的 lex 形式**解出**全部解（回代） ② 直接随机采样找 (A)-点，看找到几个
+archive/session_history/scripts/2026_10_experiments/b3_shape_scan.py	5097	.py	b3_shape_scan.py —— 任务 B3：把 dim Ω* = 0（孤立点）的验证**扩到更多形状** 目标形状（支 B: 2p+q0 < n）： (k, s) = (1,3), (1,4), (2,3), (
+archive/session_history/scripts/2026_10_experiments/batch_c6p.py	8903	.py	batch_c6p.py —— 批量验证猜想 c6′： 情形 II 平行 ∧ (A) ∧ T5a ⟹ (S) 必失败（即 im H ∩ ker Λ ≠ {0}） 做法： · 取多个 A（A^2=0，保证 ker[C;CA
+archive/session_history/scripts/2026_10_experiments/batch_generalA.py	4477	.py	batch_generalA.py —— 用**非 A^2=0** 的结构验证 c6′ 关键：不变性的充分条件是 **CA^2 = 0**（比 A^2 = 0 弱 ✓）。 给定 A（A^2 ≠ 0），解出满足 c·A^2
+archive/session_history/scripts/2026_10_experiments/batch_q4.py	6050	.py	batch_q4.py —— 扩展到 q0>=4 验证 c6′ 关键构造（由 §9/§12 的结构性事实）： 1. 取满足 c·A^2 = 0 的 C ⟹ ker[C;CA] 是 A-不变的 ✓ 2. 取 u = B 的
+archive/session_history/scripts/2026_10_experiments/batch_r2.py	3840	.py	batch_r2.py —— 在 r>=2（q0 = r+k >= 3）下验证 c6′ 复用 batch_c6p_k.py 的辅助函数（其 main 有 __main__ 保护 ✓）
+archive/session_history/scripts/2026_10_experiments/bridge_construct.py	3926	.py	bridge_construct.py -- 验证桥接的**构造**（投影到第一分量） 【构造（本轮推导）】 令 P := W ⊕ G ⊕ G（D4 要求同源），把三个映射提升： T̃ := (LA)* ∘ pr₁, S
+archive/session_history/scripts/2026_10_experiments/bridge_dual_exact.py	3416	.py	bridge_dual_exact.py -- 精确判定**对偶侧**的分解是否存在 【对偶侧的分解形式】 (LA)* = L* ∘ Λ + C* ∘ G0 + (CA)* ∘ G1 其中 (LA)* : W* → V*
+archive/session_history/scripts/2026_10_experiments/bridge_exact.py	4206	.py	bridge_exact.py -- 精确判定 (A) 与分解的等价性 【理论】 (A) : row(LA) ⊆ row[L, C, CA] 分解 : ∃ Λ, G0, G1 : LA = ΛL + G0 C + G1 
+archive/session_history/scripts/2026_10_experiments/bridge_test.py	3301	.py	bridge_test.py -- D3 桥接的决定性检验 【问题】(A)（行空间条件）是否蕴含 ker(L) ⊆ ker(L A)？ 【为什么关键】 若 ker L ⊆ ker(LA)，则由"因子化引理"（ker H 
+archive/session_history/scripts/2026_10_experiments/c100_intersection_test.py	7698	.py	c100_intersection_test.py -- 决定性检验： 反例 ⟺ dim( rowspace([N|AN]) ∩ {α₀⊗(·)} ) ≥ 2 且 obs ≥ 2 做法： a) 定向构造 γ₀∥α₀ 的 
+archive/session_history/scripts/2026_10_experiments/c101_thin_set_census.py	6354	.py	c101_thin_set_census.py -- 在薄集 γ₀∥α₀ 上做彻底普查 理由（c100）：反例只可能出现在 γ₀∥α₀ 的实例上。 本脚本：构造这类实例，穷尽/密集扫候选，统计 ρ 的分布
+archive/session_history/scripts/2026_10_experiments/c102_5a_plus_rankF.py	5312	.py	c102_5a_plus_rankF.py -- 决定性测试：W⊆U 是否由 (5a) + rank F = ρ 推出？ 若成立 ⟹ 缺口得证（因 (5b) 在 λ=0 处给出 rank F = ρ）
+archive/session_history/scripts/2026_10_experiments/c103_lambda_mechanism.py	5970	.py	c103_lambda_mechanism.py -- λ-机制检验 对每个 (5a) 成立但 W⊄U 的候选： 1. 确认 (5b) 失败 2. 找出使 rank(λM−F) < ρ 的 λ（根） 3. 看这些 λ 与
+archive/session_history/scripts/2026_10_experiments/c104_5a_implies_WinU.py	5321	.py	c104_5a_implies_WinU.py -- 决定性检验：(5a) 本身是否推出 W ⊆ U？ 若成立 ⟹ 缺口直接得证（不需要 (5b)！） 做法：对大量实例，枚举所有 (5a)-成立的候选，检查是否有 W⊄U
+archive/session_history/scripts/2026_10_experiments/c105_verdier_defects.py	7497	.py	c105_verdier_defects.py -- 实现 Verdier 约化链，计算缺陷 alpha_k 约化（Verdier Def 2.3）： V^(0) = im E = im M M^(k+1) = M^(k
+archive/session_history/scripts/2026_10_experiments/c106_linear_pattern.py	6772	.py	c106_linear_pattern.py -- 验证：解是否总有 dim V^(k) = max(ρ−k, 0)？ 若成立 ⟹ α_k = 0 ⟹ 无 i.e.d. ⟹ 缺口闭合 并检查：(5a)-only 的反例是
+archive/session_history/scripts/2026_10_experiments/c107_chain_length.py	6546	.py	c107_chain_length.py -- 验证：约化链长度 = obs ？ 链长度 := 最小的 k 使 dim V^(k) = 0 obs := dim(A'ᵀ-闭包 of im R₀ᵀ)
+archive/session_history/scripts/2026_10_experiments/c108_c_leq_1.py	5267	.py	c108_c_leq_1.py -- 决定性测试：(5a) 是否蕴涵 c := dim(imF+imM) − ρ ≤ 1 ？ 若成立 ⟹ 结合 A25（c≥1）得 c=1 ⟹ 掉幅=1 ⟹ obs=ρ ⟹ 缺口闭合
+archive/session_history/scripts/2026_10_experiments/c109_larger_q_c.py	4950	.py	c109_larger_q_c.py -- 在更大的 q 下检验：c≥2 是否可能出现？ 此前只在 q=d+1 上测过。c ≤ min(ρ, q−ρ)，故更大的 q 可能允许 c≥2。
+archive/session_history/scripts/2026_10_experiments/c10_final_form.py	6060	.py	c10_final_form.py -- ⭐⭐⭐ 化简链的终点：问题只依赖 (A0, A1) 的行空间 【最终形式】 A0 := L·N (q×d) A1 := L·A·N (q×d) M := [N, A·N] (n×
+archive/session_history/scripts/2026_10_experiments/c110_e_distribution.py	3216	.py	c110_e_distribution.py -- 先查 e = rank R0 的分布，再在 e≥2 的实例上测 c
+archive/session_history/scripts/2026_10_experiments/c111_e_ge2.py	5028	.py	c111_e_ge2.py -- 在 e 可达 2 的实例上测 c 结构：e ≤ n−p−d。故需 n−p−d ≥ 2，例如 p=2, n=6, d=2。
+archive/session_history/scripts/2026_10_experiments/c112_rank_leak2.py	5449	.py	c112_rank_leak2.py -- 专找 rank(F−MA') = 2 的 (5a)-候选，看 c 能否 ≥2 c ≤ rank(F−MA')，故此前的检验若样本里 rank(F−MA') ≤ 1 也是空的。
+archive/session_history/scripts/2026_10_experiments/c113_q_minus_rho.py	4895	.py	c113_q_minus_rho.py -- 用 q ≥ ρ+2 的实例，检验 c≥2 是否可能出现 上界：c ≤ min(ρ, q−ρ)。故必须 q−ρ ≥ 2。 取 q=5, r=2 → 若 ρ=2 则 q−ρ=3，
+archive/session_history/scripts/2026_10_experiments/c114_obs_still_rho.py	5278	.py	c114_obs_still_rho.py -- q=5, c=2 的候选：obs 是否仍 = ρ？ 这是最关键的检验：如果 obs=ρ 在 c=2 时仍成立， 则主结果不变，只是我此前的"机制"错了。
+archive/session_history/scripts/2026_10_experiments/c115_rho_lt_d.py	5096	.py	c115_rho_lt_d.py -- 真正的难题：ρ < d（即 ker M ≠ 0） 此前多为 ρ=d（如 d=2,q=3,ρ=2），此时缺口平凡。 本脚本用 n=6,p=1,d=4,q=2 强制 ρ≤2<4。
+archive/session_history/scripts/2026_10_experiments/c116_obs1_rho1.py	5096	.py	c116_obs1_rho1.py -- 决定性：d=2, obs=1 时是否有 ρ=1 的解？ 若 YES ⟹ ρ=d 猜想假（但 ρ=obs 仍可成立） 若 NO ⟹ 支持 "obs<d ⟹ 无解"
+archive/session_history/scripts/2026_10_experiments/c117_b_implies_a.py	5632	.py	c117_b_implies_a.py -- (b) A'(ker M) ⊆ ker M 是否蕴涵 (a) ker M ⊆ ker R0 ？ 若 YES：缺口 = (b)，只需证 (b)（A21，其证明有 gap） 若 
+archive/session_history/scripts/2026_10_experiments/c118_genuine_ab.py	5866	.py	c118_genuine_ab.py -- 真检验 (a) 与 (b)：n=5,p=1,d=3,q=2（ρ≤2<3） 需要 obs ≤ 2 才有可能有解（否则 ρ=obs 要求 ρ≥obs>2）。
+archive/session_history/scripts/2026_10_experiments/c119_construct_rho_lt_d.py	6804	.py	c119_construct_rho_lt_d.py -- 构造 ρ<d 的解（不靠采样） 原理：选 K ⊆ ker(L0 N) ∩ ker(L0 A N)，dim K = d−ρ， 令 L 的行 ⊆ (N K + A 
+archive/session_history/scripts/2026_10_experiments/c11_qstar_vs_d.py	6836	.py	c11_qstar_vs_d.py -- ⭐⭐⭐ 假设检验：q* = d_CA + 1 ？ 【动机】 c9_growth 观察到 q*−q0 ≈ n−3（线性增长）。但"n"未必是真正的参数！ 更可能的解释：**q* 与
+archive/session_history/scripts/2026_10_experiments/c120_obs3_rho2.py	6636	.py	c120_obs3_rho2.py -- 决定性：obs=3, d=4, 构造 ρ=2 的 (5a)-候选，查 (5b) κ = dim(ker L0N ∩ ker L0AN) = d−2 = 2 ⟹ ρ = 2 < o
+archive/session_history/scripts/2026_10_experiments/c121_obs3_rho2_proper.py	4930	.py	c121_obs3_rho2_proper.py -- 决定性：obs=3, d=4，用正确流程搜 ρ=2 的解 正确流程： 1. 实例须 obs<d（这里 obs=3, d=4） 2. L0 须满足 α0 = L0 N
+archive/session_history/scripts/2026_10_experiments/c122_general_construction.py	6409	.py	c122_general_construction.py -- 推广反例：α0 ∈ im R0ᵀ ⟹ q=2, ρ=1 的解存在 构造：row0 = L0, row1 = ℓ1 满足 ℓ1 N = 0 且 ℓ1 A N 
+archive/session_history/scripts/2026_10_experiments/c123_general_verified.py	5471	.py	c123_general_verified.py -- 推广并验证：α0 ∈ row(R0) ⟹ q=2, ρ=1 的解 做法：先取 α0 ∈ row(R0)，解 L0 N = α0 得到 L0（这是合法的题目数据）， 
+archive/session_history/scripts/2026_10_experiments/c124_perturb.py	4671	.py	c124_perturb.py -- 扰动反例的 A，检验 ρ<obs 的解是否存在 基准反例：n=7, p=2, L0 = e1ᵀ − e5ᵀ（固定），ℓ1 = e4ᵀ 然后对 A 施加随机扰动 A → A + A₁（
+archive/session_history/scripts/2026_10_experiments/c126_positive_test.py	5686	.py	c126_positive_test.py -- 验证 "⇐"：e=d 时，只需 (ii) L0 A N = 0 就能构造 ρ=1 的解 p=1, n=6, d=2, e=2 ⟹ rowspace(R0) = R² ⟹ 
+archive/session_history/scripts/2026_10_experiments/c127_fixed.py	5615	.py	c127_fixed.py -- 修正版：验证 "⇐"（e=d 时 (ii) ⟹ ρ=1 的解） 关键修改：去掉不必要的 L0 ⊥ col(C) 筛选。 p=2, n=6；需 d=2 且 e=rank(R0)=2（此时 
+archive/session_history/scripts/2026_10_experiments/c128_2e_gt_d.py	6811	.py	c128_2e_gt_d.py -- 检验充分条件：2e > d ⟹ ρ≤1 可达 步骤： 1. 实例满足 2e>d（e=rank R0） 2. 求 W = {ℓN : ℓ⊥col(AN)} 与 rowspace(R0)
+archive/session_history/scripts/2026_10_experiments/c129_decisive.py	6561	.py	c129_decisive.py -- 决定性检验：W ∩ row(R0) ≠ 0 ⟺ ρ≤1 可达 对每个实例：计算 W 与 row(R0) 的交集维数；若非零则尝试构造并验证； 若为零则用大范围搜索确认没有 ρ≤1 
+archive/session_history/scripts/2026_10_experiments/c12_joint_search.py	7081	.py	c12_joint_search.py -- ⭐⭐⭐ n=6 的**联合搜索**（不做逐行贪心） 【关键更正】 §7.11 我说"加行使 (5a) 更易" —— **错**！新行引入 w1 约束，ker A0 缩小后可能
+archive/session_history/scripts/2026_10_experiments/c12b.py	7086	.py	c12_joint_search.py -- ⭐⭐⭐ n=6 的**联合搜索**（不做逐行贪心） 【关键更正】 §7.11 我说"加行使 (5a) 更易" —— **错**！新行引入 w1 约束，ker A0 缩小后可能
+archive/session_history/scripts/2026_10_experiments/c132_monotone.py	7437	.py	c132_monotone.py -- 检验单调性：ρ≤1 失败时，2 维 A 能否满足 (5b)？ 对 d=3 的实例： 1. 检查 ρ≤1 判据（L0 ∈ S 且 (u,w) 像 2 维） 2. 若失败，枚举 2 维
+archive/session_history/scripts/2026_10_experiments/c133_monotone_fixed.py	7145	.py	c133_monotone_fixed.py -- 单调性检验（修正版） 对 d=3 实例：若 ρ≤1 失败，枚举 2 维 A ⊇ span{α0}，检查能否得到 (5a)∧(5b) 的解。 关键修正：从 S_A 中按 
+archive/session_history/scripts/2026_10_experiments/c135_final_test.py	6757	.py	c135_final_test.py -- 检验候选算法 对每个实例（e = rank R0 小）： 1. 算 A0 = span{alpha0} 2. 对 r 在 row(R0) 的基（及组合）：A = Phi^inf
+archive/session_history/scripts/2026_10_experiments/c136_correct_algorithm.py	6806	.py	c136_correct_algorithm.py -- 检验正确形式的算法 rho_min =? min_{r ∈ row(R0)} dim Φ^∞(span{α0, r}) 对每个 r：构造 A_r，若 A_r ∩ 
+archive/session_history/scripts/2026_10_experiments/c13_genericity.py	6450	.py	c13_genericity.py -- ⭐⭐⭐⭐ q=d+1 处 (5a)∧(5b) 的**通用性**（成功率） 【为什么这一步关键】 若在 q=d_CA+1 处，随机取的行**高概率**满足 (5a)∧(5b)，则：
+archive/session_history/scripts/2026_10_experiments/c14_which_fails.py	6830	.py	c14_which_fails.py -- ⭐⭐⭐⭐ 找出"q=d+1 处失败"的实例有什么结构特征 【候选特征】 · d = d_CA · m = rank[N, AN] （m = d ⟺ K 是 A-不变的） · π
+archive/session_history/scripts/2026_10_experiments/c15_thin_or_empty.py	6821	.py	c15_thin_or_empty.py -- ⭐⭐⭐⭐ "薄成功集" vs "空"：大规模搜索 + 测 q=d+2 【问题】 c14 发现某些非不变实例在 q=d+1 处 160 次采样 0 命中。 但 0/160 在
+archive/session_history/scripts/2026_10_experiments/c16_criterion.py	7734	.py	c16_criterion.py -- ⭐⭐⭐⭐ 候选判据：Type I ⟸ 存在"实"广义特征值 【推导】 ρ=1 的充分构造：所有行取同一个 (a, sa) ∈ W = {(vN, vAN)} ⟹ 只需 ∃ v: v
+archive/session_history/scripts/2026_10_experiments/c17_final_criterion.py	4169	.py	c17_final_criterion.py -- ⭐⭐⭐⭐ 判据的最终形式与验证 【判据（来自 §7.17 的 ρ=1 构造）】 需要 (a,0) ∈ W ⟺ ∃v: vN ≠ 0 且 vAN = 0 ⟺ ker(·A
+archive/session_history/scripts/2026_10_experiments/c18_clean_correlate.py	7256	.py	c18_clean_correlate.py -- ⭐⭐⭐⭐ 干净的相关性实验（判据与成功率在同一轮内测） 【修正 c17 的错误】 c14 的采样用**同一个 rng** 消耗随机数 ⟹ 实例序列被扰动 ⟹ c17 的
+archive/session_history/scripts/2026_10_experiments/c19_typeII_exhaustive.py	6414	.py	c19_typeII_exhaustive.py -- ⭐⭐⭐⭐ Type II 实例的**完全枚举**（531,441） 【目标】把 c15 的 "0/46000 采样" 升级为 "$\{-1,0,1\}^{k·m}$
+archive/session_history/scripts/2026_10_experiments/c20_diff_invariants.py	4176	.py	c20_diff_invariants.py -- ⭐⭐⭐⭐ 对比 Type II 与 Type I 实例的细不变量 【思路】前面测过的 (q0,d,m,ρ0) 全都相同 ⟹ 需要**更细**的代数不变量 【测】 · r
+archive/session_history/scripts/2026_10_experiments/c21_rank_AN_criterion.py	7035	.py	c21_rank_AN_criterion.py -- ⭐⭐⭐⭐ 新判据：Type II ⟸ rank(AN) < d ？ 【来自 c20 的线索】 tr4（唯一严格确认的 Type II，531441 枚举无解）： r
+archive/session_history/scripts/2026_10_experiments/c22_compression_criterion.py	9082	.py	c22_compression_criterion.py -- ⭐⭐⭐⭐ 用 (A', row R) 找判据 【结构分解】 A' := (NᵀN)⁻¹Nᵀ·A·N （d×d，"压缩"） R := A·N − N·A' （
+archive/session_history/scripts/2026_10_experiments/c23_rational_eig.py	9226	.py	c23_rational_eig.py -- ⭐⭐⭐⭐ 最后候选判据：A' 是否有**有理**特征值 【理由】 (5b) 的秩下降只发生在 λ 使 pencil 奇异处。λ 取值在**基域**（ℚ 或 ℝ）。 · A'（
+archive/session_history/scripts/2026_10_experiments/c24_geometric.py	5341	.py	c24_geometric.py -- ⭐⭐⭐ (5a)/(5b) 的几何避让形式（等价性验证） 【几何形式】 M := {(A0·v, A1·v) : v ∈ R^d} = 列空间 [A0 | A1] ⊆ R^q ⊕ 
+archive/session_history/scripts/2026_10_experiments/c25_invariant_diff.py	9866	.py	c25_invariant_diff.py -- ⭐⭐⭐⭐ 系统对比 Type I / Type II 的细不变量 【思路】前面测过的秩量都相同 ⟹ 差异必在 $(A', \operatorname{row}R)$ 的*
+archive/session_history/scripts/2026_10_experiments/c26_obs_criterion.py	8559	.py	c26_obs_criterion.py -- ⭐⭐⭐⭐ 严格验证判据：Type II ⟺ obs < d_CA 【判据】 obs := dim Σ_{k=0}^{d-1} row(R)·A'^k = 含 row(R) 
+archive/session_history/scripts/2026_10_experiments/c27_obs_bigtest.py	8254	.py	c27_obs_bigtest.py -- ⭐⭐⭐⭐ obs 判据的**大规模独立复核** 【判据】Type II ⟺ obs < d_CA，其中 obs = dim(含 row(R) 的最小 A'-不变子空间) 【本脚
+archive/session_history/scripts/2026_10_experiments/c28_thin_instance.py	7879	.py	c28_thin_instance.py -- ⭐⭐⭐⭐ 分析"稀疏"实例（成功率 2%）的解集结构 【目标】区分 obs<d 时的两种情况： · **空**（真 Type II，如 531,441 全枚举无解的那个） 
+archive/session_history/scripts/2026_10_experiments/c29_parallel_base.py	6460	.py	c29_parallel_base.py -- ⭐⭐⭐⭐ 检验：rho=1 构造要求基行"平行"？ 【rho=1 构造分析（与 §7.17 衔接）】 所有行必须是 (c_i·a, d_i·a)（同一 a），且**固定行*
+archive/session_history/scripts/2026_10_experiments/c30_arbitrate.py	8638	.py	c30_arbitrate.py -- ⭐⭐⭐⭐ 仲裁：obs 判据 vs H2（基行平行）？ 【两个候选】 obs 判据：obs = d ⟹ q=d+1 处必 YES H2 判据：基行平行（g0 ∥ a0）⟺ 有解 【
+archive/session_history/scripts/2026_10_experiments/c31_fullrank.py	8537	.py	c31_fullrank.py -- ⭐⭐⭐⭐ 检验 H3：obs=d ⟺ 存在满秩（rho=d）解？ 【背景】c28 的 obs<d 实例：全部解 rho=1（<d）⟹ 只有退化解 ⟹ 稀疏 【H3】obs=d ⟺ 存
+archive/session_history/scripts/2026_10_experiments/c32_rho1_necessity.py	8142	.py	c32_rho1_necessity.py -- ⭐⭐⭐ 推论验证：rho=1 解存在 ⟹ 基行平行 【推导】 rho=1 时 A0 = c·uᵀ, A1 = d·uᵀ（同一 u） (5b) ⟺ rank(λA0−A1)
+archive/session_history/scripts/2026_10_experiments/c33_rho1_criterion.py	8408	.py	c33_rho1_criterion.py -- ⭐⭐⭐⭐ 检验精确判据： rho=1 构造可行 ⟺ 基行平行 ∧ α0 = L0N ∈ row(R) 【推导】 固定行必须 (α0, γ0) = (c0·u, d0·u)
+archive/session_history/scripts/2026_10_experiments/c34_composite.py	8287	.py	c34_composite.py -- ⭐⭐⭐⭐ 合成判据的大规模检验 【合成判据】 YES at q=d+1 ⟺ obs = d ∨ (基行平行 ∧ α0 ∈ row(R)) 【两类实例】 (a) 随机（多为 K 非不
+archive/session_history/scripts/2026_10_experiments/c35_n5t7_enumerate.py	7047	.py	c35_n5t7_enumerate.py -- 完全枚举 n=5 t=7（obs=2<d=3，rho=1 不可行但 3% 成功率） 【目标】找出所有解，确认其 rho 分布（预期：全部 rho=2）
+archive/session_history/scripts/2026_10_experiments/c36_alpha0_in_V.py	8420	.py	c36_alpha0_in_V.py -- ⭐⭐⭐⭐⭐ 检验统一判据： YES at q=d+1 ⟺ α0 = L0N ∈ V := <row(R)>_{A'}（含 row(R) 的最小 A'-不变子空间） 【动机】 ·
+archive/session_history/scripts/2026_10_experiments/c37_c19_check.py	4458	.py	c37_c19_check.py -- 验证 c19（531,441 全枚举无解）的 α0∈V 状态 【判据】YES ⟺ α0 = L0N ∈ V = <row(R)>_{A'} c19 无解 ⟹ 判据应预测 α0 ∉ 
+archive/session_history/scripts/2026_10_experiments/c38_reduction_check.py	9944	.py	c38_reduction_check.py -- 验证"充分性化归到 obs=d 情形" 【归约】 若 α0 ∈ V（V = 含 rowR 的最小 A'-不变子空间，dim V = obs）： 把问题**限制到 V**
+archive/session_history/scripts/2026_10_experiments/c39b_debug.py	3270	.py	c39b_debug.py -- 调试 c39 的构造：为何 ns=0
+archive/session_history/scripts/2026_10_experiments/c40_quotient_spec.py	7914	.py	c40_quotient_spec.py -- ⭐⭐⭐⭐ 检验必要性的机制缺口 【必要性的机制】 α0 ∉ V ⟹ α0 在商 Q = ℝ^d/V 上有非零分量 ᾱ0 模 V 的铅笔含 ᾱ0(λI − Ā') 项 ⟹ 若
+archive/session_history/scripts/2026_10_experiments/c41_necessity_hard.py	7863	.py	c41_necessity_hard.py -- ⭐⭐⭐⭐ 针对性加固必要性证据 【目标】找 (α0 ∉ V) ∧ (有解) 的反例 【策略】 对每个实例算 α0∈V，再在 q=d+1 上采样 对 α0∉V 的实例，用*
+archive/session_history/scripts/2026_10_experiments/c42_construct_alpha0_out.py	8247	.py	c42_construct_alpha0_out.py -- ⭐⭐⭐⭐⭐ 定向构造 (obs<d ∧ α0∉V) 的实例并枚举 【构造法】 ① 找 (A,C) 使 obs < d（即 row R 的 A'-闭包真） ② 
+archive/session_history/scripts/2026_10_experiments/c45_5b_parallel.py	8750	.py	c45_5b_parallel.py -- ⭐⭐⭐⭐ (5b) 的新等价形式验证 【新形式】 yᵀ(λA0 − A1) = 0 ⟺ yᵀA1 = λ·yᵀA0 ⟺ (zAN) = λ·(zN)，其中 z := yᵀL（z
+archive/session_history/scripts/2026_10_experiments/c46_why_5a_fails.py	5788	.py	c46_why_5a_fails.py -- 具体检查：α0∉V 时 rank-1 候选为何过不了 (5a) 【已知】ρ=obs=1 时，U = span(α_i) = span(α0)（因 α0∈U 且 dim U=1
+archive/session_history/scripts/2026_10_experiments/c47_bigger_grid.py	7955	.py	c47_bigger_grid.py -- 用更大网格检验：rank=obs 层的 (5a) 真的一律失败吗？ 【动机】c44 的"rank=obs 层 (5a) 通过率 0%"只覆盖 {-1,0,1}^6 ⊃ 9 个 
+archive/session_history/scripts/2026_10_experiments/c48_modV_invariant.py	8362	.py	c48_modV_invariant.py -- 验证新引理： α0∉V ⟹ Ū = row(A0) mod V 是 ℝ^d/V 中的**非零 Ā'-不变子空间** 【推导】 γ_i = α_iA' + β_i，β_i 
+archive/session_history/scripts/2026_10_experiments/c49_T_no_eigenvalue.py	9586	.py	c49_T_no_eigenvalue.py -- 验证 (5b) 的"算子形式"： (5a) ⇒ Λ 在 im(A0) 上唯一确定 ⇒ T := Λ|_im(A0) 由数据决定 (5b) ⟺ T 在基域上无特征值 ⟺ 
+archive/session_history/scripts/2026_10_experiments/c50_verify_5b_logic.py	7056	.py	c50_verify_5b_logic.py -- 核对 (5b) 的正确逻辑，并检验"该约化是否允许 (5a)∧(5b)" 【关键核对】 (5a) ⟹ ∃Λ (q×q): A1 = Λ A0 (5b) ⟺ ker(λI
+archive/session_history/scripts/2026_10_experiments/c51_Einf_criterion.py	10455	.py	c51_Einf_criterion.py -- 验证 (5b) 的新代数刻画： E := im(H) ⊆ ℝ^q，T := Λ|_E = (Hx ↦ Fx)（由 (5a) 唯一确定） E_1 := {v ∈ E : T
+archive/session_history/scripts/2026_10_experiments/c52_layers.py	8738	.py	c52_layers.py -- 按 rank 层检验 (5a)/(5b)，特别看 ρ<obs 与 ρ>obs 层 【要检验的精细命题】 (i) ρ < obs ∧ (5a) ⟹ (5b) 必败 ? (ii) ρ > o
+archive/session_history/scripts/2026_10_experiments/c53_rho_gt_obs.py	7274	.py	c53_rho_gt_obs.py -- 验证引理：ρ > obs ⟹ U ∩ V^⊥ ≠ 0 【证明（2 行维数计数）】 dim ker H = d − ρ；dim V = obs ρ > obs ⟹ dim(ker 
+archive/session_history/scripts/2026_10_experiments/c54_three_layers.py	8039	.py	c54_three_layers.py -- 完整检验三层：ρ<obs / ρ=obs / ρ>obs 上 (5a) 与 (5b) 的状态 【目的】补齐 c52 未覆盖的 ρ<obs 层 ⟹ 得到必要性的完整分层图像 若
+archive/session_history/scripts/2026_10_experiments/c55_krylov_welldef.py	5020	.py	c55_krylov_welldef.py -- 检验 Krylov 判据是否良定义 【疑问】Λ 只被 "Λ M = F" 确定到 Λ → Λ + φ wᵀ（行空间在 span φ 内的秩 1 扰动） 而 Krylov 
+archive/session_history/scripts/2026_10_experiments/c56_krylov_verify.py	7998	.py	c56_krylov_verify.py -- 验证核心判据（ρ=d 时）： **(5b) ⟺ dim Krylov(Λᵀ, φ) = q** 其中 M = A0 (q×d, 列满秩 d=q−1)，φ = Mᵀ 的左零向
+archive/session_history/scripts/2026_10_experiments/c57_d4_test.py	8351	.py	c57_d4_test.py -- 把判据检验推到 d=4（此前只到 d=3） 对每个实例： · 算 obs、α0∈V（预测） · 在 q=d+1 上采样大量候选，看是否有解 · 报告 预测 vs 实际
+archive/session_history/scripts/2026_10_experiments/c58_krylov_d34.py	6602	.py	c58_krylov_d34.py -- 把 Krylov 判据验证扩展到 d=3, d=4 判据（ρ=d 时）：(5b) ⟺ dim Krylov(Λᵀ,φ) = q 其中 M=A0 (q×d) 列满秩，φ = Mᵀ 
+archive/session_history/scripts/2026_10_experiments/c59_d4_necessity.py	8028	.py	c59_d4_necessity.py -- 补 d=4 且 obs<4 的必要性数据（定向构造 α0∉V） 【构造】① 找 (A,C) 使 d=4 且 obs<4 ; ② 取 α0∉V ; ③ 解 L0 N = α0 
+archive/session_history/scripts/2026_10_experiments/c60_krylov_shift.py	4412	.py	c60_krylov_shift.py -- 关键检验：Λ 的自由度是否使 Krylov 维数变化？ 【推理】 约束 Λ_i· M = F_i· （每行 1 个方程）⟹ 每行有 (q − rank M) = 1 个自由参
+archive/session_history/scripts/2026_10_experiments/c61_p2_test.py	7065	.py	c61_p2_test.py -- 判据检验扩展到 p=2（两个输出），此前全部测试都是 p=1 p=2 时 [C;CA] 是 4×n ⟹ d_CA = n−4；取 n=6 ⟹ d=2，q=3
+archive/session_history/scripts/2026_10_experiments/c62_proof_rho_d.py	8264	.py	c62_proof_rho_d.py -- 验证新定理的每一步 【定理（拟证）】ρ=d 且 obs<d ⟹ (5b) 必败 【证明链】 ① im(Rᵀ) = row(R) = W₀ ② Ṽ := Σ_t A'ᵀᵗ W₀
+archive/session_history/scripts/2026_10_experiments/c63_gap1_facts.py	4300	.py	c63_gap1_facts.py -- 验证缺口①的两条新严格事实 事实1：Fᵀ(ker Mᵀ) ⊆ row(R) （因 y∈ker Mᵀ ⟹ Fᵀy = Rᵀ Lᵀ y） 事实2：Fᵀu_k ∈ Ṽ ∀k，其中 Ṽ 
+archive/session_history/scripts/2026_10_experiments/c64_A10_structure.py	5948	.py	c64_A10_structure.py -- 攻关键节点 A10 【目标】证明 (5b) ⟺ Fᵀu_0..Fᵀu_{d-1} 无关（ρ=d 情形） 【本轮技术路线】把 (5b) 化成"多项式向量 y(λ) 无零点"：
+archive/session_history/scripts/2026_10_experiments/c65_larger_q.py	8395	.py	c65_larger_q.py -- 决定性实验：α₀∉V 时，增大 q 能否变 YES？ 【逻辑】 单调性（零行填充）⟹ YES at q ⟹ YES at q+1 ⟹ 若 α₀∉V（q=d+1 时 NO），则 q≤d
+archive/session_history/scripts/2026_10_experiments/c66_A10_two_forms.py	8263	.py	c66_A10_two_forms.py -- A10 的两个形式是否等价？ 形式 I（独立性）： (5b) ⟺ Fᵀu_0..Fᵀu_{d-1} 线性无关 [已实证 94 实例] 形式 II（特征向量）：(5b) ⟺ 
+archive/session_history/scripts/2026_10_experiments/c67_A10_onedir.py	5665	.py	c67_A10_onedir.py -- 验证 A10 的方向"(Krylov=q) ⟹ (5b)"（已严格证明） 并统计反方向的反例（若存在则 A10 为假）
+archive/session_history/scripts/2026_10_experiments/c68_necessity_w.py	9048	.py	c68_necessity_w.py -- 验证新必要条件： (5b) 失败 ⟹ ∃ 0≠w ∈ U, wA' ∈ span(w) + W₀ 其中 U = row(A0), W₀ = row(R)，A' 是压缩映射
+archive/session_history/scripts/2026_10_experiments/c69_sympy_complex.py	6007	.py	c69_sympy_complex.py -- 用 sympy 在 ℂ 上重测 A11（修复此前"只有有理特征值"的缺陷） A11: (5b) ⟺ Λ 无特征向量 z 满足 <z,φ>=0 （λ ∈ ℂ） 此前 c66 
+archive/session_history/scripts/2026_10_experiments/c6_5b.py	6797	.py	c6_5b.py -- ⭐⭐⭐ 直接检验问题的 **(5a) ∧ (5b)**（不是约化后的 (S)！） 【问题原文】 (5a) rang[LA; L; CA; C] = rang[L; CA; C] (5b) rang
+archive/session_history/scripts/2026_10_experiments/c6_CRUX.py	7680	.py	c6_CRUX.py -- ⭐⭐⭐ 全项目关键检验 【背景】 发现 1：项目的"真平行"实例（r=1）**全部退化**（π(L0)=0），16/16 发现 2：**非退化**平行实例存在（r=2），但**全部 k=0**
+archive/session_history/scripts/2026_10_experiments/c6_S_iff_5b.py	11701	.py	c6_S_iff_5b.py -- ⭐⭐⭐ **定理：(5b) ⟺ (S)** 【推导】 r0 := rank[L; C; CA] = rank H + (n−d) （因 row L + K^⊥ = π^{-1}(row
+archive/session_history/scripts/2026_10_experiments/c6_degenerate.py	3998	.py	c6_degenerate.py -- ⭐ 决定性检查：项目的"真平行"实例是否**退化**（pi(L0)=0）？ 【理论推论（r=1）】 真平行 ⟺ pi(L0A) = c·pi(L0)（pi(v) = v·N_CA）
+archive/session_history/scripts/2026_10_experiments/c6_degenerate2.py	3536	.py	c6_degenerate2.py -- r=2 情形：是否存在**非退化**的平行实例？ 【理论】 r=2 时"平行"= rank[π(L0); π(L0A)] ≤ 1（4 行全部成比例于同一 u） 非退化 = π(L
+archive/session_history/scripts/2026_10_experiments/c6_degenerate_5b.py	6119	.py	c6_degenerate_5b.py -- ⭐⭐⭐ 退化分支（π(L0)=0）+ 非不变 A + k≥1：(5b) 能否满足？ 【与项目 14/14 的差别】 项目实例：π(L0)=0 且 CA²=0（**A-不变**
+archive/session_history/scripts/2026_10_experiments/c6_ellfree.py	5421	.py	c6 的正确（ℓ-free）严格判定 推导（平行情形，k=1）： (A) ⟺ ∀i: π((L·A)_i) ∈ span{π(L_j)}_j T5a ⟹ π(w) ∥ π(L0) 合并 ⟹ (A)∧T5a ⟺ π(w) 
+archive/session_history/scripts/2026_10_experiments/c6_exhaustive.py	8864	.py	c6_exhaustive.py -- ⭐⭐⭐ **穷举判定**：小规模实例上完全判定 (5a)∧(5b) 【为什么现在可行】 本会话已把条件化简为（history/52 §7.6–7.8）： (5a) ⟺ ker(L·
+archive/session_history/scripts/2026_10_experiments/c6_fixed.py	5194	.py	修正版（第 20 处更正后）：用**完整的**平行判据重做"情形 II 平行"的分析 修正点： 旧（错）： 平行 ⟺ rank[π(L0 第一行); π((L0A) 第一行)] = 1 ✗ 太弱 新（对）： 平行 ⟺ r
+archive/session_history/scripts/2026_10_experiments/c6_general_A.py	10754	.py	c6_general_A.py -- ⭐ 决定性实验：c6′ 在**非 A-不变**（一般 A）下是否成立？ 【构造（利用 A(K) ⊄ K）】 给定 A, C，K = ker[C;CA]（dim d）。 取标量 c，令
+archive/session_history/scripts/2026_10_experiments/c6_invariant.py	3636	.py	c6_invariant.py -- c6′ 的真正机制：im(LAN) ⊆ im(LN) ？ 【机制】 (A) ⟹ F = Λ∘H（F = LAN, H = LN） 若 im F ⊆ im H，则 Λ(im H) ⊆ 
+archive/session_history/scripts/2026_10_experiments/c6_k_ge1.py	7362	.py	c6_k_ge1.py -- ⭐⭐⭐ 决定性问题：**非退化平行 + k≥1** 的实例上，(5a)∧(5b) 能否同时满足？ 【构造（利用 d ∦ c）】 取 A, C 使 CA²|_K ≠ 0（**非**不变） 且 
+archive/session_history/scripts/2026_10_experiments/c6_k_ge1b.py	7118	.py	c6_k_ge1b.py -- ⭐⭐⭐ **构造**非退化平行 + k≥1 实例，并检验 (5a)∧(5b) 【构造（保证成功）】 n=6, p=1, 取 C = e₁ᵀ 令 A 的前三行为： A[0]=e₂ᵀ, A[1
+archive/session_history/scripts/2026_10_experiments/c6_ker_criterion.py	5802	.py	c6_ker_criterion.py -- ⭐⭐ 化简：(5a) ⟺ ker H ⊆ ker F 【命题】 (5a) rank[LA; L; CA; C] = rank[L; CA; C] ⟺ ∃Λ: F = Λ∘H 
+archive/session_history/scripts/2026_10_experiments/c6_lambda_free.py	9262	.py	c6_lambda_free.py -- ⭐⭐⭐ **无 Λ 形式**：(S) ⟺ rank(L·P_λ) = rank(L·N) 【推导】 (λI − Λ)H = λH − ΛH = λH − F （用 (A) ⟹ F
+archive/session_history/scripts/2026_10_experiments/c6_mechanism2.py	4964	.py	c6_mechanism2.py -- 正确的机制检验（强制 A-不变性） 【关键推导】 若 A(range N) ⊆ range N（记 A' = A|_range N），则 F = L∘A∘N = L∘N∘A' = 
+archive/session_history/scripts/2026_10_experiments/c6_mechanism3.py	4488	.py	c6_mechanism3.py -- 正确机制（随机 A + A-不变性筛选） 推导： A(range N) ⊆ range N（记 A' = A|_range N）⟹ F = L∘A∘N = H∘A' ⟹ Λ∘H =
+archive/session_history/scripts/2026_10_experiments/c6_mechanism4.py	4860	.py	c6_mechanism4.py -- 定向构造 A^2=0（保证 A-不变）验证机制 构造：n=6, A 把 e0→e2, e1→e3（其余 0）⟹ A^2 = 0, rank A = 2 ⟹ ker[C;CA] 必为
+archive/session_history/scripts/2026_10_experiments/c6_open_region.py	7452	.py	c6_open_region.py -- ⭐⭐⭐ 攻开放区域：非不变 + 退化 + k=1 时 (5b) 能否成立？ 【构造（针对 q0=2, r=1）】 C = e₁ᵀ；A 的前三行 = e₂ᵀ, e₃ᵀ, λ₀e₃ᵀ
+archive/session_history/scripts/2026_10_experiments/c6_rank_def.py	3521	.py	c6_rank_def.py -- c6′ 的更弱机制：rank(LAN) < rank(LN) ？ 【动机】 (A) ⟹ F = Λ∘H（F = LAN, H = LN） 若 rank F < rank H，则 Λ|_
+archive/session_history/scripts/2026_10_experiments/c6_rowcol.py	4698	.py	c6_rowcol.py -- ⚠️ 险情追查：**(5a) 给的是"行空间"包含，还是"列空间"包含？** 【我一度（错误地）认为】 (5a) ⟹ π(ℓA) ∈ span{π(ℓ')} =: 某空间 而 "π(ℓ) 
+archive/session_history/scripts/2026_10_experiments/c6_theorem_k0.py	3888	.py	c6_theorem_k0.py -- 验证定理：**非退化平行 ⟹ k=0**（对任意 r、任意 A） 【定理】 rank[π(L0); π(L0A)] ≤ 1 且 π(L0) ≠ 0 ⟹ L0 本身满足 (A) ⟹ 
+archive/session_history/scripts/2026_10_experiments/c6_validate.py	5889	.py	c6_validate.py -- ⭐ 用**独立判据**验证 (S) 【当 q0=2, rho=1 时的简单判据】 im H 是一维直线 L = span{v} (S) 失败 ⟺ ∃λ: L ∩ ker(λI − Λ)
+archive/session_history/scripts/2026_10_experiments/c6_witness.py	6189	.py	c6_witness.py -- ⭐⭐⭐ 提取并**独立验证**"情形 II 平行 + (5a) ∧ (5b) 可为 YES"的显式见证 【独立验证】 ① H1–H4 ② (5a) 直接算 rank[LA;L;CA;C]
+archive/session_history/scripts/2026_10_experiments/c6_witness_inv.py	1304	.py	c6_witness_inv.py -- 见证的相容性检查：K 是否 A-不变？
+archive/session_history/scripts/2026_10_experiments/c70_A11_fast.py	6401	.py	c70_A11_fast.py -- A11 的快速等价形式（不用特征值） A11（已推导）：(5b) ⟺ ∀λ: im(Λᵀ − λI) + ⟨φ⟩ = ℝ^q ⟺ ∀λ: rank([Λᵀ − λI | φ]) = 
+archive/session_history/scripts/2026_10_experiments/c71_A11_theorem_check.py	6043	.py	c71_A11_theorem_check.py -- 验证 A11 的严格推导（现已是定理） (5b) ⟺ ∀λ: φ ∉ im(Λᵀ − λI) ⟺ ∀λ: φ ⊥̸ ker(Λ − λI) 直接检验两个等价，不依赖
+archive/session_history/scripts/2026_10_experiments/c72_squarefree.py	4906	.py	c72_squarefree.py -- 检验：本设定下 Λ 的 charpoly 是否 squarefree（⟹ 可对角化 ⟹ A11⟺A10） squarefree ⟺ gcd(χ, χ') = 常数
+archive/session_history/scripts/2026_10_experiments/c73_general_rho.py	6098	.py	c73_general_rho.py -- 检验推广猜想： (5b) ⟹ dim Fᵀ(K) = ρ，其中 K = Krylov(Λᵀ, ker Mᵀ) 若成立 ⟹ ρ ≤ obs（因 Fᵀ(K) ⊆ Ṽ，dim Ṽ =
+archive/session_history/scripts/2026_10_experiments/c74_rho_lt_d.py	6006	.py	c74_rho_lt_d.py -- 检验 ρ<d 时的核心等式：dim Fᵀ(K) = ρ（K = Krylov(Λᵀ, ker Mᵀ)） 提速版：只在 (5b) 成立且 ρ<d 的实例上报告
+archive/session_history/scripts/2026_10_experiments/c75_min_case.py	8243	.py	c75_min_case.py -- 定位"最小未解情形" d=3, ρ=2, obs=1 的实例 目标：找到 (A,C,L0) 使 d_CA=3, obs=1（V 为 1 维），然后 在 q=4 上检查 ρ=2 层是否
+archive/session_history/scripts/2026_10_experiments/c76_d4_layers.py	8380	.py	c76_d4_layers.py -- 把分层检验推到 d=4（此前只到 d=3） 重点：obs<ρ 的情形（即缺口"obs<ρ ⟹ (5b) 败"要覆盖的） d=4 时需要 n>=6；参数 12+ ⟹ 只能采样
+archive/session_history/scripts/2026_10_experiments/c77_d4_obs2.py	8387	.py	c77_d4_obs2.py -- 定向构造 d=4、obs=2 的实例，检验 ρ=3 层（obs<ρ<d）
+archive/session_history/scripts/2026_10_experiments/c78_5a_fails.py	5239	.py	c78_5a_fails.py -- 广泛验证新猜想：obs<ρ ⟹ (5a) 失败 对 (5a) 通过率按 (ρ vs obs) 分层统计
+archive/session_history/scripts/2026_10_experiments/c7_scale_test.py	9167	.py	c7_scale_test.py -- ⭐⭐⭐ c7 的可扩展性检验 【关键问题】 c6_exhaustive.py 用 R ∈ {−1,0,1} 枚举。NO 可能只是"枚举域太小"⟹ 假象！ 本脚本用**更大枚举域**
+archive/session_history/scripts/2026_10_experiments/c7_threshold.py	7335	.py	c7_threshold.py -- ⭐⭐⭐ 关键实验：**最小可行的 q**（增广行数）是多少？ 【动机】 穷举显示（history/52 §7.9）： · q = q0 时：非退化 ⟹ NO（26/26）；退化+非不
+archive/session_history/scripts/2026_10_experiments/c82_AUDIT_pbh_lowrank.py	5413	.py	c82_AUDIT_pbh_lowrank.py -- 审计补测：ρ<d 时的 (5b) ⟺ PBH 形式 方法：随机取 Λ，令 F = ΛM（⟹ (5a) 自动成立），其中 M 的秩刻意 < d
+archive/session_history/scripts/2026_10_experiments/c83_DEBUG_pbh.py	4096	.py	c83_DEBUG_pbh.py -- 用 sympy 作为独立裁判，定位 c82 的 2/40 不一致 造一个 ρ=1<d=3 的实例，分别用： (A) 我的 cond_5b （铅笔 ρ 阶子式 gcd） (B) 我的
+archive/session_history/scripts/2026_10_experiments/c84_REPRO.py	6077	.py	c84_REPRO.py -- 复现 c82 的失败实例并 dump 数据，用 sympy 裁判
+archive/session_history/scripts/2026_10_experiments/c85_FIXED_gcd.py	5172	.py	c85_FIXED_gcd.py -- 修复 gcd 初始化 bug，重查关键结论 Bug：gcd 从零多项式 ['0','0'] 初始化，且 `len(g)==1` 把零多项式误判为"已互素" 修复：跳过零多项式；只在
+archive/session_history/scripts/2026_10_experiments/c88_ACCURACY_CHECK.py	8062	.py	c88_ACCURACY_CHECK.py -- 论文准确性核对 逐条核对 PAPER.md 中的声明： A. 定理 3.1（秩定律）在实例上成立 B. 定理 4.1（必要性）—— 每个解都满足 α₀∈V C. 定理 4
+archive/session_history/scripts/2026_10_experiments/c89_min_q_test.py	5814	.py	c89_min_q_test.py -- 关键实验：q < obs+1 时能否有解？ 若能 ⟹ q_min < obs+1（无简单公式） 若不能 ⟹ q_min = obs+1（精确公式，q1 为假） 做法：构造 d=3
+archive/session_history/scripts/2026_10_experiments/c8_n5_decisive.py	5434	.py	c8_n5_decisive.py -- ⭐⭐⭐ 决定性单点：n=5 的非退化实例在 q=q0+1（k=2）时是否 YES？ 【背景】 c8_verify.py 在 n=5 时，非退化组全部"—"，但那是**枚举上限**
+archive/session_history/scripts/2026_10_experiments/c8_verify.py	7213	.py	c8_verify.py -- ⭐⭐⭐ 检验猜想 c8：q* ≤ q0+1（扩大枚举域与 n） 【为什么这是本会话最关键的一步】 c7_threshold.py 发现（n=4, 域 {−1,0,1}）： 退化+非不变 :
+archive/session_history/scripts/2026_10_experiments/c90_min_q_broad.py	6134	.py	c90_min_q_broad.py -- 广泛检验猜测：|R|_min = obs+1-r（即 q_min = obs+1） 对多组 (obs, d) 与多实例，检验： q = obs ⟹ 无解？ q = obs+1 
+archive/session_history/scripts/2026_10_experiments/c91_rowR_in_U.py	5525	.py	c91_rowR_in_U.py -- 检验：解是否满足 row(R₀) ⊆ row(A₀) = U ？ 若是 ⟹ U 是 A'ᵀ-不变 ⟹ Ṽ ⊆ U ⟹ ρ ≥ obs ⟹ ρ = obs ⟹ q_min = obs
+archive/session_history/scripts/2026_10_experiments/c92_routeB.py	6915	.py	c92_routeB.py -- 路线 B：检验 ker(L) ∩ im(R₀) = 0 在解上是否成立 若成立 ⟹ 结合已证的 R₀(ker M) ⊆ ker L，得 ker M ⊆ ker R₀ ⟹ ρ = obs 
+archive/session_history/scripts/2026_10_experiments/c93_W_in_U_iff_5b.py	5385	.py	c93_W_in_U_iff_5b.py -- W ⊆ U 与 (5b) 的关系 在 (5a) 成立的候选中，检验： (5b) ⟺ W := im(R₀ᵀ) ⊆ U := im(Mᵀ) ？ 若等价 ⟹ 缺口变成"证明 (
+archive/session_history/scripts/2026_10_experiments/c94_U_invariant.py	5163	.py	c94_U_invariant.py -- 验证新定理：(5a) ⟹ U = im(Mᵀ) 是 A'ᵀ-不变的 即 im(A'ᵀ Mᵀ) ⊆ im(Mᵀ)
+archive/session_history/scripts/2026_10_experiments/c95_W_in_U_broad.py	5169	.py	c95_W_in_U_broad.py -- 大规模强化检验 (5b) ⟹ W ⊆ U 目标：为唯一的缺口收集更强的证据（此前 0/720）
+archive/session_history/scripts/2026_10_experiments/c96_hunt_counterexample.py	5208	.py	c96_hunt_counterexample.py -- 定向搜寻：是否存在 (5a)∧(5b) 但 ρ < obs 的解？ 若找到 ⟹ W⊆U（即 obs=ρ）为**假** ⟹ 必须换路线 若找不到 ⟹ 证据再增强
+archive/session_history/scripts/2026_10_experiments/c97_p2_test.py	4970	.py	c97_p2_test.py -- 新覆盖：p=2（多输出），检验缺口 ρ=obs 此前所有测试都是 p=1。本脚本用 p=2 的系统（n=6 => d=n-2p=2；n=7 => d=3）
+archive/session_history/scripts/2026_10_experiments/c98_construct_counterexample.py	7042	.py	c98_construct_counterexample.py -- 构造 ρ<obs 的反例（用户的建议） 构造（ρ=1）： M = u·α₀ᵀ (q×d, rank 1) F = u'·α₀ᵀ (q×d, rank 
+archive/session_history/scripts/2026_10_experiments/c99_VERIFY_counterexample.py	6615	.py	c99_VERIFY_counterexample.py -- 严格验证 c98 构造的反例是否**可实现** 关键检查：$[M|F]$ 的每一行必须在 rowspace([N|AN]) 中 （即存在 L 使 LN=M,
+archive/session_history/scripts/2026_10_experiments/c9_growth.py	6867	.py	c9_growth.py -- ⭐⭐⭐ 测 q*−q0 的增长速率（"加一行"增量搜索） 【关键优化】 (5a) ⟺ ker(L·N) ⊆ ker(L·A·N)。**加一行**使 ker(L·N) 变小 ⟹ (5a) *
+archive/session_history/scripts/2026_10_experiments/calibrate_gen_A.py	4331	.py	A 的校准：从 p1 给出的 Lx 反解 Λ*（线性方程组），再用 Λ* 的后 k 列驱动通用构造器 反解： Lx·A = Λ·Lx + G0·C + G1·CA （Lx 已知 ⟹ 对 (Λ,G0,G1) 线性 ✓） 校
+archive/session_history/scripts/2026_10_experiments/caseII_parallel_line.py	6253	.py	情形 II 平行（k=1）：沿 ℓ 的直线搜索 (A)∧T5a 相容点 ℓ(t) = ℓ* + t·ℓ1 （ℓ* 来自 p1 的解；ℓ1 取若干方向） 对每个 (方向, t)： 解 (A)+T5a 线性系统 ⟹ 若可解，
+archive/session_history/scripts/2026_10_experiments/caseII_parallel_probe.py	6075	.py	情形 II 平行（k=1）：是否存在**秩降**的 (A)-可行解？ 用已校准的通用构造器（`gen_A_system.py`）+ T5a 的线性条件： k=1 时 T5a ⟺ π(w) ∥ π(L0) ⟺ (d_CA 
+archive/session_history/scripts/2026_10_experiments/certify_solveLambda_bug.py	5979	.py	certify_solveLambda_bug.py —— 提取 `batch_c6p_k.solve_Lambda` 丢解的**最小证书** 【bug】 s_lam = ([y] if any(x != 0 for x
+archive/session_history/scripts/2026_10_experiments/check_S.py	5448	.py	check_S.py —— 对构造出的 (A)∧T5a 实例，补上第三个条件 (S) 步骤： (1) 重建实例（A^2=0, C, L0 两行） (2) 确认 (A)：rank[LA;L;C;CA] == rank[L;
+archive/session_history/scripts/2026_10_experiments/decide_parallel.py	3665	.py	decide_parallel.py —— 对**构造出的真平行实例**判定 (A) ∧ T5a 判据（全部为秩条件，线性 ✓）： (A) ⟺ rank[LA; L; C; CA] == rank[L; C; CA] （
+archive/session_history/scripts/2026_10_experiments/diag_Lambda_map.py	3477	.py	diag_Lambda_map.py —— 定位 Λ 抽取的**映射**问题（第 3 层排查） 关键：`solve_Lambda` 用 Lam[i][k] = sol[k*r + i] 取 Λ。 本脚本直接验证：对同一条
+archive/session_history/scripts/2026_10_experiments/diag_lib_solve.py	4815	.py	diag_lib_solve.py —— 锁定库 `exact_count_thm7.solve` 返回**不满足残差的解**这一缺陷 【性质】 `linalg_q.solve` 对每条返回的 y / y+ns 强制残差
+archive/session_history/scripts/2026_10_experiments/diag_solveLambda.py	4198	.py	diag_solveLambda.py —— 逐解对照：库 `solve` 的解集 vs 独立求解器的解集 上一个脚本按"y=0"找证书失败了 ⟹ bug 的机制不是我最初以为的那样。 本脚本对同一个具体实例，把所有解向
+archive/session_history/scripts/2026_10_experiments/dir1_construct.py	6111	.py	dir1_construct.py —— 方向 1 / 子任务 1.2：**构造性求解逆问题** 【目标】给定目标二次形式 Q（在 Θ 上），找一个 (Ā,B̄) 使 (A)-子式集合的理想 **包含** Q。 【做法（
+archive/session_history/scripts/2026_10_experiments/dir1_direction_check.py	5489	.py	dir1_direction_check.py —— 归约**方向**的逻辑核实 + 弱归约的可行性 【逻辑（必须搞清）】 记 $(A)$ 的多项式系统为 $\mathcal I$（由 $(\rho{+}1)$ 阶子式生
+archive/session_history/scripts/2026_10_experiments/dir1_nonvacuous.py	3022	.py	dir1_nonvacuous.py —— 方向 1 / 子任务 1.1：找**非空洞**的 (Ā,B̄) 【判据】 (A) ⟺ rank[W(Θ);B;W(Θ)Ā] = rank[W(Θ);B] （对 Θ 成立） 若对
+archive/session_history/scripts/2026_10_experiments/dir1_nonvacuous2.py	3220	.py	dir1_nonvacuous2.py —— 精确判据：何时 (A) 非空洞？ 【推导】 (A) ⟺ 全部 (ρ+1) 阶子式 = 0，其中 ρ = rk[W(Θ);B]。 · 若 ρ = d_C（最大可能）⟹ (ρ+1
+archive/session_history/scripts/2026_10_experiments/dir1_seq1.py	5179	.py	dir1_seq1.py —— 序 1：在**非空洞形状**上重做理想成员性实验（修正样本量） 【关键修正（相比上一轮）】 · 上一轮用 $(1,2,3,4)$：那里 max rk[W;B] = d_C ⟹ (ρ+1) 
+archive/session_history/scripts/2026_10_experiments/dir1_seq1b.py	4662	.py	dir1_seq1b.py —— 序 1（修正版）：**逐实例**检验 (A)-理想是否可包含目标 【修正】上一版把**不同** (Ā,B̄) 的子式混在一起做 Gröbner —— 无意义 ✗ 正确做法：**每个 (Ā
+archive/session_history/scripts/2026_10_experiments/dir2_dim.py	5173	.py	dir2_dim.py -- 方向 2: 用**可靠的维数判据**测定 Omega*_J 的维数 【为什么换判据】 上一版用"Groebner 基的高次元涉及几个变量"作为 dim 上界 -- **不可靠** ✗ (变量
+archive/session_history/scripts/2026_10_experiments/dir2_dim_real.py	6061	.py	dir2_dim_real.py -- 方向 2 (修正装置): 用 build_norm_T 的真实 A 测 Omega*_J 的维数 【为什么必须修正】 上一版 (dir2_dim.py) 用**任意** A 代替真
+archive/session_history/scripts/2026_10_experiments/dir2_guess22.py	4916	.py	dir2_guess22.py -- 方向 2 / 猜想 2.2 检验: Groebner 基的变量依赖结构 【猜想 2.2】Groebner 基恒为"线性部分 + 仅 d 个变量的二次部分", d 很小 (<=2?) 
+archive/session_history/scripts/2026_10_experiments/dir2_var_structure.py	3828	.py	dir2_var_structure.py —— 方向 2：$\Omega^\star_J$ 的结构（是否为线性簇之并？） 【猜想 2.1】$\Omega^\star_J$ 按 $\operatorname{rk}[W(
+archive/session_history/scripts/2026_10_experiments/gen_parallel.py	4957	.py	gen_parallel.py —— **构造**"真平行"实例（不做随机搜！） 背景（CLAUDE.md §0.3）： 真平行 = rank[ Pi(L0) ; Pi(L0 A) ] == 1 （**全部 r 行**都
+archive/session_history/scripts/2026_10_experiments/gen_parallel2.py	4656	.py	gen_parallel2.py —— **保证成功**的真平行实例构造（A-不变核 + 特征方向） 【为什么第一版失败】 gen_parallel.py 固定方向 u 后要求 l B = alpha*u 且 l A B
+archive/session_history/scripts/2026_10_experiments/gen_parallel3.py	3188	.py	gen_parallel3.py —— 真平行实例构造（最终版：A-不变核 + 特征方向） 【核心洞察】 若 K := ker[C;CA] 是 A-不变的，记 A' = A|_K。 则 l B = u ⟹ l A B =
+archive/session_history/scripts/2026_10_experiments/gen_parallel4.py	4268	.py	gen_parallel4.py —— 真平行实例构造（终版） 原理（见 CLAUDE.md §9）： K := ker[C;CA] 若 A-不变，记 A' = A|_K，其在基 B 下的矩阵为 M（满足 A·B = B
+archive/session_history/scripts/2026_10_experiments/gen_parallel5.py	3559	.py	gen_parallel5.py —— 真平行实例构造（**保证成功**版） 【数学依据】 K := ker[C;CA] 是 A-不变的 ⟺ K ⊆ ker[CA^2] ⟹ 取 A^2 = 0 就**自动**保证不变性 
+archive/session_history/scripts/2026_10_experiments/mainline_B.py	6898	.py	mainline_B.py —— 主线：支 B 上 (A)∧(S) 能否非空？ 【方法（避开项目禁区"随机搜稀有实例"）】 1. 造支 B 实例（2p+q0 < n）：用 L0 = CA^m 生成器（项目记录：随机 L0
+archive/session_history/scripts/2026_10_experiments/mainline_B2.py	6158	.py	mainline_B2.py —— 主线：**支 B（2p+q0 < n）上 (A)∧(S) 能否成立？** 【流水线（全部复用项目已验证的部件）】 1. 造支 B 实例：L0 用 CA^m 生成器（随机 L0 几乎总给
+archive/session_history/scripts/2026_10_experiments/mainline_S_sanity.py	4462	.py	mainline_S_sanity.py —— 健全性检查：确认 (S) 检验器**不是永远返回 False** 做法：用一个**已知 (S) 成立**的例子（项目记录：$d_{CA}=1$ 时 (S) 总成立） 和一个
+archive/session_history/scripts/2026_10_experiments/mainline_branchB.py	1352	.py	mainline_branchB.py —— 回到主线：支 B 上 (A)∧(S) 是否可能非空？ 【精确做法（分段线性）】 对固定 J，(A) 的条件是 rank M_J(Θ) ≤ ρ，其中 M_J(Θ) 对 Θ **
+archive/session_history/scripts/2026_10_experiments/mainline_claim.py	5489	.py	mainline_claim.py —— 检验新猜想：**支 B 上 (A)∧(S) 恒空？** 对照 $k=1$ 与 $k\ge2$： · $k=1$：Ω*_J 是单点（[history/30]）⟹ (S) 是否在该点
+archive/session_history/scripts/2026_10_experiments/mainline_quant_fast.py	5240	.py	mainline_quant_fast.py —— 支 B 上 (A)∧(S) 非空频率的**快速量化** 缩小 ℓ 预算 + 少量实例，快速给出频率量级。 关键指标：**(A)∧(S) 可满足 ⟺ 存在 (A)-点使 
+archive/session_history/scripts/2026_10_experiments/mainline_quantify.py	5767	.py	mainline_quantify.py —— 支 B 上 (A)∧(S) 非空的**频率**与**结构** 量化（200+ 实例）： ① 支 B 实例总数 ② 有 (A)-点的实例数 ③ 有 (A)∧(S) 见证的实例
+archive/session_history/scripts/2026_10_experiments/mainline_structure.py	5642	.py	mainline_structure.py —— 见证的**结构**分析：为什么 (A) 常见而 (A)∧(S) 罕见？ 对若干支 B 实例： ① 若 (A) 成立 ⟹ (S) 失败，找出**失败的机制**（哪个 λ、i
+archive/session_history/scripts/2026_10_experiments/mainline_verify_witness.py	6013	.py	mainline_verify_witness.py —— 独立核验"支 B 上 (A)∧(S) 可为 YES" 对每个见证： ① 重算它的 (A,C,L0) 参数，确认 **支 B**（2p+q0 < n） ② 用**
+archive/session_history/scripts/2026_10_experiments/mainline_witness_pin.py	5931	.py	mainline_witness_pin.py —— 钉死一个支 B 的 (A)∧(S) 见证，并逐项独立核验 1. 用与 mainline_claim **完全一致**的实例搜索（randint 立即转 F） 2. 枚
+archive/session_history/scripts/2026_10_experiments/mechanism_2d.py	6042	.py	机制检验（强化版）：情形 II 平行中，是否存在 Λ_{13} ≠ 0 的 (A)∧T5a 解？ ℓ ∈ P^2（q0=3, k=1）：归一化后扫**二维网格** ℓ = (1, a, b) ∪ (0, 1, b) ∪ 
+archive/session_history/scripts/2026_10_experiments/probe_A_decomp.py	5263	.py	probe_A_decomp.py —— 钉死 T5′ 的前提：**(A) 是否总能给出 LA = ΛL + G₀C + G₁CA 的分解？** 【为什么关键】 T5′（FINAL §4.3、本项目 Lean `F_eq
+archive/session_history/scripts/2026_10_experiments/probe_A_vs_decomp.py	6927	.py	probe_A_vs_decomp.py —— **决定性**：(A) 是否蕴含分解 LA = ΛL + G₀C + G₁CA ？ 【为什么这是当前的关键】 Lean `Theorems/C6.lean` 的 `c6'_
+archive/session_history/scripts/2026_10_experiments/probe_B_dim3.py	3978	.py	probe_B_dim3.py —— 支 B：快速判定 Omega* 的维数 策略：先找一个 **Ω* 非空** 的支 B 实例（这是关键前提，很多实例 Ω* 为空）， 再在找到的 (A)-点附近测试命中率，并做**沿各
+archive/session_history/scripts/2026_10_experiments/probe_B_final.py	3781	.py	probe_B_final.py —— 打印一个 Ω* 非空的支 B 实例，并判定 Ω* 的维数 只用最小规模、最快路径：一旦找到就打印矩阵并做维数判定，然后退出。
+archive/session_history/scripts/2026_10_experiments/probe_B_omega_dim.py	4344	.py	probe_B_omega_dim.py —— 钉死支 B 的 Omega* 维数：正维数 还是 孤立点？ 判据：若 Omega* 在某点 Θ₀ 附近含**开球**，则对随机小扰动仍成立（命中率 ~1）； 若 Θ₀ 是孤
+archive/session_history/scripts/2026_10_experiments/probe_B_omega_dim2.py	4537	.py	probe_B_omega_dim2.py —— 支 B 的 Omega* 维数（快速版） 复用 probe_B_omega_shape.py 里已确认可行的实例搜索（上限 40000×200）， 但一旦找到 k=1, 
+archive/session_history/scripts/2026_10_experiments/probe_B_omega_shape.py	4508	.py	probe_B_omega_shape.py —— 支 B 的 Omega* 到底是"有限孤立点"还是"正维数集"？ 【背景】 FINAL.md §8 说：支 B（2p+q0 < n）的解集是**有限个孤立点**（零测，
+archive/session_history/scripts/2026_10_experiments/probe_F_rowspace.py	4251	.py	probe_F_rowspace.py —— **决定性对照**：F 的行空间是否总落在 H 的行空间里？ 【冲突来源】 我推得：(A) 的分解 LA = ΛL + G₀C + G₁CA 右乘 N_CA（因 C·N_CA
+archive/session_history/scripts/2026_10_experiments/probe_S_correct.py	6771	.py	probe_S_correct.py —— 用**独立求解器**重测核心量 (A)∧(S) 【背景（本轮发现）】 `batch_c6p_k.solve_Lambda` 是对库 `solve` 的包装，它用 ([y] if
+archive/session_history/scripts/2026_10_experiments/probe_YES_certified.py	7834	.py	probe_YES_certified.py —— 对"情形 II 中 (A)∧T5a∧(S) 成立"的点做**三重独立复核**并给出证书 【立场】 项目 FINAL §4.5 的数据是「情形 II：(A)∧(S) = 
+archive/session_history/scripts/2026_10_experiments/probe_YES_hunt.py	6463	.py	probe_YES_hunt.py —— **针对性**搜索：情形 II 中 (A) ∧ T5a ∧ (S) 同时成立的点 【为什么还要搜】 - `probe_exhaustive_q2.py`（n=6、q0=2、参数化
+archive/session_history/scripts/2026_10_experiments/probe_YES_hunt2.py	5431	.py	probe_YES_hunt2.py —— 在 **k ≥ 1（真的有增广行）且 H ≠ 0** 的过滤下搜索 (A)∧T5a∧(S) 【上一轮的教训】 probe_YES_hunt.py 命中的唯一"反例"是 q0 =
+archive/session_history/scripts/2026_10_experiments/probe_caseII_YES_q2.py	6195	.py	probe_caseII_YES_q2.py —— **决定性复核**：情形 II 下是否存在 (A) ∧ T5a ∧ (S) 同时成立的实例？ 【为什么会怀疑它存在】 取 L = [L0 ; l]，其中（由 §12/§
+archive/session_history/scripts/2026_10_experiments/probe_caseII_broad.py	6769	.py	probe_caseII_broad.py —— 大范围、多结构地独立复核：**情形 II 下 (A) ⟹ (S) 失败 是否恒成立** 【为什么要做】 probe_caseII_mechanism.py 在一个族上得到
+archive/session_history/scripts/2026_10_experiments/probe_caseII_mechanism.py	8608	.py	probe_caseII_mechanism.py —— 情形 II 的 **(A)∧(S)** 机制：独立复核 + 结构定位 【出发点（本项目已验证的事实）】 T5′：(A) 的分解 ⟹ F = Λ·H （H = L·
+archive/session_history/scripts/2026_10_experiments/probe_decomp_hypotheses.py	4525	.py	probe_decomp_hypotheses.py —— 找出"分解"**恰好需要**的假设（用于 Lean 表述） 【三个候选条件】 W1 : ∀v, L v = 0 → C v = 0 → L (A v) = 0 
+archive/session_history/scripts/2026_10_experiments/probe_dual_route.py	3867	.py	probe_dual_route.py —— 验证"对偶/分裂"路线的**关键等式**（无需构造 h 的具体形式） 【路线】 Ω : W^* × G^* × G^* → V^*， Ω (y₁,y₂,y₃) = L^* y
+archive/session_history/scripts/2026_10_experiments/probe_equiv_forms.py	3823	.py	probe_equiv_forms.py —— 确认"分解"的**等价刻画**（供 Lean 直接用） 【本轮定位】 DEC : ∃ Λ,G₀,G₁, LA = ΛL + G₀C + G₁CA —— 数值上 48220/
+archive/session_history/scripts/2026_10_experiments/probe_exhaustive_q2.py	7325	.py	probe_exhaustive_q2.py —— **穷举**搜索：情形 II 下是否存在 (A) ∧ T5a ∧ (S) ？ 【方法（完备搜索，非采样）】 取 q0 = 2（k=1）的最小形状。第二行 l 在 Q^n
+archive/session_history/scripts/2026_10_experiments/probe_final_hypothesis.py	4939	.py	probe_final_hypothesis.py —— 最终确认：分解**真正需要**的假设是哪个？ 【本轮的关键转折】 我一直在纠结 Lean 的类型细节，但真正的问题是**数学**： (A) 的「核形式」 KF∩ 
+archive/session_history/scripts/2026_10_experiments/probe_generalA_c6p.py	13374	.py	probe_generalA_c6p.py —— 检验 **一般 A 版 c6′** 的构造机制是否真的可执行 【背景】 最新一轮 Lean（history/c6-lean-milestone.md §13、§16）给出
+archive/session_history/scripts/2026_10_experiments/probe_hand_countexample.py	4875	.py	probe_hand_countexample.py —— 用手算反例检验"分解探针"是否可靠 【手算反例】 A = [[0,1,0],[0,0,0],[0,0,0]]（A e1 = e2，A^2 = 0） C = [0
+archive/session_history/scripts/2026_10_experiments/probe_kernelform_vs_A.py	5480	.py	probe_kernelform_vs_A.py —— (A) 的行空间形式 vs 核形式 vs 分解存在性 【三个条件】 (A)row : rk[LA;L;C;CA] == rk[L;C;CA] ← 项目的 (A)，F
+archive/session_history/scripts/2026_10_experiments/probe_solveLambda_bug.py	4290	.py	probe_solveLambda_bug.py —— 查 `solve_Lambda`（库包装）是否**漏解** 【动机】 独立求解器给出：(A) ⟹ 分解存在，且 ΛH = F（I-4x4 80/80、I-5x5 5
+archive/session_history/scripts/2026_10_experiments/routeC_final2.py	3332	.py	routeC_final2.py -- 路 C 引理的**最终判定** 【精确条件】LAN = Λ∘LN 有解 ⟺ ker(LN) ⊆ ker(LAN) ⟺ 线性系统 LN·X = LAN 可解 【需要的前提（推导得到的
+archive/session_history/scripts/2026_10_experiments/routeC_kernel.py	3180	.py	routeC_kernel.py -- 路 C 的**真正条件**：ker(LN) ⊆ ker(LAN) ? 【为什么这是真正的条件】 LAN = Λ∘LN 有解 ⟺ ker(LN) ⊆ ker(LAN)（有限维线性代数
+archive/session_history/scripts/2026_10_experiments/routeC_solve.py	3807	.py	routeC_solve.py -- **精确**检验 LAN = LN·X 可解（逐列求解，含残差校验） ⚠️ 上一版用 "rk[LN|LAN] == rk[LN]" 作为判据 —— 那**只是** range 包含，
+archive/session_history/scripts/2026_10_experiments/verify_A_T5a.py	3766	.py	verify_A_T5a.py —— 验证关键构造： 取满足 (A) 的 L，再补一行 l ∈ row[C;CA]，则 (A) 保持 ✓ 且 T5a 自动成立 ✓ （若成立 ⟹ 情形 II 平行 的 (A)∧T5a **
+archive/session_history/scripts/2026_10_experiments/verify_mechanism.py	5668	.py	verify_mechanism.py —— 验证 §19.3 的机制链条 检查（在构造出的实例上）： (i) u ∈ K 是 A' 的特征向量：π(uA) = λ·u （u 视为 K 中元素） (ii) π(L·A) 
+archive/session_history/scripts/2026_10_experiments/verify_solve.py	2352	.py	verify_solve.py —— 用独立例程裁判库的 solve（CLAUDE.md §10）
+archive/session_history/scripts/B_ii_first_step.py	3382	.py	B-ii 第一步：对反例实例，随机搜索所有满足 (A) 的行空间 V， 看 rank(R·N_C·K) 能否达到 k（即 V 是否落在 P1 图卡内） 若能达到 ⟹ 图卡内的最小增广存在 ⟹ Θ 框架仍可用 若始终 <k
+archive/session_history/scripts/P1_cross.py	2306	.py	同一命名空间内对照：同一实例分别走 (i) 手工 rkmat 探测 与 (ii) test_caseII_YES.build
+archive/session_history/scripts/P1_diag_rkmat.py	3488	.py	P1：T-构造第 2 步失败的数学本质是什么？ 条件：solve(rkmat, e_j) 有解 (j<k)，其中 rkmat[ii][j] = (R·N_C·K_j)[ii], K_j = ker(L0·N_C) 的基 
+archive/session_history/scripts/P2_check_q0.py	3346	.py	P2：独立核对 q0 = Ση_j —— 与闭式候选量并排比较 候选量： Z = 含 row(L0)+row(C) 的最小 A-不变空间 ⟹ dim Z = rank(orb(L0)+orb(C)) 候选1: dim Z
+archive/session_history/scripts/P2b_brute_q0.py	3129	.py	P2'：暴力枚举独立验证 q0 = Ση_j（完全不用 p1 的 η） 方法： 候选行集合 S = { C A^k 的各行, L0 A^k 的各行 : k = 0..n-1 } 对 m = 0,1,2,... 枚举 S 
+archive/session_history/scripts/P2c_brute_gen.py	2995	.py	P2'': 决定性核对 —— 对**生成器实例**（eta=[3], q0=3）做暴力枚举验证 若暴力最小行数 = 3 ⟹ eta 未高估 若暴力最小行数 < 3 ⟹ eta 高估，q0 需重算（影响全项目阈值表述）
+archive/session_history/scripts/P2d_random_dir.py	2487	.py	P2''': 修正暴力搜索的不完备 —— 加入**随机方向**的额外行 对 q0=2 (r=1) 的实例：随机取 w ∈ Q^n，检验 [L0; w] 是否满足 (A)。 若命中 ⟹ q0=2 可达 ⟹ 与 η=[2] 
+archive/session_history/scripts/analyze_k1.py	6141	.py	修正后的结构分析。 【被否证的引理 K】k=1 ⟹ (S) 必然失败。 —— 错！40/40 次 (S) 成立。 【修正方向】k=1 时 (S) 似乎**自动成立**（而不是失败）。 理由（新的推导）： k=1 时，N_
+archive/session_history/scripts/archive_early/analyze_q1_fixed.py	6252	.py	修正版：N_CA 必须是**列**形式（n × (n−rho)）。 之前把 nullspace_exact 返回的行向量直接喂给 mm，导致 H、F、P(s) 全错。 本脚本用正确的列形式重新分析 rho<n 的结构。
+archive/session_history/scripts/archive_early/analyze_q1_structure.py	5826	.py	q1 的核心：rho < n 时的结构分析。 关键：由 (A) 有 LA ⊆ row(L, C, CA)，即存在 (Λ, G0, G1) 使 LA = Λ L + G0 C + G1 CA. (*) 右乘 N_CA（ke
+archive/session_history/scripts/archive_early/bbox_parse.py	862	.py	坐标级重建 P3 第 2 页 (5a)(5b) 的行块结构
+archive/session_history/scripts/archive_early/check_imH_invariance.py	6995	.py	关键实验：im(H) 是否 T-不变？ 若 im(H) 是 T-不变的且 im(H)≠0，则 T|_im(H) 在 C 上有特征向量， 故 im(H)∩ker(sI−T)≠0 对某 s，(S) 必然失败。 若 im(H)
+archive/session_history/scripts/archive_early/debug_q2.py	2963	.py	调试 Q2 的失败案例：k 公式 > 0 但 R=0 已满足 (5a)
+archive/session_history/scripts/archive_early/decisive_experiment.py	6413	.py	决定性实验：命题 q 的困难是否来自连续参数 Θ？ 思路（绕开 J/Θ 参数化，直接在 Grassmann 流形上搜）： 取满足 H1–H4 的小例子，穷举所有 d 维子空间 L（用精确有理算术）， 记录最小的 d 使 
+archive/session_history/scripts/archive_early/discover_quotient.py	4218	.py	关键结构发现：(S) 与商空间 R/(R ∩ row(C)) 的关系。 对于单行 L = [a,b]，A = diag(1,2), C = [1,0]： row(C) = span(e_1) 是一维的，因此 R/R∩ro
+archive/session_history/scripts/archive_early/disprove_q.py	6728	.py	q 的证伪算法（随机化多项式时间）—— 完整实现与验证。 【算法】 输入 (A, C, L0)。 1. 计算 Z := row(O_{L0}) + row(O_C) （包含 row(L0) 的最小 A-不变子空间） 2.
+archive/session_history/scripts/archive_early/exact_check.py	4486	.py	用精确有理数算术（fractions.Fraction）复验 04 的定理 2，排除浮点误差。 条件（修正后的 4 行块版本）： (5a) rank[LA; L; CA; C] = rank[L; CA; C] 等价于 
+archive/session_history/scripts/archive_early/explore_decision.py	8330	.py	核心问题的可判定性探索。 命题 q 归结为： (Q) 对满足 H1-H4 的系统，(A)∧(S) 是否存在 q0 维的解？ 等价于 nu_min = q0？ 观察（引理 1/2）：(A) 与 (S) 都只依赖 R = r
+archive/session_history/scripts/archive_early/extract_assumptions.py	1668	.py	系统提取三篇 PDF 的假设/前提语句
+archive/session_history/scripts/archive_early/final_probe.py	8817	.py	最终判定实验（干净版）。 定义（严格按 P3 Theorem 2）： (5a) rank[LA; CA; C] = rank[CA; C; L] (5b) rank[sL - LA; CA; C] = rank[CA; 
+archive/session_history/scripts/archive_early/git_probe.sh	806	.sh	
+archive/session_history/scripts/archive_early/locate_assumptions.py	1401	.py	精确定位三篇 PDF 的假设，并核对含义
+archive/session_history/scripts/archive_early/manual_check.py	2229	.py	手工核实：A = diag(1,2), C = [1,0], L0 = [e1], L = [a,b] (b≠0) 在 s = 2 处 (S) 是否真的失败？
+archive/session_history/scripts/archive_early/probe.py	6022	.py	关键判定实验：在"功能可观"前提下，(5a) 是否等价于包含关系 row(LA) ⊆ row(C,CA,L)？ 背景：P1 明确写 (A) ⇔ row(LA) ⊆ row(L,C,CA)。 P3 写的是 rank[LA;
+archive/session_history/scripts/archive_early/probe_lean.sh	509	.sh	
+archive/session_history/scripts/archive_early/prove_sigma_lemma.py	8156	.py	关键引理（严格化目标）： 【引理 Σ】对固定的 d，集合 Σ_d := { R : row(L0) ⊆ R ⊆ Z, dim R = d, R 满足 (A) 与 (S) } 满足： Σ_d = ∅ 或 Σ_d 在 Σ_d
+archive/session_history/scripts/archive_early/setup_lean.sh	689	.sh	
+archive/session_history/scripts/archive_early/setup_lean2.sh	537	.sh	
+archive/session_history/scripts/archive_early/verify2.py	8461	.py	Rigorous numerical test of the structural claims about q.txt's problem. PROBLEM Q : given (A, C, L0), find R w
+archive/session_history/scripts/archive_early/verify3.py	8903	.py	Corrected rigorous test. PROBLEM Q : given (A, C, L0), find R with the FEWEST ROWS such that L = [L0 ; R] sati
+archive/session_history/scripts/archive_early/verify4.py	6021	.py	FINAL verification. (5a) rank[LA;CA;C] = rank[CA;C;L] (5b) rank[sL-LA;CA;C] = rank[CA;C;L] for all s in C KEY 
+archive/session_history/scripts/archive_early/verify_K1.py	4517	.py	证伪 q 的核心猜想检验。 【猜想 K1】对每个维度 d，条件 "(5a)∧(5b) 可被某个 d 维的 row(L) 实现" 在 L 的 A-不变包 Z 的格内要么对几乎所有 d 维子空间成立， 要么对任何 d 维子空
+archive/session_history/scripts/archive_early/verify_K1_strong.py	4927	.py	定理 3 的强化验证：Σ_d 的满足率是否严格呈 {0} ∪ [高, 1]？ 若存在格子满足率落在 (0, 0.5)，则定理 3 的算法含义（"随机取样可判定"）受威胁。 本脚本加大样本、覆盖更多维度与实例，专门搜索"低
+archive/session_history/scripts/archive_early/verify_L6_direct.py	7445	.py	最终验证：直接检验 L6 —— (S) 失败 ⟺ im(H) 含 Λ 的特征向量。 不绕道特征空间，直接算 Λ 与其特征向量。
+archive/session_history/scripts/archive_early/verify_S_exact2.py	5003	.py	(5b) 的精确判据：降秩点只有有限个，且都在 T_L 的谱上。 命题：设 N = ker[C;CA] 的基，H = L N，P(s) = (sL − LA) N。 则 {s : rank P(s) < rank H} 
+archive/session_history/scripts/archive_early/verify_S_geometric.py	8097	.py	由 L12 导出的强简化（单特征值情形）： L12: (S) 成立 ⟺ ∀λ: R ∩ (E_λ + W0) = R ∩ W0, W0 := row(C) 若 A 的特征值全为单重（E_λ 一维，基为 e_λ），则 R 
+archive/session_history/scripts/archive_early/verify_S_open.py	3920	.py	关键：判定 Σ_d 是开集还是闭集。 (S) 条件：rank P(s) = rank H 对所有 s，其中 P(s) = (sL − LA)N。 由 LA = T_L L + GC 右乘 N 得 (LA)N = T_L(
+archive/session_history/scripts/archive_early/verify_alg_correct.py	7416	.py	用【正确的 (5b) 判据】重新验证算法。 正确判据：候选 s 必须覆盖 (i) A 的特征值（有理根定理精确求） (ii) 使 sL − LA 降秩的点（广义特征值） (iii) 一批有理数保险 然后在该候选集上逐点精
+archive/session_history/scripts/archive_early/verify_brute_indep.py	2965	.py	独立穷举验证 k^min = dim Z - dim V（加前提 rank[L0;C]=p+r，C 行满秩）。 关键：不用任何构造，完全靠网格穷举得到真实最小值。
+archive/session_history/scripts/archive_early/verify_candidate_family.py	4895	.py	验证：即使在候选族受限下，(5a) 仍然容许"线性组合"，因此单独 (5a) 依旧是多项式的。 要点：若 R 的行取自候选族 C，条件 (5a) <=> Z ⊆ V + row(R) 只要求 row(R) 的**张成**
+archive/session_history/scripts/archive_early/verify_claims.py	7666	.py	Verify the key structural claims before writing the proof document. Claim to test: (i) Condition (5a) <=> row(
+archive/session_history/scripts/archive_early/verify_correct5a.py	5095	.py	用【修正后的 (5a)】(4 行块版本) 验证 04 的定理 2。 同时验证引理 1：(5a) <=> row(LA) subset row(L,C,CA)。
+archive/session_history/scripts/archive_early/verify_delta.py	5317	.py	定量测量：候选族约束对最小行数 k 的影响（delta）。 理论（据 P1 §V-A）： 所有 k 维增广的行空间 ⟷ Grassmann 流形 Gr(k, s)，s = n - p - r。 即：无约束时，R 的行空间
+archive/session_history/scripts/archive_early/verify_delta2.py	4620	.py	强化版：用"刻意稀疏且结构化"的候选族，把 delta 逼出来。 思路（据 P1 §V-A 的 Grassmann 图卡）： 无约束时 R 的行空间可取 Gr(k,s) 中任意点。 要让候选族真正限制住，必须让候选族**
+archive/session_history/scripts/archive_early/verify_exact_S.py	5926	.py	用精确有理数算术重新核实 (S) 的等价刻画。 教训：数值 SVD 的秩判定在病态/临界情形会出错。 本脚本用 Fractions 做精确 RREF 与精确秩，重测： (S1) rank[sL−LA; CA; C] ==
+archive/session_history/scripts/archive_early/verify_fast.py	6174	.py	快速定向验证（不做大网格穷举）。 要验证的三个命题： P1 子代理反例：无前提时 formula = dim Z - dim V 会高估 P2 加前提 rank[L0;C]=p+r 后，formula 与"构造 + R=
+archive/session_history/scripts/archive_early/verify_lemma_K.py	8255	.py	关键结构引理（严格证明 + 数值验证） 【引理 K】k := q0 - r = 1 时，(S) 必然失败。 证明： k=1 时 T_R 是 1x1 标量 t，故 T_R = t·I_1。 im(H_R) ≅ R/(R∩r
+archive/session_history/scripts/archive_early/verify_p1_algorithm.py	5732	.py	实现并验证 P1 §III–IV 的算法，确认： (1) 有序秩保留构造 -> 功能可观性指数 eta_j (2) 一阶依赖关系 -> 系数行 phi_{p+j} (3) 公式 (8) -> 额外行 l_{j,t} (4
+archive/session_history/scripts/archive_early/verify_prem.py	5181	.py	复验子代理的反例，并测试"加前提 rank[L0;C]=p+r 后公式是否成立"。 反例：A=[[-1,-1,-2],[-2,-1,0],[-1,-2,0]], C=[[1,0,0]], L0=[[1,0,0]] 预期：
+archive/session_history/scripts/archive_early/verify_spectral_rigidity.py	5449	.py	关键实验：判断 hardness 能否来自 (5b)。 设 R 与 R' 满足 row(R') = row(R)（同一行空间，不同矩阵表示）。 问题：是否存在实例使得 L = [L0; R] 满足 (5a)∧(5b) L
+archive/session_history/scripts/archive_early/verify_theorem2fix.py	5135	.py	修正后的定理 2 验证（精确有理数 + 浮点双路）。 修正后的 (5a) <=> (A) row(LA) ⊆ row(L, C, CA) 定理 2'（修正版）： 最小 k = dim Z − dim X 其中 X := 
+archive/session_history/scripts/attack_chart.py	5042	.py	攻 FINAL §9 第②项：最小 (A)-增广是否必有 rank(R·N_C·K)=k？ 对 r=1、候选 2 行增广 L=[L0; w] 的情形： (A) ⟺ row(L_A) ⊆ row(L, C, CA) ⟺ (
+archive/session_history/scripts/attack_chart_decomp.py	5773	.py	第②项严格化（(A) 分解路线）：把 2 行增广的搜索降到**本质 1 维** (A) ⟺ ∃Λ(2×2), G0, G1: L·A = Λ L + G0 C + G1 CA 消去 G 后（π = 到 row(C,CA)
+archive/session_history/scripts/attack_chart_eig.py	4281	.py	第②项补缺口：α = A 的特征值 的情形 思路：不求精确解，只要**找到一个**可行的 w 即可（用精确有理算术复核 (A)）。 1. 数值求 A 的特征值 α 2. 对 span(L0, C, CA) 的一组基向量 
+archive/session_history/scripts/attack_chart_grid.py	4363	.py	第②项收尾（强化版）：稠密有理网格扫 λ11，判定 (I)∧(II) 是否有**任何**相容点 对每个 λ11： (I) π(L0A − λ11 L0) = λ12 π(w) （取 λ12 = 1，WLOG——见下） (
+archive/session_history/scripts/bbox_parse2.py	1817	.py	精确重建 (5a)(5b) 的行块：按行聚类，输出每行的 x 位置与文本
+archive/session_history/scripts/boundary_sweep.py	8763	.py	系统验证：Omega*_{A,J} 的行为是否由 s-k（= dim Theta / k）决定。 对大量随机实例，记录 (n,p,r,q0,k,s,dimTheta) 与 (A) 的命中率， 并同时记录若干候选不变量（d
+archive/session_history/scripts/build_T_final.py	8005	.py	正确构造 T 并用 P1 式 (20)（三块）判定 Omega*_{A,J}。 目标 T： L0 N_C T = [I_r | 0] R N_C T = [0 | Y_J] （对 P1 闭式解的 R） 构造：T_{:,i
+archive/session_history/scripts/build_T_normalized.py	10953	.py	最终构造：T 的前 r 列使 RNC·T_{:,i}=0；后 s 列（在 ker L0NC 内）使 RNC·T_{:,r+j} = e_j（即规范化出 pivot 1）。然后读出 Θ 并双重验证。
+archive/session_history/scripts/calibrate_p1_example.py	4414	.py	用 P1 §VII 的算例校准我的 (5b) 实现。 P1 断言：n=8, p=r=2, (eta1,eta2)=(3,1), q0=4, L_{a,b} 满足 (A) 恒成立；满足 (S) <=> b != 0 故 n
+archive/session_history/scripts/check_T_exists.py	6216	.py	关键验证：是否存在 T（满足 L0NC·T = [I_r|0]）使 P1 闭式解满足 RN_CT = [0|Y]？ T 的列: T_{:,i} = x_i + z_i, L0NC x_i = e_i, z_i ∈ ker
+archive/session_history/scripts/check_foundation_A2.py	4031	.py	A2 —— 地基检查：P1 的三块约化是否真的等价于原始 4 块 (A)？ 原始 4 块： (A)_raw: rank[LA; L; CA; C] == rank[L; CA; C] 三块约化： (A)_red: ran
+archive/session_history/scripts/check_invariance2.py	5873	.py	关键判定（简洁版）： im(H) 是否 Λ-不变？ Λ 的特征值是什么？ (S) 是否失败？ 用 P1 §VII 算例比较 L_{0,0}（(S) 失败）与 L_{0,1}（(S) 成立）。
+archive/session_history/scripts/check_lemma5_counterexample.py	3439	.py	核验引理 5 的反例：(S) <=> im H 不含 T 的特征向量。 若 rank H = q0（行满秩），则 im H = C^{q0}，故 (S) 必然失败。 本脚本在真实系统数据上核验： (i) (S) <=> 
+archive/session_history/scripts/check_p1_example_A.py	2904	.py	验证 P1 §VII 算例：L_{0,0} 与 L_{0,1} 是否满足 (A)（q0=4）
+archive/session_history/scripts/close_lambda12_gap.py	2584	.py	封闭第②项最后缺口：λ12 = 0 分支是否为空？ λ12 = 0 时，(I) 变为 u(λ11) = π(L0·A) − λ11 π(L0) = 0 该方程有解 ⟺ 存在 λ11 使 π(L0A) = λ11 π(L0
+archive/session_history/scripts/compute_true_kmin_A.py	5189	.py	计算 (A)-最小维数，与 eta/q0 对照。 理论： (A) ⟺ π(R) 是 Ā-不变的， π: Z → Z/W R ⊇ row(L0) ⟹ π(R) ⊇ π(row(L0)) 故 π(R) 必须包含 R̄_0 :
+archive/session_history/scripts/confirm_open_case.py	8335	.py	定向确认：在 2p+q0 >= n 的实例上，随机采样的 (A) 命中率应为 100%（因 Omega* 是开集）。 在 2p+q0 < n 的实例上，命中率应为 0（孤立点，测度零）。 同时检验 (A)∧(S) 的命中
+archive/session_history/scripts/construct_A_solution.py	5421	.py	正确的 (A)-构造：商空间 Ā-不变包。 (A) ⟺ π(R) 是 Ā-不变的， π: Z → Z/W, W = row(C,CA) 构造：R̄_0 := 包含 π(row(L0)) 的最小 Ā-不变子空间（Krylo
+archive/session_history/scripts/construct_T5a_A.py	4623	.py	第①项：构造满足 T5a ∧ (A) 的 L 思路：取 x ∈ ker L0 ∩ ker[C;CA]（若存在），要求额外行 w 满足 w·x = 0 ⟹ x ∈ ker L ∩ ker[C;CA] ⟹ T5a 自动成立 
+archive/session_history/scripts/construct_and_check_S.py	4202	.py	第①项关键一步：在**构造出的秩降点**上检查 (S) 若 (S) 成立 ⟹ **构造性的 YES** ⟹ 情形 II 的判定得到完整算法雏形（构造 + 检验）
+archive/session_history/scripts/count_14_numeric.py	4921	.py	(1,4) 情形的解数 —— 关键数据点。 用最小二乘多起点数值求根，再对每个候选解做**精确有理验证**。
+archive/session_history/scripts/count_fine_grid.py	7519	.py	用分母相称的细网格（步长 1/12）计数 2p+q0<n 时的孤立点。
+archive/session_history/scripts/count_isolated.py	8157	.py	统计 2p+q0 < n 时 Omega* 的孤立点数（0 维解集大小）。 方法：用一般有理数在 Theta 空间做细网格 + 局部扰动， 估计 Omega* 的点数随 (n, p, q0) 的增长。
+archive/session_history/scripts/count_omega.py	8435	.py	统计 Omega*_{A,J} 的点数随参数的增长（跨全部 J 图卡）。 对每个随机实例： 1. 用 P1 闭式构造出 q0 维 (A)-解 2. 构造规范 T（使 L0NC T=[I|0], RNC T=[0|I_k|
+archive/session_history/scripts/count_solutions2.py	8049	.py	计数 2p+q0<n 时 Omega* 的孤立点：用稳健的秩比较 + 网格聚类。
+archive/session_history/scripts/count_solutions_numeric.py	8902	.py	计数（2p+q0 < n 时）：把 (A) 的失败条件化为标量方程，数值求解并计数孤立点。 要点： (A) 成立 <=> ker[W_J;B] ∩ ker(W_J Abar_T) = {0} rank[W_J;B] = 
+archive/session_history/scripts/crosscheck_full.py	5905	.py	完整比对：参数化解的 RN_CT 与 [0|Y_J]，并在 P1 §VII 算例上验证 condA。
+archive/session_history/scripts/crosscheck_param_A.py	4689	.py	交叉验证：从 P1 参数化 W_J(Θ) 恢复 R，检验原始 (A)（condA）。 若 condA = True：参数化族中 (A) 恒成立 => (A)-解集正维数 => 之前"随机采样 0/400"是因为采样的 R
+archive/session_history/scripts/debug_A2.py	3738	.py	A2 调试：为什么三块约化与原始 4 块不一致？ 最小诊断：单实例、Θ=0，打印各量并检验重构是否正确。
+archive/session_history/scripts/decide_A_local_dim.py	3363	.py	判定 (A)-解集的局部维数：从 P1 的精确解出发做扰动。 若邻域内其他点也满足 (A) => 正维数；否则 => 孤立点。
+archive/session_history/scripts/decide_A_solution_set.py	3614	.py	判定 (A)-解集的结构：有限点集 还是 正维数？ 方法：在 Z 的精确基下，枚举 v（射影归一化），构造 R = span(L0, v)，检验 (A)。 统计解的数量与分布。
+archive/session_history/scripts/diag2.py	923	.py	
+archive/session_history/scripts/diag3.py	1777	.py	
+archive/session_history/scripts/diag_build_normT.py	2217	.py	验证 build_norm_T 的返回与 build 的期望是否不匹配
+archive/session_history/scripts/diag_c5_values.py	4110	.py	最小诊断：打印 w、π(w)、u(λ)、π(wA)、c·π(L0)，核对 π-等式与 (A)
+archive/session_history/scripts/diag_condA_gen.py	1716	.py	最小诊断：生成器实例为何 condA(Lx) 为 False？
+archive/session_history/scripts/diag_decomp.py	3740	.py	最小诊断：直接构造 (I)∧(II) 的解 w，然后**逐步手工核对** (A)
+archive/session_history/scripts/diag_f2_degree.py	5305	.py	最小诊断：直接打印 f2(k,0) 的有限差分，定出真实次数。
+archive/session_history/scripts/diag_final.py	1599	.py	
+archive/session_history/scripts/diag_rank_pattern.py	3528	.py	第②项严格化：判定 (I)∧(II) 是否有**严格**的依据说明"恒不相容" 系统： 7 个未知量 (w∈Q^5, λ21, λ22)，6 个方程 ⟹ 若 rank M(λ)=6 则**必相容** 故： (a) 若 ∃
+archive/session_history/scripts/diag_search_space.py	3665	.py	诊断：p1 给出的 Lx 的额外行 w = Lx[-1]，是否满足 (I)∧(II)（即是否在搜索空间内）？ 若不在 ⟹ 我的 (I)∧(II) 表述不完备
+archive/session_history/scripts/discriminate_H1_H2.py	9350	.py	判别实验：区分两个假说 H1: s = k+1 <=> Omega* 开 H2: p >= s-k <=> Omega* 开 （由 rank[W_J;B]=d_C 是开条件推出） 关键：构造 p >= 2 且 s-k >
+archive/session_history/scripts/exact_count_multi.py	3710	.py	用精确判别式在多个 (r=p=k=1,s=3,dC=4) 实例上数 Omega* 的解数。 （不用网格 —— 网格对代数点不可靠，见教训 #22。）
+archive/session_history/scripts/exact_criterion.py	8475	.py	验证精确判据： K_exact: k + dim(E + row(B_{A,T})) >= dC 其中 E = span(e_1..e_r)（在约化坐标下）， B_{A,T} = CA N_C T。 同时记录 dim(E
+archive/session_history/scripts/fast_single_point.py	9426	.py	快速验证「单点猜想」：在规范化 T 坐标系下用浮点秩判据统计 Omega* 的点数。 （P1 解在规范化坐标系下恰为 Θ=0，必在网格上 => 计数 >= 1 是自校验。）
+archive/session_history/scripts/find_A_counterexample.py	5881	.py	找出 "(A) 不全成立" 的那个格子，打印完整详情并做高密度复核。
+archive/session_history/scripts/find_eta_gt1.py	5290	.py	寻找 eta_j > 1 的非平凡例子，验证 nu_min = q0。 eta_j > 1 意味着 L_j A 不在 row(L0, C) 中 —— 这需要 C 不覆盖 L0 的 A-像。 但要满足 H3（rank[L0
+archive/session_history/scripts/find_true_kmin.py	4663	.py	找出真正的 (A)-最小可行维数，与 eta 给出的 q0 对照。 若二者不符 => 我对 P1 的 eta/q0 实现（或理解）有误。
+archive/session_history/scripts/fix_T_and_recheck.py	7391	.py	构造正确的 T（使 P1 闭式解满足 RN_CT = [0|Y]），然后重新检验参数化与 (A)。
+archive/session_history/scripts/gen_check_eta.py	2361	.py	生成器验证：取 L0 = C·A^m 是否能稳定造出 k >= 2（即 η1 >= 3）的实例？ 理由： · H4（功能可观性）自动满足：L0 A^k = C A^{m+k} ∈ row(O_C) · H3 一般满足：m
+archive/session_history/scripts/list_caseII_degenerate.py	5754	.py	C 的可完成部分 + B 的路线 3：把情形 II 的退化代数集**完全列出**并逐个精确检验。 设定：dimTheta = 1 且 d_CA = q0 时， {rank H < q0} = {det H = 0}（单变
+archive/session_history/scripts/local_dim_test.py	9332	.py	决定性判定：从 P1 解的 Theta_0 出发，逐坐标扰动，判断 Omega* 在 Theta_0 处的局部维数。 - 若所有 k(s-k) 个坐标方向都能扰动（(A) 仍成立）=> 局部开集（维数 = k(s-k)）
+archive/session_history/scripts/minimal_debug.py	3800	.py	最小测试：定位 times/mm/eta 的 bug
+archive/session_history/scripts/multi_thm7.py	2502	.py	
+archive/session_history/scripts/omega_star_dim.py	6723	.py	用 P1 §V 的参数化直接计算 Omega*_{A,J} 的维数。 N_C: ker C 的基 (n × d_C), d_C = n - p M_C: 左逆 (d_C × n), M_C N_C = I T : d_C
+archive/session_history/scripts/p1_closed_form.py	6019	.py	实现 P1 §IV 的完整闭式构造，生成满足 (A) 的增广。 记 gens = [C 的各行; L0 的各行] = [g_1..g_{p+r}] 全局顺序: q=0: g_1..g_{p+r}; q=1: g_1 A.
+archive/session_history/scripts/p1_closed_form_p1example.py	4452	.py	用 P1 §VII 算例（n=8, q0=4）校准 P1 闭式实现
+archive/session_history/scripts/p1_solution_coords.py	4551	.py	计算 P1 闭式解在 Z 的基下的坐标，判断解集是否只是"分母大"。
+archive/session_history/scripts/p1_solution_theta.py	6663	.py	计算 P1 闭式解对应的 (J, Θ)，从而给出 Omega*_{A,J} 的一个精确点。
+archive/session_history/scripts/pointwise_equivalence.py	9038	.py	点对点检验：(A) <==> rank[W_J;B_{A,T}] = d_C ？ 在 2p+q0 >= n 的实例上采样，同时记录两个判据，检查是否逐点一致。
+archive/session_history/scripts/probe_01_critical.py	7006	.py	决定性检验（优化版）： (1) 快速扫描，找 (A) 为"部分成立"的格子 (2) 只对这些格子深入检验 (A)∧(S) 的命中率
+archive/session_history/scripts/probe_A_depends_on_d.py	7253	.py	决定性验证：条件 (A) 是否**只依赖 d**（即 d >= q0 时恒成立，d < q0 时恒不成立）？ 若成立，则整个问题塌缩为： nu_min = min{ d >= q0 : Sigma_d^{(S)} != 
+archive/session_history/scripts/probe_A_exhaustive.py	4865	.py	最终判定：q0 处 (A) 是"空"还是"测度零非空"？ 方法：在 Z ⊖ row(L0) 中用**有理网格穷举** d 维子空间（能捕捉测度零的解）。
+archive/session_history/scripts/probe_A_final.py	5762	.py	终极判定：(A) 的命中率究竟是严格的 0/1，还是可能出现中间值？ 方法：对每个 (实例, d)，用**大量**采样（N=300）， 打印所有命中数既不是 0 也不是 N 的格子。
+archive/session_history/scripts/probe_A_mechanism.py	7328	.py	弄清 "(A) 恒成立 ⟺ d >= q0" 的机制。 【理论线索】 设 W := row(C, CA)，Z := row(O_L0) + row(O_C)。 已知 W ⊆ Z，且（猜想）dim Z - dim W = 
+archive/session_history/scripts/probe_A_mechanism2.py	6115	.py	找 "(A) 恒成立 ⟺ d >= q0" 的真正机制。 候选机制（逐个检验）： M1: R·A ⊆ W （更强，蕴含 (A)） M2: R + W = Z （已被否证） M3: π(R) 的维数恰好使其 Ā-不变 M4
+archive/session_history/scripts/probe_A_mechanism3.py	7192	.py	弄清 "(A) 恒成立 ⟺ d >= q0" 的机制（最后一击）。 【关键公式推导】 V := row(L0) + row(C) + row(CA) = row(L0) + W, W := row(C,CA) dim V
+archive/session_history/scripts/probe_A_null_vs_measure_zero.py	3922	.py	决定性检验：q0 处随机采样找不到 (A)-解，是"空"还是"测度零非空"？ 构造（P1 §III）：R* = row(L0) + span{ L_j A^t : j=1..r, 1 <= t <= eta_j - 1 
+archive/session_history/scripts/probe_A_structure.py	6367	.py	关键实验：条件 (A) 在 Grassmann 层上的命中率结构。 【为什么关键】 Σ_d = Σ_d^{(A)} ∩ Σ_d^{(S)} = (闭条件) ∩ (开条件) 若 Σ_d^{(A)} = 整个 Gr(k,s)
+archive/session_history/scripts/refine_criterion.py	7680	.py	判别精化判据： C1: 2p + q0 >= n （即 p >= s-k，先前用的） C2: q0 + beta >= dC，beta = rank(C A N_C) （即 rank(CA|ker C) >= s-k） 
+archive/session_history/scripts/settle_Astar.py	5215	.py	定论猜想 A*：情形 II ∧ 平行 ⟹ 判定恒 YES？ 改进点（相对 taskA_conjecture.py）： ① 全程使用带维数断言的 MM（第 13 处教训） ② **在 (I)∧(II) 的整个解空间内采样*
+archive/session_history/scripts/taskA_branch1_rigorous.py	6776	.py	任务 A 最后一步：**严格**证明分支 1（λ12=1）对一切 λ11 不可解 方法（照搬第 ② 项已验证的路径）： 系统 M(λ11)·x = b(λ11)，x = (w, λ21, λ22) ∈ Q^(n+2) (
+archive/session_history/scripts/taskA_branch2.py	5105	.py	严格判定任务 A 的靶子：平行 ∧ 情形 II 的实例是否存在秩降的 (A)-可行解？ (A) ⟺ ∃Λ: L·A = Λ L + G0 C + G1 CA，其中 L=[L0;w]（k=1）， 投影形式（π = 到 ro
+archive/session_history/scripts/taskA_conjecture.py	5071	.py	任务 A 的第一步（决定性）：检验猜想 A* 情形 II ∧ 平行 ⟹ 判定恒为 YES？ ⚠️ 本脚本**全程断言维数匹配**（第 13 处的教训：mm 不检查维数） ⚠️ 可靠 (S) 判据取自 reliable_S
+archive/session_history/scripts/taskA_decide.py	3803	.py	决定性收尾：正确判定分支 1（λ12=1）是否相容 关键：M 是 6×7，[M|b] 是 6×8 ⟹ **必须用 5 阶（或实际秩阶）子式**， 不能像上一轮那样取 min(2d, n+2)=6 阶（那只能证明 rank
+archive/session_history/scripts/test_C2_conic.py	5971	.py	(C2) 的 k>=2 检验 —— 有理参数化版（不用数值优化） 形状：n=5,p=1,r=1,q0=3 ⟹ k=2, s=3, dimΘ=2, d_CA=5−rank[C;CA] ≥ 3 = q0（情形 II） 由**
+archive/session_history/scripts/test_C2_conic_sq.py	5255	.py	B-1：(C2) 的 k>=2 检验 —— 方阵 conic 版（形状经精确分析后锁定） 形状：n=6, p=1, r=2, q0=4 ⟹ k = q0 − r = 2, dC = 5, s = dC − r = 3, 
+archive/session_history/scripts/test_C2_gen_final.py	3704	.py	B-1 最终版：(C2) 的 k=2 检验 —— 用生成器 L0 = C·A^m 直接造实例 形状：n=5, p=1, r=1 ⟹ 需 η1=3 ⟹ q0=3, k=2, s=3, dimΘ=2 d_CA = 5 − r
+archive/session_history/scripts/test_C2_k2_locked.py	4553	.py	(C2) 的 k>=2 检验（锁定形状，搜索快） 形状：n=5, p=1, r=1, q0=3 ⟹ k = q0−r = 2, s = dC−r = 3, dimΘ = k(s−k) = 2 且 p=1 ⟹ rank[C
+archive/session_history/scripts/test_C2_kge2.py	4066	.py	检验 (C2) 在 k >= 2 时是否仍成立： 情形 II（d_CA >= q0）中，{rank H < q0} 上的点是否也满足 (A)∧(S)？ 同时检验猜想 (C1)：该集合非空时是否总能找到好点。
+archive/session_history/scripts/test_S_openness.py	5937	.py	检验引理 6 的结论：情形 I（d_CA < q0）中 (S) 是否**开**（局部扰动保持）。 方法：找到 (A)∧(S) 成立的点，向各坐标方向扰动，检查 (A) 与 (S) 是否仍成立。 用可靠 (S) 判据（ρ 
+archive/session_history/scripts/test_parallel_case.py	4838	.py	平行情形的检验： 猜想（T12 的逆）：若 π(L0·A) ∥ π(L0)，则**存在**满足 (A)∧T5a 的 L 做法：构造线性系统 π(w) ∈ span(π(L0)) （d_CA − 1 个线性方程） π(w·
+archive/session_history/scripts/test_star3.py	6391	.py	决定性实验：验证残余 (★''') 见证是否存在且仅存在于**秩跳变点**（rank H < d_CA）？ 步骤（对 d_CA >= 2 且 d_CA < q0 的实例）： 1. 用多起点最小化找到 H 的 d_CA 阶
+archive/session_history/scripts/three_way_check.py	6773	.py	决定性对照：对同一实例同一 Θ，比较三个判据 (a) 三块既约形式 rank[W;B;W Abar_T] == rank[W;B] (b) K/K' 判据 Γ ∩ K ⊆ K' （Γ=graph(Θ)） (c) 铅笔判据
+archive/session_history/scripts/verify5.py	8585	.py	DEFINITIVE verification. (5a) rank[LA;CA;C] = rank[CA;C;L] (5b) rank[sL-LA;CA;C] = rank[CA;C;L] for all s in C
+archive/session_history/scripts/verify_5a_vs_5b.py	3771	.py	量化 (5a) 与 (5a)+(5b) 的最小行数差距。 k_{(5a)} = dim Z - dim V （定理 2，已证，多项式） k_{(5a)+(5b)} = nu_min >= q_0 = k_{(5a)} （
+archive/session_history/scripts/verify_KK_fixed.py	5092	.py	重验 K/K' 判据（修正两处错误）： (i) 正确的「图」是 Γ' = {(Θv, v) : v ∈ R^{s-k}}，维数 = s-k（不是 k） (ii) 正确的零空间矩阵是 [B^(1) | −B^(2)]（带负
+archive/session_history/scripts/verify_S_final.py	5558	.py	最终版：穷尽所有降秩点的精确 (S) 判据。 关键引理（待证）：降秩点 s 满足 rank[sL − LA] < rank(L)（当 L 行满秩时 等价于 det(sL − LA) = 0 的推广）；对整数矩阵这些点是有
+archive/session_history/scripts/verify_S_rowspace.py	4145	.py	严格版：穷举式检验 (S) 是否只依赖 row(L)。 方法： 1. 枚举所有可能的 3 维整数系统 (A, C, L0)（小范围） 2. 对每个实例，枚举所有 k 行候选 R（来自一个小网格） 3. 若某个 L=[L0
+archive/session_history/scripts/verify_T10.py	2753	.py	验证 T10：若 rank[L0; C; CA] = n，则对**任何**含 L0 的 L，都有 rank(L·N_CA) = q0 ⟹ 由 T6，(S) 必失败 ⟹ 情形 II 下判定恒为 NO（多项式可判） 与对照：
+archive/session_history/scripts/verify_T5a.py	2947	.py	独立验证 T5a： rank(L·N_CA) < q0 ⟺ row(L) ∩ row(C,CA) ≠ ∅ 两个判据的**独立**实现： 判据 A（用 N_CA）： rk(L·N_CA) < q0 判据 B（修正后）： k
+archive/session_history/scripts/verify_c5_rigorous.py	5621	.py	严格判定猜想 c5（平行情形）： ∃ w : π(w) = u(λ) 且 π(w·A) ∈ Q·π(L0) 其中 π(v) = v·N_CA（= 到 row[C;CA]^⊥ 的投影），u(λ) = π(L0A) − λ 
+archive/session_history/scripts/verify_c5_witness.py	4979	.py	c5 的独立复核：从线性系统的解构造 w，**精确**检验 (A) ∧ 秩降 ∧ (S) 构造：解 z=(λ, γ_1..γ_m, c) ⟹ w = w0(λ) + Σ γ_j b_j 应满足 π(w)=u(λ) 且 π
+archive/session_history/scripts/verify_chart_linear.py	3927	.py	验证图卡条件的线性刻画： rank(R·N_C·K) < k ⟺ ∃ 0≠y ∈ Q^k : y^T·(R·N_C) ∈ row(L0·N_C) 两个独立判据： 判据 A： rk(R·N_C·K) < k 判据 B： ∃
+archive/session_history/scripts/verify_conjecture_O.py	8313	.py	验证一个强猜想： 【猜想 O（0/1 现象）】 在格 {R : row(L0) ⊆ R ⊆ Z, dim R = d} 上，条件 (S) 要么对**所有** R 成立，要么对**所有** R 都不成立。 即 (S) 只依
+archive/session_history/scripts/verify_corollary.py	8527	.py	猜想 O 的推论检验 —— 这是判定命题 q 的关键。 【猜想 O】(已数值验证 62/62)：在格 {row(L0) ⊆ R ⊆ Z, dim R = d} 上， (S) 要么对所有 R 成立，要么对所有 R 不成立。
+archive/session_history/scripts/verify_expansion_method.py	5736	.py	验证：扩维后能否沿用相同的方法？ 【用户的问题】 若 q0 不满足，q0+1 之类的，进行搜索确定 R 是否存在， 是不是可以直接使用相同的方法进行搜索？ 【理论回答（据 P1 §V-A）】 P1 的参数化推导只用到两个
+archive/session_history/scripts/verify_final_theorem.py	4786	.py	最终正确的定理 2。 (A) row(LA) ⊆ row(L, C, CA) 定义： Z := row(O_{L0}) + row(O_C) （A-不变的能达行空间，包含所有可能的 L 行） U := row(L0) +
+archive/session_history/scripts/verify_lemma4.py	2991	.py	核实 Lemma 4（(S) 的开集性）的严格论证所需的代数事实。 Lemma 4 的要点： (5b) ⟺ rank P_L(s) ≡ rank H_L , P_L(s) = (sL − LA)N_{CA}, H_L =
+archive/session_history/scripts/verify_lowerbound.py	5348	.py	补全定理 2 的下界证明并做独立验证。 下界证明（新的、严格的）： 设 L = [L0; R] 满足 (A)：row(LA) ⊆ row(L, C, CA)。 记 W := row(L0, R)，V := row(L0)
+archive/session_history/scripts/verify_numin_eq_q0.py	6419	.py	验证 P1 的断言 nu_min = q0（在满足 H1-H4 的前提下）。 q0 = sum_j eta_j，其中 eta_j 是功能可观性指数， 按 P1 §III 的"全局有序秩保留"构造读出。 构造（P1 §II
+archive/session_history/scripts/verify_param_is_grassmann.py	4348	.py	验证用户的洞察：参数化是否把问题变成了 P？ 【核心区分】 1. 参数化的**表示**层：给定 (J,Θ) 生成 L / 验证 L —— 显然是 P 2. 参数化的**搜索**层：找 (J,Θ) 使条件成立 —— 不显然
+archive/session_history/scripts/verify_pencil_reduction.py	5616	.py	验证一般既约形式： (A) <=> row(DΘ+E) ⊆ row(BΘ+C) 其中（在规范化 T 坐标系、商掉 E 之后） P(Θ) = B Θ + C : p × (s-k), B = B2[:, :k], C = 
+archive/session_history/scripts/verify_rankfull_mechanism.py	8667	.py	检验候选机制：(A) 成立 是否等价于 rank[W_J(Θ); B_{A,T}] = d_C ？ 若 [W_J;B_{A,T}] 行空间张满 R^{d_C}，则任何 W_J·Abar_T 的行都在其中，(A) 自动成立
+archive/session_history/scripts/verify_single_point.py	9055	.py	批量检验强断言： Omega*_{A,J} 是否恒为**单点集**（即 P1 的构造解）？ 方法：在规范化 T 坐标系（P1 解落在 Θ=0）下，细网格扫描全部 (A)-解，数点数。
+archive/session_history/scripts/verify_thm7.py	9318	.py	验证定理 7 的推导（r=p=k=1, s=3, dC=4）： 1. u(θ) = (0, b4θ1-b3θ2, -(b4-b2θ2), b3-b2θ1) 是否真的张成 row(M)^⊥ 2. (A) 是否 ⟺ (u·a
+docs/00_problem.md	3709	.md	00 · 问题
+docs/01_notation.md	2382	.md	01 · 记号
+docs/02_theorems_proven.md	8741	.md	02 · 已证命题
+docs/03_theorems_cited.md	5492	.md	03 · 引用的定理（文献）
+docs/04_structure.md	4501	.md	04 · 结构定理（严谨部分）
+docs/05_open_questions.md	9358	.md	05 · 开放问题
+docs/06_glossary.md	2264	.md	06 · 术语表
+docs/07_literature_review.md	8457	.md	研究进展综述：最小阶功能观测器（MIN-ROWS / $q1$ 的文献面）
+docs/README.md	1365	.md	docs/ — 严谨内容
+literature/README.md	3963	.md	literature/ — 参考文献
+literature/REFERENCES.md	6020	.md	参考文献总表（canonical）
+literature/SEARCH_LOG.md	4676	.md	文献检索日志与我的检索缺陷（2026-10-28）
+literature/notes/01_概念总结.md	50525	.md	01 概念总结：从 Luenberger 观测器到最小阶功能观测器
+literature/notes/02_文献摘录_证明相关.md	105776	.md	02 文献中的证明相关材料
+literature/notes/03_网络检索来源表.md	53164	.md	03 网络检索来源表
+literature/notes/05_相关工作检索.md	68228	.md	05 相关工作检索：计算 ν_min 的已知算法与计算复杂度
+literature/notes/DODIG_2008_row_completion.md	3687	.md	Dodig 2008（矩阵铅笔完成问题）对本项目的可用性
+literature/notes/FERNANDO_2026_min_order.md	4730	.md	Fernando 2026（两篇）对本项目意味着什么
+literature/notes/LITERATURE_2026.md	5045	.md	文献更新（2026-09）：Fernando 的两篇新论文
+literature/notes/LITERATURE_COMPLEXITY.md	3935	.md	文献：NP-hardness 已经存在于相邻问题（2026-10-24 关键发现）
+literature/notes/LITERATURE_COVER.md	3289	.md	文献：cover 问题这条线（2026-10-24 补查）
+literature/notes/LOFBERG_2026_GADGETS.md	5460	.md	Löfberg 2026 的 gadget 清单（可迁移的归约技术）
+literature/notes/SURVEY_2026-10-28.md	7921	.md	文献综述：最小阶功能观测器 / MIN-ROWS 的复杂度与工具
+literature/papers_2026/2307.08923.pdf	675777	.pdf	
+literature/papers_2026/2307.08923.txt	106929	.txt	arXiv:2307.08923v3 [eess.SY] 17 Sep 2024 1 Functional Observability, Structural Functional Observability and O
+literature/papers_2026/2609.33615.pdf	578209	.pdf	
+literature/papers_2026/2609.33615.txt	62262	.txt	1 A Minimum-Order Functional Observer Beyond the Darouach and Luenberger Constructions T yrone Fernando Abstra
+literature/papers_2026/2609.37992.pdf	557471	.pdf	
+literature/papers_2026/2609.37992.txt	58191	.txt	1 Complete Characterization of Minimum-Order Functional Observers from Darouach to Luenberger T yrone Fernando
+literature/pdf/A Minimum-Order Functional Observer Beyond the Darouach and Luenberger Constructions.pdf	578209	.pdf	
+literature/pdf/A polynomial characterization of (A,B)-invariant and.pdf	1927903	.pdf	
+literature/pdf/Complete Characterization of Minimum-Order Functional Observers from Darouach to Luenberger.pdf	557471	.pdf	
+literature/pdf/Control Theory of Linear System.pdf	1736934	.pdf	
+literature/pdf/Feedback_invariants_of_linear_multivaria.pdf	158798	.pdf	
+literature/pdf/Functional Observability and the Design of Minimum order linear functional observers.pdf	232372	.pdf	
+literature/pdf/Karcanias_Vafiadis_1993_cover.pdf	850431	.pdf	
+literature/pdf/Matrix pencil characterization of almost   A  Z  -invariant subspaces   A classification of geometric concepts.pdf	2017389	.pdf	
+literature/pdf/Matrix pencils completion problems.pdf	482395	.pdf	
+literature/pdf/Matrix_pencil_approach_to_geometric_syst.pdf	961204	.pdf	
+literature/pdf/Minimum Polynomials and Control in Linear System.pdf	3754873	.pdf	
+literature/pdf/Reduction and Normal Forms of Matrix Pencils.pdf	671103	.pdf	
+literature/pdf/Static output-feedback stabilization is NP-hard.pdf	205871	.pdf	
+literature/txt/Complete Characterization of Minimum-Order Functional Observers.md	72251	.md	Complete Characterization of Minimum-Order Functional Observers from Darouach to Luenberger
+literature/txt/Functional Observability and the Design of Minimum order linear functional observers.md	21205	.md	Functional Observability and the Design of Minimum Order Linear Functional Observers
+literature/txt/Karcanias_Vafiadis_1993_cover.txt	33120	.txt	Kybernetika Nicos Karcanias; Dimitris Vafiadis On the cover problems of geometric theory Kybernetika, Vol. 29 
+literature/txt/On_the_Dimensions_of_Controllability_Subspaces.md	39278	.md	ON THE DIMENSIONS OF CONTROLLABILITY SUBSPACES: A CHARACTERIZATION VIA POLYNOMIAL MATRICES AND KRONECKER INVAR
+literature/txt/dodig2008_matrix_pencils_completion.txt	167360	.txt	Available online at www.sciencedirect.com Linear Algebra and its Applications 428 (2008) 259–304 www.elsevier.
+literature/txt/emre_hautus_1980.txt	53810	.txt	A polynomial characterization of (A,B)-invariant and reachability subspaces Citation for published version (AP
+literature/txt/fernando2010.txt	39818	.txt	1268 IEEE TRANSACTIONS ON AUTOMATIC CONTROL, VOL. 55, NO. 5, MAY 2010 [5] W. Ren and E. Atkins, “Distributed m
+literature/txt/fernando2010_p4.txt	31481	.txt	IEEE TRANSACTIONS ON AUTOMATIC CONTROL, VOL. 55, NO. 5, MAY 2010 So, Lemma 5 is suggesting that Condition 1 ca
+literature/txt/lofberg2026_static_output_feedback.txt	61388	.txt	Static output-feedback stabilization is NP-hard Johan Löfberg Division of Automatic Control Linköping Universi
+literature/txt/trentelman2002.txt	867145	.txt	Control theory for linear systems Harry L. Trentelman Research Institute of Mathematics and Computer Science U
+literature/txt/tsh.txt	1033463	.txt	Control theory for linear systems Harry L. Trentelman Research Institute of Mathematics and Computer Science U
+literature/txt/verdier2012.txt	92852	.txt	REDUCTION AND NORMAL FORMS OF MATRIX PENCILS OLIVIER VERDIER arXiv:1205.1138v1 [math.NA] 5 May 2012 Abstract. 
+literature/txt/willems1981.txt	123018	.txt	International Journal of Control ISSN: 0020-7179 (Print) 1366-5820 (Online) Journal homepage: www.tandfonline.
+literature/txt/wonham_morse_1972.txt	30096	.txt	Symp. on Mathematical Theory of Networks and Systems, Leuven, Be lgium, July 5-9, 2004 Reliable algorithms for
+proof/5a_archive/01_描述与意义.md	4064	.md	描述与意义：$(5a)$ 是什么、为什么不可少
+proof/5a_archive/02_证明.md	5682	.md	证明：$(5a)$ 的等价形式、阈值与最小增广
+proof/5a_archive/03_验证.md	4046	.md	验证：$(5a)$ 的等价形式、阈值与最小增广
+proof/5a_archive/README.md	4515	.md	(5a) 归档：4 块形式、行包含、(A)、最小增广 $q_0$
+proof/5a_archive/lean/ABridge.lean	3390	.lean	(A) 的秩形式 ⟺ 分解 —— **桥接完成**
+proof/5a_archive/lean/DimCount.lean	2492	.lean	维数计数引理（本会话 §7.24.85 的形式化）
+proof/5a_archive/lean/Factor.lean	5811	.lean	(A) ⟹ 分解：**核心引理**
+proof/5a_archive/scripts/verify_5a.py	3724	.py	verify_5a.py -- (5a) 三种等价形式的独立检查 检查： (5a) 的 4 块秩形式 rank[LA; L; CA; C] = rank[L; CA; C] (A) 的行包含形式 row(LA) ⊆ ro
+proof/5b_upper_bound/01_描述与意义.md	4090	.md	描述与意义：$(5b)$ 的上界
+proof/5b_upper_bound/02_证明.md	5575	.md	证明：$(5b)$ 的上界
+proof/5b_upper_bound/03_验证.md	6726	.md	验证：这次改了什么、结果如何
+proof/5b_upper_bound/README.md	6147	.md	(5b) 的上界：$\operatorname{rank}(\lambda H-F)\le \operatorname{rank}H$
+proof/5b_upper_bound/lean/MyProof/Theorems.lean	401	.lean	module -- 归档用的**最小**根文件：只 import 与 (5b) 上界相关的四个模块。 -- 实际项目中的 MyProof/Theorems.lean 还 import 了许多其他文件； -- 这里刻意只保
+proof/5b_upper_bound/lean/MyProof/Theorems/ABridge.lean	3390	.lean	(A) 的秩形式 ⟺ 分解 —— **桥接完成**
+proof/5b_upper_bound/lean/MyProof/Theorems/Factor.lean	5811	.lean	(A) ⟹ 分解：**核心引理**
+proof/5b_upper_bound/lean/MyProof/Theorems/Pencil.lean	1721	.lean	T5' and T2 (pencil form)
+proof/5b_upper_bound/lean/MyProof/Theorems/UpperBound.lean	5497	.lean	The upper bound of (5b): the rank can only drop, never rise
+proof/5b_upper_bound/lean/README.md	2272	.md	Lean 4 归档：上界相关的最小文件集
+proof/5b_upper_bound/scripts/verify_upper_bound.py	3928	.py	verify_upper_bound.py -- 独立检查 (5b) 的上界与修正后的 cond_5b 本脚本做三件事： 1. 矩阵形式的上界：对随机 Lam, H, lam，检查 rank(lam*H - Lam*H)
+proof/README.md	2796	.md	proof/ — 按命题组织
+proof/controllability_equivalence/README.md	976	.md	命题：$(5b)\iff$ 可控性（Q5）
+proof/controllability_equivalence/theorem.md	7849	.md	Q5：$(5b)\iff(S_\tau,\beta|_{\mathcal H})$ 可控 —— 证明进展与精确缺口
+proof/cyclic_vector_criterion/README.md	2515	.md	命题：$c_0=1$、$\rho=d$ 的循环向量判据
+proof/cyclic_vector_criterion/verify.py	6141	.py	proof/cyclic_vector_criterion/verify.py Proposition (Q1_FOR_EXPERT_9 §4, paper-proved there): Assume c0 = 1: S
+proof/layer_program/README.md	8902	.md	层程序（$c=1$ 部分）：完整状态
+proof/lower_bound/README.md	1197	.md	命题：$q_{\min}$ 的下界
+proof/lower_bound/theorem.md	4848	.md	$q_{\min}$ 的下界：完整证明
+proof/lower_bound/verify.py	4848	.py	proof/lower_bound/verify.py Re-verifies the statements of `docs/02_theorems_proven.md` section A: A.1 q = rho 
+proof/p_is_polynomial/README.md	2284	.md	命题：$P(A,B,S)$ 是多项式可算的
+proof/p_is_polynomial/algorithm.md	417	.md	$P$ 的 $O(n^4)$ 算法
+proof/p_is_polynomial/reduction.md	3672	.md	算术侧：$(5a)$ 归约到 $P$，以及 $\rho_{ci}=P(T,B,U_0)$ 的证明
+proof/p_is_polynomial/theorem.md	2972	.md	$P(A,B,S)$：下界与一步递归定理
+proof/p_is_polynomial/verification.md	3895	.md	$P$ 的验证
+proof/pencil_equivalence/README.md	1118	.md	命题：$(5b)$ 的商铅笔形式
+proof/pencil_equivalence/verify.py	3778	.py	proof/pencil_equivalence/verify.py Re-verifies `docs/02_theorems_proven.md` B.1: (5b) <=> rank Q_V(lambda) = r
+proof/refuted/README.md	2917	.md	被推翻的命题（反例库）
+proof/refuted/S1_criterion_iff.md	3061	.md	被反驳：S1 判据的"充要"形式（$\dim K\ge\rho$）
+proof/refuted/certificates/README.md	1680	.md	证书索引
+proof/refuted/certificates/certificate_middle_layer.json	864	.json	{ "A": [ [ "-1", "1", "-1", "0", "1", "1" ], [ "-1", "1", "0", "-1", "0", "-1" ], [ "0", "1", "0", "0", "-1", 
+proof/refuted/certificates/certificate_rho0_lt_dimV.json	648	.json	{ "n": 5, "p": 2, "d": 1, "dV": 1, "rho0": 0, "qmin": 1, "rhowin": 0, "A": [ [ "-1", "-1", "0", "1", "0" ], [ 
+proof/refuted/certificates/certificate_rhostar_lt_dimV.json	703	.json	{ "n": 6, "p": 2, "d": 2, "dV": 2, "rho0": 1, "rhostar": 1, "A": [ [ "-1", "0", "1", "0", "1", "1" ], [ "0", "
+proof/refuted/certificates/certificate_wide_bracket.json	503	.json	{ "A": [ [ "-1", "1", "-1", "1", "0" ], [ "0", "1", "0", "0", "0" ], [ "-1", "0", "1", "0", "1" ], [ "-1", "0"
+proof/refuted/certificates/counterexample_candidate.json	607	.json	{ "A": [ [ "0", "1", "0", "0", "0" ], [ "1", "0", "0", "0", "0" ], [ "0", "0", "3", "0", "0" ], [ "1", "0", "0
+proof/refuted/certificates/counterexample_d4.json	761	.json	{ "A": [ [ "0", "1", "0", "0", "0", "0" ], [ "1", "0", "0", "0", "0", "0" ], [ "0", "0", "3", "0", "0", "0" ],
+proof/refuted/certificates/counterexample_f3_n4_2026-10-27.json	1166	.json	{ "kind": "counterexample", "target": "F3: q_min = max(r+eps, rho*+max(c0,1))", "date": "2026-10-27", "A": [ [
+proof/refuted/certificates/counterexample_max_r_eps_rho_star_plus1_n5_2026-10-26.json	1510	.json	{ "name": "counterexample_max_r_eps_rho_star_plus1", "date": "2026-10-26", "problem": "MIN-ROWS (q1)", "n": 5,
+proof/refuted/certificates/counterexample_max_r_eps_rho_star_plus1_n5_2026-10-26_alt.json	1510	.json	{ "name": "counterexample_max_r_eps_rho_star_plus1", "date": "2026-10-26", "problem": "MIN-ROWS (q1)", "n": 5,
+proof/refuted/certificates/counterexample_max_r_eps_rho_star_plus1_n6_2026-10-26.json	1668	.json	{ "name": "counterexample_max_r_eps_rho_star_plus1", "date": "2026-10-26", "problem": "MIN-ROWS (q1)", "n": 6,
+proof/refuted/certificates/counterexample_p2.json	1206	.json	{ "A": [ [ "0", "1", "0", "0", "0", "0", "0", "0" ], [ "1", "0", "0", "0", "0", "0", "0", "0" ], [ "0", "0", "
+proof/refuted/certificates/counterexample_refute_dimV1.json	528	.json	{ "A": [ [ 0, 0, 1, -2, -1 ], [ 1, -2, 2, 0, 2 ], [ 1, 1, -2, 0, 0 ], [ -2, 2, 0, -1, 0 ], [ -1, -1, 2, -1, 0 
+proof/refuted/certificates/counterexample_refute_layer_formula_2026-10-25.json	547	.json	{ "A": [[5,3,5,4,2],[0,1,3,0,6],[2,5,6,2,2],[3,6,4,0,6],[0,6,5,3,1]], "C": [[5,5,1,3,6],[6,0,4,4,1]], "L0": [[
+proof/refuted/certificates/refute_formula_2026-10-25.json	628	.json	{ "name": "refute_formula_r_ge_rhostar_plus_1", "n": 5, "p": 2, "r": 2, "d": 1, "A": [[5,3,5,4,2],[0,1,3,0,6],
+proof/rho0_layer/README.md	1154	.md	命题：$\rho=0$ 层
+proof/rho0_layer/verify.py	2358	.py	proof/rho0_layer/verify.py Re-verifies `docs/02_theorems_proven.md` B.3: rho = 0 <=> V subset J and then (5a) 
+proof/rho1_layer/README.md	6776	.md	命题：$\rho=d_0{+}1$ 层的二次型判据
+proof/rho1_layer/counterexample_s1.json	573	.json	{ "n": 4, "A": [ [ "1", "1", "-1", "-1" ], [ "0", "1", "-1", "0" ], [ "-1", "0", "-1", "1" ], [ "-1", "1", "1"
+proof/rho1_layer/probe_s1_invariants.py	3305	.py	S1 区真判据的经验搜索（验证 ≠ 证明）。 背景：§22–§26 给出的"充要判据 dim K >= rho"已被精确反例反驳。 本脚本改用**测试先行**：对随机实例与随机 V（按层号 (rho,c) 正确辨识）， 
+proof/rho1_layer/probe_tau_obstruction.py	3048	.py	探测：在 (5a) 已成立的前提下，(5b) 的失败有多常见？失败由什么刻画？ 对随机实例与随机 L（按层号正确辨识 (rho,c)），做两类统计： (i) P_raw = P[(5b) 对 L 本身成立] (ii) P
+proof/rho1_layer/strat_d3.py	5491	.py	proof/rho1_layer/strat_d3.py The d = 3 stratification experiment. For each random instance with d = 3 we sampl
+proof/rho1_layer/theorem.md	97534	.md	$\rho=d_0{+}1$ 层（首个中间层）：精确陈述与证明现状
+proof/rho1_layer/verify.py	5920	.py	proof/rho1_layer/verify.py Re-verifies Theorem 9.10 of `theorem.md`: rho = 2, c = 1, H = <h>, w := beta(h) != 
+proof/rho1_layer/verify_29_1.py	6887	.py	定理 29.1 的**构造式**验证（验证 ≠ 证明）。 定理 29.1：固定 (U,H)、c = rho-1、dim beta(H) = rho-1 时，Bad 是仿射的 ⟹ "A 上的可行性"是"全有或全无"（Bad
+proof/rho1_layer/verify_9_12.py	2710	.py	定理 9.12（w=0 时 (2,1) 层恒不可行）的**按层号正确辨识**的复核（验证 ≠ 证明）。 与历史 625/625 的区别：本脚本显式用 rho = rank[L;CA;C] - dim J, c = dim
+proof/rho1_layer/verify_bezout_affine.py	5097	.py	§17 + T11 的等价性检验（**带仿射约束**的 A，单变量参数化）。 A 取一条仿射直线：tau(s) = tau0 + s*d （s ∈ Q）。于是 p_i(tau(s)) 的系数是 s 的仿射函数。 两条判据
+proof/rho1_layer/verify_bezout_equivalence.py	5167	.py	§17 + T11 的等价性检验（验证 ≠ 证明）。 被测命题：对仿射族 p_1(τ),...,p_m(τ)（系数对 τ ∈ A 仿射，deg_λ ≤ d）， (i) ∃τ ∈ A: gcd_λ(p_1(τ,·),...
+proof/rho1_layer/verify_conv114.py	5858	.py	proof/rho1_layer/verify_conv114.py Tests Conjecture 11.4 of `theorem.md` on CONSTRUCTED instances (not sampled
+proof/rho1_layer/verify_dim.py	7841	.py	proof/rho1_layer/verify_dim.py Checks Theorem 10.1 of `theorem.md`: w != 0, (U,H) fixed: exists tau in A \\ Ba
+proof/rho1_layer/verify_s1.py	6348	.py	S1 区判据的精确验证 v2（验证 ≠ 证明）。 被测命题：[theorem.md §24.3 / §25.3] 设 c >= rho-1、rho >= 2，则第 (rho,c) 层可行 <=> dim{ b in B 
+proof/rho1_layer/verify_s1_affine.py	3068	.py	定理 29.1 的可检验后果（验证 ≠ 证明）。 定理 29.1：在**固定 (U,H)** 且 dim beta(H) = rho-1 时，Bad 是**仿射**的且 Bad ⊆ A， 于是"可行 ⟺ dim Bad 
+proof/rho1_layer/verify_s1_real.py	7602	.py	S1 区判据的**真实实例**验证（验证 ≠ 证明）。 被测命题（theorem.md §26，v3 修正版）： 设 c >= rho-1、rho >= 2、dim B >= rho-1。记 J = row[C; CA]
+proof/rho1_layer/verify_t11.py	3651	.py	T11（定理 27.2 / 推论 27.3）的精确验证（验证 ≠ 证明）。 命题：若 p_1..p_m ∈ Q[lam]、deg <= d、gcd = 1，则存在 D0 <= 2d(m-1) 使 Phi_D: (a_1.
+proof/s_j_family/README.md	865	.md	命题：$S=\mathcal J$ 闭包族
+proof/s_j_family/theorem.md	3861	.md	$S=\mathcal J$ 闭包族：完整证明
+proof/top_layer_observability/README.md	1419	.md	命题：顶层（$\rho=d$）的可观测判据
+proof/top_layer_observability/theorem.md	5084	.md	顶层（$\rho=d$）的可观测判据：完整证明
+proof/top_layer_observability/verify.py	1945	.py	proof/top_layer_observability/verify.py Re-verifies `docs/02_theorems_proven.md` B.4: V = C^n satisfies (5b) <
+tools/README.md	3451	.md	tools/ — 工具
+tools/certificates/c190_invariant_family.py	11593	.py	c190_invariant_family.py -- the row(L0)=J family: q_min = n (exact, proved) WHAT ---- For instances with row(L
+tools/certificates/c191_pbh.py	8710	.py	c191_pbh.py -- corrected "Theorem 9": the top layer is an OBSERVABILITY test CONTEXT ------- HANDOVER_2026-10-
+tools/exact_linalg/audit_independent.py	17554	.py	audit_independent.py -- 独立复核 P1（两侧判据）/ A19（rho<=obs）/ P4b（rho<=q-1） 设计原则（与项目内脚本的区别）： 1. **不 import 项目任何库**：本文件
+tools/exact_linalg/c188_fp.py	5690	.py	c188_fp.py — F_p 上的 (5a)/(5b) 快速判定（供大样本搜索用） 多项式用系数列表表示（mod p，低次在前）。提供： rank_fp(M, p) —— F_p 上的秩 cond5a_fp(L, A
+tools/exact_linalg/linalg_exact.py	3056	.py	linalg_exact.py —— **独立**的精确线性代数例程（用于交叉验证库的 solve/rk） 动机（CLAUDE.md §10）：库的 `solve(Des,b)` 出现"秩条件保证可解、却报不相容"的现象
+tools/exact_linalg/linalg_q.py	9629	.py	linalg_q.py —— 本项目**统一使用**的独立精确线性代数层（带维数断言 + 残差校验） 【为什么需要它】 本会话发现库 `exact_count_thm7.solve` 在一类系统上会返回**不满足残差的"
+tools/hygiene/audit_layout.py	4096	.py	tools/hygiene/audit_layout.py Audits the project layout against the conventions in CLAUDE.md. Run from the rep
+tools/hygiene/backup_before_edit.py	759	.py	tools/hygiene/backup_before_edit.py Copy a file to trash/ (timestamped) before it is overwritten. Usage: pytho
+tools/layer_search/c192_reduced_search.py	15344	.py	c192_reduced_search.py -- exhaustive search in the d-dimensional quotient (F_p) WHY --- c191 validated, on eve
+tools/layer_search/c194_layer2.py	7710	.py	c194_layer2.py -- the watershed experiment: is "exists a rho-dim (T,B)-invariant U" decidable by simple means,
+tools/layer_search/c199_floor_gap.py	5048	.py	tools/layer_search/c199_floor_gap.py MAINLINE (docs/05 Q1): how far is the (5a)-floor from the truth? rho_ci =
+tools/layer_search/c200_q5_probe.py	10312	.py	tools/layer_search/c200_q5_probe.py Q5 probe: does "controllable" (mod B) imply (5b)? For random exact-rationa
+tools/lean/PRecursion.lean	8271	.lean	theorem finrank_map_mkQ_add
+tools/lean/PRecursionInduced.lean	2132	.lean	def inducedQuotient
+tools/lean/PRecursionLift.lean	4695	.lean	theorem lift_admissible
+tools/lean/PRecursionLin.lean	3868	.lean	theorem exists_sigma
+tools/lean/PRecursionSigma.lean	2120	.lean	theorem exists_lift_of_range_le
+tools/lean/PRecursionSigmaPoint.lean	1843	.lean	theorem exists_correction_pointwise
+tools/lean/PRecursionSigmaRange.lean	2599	.lean	theorem exists_mem_eq_mkQ_of_mem_sup
+tools/lean/PRecursionStep.lean	1678	.lean	theorem step_le
+tools/lean/PVal.lean	2236	.lean	theorem Pval_exists
+tools/lean/README.md	4708	.md	Lean 4 备份（P 的递归定理）
+tools/lean/gen_lift.py	5566	.py	gen_lift.py -- emit PRecursionLift3.lean byte-exactly. The Lean source contains U+29F8 (the quotient symbol) w
+tools/lean/probes/Probe_ann.lean	765	.lean	check @LinearMap.range_dualMap
+tools/lean/probes/Probe_eig.lean	573	.lean	check @Module.End.exists_eigenvalue
+tools/lean/probes/Probe_eig2.lean	528	.lean	check @Module.End.exists_eigenvalue
+tools/lean/probes/Probe_factor.lean	704	.lean	check @Submodule.liftQ
+tools/lean/probes/Theorems.lean	620	.lean	module public import MyProof.Theorems.Pencil public import MyProof.Theorems.CaseII public import MyProof.Theor
+tools/ledger/c189_ledger.py	14705	.py	c189_ledger.py -- the single MIN-ROWS ledger (exact over Q) WHY THIS FILE EXISTS -------------------- Three ha
+tools/p_algorithm/c195_P_q.py	7957	.py	c195_P_q.py -- exact rational implementation of the recursion algorithm for P(A,B,S) = min { dim U | S <= U, A
+tools/p_algorithm/c196_f3_counterexample.py	6021	.py	c196_f3_counterexample.py -- exact certificate: F3 is refuted by an n = 4 instance. F3 was the last surviving 
+tools/p_algorithm/c197_P_witness.py	7116	.py	c197_P_witness.py -- the recursion algorithm for P(A,B,S) WITH a witness. P(A,B,S) = min { dim W | S <= U, A W
+tools/p_algorithm/c198_graphic_matroid.py	6696	.py	c198_graphic_matroid.py -- targeted test of the "coordinate is optimal" gadget. Setting (the coordinate layer 
+tools/verification/c162_dimV_formula.py	6506	.py	c162_dimV_formula.py — 检验 q_min = dim V + 1 给定 (A, C, L0)： 1. 算 d, p, A', R0, S, V = <S>_{A'} 2. 若 alpha0 ∉ V：
+tools/verification/c164_trusted_baseline.py	8932	.py	c164_trusted_baseline.py — 可信基线验证器 目的 ---- 2026-10-23/24 的搜索中出现了四个工具 bug，每一个都让错误结论看起来像被验证过： 1. 采样 λ 验证 (5b) → 
+tools/verification/c166_layer_audit.py	11117	.py	c166_layer_audit.py — 层公式 q(ρ) = max(r, ρ+1) 的可复现审计 为什么有这个脚本 ---------------- ATTACK_LOG D33 的结论 "q(ρ)=max(r,ρ
+tools/verification/c167_probe_tightness.py	3404	.py	c167_probe_tightness.py — 对一个小实例做穷举/半穷举的紧性判定 背景：c166 在 counterexample_refute_dimV1 (n=5) 上发现 ρ=1 的最小 q 只搜到 3，而
+tools/verification/c183_minAB.py	3781	.py	c183_minAB.py — 最小 (A,B)-不变子空间包含 S：精确值 vs 候选迭代（F_p 穷举） 问题：min dim W s.t. W ⊇ S, A W ⊆ W + B（在 F_p^n 上）。 在 F_3^
+trash/PRecursionSigmaLin_未完成.lean.txt	3870	.txt	import MyProof.PRecursionSigma /-! # PRecursionSigmaLin **Linearisation** of the correction map `σ` for the re
+trash/PRecursionStepGe_未完成.lean.txt	2456	.txt	import MyProof.PRecursion /-! # PRecursionStepGe **One step of the recursion, `(⊇)` direction.** If `U` is adm
+trash/PValStep_未完成.lean.txt	4487	.txt	import MyProof.PVal /-! # PValStep The **level-1 quantity** `𝒫'` and the `(⊇)` half of the one-step recursion 
+trash/README.md	3795	.md	trash/ — 回收站
+trash/bbox2.html	121089	.html	
+trash/p1.txt	135066	.txt	1 A Minimum-Order Functional Observer Beyond the Darouach and Luenberger Constructions Tyrone Fernando Abstrac
+trash/p2.txt	121037	.txt	1 Complete Characterization of Minimum-Order Functional Observers from Darouach to Luenberger Tyrone Fernando 
+trash/p3.txt	63446	.txt	1268 IEEE TRANSACTIONS ON AUTOMATIC CONTROL, VOL. 55, NO. 5, MAY 2010 [5] W. Ren and E. Atkins, “Distributed m
+trash/p3_p2.txt	9416	.txt	IEEE TRANSACTIONS ON AUTOMATIC CONTROL, VOL. 55, NO. 5, MAY 2010 1269 concept of Functional Observability/Dete
+trash/p3_raw.txt	5402	.txt	IEEE TRANSACTIONS ON AUTOMATIC CONTROL, VOL. 55, NO. 5, MAY 2010 concept of Functional Observability/Detectabi
+trash/page_extracts/x_Control_Theory_of_Linear_System_pdf.txt	947	.txt	Control theory for linear systems Harry L. Trentelman Research Institute of Mathematics and Computer Science U
+trash/page_extracts/x_Feedback_invariants_of_linear_multivaria_pdf.txt	6840	.txt	Symp. on Mathematical Theory of Networks and Systems, Leuven, Belgium, July 5-9, 2004 Reliable algorithms for 
+trash/page_extracts/x_Matrix_pencil_characterization_of_almost___A__Z___invariant_subspaces___A_classification_of_geometric_concepts_pdf.txt	4255	.txt	International Journal of Control ISSN: 0020-7179 (Print) 1366-5820 (Online) Journal homepage: www.tandfonline.
+trash/page_extracts/x_Matrix_pencils_completion_problems_pdf.txt	5813	.txt	Available online at www.sciencedirect.com Linear Algebra and its Applications 428 (2008) 259–304 www.elsevier.
+trash/page_extracts/x_Minimum_Polynomials_and_Control_in_Linear_System_pdf.txt	9544	.txt	JOURNAL OF RESEARCH of the National Bureau of Standards Volume 82 , No. 2, September- October 1977 Minimum Pol
+trash/self_bounded_2009.pdf	229	.pdf	
+trash/verify.py.20261027_191545.bak	4253	.bak	
+trash/verify_s1_v1.py.bak	8797	.bak	
+workspace/README.md	841	.md	workspace/ — 临时文件
+workspace/inventory/AUDIT_2026-10-27.md	7343	.md	全项目逐文件夹审计（2026-10-27）
+workspace/inventory/inventory.tsv	170685	.tsv	
+workspace/inventory/make_inventory.py	2611	.py	workspace/inventory/make_inventory.py Walks the whole project and emits one TSV row per file: path | bytes | k
+workspace/q1_false/OPEN_issue_9_12_vs_baseline.md	3264	.md	~~待解决的矛盾~~（已定案：不是矛盾）：定理 9.12 与 `cond_5b_orig` 在一个实例上冲突
+workspace/q1_false/README.md	1915	.md	方向 q1_false：证 $q_{\min}$ 多项式可算
+workspace/q1_false/S1_dimension_route_dead.md	2710	.md	负结果：S1 的可行性**不由** (rho, c, mu, nu) 决定
+workspace/q1_false/STRATEGY_2026-10-28.md	5450	.md	思路整理与下一步方向（2026-10-28）
+workspace/q1_false/attempts/09_pencil_completion.md	3949	.md	路线 9：矩阵铅笔的完成问题（Kronecker 型判据）
+workspace/q1_false/mainline_logic.md	10966	.md	这条路线在 q1 全局中的位置（自省笔记）
+workspace/q1_false/notes_data_shapes.md	1460	.md	数据形状（经验记录，不是定理）
+workspace/q1_true/README.md	2299	.md	方向 q1_true：证 MIN-ROWS 是 NP-hard
+workspace/q1_true/attempts/08_sof_betweenness.md	3296	.md	路线 9：从静态输出反馈的 NP-hardness 传递（Löfberg 2026）
+workspace/q1_true/attempts/09_hardness_blueprint.md	3742	.md	路线 10：硬度归约的**精确目标**（blueprint）
+workspace/q1_true/reduction_targets.md	6154	.md	归约目标与编码方案（Q1-TRUE）

@@ -1,0 +1,198 @@
+\section{The fixed-order algorithm}\label{sec:fixedq}
+
+This section decides $\mathrm{DEC}(q)$ at a prescribed order $q$. The procedure
+is Algorithm~\ref{alg:fixed-q}: in each pivot chart it quantifies only over the
+entries of $X$, $G$ and the certificate vector, that is over
+$2q\omega+2\omega=O(q^2)$ real variables, whereas the chart coordinates of the
+order-by-order procedure of \cite{fer26b} number $d(m_L-d)=(n-p-q)(q-r)$ and
+still grow linearly in $n$ when $q$ is fixed; the compression of
+Section~\ref{sec:compressed} is what removes that dependence.
+
+\begin{algorithm}[!t]
+\caption{Deciding $\mathrm{DEC}(q)$ for a fixed order $q$}
+\label{alg:fixed-q}
+\begin{algorithmic}[1]
+\Require $A\in\mathbb Q^{n\times n}$, $C\in\mathbb Q^{p\times n}$,
+$L_0\in\mathbb Q^{r_0\times n}$, integer $q\ge r_0$.
+\Ensure \textsc{feasible} or \textsc{infeasible}.
+\State $N\gets$ basis of $\ker[C;CA]$;\quad $k\gets$ number of columns of $N$
+\State $h^0\gets L_0N$;\quad $g^0\gets L_0AN$;\quad
+$D\gets$ rational matrix with $\ker D=\operatorname{row}[N\ AN]$
+\For{$\omega=0$ \textbf{to} $\min(q,k)$}
+  \For{each $J\subseteq[k]$ with $|J|=\omega$}
+    \State form the formula $\Phi_{\omega,J}(X,G,x)$ over the variables
+           $X,G\in\mathbb R^{q\times\omega}$ and $x\in\mathbb R^{2\omega}$:
+    \Statex \quad (i) $e_\omega(X^{\mathsf T}X)>0$ (the left inverse $U$ is
+           not quantified);
+    \Statex \quad (ii) the rank-consistency formula of
+           Lemma~\ref{lem:rankcons} for $M(X,G)b=c(X,G)$ and $B_{:,J}=I_\omega$;
+    \Statex \quad (iii) $X_iB=h_i^0$ and $G_iB=g_i^0$ for $i\le r_0$;
+    \Statex \quad (iv) $D[(X_iB)^{\mathsf T};(G_iB)^{\mathsf T}]=0$ for
+           $i>r_0$;
+    \Statex \quad (v) $Z^{\mathsf T}Zx=e_0$, with $Z$ from the maximal minors
+           of $\lambda X-G$ (Proposition~\ref{prop:gram}).
+    \If{$\Phi_{\omega,J}$ is real-feasible}
+      \State \Return \textsc{feasible}
+    \EndIf
+  \EndFor
+\EndFor
+\State \Return \textsc{infeasible}
+\end{algorithmic}
+\end{algorithm}
+
+\begin{thm}\label{thm:fixedq}
+For every fixed $q$, $\mathrm{DEC}$ is decidable in deterministic polynomial
+time. More precisely, Algorithm~\ref{alg:fixed-q} runs in
+$\mathcal L^{O(q^2)}$ bit operations.
+\end{thm}
+
+\begin{proof}
+\emph{(i) Equivalence.} Let $L=[L_0;R]$ be feasible, $H=LN$, $H_A=LAN$,
+$\omega=\operatorname{rank}H$, and let $J$ be a pivot set with
+\[
+H=XB,\qquad B_{:,J}=I_\omega .
+\]
+By Lemma~\ref{lem:compression}(ii) there is $F$ with $H_A=FH$; put $G=FX$.
+Then
+\[
+X_iB=H_i=h_i^0,\qquad G_iB=(H_A)_i=g_i^0\qquad(i\le r_0),
+\]
+and, since $\ker D=\mathcal T=\operatorname{row}[N\ AN]$,
+\[
+D[(X_iB)^{\mathsf T};(G_iB)^{\mathsf T}]=0\qquad(i>r_0).
+\]
+Moreover $\operatorname{rank}X=\omega$ gives $e_\omega(X^{\mathsf T}X)>0$,
+Lemma~\ref{lem:rankcons} gives the rank-consistency condition for
+$B_{:,J}=I_\omega$, and Proposition~\ref{prop:gram} turns \eqref{eq:5b} into
+$Z^{\mathsf T}Zx=e_0$. Hence $\Phi_{\omega,J}$ holds.
+
+Conversely, suppose $\Phi_{\omega,J}$ holds. Lemma~\ref{lem:rankcons} yields
+$B$ with $B_{:,J}=I_\omega$; put
+\[
+H=XB,\qquad H_A=GB .
+\]
+The fixed-row equations give $H_i=h_i^0$ and $(H_A)_i=g_i^0$ for $i\le r_0$,
+and the free-row equations place each remaining pair in $\mathcal T$, so there
+are $r_i$ with
+\[
+(H_i,(H_A)_i)=r_i[N\ AN]\qquad(i>r_0).
+\]
+With $L=[L_0;R]$, $R$ the matrix with rows $r_i$, this reads $H=LN$ and
+$H_A=LAN$. Since $e_\omega(X^{\mathsf T}X)>0$, $X$ has a left inverse $U$;
+hence
+\[
+\begin{aligned}
+G&=(GU)X,\\
+H_A&=GB=(GU)XB=FH,\qquad F=GU,
+\end{aligned}
+\]
+so $\operatorname{row}H_A\subseteq\operatorname{row}H$, which is
+\eqref{eq:5a} by Lemma~\ref{lem:compression}(i), and $Z^{\mathsf T}Zx=e_0$ is
+\eqref{eq:5b} by Proposition~\ref{prop:gram}. Therefore the disjunction
+$\bigvee_{\omega,J}\Phi_{\omega,J}$ holds if and only if a feasible $L$
+exists, which is the test performed by Algorithm~\ref{alg:fixed-q}.
+
+\emph{(ii) Count.} With $\omega\le k$ and $N=2q\omega+2\omega$,
+\[
+\begin{aligned}
+N &= 2q\omega+2\omega\le 2q^2+2q,\\
+s &= O(k)\cdot O(k)+2r_0+O(1)=O(k^2),\\
+D &= \max\{O(k),\,2\omega+1\}=O(k)\le O(n),\\
+B &= \operatorname{poly}(n,\mathcal L),
+\end{aligned}
+\]
+where $t\le\min(\text{rows},\text{cols})$ of $M$ is the rank index, the first
+factor $O(k)$ bounds the branches and the second the polynomials of degree
+$O(k)$ carried by each branch, the additive terms are the $2r_0$ fixed-row
+equations, the free-row equations and the Gram and spectral certificates of
+degree $2\omega+1$, and the last line is the coefficient-size lemma of
+Section~\ref{sec:fpt}. Renegar's Part II bound
+$B(\log B)(\log\log B)(sD)^{O(N)}$ therefore gives, per chart,
+\[
+B(\log B)(\log\log B)(sD)^{O(N)}
+=\operatorname{poly}(n)^{O(q^2)}
+=\mathcal L^{O(q^2)},
+\]
+because $sD=\operatorname{poly}(n)$ and $N\le 2q^2+2q$ with $q$ fixed. The
+charts number
+\[
+N_{\mathrm{ch}}=(q+1)k^{q}\le 2^{q}k^{q}\le\mathcal L^{2q},
+\]
+since $k\le n\le\mathcal L$ and $q+1\le 2^{q}\le\mathcal L^{q}$ for $q\ge1$
+and $\mathcal L\ge2$. Hence
+\[
+N_{\mathrm{ch}}\cdot\mathcal L^{O(q^2)}
+\le\mathcal L^{2q}\cdot\mathcal L^{O(q^2)}
+=\mathcal L^{O(q^2)} .
+\]
+For fixed $q$ the exponent $O(q^2)$ is a constant, so the construction size is
+$k^{O(q^2)}\operatorname{poly}(\mathcal L)=\mathcal L^{O(q^2)}$ and Renegar's
+bound gives the same order. The rank index $t$ is a discrete branch, not a
+degree: it is counted in $s$, not folded into $D$. The degenerate cases $k=0$
+and $q=r_0$ are treated in Section~\ref{sec:deg}.
+\end{proof}
+
+Table~\ref{tab:4} collects the quantities entering the bound.
+
+\begin{table*}[!t]
+\centering
+\caption{Quantities entering the fixed-order bound.}\label{tab:4}
+\small
+\begin{tabular}{p{0.450\textwidth}p{0.450\textwidth}}
+\toprule
+Quantity & Bound \\
+\midrule
+real variables $N$ & $2q\omega+2\omega\le2q^2+2q$ \\
+pivot charts & $(q+1)k^q$ \\
+rank-consistency branches $t$ & $O(k)$, one per possible rank \\
+number of sign conditions $s$ & $O(k^2)$ \\
+maximum degree $D$ & $O(k)$ \\
+coefficient bit length $B$ & $\operatorname{poly}(n,\mathcal L)$ \\
+construction size & $k^{O(q^2)}\operatorname{poly}(\mathcal L)$ \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+Three representation details are worth recording.
+
+\begin{enumerate}
+\item \emph{Strict inequalities.} A condition $f>0$ is written as
+\[
+f>0\iff\exists u:\ fu^2=1,
+\]
+which is equivalent over the reals. There are $O(1)$ strict inequalities per
+branch, so this adds $O(1)$ variables and changes no order.
+\item \emph{Disjunctions.} The rank-consistency disjunction is processed branch
+by branch, with one real-feasibility query per $t$ and the running times
+added:
+\[
+t\cdot\mathcal L^{O(q^2)}=O(k)\,\mathcal L^{O(q^2)}=\mathcal L^{O(q^2)} .
+\]
+This is why $t$ appears in $s$ and not in $D$.
+\item \emph{Elementary symmetric polynomials.} $e_j(G)$ is represented by the
+coefficients of $\det(zI+G)$, computed by fraction-free elimination on the
+$k\times k$ polynomial matrix $zI+G$ in $O(k^3)$ polynomial operations of
+degree $O(k)$. The expansion is never written out term by term.
+\end{enumerate}
+
+\subsection{Degenerate cases}\label{sec:deg}
+
+\begin{enumerate}
+\item \emph{$k=0$}, that is, $\ker[C;CA]=0$. Then $N$ has no columns, so
+\[
+H=LN=0,\qquad H_A=LAN=0\qquad\text{for every }L,
+\]
+and both \eqref{eq:5a} and \eqref{eq:5b} hold; in particular for $L=L_0$, so
+$q_{\min}=r_0$.
+\item \emph{$\omega=0$ with $k>0$.} Then $H=0$, and
+\[
+\operatorname{rank}(\lambda H-H_A)=0\ \ \forall\lambda\in\mathbb C
+\iff H_A=0,
+\]
+which together with $H=0$ is exactly $\eqref{eq:5a}\wedge\eqref{eq:5b}$ for
+that $L$. The branch $H=H_A=0$ of the encoding is therefore neither stronger
+nor weaker than the condition.
+\item \emph{$q<r_0$.} Rejected by definition, since $L=[L_0;R]$ has $q$ rows
+and contains the $r_0$ rows of $L_0$.
+\item \emph{$r=0$.} Decided by the exact pencil test of Section~\ref{sec:zero}.
+\end{enumerate}

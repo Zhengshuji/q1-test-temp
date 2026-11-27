@@ -1,0 +1,1463 @@
+Affine Rank Minimization is ER-Complete
+Angshul Majumdara
+aIndraprastha Institute of Information Technology, Delhi, New Delhi, 110020, India
+Abstract
+We consider the decision problemAffine Rank Minimization, denotedARM(k):
+given rational matricesA1,...,A q∈Q m×n and scalarsb1,...,b q∈Q , de-
+cide whether there existsX∈R m×n such that⟨Aℓ,X⟩ = bℓ for allℓ∈ [q]
+and rank(X) ≤k . We first prove membership: for every fixed k≥ 1,
+ARM(k)∈∃R by giving an explicit existential encoding of the rank con-
+straint via a constant-size factorization witness. We then prove∃R-hardness
+by a polynomial-time many-one reduction fromETR to ARM(k)with the
+input restricted to affine equalities plus a single global constraintrank(X)≤k .
+The reduction compiles anETR formula into an arithmetic circuit in gate-
+equality normal form and assigns each circuit quantity to a designated entry
+of X; affine semantics (constants, copies, addition/negation) are enforced
+directly by linear constraints, while multiplicative semantics are enforced by
+constant-size rank-forcing gadgets whose soundness is certified by a fixed-rank
+“gauge” submatrix that removes factorization ambiguity. We prove a com-
+position lemma showing that gadgets can be embedded without unintended
+interactions, yielding global soundness and completeness of the encoding and
+preserving polynomial bounds on dimension and bit-length. Consequently,
+ARM(k)is ∃R-complete (in particular,ARM(3)is ∃R-complete), establishing
+that feasibility of purely affine constraints under a fixed constant rank bound
+captures the full expressive power of real algebraic feasibility.
+Keywords:Affine rank minimization; low-rank feasibility; existential theory
+of the reals; ER-completeness; algebraic complexity; polynomial-time
+reductions; arithmetic circuits; rank-constrained matrix completion
+arXiv:2602.14037v1  [cs.CC]  15 Feb 2026
+1. Introduction
+1.1. Motivation
+Low-rank structure is a unifying modelling principle across matrix com-
+pletion, inverse problems, and system identification: one posits that the
+unknown object lives on (or near) a low-dimensional algebraic variety, and
+the observations impose linear constraints. In matrix completion and related
+recovery problems, low rank underpins both statistical guarantees and algo-
+rithmic design; convex surrogates such as nuclear-norm minimization are by
+now standard, with sharp recovery results under incoherence and sampling
+assumptions [1, 2, 3, 4, 5]. In control and system theory, rank minimization
+formulations arise naturally via Hankel-structured models, realization theory,
+and model reduction; early formulations and relaxations appear, for example,
+in [6, 7, 8]. Across these domains, rank constraints are theonlysource of
+nonlinearity, while the measurement model is affine.
+This paper asks for theexactworst-case complexity of the corresponding
+feasibility question in its cleanest decision form. Such a classification mat-
+ters for two reasons. First, it explains why essentially all known practical
+approaches must either relax (e.g., nuclear norm) or accept nonconvexity
+(factorizations, alternating minimization) [6, 4]. Second, it pins down the
+correct complexity class for algebraic feasibility over the reals, ruling out
+“NP-hard but maybe still discrete” misunderstandings: the obstruction here
+is fundamentally semi-algebraic.
+1.2. Complexity background
+The natural reference point for feasibility of polynomial constraints over
+R is theexistential theory of the reals(ETR) and its associated class∃R.
+Problemscompletefor ∃Rcaptureabroadspectrumofgeometricandalgebraic
+feasibility questions; in particular,∃R sits between NP and PSPACE in the
+standard bit model, and the PSPACE upper bound follows from quantifier-
+elimination/decision procedures for the first-order theory of the reals [9]. The
+Blum–Shub–Smale framework and the bit-model viewpoint clarify how real
+computation and algebraic encodings interact [10], [11].
+Our goal is to locate the following matrix-feasibility problem precisely
+within this landscape: the input ispurely affine(linear equalities with rational
+coefficients), and all nonlinearity is confined to asingle global rank constraint.
+This is a particularly disciplined target format: it avoids presenting the
+2
+instance with explicit minors, determinant predicates, or any additional
+polynomial constraints beyond “rank(X)≤k.”
+1.3. Contributions
+We study the decision problemAffine Rank MinimizationARM(k)in the
+standard rational input model: given
+A1,...,A q∈Q m×n, b 1,...,b q∈Q,(1.1)
+decide whether there existsX∈R m×n such that
+⟨Aℓ,X⟩=b ℓ (ℓ∈[q]),rank(X)≤k.(1.2)
+The main results proved in the paper are:
+•Membership.For every fixedk≥1,ARM(k)∈∃R.
+•∃R -hardness. ARM is∃R-hard under polynomial-time many-one
+reductions from ETR.
+• Fixed constant rank.The hardness persists already for the fixed
+constantk= 3, yielding∃R-completeness ofARM(3).
+• Polynomial size and bit-length control.The reduction outputs
+instances whose dimensions and total rational encoding length are
+polynomial in the source ETR instance size.
+A key conceptual point (the “Option B” discipline in this project) is that the
+reduction produces instancesstrictly in the input format(1.2): only affine
+equalities on entries of a single matrix variableX and one global constraint
+rank(X)≤ 3. No explicit minor constraints, determinant constraints, or other
+polynomial side conditions appear in the produced ARM instance.
+1.4. Technical overview
+At a high level, we reduce ETR toARM(3)by compiling arithmetic
+reasoning into affine constraints ondesignated entriesof one matrix, and
+using the global rank bound as the sole enforcement mechanism for nonlinear
+semantics.
+(i) ETR to arithmetic circuit constraints.A standard reduction converts
+a general ETR formula into an equisatisfiable conjunction of polynomial
+3
+equalities, and then into a gate-by-gate constraint system for an arithmetic
+circuit(oneequalitypergate). Circuitnormalformsofthiskindareubiquitous
+in algebraic reductions and provide direct bit-size control [10, 9, 12].
+(ii) Gate compilation to affine constraints on a single matrix.Each
+gate value is assigned acarrierposition(ri,ci)and represented by the des-
+ignated entryXri,ci. Linear relations (constants, copies, addition, negation)
+become immediate affine equalities between carriers. The only genuinely
+nonlinear gate is multiplication (and, when needed, inversion/nonzero), which
+is enforced by constant-sizerank-forcing gadgetsbuilt from affine constraints
+on a fresh set of auxiliary rows/columns.
+(iii) Rank as the only nonlinearity: forcing via determinantal ob-
+structions.The gadgets are designed so that any violation of the intended
+identity (e.g.,z =xy) induces a4× 4submatrix of full rank, contradicting
+rank(X)≤ 3. This is conceptually aligned with the geometry of determinantal
+varieties (rank-bounded sets are Zariski-closed and cut out by minors) [13].
+Conversely, when the identity holds, the gadget admits an explicit rank-3
+completion.
+(iv) Gauge fixing and well-defined decoding.Since rank-3factorizations
+are non-unique up to an invertible change of basis, we pin a constant full-rank
+3× 3submatrix (a “gauge block”) so that all decoded carrier values are
+invariant across feasible rank-3realizations. This removes the only subtle
+global ambiguity and lets the reduction compose gadgets without hidden
+coupling.
+1.5. Related work
+Rank minimization and relaxations..Convex relaxations of rank (notably
+the nuclear norm) form the backbone of modern low-rank recovery theory
+[1, 2, 3, 4]. Nonconvex alternatives based on factorizations are also widely
+used and often effective in practice, though they do not alter worst-case
+feasibility complexity. In system identification and control, rank minimization
+appears naturally via structured low-rank approximations and Hankel-based
+formulations [6, 7, 8].
+Hardness of rank problems in discrete settings..Several closely related rank
+problems are known to be computationally hard in discrete models. For
+example, variants of low-rank approximation and rank minimization over
+affine spaces exhibit NP-hardness phenomena [14]. These results, however,
+do not pin down theexactreal-feasibility complexity captured by∃R.
+4
+∃R-completeness as the right lens..A large body of work in computational
+geometry and real algebraic complexity identifies∃Ras the correct class for
+continuous feasibility problems, with reductions typically funnelling through
+algebraic encodings and circuit normal forms [10, 9]. Our contribution is to
+show that even under the highly restrictedaffine + one rank constraintinput
+discipline,ARM(3)already captures the full expressive power of∃R.
+2. Preliminaries
+This section fixes formal models and notation used throughout the paper:
+the existential theory of the reals (ETR) and standard reduction normal forms,
+arithmetic circuits overR as compact representations of polynomial systems,
+the Affine Rank Minimization decision problemARM(k)under rational input
+encoding, a rank-factorization lemma used as an existential witness device,
+and block-matrix/indexing conventions. Background on ETR and∃R may be
+found in [15, 9]; real algebraic encodings and polynomial systems are treated
+in [16]; and computation overR and circuit-style representations are classical
+in the Blum–Shub–Smale framework [17].
+2.1. Existential theory of the reals (ETR)
+Syntax and encoding..Let x = (x1,...,x n)be real variables. Anatomic
+predicateis one of
+p(x) = 0, p(x)̸= 0, p(x)≥0, p(x)>0,(2.1)
+where p∈Z [x1,...,x n]. Aquantifier-free formula φ(x)is any Boolean
+combination of atomic predicates using∧,∨,¬ . AnETR instanceis a sentence
+of the form
+∃x∈R n :φ(x),(2.2)
+and the decision question is whether such anxexists.
+Input size is measured in the standard bit model: coefficients are given
+in binary, polynomials are given in sparse form by listing monomials and
+exponent vectors, and the size ofφ counts the total bit-length of all coefficients
+and the syntactic size of the Boolean expression. If rational coefficients appear,
+they are encoded in reduced form; clearing denominators yields an equivalent
+integer-coefficient instance with polynomially related bit-size [16].
+5
+The class∃R..A language L is in∃R if it is polynomial-time many-one
+reducible to ETR. Many geometric feasibility problems are complete for∃R
+under such reductions [15]. The canonical upper bound∃R⊆PSPACE follows
+from decision procedures for the first-order theory of the reals and from the
+PSPACEcomplexity of the existential fragment [9].
+Standard normal forms..For reductions, it is convenient to work with con-
+strained syntactic forms. We record the particular normal form used later: a
+conjunction of polynomial equalities encoding an arithmetic circuit.
+Definition 2.1(ETR equality form).An ETR instance is inequality formif
+it is a sentence
+∃y∈R N :
+T⋀
+t=1
+ft(y) = 0(2.3)
+where eachft∈Z[y 1,...,y N ].
+Lemma 2.2(Eliminating inequalities and Boolean structure).Given any
+ETR instance∃x :φ(x), one can construct in polynomial time an equisatis-
+fiable instance in equality form (Definition 2.1) with polynomial blow-up in
+bit-size.
+Proof. Convertφ to disjunctive normal form⋁Mj=1⋀Tji=1αij with a polynomial
+blow-up in the formula size (measured as a Boolean circuit; if one insists on
+DNF explicitly, the blow-up can be exponential in the worst case, hence we use
+the standard selector-variable encoding below). Introduce selector variables
+s1,...,s M and enforce that exactly one selector is active using polynomial
+equalities, e.g.,
+M∑
+j=1
+sj−1 = 0, s j(1−s j) = 0 (j∈[M]).(2.4)
+For each atomαij in clausej, enforce its satisfaction only whensj = 1by
+multiplying the corresponding equality constraints bysj. It therefore suffices
+to convert each atomic predicate to polynomial equalities with auxiliary
+variables.
+Equalitiesp(x) = 0are already in the required form. For weak inequalities,
+use standard slack-variable encodings:
+p(x)≥0⇐⇒ ∃u∈R:p(x)−u 2 = 0.(2.5)
+6
+For strict inequalities,
+p(x)>0⇐⇒ ∃u,v∈R:p(x)−u 2 = 0∧uv−1 = 0,(2.6)
+which enforcesu̸ = 0and hence u2 > 0. Disequalitiesp(x)̸= 0can be encoded
+as
+p(x)̸= 0⇐⇒ ∃v∈R:p(x)v−1 = 0.(2.7)
+All added polynomials have degree at most2, and the number and bit-size of
+introduced constraints and variables are polynomially bounded [16].
+Circuit normal form..In later reductions we will in fact use a more structured
+equality form in which each constraint expresses the semantics of a single
+arithmetic gate. This is captured by arithmetic circuits (Section 2.2).
+2.2. Arithmetic circuits overR
+Arithmetic circuits provide a compact representation of polynomial sys-
+tems and a convenient normal form for∃R-reductions.
+Definition 2.3(Arithmetic circuit).Anarithmetic circuitover R with input
+variablesx1,...,x n is a finite directed acyclic graph whose gates are of the
+following types:
+1. input gates labeled by variablesxi;
+2. constant gates labeled by rational constantsc∈Q;
+3. binary gates labeled by+or×(fan-in2);
+4. unary negation gates labeled by−(fan-in1).
+Each gate computes a polynomial inQ[x1,...,x n]in the natural way.
+Definition 2.4(Circuit size and bit-size).Thesizeof a circuit is the number
+of gates. Thebit-sizeadditionally counts the total bit-length of all rational
+constants (numerators and denominators in reduced form). Fan-in two is
+without loss of generality: any higher fan-in addition or multiplication can be
+expanded into a binary tree of gates with linear blow-up.
+7
+Gate-variable encoding..Given a circuitC with gate setG, introduce a real
+variablezg for each gateg∈G . Define the constraint setGateEq(C)consisting
+of one polynomial equality per gate:
+•ifgis an inputx i, imposezg−xi = 0;
+•ifgis a constantc∈Q, imposez g−c= 0;
+•ifg=g 1 +g 2, imposezg−zg1−zg2 = 0;
+•ifg=g 1×g 2, imposezg−zg1zg2 = 0;
+•ifg=−g 1, imposezg +zg1 = 0.
+Lemma 2.5(Circuit constraints are exact).LetC be an arithmetic circuit
+with designated output gategout and letpC(x)denote the polynomial computed
+atg out. Then for everyx∈R n,
+pC(x) = 0⇐⇒ ∃(z g)g∈G∈R|G| : GateEq(C)∧z gout = 0.(2.8)
+Moreover, the number of constraints is|G| + 1and the bit-size is polynomial
+in the bit-size ofC.
+Proof. The forward direction assignszg to be the value computed by gateg
+under inputx, which satisfies each gate equation by definition, and yields
+zgout =pC(x) = 0. Conversely, any assignment satisfyingGateEq(C)must, by
+induction over the DAG topological order, coincide with the circuit evaluation
+at every gate; hencezgout =pC(x), sozgout = 0implies pC(x) = 0. The size
+bound is immediate.
+Use in reductions..Lemma 2.5 is the precise normal form used later: rather
+than arbitrary polynomials, we will encode computations gate-by-gate and
+then translate those gate equations into matrix constraints.
+2.3. Affine Rank MinimizationARM(k)
+We now define the matrix feasibility problem studied in this paper.
+8
+Affine constraints..Fix dimensionsm×n. ForA,X∈R m×n, write
+⟨A,X⟩:=
+m∑
+i=1
+n∑
+j=1
+AijXij (2.9)
+for the Frobenius inner product.
+Definition 2.6( ARM(k)).Fix an integer k≥ 1. The decision problem
+ARM(k)is:
+Input:matricesA 1,...,A q∈Q m×n and scalarsb 1,...,b q∈Q.
+Question:does there existX∈R m×n such that
+⟨Aℓ,X⟩=b ℓ (ℓ∈[q])andrank(X)≤k?(2.10)
+Encoding model and size measure..All input rationals are encoded in reduced
+form; theinstancelengthisthetotalbit-lengthofallnumerators/denominators
+of all entries of allAℓ and allbℓ, plus the encoding of(m,n,q ). Clearing
+denominators yields an equivalent instance with integer data and polynomially
+related bit-size.
+Fixed-rank focus..Our main completeness statements are for the fixed con-
+stantk= 3; we writeARM(3)when emphasizing this restriction.
+2.4. Rank factorization as a witness device
+Low rank can be expressed existentially via bilinear factorization. This
+observation will be used to prove membership in∃Rand to simplify correctness
+arguments.
+Lemma 2.7(Rank-factorization equivalence).Let X∈R m×n and k≥ 1.
+Then rank(X)≤k if and only if there existU∈R m×k and V∈R k×n such
+that
+X=UV.(2.11)
+Proof.IfX=UVwithU∈R m×k andV∈R k×n, thenrank(X)≤k.
+Conversely, ifrank(X) = r≤k , writeX =∑rt=1atb⊤t for vectorsat∈R m
+and bt∈R n. Let U∈R m×k have firstr columns a1,...,a r and remaining
+columns zero, and letV∈R k×n have firstr rowsb⊤1,...,b ⊤r and remaining
+rows zero. ThenUV=X.
+9
+Theorem 2.8(ARM(k)∈∃R for fixedk).For every fixedk≥ 1, the decision
+problemARM(k)belongs to∃R.
+Proof. Given an instance(Aℓ,bℓ)qℓ=1, introduce variables forU∈R m×k and
+V∈R n×k and existentially quantify them. DefineX := UV , so that each
+entry satisfies
+Xij =
+k∑
+t=1
+UitVjt,(2.12)
+a polynomial of degree2in the variables( U,V ). Each affine constraint
+⟨Aℓ,X⟩ =bℓ becomes a single polynomial equality of degree2in(U,V )after
+substitutingX =UV . By Lemma 2.7, the resulting existential system is satis-
+fiable if and only if the originalARM(k)instance is satisfiable. The translation
+is computable in polynomial time and increases bit-size polynomially.
+Remark2.9 (non-algorithmic use).Lemma 2.7 and Theorem 2.8 are used
+only to express low rank as an existential witness condition in correctness
+proofs. They do not provide an algorithm forARM(k); the resulting feasibility
+constraints are bilinear and nonconvex.
+2.5. Block-matrix notation and designated entries
+We will enforce relations by fixing entries and equating sub-blocks inside
+larger block matrices. This subsection fixes indexing and shows how these
+relations compile into the affine format of Definition 2.6.
+Index sets and submatrices..Forn∈N , let[n] :={1,...,n} . ForI⊆ [m]
+and J⊆ [n], writeX[I,J ]for the submatrix ofX∈R m×n restricted to rows
+inIand columns inJ.
+Selection matrices..Given I = {i1 <···< i p} ⊆[m], define the row-
+selection matrixSI∈{ 0, 1}p×m by(SI)a,ia = 1and zeros elsewhere, so that
+SIX =X[I, :]. GivenJ ={j1 <···<j q}⊆ [n], define the column-selection
+matrixT J∈{0,1} n×q by(T J )jb,b = 1, so thatXTJ =X[:,J]. Then
+X[I,J] =S IXTJ.(2.13)
+Elementary matrices and entry constraints..For(i,j )∈ [m]× [n], letE(i,j)∈
+Rm×n be the matrix with a1at(i,j )and zeros elsewhere. ThenXij =c is
+equivalent to the affine constraint⟨E(i,j),X⟩=c.
+10
+Lemma 2.10(Compiling designated-entry and block-equality constraints).
+LetX∈R m×n.
+1. Fixing a set of designated entries{(it,jt)}Tt=1 to constants{ct}Tt=1 is
+representable byT affine constraints of the form⟨Aℓ,X⟩ = bℓ with
+Aℓ∈{0,1} m×n.
+2. Enforcing equality of two submatricesX[I,J ] = X[I′,J′]with |I| =|I′|
+and|J|=|J ′|is representable by|I||J|affine constraints.
+All such constraints have rational coefficients of bit-sizeO(1)(up to the
+encoding of indices), and the compilation is computable in time polynomial in
+m+n+T.
+Proof.(1) UseA ℓ =E (iℓ,jℓ) andb ℓ =c ℓ.
+(2) For each position(a,b )in the block, enforceXia,jb−Xi′a,j′b = 0, whichequals
+⟨E(ia,jb)−E (i′a,j′b),X⟩= 0.(2.14)
+Block-matrix display..When writing
+X=
+[
+X11 X12
+X21 X22
+]
+,
+we implicitly partition row and column indices into contiguous segments;
+when noncontiguous blocks are needed we explicitly specify index sets and
+useX[I,J]notation.
+Purpose..Lemma 2.10 ensures that all gadget constraints expressed in terms
+of designated entries and sub-block equalities are validARM(k)instances
+without repeatedly re-deriving the affine encoding.
+3. Problem Normal Form and Reduction Overview
+This section fixes the precise source normal form and target encoding
+used throughout the reduction, and states the main complexity consequences
+proved in later sections. No new technical arguments are introduced here; all
+nontrivial constructions and correctness proofs are deferred to Sections 5–8.
+The purpose of this section is to make the logical structure of the reduction
+explicit and to isolate the minimal algebraic primitives that must be simulated
+under a fixed rank bound.
+11
+3.1. Source Normal Form: ETR in Arithmetic-Circuit Equality Form
+As established in Section 2.1, we work with the existential theory of the
+reals(ETR)inthestandardbitmodel. ByLemma2.2, everyETRinstancecan
+be transformed in polynomial time into an equisatisfiable instance consisting
+solely of polynomial equalities.
+Rather than working with explicit polynomial equations, we adopt the
+arithmetic-circuit normal form formalized in Section 2.2. This representation
+is standard in∃R-reductions and allows gate-by-gate simulation using local
+algebraic constraints; see, e.g., [9, 15, 16].
+Concretely, every instance is reduced to an arithmetic circuitC over R
+with gate setGand designated output gateg out, such that
+∃x∈R n :p C(x) = 0⇐⇒ ∃(z g)g∈G : GateEq(C)∧z gout = 0,(3.1)
+as stated in Lemma 2.5.
+Each gate equation belongs to one of the following primitive types:
+(i)z=x+y,
+(ii)z=x·y,
+(iii)z=−x,
+(iv)z=c(c∈Q),
+(v)x≥0orx>0,(3.2)
+with inequalities eliminated via standard square- and inverse-based encodings
+(Lemma 2.2). This restricted gate set is sufficient to simulate arbitrary real
+algebraic constraints and is commonly used in∃R-completeness constructions.
+3.2. Target Problem: Fixed-Rank Affine Rank Minimization
+The target decision problem is Affine Rank Minimization with fixed rank
+bound k = 3, defined in Section 2.3. An instance consists of rational affine
+constraints
+⟨Aℓ,X⟩=b ℓ, ℓ∈[q],(3.3)
+together with the global constraint
+rank(X)≤3.(3.4)
+The reduction constructs a single global matrix variableX∈R m×n whose
+rank–3structure serves as a uniform carrier for all circuit scalars. Each circuit
+12
+variable is represented by a designated entry ofX, while all semantic relations
+between variables are enforced using affine constraints combined with the
+rank bound.
+The subtlety is that hardness persists even when the rank is fixed to a
+small constant. Fixed-rank algebraic feasibility problems are known to exhibit
+∃R-hardness in a variety of geometric and matrix-realization settings; see, e.g.,
+universality results stemming from Mnëv’s theorem and its refinements [18,
+19].
+3.3. Rank–3 as a Nonlinear Forcing Medium
+A central principle of the reduction is that global rank constraints can
+enforce nonlinear algebraic relations when combined with carefully placed
+affineequalities. Thekeyobservationiselementarybutpowerful: if rank(X)≤
+3, then every4×4minor ofXmust vanish.
+Consequently, any collection of affine constraints that forces the existence
+of a4× 4submatrix with nonzero determinant necessarily violates the rank
+bound. This mechanism allows multiplication constraints of the formz =xy
+to be enforced indirectly: one constructs a constant-size affine pattern such
+that any violationz̸=xyinduces a nonzero determinant in a4×4minor.
+Determinant-based rank obstructions of this type underlie universality
+phenomena in realization spaces and related rank-constrained models [18, 19].
+In the present work, this idea is distilled into a concrete rank–3forcing gadget
+developed and analyzed rigorously in Section 5.
+3.4. Reduction Mapping
+We now summarize the reduction at the statement level.
+Input..An arithmetic circuit C of sizes in the gate-equality normal form
+(3.1).
+Output..An ARM instance(M,b,k= 3)such that:
+•the matrix dimensionsm,nare polynomial ins;
+•the number of affine constraints isO(s);
+•all coefficients are rational with polynomial bit-length.
+13
+Construction outline..
+1. Introduce a single matrix variableXwithrank(X)≤3.
+2. Assign a designated entry ofXto each circuit wire occurrence.
+3. Enforce constants, copies, addition, and negation by affine equalities.
+4. Enforce multiplication and inverse relations via determinant-forcing
+gadgets.
+5. Eliminate inequalities using square- and inverse-based encodings.
+6. Fix a full-rank3×3submatrix ofXto remove gauge freedom.
+7. Enforce the circuit output constraint by fixing the designated output
+entry to zero.
+All steps are computable in polynomial time and preserve satisfiability.
+3.5. Main Complexity Statements
+We now state and prove the main complexity consequences of the con-
+struction.
+Theorem 3.1.ARM(k = 3)is ∃R-hard under polynomial-time many-one
+reductions.
+Proof. We give a polynomial-time many-one reduction from a fixed∃R-hard
+problem. Let the source instance be an existential system of polynomial
+equations over the reals
+∃y∈R d :f 1(y) = 0, ..., f q(y) = 0,(3.5)
+where eachfℓ is a polynomial with rational coefficients (one may take the
+standard definition of∃Rbased on such inputs).
+The reduction constructs, in polynomial time in the input size of(3.5),
+an instance ofARM(3)specified by affine constraints
+⟨Aℓ,X⟩=b ℓ, ℓ= 1,...,Q,(3.6)
+for a matrix variableX∈R m×n, together with the rank promise
+rank(X)≤3,(3.7)
+14
+such that(3.5) is satisfiable if and only if there exists anX satisfying (3.6)–
+(3.7).
+We justify the two directions.
+Soundness..Assume (3.5) is satisfiable, and fix a witness y⋆ ∈R d with
+fℓ(y⋆) = 0for all ℓ∈ [q]. Fromy⋆ we obtain a consistent assignment of real
+values to all carriers used by the construction (in particular, for every carrier
+entryXr,c that represents a source variable or an intermediate quantity, we set
+that carrier equal to the intended real value). For each constant-size gadget
+introduced by the reduction, the gadget-level correctness guarantee provides
+local factors
+U (t)∈R m×3, V (t)∈R 3×n,(3.8)
+in canonical gauge, such that the local matrix
+X (t) :=U (t)V (t) (3.9)
+satisfies all affine constraints of that gadget and matches the prescribed carrier
+values used by the gadget.
+The construction enforces a disjoint-support discipline: apart from a
+shared pinned3 × 3gauge block, different gadgets use disjoint fresh rows
+and disjoint fresh columns. Under this discipline, we may define global
+factors U,V by copying the rows ofU (t) and the columns ofV (t) onto the
+corresponding global indices gadget-by-gadget, and setting the remaining
+undefined rows/columns arbitrarily. Let
+X:=UV.(3.10)
+By construction, on the index sets touched by gadgett, the global factors
+coincide with the local factors, and henceX agrees entrywise withX (t) on
+every entry that appears in gadgett. Therefore every affine constraint from
+every gadget holds forX. Since X is a product of anm× 3and a3 ×n
+matrix, we also haverank(X)≤3. Thus (3.6)–(3.7) is satisfiable.
+Completeness..Assume the constructed ARM(3)instance (3.6)–(3.7) is sat-
+isfiable, and letX⋆ be a feasible solution. By the pinned gauge constraints
+in the instance, a fixed3× 3submatrix of X⋆ equals a full-rank constant
+matrix B. Since rank(X⋆)≤ 3, we may writeX⋆ =UV for someU∈R m×3,
+V∈R 3×n. Using the invertibility of the pinned block, we may apply a
+change of basis inR3 to put(U,V )into canonical gauge so that the pinned
+15
+rows/columns are fixed; in this gauge, there is no residual ambiguity on any
+row/column that participates in the constraints.
+Now read off the values of all designated carriers fromX⋆ (i.e., interpret
+the designated entries as the reals intended by the reduction). BecauseX⋆
+satisfies every gadget’s affine constraints, the gadget-level decoding guaran-
+tees imply that these carrier values satisfy the intended algebraic relations
+(copy constraints, constants, additions, multiplications, and the final output
+condition encoded by the construction). Hence the decoded assignment yields
+a real witnessy⋆ satisfying (3.5). Therefore the source instance is satisfiable.
+Complexity of the map..The reduction introduces only a constant number
+of fresh carriers and affine constraints per source equation and per gadget,
+and all coefficients are rational numbers of polynomial bit-length in the
+input description. Hence the mapping from(3.5) to (3.6) is computable in
+polynomial time and is a many-one reduction.
+Therefore ARM(3)is∃R-hard.
+Theorem 3.2.For every fixedk≥1, ARM(k)∈∃R.
+Proof. Fix k≥ 1. An instance of ARM(k)consists of rational matrices
+A1,...,A q ∈Q m×n and rationals b1,...,b q ∈Q , and asks whether there
+existsX∈R m×n such that
+⟨Aℓ,X⟩=b ℓ, ℓ= 1,...,q,(3.11)
+and
+rank(X)≤k.(3.12)
+We exhibit an equivalent existential sentence over the reals with polynomial
+equations.
+Introduce variables for matricesU∈R m×k andV∈R k×n and define
+X:=UV.(3.13)
+Then (3.12) holds automatically for any suchX, since rank(UV )≤k . Sub-
+stituting (3.13) into (3.11) yields, for eachℓ,
+⟨Aℓ,UV⟩=b ℓ.(3.14)
+Each left-hand side of(3.14) is a polynomial of degree2in the entries ofU
+16
+andV: indeed,
+⟨Aℓ,UV⟩=
+m∑
+i=1
+n∑
+j=1
+(Aℓ)ij(UV) ij =
+m∑
+i=1
+n∑
+j=1
+(Aℓ)ij
+k∑
+t=1
+UitVtj.(3.15)
+Therefore ARM(k)is equivalent to the existential sentence
+∃U∈R m×k∃V∈R k×n :
+q⋀
+ℓ=1
+(
+⟨Aℓ,UV⟩−b ℓ = 0
+)
+,(3.16)
+which is an∃R instance (existential quantification over reals with polynomial
+equalities). Hence ARM(k)∈∃R.
+Corollary 3.3.ARM(k= 3)is∃R-complete.
+Proof. By Theorem 3.1, ARM(3)is∃R-hard. By Theorem 3.2, ARM(3)∈∃R .
+Therefore ARM(3)is∃R-complete.
+4. The Rank–3 Template and Gauge Fixing
+This section defines a single global matrix variableX∈R m×n whose
+rank–3structure serves as a uniform carrier for all scalar quantities appearing
+in the arithmetic circuit encoding. Each circuit variable is represented by
+a designated entry ofX, while all semantic relations are enforced by affine
+constraints. Since low–rank factorizations are not unique, special care is
+required to ensure that the scalar values encoded by designated entries are
+well-defined. We resolve this issue via explicit gauge fixing.
+4.1. Designated Value Carriers
+Let{z1,...,z N} denote the real-valued variables corresponding to the
+gate variables introduced in the arithmetic circuit encoding (Section 2). We
+represent each such scalar by a designated entry of the matrixX.
+Lemma 4.1(Affine constraints for designated entries).LetX∈R m×n.
+1. Fixing an entry: for any(r,c )∈ [m]× [n]and any a∈Q , the constraint
+Xr,c =a(4.1)
+can be written as a single affine constraint⟨A,X⟩=b.
+17
+2. Equality of two entries: for any(r,c ), (r′,c′)∈ [m]× [n], the constraint
+Xr,c =X r′,c′ (4.2)
+can be written as a single affine constraint⟨A,X⟩=b.
+Proof. For (4.1), letA∈R m×n haveAr,c = 1and all other entries0, and set
+b=a. Then⟨A,X⟩=X r,c =b.
+For (4.2), letA haveAr,c = 1, Ar′,c′ =−1, and all other entries0, and set
+b= 0. Then⟨A,X⟩=X r,c−Xr′,c′ = 0.
+Definition 4.2(Designated entries).For each circuit variablezi, fix an index
+pair(r i,ci)∈[m]×[n]and define
+xi :=X ri,ci.(4.3)
+We refer to(ri,ci)as the designated position carrying the value ofzi.
+Fixing a designated entry to a constant or enforcing equality between two
+designated entries is representable by affine constraints of the form⟨A,X⟩ =b
+by Lemma 4.2 Lemma 4.1. Hence, all constraints introduced in this section
+are valid instances of ARM(3).
+The key requirement is that the mapping
+X↦−→(x 1,...,x N )(4.4)
+be well-defined over the feasible set of matrices satisfyingrank(X)≤ 3and
+all imposed affine constraints.
+4.2. Gauge Freedom of Rank–3 Factorizations
+By Lemma 2.7, the constraintrank(X)≤ 3is equivalent to the existence
+of matricesU∈R m×3 andV∈R 3×n such that
+X=UV.(4.5)
+Such a factorization is not unique: for any invertibleG∈GL(3),
+UV= (UG)(G −1V).(4.6)
+Thisgauge freedomimplies that the matrices U and V are not canonical.
+While the product X is invariant under (4.6), the existence of multiple
+18
+factorizations raises the question of whether the decoding(4.4) is independent
+of the chosen factorization. Explicit gauge fixing is therefore required.
+4.3. Gauge Fixing via a Pinned3×3Submatrix
+We eliminate all nontrivial gauge freedom by pinning a constant3× 3
+submatrix ofX.
+Lemma 4.3(Gauge-fixing lemma).Let I0⊆ [m]and J0⊆ [n]with |I0| =
+|J0| = 3. Fix a constant full-rank matrixB∈R 3×3 (e.g., B =I3) and impose
+the affine constraint
+X[I 0,J 0] =B.(4.7)
+Then for every matrixX satisfying rank(X)≤ 3and all affine constraints,
+the decoded valuesxi =X ri,ci are uniquely determined.
+Proof. Let X =UV be any factorization satisfying(4.5). Restricting to the
+pinned indices yields
+U[I 0,:]V[:,J 0] =B.(4.8)
+SinceB has rank3, both matricesU [I0, :]and V [:,J 0]must have rank at least
+3. As they are3×3matrices, both are invertible.
+Now consider two rank–3factorizationsX =UV =U′V′. By (4.5), there
+existsG∈GL(3)such thatU ′ =UGandV ′ =G−1V.
+Restricting to the pinned indices and using (4.6), we obtain
+U[I 0,:]V[:,J 0] =U[I 0,:]G
+(
+G−1V)[:,J 0].(4.9)
+Since U [I0, :]and V [:,J 0]are invertible, it follows thatG =I3. Hence the
+factorization is unique up to the trivial gauge, and therefore every entry ofX,
+in particular each designated entryXri,ci, is invariant across all admissible
+rank–3factorizations.
+Remark4.4 (Affine implementability).Each equality in (4.7) corresponds to
+an affine constraint of the form⟨E(i,j),X⟩ =Bab. The number of gauge-fixing
+constraints is constant and independent of the input size.
+4.4. Consistency Constraints and Fan-Out
+Arithmetic circuits allow unrestricted fan-out: a gate output may feed
+multiple subsequent gates. This is enforced by equality constraints between
+designated entries.
+19
+Definition 4.5(Consistency constraints).If two circuit variableszi and zj
+represent the same logical quantity, we impose
+Xri,ci =X rj,cj.(4.10)
+By Lemma 4.2, each constraint(4.10) is representable by a single affine
+constraint. These ensure that all copies of a wire carry identical decoded
+scalar values.
+4.5. Well-Definedness and Soundness
+We now separate the correctness guarantees provided by the rank–3
+template.
+Lemma 4.6(Well-defined decoding).For any X satisfying rank(X)≤ 3
+and all constraints of Sections 4.1–4.4, the decoded values(x1,...,x N )are
+uniquely determined.
+Proof. This follows immediately from Lemma 4.3 and the definition of desig-
+nated entries.
+Lemma 4.7(Semantic correctness).All affine constraints encoding circuit
+gates and wire equalities are satisfied exactly by the decoded values(x1,...,x N ).
+Proof. Each gate constraint is enforced directly as an affine equality between
+designated entries. By Lemma 4.6, the decoded values satisfy these equalities
+uniquely.
+Theorem 4.8(Soundness of the rank–3 encoding).The rank–3ARM instance
+constructed from the circuit is satisfiable if and only if the original arithmetic
+circuit is satisfiable.
+Proof. (If) Given a satisfying assignment to the circuit variables, construct
+X by fixing the gauge block(4.9), assigning each designated entry according
+to the circuit values, and completing the remaining entries to obtain a rank–3
+matrix.
+(Only if) Given a feasibleX, decode the circuit values via(4.3). By
+Lemmas 4.6 and 4.7, these values satisfy all circuit constraints.
+20
+5. Rank-Forcing Primitives
+This section develops the core technical machinery of the reduction:rank-
+forcing primitivesthat enforce nonlinear algebraic relations using only affine
+constraints together with a global rank boundrank(X)≤ 3. All constraints in-
+troduced here are valid ARM(3)instances (Definition 2.6) and are compatible
+with the rank–3template and gauge-fixing constraints of Section 4.
+The central result is a determinant-based forcing gadget that enforces
+multiplication relations of the formc =ab between designated scalar variables.
+This gadget replaces all minor-based constraints used in earlier reductions
+and is the technical heart of the construction.
+5.1. Forcing Under a Global Rank Constraint
+We begin with two elementary but crucial linear-algebraic facts.
+Lemma 5.1(Rank Monotonicity).Let X∈R m×n and letY be any submatrix
+ofX. Then
+rank(X)≥rank(Y).
+Proof. Any set of linearly independent rows (or columns) ofY remains linearly
+independent when viewed as rows (or columns) ofX.
+Lemma 5.2(Vanishing of4 × 4Minors).If rank(X)≤ 3, then every4× 4
+minor ofXhas determinant zero.
+Proof. A4 × 4submatrix of X has rank at mostrank(X)≤ 3, so its deter-
+minant vanishes.
+Lemmas 5.1 and 5.2 formalize the forcing principle used throughout this
+section: any violation of a bilinear identity that produces a4× 4submatrix
+of full rank necessarily contradicts the global rank bound.
+5.2. The Determinant-Forcing Gadget
+We now present the key forcing primitive.
+Lemma 5.3(Determinant-Forcing Gadget).There exists a constant-size
+system of affine constraints on a matrixX∈R m×n with designated entries
+a,b,csuch that:
+(Soundness)IfXsatisfies all constraints andrank(X)≤3, then
+c=ab.(5.1)
+21
+(Completeness) For any real numbers(a,b,c )satisfying c =ab, there exists a feasible
+matrixXwithrank(X)≤3satisfying all constraints.
+Construction..Fixtworowindices r1,r 2 andtwocolumnindices c1,c 2. Impose
+the affine constraints
+X[{r 1,r 2},{c 1,c 2}] =
+(
+1a
+b c
+)
+.(5.2)
+All other entries of X remain unconstrained except for the gauge-fixing
+constraintsofSection4. Constraint (5.2)isimplementedusingfourdesignated-
+entry constraints (Lemma 4.1).
+5.3. Algebraic Rank Obstruction
+The forcing effect of the gadget is captured by the following explicit rank
+obstruction.
+Lemma 5.4(Rank Obstruction via a4× 4Determinant).Assume the gauge-
+fixing constraints of Section 4 are imposed, fixing a full-rank3× 3submatrix
+X[I 0,J 0] =B. If the designated entries satisfyc̸=ab, then
+rank(X)≥4.
+Proof. Let i1,i 2∈I 0 and j1,j 2∈J 0 be any two indices. Consider the4× 4
+submatrix
+Y=
+
+
+B[i1,i 1]B[i 1,i 2] 0 0
+B[i2,i 1]B[i 2,i 2] 0 0
+0 0 1a
+0 0b c
+
+.
+SinceBis invertible, the top-left2×2block has nonzero determinant. The
+determinant ofYfactorizes as
+det(Y) = det(B[i 1,i 2;i 1,i 2])·(c−ab).
+If c̸ = ab, then det(Y )̸= 0, so rank(Y ) = 4. By Lemma 5.1, rank(X)≥
+rank(Y) = 4.
+5.4. Soundness of the Gadget
+Proof of Lemma 5.3 (Soundness).Assume X satisfies all constraints and
+rank(X)≤ 3. If c̸ = ab, Lemma 5.4 implies rank(X)≥ 4, a contradic-
+tion. Thereforec=ab.
+22
+5.5. Constructive Completeness
+Proof of Lemma 5.3 (Completeness).Assume c = ab. Fix the gauge block
+X[I0,J 0] = B as in Section 4. Define three vectorsu1,u 2,u 3∈R n corre-
+sponding to the three gauge rows. Define the two gadget rows explicitly
+as
+(1,a) =α 1u1 +α 2u2 +α 3u3,(b,c) =b(1,a),
+where the coefficientsαi exist since the gauge rows spanR3. All remaining
+rows ofX are defined as arbitrary linear combinations ofu1,u 2,u 3. Thus
+every row ofX lies in a3-dimensional subspace, sorank(X)≤ 3. All affine
+constraints are satisfied by construction.
+5.6. Non-Degeneracy and Uniqueness
+Lemma 5.5(No Spurious Solutions).Under the gauge-fixing constraints, the
+determinant-forcing gadget admits no feasible solution withrank(X)≤ 3and
+c̸=ab.
+Proof.Immediate from Lemma 5.4.
+5.7. Complexity Accounting
+Lemma 5.6(Primitive Complexity).Each determinant-forcing gadget uses:
+•O(1)rows and columns,
+•exactly four designated-entry constraints,
+•O(1)affine constraints with coefficients in{0,±1}.
+5.8. Role in the Reduction
+Lemma 5.3 is the fundamental nonlinear forcing primitive of the reduction.
+It allows multiplication gates in the arithmetic circuit encoding (Section 2.2)
+to be simulated exactly using affine constraints and a global rank bound. To-
+gether with equality and gauge-fixing constraints, it completes the simulation
+of arbitrary arithmetic circuits inside ARM(3).
+23
+6. Gate Gadgets Compiled into Affine Constraints
+This section completes the reduction by compiling each gate of an arith-
+metic circuit (Section 2.2) into a constant-size collection of affine constraints
+over the global matrix variableX∈R m×n, together with the single global
+constraint rank(X)≤ 3. All nonlinear semantics are enforced exclusively
+via rank obstruction, using the determinant-forcing primitive developed in
+Section 5.
+Throughout, scalar variablesx,y,z denote decoded values of designated
+entries ofX(Definition 4.2).
+6.1. Constant and Copy Constraints
+Construction convention (fresh indices and occurrence-carriers)..In the com-
+pilation below, each gate gadgetG is allocated its ownfreshauxiliary row
+indicesI(G)⊆ [m]and auxiliary column indicesJ (G)⊆ [n], disjoint from
+the auxiliary indices of every other gadget. Moreover, we useoccurrence-
+based carriers: eachoccurrenceof a circuit value (gate output used as an
+input elsewhere, fan-out, etc.) is given its own designated position(r,c ),
+and whenever two occurrences must represent the same scalar we enforce
+equality only via explicit affine copy constraints of the form(6.2). Thus
+gadgets may share values (through copy constraints), but they never reuse
+the same auxiliary indices, and they never rely on reusing the same carrier
+position across distinct gadgets.
+Constant gadget..To enforcex=cforc∈Q, impose
+Xrx,cx =c.(6.1)
+Copy gadget..To enforcex=y, impose
+Xrx,cx−Xry,cy = 0.(6.2)
+Fan-out and wire occurrences..Whenever a scalar produced at one point in
+the circuit is used multiple times (e.g., a gate output feeding several later
+gates), we donotreuse the same designated position(r,c )across those uses.
+Instead, each use is assigned a fresh designated carrier entry, and we enforce
+equality of all such occurrences solely through a collection of copy constraints
+of the form(6.2). This convention is used throughout the compilation and is
+critical for the global rank–3embedding argument in Section 8.
+24
+Lemma 6.1(Constant and copy correctness).Constraints (6.1) and (6.2)
+enforcex=candx=y, respectively, independently of the rank constraint.
+Proof. Equation (6.1) sets the designated entryXrx,cx equal to the rational
+constantc by an affine equality, hence the decoded value satisfiesx =c in
+every feasible solution, regardless ofrank(X). Similarly, (6.2) is the affine
+equality Xrx,cx = Xry,cy, hence the decoded values satisfyx = y in every
+feasible solution, again independent ofrank(X).
+6.2. Addition and Negation Gadgets
+Lemma 6.2(Addition gadget).There exists a constant-size affine system
+enforcing
+z=x+y.(6.3)
+Proof. Let(rx,cx), (ry,cy), (rz,cz)be the designated carriers ofx,y,z . Impose
+the single affine constraint
+Xrz,cz−Xrx,cx−Xry,cy = 0,
+which is linear in the entries ofX. Decoding yields z−x−y = 0, i.e.,
+z=x+y. The system has constant size (one equation).
+Lemma 6.3(Negation gadget).There exists a constant-size affine system
+enforcing
+z=−x.(6.4)
+Proof.Impose the affine constraint
+Xrz,cz +Xrx,cx = 0.
+Decoding givesz +x = 0, hence z =−x. Again the system has constant
+size.
+6.3. Multiplication Gadget
+Multiplication is enforced using the determinant-forcing primitive of
+Lemma 5.3.
+Lemma 6.4(Multiplication correctness).There exists a constant-size affine
+system such that, underrank(X)≤3,
+z=xy.(6.5)
+25
+Figure 1: Determinant-forcing multiplication gadget. The2× 2block is combined with the
+fixed3×3gauge block; any violation ofz=xyinduces a nonzero4×4determinant.
+Proof. Apply the determinant-forcing construction of Lemma 5.3 to the
+designated entries carryingx,y,z . By that lemma, the gadget introduces only
+O(1)auxiliary entries (henceO(1)affine constraints) and has the following
+two properties.
+Soundness.If z̸ = xy, then Lemma 5.4 guarantees the existence of
+a4 × 4minor of the resulting constrained matrix whose determinant is
+nonzero. Hence any matrix satisfying the gadget constraints must have rank
+at least4, contradicting the global constraintrank(X)≤ 3. Therefore, under
+rank(X)≤3, feasibility forcesz=xy.
+Completeness.If z =xy, then Lemma 5.3 explicitly constructs a matrix
+satisfying all gadget affine constraints with rank at most3. Embedding this
+constant-size completion into the global matrix (using fresh indices) preserves
+feasibility and rank≤3.
+Thus the gadget enforces (6.5) exactly underrank(X)≤3.
+26
+6.4. Inversion and Nonzero Constraints
+Lemma 6.5(Inverse gadget).Under rank(X)≤ 3, the affine constraints
+enforcing
+xy= 1(6.6)
+implyx̸= 0andy= 1/x.
+Proof. The constraint (6.6) is implemented by the multiplication gadget
+(Lemma 6.4) with designated output fixed to the constant1using Lemma 6.1.
+Hence, underrank(X)≤3, feasibility impliesxy= 1holds over the reals.
+If x = 0, then xy = 0for all y, contradictingxy = 1. Therefore x̸ = 0.
+Sincex̸= 0, dividing both sides ofxy= 1byxyieldsy= 1/x.
+6.5. Inequalities via Squares
+Lemma 6.6(Nonnegativity).A scalar x satisfies x≥ 0iff there exists s
+such that
+x=s 2.(6.7)
+Proof.(⇒) Ifx≥0, lets:= √x∈R. Thens 2 =x.
+(⇐) If x = s2 for some reals, then x≥ 0since squares of reals are
+nonnegative.
+Lemma 6.7(Strict positivity).A scalar x satisfies x> 0iff there exist s,t
+such that
+x=s 2, st= 1.(6.8)
+Proof. (⇒) Ifx >0, lets :=√x >0and set t := 1/s. Then x = s2 and
+st= 1.
+(⇐) Ifx =s2 and st = 1for reals s,t, thenst = 1implies s̸ = 0. Hence
+x=s 2 >0.
+Implementation..The constraints (6.7) and (6.8) are implemented by intro-
+ducing fresh designated carriers fors (and t where needed), enforcingx =s2
+using Lemma 6.4 with both inputs equal tos, and enforcingst = 1using
+Lemma 6.4 together with Lemma 6.1. The inverse consequences are justified
+by Lemma 6.5.
+27
+6.6. Gate-Level and Circuit-Level Completeness
+Indexing convention for circuit compilation..In the circuit-level compilation,
+each gate instance is translated into its own constant-size gadget, using fresh
+auxiliary rows/columns that are never reused across gates. Moreover, we
+treat eachoccurrenceof a wire value as a separate designated entry ofX: if
+an output feeds multiple subsequent gates, each use is given its own carrier
+position, and equality of occurrences is enforced explicitly via copy constraints
+of the form(6.2). This convention guarantees that all gadgets compose over
+disjoint auxiliary supports, and that sharing of values across the circuit occurs
+only through explicit affine consistency constraints.
+Theorem 6.8(Gate completeness).Every arithmetic gate over R used in the
+circuit model of Section 2.2 can be compiled intoO(1)affine constraints such
+that, under rank(X)≤ 3, the decoded values satisfy the exact gate semantics.
+Proof. By construction, the gate set used in Section 2.2 is compiled using only
+the gadgets introduced above: constants and copies (Lemma 6.1), addition and
+negation (Lemmas 6.2–6.3), multiplication (Lemma 6.4), inversion/nonzero
+(Lemma 6.5), and (when needed) inequalities reduced to square and inverse
+constraints (Lemmas 6.6–6.7 plus the implementation paragraph).
+Each of these gadgets uses onlyO(1)affine constraints and is correct:
+for linear gates, correctness holds independent of rank (Lemmas 6.1, 6.2,
+6.3); for nonlinear primitives, correctness holds under rank(X) ≤ 3via
+rank obstruction (Lemmas 6.4, 6.5) and the real-algebraic equivalences for
+inequalities (Lemmas 6.6, 6.7). Therefore any single gate instance can be
+compiled intoO(1)affine constraints whose feasibility under rank(X)≤ 3
+enforces the exact gate semantics.
+Remark6.9 (Uniform gauge for all gadget completions).All gate gadgets are
+completed under thesamepinned block constraint X[I0,J 0] = B (Lemma
+4.3). In particular, whenever we invoke gate-level completeness to claim
+the existence of a rank-3witness matrix for a gadget, we may (and will)
+take that witness to be represented in thecanonical gaugeinduced by the
+pinned block, i.e., by choosing a factorizationX =UV with U [I0, :] = I3 and
+V [J0, :] = B⊤. This uniform gauge choice is what allows all gadget witnesses
+to be embedded into a single global factorization in Section 8, without any
+factor-level inconsistencies.
+28
+Corollary 6.10(Linear-size circuit compilation).An arithmetic circuit of
+size s can be compiled into an ARM(3) instance withO(s)affine constraints
+and variables.
+Proof. Each gate in the circuit is compiled into a constant-size gadget with
+O(1)affine constraints and O(1)new auxiliary indices (rows/columns and
+designated carriers). By the indexing convention above, gadgets do not reuse
+auxiliary indices, and each wire occurrence introduces at most one additional
+carrier plus O(1)copy constraints. Therefore, the total number of affine
+constraints and auxiliary variables grows linearly with the number of gate
+instances and wire occurrences, bothO(s)for a circuit of sizes. Hence the
+resulting ARM(3)instance has sizeO(s).
+6.7. Global Correctness of the Reduction
+Theorem 6.11(Correctness of ARM(3) encoding).The constructed ARM(3)
+instance is feasible if and only if the original arithmetic circuit is satisfiable.
+Proof. (⇒) Suppose the ARM(3)instance is feasible: there existsX∈R m×n
+satisfying all compiled affine constraints andrank(X)≤ 3. Decode every
+circuit wire occurrence by reading its designated carrier value (Definition 4.2).
+Copy constraints (6.2) ensure all occurrences meant to be equal indeed
+decode to the same real value (Lemma 6.1). For each gate instance, the
+corresponding gadget constraints hold inX, and by Theorem 6.8 (soundness
+of the compiled gadgets underrank(X)≤ 3) the decoded values satisfy the
+exact gate semantics. Therefore, by topological evaluation of the circuit DAG,
+the decoded assignment satisfies every gate equation and hence the circuit is
+satisfiable overR.
+(⇐) Suppose the arithmetic circuit is satisfiable. Fix any satisfying
+assignment of real values to every wire occurrence consistent with fan-out. For
+each gate instance, by Theorem 6.8 (completeness of the corresponding gadget)
+there exists a rank-3completion satisfying that gate’s affine constraints under
+the pinned block. Using the fresh-index convention, embed each constant-
+size gadget completion into the global matrix on disjoint auxiliary supports,
+enforcing equality between wire occurrences using copy constraints. Since
+the gadgets share only designated values (and the common pinned block),
+they compose without interference, yielding a global feasible matrixX with
+rank(X)≤ 3satisfying all affine constraints. Hence the ARM(3)instance is
+feasible.
+29
+6.8. Rank-3 Minimality
+Lemma 6.12(Rank–3minimality for determinant forcing).Rank–2matrices
+cannot support determinant-based multiplication forcing of the form used
+in Lemma 5.3: every3 × 3minor vanishes identically. Consequently, no
+construction that relies on a nonzero3× 3or4 × 4minor as an obstruction
+can enforcez=xyunder a global rank boundrank(X)≤2.
+Proof. If rank(X)≤ 2, then every set of three rows ofX is linearly dependent,
+hence every3× 3minor has determinant0. In particular, any4× 4minor
+also has determinant0since rank ≤ 2implies all k×k minors vanish for
+k≥ 3. The determinant-forcing primitive (Section 5) derives a contradiction
+by producing a minor of size at least3with nonzero determinant whenz̸ =xy.
+Such an obstruction is impossible underrank(X)≤ 2. Therefore rank3is
+the minimal rank at which this determinant-based forcing mechanism can
+operate.
+Remark6.13.Lemma 6.12 formalizes why rank–3is the smallest global rank
+bound compatible with our multiplication gadget and, by extension, with
+exact simulation of nonlinear arithmetic in this framework.
+7. Reduction Interface: From ETR/Circuits toARM(3)
+This section closes the construction layer and opens the correctness layer.
+The preceding construction has already specified how to compile each arith-
+metic gate into a constant-size affine gadget under the global constraint
+rank(X)≤ 3(Theorem 4.8), and it implies that a circuit of sizes yields an
+ARM(3)instance with O(s)designated carriers and O(s)affine constraints.
+Here we state the reduction mapping and record the precise equivalence
+statement in the form needed for the soundness and completeness proofs,
+which proceed by global composition (Lemma 8.4).
+7.1. Source normal form recalled: ETR in circuit/gate form
+We take as source language the existential theory of the reals (ETR) in
+the standard bit model, i.e., sentences of the form
+∃x∈R n :φ(x),(7.1)
+whereφ is a quantifier-free Boolean combination of polynomial predicates. As
+fixed in this manuscript, we use the following standard compilation pipeline.
+30
+An ETR instance is converted in polynomial time to anarithmetic circuit
+C together with the single output constraintpC(x) = 0, and then to the
+corresponding gate-variable constraint systemGateEq(C)encoding the circuit
+semantics.
+Concretely, given a circuitC with gate setG and designated output gate
+gout, we introduce a real variablezg for every gateg∈G and impose one
+equality per gate to define GateEq(C)(Section 1.2). The key exactness
+guarantee is:
+pC(x) = 0⇐⇒ ∃(z g)g∈G∈R|G| : GateEq(C)∧z gout = 0,(7.2)
+which is the standard circuit-semantics equivalence.
+7.2. Target format recalled:ARM(3)with designated carriers
+AnARM(3)instance consists of rational affine constraints
+⟨Aℓ,X⟩=b ℓ, ℓ∈[q],(7.3)
+together with the rank bound
+rank(X)≤3,(7.4)
+where⟨A,X⟩is the Frobenius inner product.
+To encode circuit scalars into a single matrix variableX∈R m×n, we use
+designated entries(Definition 4.2): for each circuit gate-variable (and, by
+the circuit compilation convention, for each wire occurrence) we fix a carrier
+position(r i,ci)and decode
+xi :=X ri,ci.(7.5)
+Fan-out is handled by explicit affineconsistency constraintsequating carriers
+(Definition 2.4), i.e., constraints of the formXri,ci =X rj,cj.
+Finally, all gadgets are completed under the same pinned block constraint
+(Lemma 4.3), fixing a full-rank3× 3submatrix X[I0,J 0] = B; this eliminates
+nontrivial gauge freedom and ensures the decoding(7.5) is well-defined over
+the feasible set.
+7.3. The reduction mapping (statement-level)
+Given a circuit instance in gate-variable formGateEq(C)∧zgout = 02.2,
+we construct anARM(3)instance as follows.
+31
+1. Assign a designated carrier(ri,ci)to each wire occurrence and each
+gate output (Definition 4.2 and Definitions 8.1–8.2).
+2. For each equality required by fan-out, add the corresponding consistency
+constraint equating the two designated carriers Definition 2.4.
+3. For each gate equation in GateEq(C), add the constant-size affine
+gadget constraints constructed in 4: constants/copies Lemma 4.1,
+addition/negation Lemma 4.3, multiplication via determinant forcing
+( 3), and (when present in the circuit model) inversion/nonzero and
+inequality encodings ( 4.4).
+4. Add the output constraintXrout,cout = 0for the carrier ofz gout.
+By construction, every constraint above is affine and is representable in
+the input format (7.3) Lemma 4.1.
+7.4. Size and encoding guarantees
+We isolate the bookkeeping facts needed for the complexity reduction.
+Lemma 7.1(Linear-size compilation).Let C be an arithmetic circuit withs
+gates. The compilation described in 6, 7 produces anARM(3)instance with
+O(s)designated carriers andO(s)affine constraints.
+Proof. Each gate ofC is translated into a constant-size gadget: the construc-
+tion introducesO(1)fresh auxiliary rows/columns andO(1)affine constraints
+per gate gadget, and it introduces onlyO(1)designated carriers per gate (for
+the input/output carriers of that gadget). The only shared objects across
+gadgets are the fixed gauge block indicesI0,J 0 and the corresponding pinned
+constraints, which contributeO(1)additional constraints. Therefore, summing
+oversgates yieldsO(s)designated carriers andO(s)affine constraints.
+Lemma 7.2(Polynomial bit-complexity).The reduction produces rational
+constraint data of total bit-length polynomial in the bit-length of the input
+circuit.
+Proof. All gadget constraints use a constant number of affine equalities whose
+coefficient matrices have entries in{0,± 1}, except for constraints that fix
+designated entries to circuit constants. Those constants are copied directly
+from the circuit description. The gauge-fixing constraints pin a constant-size
+32
+3× 3block with fixed rational data. Since the total number of constraints
+is O(s)by Lemma 7.1, and each constraint has polynomial-size rational
+encoding, the total encoding length is polynomial in the input size (and in
+fact linear insup to the bit-length of the input constants).
+7.5. Correctness interface theorem (proved in 5)
+Lemma 7.3(Circuit semantics equivalence).Let C be an arithmetic circuit
+over R with gate setG, output gategout, and designated input tuplex (assigned
+to the input gates). Let zg ∈R denote the value carried by gateg. Let
+GateEq(C)denote the conjunction of all gate equations enforcing the local
+semantics of every gate ofC (inputs, constants, additions, multiplications).
+Let pC(x)be the real number obtained by evaluating the circuit on inputx
+(i.e., the value at the output gate under the unique semantics ofC). Then
+pC(x) = 0⇐⇒ ∃(z g)g∈G∈R|G| : GateEq(C)∧z gout = 0.(7.6)
+Proof. (⇒) AssumepC(x) = 0. Evaluate the circuitC on inputx gate-by-gate
+in topological order. This produces a valuezg∈R for every gateg∈G such
+that: (i) for each input/constant gate,zg equals its prescribed value, and
+(ii) for each addition gateg with childreng1,g 2, we havezg =zg1 +zg2, and
+(iii) for each multiplication gateg with childreng1,g 2, we havezg =zg1zg2.
+Hence GateEq(C)holds for this assignment(zg)g∈G. Moreover, by definition
+of pC(x)as the output value,zgout = pC(x) = 0. Therefore the right-hand
+side of (7.6) holds.
+(⇐) Assume there exists an assignment(zg)g∈G satisfying GateEq(C)
+and zgout = 0. The constraints GateEq(C)enforce that each gate value is
+consistent with its local operation and its children. Since the circuit is acyclic,
+these equations uniquely determine every gate value from the inputs (by
+induction along any topological ordering). In particular, the value enforced at
+the output gate equals the circuit evaluationpC(x). HencepC(x) = zgout = 0,
+proving the left-hand side.
+We now state the equivalence needed to complete the∃R-hardness pipeline.
+Theorem 7.4(Circuit satisfiable iff compiledARM(3)instance feasible).Let
+C be the arithmetic circuit instance, and letpC denote the output polynomial.
+LetI(C)be the ARM(3)instance obtained by applying the gadget construc-
+tion together with the interface mapping (designated carriers, consistency
+33
+constraints, and the pinned block). Then
+∃x∈R n :p C(x) = 0⇐⇒ ∃X∈R m×n : rank(X)≤3∧X|=I(C).
+(7.7)
+Proof.We prove both directions.
+Soundness (⇒)..Assume ∃x∈R n such thatpC(x) = 0. By Lemma 7.3,
+there exists an assignment of gate values(zg)g∈G satisfying the gate equations
+GateEq(C)and zgout = 0. Use these values to assign consistent real numbers
+to all designated carriers used in the reduction (inputs, intermediate gate
+outputs, and any copied occurrences), respecting every affine copy/constant
+constraint by construction.
+For each gadgetGt produced by the compilation, the gadget-level com-
+pleteness property yields local factors
+U (t)∈R m×3, V (t)∈R 3×n
+in the canonical gauge, such thatX (t) := U (t)V (t) satisfies all affine con-
+straints ofGt and matches the designated carrier values used byGt. Applying
+Lemma 8.4 to the family of all gadgets, we obtain global factorsU,Vin the
+same canonical gauge such that the global matrix
+X:=UV(7.8)
+satisfiesallgadget constraints simultaneously and matches all designated
+carrier values. Since X is a product of an m× 3and a3 ×n matrix,
+rank(X)≤3holds. HenceX|=I(C), establishing the forward direction.
+Completeness (⇐)..Assume there exists X∈R m×n such that rank(X)≤ 3
+and X| =I(C). By Lemma 8.3, we may fix a rank–3factorizationX =UV
+in canonical gauge. Read off the values of all designated carriers fromX
+(i.e., the designated entries that encode circuit inputs, gate outputs, and
+copied occurrences). Because X satisfies every gadget’s affine constraints
+under rank(X)≤ 3, the gadget-level soundness property implies that these
+decoded carrier values satisfy the intended algebraic relations gate-by-gate,
+and in particular the decoded gate values satisfyGateEq(C)and the compiled
+output condition enforces that the decoded output value equals0.
+Therefore, by Lemma 7.3, there exists an input assignmentx∈R n such
+thatp C(x) = 0, proving the reverse direction.
+34
+Consequence for∃R..The standard reductions defining∃R allow us to start
+from an existential system of polynomial equations over the reals and compile
+it, in polynomial time, into an arithmetic circuit satisfiability instance of
+the form∃x∈R n : pC(x) = 0. Applying Theorem 7.4 therefore yields
+∃R-hardness of ARM(3). Moreover, for every fixedk≥ 1, ARM(k)∈∃R via
+an explicit rank-kfactorization witness. HenceARM(3)is∃R-complete.
+8. Correctness Proofs
+This section establishes the bidirectional correctness of the reduction:
+soundness(a satisfying circuit assignment yields a feasible ARM(3)instance)
+andcompleteness(a feasible ARM(3)solution decodes to a satisfying as-
+signment). The only genuinely delicate point is global consistency: many
+constant-size gadgets are superimposed in one matrix, and we must ensure
+they compose without any hidden algebraic coupling. We make this rigorous
+by (i) recording the index-discipline properties guaranteed by the construction
+in Section 6, (ii) fixing a canonical gauge for rank-3factorizations via the
+pinned block of Lemma 4.3, and (iii) proving that all gadget witnesses can be
+embedded into asingleglobal factorizationX=UV.
+Throughout, we use the designated carrier convention from Definition 4.2:
+for each circuit valuezi we write
+xi :=X ri,ci,
+where(r i,ci)is the carrier position assigned by the reduction.
+8.1. Index discipline and canonical gauge
+We begin by formalizing two properties that are ensuredby construction
+(Section 6, Subsections 6.1 and 5.5), and will be used repeatedly in the proofs
+below.
+Definition 8.1(Fresh auxiliary indices).Each gadgetG introduced by the
+reduction comes with a set of auxiliary row indicesI(G)⊆ [m]and auxiliary
+column indicesJ(G)⊆[n]such that
+I(G)∩I(G ′) =∅,J(G)∩J(G ′) =∅for allG̸=G ′.
+The only indices that may be shared across gadgets are the global gauge sets
+I0⊆ [m], J0⊆ [n], and designated carrier indices explicitly linked by copy
+constraints.
+35
+Definition 8.2(Occurrence-based carriers).Everyoccurrenceof a circuit
+value (variable usage, fan-out, or gate input) is assigned its own designated
+carrier position(r,c ). Whenever two occurrences must represent the same
+scalar, the reduction enforces this solely via explicit affine copy constraints
+(Section 6.1), and never by reusing the same carrier position in two distinct
+gadgets.
+Definitions 8.1–8.2 eliminate factor-level collisions: gadgets may share
+values (through explicit copy constraints), but they never compete to set the
+same auxiliary indices, and they never force two different local constructions
+to assign incompatible vectors to the same factor row/column.
+Next we recall the pinned gauge block and show that it induces a canonical
+gauge for rank-3factorizations.
+Lemma 8.3(Gauge fixing and canonical factors).The ARM(3)instance
+includes affine constraints pinning a3×3block
+X[I 0,J 0] =B,(8.1)
+whereB∈R 3×3 is fixed anddet(B)̸= 0(as constructed in Lemma 4.2). If
+rank(X)≤3and(8.1)holds, then there exist factors
+U∈R m×3, V∈R 3×n such thatX=UV
+with thecanonical gauge
+U[I 0,:] =I 3, V[:,J 0] =B.(8.2)
+Moreover, once(8.2) is imposed, there is no residualGL(3)gauge freedom:
+any other rank-3factorization ofX satisfying (8.2) must coincide with(U,V )
+on all rows/columns that participate in the constraints of the reduction.
+Proof. Since rank(X)≤ 3, writeX = ~U~V for some~U∈R m×3 and ~V∈R 3×n.
+Restricting to the pinned block gives
+B=X[I 0,J 0] = ~U[I 0,:] ~V[:,J 0].(8.3)
+Because B is invertible,~U [I0, :]is invertible. Define G := ~U [I0, :]−1 and set
+U:= ~UG,V:=G −1~V. ThenX=UVstill holds andU[I 0,:] =I 3. Finally,
+B=X[I 0,J 0] =U[I 0,:]V[:,J 0] =V[:,J 0],(8.4)
+36
+so V [:,J 0] = B. This establishes existence of a factorization in canonical
+gauge.
+For uniqueness in canonical gauge, supposeX = U1V1 = U2V2 are two
+factorizations with Uk[I0, :] = I3 and Vk[:,J 0] = B for k = 1 , 2. Since
+U1[I0, :] = U2[I0, :] = I3, any change-of-basis matrixH∈GL (3)relating the
+two factorizations must satisfyI3 =U2[I0, :] = U1[I0, :]H =H, henceH =I3.
+Therefore U1 = U2 and V1 = V2 on every row/column that is constrained
+through the construction (in particular, every row/column that appears in any
+gadget constraints is linked to the gauge block through the affine equalities
+defining that gadget). Thus there is no residual gauge freedom once(8.2) is
+enforced on constrained supports.
+8.2. A global embedding lemma
+We now formalize gadget composition in the strongest possible form: we
+never stitch separately-computed matrices, only rows/columns of asingle
+global factor pair.
+Lemma 8.4(Global embedding of gadget witnesses).Fix the canonical
+gauge (8.2). Consider any family of gadgets{Gt}Tt=1 produced by the reduction,
+together with a consistent assignment of real values to all designated carriers
+that respects every affine copy/constant constraint.
+Assume that for each gadgetGt there exist local factors
+U (t)∈R m×3, V (t)∈R 3×n
+such that:
+1.U (t)[I0,:] =I 3 andV (t)[:,J 0] =B,
+2.X (t) :=U (t)V (t) satisfies all affine constraints ofGt,
+3.X (t) matches the prescribed designated carrier values used byGt.
+Then there exist global factorsU,V (with the same canonical gauge) such
+that X :=UV satisfiesallgadget constraints simultaneously and matches all
+designated carrier values.
+Proof. By Definitions 8.1–8.2, each gadgetGt touches a set of row indices and
+a set of column indices. Define
+Rt :=I 0 ∪ I(Gt)∪ {rof carriers inG t},(8.5)
+37
+and
+Ct :=J 0 ∪ J(Gt)∪ {cof carriers inG t}.(8.6)
+Moreover, the construction ensures the disjointness property: fort̸=t′,
+(Rt\I 0)∩(R t′\I 0) =∅,(8.7)
+and
+(Ct\J 0)∩(C t′\J 0) =∅.(8.8)
+Define global U∈R m×3 and V∈R 3×n as follows. First impose the
+canonical gauge:
+U[I 0,:] =I 3, V[:,J 0] =B.(8.9)
+Next, for each gadgettand eachi∈R t\I 0, set
+U[i,:] :=U (t)[i,:].(8.10)
+Similarly, for each gadgettand eachj∈C t\J 0, set
+V[:,j] :=V (t)[:,j].(8.11)
+Finally, set all remaining undefined rows ofU and columns ofV arbitrarily
+(e.g.0). This construction is well-defined: by(8.7), eachi /∈I0 belongs to at
+most one setRt, and by (8.8), eachj /∈J0 belongs to at most one setCt.
+Now define the global matrix
+X:=UV.(8.12)
+Fix any gadgetGt. Every affine constraint appearing inGt mentions only
+entriesXij with( i,j )∈R t×Ct. For any such(i,j )we have, by(8.10) and
+(8.11),
+U[i,:] =U (t)[i,:]andV[:,j] =V (t)[:,j],(8.13)
+and therefore
+Xij =U[i,:]V[:,j] =U (t)[i,:]V (t)[:,j] =X (t)ij .(8.14)
+Thus, every affine constraint ofGt holds forX because it holds forX (t) by
+assumption 2. Likewise, the designated carrier values used byGt match
+because X andX (t) agree entrywise onRt×Ct by (8.14), using assumption 3.
+38
+SinceGt was arbitrary,X satisfies all gadget constraints simultaneously
+and matches all designated carrier values.
+8.3. Forward direction (soundness)
+Theorem 8.5(Soundness).If the arithmetic circuit instance is satisfiable,
+then the constructed ARM(3)instance has a feasible solutionX satisfying all
+affine constraints andrank(X)≤3.
+Proof. Fix a satisfying assignment for every circuit wire occurrence and gate
+output, giving real values{zi}. For each occurrence-carrier( r,c )in the
+reduction, prescribe the designated valuex := z for that occurrence. By
+Definition 8.2 and consistency of the circuit assignment, all copy constraints
+equating occurrences are respected.
+Now consider any gadgetGt. Since the circuit assignment satisfies the
+gate semantics, the designated input/output values supplied toGt satisfy the
+gadget’s intended relation. Therefore, the corresponding gadgetcompleteness
+statement established in Section 6 provides a rank-3witness for that gadget
+under the pinned block, i.e., local factorsU (t),V (t) satisfying the canonical
+gauge (8.2) and all gadget constraints with those designated values. (For
+linear gadgets this holds without using the rank bound; for nonlinear gadgets
+it holds by the determinant-forcing completeness results of Section 5.)
+Applying Lemma 8.4 to the family of all gadgets yields global factorsU,V
+and henceX = UV satisfyingallaffine constraints. Finally, rank(X)≤ 3
+holds becauseXis expressed as a product of anm×3and a3×nfactor.
+8.4. Converse direction (completeness)
+Theorem 8.6(Completeness).If the constructed ARM(3)instance admits a
+feasible matrixX satisfying all affine constraints andrank(X)≤ 3, then the
+decoded values
+z:=X r,c
+on the designated occurrence-carriers form a satisfying assignment to the
+arithmetic circuit instance (and hence induce a satisfying assignment on the
+original circuit variables after identifying occurrences via the copy constraints).
+Proof. Let X be feasible withrank(X)≤ 3. Since the instance includes the
+pinned block constraints(8.1), Lemma 8.3 applies; in particular, we may work
+39
+in the canonical gauge(8.2) and all designated carrier values are well-defined
+scalarsx=X r,c.
+Fix any gadgetGt. The matrixX satisfies all affine constraints ofGt by
+feasibility of the full instance. Moreover, any submatrix restriction ofX has
+rank at mostrank(X)≤ 3. Therefore the corresponding gadgetsoundness
+statement (proved in Section 6 using rank obstruction from Section 5) applies:
+under rank≤ 3and the pinned block, satisfaction of the gadget’s affine
+constraints forces its designated carrier values to satisfy the intended gate
+relation inR.
+Hence every gate relation of the compiled circuit holds on the decoded
+designated values. Because copy/fan-out constraints explicitly identify equal
+occurrences, the decoded values propagate consistently along the circuit
+DAG, and by topological induction the entire arithmetic circuit is satisfied.
+Therefore the original instance is satisfiable.
+Remark8.7 (Exactly where rank is used).Affine wiring (constants, copies,
+and linear constraints) is enforced directly by the affine equalities of the ARM
+instance. The rank boundrank(X)≤ 3is invoked only through the gadget
+soundness lemmas (proved in Section 6 via rank obstruction from Section 5),
+i.e., only to enforce the nonlinear semantics encoded by the determinant-based
+gadgets.
+9. Membership in∃R
+Theorem 9.1(Membership).ARM(3)∈∃R.
+Scope note.This section is solely the complexity-class membership argument
+(an encoding into an existential sentence over the reals). It is logically
+independent of the hardness reduction proved in the preceding sections.
+9.1. Determinantal encoding ofrank(X)≤3
+We use the classical characterization of rank-bounded matrices via vanish-
+ing minors.
+Lemma 9.2(Rank via vanishing minors).Let X∈R m×n and letk≥ 1.
+Then
+rank(X)≤k⇐⇒det
+(
+X[I,J]
+)
+= 0for allI⊆[m], J⊆[n]with|I|=|J|=k+1.
+40
+Proof. (⇒)If rank(X)≤k , then every(k + 1)× (k + 1)submatrix X[I,J ]
+has rank at mostk, hencedet(X[I,J]) = 0.
+(⇐)Suppose all( k + 1)× (k + 1)minors vanish. If rank(X)≥k + 1, then
+by the standard rank–minor equivalence there exist index setsI,J with|I| =
+|J| =k + 1such thatX[I,J ]has full rankk + 1, which forcesdet(X[I,J ])̸= 0,
+a contradiction. Hence rank(X)≤k . See, e.g., [20, 21] for background on
+determinantal varieties and the rank–minor characterization.
+Specializing Lemma 9.2 tok= 3, we obtain the polynomial system
+det
+(
+X[I,J]
+)
+= 0∀I⊆[m], J⊆[n]with|I|=|J|= 4.(9.1)
+9.2. Encoding anARM(3)instance as an ETR instance
+Recallthataninstanceof ARM(3)isspecifiedbyrationaldata A1,...,A q∈
+Qm×n and b1,...,b q∈Q , and asks whether there existsX∈R m×n such that
+⟨Aℓ,X⟩=b ℓ (ℓ∈[q]),andrank(X)≤3,(9.2)
+where the Frobenius inner product is defined by
+⟨A,X⟩:=
+m∑
+i=1
+n∑
+j=1
+AijXij.(9.3)
+Proof of Theorem 9.1.We construct an existential sentence over the real
+variables{X ij}i∈[m],j∈[n] in the equality-only ETR normal form:
+∃X∈R m×n :
+( q⋀
+ℓ=1
+(
+⟨Aℓ,X⟩−b ℓ = 0
+))
+∧
+( ⋀
+I⊆[m],J⊆[n]
+|I|=|J|=4
+det
+(
+X[I,J]
+)
+= 0
+)
+.
+(9.4)
+(i) Syntactic validity as ETR equalities.Each constraint⟨Aℓ,X⟩−b ℓ = 0
+is an affine polynomial equality in the variablesXij with rational coefficients.
+Each constraint det(X[I,J ]) = 0is a polynomial equality of degree4with
+integer coefficients. Moreover, each determinant can be written explicitly as
+a polynomial in the entries ofX[I,J]using the Leibniz formula
+det(Y) =
+∑
+π∈S4
+sgn(π)
+4∏
+t=1
+Yt,π(t),(9.5)
+41
+so every conjunct in (9.4) is a bona fide polynomial equality over(R,+,×).
+Because the ETR encoding model uses integer-coefficient polynomials, we
+clear denominators in the affine constraints: for eachℓ∈ [q], multiply the
+equality⟨Aℓ,X⟩−b ℓ = 0by the least common multiple of the denominators
+appearing in the entries of Aℓ and in bℓ, yielding an equivalent integer-
+coefficient linear polynomial equality. This normalization increases the bit-size
+by at most a polynomial factor in the input length (see, e.g., [22, 23]).
+(ii) Correctness (equisatisfiability).If X satisfies (9.2), then it satisfies
+all affine equalities in(9.4), and by Lemma 9.2 withk = 3it satisfies all4 × 4
+minor equalities(9.1). Conversely, ifX satisfies (9.4), then all affine equalities
+hold and all4× 4minors vanish, so Lemma 9.2 impliesrank(X)≤ 3; hence
+(9.2) holds.
+(iii) Polynomial-time construction and size bounds.The number of
+real variables ismn. The number of affine equalities isq. The number of
+determinantal equalities is
+(
+m
+4
+)(
+n
+4
+)
+=O(m 4n4).(9.6)
+Each determinantal equality expands (via(9.5)) into a constant-size sum
+of4! = 24monomials of degree4. Thus the quantifier-free conjunction in
+(9.4) has total encoding length polynomial in the input size (in particular,
+polynomial in the bit-length of the rational input specifying theAℓ and bℓ
+and inm,n,q ). Therefore the mapping from(9.2) to (9.4) is computable in
+polynomial time, and we obtainARM(3)∈∃R.
+Remark9.3 (Relation to the factorization witness).Theorem 9.1 proves
+ARM(k)∈ ∃Rfor every fixed k via the existential factorization witness
+X = UV . We include it here both to make the membership direction
+completely explicit in the notation of this manuscript, and to align it with
+the rank-obstruction viewpoint used throughout the reduction (Sections 4–
+7). In particular, fork = 3it is convenient to record the especially simple
+determinantal formulation (9.1).
+10. Conclusion
+We established an exact real-algebraic complexity classification forAffine
+Rank Minimizationunder a fixed constant rank bound. For every fixedk≥ 1,
+ARM(k)∈∃R via an explicit existential encoding ofrank(X)≤k . Our main
+42
+result shows that this upper bound is tight already at rank3: we gave a
+polynomial-time many-one reduction from ETR to ARM(3)in which the
+output instance contains only rational affine equalities on the entries of asingle
+matrix variableX, together with the single global constraintrank(X)≤3.
+The reduction confines all nonlinearity to the rank bound. Linear circuit
+semantics (constants, copying/fan-out, addition, negation) are enforced di-
+rectly by affine constraints, while multiplication is enforced by a constant-size
+determinant-forcing primitive: combined with a pinned full-rank3× 3gauge
+block, a2× 2gadget yields a4 × 4minor whose determinant is a nonzero
+constant multiple of(c−ab ), so any violation ofc =ab forces rank(X)≥ 4.
+The pinned gauge also fixes theGL(3)ambiguity and enables a global com-
+position argument, ensuring that all constant-size gadgets embed into one
+global factorization X = UV without unintended coupling. This proves
+soundness and completeness of the encoding and preserves polynomial bounds
+on instance size and bit complexity.
+Consequently, ARM(3)is ∃R-complete. In particular, deciding feasibility
+of purely affine constraints underrank(X)≤ 3is as hard as real algebraic
+feasibility, and thus (barring standard complexity collapses) admits no general
+polynomial-time algorithm despite the fact that the only nonlinearity is the
+rank constraint.
+References
+[1] E. J. Candès, B. Recht, Exact matrix completion via convex optimization,
+Foundations of Computational Mathematics 9 (6) (2009) 717–772.
+[2] B. Recht, A simpler approach to matrix completion, Journal of Machine
+Learning Research 12 (2011) 3413–3430.
+[3] E. J. Candès, T. Tao, The power of convex relaxation: Near-optimal
+matrix completion, IEEE Transactions on Information Theory 56 (5)
+(2010) 2053–2080.
+[4] B. Recht, M. Fazel, P. A. Parrilo, Guaranteed minimum-rank solutions
+of linear matrix equations via nuclear norm minimization, SIAM Review
+52 (3) (2010) 471–501.
+[5] M. Bachmayr, M. Faldum, A space-time adaptive low-rank method
+for high-dimensional parabolic partial differential equations, Journal of
+Complexity 82 (2024) 101839.
+43
+[6] M. Fazel, Matrix rank minimization with applications, Ph.D. thesis,
+Stanford University (2002).
+[7] M. Fazel, H. Hindi, S. P. Boyd, Rank minimization and applications
+in system theory, in: Proceedings of the American Control Conference
+(ACC), 2004, pp. 3273–3278.
+[8] I. Markovsky, Low Rank Approximation: Algorithms, Implementation,
+Applications, Springer, 2012.
+[9] J. F. Canny, Some algebraic and geometric computations in PSPACE,
+in: Proceedings of the 20th Annual ACM Symposium on Theory of
+Computing (STOC), ACM, 1988, pp. 460–467.
+[10] L. Blum, F. Cucker, M. Shub, S. Smale, Complexity and Real Computa-
+tion, Springer, 1998.
+[11] F. Cucker,p̸ = nc over the reals, Journal of Complexity 8 (2) (1992)
+230–238.
+[12] P. B"urgisser, Time-space tradeoffs in algebraic complexity theory, Jour-
+nal of Complexity 16 (1) (2000) 2–49.
+[13] J. M. Landsberg, Tensors: Geometry and Applications, American Math-
+ematical Society, 2012.
+[14] S. A. Vavasis, Nonlinear Optimization: Complexity Issues, Vol. 8 of Inter-
+national Series of Monographs on Computer Science, Oxford University
+Press, 1991.
+[15] M. Schaefer, Complexity of some geometric and topological problems,
+Journal of Computer and System Sciences 75 (2) (2009) 98–130.
+[16] S. Basu, R. Pollack, M.-F. Roy, Algorithms in Real Algebraic Geometry,
+Vol. 10 of Algorithms and Computation in Mathematics, Springer, 2006.
+[17] L. Blum, M. Shub, S. Smale, On a theory of computation and complexity
+over the real numbers: NP-completeness, recursive functions and uni-
+versal machines, Bulletin of the American Mathematical Society 21 (1)
+(1989) 1–46.
+44
+[18] N. E. Mnëv, The universality theorems on the classification problem of
+configuration varieties and convex polytopes varieties, in: O. Y. Viro
+(Ed.), Topology and Geometry — Rohlin Seminar, Vol. 1346 of Lecture
+Notes in Mathematics, Springer, 1988, pp. 527–544.
+[19] J. Richter-Gebert, Realization Spaces of Polytopes, Vol. 1643 of Lecture
+Notes in Mathematics, Springer, 1996.
+[20] W. Bruns, U. Vetter, Determinantal Rings, Vol. 1327 of Lecture Notes
+in Mathematics, Springer, 1988.
+[21] J. Harris, Algebraic Geometry: A First Course, Vol. 133 of Graduate
+Texts in Mathematics, Springer, 1992.
+[22] J. Bochnak, M. Coste, M.-F. Roy, Real Algebraic Geometry, Vol. 36 of
+Ergebnisse der Mathematik und ihrer Grenzgebiete, Springer, 1998.
+[23] J. Renegar, On the computational complexity and geometry of the first-
+order theory of the reals. I. introduction. preliminaries. the geometry of
+semi-algebraic sets. the decision problem for the existential theory of the
+reals, Journal of Symbolic Computation 13 (3) (1992) 255–299.
+45

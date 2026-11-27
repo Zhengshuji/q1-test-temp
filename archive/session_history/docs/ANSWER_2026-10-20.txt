@@ -1,0 +1,349 @@
+我看完了你上传的《一个关于最小行
+我看完了你上传的《一个关于最小行数的问题》。这个问题的关键不是可行性判定，而是：在所有满足条件 (a)、(b) 且首行为固定 L0L_0L0 的矩阵 L\mathcal LL 中，如何找到最小行数 qmin⁡q_{\min}qmin。
+先给出结论：目前不能仅凭你列出的 P1–P7，就严谨地断言该问题是多项式可算或 NP-hard。 但你最关心的 §5.3 单调性断言可以进一步分析，而且有一个重要的逻辑问题需要澄清：即使该断言成立，也不能直接推出你写的 qmin⁡=dim⁡A∞+1q_{\min}=\dim\mathcal A_\infty+1qmin=dimA∞+1，除非还证明相应的上界构造与下界完全匹配。
+下面先分析这个断言，再给出能够严格成立的结论，以及下一步如何判断复杂度。
+一、§5.3 的单调性断言：不能由现有结果推出
+你想证明的是
+(b) 在 A∞ 失败⟹(b) 在所有合格的 A⊇A∞ 上失败\boxed{ (b)\text{ 在 }\mathcal A_\infty\text{ 失败} \Longrightarrow (b)\text{ 在所有合格的 } \mathcal A\supseteq\mathcal A_\infty\text{ 上失败} }(b) 在 A∞ 失败⟹(b) 在所有合格的 A⊇A∞ 上失败
+这里必须区分两个不同的问题：
+子空间包含关系：A∞⊆A\mathcal A_\infty\subseteq\mathcal AA∞⊆A。
+矩阵铅笔的恒秩性质：是否存在相应的 L\mathcal LL，使得对所有复数 λ\lambdaλ，都有 rank⁡(λM−F)=rank⁡M\operatorname{rank}(\lambda M-F)=\operatorname{rank}Mrank(λM−F)=rankM。
+第二个性质并不直接由第一个性质决定。增加子空间方向时，MMM 与 FFF 的行空间关系也会改变，因此不能仅凭 Φ\PhiΦ 的单调性证明该断言。
+更重要的是，你的 0/380/380/38 实验不能作为证明。即使可行的参数集合是代数集合或代数集合的补集，有限多个有理点也未必能覆盖一个非空的可行集合。
+例如，一个非零多项式完全可以在有限多个采样点上全部为零，却在其他点非零。除非你能给出适用的次数上界，并证明采样点满足相应的充分性条件，否则不能从 0/380/380/38 推出可行集合为空。
+因此，当前严谨的结论是：单调性断言尚未得到证明，也不能据现有实验判定其真假。
+二、一个可以严格使用的引理
+你给出的 P6 是一个很有价值的必要条件。将其写成更适合后续证明的形式：
+令
+NA={ℓ∈R1×n:ℓN=0, ℓAN∈A}.\mathcal N_{\mathcal A} =\{\ell\in\mathbb R^{1\times n}: \ell N=0,\ \ell AN\in\mathcal A\}.NA={ℓ∈R1×n:ℓN=0, ℓAN∈A}.
+如果存在满足 (a)、(b) 的 L\mathcal LL，且 A=row⁡M\mathcal A=\operatorname{row}MA=rowM，那么
+NA≠{0}.\boxed{\mathcal N_{\mathcal A}\ne\{0\}.}NA={0}.
+证明的核心是：如果 NA={0}\mathcal N_{\mathcal A}=\{0\}NA={0}，那么由 ℓN↦ℓAN\ell N\mapsto\ell ANℓN↦ℓAN 定义的线性映射在 A\mathcal AA 上是单值的。该映射在复化空间上必有特征值，而相应的特征向量会导致某个 λM−F\lambda M-FλM−F 的秩下降，违反 (b)。
+这给出一个可计算的筛选条件：凡是使 NA=0\mathcal N_{\mathcal A}=0NA=0 的候选子空间，都可以直接排除。 但它仍然只是必要条件，不能单独证明最优子空间的维数。
+三、为什么还不能判断是 P 还是 NP-hard？
+这里有一个复杂度理论上的关键区别。
+已知结果
+能得出的结论
+
+P1：可行性可在多项式时间内判定
+可行与否本身不是所述困难的来源
+
+P2：ρ≤obs\rho\le\mathrm{obs}ρ≤obs
+给出秩的上界
+
+P5：ρ≥dim⁡A∞\rho\ge\dim\mathcal A_\inftyρ≥dimA∞
+给出可计算的下界
+
+P7：ρ≤1\rho\le1ρ≤1 时有多项式判据
+解决了低秩子问题
+
+P6：NA≠0\mathcal N_{\mathcal A}\ne0NA=0
+排除一部分候选子空间
+
+这些结果没有给出一般情形下的最优性定理，也没有给出从已知 NP-hard 问题到该优化问题的归约。
+还有一个需要特别注意的细节：你的输入允许任意实数矩阵 A,C,L0A,C,L_0A,C,L0。严格讨论 P 与 NP-hard 时，必须先明确计算模型，例如有理数输入的位复杂度模型，或实数 RAM／BSS 模型。否则，复杂度结论的表述本身就不完整。
+因此，我不建议现在直接写出“该问题是 NP-hard”或“该问题属于 P”的定理。
+四、我建议的下一步：先把优化问题降到精确的子空间判定
+定义候选子空间的可行性谓词
+Good⁡(A)\operatorname{Good}(\mathcal A)Good(A)
+表示存在满足以下要求的 L\mathcal LL：
+row⁡(LN)=A,F=ΛM,rank⁡(λM−F)=dim⁡A∀λ∈C,\operatorname{row}(\mathcal LN)=\mathcal A, \qquad F=\Lambda M, \qquad \operatorname{rank}(\lambda M-F) =\dim\mathcal A \quad\forall\lambda\in\mathbb C,row(LN)=A,F=ΛM,rank(λM−F)=dimA∀λ∈C,
+并保留首行固定为 L0L_0L0 的要求。
+那么目标首先应写成
+ρmin⁡=min⁡A:Good⁡(A)dim⁡A.\rho_{\min} =\min_{\mathcal A:\operatorname{Good}(\mathcal A)} \dim\mathcal A.ρmin=A:Good(A)mindimA.
+注意，qmin⁡q_{\min}qmin 与 ρmin⁡\rho_{\min}ρmin 并非定义上相同：前者最小化的是行数，后者最小化的是 MMM 的秩。要将二者等同或建立精确关系，还需要额外证明。
+接下来最有价值的是研究：对固定的 A\mathcal AA，能否通过线性代数与矩阵铅笔的标准形，在多项式时间内判定 Good⁡(A)\operatorname{Good}(\mathcal A)Good(A)；然后再研究在 Grassmann 空间上寻找最小维数合格子空间的复杂度。
+这一步能把问题分成两个清晰的层次：
+固定子空间后的可行性判定。
+最小维数合格子空间的搜索。
+即使第一层属于 P，第二层也可能困难；反过来，也不能仅凭需要搜索子空间就断言 NP-hard。
+最终判断： 目前最可靠的答案是，P 与 NP-hard 均尚未由所给材料确立。§5.3 是值得继续研究的猜想，但现有的有限采样和 Φ\PhiΦ 单调性不足以证明它。要真正解决 q1，需要一个关于恒秩矩阵铅笔的更强结构定理，或者一个明确的复杂度归约。
+
+
+
+
+-------------------
+
+
+
+抱歉，刚才只显示了研究计划，没有把完整正文发出来。下面重新给出详细分析，包括对你现有证明的审查、相关参考文献、一个可能的复杂度上界，以及具体可执行的研究路线。
+一、核心结论：先不要急着选 P 或 NP-hard
+根据你提供的数学框架，我认为目前最值得推进的方向，不是直接声称最小行数问题是 NP-hard，而是先把这个问题重新组织成一个严格的子空间优化问题，再寻找其代数结构和复杂度归约。
+这里有三个层次需要区分：
+第一层：已经得到的结构性结果
+你的可行性判据 P1、秩约束、PBH 判据与固定子空间的分析，为继续研究提供了良好的起点。尤其是恒秩条件 (b)，可以转化为不含复数全称量词的线性系统判据。
+第二层：目前需要补充的数学证明
+需要重新检查 Φ\PhiΦ 的迭代、最小不变子空间的定义，以及恒秩条件与子空间维数之间的关系。这些细节会直接影响后续定理是否成立。
+第三层：真正的复杂度问题
+在确定输入模型并建立精确的代数判定公式之后，再研究能否找到多项式算法，或者从已知困难问题构造保持所有矩阵约束的归约。
+我还找到了一条值得注意的进一步路线：在采用有理数输入的前提下，可以尝试证明固定行数的可行性问题属于实数存在理论（∃R\exists\mathbb R∃R）。这既不是多项式时间算法，也不是 NP-hard 证明，但能给出一个有意义的复杂度上界。
+下面逐步说明。
+二、先审查现有证明：有几个值得优先处理的细节
+2.1 一个立即成立的下界：q≥ρ+1q\ge \rho+1q≥ρ+1
+你已经证明 q=1q=1q=1 时 M=0M=0M=0 必要。实际上，还能得到更一般的结论：
+q≥ρ+1.\boxed{q\ge \rho+1.}q≥ρ+1.
+证明如下。由条件 (a)，存在 Λ\LambdaΛ 使得
+F=ΛM.F=\Lambda M.F=ΛM.
+于是
+λM−F=(λIq−Λ)M.\lambda M-F=(\lambda I_q-\Lambda)M.λM−F=(λIq−Λ)M.
+若 ρ=q\rho=qρ=q，那么 MMM 的行秩为 qqq，因此作为映射 M:Cd→CqM:\mathbb C^d\to\mathbb C^qM:Cd→Cq，它是满射。
+任取 Λ\LambdaΛ 的一个复特征值 λ0\lambda_0λ0，设 v≠0v\ne0v=0 满足
+Λv=λ0v.\Lambda v=\lambda_0 v.Λv=λ0v.
+因为 MMM 满射，可以选取 xxx 使得 Mx=vMx=vMx=v。于是
+(λ0M−F)x=(λ0Iq−Λ)Mx=0,(\lambda_0 M-F)x =(\lambda_0 I_q-\Lambda)Mx=0,(λ0M−F)x=(λ0Iq−Λ)Mx=0,
+而 Mx=v≠0Mx=v\ne0Mx=v=0。这说明 λ0M−F\lambda_0M-Fλ0M−F 在 MMM 的像上丢失了秩，与条件 (b) 矛盾。因此 ρ<q\rho<qρ<q。
+结合你的 P2、P1，可得到
+dim⁡A∞+1≤qmin⁡≤obs+1,\boxed{ \dim \mathcal A_\infty+1 \le q_{\min} \le \mathrm{obs}+1, }dimA∞+1≤qmin≤obs+1,
+这里暂时将左侧的下界理解为由 P5 得出的形式下界；下一节会检查它是否真的有非平凡内容。
+这个结论对复杂度研究很有帮助：既然 qqq 不需要无限制地增大，最优行数就是一个有有限上界的整数优化问题。
+2.2 P5 中的 Φ\PhiΦ 迭代可能存在关键问题
+这是我认为你现在最应优先检查的地方。
+你定义
+Φ(A)={x=ℓN: x∈A, ℓAN∈A}.\Phi(\mathcal A)= \{x=\ell N:\ x\in\mathcal A,\ \ell AN\in\mathcal A\}.Φ(A)={x=ℓN: x∈A, ℓAN∈A}.
+按照这个定义，显然有
+Φ(A)⊆A.\boxed{\Phi(\mathcal A)\subseteq\mathcal A.}Φ(A)⊆A.
+而且，若 A⊆B\mathcal A\subseteq\mathcal BA⊆B，则
+Φ(A)⊆Φ(B).\Phi(\mathcal A)\subseteq\Phi(\mathcal B).Φ(A)⊆Φ(B).
+因此，Φ\PhiΦ 是单调的，但它同时是一个缩小子空间的算子。
+令
+A0=span⁡{L0N},Ai+1=Φ(Ai).\mathcal A_0=\operatorname{span}\{L_0N\}, \qquad \mathcal A_{i+1}=\Phi(\mathcal A_i).A0=span{L0N},Ai+1=Φ(Ai).
+那么必然有
+A0⊇A1⊇A2⊇⋯ .\mathcal A_0\supseteq\mathcal A_1 \supseteq\mathcal A_2\supseteq\cdots.A0⊇A1⊇A2⊇⋯.
+所以，如果按通常约定令 Φ0\Phi^0Φ0 为恒等映射，那么你所定义的
+A∞=⋃i≥0Φi(A0)\mathcal A_\infty =\bigcup_{i\ge0}\Phi^i(\mathcal A_0)A∞=i≥0⋃Φi(A0)
+实际上满足
+A∞=A0.\boxed{\mathcal A_\infty=\mathcal A_0.}A∞=A0.
+因为并集中的每一项都包含在第一项之内。
+如果迭代从 i=1i=1i=1 开始，并集也只能等于第一步的结果，同样不可能产生比原始子空间更大的空间。
+因此，按照目前写出的定义，
+dim⁡A∞≤1.\dim\mathcal A_\infty\le1.dimA∞≤1.
+又因 L0N≠0L_0N\ne0L0N=0，如果包含 i=0i=0i=0，实际上就是
+dim⁡A∞=1.\dim\mathcal A_\infty=1.dimA∞=1.
+这意味着 P5 目前给出的只是 ρ≥1\rho\ge1ρ≥1 的平凡下界，而不是通过闭包计算得到的更强秩下界。
+建议： 不要直接使用目前的 A∞\mathcal A_\inftyA∞ 推出最优性。先确认原本想求的是哪一种对象：
+包含 span⁡{L0N}\operatorname{span}\{L_0N\}span{L0N} 的最小合格子空间；
+包含给定子空间的最小不变子空间；
+或者从某个较大的子空间出发，反复剔除不满足条件的方向。
+这三种问题对应不同的算子方向。它们不能仅凭“单调性”相互替代。
+2.3 P6 的必要条件可以用一个更清晰的论证
+令
+S:=rowspace⁡(R0).S:=\operatorname{rowspace}(R_0).S:=rowspace(R0).
+根据
+AN=NA′+R0,AN=NA'+R_0,AN=NA′+R0,
+任何行向量 ℓ\ellℓ 都满足
+ℓAN=(ℓN)A′+ℓR0.\ell AN=(\ell N)A'+\ell R_0.ℓAN=(ℓN)A′+ℓR0.
+因此，当 x=ℓNx=\ell Nx=ℓN 时，所有可能的 ℓAN\ell ANℓAN 都具有
+y=xA′+s,s∈Sy=xA'+s,\qquad s\in Sy=xA′+s,s∈S
+的形式。由于 NTR0=0N^{\mathsf T}R_0=0NTR0=0，改变 ℓ\ellℓ 而保持 ℓN=x\ell N=xℓN=x 不变，可以实现 SSS 中的任意修正项。
+你的固定点条件 Φ(A)=A\Phi(\mathcal A)=\mathcal AΦ(A)=A，因而等价于
+AA′⊆A+S.\boxed{ \mathcal A A'\subseteq\mathcal A+S. }AA′⊆A+S.
+这里 AA′={xA′:x∈A}\mathcal A A'=\{xA':x\in\mathcal A\}AA′={xA′:x∈A}。
+这个等价式比反复迭代 Φ\PhiΦ 更直接，也更适合后续写成矩阵方程。
+现在，如果
+A∩S={0},\mathcal A\cap S=\{0\},A∩S={0},
+则对每个 x∈Ax\in\mathcal Ax∈A，在 A\mathcal AA 内能找到的 y=xA′+sy=xA'+sy=xA′+s 是唯一的。原因是，两个候选值之差必须同时属于 A\mathcal AA 和 SSS。
+所以存在一个线性映射
+T:A⟶A,T(x)=y.T:\mathcal A\longrightarrow\mathcal A, \qquad T(x)=y.T:A⟶A,T(x)=y.
+在复化空间上，有限维线性映射 TTT 必有特征值 λ\lambdaλ 及非零特征向量。将 MMM 的行写成 A\mathcal AA 的一组线性组合，就可以把 TTT 的矩阵表示与 F=ΛMF=\Lambda MF=ΛM 联系起来。由此，Λ\LambdaΛ 在 im⁡M\operatorname{im}MimM 中会产生相应的特征向量，违反条件 (b)。
+因此可以得到必要条件
+A∩rowspace⁡(R0)≠{0}.\boxed{ \mathcal A\cap\operatorname{rowspace}(R_0) \ne\{0\}. }A∩rowspace(R0)={0}.
+这比把论证完全依赖于 NA={0}\mathcal N_{\mathcal A}=\{0\}NA={0} 更清楚。
+需要额外区分的是：NA=0\mathcal N_{\mathcal A}=0NA=0 是一个足够条件；而 A∩S=0\mathcal A\cap S=0A∩S=0 是另一个可以直接用于证明失败的条件。两者并不应当未经证明就写成等价条件，因为可能存在非零 ℓ\ellℓ 同时满足 ℓN=0\ell N=0ℓN=0 和 ℓR0=0\ell R_0=0ℓR0=0，这种 ℓ\ellℓ 会进入 NA\mathcal N_{\mathcal A}NA，却不产生非零的 yyy。
+2.4 §5.3 的单调性猜想需要重新表述
+这里最重要的并不是单调性看起来是否合理，而是要先把“在子空间 A\mathcal AA 上条件 (b) 失败”定义清楚。
+条件 (b) 本身是关于一对具体矩阵 M,FM,FM,F 的性质。相同的行空间 A=row⁡M\mathcal A=\operatorname{row}MA=rowM，可能对应不同的矩阵提升和不同的 FFF。因此，“一个特定构造在 A∞\mathcal A_\inftyA∞ 上失败”与“所有行空间为 A∞\mathcal A_\inftyA∞ 的构造均失败”不是同一命题。
+更进一步，如果将“失败”严格定义为：
+不存在任何可行提升，其行空间恰为 A∞,\text{不存在任何可行提升，其行空间恰为 }\mathcal A_\infty,不存在任何可行提升，其行空间恰为 A∞,
+那么你提出的单调性猜想一旦成立，在 P1 的可行性条件满足时就会遇到逻辑冲突。因为任何可行解的行空间都包含初始子空间，而 P1 又保证至少存在一个可行解。
+所以，对于一个确实可行的输入，如果 A∞\mathcal A_\inftyA∞ 本身不可行，那么必然有更大的合格子空间能够实现条件 (b)。这说明：按照上述严格定义，单调性猜想不可能在所有可行输入上无条件成立。
+这并不是说已经找到了一个具体的数值反例，而是说明该命题的精确表述本身需要修改。你原来的实验可能针对的是某一种特定提升或某一种参数化；只有把这种限制明确写出，实验结论才可能转化为正确的数学猜想。
+有限个有理参数点也不足以证明这一猜想。一个代数条件可能在所有被测试的点上失败，却在其他参数点上成立。只有先得到代数条件的精确次数界、消元多项式或结果式，有限采样才有机会成为严格证明的一部分。
+三、把问题改写成更适合研究的形式
+由上一节的推导，令
+S=rowspace⁡(R0).S=\operatorname{rowspace}(R_0).S=rowspace(R0).
+则每个可行解的行空间 A=row⁡(M)\mathcal A=\operatorname{row}(M)A=row(M) 必须满足
+L0N∈A,AA′⊆A+S,A∩S≠{0}.\boxed{ \begin{aligned} L_0N&\in\mathcal A,\\ \mathcal A A'&\subseteq\mathcal A+S,\\ \mathcal A\cap S&\ne\{0\}. \end{aligned} }L0NAA′A∩S∈A,⊆A+S,={0}.
+这里第二个条件来自 Φ(A)=A\Phi(\mathcal A)=\mathcal AΦ(A)=A，第三个条件来自 P6 的必要条件。
+这三个条件目前只是结构性必要条件，不是充分条件。即使一个子空间同时满足它们，也还需要检查能否选取具体的 L\mathcal LL，使矩阵铅笔满足条件 (b)。
+不过，这个改写提供了一个清晰的切入点：你现在面对的子空间约束属于几何控制理论中的受控不变性问题的一类。
+3.1 用矩阵方程描述候选子空间
+假设候选子空间的维数是 ρ\rhoρ，选取一个满行秩矩阵
+X∈Rρ×d,row⁡(X)=A.X\in\mathbb R^{\rho\times d}, \qquad \operatorname{row}(X)=\mathcal A.X∈Rρ×d,row(X)=A.
+再令 S0∈Rs×dS_0\in\mathbb R^{s\times d}S0∈Rs×d 的行构成 SSS 的一组基，其中 s=dim⁡Ss=\dim Ss=dimS。
+那么
+AA′⊆A+S\mathcal A A'\subseteq\mathcal A+SAA′⊆A+S
+等价于存在矩阵 P,QP,QP,Q，使得
+XA′=PX+QS0.\boxed{XA'=PX+QS_0.}XA′=PX+QS0.
+此外，包含固定首行对应于存在行向量 ccc，满足
+cX=L0N.cX=L_0N.cX=L0N.
+非平凡交集条件可以写成
+rank⁡(XS0)<ρ+s.\boxed{ \operatorname{rank} \begin{pmatrix} X\\S_0 \end{pmatrix}<\rho+s. }rank(XS0)<ρ+s.
+再加上 rank⁡X=ρ\operatorname{rank}X=\rhorankX=ρ，这就将子空间候选的部分约束转换成了矩阵方程和秩条件。
+这是一个有价值的进展，因为这些约束可以进一步写成多项式等式与不等式。它为精确代数分析、消元以及复杂度归约提供了统一语言。
+但请注意：这种表示没有自动解决条件 (b)。如果直接把上述三个子空间约束当成充分条件，可能会得到错误的最优行数。
+四、一个值得建立的复杂度上界：实数存在理论
+这一部分是我认为最值得继续推进的技术方向之一。
+4.1 先定义正确的决策问题
+与直接研究整数值优化问题 qmin⁡q_{\min}qmin，相比，先研究以下决策问题更容易建立严格的复杂度分类：
+Dk:是否存在 q≤k 的矩阵 L,满足 (a)、(b) 且首行固定为 L0?D_k: \quad \text{是否存在 }q\le k\text{ 的矩阵 }\mathcal L, \text{满足 (a)、(b) 且首行固定为 }L_0?Dk:是否存在 q≤k 的矩阵 L,满足 (a)、(b) 且首行固定为 L0?
+由于增加零行可以保留原解的可行性，存在行数不超过 kkk 的解，等价于存在恰好 kkk 行的解。具体做法是给 L\mathcal LL 增加零行，并将 Λ\LambdaΛ 扩展为分块对角矩阵。
+在 P1 成立的前提下，有
+qmin⁡≤obs+1≤d+1.q_{\min}\le\mathrm{obs}+1\le d+1.qmin≤obs+1≤d+1.
+所以行数的搜索范围是多项式有界的。
+4.2 利用 PBH 判据消去对所有复数的量词
+固定 qqq 和某个整数 ρ\rhoρ。引入实矩阵变量
+L,Λ,H∈Rq×(q−ρ).\mathcal L,\quad \Lambda,\quad H\in\mathbb R^{q\times(q-\rho)}.L,Λ,H∈Rq×(q−ρ).
+仍定义
+M=LN,F=LAN.M=\mathcal LN,\qquad F=\mathcal LAN.M=LN,F=LAN.
+需要满足
+F=ΛM,rank⁡M=ρ.F=\Lambda M,\qquad \operatorname{rank}M=\rho.F=ΛM,rankM=ρ.
+再要求
+MTH=0,rank⁡H=q−ρ.M^{\mathsf T}H=0,\qquad \operatorname{rank}H=q-\rho.MTH=0,rankH=q−ρ.
+此时 HHH 的列构成 ker⁡MT\ker M^{\mathsf T}kerMT 的一组基。因此，条件 (b) 等价于以下可控性矩阵满秩：
+rank⁡HΛTH(ΛT)2H⋯(ΛT)q−1HHΛTH(ΛT)2H⋯(ΛT)q−1H=q.\boxed{ \operatorname{rank} \begin{bmatrix} H&\Lambda^{\mathsf T}H& (\Lambda^{\mathsf T})^2H& \cdots& (\Lambda^{\mathsf T})^{q-1}H \end{bmatrix} =q. }rankH​ΛTH​(ΛT)2H​⋯​(ΛT)q−1H​H​ΛTH​(ΛT)2H​⋯​(ΛT)q−1H​=q.
+原因是 PBH 判据将“im⁡M\operatorname{im}MimM 内不含 Λ\LambdaΛ 的特征向量”，转化成了 (ΛT,H)(\Lambda^{\mathsf T},H)(ΛT,H) 的可控性条件。这个判据只涉及有限个矩阵运算和秩测试，不需要直接处理“所有 λ∈C\lambda\in\mathbb Cλ∈C”。
+4.3 为什么这可能给出 ∃R\exists\mathbb R∃R 上界？
+在有理数输入的精确计算模型下：
+N,A′,R0N,A',R_0N,A′,R0 可以由 A,CA,CA,C 通过有理线性代数计算得到。
+F=ΛMF=\Lambda MF=ΛM 是关于未知矩阵元素的多项式等式。
+秩等于 ρ\rhoρ 可以用所有高阶子式为零、至少一个相应阶子式非零来表达。
+可控性矩阵满秩同样可以通过子式表达。
+首行固定是线性约束。
+可以枚举 ρ=0,…,min⁡(q,d)\rho=0,\ldots,\min(q,d)ρ=0,…,min(q,d)，其分支数量是多项式有界的。
+因此，固定 qqq 的可行性问题有望被表示为一个实数多项式等式与不等式的存在性问题。若将上述等价关系正式证明，就能得到
+Dk∈∃R.\boxed{D_k\in\exists\mathbb R.}Dk∈∃R.
+这里的 ∃R\exists\mathbb R∃R 指实数存在理论对应的复杂度类：其输入是多项式约束，目标是判断是否存在满足所有约束的实数赋值。相关基础与复杂度背景可参考 Blum、Shub、Smale 关于实数计算的工作，以及 Renegar 对实数域一阶理论的复杂度分析。
+IBM Research
+这一结论仍需要你正式补完矩阵秩条件、PBH 等价和输入位复杂度的证明。 但如果完成，就能得到一个明确的复杂度归属：最小行数的阈值决策问题可以通过实数多项式约束处理。
+这并不意味着它属于 P，也不意味着它是 NP-hard。实数存在理论的复杂度与传统离散计算中的 P、NP 关系密切，但不能将“存在多项式约束表示”直接等同于“NP-hard”。
+4.4 这一方向为何比直接穷举更有价值？
+因为它为后续研究提供了统一的判定接口。
+假设你想证明多项式可算，就需要利用 M,F,Λ,HM,F,\Lambda,HM,F,Λ,H 之间的特殊结构，找到不需要一般多项式消元的算法。
+假设你想证明困难性，就可以尝试将已知的实数多项式可满足性问题编码进上述结构中。如果能证明 ∃R\exists\mathbb R∃R-hard，那么就会得到比传统 NP-hard 更强的复杂度证据，并且在常用多项式归约下也蕴含 NP-hard。
+目前我没有找到已经发表、能够直接证明你这个特定矩阵结构问题是 P 或 NP-hard 的定理。因此，这里应当把 ∃R\exists\mathbb R∃R 上界视为一个可研究的推导方向，而不是已有文献中对原问题的分类结论。
+五、参考文献：哪些最值得读，分别能帮助什么？
+我查阅了与你的问题最接近的文献线索。它们主要集中于四个方向：几何控制理论、矩阵铅笔、线性关系，以及实数域计算复杂度。需要说明的是，以下文献提供的是可借鉴的理论工具，并不直接解决你的最小行数问题。
+A. 首先阅读：几何控制理论与不变子空间
+1. H. L. Trentelman, A. A. Stoorvogel, M. Hautus
+Control Theory for Linear Systems. Springer, 2001.
+优先阅读第 5 章：Controlled invariant subspaces，第 6 章：Conditioned invariant subspaces，以及第 8 章有关 system zeros 的内容。
+相关章节页码：75–106、107–124、153–173。
+为什么值得读：你的 AA′⊆A+S\mathcal A A'\subseteq\mathcal A+SAA′⊆A+S 与受控不变子空间的结构直接相关。这本书适合用来建立标准定义、理解子空间算法，以及区分最小包含子空间与最大包含子空间等不同问题。
+出版社页面
+Springer Nature Link
+加入收藏
+2. S. Jaffe, N. Karcanias
+“Matrix pencil characterization of almost (A,B)(A,B)(A,B)-invariant subspaces: A classification of geometric concepts.” International Journal of Control, 33(1), 51–93, 1981.
+为什么值得读：这是你原文中列出的最直接相关线索之一。论文研究用矩阵铅笔不变量刻画几何控制理论中的不变子空间与可控性结构。重点应放在不变性如何转化成铅笔的秩和结构性质，而非期待它直接给出最小 qqq 的复杂度结论。
+DOI / 论文信息
+83 Citations
+B. 第二步：矩阵铅笔、Kronecker 规范形和多值线性关系
+3. T. Berger, C. Trunk, H. Winkler. “Linear relations and the Kronecker canonical form.” Linear Algebra and its Applications, 488, 13–44, 2016. DOI: 10.1016/j.laa.2015.09.033。
+这篇文章从线性关系的角度解释 Kronecker 规范形，把特征值链、无穷远处的链与奇异链联系起来。
+ScienceDirect
+对你的问题，它最有用的地方是帮助区分：
+一个子空间上的线性映射；
+一个可能是多值的线性关系；
+一个矩阵铅笔是否具有恒定秩。
+这些概念不能混用。特别是，研究 λM−F\lambda M-FλM−F 时，需要把“没有有限特征值导致秩下降”的要求与铅笔的奇异结构区分开来。
+4. J. C. Willems. “From time series to linear system—Part I. Finite dimensional linear time invariant systems.” Automatica, 22(5), 561–580, 1986. DOI: 10.1016/0005-1098(86)90066-X。
+这篇经典论文从行为理论角度讨论线性时不变系统的表示、结构和最小实现。它有助于理解系统表示的最小性及其与多项式矩阵方程的联系，但不应将行为理论中的最小 kernel representation 直接当作本问题的复杂度归约。
+ScienceDirect
+C. 第三步：复杂度理论与实代数几何
+5. L. Blum, M. Shub, S. Smale. “On a theory of computation and complexity over the real numbers: NP-completeness, recursive functions and universal machines.” Bulletin of the American Mathematical Society, 21(1), 1–46, 1989. DOI: 10.1090/S0273-0979-1989-15750-9。
+这是实数域计算复杂度的重要基础文献。它解释了为什么涉及实数变量、多项式等式和不等式的问题需要明确计算模型。
+IBM Research
+6. J. Renegar. “On the computational complexity and geometry of the first-order theory of the reals. Part I: Introduction. Preliminaries. The geometry of semi-algebraic sets. The decision problem for the existential theory of the reals.” Journal of Symbolic Computation, 13(3), 255–299, 1992. DOI: 10.1016/S0747-7171(10)80003-3。
+它适合用于理解：将未知矩阵元素作为实数变量，利用多项式等式、不等式及量词消去描述可行性时，能够得到怎样的算法与复杂度上界。
+ScienceDirect
+7. P. Koiran. “The Real Dimension Problem Is NPR-Complete.” Journal of Complexity, 15(2), 227–238, 1999. DOI: 10.1006/jcom.1999.0502。
+该论文证明半代数集合的实维数问题在实数计算模型下具有相应的完备性。它可以作为“连续变量空间中的维数优化也可能困难”的背景参考，但不能据此认定你的问题同样困难。
+ScienceDirect
+8. M. Schaefer, J. Cardinal, T. Miltzow. The Existential Theory of the Reals as a Complexity Class: A Compendium, 2024, arXiv:2407.18006。
+这份综述整理了 ∃R\exists\mathbb R∃R 的定义、典型困难问题及其归约方法。若你准备把矩阵秩条件转为实数多项式约束，或寻找更合适的困难性归约入口，这份资料值得优先参考。
+arXiv
+文献阅读顺序
+我的建议是：先读 Trentelman–Stoorvogel–Hautus 的受控不变子空间部分，再读 Jaffe–Karcanias 的矩阵铅笔方法；然后读 Berger–Trunk–Winkler，厘清线性关系与 Kronecker 结构；最后读 Renegar 和实数存在理论的综述。
+这样的顺序可以避免一开始就陷入复杂度归约，而尚未准确识别子空间条件的几何性质。
+六、后续研究怎么做：一条更具体的路线
+我建议将后续工作分成四个阶段。这样既能继续尝试证明多项式可算，也能在未能找到算法时，转向严格的困难性证明，而不用推倒前面的成果。
+阶段一：把问题整理成三个精确的定理
+先暂停寻找复杂度结论，集中把下面三件事写成完整证明。
+定理 A：恒秩铅笔的 PBH 等价。
+完整证明
+rank⁡(λM−F)=ρ∀λ∈C\operatorname{rank}(\lambda M-F)=\rho \quad\forall\lambda\in\mathbb Crank(λM−F)=ρ∀λ∈C
+等价于适当构造的可控性矩阵满秩。需要明确 M,F,Λ,HM,F,\Lambda,HM,F,Λ,H 的维数，并证明这个等价对所有允许的 ρ\rhoρ 均成立。
+定理 B：固定子空间的结构刻画。
+证明
+Φ(A)=A  ⟺  AA′⊆A+S.\Phi(\mathcal A)=\mathcal A \iff \mathcal A A'\subseteq\mathcal A+S.Φ(A)=A⟺AA′⊆A+S.
+同时证明 P6 的必要条件，并明确哪些结论只是必要条件，哪些能够作为充分条件。
+定理 C：固定行数的代数可行性。
+将定理 A 的 PBH 表示与定理 B 的子空间表示结合起来，写成矩阵未知量的显式多项式约束系统。
+这三个定理一旦完整建立，就能构成论文中一个相对独立、可以验证的理论部分，而不是仅仅依靠数值实验支持的猜想。
+阶段二：寻找多项式算法的入口
+可以优先研究受控不变子空间的标准计算方法，但一定要核对文献算法解决的具体问题。
+你需要求的并不是简单的最大受控不变子空间，而是一个同时满足固定行、交集条件和恒秩铅笔条件的最小维数候选。因此，即使某个相关不变子空间可以在多项式时间内求出，也不能直接断定原问题可以多项式求解。
+建议依次检查：
+能否从 A′A'A′、SSS 与 L0NL_0NL0N 直接算出满足 AA′⊆A+S\mathcal A A'\subseteq\mathcal A+SAA′⊆A+S 的最小维数候选。
+若存在多个包含关系上不可比较的候选，它们的最小维数能否通过线性代数确定。
+加入 A∩S≠{0}\mathcal A\cap S\ne\{0\}A∩S={0} 及 PBH 条件之后，原有算法是否仍然适用。
+真正的关键问题是：能否在不搜索所有子空间的情况下，直接确定最小维数的合格子空间。
+如果能找到这样一个定理，多项式算法才有希望落地。
+阶段三：如果多项式算法找不到，怎样构造 NP-hard 归约？
+我建议从实数多项式可满足性问题入手，先考虑能否证明 ∃R\exists\mathbb R∃R-hard，再决定是否需要直接做传统的 NP-hard 归约。
+一个具体的尝试框架是：
+给定多项式约束系统⟶构造 A′,S,L0N⟶最优维数是否不超过 k.\text{给定多项式约束系统} \longrightarrow \text{构造 }A',S,L_0N \longrightarrow \text{最优维数是否不超过 }k.给定多项式约束系统⟶构造 A′,S,L0N⟶最优维数是否不超过 k.
+这里的核心并不是简单地把任意非线性方程塞进矩阵，而是要把变量、乘积和约束编码成
+XA′=PX+QS0XA'=PX+QS_0XA′=PX+QS0
+这类子空间关系以及额外的 PBH 秩条件。
+归约必须满足三个要求：
+原问题有解时，能够构造出满足 (a)、(b) 的矩阵 L\mathcal LL；
+原问题无解时，能够证明不存在任何维数不超过 kkk 的可行解，而不只是排除某一类构造；
+构造出的 A′,S,L0NA',S,L_0NA′,S,L0N 确实可以由原问题允许的 A,C,L0A,C,L_0A,C,L0 实现，并满足 NTR0=0N^{\mathsf T}R_0=0NTR0=0 等结构约束。
+第三点尤其重要。不能把 A′A'A′ 和 R0R_0R0 当成完全独立的任意矩阵来构造归约，除非先证明这种独立选择是合法的。
+如果只做到前两点而忽略第三点，可能得到的是一个更一般问题的困难性证明，而不是你当前问题的困难性证明。
+阶段四：怎样改进你现有的 d=3d=3d=3 实验？
+对于 d=3d=3d=3、ρ=2\rho=2ρ=2 的情况，所有包含固定一维子空间 span⁡{L0N}\operatorname{span}\{L_0N\}span{L0N} 的二维子空间，可以用射影直线上的参数来描述：
+Au:vu:v=span⁡{α0, ue2+ve3},u:vu:v∈P1,\mathcal A_{u:vu:v} =\operatorname{span}\{\alpha_0,\ ue_2+ve_3\}, \qquad u:vu:v\in\mathbb P^1,Au:vu:v=span{α0, ue2+ve3},u:vu:v∈P1,
+其中 α0=L0N\alpha_0=L_0Nα0=L0N，而 e2,e3e_2,e_3e2,e3 可以选作商空间基对应的代表向量。
+与继续抽取有理参数点相比，我建议直接推导关于 u,vu,vu,v 的多项式约束：
+将子空间包含条件、固定点条件和必要交集条件转成关于 u,vu,vu,v 的多项式；
+对涉及其他未知系数的约束做消元；
+对所得多项式计算公因子、结果式或精确零点集合；
+最后再对每一个候选参数检验恒秩条件。
+这样可以回答：到底是所有参数都失败，还是存在有限个特殊参数能够成功，抑或一般参数都成功。
+这比 0/380/380/38 的采样结果强得多，也最适合验证 §5.3 中的参数化猜想。需要特别记住，参数可行集合既可能是有限集，也可能包含一个开稠密集，因此不能未经证明就认为“只要存在一个可行参数，一般参数就可行”。
+七、最后给出一个明确的研究判断
+结合你的现有结果与上述文献，我会按以下优先级推进：
+优先级
+研究任务
+希望获得的结果
+
+最高
+修正 Φ\PhiΦ 迭代与 A∞\mathcal A_\inftyA∞ 的定义
+消除现有下界可能存在的逻辑问题
+
+高
+建立 AA′⊆A+S\mathcal A A'\subseteq\mathcal A+SAA′⊆A+S 与 PBH 条件的完整刻画
+将问题重写为明确的代数判定问题
+
+高
+证明阈值决策问题属于 ∃R\exists\mathbb R∃R
+获得可验证的复杂度上界
+
+中
+对 d=3d=3d=3 进行符号参数化与消元
+精确验证或推翻参数单调性猜想
+
+中
+研究受控不变子空间算法是否适用于最小维数问题
+寻找多项式算法
+
+后续
+从 ∃R\exists\mathbb R∃R-困难问题或经典 NP-hard 问题构造归约
+建立严格困难性结果
+
+我的最终建议是：先修正 P5 的 Φ\PhiΦ 迭代定义，再完成 PBH 等价和 ∃R\exists\mathbb R∃R 表示。 这两步能够把现有的探索整理成一套更牢固的理论基础。
+目前还不能宣称 qmin⁡q_{\min}qmin 属于 P 或者是 NP-hard；我也没有找到能够直接给出这项结论的现成文献。不过，你已经建立的可行性条件、低秩判据和矩阵铅笔结构，足以支撑下一步更系统的研究。
+(IBM Research)
+(Springer)(SciSpace)(ScienceDirect)(ScienceDirect)(IBM Research)(ScienceDirect)(ScienceDirect)(arXiv)

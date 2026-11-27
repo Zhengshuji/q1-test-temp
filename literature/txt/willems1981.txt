@@ -1,0 +1,2187 @@
+      International Journal of Control
+
+
+
+
+      ISSN: 0020-7179 (Print) 1366-5820 (Online) Journal homepage: www.tandfonline.com/journals/tcon20
+
+
+
+
+Matrix pencil characterization of almost ( A, Z) -
+invariant subspaces : A classiﬁcation of geometric
+concepts
+
+S. JAFFE & N. KARCANIAS
+
+To cite this article: S. JAFFE & N. KARCANIAS (1981) Matrix pencil characterization of almost
+( A, Z) -invariant subspaces : A classiﬁcation of geometric concepts, International Journal of
+Control, 33:1, 51-93, DOI: 10.1080/00207178108922907
+
+To link to this article: https://doi.org/10.1080/00207178108922907
+
+
+
+
+       Published online: 22 Oct 2007.
+
+
+
+       Submit your article to this journal
+
+
+
+       Article views: 62
+
+
+
+       View related articles
+
+
+
+       Citing articles: 1 View citing articles
+
+
+
+
+                      Full Terms & Conditions of access and use can be found at
+             https://www.tandfonline.com/action/journalInformation?journalCode=tcon20
+INT. J. CONTROL, 1981, VOL. 33, No.1, 51-93
+
+
+
+
+Matrix pencil characterization of almost (A, B)-invariarlt
+subspaces: A classification of geometric concepts
+
+         S. JAFFEt andN. KARCANIASj:
+
+         The equivalence between the algebraic, matrix pencil, characterization of the sub-
+         spaces of the . extended' geometric theory and their dynamic characterization is
+         established. As a result, a ,completo classification of Almost {A, B)-invariant.
+         (A, B)-invariant, Almost controllability and controllability subspaces in derived in
+         terms of matrix pencil invariants. The frequency propagation aspecte of infinite
+         spectrum (A, B).invariant eubepaces are investigated and it is shown that they are
+         limits of closed-Ioop eigenspaces with arbitrarily large eigenvalues. Einally, the
+         importance of the infinite frequency subepeces in the study of the asymptotic behaviour
+         of the closed-loop oigenspacee and eigenvalues under scalar gain output feedback is
+         discussed.
+
+
+
+1. Introduction
+    The association of frequencies with subspaces of a linear vector space is
+an idea familiar from the modal theory of dynamical systems. For the case
+of forced linear systems such an association has been formally established
+by the introduction of the concept of (A, B)-invariant and controllability
+subspaces by Wonham and Morse (1970), Wonham (1974). Following the
+classical modal approach, (A, B)-invariant subspaces are thought of as direct
+sums of simpler (A, B)-invariant subspaces, each of which is associated with
+the transmission of a single frequency (Karcanias 1976, Karcanias and
+Kouvaritakis 1978). The constituent (A, B)-invariant subspaces are known
+as candidate closed-loop eigenspaces (Kimura 1975, Karcanias 1976, Moore
+1976, Shaked and Karcanias 1976) which may have either simple or Jordan
+structure. The use of matrix pencils (Karcanias 1978), provides an algebraic
+tool which generalizes the Jordan canonical form, associated with the modal
+decomposition of A-invariant subspaces, to the class of (A, B)-invariant sub-
+spaces. The fundamental dynamical problem behind the concept of an
+(A, B)-invariant subspace "F' is that of restricting the state trajectory to
+"F' by using a finite control input; the modal decomposition of such subspaces
+involves finite frequencies.
+    Recently the concept of (A, B)-invariance was generalized bytwo different
+approaches. The first (MacFarlane and Karcanias 1978) considers the fre-
+quency propagation aspects of (A, B)-invariant subspaces, and using the tools
+of matrix pencils defines the concept of an infinite spectrum (A, B)-invariant
+subspace, as a subspace whose restriction pencil is characterized by infinite
+elementary divisors. The second approach (Willems 1979) starts from the
+dynamic characterization of (A, B)-invariance; by relaxing the condition
+
+
+   Received 30 May 1980.
+   t Microbiology Department, University College Cardiff, Newport Road, Cardiff
+CF2 ITA.
+   j: Systems Science Department, The City University, Northampton Square,
+London EC1V QHB.
+                   0020-7179/81/3301 0051 802·00   e 1981 Taylor & Francis Ltd
+52                           S. Jaffe and N. Karcanias
+
+  that the state trajectory must remain in "Y to one that the trajectory must
+  remain arbitrarily close to "Y Willems defines the concept of an almost (A, B)-
+  invariant subspace. Despite their differences of approach, these two generaliza-
+. tions arc similar in nature. The main goal of this paper is to explore the links
+  between infinite spectrum (A, B)-invariant subspaces (i.s.(A, B).s.) and almost
+  (A, B)-invariant subspaces (a.(A, B).s.). This work culminates in a complete
+  classification of the 'extended' geometric systems theory-almost (A, B)-
+  invariant, and (A, B)-invariant and controllability subspaces-in terms of
+  matrix pencil invariants. In addition, we clarify the frequency propagation
+  aspects of i.s.(A, B).s. by showing that they arc limits of closed-loop eigenspaees
+  with arbitrnrily large frequencies.
+       The present problem involves aspects of both the state-space and frequency
+  domain approaches to the analysis of linear systems. In § 2, a summary of
+  the fundamental geometric concepts is given which is intended as a self-
+  contained introduction. Section 3 introduces the matrix pencil description
+  emphasizing the relation between the structure of the Kronecker canonical
+  form of the restriction pencil and the algebraic, or geometric structure of the
+  subspaces. The matrix pencil description leads us to consider the class of
+  i.s.(A, B).s. as those defined by the infinite elementary divisors of the restriction
+  pencil. In § 4 the concepts of almost (A, B)-invariant and almost control-
+  lability subspaees are reviewed and the link between those concepts and the
+  subspaoes defined by the restriction pencil approach are established. These
+  new results culminate in a complete classification of the subspaces of
+  , extended' geometric theory in terms of matrix pencil invariants. Section 5
+  discusses the problem of frequency transmission in some detail and the concepts
+  of B-spaecs and generalized B-spaees are introduced; these two classes of sub-
+  spaces arc extended next to consider the properties of closed-loop (generalized)
+  cigenspaces with arbitrarily large eigenvalues. In § 6 the interpretation of
+  i.s.(A, B).s., as limits of closed-loop eigenspaces for arbitrarily large frequency
+  is established and finally, in § 7 some of the ideas presented in the previous
+  sections are used to discuss the asymptotic behaviour of the closed-loop
+  eigenspaces and eigenvalues under scalar gain output feedback.
+       Throughout the paper, the following notation will be used: ~,e will denote
+  thc field of real, complex numbers respectively; ~n, en denote the n-
+  dimensional real and complex vector spaces correspondingly. ~[s], ~(8)
+  denote respectively the ring of polynomials over ~ and the field of rational
+ functions over R. Script letters denote linear vector spaces over ~ and italic
+  capitals denote linear transformation (maps). The range and the null space of a
+  map H arc denoted by R (H), or £' and ker (H) respectively. The space
+ spanned by the vectors Xl' ... , x, is denoted by <xl> ... , x r ) . If a property is
+ said to hold for iE[n], this means that it holds for all i satisfying 1,;;i';;n.
+ Finally, if "Y is a subspace, then V denotes the matrix injection of "Y, i.e. a
+  matrix whose columns are a basis for "Y.
+
+
+2.   Background results
+     We consider a linear time-invariant system §(A, B) described by
+
+                                     :ic:=Ax+Bu                                   (2.1 )
+                          Almost (A, B)-invariant subspaces                         53
+
+where XEq-~ Cn , UE%'~ (;I, AElRnxn, BElRnxl. We assume that B has full rank
+1< n and that Nand Bt are a left annihilator and a left inverse of B respectively
+(NB=O, BtB=ll)'
+    The fundamental class of subspaces of geometric systems theory has the
+following equivalent characterizations (Wenham 1974).
+
+
+Definition 2.1
+   "f/ is an (A, B)-invariant subspace if and only if any of the following hold
+
+     (i) (Dynamic). For every XOE"f/ there is an input u(t) for which the forced
+         trajectory x(t) satisfies x(O) = Xo and X(t)E"f/ for all t > O.
+     (ii) (Geometric). A"f/ c "f/ +E8.
+    (iii) (Feedback). There is a           state feedback      F:   q--.%'   such that
+          (A + BF)"f/ c "f/.
+
+    We let .fF("f/) denote the set of all F satisfying (2.1, (iiij), and define
+AF=A+BF. It is easy to see that the class of (A, B)-invariant subspaces
+is closed under addition; therefore, any subspace "f/ contains a maximal
+(A, B)-invariant subspace denoted by "f/*("f/) (Wonham 1974).
+    An (A, B)-invariant subspace can be decomposed into simpler (A, B)-
+invariant subspaces, each of which is associated with the transmission of a
+single complex frequency (Karcanias and Kouvaritakis 1978). These subspaces
+are defined by
+
+
+Definition 2.2
+   Let   «; = <x o>c q-.     «;  is a one-dimensional (A, B)-invariant subspace
+(1- (A, B).s.), if and only if there exists an SoEC such that any of the following
+conditions hold
+     (i) There exists UoE%' such that
+
+
+                                  [sol-A, -B] [::]=0                              (2.2)
+
+    (ii) (sol - A )x o = 0 (mod B)                                              (2.2 a)
+
+    (iii) (soN -NA)xo=O                                                           (2.3)
+
+   . For any (so, x o) satisfying (2.3), a vector U o exists
+
+                                                                                  (2.4)
+
+such that (so, x o, uo) satisfies (2.2).
+
+
+Definition 2.3
+   Let "f/J = <xi, jErk]> c q-, where "f/J is spanned by the set of linearly
+independent vectors xi, jErk]. r . is a Jordan structure (A, B)-invariant
+54                          S. Jaffe and N .: Karcanias
+
+subspace (J.(A, B).s.), if and only there exists an SoEC such that any of the
+following conditions hold
+
+     (i) There exist ui, jErk], UiEIilI such that
+
+
+                   [sol -A, -B] [ : : ] = -xi-!,      jErk]    with xo=O        (2.5)
+
+
+     (ii) (sol-A)xi=-xi-!(modB),          jErk],    withxo=O                  (2.5 a)
+
+                                                                                (2.6)
+
+For any So and xi, jErk] satisfying (2.6) input vectors ui exist
+
+                                                                                (2.7)
+
+such that {so, xi, ui, jErk]} satisfy (2.5).
+   By defining state feedback matrices F, as solutions of Fx o = uo, or Fx i = ui,
+jE[k], the' open-loop' conditions (2.2), or (2.5) are transformed to the' closed-
+loop' form                       .
+                                                                                (2.8)
+
+
+
+which shows the equivalence between 1 - (A, B).s., or J - (A, B).s. and closed-
+loop cigenspaces.
+     The frequency-transmission properties of these subspaces are considered in
+ § 5. Next, we consider the relationship between the subspaces "Y so' "YJ and
+the general (A, B)-invariant subspace "Y. If "Y is (A, B)-invariant, the
+Definition 2.1 (ii) can be written in matrix terms as A V = V A - BU, where V
+is a basis for "Y and A is an r x r matrix, r = dim "Y. If A = QJQ-l is the Jordan
+decomposition of A, then V c = VQ defines a new basis {Xi' X/I, iE[po], kiE[Pi]}
+such that A V c = Vc-BU c, or
+
+                                                                            (2.11 a)
+
+                                                                             (2.11 b)
+
+      " Pi=r.
+where L            The decomposition of "Y into a direct sum of 1-(A, B).s.
+       i=O
+and/or J - (A, B).s. is called a characteristic decomposition, the basis Yc is called
+a characteristic basis (Karcanias and Kouvaritakis 1978) and the set of frequencies
+{s;, iE[1']}, where multiplicity is taken into account is called a spectrum of "Y
+with respect to the basis Vc ' Note that the uniqueness, or assignability of
+ Vc depends on the relationship of "Y with £!4 (Karcanias 1979 b).
+     A very important class of (A, B}'invariant subspaces are those which have
+the property that not only is it possible to stay in "Y, but it is possible to travel
+to any X1E"Y with the trajectory X(t)E"Y.
+                           Almost (A,' B)'invariant subspaces                               55
+
+Definition 2.4 (Wenham 1974)
+   !J£cq;' is a controllability subspace (c.s.) if and only if either of the following
+conditions hold true
+      (i) For all x o, X,E!J£ and all' finite T there is an input such that the forced
+          trajectory x(t) satisfies x(O) ~ x o' X(t)E!J£ for all tE[O, T[ and x(T) = x,.
+     (ii) There exists a class of state feedback matrices ff(!J£) such that
+                        !J£= <A + BFI!J£n&J') for all FEff(!J£)                          (2.12)
+         where <AI&J')£!&J'+Af:l+ ... + An-'&J'.
+    From the dynamical definition, together with the linearity of the system, we
+see that the class of C.s. is' closed' under addition. Therefore, every "f/' c q;'
+contains a maximal c.s., denoted by !J£*("f/') (Wenham 1974).
+    Apart from the dynamic and --geometric definitions given above, c.s. may
+be characterized in an algebraic 'way as follows
+
+Definition 2.5
+   A subspace !J£ c q;' of di~ension:' ~is a c.s. if and only if either of the following
+equivalent conditions hold true
+      (i) (Warren and Eckberg 1975): There exist polynomial vectors :((S)E~n[S]
+          and U(S)E~I[S] of degrees k-1 and k respectively, k'?:r such that
+
+
+                                          [.1'1 - A, - B] [::::] =0                     (2.13)
+
+         If x(s)=xo+sx, + ... "'t-Sk-'X k_" then !J£=<xk_i , iE[k]).
+     (ii) (Karcanias and Kouva:~itakis 1978): There exists a polynomial vector
+          X(S)E~n[S] of degreee-i I, k e r, such that
+
+                                          (sN-NA)x(s) = 0                               (2.14)
+         where N is the left: annihilator of B.
+   If x(s) = Xo + sx, + ... '+ Sk-'Xk_l> then!J£ = <X k_i ' iE[k]); if k = r, {lC k- i , iE[I']}
+forms a basis for !J£.For all polynomial vectors x(s) satisfying (2.14) input
+polynomial vectors U(S)EIR1[S] may be defined by                        .
+                                   u(s) = Bt(sI - A)x(s)                                (2.15)
+where Bt is a left inverse of B, such that the pair {x(s), u(s)} satisfies condition
+(2.13).
+    Controllability subspaces are subspaces for which the state may be transfered
+from x(O-) = 0 to x(O+) = x o, for all XoE!J£ by a train of impulsive inputs in the
+time interval [0-,0+[ with an associated impulsive trajectory X(t)E!J£
+(Karcanias .and Kouvaritakis 1978). Alternatively, c.s. may be seen as a
+subclass of (A, B)-invariant subspaces with an assignable spectrum (Wonham
+and Morse 1970)'and an assignable characteristic basis (Karcanias 1979 b).
+    From this preliminary discussion, it is seen that the fundamental elements
+of (A, B)-invariant and c.s. subspaces are the vectors {xo}, the vector chains
+{Xl> ... , xk}, which are associated with a frequency So' as well as the polynomial
+56                          s. Jaffe and N, Karcanias
+vectors x(s), which satisfy conditions (2.3), (2.6) and (2.15) respectively. By
+analogy with eigenvectors and Jordan structure eigenvector chains, the vectors
+{xo}, {xv ... , x k } will be called B-vectors and B-vec:tor chains respectively; the
+polynomial vectors x(s) will be called B-polynomial vectors. Note that the
+B-vector (chains) reduce to eigenvector (chains) when ~~ = {O}. The importance
+of B-vectors, B-vector chains and B-polynomial vectors to some of the funda-
+mental ideas of geometric theory, is discussed in the following section, where the
+restriction pencil and the fundamental subspaces associated with it are
+discussed.
+
+3.  The restriction pencil and the algebraic characterization of the geometric concepts
+3.1. The restriction pencil
+    The common tool in the characterization of B-vectors, B-vector chains and
+B-polynomial vectors is the operator sN - N A which is called the input-state
+pencil (Karcanias 19'79 a); in fact, if Xo is a B-vector of B-value so' {xv ... , x k}
+a B-vector chain of a B-value 80 and x(S)=X o+-8X1 +-             +sr-1x r_ 1 a B-poly-
+nomial vector, then the defining equations are
+                     (soN -NA)xo=O                                               (3.1)
+                     (soN-NA)xj=-Nx j- 1 ,        jE[k],   xo=O                   (3.2)
+                    (sN -NA)x(s)=O                                               (3.3)
+    We are often interested in B-vectoI'S which lie in a particular subspace "f/,
+and for B-polynomial vectors with the property that (x o, Xv ... , Xr_1)E"f/. In
+fact, any "f/ contains a maximal (A, B)-invariant subspace (Wenham 1974),
+which is spanned by B-vector chains in "f/, as well as a maximal c.s., which is
+spanned by the vectors {x o, ... , x r- 1} of some B-polynomial vector x(s). If we
+let V be an injection of "f/ into !!l' (V is a basis ma.trix for "f/), then every
+xE"f/ can be written x = Vv. Therefore, the B-vectors, B-vector chains and
+B-polynomial vectors in "f/ are determined by
+                  (soN V -NA V)'vo=O                                              (3.4)
+                  (soN V -NA V)v j= -.NVv j-1 ,       jE[k],   ,,0=0              (3.5)
+                  (sN V -NA V)v(s) =0                                             (3.6)
+   The opera/tor eN V - N A V is called the restriction pencil to "f/ (Karcanias
+1979 a). Clearly, the input state pencil is just a special case of the restriction
+pencil, for "f/ =f{'. It is the aim of this section to summarize the results
+derived from the analysis of the structure of the restriction pencil (Karcanias
+1979 a); we start by giving a summary of definitions and basic results on
+matrix pencils which are of particular importance for our analysis.
+
+3.2. Matrix pencils (Gantmacher 1959)
+    Given two matrices E and II of the same dimensions ex x f3 with elements
+from IR, and s an indeterminate, then sE - H is caned the pencil of the two
+matrices. s E - H is called regular when ex = f3 and Is E - H I ~ 0, and is called
+singular in any other case. The pencilsE - H, whether it is regular, or singular,
+is said to He strictly equivalent to the pencil sE' -H', if and only if
+                                      Almost (A, B)-invariant subspaces                                  57
+
+P(sE-H)Q=sE'·-H', where P and Q are square non-singular matrices
+over C.
+     Regular pencils are characterized by the set of finite and infinite elementary
+divisors, denoted by f.e.d. and i.e.d. respectively. Thus, consider the homo-
+geneous pencil sE - §}l, where sand § are two complex variables, and let
+ej(s, §) be the elementary divisors of the homogeneous pencil. The f.e.d. of
+s E -- Hare obtained from those of s E - ~IH' by setting § = 1, whereas, the
+elementary divisors of sE - §H of the form ,§q define the i.e.d. of sE - H. The
+set of f.e.d. and i.e.d. is a complete set of invariants for the class of strictly
+equivalent pencils and this class is characterized by a uniquely defined element
+known as the Weierstrass canonical form, i.e.
+            sEw-Hw={Dql, ... , D q", sl-J},                             Dqi=sEqi-1qi'        iE[,u]    (3.7)
+where the first ,u blocks correspond to the i.e.d. §ql, ... , §qj1 of the pencil sE - H,
+and the normal J-ordan form sl -J is uniquely defined by the set of Le.d.
+(s - Sl)7 1 , . . . , (s - sr)7r of sE - H. Finally, FJqi is a matrix of order qi' whose
+elements in the first super-diagonal are 1, whereas the others are zero.
+     Unlike the case of regular pencils, however, the characterization of singular
+pencils apart from the set of divisors requires the definition of another set of
+invariants, the minimal indices. If sE - H is singular then at least one of the
+equations
+                                  (sE-H)x=O               and       )rt(sE-H)==O                       (3.8)
+have solutions in x and Ywhich in general are vectors in a rational vector space.
+There always exist polynomial bases for the right and left null spaces of
+sE -·H, {xi(s), iE[p]) and {Yj(s), jE[tJ} of minimal degrees <« and.n, respectively;
+note that although in general there exists a whole family of minimal bases
+xi(s) and Yj(s), the set of the minimal degrees {Ei' iE=[p]} and {r;j' jE[tJ} are
+uniquely defined. The set of indices
+
+
+and
+                                  r; j' 0 = r; 1 = ... = r; h < r; h+1::::; ... ::::; r; t
+define the column (c.m.i.) and row minimal indices (r.m.i.) of thepencilsE -H ;
+the subset of the c.m.i. and r.m.i. respectively which are zero {Ei' iE[g]},
+{r;j' jErk]} are called zero c.m.i. (z.c.m.i) and zero r.m.i. (z.r.m.i.). The set of
+f.e.d., i.e.d., c.m.i. and r.m.i. is a complete set of invariants for the class of
+pencils strictly equivalent to sE - H: this equivalence class is characterized by
+a uniquely defined canonical form, known as the Kronecker canonical form,
+which is of the following type
+            L                                 t
+  {Oh,!l;       e g+   1, ... , L e p ; Lr;h+l , ... , Lr;t; D q1" ... , Dq,,; 81-J}=sE k - H k        (3.9)
+where
+                                        -1       o          o
+                                                            o
+                         t., = [:0:
+                                         s      --1
+                                                                   : ]     1.                         (3.10)
+
+                                  o   o    s --"I 1
+                               +-----t + 1---~
+58                          "" S. Jaffe and N. Karcanias
+
+3.3 The restriction pencil and the fundamental geometric spaces (Karcanias 1979 a)
+    If a pencilsE - H is viewed as a matrix taking a vector space ~1 to a vector
+space ~;, then P and Q can be thought of as changes of bases in ~2 and ~l>
+respectively. The decomposition of sE -H into canonical blocks implies a
+corresponding decomposition Of'~l and ~2 into linearly independent subspaces.
+The subspaces of ~1 corresponding to each particular block are spanned by the
+appropriate columns of Q.
+     Suppose now that 1/ is a given subspace represented by a matrix V and that
+P k , Qk are the transformations which transform the restriction pencil to the
+canonical form (3.9). Then we may write
+
+
+
+
+   The partition in blocks of the right-hand side of (3.11) imposes a decom-
+position on 1/, i.e.
+
+
+
+where the subspaces spanned by Ve, V~, Vq , V, have the property that
+
+                                                                      o
+                                                "':"
+                                                      jL"+   l
+
+
+
+                   siVve-iVA V,,,,,                                          (3.12)
+
+                                            o                    ""iL   e•
+
+
+                                                         o
+                                                        o
+                                        L           Ii           0
+                                            1Jh + 1   i
+                                                ..... !...
+                   siVv -iVA V =
+                        ~          ~
+                                                                             (3.13)
+
+                                             o                   L'
+                                                                 ~,
+
+
+
+
+                                                        o
+                                                        o
+                                                                 o
+                                         ....          i..
+                                                                             (3.14)
+
+                                             o
+                                                        o
+                        Almost (A, B)-invariant subspaces                                                    59
+
+                                                                 o
+                                                                                    o
+                                                                                                          (3.15)
+
+                                                             . ..:       . .. . . . . .....
+
+                                                   o                 sf -J"
+Thus, the subspace "'f/ may be decomposed as
+                               "'f/=   r: EB "'f/~ EBi"'f/ EBi "'f/,
+                                                             q                                            (3.16 )
+where «';  r;   "'f/q, «, are the subspaces spanned by V" V~, V q, V, respectively.
+Note that a zero r.m.i, produces only a zero row, and hence has no significance
+for the decomposition. The study of each of the subspaces "'f/., "f/.~, r ; "'f/,
+is the subject of the following subsections.
+
+3.3.1. Finite elementary divisor subspaces
+     By inspection of (3.15) it is seen that a decomposition is imposed on V"
+V,=[VTI, ... , V,J which implies that "'f/,="'f/T1EBi"'f/"EB ... EB"'f/", where
+"'f/TI = Im {V,.}. Then we have
+                                                                     0
+
+                                           s-s;        -1                 0                    0
+
+                sf/VTI-f/A V,,=               0        s-s;              -1                    0          (3.17)
+
+                                              0          0                0                   s-s;
+
+                                                                     0
+If we now write V" = [v/, ... , vi"] and let e 1, ... , e Tl denote the standard basis
+vectors, then for s = s; the following conditions hold true
+
+         (s;f/-f/A)VTle1=O                         +-+(s;N-NA)v/=O                                   'f
+         (s;f/ -f/ A) VTje2 = -f/ VTje1            +-+ (s;N          -t        A)v/ = -Nv;'               (3.18)
+
+        (s,f/-f/A)VTjeTj = -f/VTje,,_, +-+(s;N-NA)v;, = -NV;,,-l
+    Thus, the vectors {Vii, ... , v;,,} form a B-vector chain of B-value~; and the
+subspace "'f/Tj=(v/, ... , vi"> is a J.s.(A, B).s. in"'f/ with a spectrum 8;. "'f/, is
+thus an (A, B)-invariant subspace which is associated with the f.e.d. (s-s;)",
+ie[r]. The subspace "'f/, has the property that "'f/,nt16 = {O}, since NV,=O.
+This implies (Wonham 1974, Karcanias 1976) that "'f/, is a fixed spectrum
+(A, B)-invariant subspace.
+
+3.3.2. Column minimal index subspaces
+    Similarly to the previous case V. may be written as V.=[V." ... , V' p ]
+which imposes a decomposition on "'f/. of the type
+                         "'f/.= "'f/er EB"'f/., EB"'f/es EEl ... EEl"'f/. p
+GO                          S. Jaffe and N. Karcanias
+
+where F ec = Im {V,J      Then we have that
+
+                                                     o
+                                          s    -1     o        o
+                   sNVc c -NA V e c = 0         s    -1        o                (3.18)
+
+                                          o o             s -1
+
+                                                     o
+If we write V e s = [v/' ... , V;"+!] and define the polynomial vector e cc(s)=
+e l + se z + ... + s£'e,,+! where [e., ... , e,,+l} are the standard basis vectors,
+then (sN - N A) V"ee i (s) =0, which results in .
+
+     (sN -NAj{V"ez+sVe se l + ... +s' V"e,,+!}
+                                 = (sN - N A){V i l +sv iz + ... +s"v;"+!} =0   (3.19)
+
+    The polynomial vector v.. (s) = v/ + ... + s"+!v;"+! is clearly a B-poly-
+nomial vector and the subspace <v/, ... , v;,,+!) defines a c.s. in F. The vectors
+v/, jE[€i+ 1] satisfy the following conditions
+
+
+                    Nv/=NAv i Z                v"= A v;,,+! + b,,+!
+                         .         or                                       (3.20 a, b)
+                    Nv;,'=NAv;,'+!             Vil=Aviz+bz
+
+
+
+which show that the c.s. F" = <vii, . ~., V{'+!) has the structure of a J.s.(A, B).s.
+which corresponds to a frequency e = 0; however, the additional condition
+that V{'+!Ega gives the added structure of a c.s. Because N V" has a one-
+dimensional null space, it follows that "Y.. is generated by a one-dimensional
+subspace of gao If we write b/ = Bu/ and define F by Fv/ = u/ then we have
+
+             v{'+!=b,    v:'=(A+BF)v:'+!, ... , V/=(A+BF)V iZ]
+
+                 O=(A+BF)v/                                                     (3.21)
+or
+             v:'+!=b,    v;,'=AFb, ... , Vi1=AF"b,        .
+                                                          AF"+!b=O
+
+which shows that the set of vectors {V{'+!, ... , v/} may be expressed as a cyclic
+chain of length €i + 1. The dimensions of the su bspaces F" are minimal,
+because of the minimality of the indices €i; however, the set of subspaces
+{F, .. iE[p]} is not uniquely defined (since there is no unique minimal basis for
+the right null space of sN V - N A V). The subspace F, is the maximal C.S.
+                             p
+in F and has dimension L (€i + 1).            By the minimality of the indices Pi =
+                            i= 1
+                        Almost (A, B)-invariant subspaces                        61
+
+(-i -I- 1), it follows that the results of Warren and Eckberg (1975) on the possible
+dimensions of the c.s. in!J: may be also used to determine the possible dimensions
+of the c.s. in "Y; note, that in the latter case, the controllability indices should
+be substituted by the minimal indices Pi' Finally, we should point out that if
+some of the _/s are zero, then the corresponding c.s. are one-dimensional and
+lie in ga.
+
+3.3.3. Summary of pencil classifications
+    As we have seen, subspaces corresponding to both c.m.i and f.e.d. are (A, B)-
+invariant. In fact, we have
+
+Theorem 3.1.
+   "Y is (A, B)-invariant if and only if the restriction pencil sN V - N A V has
+only c.m.i. and f.e.d. (and possibly zero r.m.i.).
+
+Proof
+     We proceed by a process of elimination. If "Y is (A, B)-invariant then
+A V = Y.4 -BD which implies that sNV -NA V =sNV -NVA, since NB=O.
+Thus (sN -N A) V = N V(sI - A). The r.m.i. are determined by the left kernel
+of the pencil, which, since sl - A is non-singular over lR(s), has B, basis of
+constant vectors. Therefore, sN V - N A V has no non-zero r.m.i. Now, by
+inspection of the canonical form (3.9) we see that dim (ker N V) =p -I-fL where
+p=number of c.m.i. and fL of i.e.d. But also p=dimker(sNV-NAV)=
+dim ker N V(sI - A) = dim ker N V, since sl - A is non-singular. Therefore,
+fL = 0, so eN V - N A V has no i.e.d.                                        •
+
+    This result, together with a consideration of the properties of the invariants
+of imbedded pencils (Jaffe 1979), gives:
+
+Theorem 3.2
+    Let "Y c!J: be any subspace, and let "Y e , "Y T be the subspaces of "Y corre-
+sponding to the c.m.i. and f.e.d. of sN V - N A V. Then "Y*("Y) =       r:EJj"Y T •
+    The analogous results for c.s. can be most easily derived by combining the
+definition of c.m.i. with the polynomial vector characterization of c.s. This
+gives
+
+Theorem 3.3
+   Let "Y be any subspace, and let    r:   c "Y be the subspace corresponding to
+the c.m.i. of s N V - N A V. Then    r: = gf*("Y). In particular, if "Y is a c.s.,
+then its restriction pencil has only c.m.i. (and possibily zero r.m.i.).
+
+3.3.4. Infinite elementary divisor subspaces
+    The structure of subspaces associated with i.e.d. is investigated in a similar
+manner; thus, once again the partition of sNVq-NAVq into blocks imposes
+a decomposition on V q, Vq=[Vq" ... , V q.] which in turn implies that "Yq =
+"Yq, EJj ... EJj"Yq. , where "Yq, = Irn {Vq.}. For each of the subspaces "rq, we
+62                                  S. Jaffe and N. Karcanias
+
+have
+                                                              0
+
+                                                -1        s       0   0
+
+                                                0     -1          s   0
+                           sNVq,-NA V q,=                                            (3.22)
+                                                 0        0       0   s
+
+                                                0         0       0   -1
+
+                                                              0
+
+
+
+
+                                                                               I
+   If e v e 2, ... , e q, are the standard basis vectors and Vq,=[v;' • .. .. viq,] then
+we have that
+
+      N Vq,el =0,        N Vq,e 2=N A Vq,el> ...• N Vq,eq, =N A Vq,eq,_l
+or
+                                2 = Av/ + b = Ab + b .....                           (3.23)
+            v;' = b IE.'?6'.   Vi          2    l   2
+                               viq'=Aviq,-I+bq,=Aq,-lbl+Aq,-2b2+'" +bq,
+
+If we write b j = Bu! and define F on "f/q/ by Fv/ = Ui H• jE[qi -1] then we have
+     v/ = bl ,         2             l                 q,
+                  V   i = (A + BF)v i = Apb l, .... v i = (A + BF)viq,-1 = Apq,-Ib l (3.24)
+or that "f/q,=<b v Apb l , ... , Apq,-Ib l    >.
+                                             This is very like a c.s.; the difference
+is that it is not AF-invariant, that is Apq'bl¢'Y'"'q,. Note that since N V q, has
+a one-dimensional kernel, the subspaces              r;
+                                                 are generated by one-dimensional
+subspaces of.'?6'. The essential difference between a o.s. "f/€, and an i.e.d.
+subspace "f/ q, is that although the first is spanned by a cyclic chain of vectors,
+the latter is spanned by a truncated cyclic chain.
+    "f/q, is certainly not an (A, B)-invariant subspace (if it were, its pencil would
+have only c.m.i. and f.e.d.). However, the fact that it corresponds to an
+, infinite' elementary divisor suggests that it might somehow be considered as
+an 'infinite spectrum' (A, B)-invariant subspace. This has motivated the
+definition of such subspaces as asymptotic or infinite spectrum (A, B)-invariant
+subspaces (Karcanias 1979 a). In § 5, it will be shown that such subspaces
+can in fact be thonght of as limits of J.s.(A, B).s. with arbitrarily large fre-
+quencies, thus justifying this terminology.
+
+3.3.5. Row minimal indices
+    So far we have considered the subspaces associated with f.e.d .• c.m.i. and
+i.e.d.; the fourth set of invariants is the set of r.m.i. Note that while f.e.d.,
+c.m.i. and i.e.d. are associated with the right null space of sN V - N A V, the
+r.m.i. are associated with the left null space of the restriction pencil. Thus, by
+simply taking the transpose of sNV-NAV, sV'N'- V'A'N' we see that
+r.m.i. define c.s. for a system S(A', V") with input-state pencil sV'- V'A'.
+which are contained in.'?6'" = 1m {N'}. As far as the structure of "f/ is concerned.
+the non-zero r.m.i. restrict the dimensions of the subspaces "f/e' "f/T' "f/q.
+Zero r.m.i. have no significance for the structure of V.
+                            Almost (A, B)-invariant subspaces                           63
+
+       In the following section, the dynamic characterization of the i.e.d. subspaces
+"f/'q is given, and the equivalence between the subspaces discussed from the
+matrix pencil viewpoint and the concepts of almost (A, B)-invariant and almost
+controllability subspaces is established.
+
+
+4.     Almost (A, B)-invariant and almost controllability subspaces and their matrix pencil
+       characterization
+4.1. Introductory results (Willems 1979)
+    In this section, we first introduce the classes of almost (A, B) ..invariant
+and almost controllability subspaces recently described by Willems (1979);
+they are defined dynamically, and they have also been characterized geometri-
+cally. Next, we apply these ideas to the characterization of i.e.d. subspaces.
+This in turn, allows to give a characterization of Willems's subspace>: in terms
+of their restriction pencil invariants.
+    (A, B)-invariant subspaces are those in which trajectories can remain for
+all time. Willems relaxes this condition, and considers subspaces to which a
+trajectory can remain arbitrarily close for all time. Specifically, we have
+
+Definition 4.1
+    "f/'ef![' is almost (A, B)-invariant if and only if for all xoE"f/', and all £>0,
+there is an input u,(t) such that the resulting trajectory x,(t). for 1C,(0) = x o,
+satisfies d(x,(t), "f/') < £ for all t » 0, where d(x, "f/') ~inf [x - vii.
+                                                            vei'"
+   Clearly, an (A, B)-invariant subspace is almost (A, B)-invariant.             Relaxing
+the dynamic definition of a c.s. gives
+
+Definition 4.2
+     "f/'ef![' is an almost controllability subspace (a.c.s.), if and only if for all
+x o, xlE"f/', some time T> 0, and all £ > 0, there is an input u,(t) such that the
+resulting trajectory satisfies x,(O) = x o, x,(T) = Xl and d(x.(t), "f/') < E for all
+to> 0.
+      Clearly, a c.s. is also an a.c.s., and an a.c.s, is an almost (A, B)-invariant
+subspace. It is an immediate consequence of these dynamical definitions,
+together with the linearity of the system, that the classes of almost (A, B)-
+invariant and almost c.s. are closed under addition. Hence, there is a maximal
+almost (A, B)-invariant subspace in any subspace "f/', denoted by "f/' e.*, and a
+maximal almost c.s, in "f/', denoted by fHe, *. Clearly "f/'a* =:> *fH a* ~'fH* and
+"f/'..* =:> "f/'* =:> fH*, where fH* and "f/'* denote the maximal c.s. and maximal
+(A, B)-invariant subspaces in "f/'. Furthermore, Willems has proved the
+following.
+
+Lemma 4.1
+      fH* = fHa *fI"f/'*.
+    The next theorem (due to Willems) provides a geometric characterization
+                                                                                           •
+of ' almost' subspaces.
+     CON.                                                                              C
+64                             S. Jaffe and N. Karcan·ias
+
+Theorem 4.1
+    (1) Y a is almost (A, B)-invariant if and only if Ya==[!ia+Y where [!ia
+is an almost c.s. and Y is (A, B)-invariant.
+    (2) [!ia is an almost c.s. if and only if there is an F: [!ia----*Y and a chain
+of subspaces flJ => £!1J1 => flJ2 => '" ::J flJk' such that
+                                                                                    (4.1 )
+
+4.2. 'Almost' (A, B)-invariant and controllability subspaces and the subspaces
+     defined by the 'restriction pencil approach
+    The relationship between the almost (A, B)-iwlariant and c.s. and the
+subspaces corresponding to f.e.d., c.m.i., and i.e.d. is the subject of this section.
+Starting from the characterizations of Theorem 4.1 we have the following:
+by choosing a basis for flJk, expanding it to a basis for flJk- 1 etc. condition (2)
+of Theorem 4.1 becomes
+     [!ia=1f1+A FIf1+ ... AFkllfl+1f2+AFIf2+ ... +A phlf2
+                                              + ... +lfr+AFlfr+ ... +AFkrlfr        (4.2)
+
+where Ifi=<b i), biEflJ and {bi , ... , b r } is a basis for ~;l'   Thus, we have
+
+Oorollary 4.1.1.
+   [!ia is an almost c.s. if and only if [!ia = ~l + ... + ~r' where Y i = Ifi +
+A Flfi + ... + AFk i Ifi'                                                      •
+   Note that the subspaces         r:
+                                   have exactly the structure of the subspace
+corresponding to an i.e.d. (see condition 3.24). Therefore
+
+Theorem 4.2
+   If sNV --NA V has only i.e.d. (and possibly zero r.m.i.) then ~ IS an
+almost c.s.
+
+Proof
+   Y =~l EB~2EB ... E9~r where each ~i corresponds to a single i.e.d. Ski.
+Then by condition (3.24) ~i = Ifi + Aj'l'lfi + ... + AFki-1 Ifi where F is defined
+appropriately on each ~i; the fact that {Y i , iE:[r]} are linearly independent
+ensures that F is well defined.                                                 •
+   Furthermore, any c.s. is an almost c.s. (indeed, it has the structure defined
+by Corollary 4.1.1. Therefore we have
+
+Theorem 4.3
+    If sNV -NA V has only i.e.d., c.m.i. (and possibly zero r.m.i.) then ~
+is an almost controllability subspace.
+
+Proof
+   ~ = [!i* EB~q where R* corresponds to c.m.i. and as such is a c.s. and hence
+an almost c.s. and ~q corresponding to i.e.d. is an almost c.s.              •
+     We do not yet know whether the converse is true. That is, if Y is an almost
+c.s., does its restriction pencil have only i.e.d.. and c.m.i.? The following
+results show that the answer is yes.
+                         Almost (A, B)-invariant subspaces                          65
+
+Lemma 4.2
+   If -r, and i/ 2 are subspaces such that sNVl-NAVl and sNV 2 - N A V2
+have no non-zero r.m.i., then the restriction pencil of j'~ = r . + i/ 2 has no
+non-zero r.m.i.
+
+Proof
+     Without loss of generality, we may take [VI: V 2 ] as a basis matrix for
+i/ 1 + i/ 2 since any dependence among the columns will have no effecton the
+left kernel of the pencil. Thus, (sN·-NA)[V l : V 2]=[8NV I-NAV v sNV2 -
+N A V 2 ]. Recall that the r.m.i. are the degrees of the a minimal polynomial
+basis for the left kernel of the pencil; thus, suppose that
+                      yt(s)[sNVI-NA VI' sNV 2 - N A V 2]=0
+This can happen if and only if yt(s)(sN VI -NA VI) =0 and yt(sNV 2 -NA V 2 ) =0.
+If we denote by ~<l'(V), 2(Vl ) , 2(V 2 ) the left null spaces of sNV -NA V,
+sN VI - N A VIand «N V 2 - N A V 2 respectively, we have that 2( V) =
+2( Vl l ) n 2 ( V 2 ) ; but 2 7 ( VI) and 2( V 2 ) eaeh have a basis of degrees 0, i.e.
+of constant vectors. Therefore, 2( V) has a basis of constant vectors and hence
+sNV·-NA V has no non-zero r.m.i.                                                     •
+
+    Suppose &fa is an almost c.s. Then from Corollary 4.1.1 /!lla = +     r.
+                                                                        + i/r'
+where i/i = O'i + AFO'i + ... +AFki O'i' We now show that a subspace i/i with
+this structure has no non-zero r.m.i.
+
+Lemma 4.3
+   If i/ = If + A 11'0' + ... + A F k- l 0', where 0' = (b) c!!J then sN V - N A V has
+no non-zero r.m.i.
+
+Proof
+   First, suppose that {b, A Fb, ... , A F k- l b, A F k b} are Jlinearly dependent.
+Thus, each of AFk b, ... , AFn-l b is a linear combination of {b, AFb, ... , AFk-l b],
+which implies that
+              i/ = 0' + ApO'+ ... + AFk-l 0' + AFk 0' + ... + AFn-l 0'
+Therefore (by Definition 2.3 (ii)) i/ is a c.s. In this case, as we already know
+from Theorem 3.3, the pencil sN V-1V A V has no non-zero r.m.i, So assume
+that {b, AFb, ... , AFk b} are linearly independent. Then this set can be
+expanded to a basis for fE. With respect to this basis, we have
+                                                          0           0
+                        1           0
+                            1                             1
+                                                              1
+                  V=                    and    All' V =               o
+                        o           1
+                                                          o           1
+                                o
+                                                                  o
+                                                                                  c2
+66                          S. Jaffe and N. Karcanias
+
+Now note that since N(A+BF)=NA, N(sI-A)V=N(sI-AF)V.                            From
+above, we have
+                                               s
+
+                                               -1
+
+                                                         s
+
+                                                         -1
+
+                                                    o
+Now recall that in this basis, b=[I, 0, ... ,0]'.   Since Nb=O, we have that
+                                     o              0
+
+                                    -1     s
+
+                                          -1
+                                                                                 (4.3)
+                                                    s
+
+                                     0              -1
+
+                                               o
+Suppose y'(s)N(sI:-A)V=O, and let N be partitioned as [N 1,N2,N3 ] in
+accordance with (4.3). It is easy to see that O(s) is non-singular over ~(s).
+Therefore, y'(s)N(sI - A) V = 0 if and only if y/(s)N 2 = O. Since N 2 is a constant
+matrix, its left kernel, and hence the left kernel of sN V - N A V, has a constant
+basis. Therefore, sN V - N A V has no non-zero r.m.i.                             •
+     Combining Lemmas 4.2. and 4.3 gives
+
+Theorem 4.4
+     If l ' is an almost c.s. then sN V - N A V has no non-zero r.m.i.
+     Now we show that an almost c.s. has no f.e.d.
+                                                                                    •
+Lemma 4.4
+   If l ' is an almost c.s., then 1'* =f!4*, and "f/ has no f.e.d.
+
+Proof
+     By Lemma 4.1, f!4*=f!4a*n1'*. But f!4 a*=1', so f!4*=1'*. Since 1'*
+is the subspace corresponding to all c.m.i. and f.e.d. of the restriction pencil and
+f!4* is the subspace corresponding to all c.m.i., f!4* = 1'* implies that sN V - N A V
+has no f.e.d.                                                                        •
+ - Combining Theorems 4.4, 4.3 and Lemma 4.4 we have
+
+Theorem 4.5
+   l ' is an almost c.s, if and only if sN V ~ N A V has only i.e.d., and c.m.i.
+(and possibly zero r.m.i.).
+                        Almost (A, B)-invariant subspaces                           67
+
+   An immediate corollary is
+Corollary 4.5.1
+    Let i/ be any subspace, and let i/' c i/ be the subspace corresponding to
+all c.m.i. and i.e.d. of sN V -NA V. Then i/' = RIJ.*, is the maximal almost c.s.
+in i/.
+    The proof of the above corollary follows from the uniqueness properties
+of the invariants of imbedded pencils.                                         •
+    Having established the relationship between almost c.s. and subspaces
+associated with i.e.d. and c.m.i., we can immediately extend our classification
+to almost (A, B)-invariant subspaces.
+Theorem 4.6
+   i/ is an almost (A, B)-invariant subspace, if and only if sN V - NA V has
+no non-zero r.m.i. That is sN V - N A V has only c.m.i., i.e.d., and f.e.d.
+(and possibly zero r.m.i.).
+Proof
+    If i/ has no non-zero r.m.i., then i/=flllJ.*$i/T where flla * corresponds to
+all c.m.i, and i.e.d., and i/ T corresponds to f.e.d. Thus, flllJ. * is an almost c.s,
+and i/ T is (A, B)-invariant, so by Theorem 4.1, i/ is almost (A, B)-invariant.
+    Conversely, suppose i/ is almost (A, B)-invariant. Then by Theorem 4.1
+i/ =~a + i/ T where ~a is an almost c.s. and i/ T is (A, B)-invariant. Therefore,
+both of the restriction pencils sNRIJ.-NARIJ. and sNVT-NAVT have no
+non-zero r.m.i. Thus, by Lemma (4.2), i/ =flllJ.+i/ T has no non-zero r.m.i. •
+
+Corollary 4.6.1
+   Let i/ be any subspace and let i/' c i/ be the subspace corresponding to all
+c.m.i., f.e.d. and i.e.d. of sN V -NA V. Then i/' = i/a *, the maximal almost
+(A, B)-invariant subspace in i/.                                             •
+
+    We have shown in this section that the subspaces which Willems (1079) has
+defined in terms of their dynamical properties, correspond exactly to subspaces
+which are defined in terms of pencil invariants (Karcanias 1979 a).
+4.3. More definitions: a decomposition theorem
+    Willems defines two special types of subspaces :
+     (i) '?? is a coasting subspace if and only if '?? is (A, B)-invariant and the
+         maximal c.s, in '??, fll* = {O}.
+    (ii) [/' is a sliding subspace if and only if [/' is an almost c.s. and the maximal
+          c.s, in Y, fll* = {O}.
+   Since fll* corresponds to the c.m.i. of the restriction pencil, neither of these
+subspaces has c.m.i. Thus, from the pencil characterisation of (A, B)-invariant
+and c.s. we have
+
+Theorem 4.7
+   '?? is a coasting subspace if and only if its restriction pencil has only f.e.d.
+(and possibly zero r.m.i.).
+68                            S. Jalle and N. Karcanias
+
+Theorem 4.8
+   9' is a sliding subspace if and only if its restriction pencil has only i.e.d.
+(and possibly zero r.m.i.).                                                        •
+
+     Thus, a coasting subspace is just what has been called a fixed-spectrum
+(A, B)-invariant subspace, and a sliding subspace is what has been called an
+asymptotic, or infinite spectrum (A, B)-invariant subspace (Karcanias 1979 a).
+    In dynamic terms, a coasting (fixed-spectrum) subspace is one in which only
+certain movements are possible. Specifically, for each initial condition
+xof#j it is necessary to choose a unique input, and thus follow a unique trajec-
+tory, in order to remain in '6'. This is because of the uniqueness of the spectrum
+and the characteristic decomposition. For each xE'6', Ax = Xl + Bu, where
+xlf#j and u are unique; thus, the input which forces x(t) to remain in '6' is
+unique. In feedback terms, '6' is AF-invariant for a unique F defined on '6'.
+For each initial condition x oE'6', the only trajectory which remains in '6'
+is the free trajectory of §(A F ) . Thus, in order to travel in '6' it is necessary
+to 'coast' along a fixed path.
+    A sliding subspace .'/ has the property that no motions inside the subspace
+are possible, although it is possible to move arbitrarily close to.'/. Since
+sNS - N AS has only i.e.d., the maximal (A, B)-invariant subspace in 9', "Y* =
+{O}. Therefore, there is no non-zero initial condition x oE9' for which it is
+possible to force the trajectory to remain in 9'. However, since .'/ is an almost
+c.s. it is possible to force the trajectory to remain arbitrarily close to 9'.
+Furthermore, the inputs required to travel closer and closer to .'/ must be
+unbounded. That is, if u.(t) is an input which takes the state from XoE.'/ to
+x lE9', staying within £ of 9', then Ilu.(t)II-+co as £-+0. Otherwise u.(t) (or a
+subsequence) would approach a finite limit as £-+0, which would produce a
+trajectory staying in.'/. Since Ilu.(t)ll-+co, while x.(t) is bounded, Ili,(t)II-HXl,
+so trajectories near .'/ must' slide' very quickly along 9'.
+    Our results on the pencil characterization of almost (A, B)-invariant
+subspaces lead to the following general decomposition theorem, which is also
+stated by Willems (1979).
+
+Theorem 4.9
+     If "Y is almost (A, B)-invariant, then
+                                   "Y=~*~'6'~9'
+
+where ~* is the maximal c.s. in "Y, '6' is a coasting (or fixed spectrum) subspace,
+and .'/ is a sliding (or asymptotic (A, B)-invariant) subspace, and ~*~'6' = "Y*,
+the maximal (A, B)-invariant subspace in "Y, ~~9' =~n *, the maximal almost
+c.s. in "Y.                                                                      •
+
+   Note that ~*, "Y* and ~n* are all unique. '6' and .'/ are not unique
+unless ~* = {O}. We can summarize this decomposition in the lattice diagram
+of Fig. 1. (P) denotes the class of all subspaces with property P. Rising
+nodes denote sums and descending nodes denote intersections (Fig. 2).
+   Note that all the classes of subspaces, with the exception of coasting (fixed
+spectrum) and sliding (asymptotic), are closed under subspace addition. It is
+easy to see that coasting and sliding are not closed under addition.
+                              Almost (A, B)-invariant subspaces                         69
+
+
+
+
+                                  CONTROLLABILITY
+
+FIXED SPECTRUM                                                  or, INFINITE SPECTRUM
+
+
+                                            Figure 1.
+
+              (PI
+         ~-                (p)=(P1)+(P2)   (~4)... (p)=(Pa)n(p4)
+       (P           (P
+         1)           2)                         ( P)
+
+
+
+                                            Figure 2.
+
+
+    In terms of pencil invariants, this means that, e.g., the sum of two su bspaces,
+ each with only c.m.i., will have only c.m.i., but the sum of two subspaces, each
+ with only i.e.d., may have c.m.i. as well as i.e.d.
+
+
+ 4.4. A classification theorem
+     The following table summarizes the results of this chapter on the classi-
+ fication of subspaces by the invariants of their restriction pencil.
+
+
+                                 Possible invariants of sNY·NAY
+
+                                                nonzero
+                            "Y                   r.m.i.   c.m.i,    f.e.d.   i.e.d,
+
+          Arbitrary                               yes      yes       yes      yes
+          Almost (A, B)-invariant                 no       yes       yes      yes
+          (A, B)-invariant                        no       yes       yes      no
+          Almost controllability                  no       yes       no       yes
+          Controllability = assignable            no       yes       no       no
+          Coasting e fixed spectrum               no       no        yes      no
+          J.s. (A, B)-invariant                   no       yes     (S-so)k    no
+          Sliding = asymptotic                    no       no        no       yes
+70                           S, Jaffe and N. Karcanias
+
+5. Transmission subspaces of finite and infinite frequencies
+5.1. Finite frequency transmission
+    In this section some of the results of the modal analysis of (A, B)-invariant
+subspaces (Karcanias and Kouvaritakis 1978) are summarized and successively
+generalized to the case of infinite frequencies. In order to facilitate such a
+generalization we have already renamed the vectors Xo which span 1- (A, B).s.
+and the vectors {Xl' ... , x k } which span J.s.(A, B).s. as B-vectors and B-vector
+chains (of degree k) and the corresponding frequency So as B-value. Then, an
+(A, B)-invariant subspace with a basis of B-vectors with common B-value So
+will be called a B-space; an (A, B)-invariant subspace with a basis of B-vectors
+and B-vector chains, with common B-va~ue so' will be called a generalized
+B-space. B-spaces and generalized B-spaces may be dynamically characterized
+as follows (Karcanias and Kouvaritakis 1978).
+
+Proposition 5.1
+    Let "Y be a B-space with B-value so' and XoE"Y. Then there is an input
+u(t) = exp (sot)uo so that the forced trajectory x(t), with x(O) = x o' is given by
+x(t) =exp (sot)xo where U o = Bt(sol - A)x o'
+
+Proposition 5.2
+   Let "Y be a generalized B-space with B-value So and XE"Y.            Then, there is a
+chain of vectors X= xp, x p_ l, ... , XoE"Y and an input
+                   u(t) = exp (sot){u p + tU p _ l + ... + tV /p!u o}
+so that the forced trajectoryx(t), with x(O) = X is given by
+                      x(t)=exp (sot){xp+tx P _ l + ... +tv/p!x o}
+where
+                                                                                      •
+    Thus, for any initial condition in "Y it is possible to find a (generalized)
+sinusoidal input which produces a (generalized) sinusoidal trajectory remaining
+in "Y, with frequency so' For this reason, we say that a simple B-space
+transmits the frequency So, and that a generalized B-space allows the generalized
+transmission of so' If "Y is a B-space with B-value so, then it is possible to force
+a sinusoidal motion of frequency So along any direction in "Y. Conversely, if
+for every XoE"Y there is a u(t) so that x(t) =exp (sot)xo, then Xo satisfies
+(sol - A )xo = Bu, and u(t) = exp (sot)uo' Combined with Proposition 5.1 we
+have the following equivalent characterizations of B-spaces.
+
+Theorem 5.1
+   "Y is a B-space with B-value So if and only if
+       (i) (Geometric) (sol- A)"YE~ ;
+      (ii) (Dynamic) For all XoE"Y there is an input u(t) =exp (sot)uo such that the
+           forced trajectory, for x(O) = Xo is given by x(t) = exp (sot)xo' Further-
+           more, U o = Bt (sol - A )xo ;
+     (iii) (Matrix pencil) (soN - N A) V = 0 ;
+     (iv) (Feedback) "Y is closed-loop eigenspace with eigenvalue so, for some
+           FEff"("Y). In this case F = Bt(soI - A) on "Y.
+                            Almost (A, B)-invariant subspaces                                           71
+
+    From (ii) it is easy to see that the class of B-spaces for fixed So is closed
+under addition. Hence, if i/ c fl£ is any subspace, there exists a maximal
+B-space in i/, for each B-value so, denoted by fIBso(i/). We will call the maximal
+B-space, with B-value so' in the whole space fl£ the transmission subspace for the
+frequency So (Karcanias and Kouvaritakis 1978) and it will be denoted by
+9""(so)' That is 9""(so) =fIBso(fl£) and 9""(so) =ker (soN -NA); it is nOIG difficult
+to show that in general dim 9""(so) '" dim fIB, with equality holding when so¢'a(A).
+Although, it is not generally true that any subspace of an (A, B)-invariant
+subspace is itself (A, B)-invariant, it is easy to see. that B-spaces do possess
+that property. In particular, this means that fIBso(i/) =i/n9""so'
+     If i/ is a generalized B-space with B-value so' then for any initial condition
+in i/ it is possible to force a generalized sinusoidal trajectory in i/o In the
+case of simple B-spaces, we have seen that the converse is also true. In this
+section, we prove the converse for generalized B-spaces; a consequence of this
+proof is the geometric, as well dynamic characterization of generalized B-spaces.
+The fundamental result is the following lemma
+
+Lemma 5.1
+   Let i/ c fl£ have the property that for every vEi/ there is a Jordan structure
+B-vector chain v=v p , V P_ t , ... , voEi/, for some p. That is
+
+                               (sol - A)vp     7-   Vp _ t   + BUP)
+                               (sol-A)v t = -vo+Bu t                                                (5.1 )
+
+                               (sol - A)vo= Bu o
+
+with So fixed independent of v; {v,",,,, va} need not be linearly independent.
+Then i/ is a generalized B-space with B-value so'
+   The proof makes use of the following definitions.
+
+Definition 5.1
+   The index of v, i(v) g, min {p I (v = v p , vp _ t , ... , va) is a generalized B-vector
+chain in i/}; note that itO) = O.
+
+    Suppose (v=v p , vp _ t , ... , va)' p=i(v»O, is a minimal chain. Then, we
+claim that {v p , •.• , va} must be linearly independent. If not, then v k =, L aivi
+                                           r                                                    j<k
+forsomek=O,I, ... ,p,sayvk=            L aivi,r<k.              Then,
+                                       i~O
+
+                        r                                              r
+       (sol-A)v k=     L ai(-vi_l+Bui)+aoBuo=- L ajvi_ 1                              (mod B)
+                      ;=1                                             j=l
+
+Thus there is a chain in i/,
+                                       r                          r
+                                vk =   L ajv
+                                       j=O
+                                               j,     v'k-l =    L ajv
+                                                                 j=1
+                                                                            j _ 1l ... , V'k_r==arv o
+
+
+The length of this chain is p-(k-r)+l~p, which implies that i(,,)~p-l.
+But this contradicts i(v) =p, so {v p , ••• , va} must be linearly independent.
+ 72                              S. Jaffe and N. Karcanias
+
+ Because of this, i(v) ~ dim (j/") for all VEj/".           Therefore we define
+
+ Definition 5.2
+                                   iW) ~ max {i(v) IVEj/"}.
+      The proof of Lemma 5.1, which is given in Appendix (A), uses induction
+  on ~(j/"). First we construct a particular subspace of j/", which has a basis
+  of B-vector chains. We then use induction to show that these can be aug-
+"mented by other B-vector chains to form a basis for j/".
+      We define the degree of a generalized B-space as the degree of its longest
+  basis chain. Note that there is a distinction between the degree of a generalized
+  B-space j/", and its index. The degree is determined with respect to a parti-
+  cular Jordan-structure basis for j/", and is not necessarily unique. It is easy
+  to see that i(j/") ~ deg (j/") with respect to any Jordan basis. Furthermore, the
+  construction used in the proof of Lemma 5.1 shows that there is a basis for
+  f" whose degree is exactly i(j/"). Thus, i(j/") is the minimal degree of all
+.'Jordan-structure bases in j/".
+      An immediate consequence of Lemma (5.1) are the following results.
+
+ Theorem 5.2
+      Let j/"v j/"2 be generalized B-spaces with B-value 8 0, and index ~k.               Then
+ j/" 1+ j/"2 is a generalized B-space with B-value 8 0 and index ~ k.
+                                                                                               •
+     The second consequence of Lemma 5.1 is the following dynamic charac-
+ terization of generalized B-spaces.
+
+ Theorem 5.3
+     Let j/" c!!£ be a subspace with the property that for every VEj/" there is a
+ set of vectors v = v p , V P_ I, ••• , VoEj/" for' some p and an input u(t) such that the
+ resulting trajectory, for x(O)= v is given by
+                   x(t) = exp (sot){vp + tVp _ 1 + ... + t P/p!v o},     t;:, 0
+ with So fixed independent of v.            Then      j/"   is a generalized B-space with
+ B-value so'
+
+ Proof
+    Substituting the expression for x(t)              III   )( =   Ax + Bu gives, after some
+ manipulation
+      (sol -A)(vp+      +t P/(p-l)!'vo)
+                             =   -(vp _ l + ... +t P- I / ( p - l ) ! ' v o)+Bexp (-sot)u(t)
+ Multipling on the left by B", and setting U i = Bt[(sol - A)vi -Vi_I]' V_I = 0, gives
+ u(t)=exp (sot)(u p+ ... +tP/p!'uo)' Equating powers of t now gives
+                                 (sol - A)vp = -vp _ I + Bup
+
+                                 (sol - A)vo = Bu o
+ Therefore, {vp , ... , Yo} is a B-vector chain and so by Lemma 5.1' j/" is a
+ generalized B-space with B-value so'                                       •
+                        Almost (A, B)-invariant subspaces                                73
+
+    Lemma 5.1 also allows us to give a geometric characterization of generalized
+B-spaces, which is independent of basis. If 1/" is a generalized B-space with
+B-value so' and index k, then by considering a Jordan-structure basis for 1/",
+it is clear that there are proper subspaces 1/"=1/"k~1/"k_l~ ... ;~1/"o~{O}
+such that
+   (sol - A)1/"k C 1/"k-l +&8,     (sol - A)1/" k-l C 1/"k-2 +&8, ... , (sol - A)ro c@
+Conversely, if such a chain of subspaces exists, then each vE1/" generates a
+Jordan-structure B-vector chain, so by Lemma 5.1 1/" is a generalized B-space.
+We thus have the following equivalent characterizations.
+
+Theorem 5.4
+   1/" is a generalized B-space with B-value So and index ~ k if and only if
+any of the following conditions hold true.
+    (i) (Geometric) There is a chain of subspaces
+                                 1/"=1/"k"$.1/"k_l"$. '" "$.1/"o"$.{O}
+        such that
+           (sol -A)1/"k c1/"k_l+@, ... , (sol -A)1/"l c1/"o+@, (sol -A)i"""o c &8
+    (ii) (Dynamic) For every x oE1/" there is a chain of vectors xo=vp , •.. , V o in
+         1/", with p ~ k, and an input u(t) such that the forced trajectory, for
+         x(O)=x o is given by x(t)=exp (sot){Vp + tVp _ l + ... +tP/p!v o}'
+   (iii) (Matrix pencil) There is a chain of matrix bases for the subspaees
+        1/"=1/"k"$.1/"k_l"$. ... "$.1/"o"$.{O}, V k, Vk_l> ... , Vl' V o such that
+        (soN -NA) V k= -NVk_l, ... , (soN -NA) V l = -N V o, (soN -N A)Vo=O
+        where N is the left annihilator of B.
+   (iv) (Feedback) There is an FE.fF(1/") such that 1/"is a generalized eigenspace
+        of A F = (A + BF) with eigenvalue so'
+   The fact that the class of generalized B-spaces is closed under addition
+gives
+
+Theorem 5.5
+   Let 1/"c f'£ be any subspace with dim (1/") = d. Then for every SoEC and
+every k=O, I, ... , d-I there is a maximal generalized B-space in 1/", with
+B-value So and index «k, denoted by @80 k(1/").                           •
+
+    Note that &880(1/") =&88/(1/") C@80 0(1/")C ... c@80d - l(1/"). The generalized
+transmission subspace of degree k, Y80 k (Karoanias and Kouvaritakis 1978) is
+just @80 k (f'£). However, it is not in general true that @80 k(1/")=i"""nY80k.
+This is because in order for XE1/" to be in @80k(1/") it is not enough that XEY 80k ;
+the whole chain generated by x must lie in 1/". We may close this section by
+giving the following result, the proof of which is given in Appendix (B).
+
+Theorem 5.6
+
+                                                                                         •
+ 74                                  S. Jaffe and N. Karcanias
+
+ 5.2. Asymptotic B-spaces
+. 5.2.1. Frequency and feedback
+      In this section, we consider the relationship between the magnitude of a
+ feedback F and of the eigenvalues of A + BF. If -.rso is a B-space with B-value
+ so, then for each X(So)E-.rso' the feedback which makes -.rso into a closed-loop
+ eigenspace is uniquely defined on -.rso by
+                        Fsox(so) = Bt(soI - A)x(so),             for all X(SolE-.rso                   (5.3)
+    . We are interested in the properties of F so as a function of so' As a first
+ step, we introduce two numbers which partially characterize F. Let F : -.r-+Olt
+ be a linear operator, and assume that there are norms 11·11 defined on -.r and Olt.
+ Then
+
+ Definition 5.7
+      The uniform norm of F on              r: denoted by II FII is defined as
+                 max {IIFvll, VE-.r, Ilvll = 1}=max {IIFvll/llvll : O,6VE-.r}
+
+ Definition 5.4
+      The uniform lower bound of F on -.r, denoted by IF I, is defined as
+                 min {IIFvll : VE-.r, Ilvll =1}=min {IIFvll/llvll : O,6VE-.r}
+     IIFII and IFI are the maximum and minimum' gain' of F on -.r. Indeed,
+it is easy to see that when Olt and -.r are given the euclidean norms with respect
+to some basis then IIFII = ("maxl 1/2 and IFI = Pmin)1/2, where "max' "min' are
+the maximum and minimum eigenvalues of F* F (F* denotes the conjugate
+transpose of F). These are often called the maximum and minimum principal
+gains of F. We may state the following results.
+
+Theorem 5.7
+   Let -.rHO be a B-space with B-value so' and F so : -.rso-+Olt be the feedback
+which makes -.rso a closed-loop eigenspace. Then there are constants fJ> 0,
+P> 0 and ex;;' 0, such that
+                    fJ(lsol-ex)'llx(so)11 <:;; II Fsox(so) II <:;;,8(l sol +ex)' 1Ix(s0) II
+for all X(So)E-.rso'
+
+ Proof
+        II FHOx(so) II = IIBt(sol-A)x(solll <:;; IIBtll·llsol-AII·llx(so)11 <:;; IIBtll'(llsoIII +
+  II A II) '11 x(sol II =,8( Iso I +ex) '1Ix(sol II, where ,8 fo II Bt II and ex fo II A II. Now define
+ fJ= IBI, and note that ,8;;'fJ> 0 since B' is non-singular. Then,
+      II Bt(sol - A )x(so) II ;;.fJll (sol - A lx(so) II ;;. fJ( Ilsox(so) II-II Ax(so)ll)
+                                                                   ;;.fJ(lsol·llx(so)ll-exllx(so)ll)     _
+
+Oorollary 5.7.1
+                          Almost (A, B)-invariant subspaces                             75
+
+Corollary 5.7.2
+    Let "f"so be a sequence of B-spaces with B-value so, and let 1'so be the
+appropriate feedback defined on each "f"so by (5.3). Then ISol->oo if and only
+if IIFsoll->oo and IFsol->oo. Furthermore,
+
+
+
+whenever these limits exist.
+   These results do not carryover to generalized B-spaces. If r ; is a
+generalized B-space with B-value so' then Theorem 5.7 is true only for a
+B-vector xo(so) of the subspace. Since 11 Fsoll ~ IIFsoxll/llxl1 for any xE"f"so'
+we have II Fsoll ~ ,B( Iso 1- <x). Therefore, if ISol->oo then II 1'soll-> 00. However,
+the converse is not true, since it is possible for II1'soll->oo without
+
+
+
+    So far we have considered only F so defined on a single B-space. We now
+consider a feedback F defined on all of !!E. For each eigenspace "f"so of A + B1',
+the restriction rtr; of l' to 1""so satisfies Corollary 5.7.1. Since, II Ell '" IIFI1""soll
+we have
+
+Theorem 5.8
+   Let F i: !!E->o/I be any feedback, and let ai=max{lsl: sEa(A+BFJ}.
+Then II Fill ~ ,B(a, - <x).
+
+Corollary 5.8.1
+    If ai->OO then II1'ill->oo.
+    The converse of Corollary 5.8.1 is not true. If however, we consider only
+a special class of feedbacks we can draw conclusions about the behaviour of the
+closed-loop frequencies as II F; 11-> 00.
+
+Definition 5.5
+    F k: !!E->0/1 is a scalar gain feedback if there is an 1': !!E->0/1 such that
+F k = k1' for all kEC.
+
+
+Definition 5.6
+    1': !!E->0/1 is a non-degenerate feedback if and only if ker (F)nY" = {O} for
+some SoEC; otherwise, l' is degenerate.
+    Equivalently, F is degenerate if and only if F(s1 - A)-l B is singullar, when
+viewed as an operator over lR(s). Note that GF(s)=F(s1-A)-lB is just the
+open-loop transfer function for §(A, B, F). We may now state the following
+result.
+
+Theorem 5.9
+   Let F k be a non-degenerate scalar-gain feedback, and let ak = max {lsi:
+sEa(A + BFk)}. Then lim ak->OO when Ikl->oo.
+76                              s. Jaffe and .N. Karcamsas
+Proof
+    For each k the closed-loop frequencies {si(k), il::=[nJ} are the roots of Pk(S)=
+lsI -A-kBFI. Standard results in complex variable theory (Knopp 1947)
+show that {s1:(k)} are branches of algebraic functions of k, which have only
+algebraic singularities. Equivalently, each algebraic function is analytic
+everywhere, except possibly at 00, on an appropriate Riemann surface. We
+now show that F non-degenerate means that not all the sAk) can be constant.
+Applying Schur's :Eormula to
+                a; --A' B
+                                  -+Pk(S) = lsI - A 1·II-okF(sI - A)-IBI
+                     kP    i;
+or Pk(s)/PO(s) = II --kF(sI - A)-lEI. Now suppose Pk{S) =Po(s) for all k. Then
+ 11 - k GF(s ) 1== 1, or 1 1 /k · j - GF(s) 1== l(k l • Letting k-+oo gives I GF(s) 1== 0,
+which contradicts P non-degenerate. Therefore, at least one of the algebraic
+functions s(k) is not constant. Therefore, by Liouville's Theorem on Riemann
+surfaces (Jones 1971) one branch of each such s(k) must be unbounded, i.e.
+lim si(k) = 00 when Ikl-+oo.                                                            •
+   The behaviour of the function si(k), for k restricted to the real axis, constitute
+the multivariable root loci for §(A, 13, F) (Kouvaritakis and Shaked 1976,
+MacFarlane and Postlethaite HI77). Thus, at least one of the root loci of a
+non-degenerate system must terminate at infinity.
+
+5.2.2. Asymptotic transmission subspaces
+    Under the assumptions of Theorem 6.9 increasing feedback gain causes some
+closed-loop frequeneies to move off to infinity. WOe now consider what happens
+to the corresponding closed-loop eigenspaces (or generalized eigenspaces) .
+Since each generalized eigenspace is a generalized 13-space with B-value so'
+we are interested in what happens to :Tso (:Ts ok ) as so-+oo. In other words
+we are interested in the' limit' of :T8 0k as so-+00.
+    In order to make the notion of a limit of subspaces precise we must introduce
+a topology on the space of all of subspaces of Pl' of a given dimension. A
+natural way to do this is via a metric. There are various ways of defining the
+distance between two subspaces, which are equivalent in that they produce the
+same topology (Davis and Kahan 1970). An intuitively appealing metric is
+              d(Y 1:, ':1"2) = max { min {llv I - v211 : Ilv1 1\ = IIv211 = I}}       (5.4)
+                                V1E"I'l     V 2E"I'2
+
+
+Note that it is essential that dim ':1"1 = dim Y 2in order for d(Y1l Y 2) = d(Y 2' Y 1)·
+Geometrically, d(1'/1l Y 2 ) is the widest' gap' between the curves of the inter-
+sections of Y I and Y 2 with the unit sphere. When dim Y 1 = dim Y 2 = 1,
+then Y 1 and Y 2 are lines through the origin and d(~'{/ll Y 2 ) is simply related
+to the angle between them (Fig. 3).
+    If Y i is a sequence of q-dimensional subspaces we say that lim Y i = Y if
+                                                                             i-e-co
+and only if lim dC'f/'i' Y) = 0.          The following properties of subspace limits are
+             i-+oo
+useful. The proofs of results marked * are given in Appendix (0); all sub-
+spaces are assumed to have the same dimension q.
+                          Almost (A, B)-invariant subspaces                             77
+
+
+
+
+                                         Figure 3.
+
+Theorem 5.10*
+   T = lim T 1 if and only if
+          i-Hn
+
+     (i) every VET is the limit, as i-HYJ of a sequence 'ViE')V i, and
+    (ii) if a sequence V,,(ETi converges to v, as i-H:tJ, then VET, where vc-+v
+          means that Ilvi·-vll~O.                                                       •
+
+Lemma 5.2*
+   If {vll ... , vq} are linearly independent, and there are sequences Vli~Vll ... ,
+Vqi~Vq, then eventually (i.e. for all i>k) {V I1:, ... , vqi} are linearly independent.
+
+   Theorem 5.10 and Lemma 5.2 yield.                                                    •
+
+Theorem 5.11 *
+   lim Ti=T if and only if there is a basis {vll ... ,vq } for T, and a basis
+   i-Hn
+{VIi, ... , Vqi} for each T i , such that Vli~Vll ... , Vqi~V q :1S i--HX).             •
+
+    The following is a useful practical criterion.
+
+Theorem 5.12
+   Let {Vi: ir~ff} he a sequence of non-singular operators, and V: 11"~ff
+be non-singular, dim if!~==q~n, with II V i - VII~O as i~w. Then Im (Vi)~
+Im (V) as i~oo.
+
+Proof
+      Let ell ... , eq be a standard basis for "fI/. Then {V ie ll ... , Vie q } is a basis
+for T i = Im (Vi)' Similarly, {VeIl'''' Ve q } is a basis for T = Irn (V). But
+II V i-- VII-:·O means tha.t II Vie r- Verll~O for rE[q], so that by Theorem 5.11,
+lim Vi = V.                                                                              •
+    With these preliminaries, we can prove
+
+Theorem 5.13
+                  lim!Ts==@)and lim.9"'"sk=@)+A@)+ ... +Ak@).
+                 8--+00              8--+00
+
+Proof
+   For s sufficiently large, Theorem 5.6 implies that
+                     !T? = (1 - l/s· A )-k-l(@) + A@) + ... + A k~~)
+from which as s~oo !T8k~~+ A@)+ ... + Ak@).                 Note that !Ts=.=!Tso.        •
+ 78                                 S. Jaffe and N. Karcanias
+
+      Call Iim:Ys=:Y co and lim:Y/ =:Y cok.             Then by Theorem 5.10 it follows
+               8-HX)                 8-00
+
+ that a vector is in :Y ",kif and only if it is the limit of a sequence of (generalized).
+ B-vectors with B-value s, as s->oo. Thus, we are justified in calling:Y co the
+ asymptotic transmission subspace, and :Y cok the asymptotic gell,eralised trans-
+ mission subspace of degree k. In keeping with this, we define
+
+ Definition 5.7
+    "Y '" is called an asymptotic Bsspace if and only if "Y co is the limit of a sequence
+ of B-spaces 'with B-value s, as s-+oo.
+
+ Definition 5.8
+      "Y cok is called an asymptotic generalised Bsspace of degree k if and only if
+ "Y '" k is the limit as S-+ 00 of generalized B-spaces "Y sk with B-value s, of degree k.
+      Clearly, "Y co c:Y co =fJa and "Y '"kc:Y ",k =86' + A86' + ... + Ak86'. Not every
+ subspace of :Y/ is an asymptotic generalized B-space. However, it is easy to
+ show that
+
+ Theorem 5.14
+    "Y eo is an asymptotic B-space if and only if "Y co r;;,fJa.
+
+ Proof
+      Let "Y be any subspace of 86' and choose any basis {VI> ... , v.} for "Y. Because
+ fJa = lim:Ys there are sequences x,(s)-+v, with X,(S)E:Ys' iE[q]. By Lemma
+      .~OO
+
+ 5.2 {xl(s), ... , x.(s)} are linearly independent for s sufficiently large. Therefore,
+ defining "Y s = <xl(s), ... , x.(s» we have lim
+                                                .~oo
+                                                       r:
+                                                      = "Y, where "Y s is a B-space with
+. B-value e.           Thus, "Y is an asymptotic B-space.                              •
+     In the same way generalized B-spaces are associated with feedback,
+ asymptotic generalized B-spaces are also associated with feedback; however,
+ the feedback associated with the latter case is unbounded. In fact, suppose
+ "Y = lim "Ysk and feedbacks F s are chosen to make "Y/' (A + BFs)-invariant.
+       • ~OO
+
+ Then by Corollary 5.7.1 we have that I Fsil ;;, ,a( Isl- <x) and as S-+ 00 it follows
+ that IIFsll-+ro.
+    The results of this section are used in the following section to characterize
+ the asymptotic properties of the infinite spectrum (A, B)-invariant (sliding)
+ subspaces.
+
+
+ 6.   Asymptotic characterization of almost e.s, and infinite spectrum (A, B)-invariant
+      subspaces
+     In the matrix pencil approach to the characterization of subspaces of the
+ state space (Karcanias 1979), the terms' infinite spectrum' or ' asymptotic'
+ were used for subspaces associated with i.e.d, It is the aim of this section to
+ show that indeed any such subspaces can be approximated by generalized
+ B-spaces with arbitrarily large B-values; thus, they are asymptotic B-spaces
+ as defined in § 5.2. We start by giving the following main result.
+                          Almost (A, B)-invariant subspaces                            79
+
+Theorem 6.1
+    Let "'1/ be a subspace such that sN V - N A V has (apart from zero r.m.i.)
+only a single i.e.d. §k. Then, there are generalized B-spaces "'1/. with B-value
+e, of degree k, such that lim "'1/. ="'1/.
+
+Proof
+   We proceed by constructing an explicit basis for "'1/., and showing that this
+basis approaches the basis for "'1/, given by (3.23) as s-+oo. By (3.23) there is a
+basis for "'1/ of the form
+               ·V1 =b v    v 2=Abl +b 2, v a= A 2bl +Ab 2+ba, ... ,
+               vk=Ak-1b l + Ak- 2b 2 + ... +b k                                      (6.1)
+
+Now assume that s is large enough so that (sl -A) is non-singular.                 Define
+x1(s) by
+                           (I -lIs' A)xl(s) = b l                                    (6.2)
+
+As Isl-+oo, Ilxl(s)II-+llbtll, so that Ilxl(s)11 is bounded. Then xt(s)=b l +
+l/s·Axl(s) and Ilxl(s)-blll=l!lsl'IIAxl(s)II-+O as Isl-+oo. Now define x 2(s)
+
+              (I -l/s· A)x 2(s) = {s(xl(s) - b l) + b 2}
+                                  = {s(l/s' Axl(s) + b 2} = {Axl(s) + b 2}           (6.3)
+
+Substituting for xl(s) gives
+           (I -lIs' A)x 2(s) = {Abl + lIs' A 2XI(S)+ b 2}
+                               = Ab l + b 2+ lis' A 2XI (S) =v 2+ lIs' A 2XI (S)
+
+Since xl(s) is bounded, as s-+oo, Ilx2(s)II-+llv211 and Ilx2(s)11 is bounded.        Re-
+writing (6.3) gives
+                                                                                     (6.4)
+
+Thus, IIX 2(s)-V211 =l/isi' IIA2 XI(S) + Ax 2(s) 11-+0 as Isl-+oo. Now define xa(s)
+by
+                   (I -lIs' A)xa(s) = {s(x 2(s) - Axl(s) - b 2) + ba}         (6.5)
+
+substituting for xl(s) gives
+               (I -lIs' A)xa(s) = {s(x 2- Abl -lIs' A2X1 - b 2) + b a}
+                                   = {s(x 2- Abl - b 2) - A 2X1 + b a}
+                                   = {s(l/s' A2X, + lIs' Ax 2) -   A2X1 + b a}
+                                   = {Ax 2(s) + ba}                                (6.5 a)
+
+substituting for x 2(s) from (6.4) gives
+                    = {A 2bl + Ab2+ lIs' Aax1 + lIs' A2X2+ b a}
+                    = {A 2bl + Ab 2+ b a} + lIs' {Aax1 + A2X2}
+                    =va + lIs' (Aa XI + A 2X2)
+80                                 S. Jaffe and N. Karcanias
+
+Again, IIX 3(S) 11--> IIv311 as IS 1--> 00, so Ilx3(s)11 is bounded.     Rewriting (6.5) gives
+              x 3(s) = (A 2bl + Ab 2+ b 3 ) + l/s· {A 3 XI (S) + A 2X2(S) + Ax3(s)}      (6.6)
+
+Thus, Ilx3(s) - v 311 = 1/ Is1,11 A 3XI(S) + A 2X2(S) + Ax3(s) 11-->0 as Is1--> 00.
+   We continue in this way. Define xi(s) by
+                      (1 -1/s· A)xi(s) = {S(Xi_I(S) - AX i_ 2(S) - b i-l) + b i}         (6.7)
+for i = 3, ... , k,    We want to show that xi(s) satisfies
+        xi(s) = (A i-1b l + Ai- 2b2+ ... + b i) + l/s· (Ai XI + Ai-l X2 + ... + Ax;)
+                                                                                         (6.8)
+We have seen that this is true for i.:;; 3. So assume, for induction, that (6.8)
+is true for all i<r. Then xr(s) is defined by (6.7)
+                        (1 - l/s· A )xr(s) = {s(x r_l - A x r_2- b r_l ) + b.}
+Substituting for x r_2 from (6.8) gives
+              ={s(xr_I-Avr_2-1/s·A(Ar-2xI+ ... +Axr_2)-br_I)+br}
+But Avr _ 2 + br _ l =vr _ l .    Substituting this gives
+                        ={S(Xr_I-vr_I)-(Ar-IxI+ ... +A2 xr_ 2}+br}
+substituting for xr _ l from (6.8) gives
+           = {s(l/s' (Ar-1x 1 +     ... + Axr_tl) - (Ar-1x 1 + ... + A2 x r_2) + br}
+           = {Ax r _ l + br }
+
+           = {Avr_l + b r+ l/s· (Arx 1 + ... + A2xr_ l)}
+           =vr+ l/s·{A rx l + ... +A2xr_l}
+
+Rewriting this gives
+                      x r(s)=vr+l/s·{A rx l(s)+ ... +A2xr_I+Axr(s)}
+
+which proves (6.8) for all r= 1,2, ... , k,
+    To summarize, we have constructed vectors x1(s), , xk(s) such that (by
+(6.8))llx i(s)-vill-->O as Isl-->oo. By Lemma 5.2 {xl(s),    , xk(s)} are linearly
+independent for all sufficiently large s. Therefore, if we define i""s=<x1(s), ... ,
+xk(s) then, by Theorem 5.11 lim i""s=i"".
+                                       s~oo
+
+
+    It remains to show that i""s is a generalized B-space.             The defining equations
+(6.2), (6.3), (6.5), (6.7) can be written
+
+                                   (s1 - A)x1 =sb l
+
+
+                                                                                         (6.9)
+                                     Almost (A, B)-invariant subspaces                                  81
+
+or
+     AX l = sX l - sb l
+     AX 2 = sX 2 - sAx l - sb 2 = (sx 2 - S2Xl) - (sb 2 - s2b l)
+
+     AX a = sX a - sAx 2 - sb a = (sx a - S2X2 + sa x l) - (sb a - s2b 2 + sab l )       1.         (6.10)
+            .                           .
+     AX k = sX k - SAX k_l - sb k = {sx k - S2Xk_ l + ... + (- 1 )k-1Skx l}
+                                         - {sb k - s2b k_l + ... + ( -1 lk-1Skbd
+Therefore there is a feedback F on '"1/8 such that
+                    A FXl = SX!> ... , A FXk = SXk - S2 x k_ l + ... + (- 1 )k-1SkXl                (6.11 )
+The matrix A F and the operator (sl -A F ), with respect to this basis, become
+                s   _S2         sa          (_I)k-1 Sk
+                                                                                              ( -S)k
+
+                     S      _S2
+                                                                           0     S2
+
+     A F=                       s
+                                                         , (sl -A F )=               0
+                                                                                                S2
+                                               _S2
+                    0                           s                         0                     0
+
+This matrix is nilpotent of degree k, Therefore the Jordan form of A F is a
+single Jordan block with eigenvalue s, i.e. '"1/8 is a generalized eigenspace of
+A F with eigenvalue s, of degree k, Therefore, '"1/8 is a generalized B-space of
+degree k with B-value s, This completes the proof.                            •
+
+      Note that all that is necessary in order to approximate '"1/ arbitrarily well .
+by '"1/ 8 , is that lsi be large. Thus it is equally possible, for example, to approxi-
+mate '"1/ by generalized B-spaces '"1/8 , with s = - .\ large, real and negative, or
+with e = jw large and imaginary, etc.
+      This shows that any subspace '"1/ corresponding to a single i.e.d, is an
+asymptotic generalized B-space. Suppose sN V - N A V has r i.e.d. Then
+'"1/ = '"1/1 $ ... $'"I/T where each '"1/; corresponds to a single i.e.d. By the
+preceding theorem each '"1/; = lim '"I/;(s). Lemma 5.2 implies that, for s
+                                                 8_00
+
+sufficiently large, '"I/l(S), ... , '"I/T(S) must be linearly independent. Clearly,
+'"I/l(s) $ ... $'"I/T(s) is, by Theorem 5.2, a generalized B-space with B-value
+s and Theorem 5.11 implies that
+                         lim {'"I/l(s) $ ... $'"I/T(s)} = '"1/1$ ... $'"I/T= '"1/                    (6.12)
+                         8_00
+
+Thus we have
+
+Theorem 6.2
+    Suppose sNV -NA V has only i.e.d. (and possibly zero r.m.i.).                             Then '"1/
+is an asymptotic generalized B-space.
+                                                                                                         •
+   In fact, suppose that sN V -NA V has c.m.i. as well. Then '"1/ = '"I/.$[j£*,
+where '"1/. corresponds to i.e.d., [j£* to c.m.i. By Theorem 6.2 '"1/.= lim '"I/.(s) .
+                                                                                         • _00
+82                          S. Jaffe and N. Karcanias
+
+However, ~* is assignable, so it is a generalized B-space for all B-values.
+Therefore, by Theorem 5.2 ~q(s) +~* is a generalized B-space with B-value s.
+By Lemma 5.2 ~* and ~q(s) are linearly independent for all sufficiently large s.
+Thus, by Theorem 5.11 ~=~*(£)~q= lim {~*(£)~q(s)}. Thus we have
+                                               ._00
+Theorem 6.3
+   Let sN V -NA V have only i.e.d. and c.m.i. (and possibly zero r.m.i.).
+Then ~ is a generalized asymptotic B-space.                            •
+     Since by Theorem 4.5, such a subspace is an almost c.s., we have
+
+Corollary 6.3.1
+   If ~ is an almost c.s., then ~ is an asymptotic generalized B-space.             •
+    For almost (A, B)-invariant subspaces we have the following. Let ~ be
+an almost (A, B)-invariant, then ~ = -r» + [/, where ~* corresponds to c.m.i.
+and f.e.d., i.e. is the maximal (A, B)-invariant subspace in ~ and [/ corrsponds
+to i.e.d. By Theorem 6.2 [/ = lim ~., where ~. is a generalized B-space with
+                                  ._00
+B-value s, In particular,    r,
+                            is (A, B)-invariant. Thus, -r» +~. is (A, B)-
+invariant and (by Lemma 5.2 and Theorem 5.11) ~= lim {~*+~.}. Thus
+we have                                                           ._00
+Theorem 6.4
+    If ~ is an almost (A, B)-invariant subspace, then ~ = lim ~i where ~i
+is (A, B)-invariant.                                                     i_OO.
+     The theorem above is also stated (without proof) by Willems (1979).
+
+6.1. A speculation
+    Willems states that the converse of Theorem 6.4 is not true. However, it
+seems to be an open question whether the converse of Theorem 6.3 is true, that
+is whether every asymptotic generalized B-space is an almost c.s. The study
+of the following special cases suggest that it may be true. First, we note that
+a simple asymptotic B-space is, by Theorem 5.14, just a subspace of £!4. Since,
+by Theorem 4.1, any subspace of £!4 is an almost c.s., the speculation is true
+for simple asymptotic B - s p a c e s . .                                    .
+    Now consider those generalized B-spaces which lie in the subspace corres-
+ponding to a single c.m.i. of the input-state pencil sN - N A, and are given
+(Kareanias 1979 a) by
+                                                                     0
+
+                       1                   0                         0
+
+                       s.                  1                         1
+             xo(s) =         X1(s) =              , ... ,xr(s)=                 (6.13)
+                       S2                 2s                         rs
+
+                       Sk                ks1'-1
+                                                                  C)     sk-r
+                          Almost (A, B)-invariant subspaces                                      83
+
+where {xo(s), x,(s), ... , xr(s)} is a basis for "'Y;.      We can define a new basis by
+                                                                       klsk-'
+
+                                                                    (k -1 )lsk - 2
+                             k
+                          1/s - '
+                                                                         2/s         , .. ,   (6.14)
+                            lis
+                                                                            1
+                             1
+                                                                            o
+It is always possible to find acorn bination of the first i vectors for which the
+last (i -1) components vanish, since this means solving a system of (i - 1)
+linear equations in i unknowns. Thus, we can continue to get l1: basis of the
+form
+
+                                              a2/s                    arls
+
+                                    a,/s        1                       1
+                                                         , ..   "                             (6.15)
+                    lis              1          0                      0
+
+                                                0
+                                                                                }r
+                    1                0                                 0
+     As Is 1-t(JO, this basis approaches the standard basis vectors ek+l' , ek+l-r'
+     Now recall, from § 3.3.2, that in the canonical basis ek+l = b, , ek+l- r =
+AFr b, with bE88. Therefore, "'Ys--><b, AFb, ... , AFr b) as lsi + 00. But this
+is exactly the form of an almost c.s. Therefore, the class of generalized
+B-spaces defined by formula (6.15) approach almost c.s. as Isl-->co.
+     In particular, if dim (88) = 1, then sN - NAhas only one c.m.i., and thus
+every generalized B-space is given by (6.15). Therefore, in this case, it is true
+that every asymptotic generalized B-space is an almost c.s. In the general
+case, a basis for  r:    is a linear combination of vectors of the form above, but
+corresponding to different c.m.i. blocks. It seems likely that the limit is
+still an almost c.s., but the sort of construction used above becomes much more
+complicated due to the number of free parameters involved.
+
+6.2: Feedback and almost controllability 'subspaces
+     We have seen that an almost c.s. "'Y is the limit of generalized B-spaces
+«; as Isl-->oo. By § 5.2.2 the nor~ of the corresponding feedback 1i's defined
+on «, must become infinite. However, this .does not mean that .(/' cannot
+be invariant for some finite-norm feedback as well. Indeed,"'Y may be a c.s.
+     However, suppose that "'Y is a sliding subspace, that is "'Y has only. i.e.d.
+Clearly, i/' is not (A, B)-invariant, nor is any non-trivial subspace of "'Y.
+Furthermore,suppose that "'Y is approximated by (A, B)-invariant subspaces
+"'Y,-->"'Y as E-->O, with the corresponding feedback F i such that Ap,,"'Y,C"'Y;.
+Then IIF,II must approach 00 as E-->O; otherwise, F, approaches a finite limit
+F* (passing if necessary to a subsequence). But then "'Y would be (A + BF*)-
+invariant, which is impossible. Thus an asymptotic (A, B)-invariant (or, to
+84                         S.Jalle and fl. Karcamias
+
+use a different terminology, a sliding, or infinite spectrum] subspace is, in a
+sense, 'intrinsically' associated with unbounded norm feedback.
+
+
+'7. Some applications to zeros and high sca!lar-gain feedback
+    Consider the system §(A, B, C) with AElRnxn, BElRnx;~ and OElRlxn, when
+output feedback is applied through a scalar gain lcl (F'ig. 4:).
+
+
+                                                                     y
+          u
+              +
+
+
+
+
+                                     Figure 4.
+
+
+    The closed-loop system matrix is A + kBO . As we saw in § 5.2.1, if the
+                                     i
+
+
+system is non-degenerate, that is G(s) = 0(s1 - A)-IB is non-singular, then some
+of the closed-loop eigenvalues will become infinite as k-HX'. We look in some
+more detail at the behaviour of the closed-loop eigenvectors as.k-HtJ.
+    This is a rather complicated problem. Kouvaritakis and Shaked (1976)
+have studied in some detail the. behaviour of the closed-loop eigenvalues, but
+not very much appears to have been done on the behaviour of the closed-loop
+eigenvectors. What follows is a preliminary attempt to apply some of the
+ideas developed in this paper to the problem, which may suggest directions for
+future research.
+    It is convenient to introduce the reciprocal gain parameter g = 11k. Any
+eigenvector of A +kBO with eigenvalue sk is also an eigenvector of gA + BO,
+with eigenvalue I/j~'sk- We are thus interested in the behaviour of the eigen-
+values and eigenvectors of gA + BO near g = O. This is essentially a problem
+in perturbation theory (Kato 19'76) and. a few standard results can be applied.
+For example, the eigenvalues are branches of algebraic functions of g (or k)
+with only algebraic singularities. The eigenvectors are also algebraic functions
+of g, although these may not be unique in the case of repeated eigenvalues.
+Note that the eigenvectors may be chosen to have unit norm. )
+    The number of distinct eigenvalues of gA + BO is constant at all except a
+finite number of exceptional points. In particular, if gA + BO has n distinct
+eigenvalues for some g, then it has n distinct eigenvalues for all except a finite'
+number of values of g (this can also he seen by considering the discriminant
+of the characteristic equation of gA + BO). For example, if A has n distinct
+eigenvalues then gA + BO has n distinct eigenvalues, and hence is diagonalizable
+for all non-exceptional g. Clearly, g == 0 is an exceptional point, if n -l > 1,
+since BO must have an eigenvalue 0 of multiplicity at least n -l.
+                            Almost (A, B)-invariant subspaces                               85
+
+    In what follows we consider mainly the behaviour of dosed-loop eigenvectors
+near g = 0, ignoring the complication of Jordan-structure eigenvectors; So long
+as gA + BC has n distinct eigenvalues for non-exceptional g, it has simple
+structure near g =0, and hence this complication does not arise.
+    Let Sk denote an eigenvalue of A +kBC, and X(Sk) the corresponding eigen-
+vector. (skI - A -kBC))«(Sk) = implies  °
+                                   (skI - A )X(Sk) = BU(Sk)                               (7.1)
+                                                                                          (7.2) .
+Thus X(Sk) is a B-vector withB-value Sk'                  As k-HX) there are two cases.
+
+Case 1
+    u(sk) = 0 for large k. In this case X(Sk) is an eigenvector of A which is in
+ker C, i.e. it is an ' unobservable' mode. Because Sk is an: algebraic function it
+must be constant for all k. This corresponds to some of the open-loop eigen-
+value-eigenvector pairs remaining unchanged by output feedback, or some of
+the multivariable root-loci consisting of single points.
+
+Case 2
+   u(Sk)=I= 0 for large k.      Then (7.2) implies that
+                            11Cx(sk)II/llu(sk)11 = Ilyll/llull = l/k=g                    (7.3)
+As g-~O, we have lim IICx(sk)!I/llu(sk)11 =0.             This can happen in three different
+ways:
+     (i) lim IICx(sk) II = 0, lim II U(Sk) 11 < 00.
+    (ii) lim IICX(Sk)11 =0, lim IIU(Sk)11 = 00.
+    (iii) lim IICX(Sk) II > 0, lim II U(Sk) II = 00.
+   vVe consider each in turn.
+    (i) By Theorem 5.7, there are constants jS, /3> 0, o:;;:~             °such that
+                   ,8(l sk l - O: )' llx (sk)1I ~ Ilu(sk)II~/3(lskl +0:)" Ilx(Sk)11       (7.4)
+
+Since we can choose I X{Sk) 11·= 1, this means that lim I U(Sk) I < 00 if and only if
+lim ISk I < 00. Thus Sk-~SO finite, and U(Sk)-+U Ofinite; since each X(Sk) satisfies
+(7.1), in the limit (sol - A)x(so) = Bu o. Thus X(Sk) approaches a B-vector
+x(so) with B-value So as k-+oo. The condition that Jlim IICx(slJII=O implies
+that x(so)Eker C. Thus if Sk-+SO finite, then x(sk)-+)I((So)EY*, where Y* is
+the maximal (A, B)-inv3,riant subspace in ker C. A B-vector in ker C may
+be given a physical interpretation as follows. For initial conditionx(O) = x(so)
+and input u(t) = exp (sot)uo, the resulting trajectory is x(t) = exp (sot)x(so) and the
+corresponding output trajectory is y(t) = O. Therefore 8 0 is called a finite zero,
+and the x(so) a zero direction (Karcanias and Kouvaritakis 1979 b). It is
+possible for there to be zero directions for all s ; this corresponds to the
+existence of a nontrivial c.s. in ker C. This can happen only if the system is
+degenerate.
+86                         S. J aile and N; Karcanias
+
+    If M is a basis matrix for ker 0, then the resistriction pencil sNM - N AM
+determines the structure of r* and hence the zeros and zero directions; for
+this reason it is called the zero pencil. r* is the maximal subspace in which it is
+possible to produce non-zero trajectories for bounded inputs, for which the
+output is identically zero. Thus 1/* may be called the zero subspace.
+    (ii) lim II OX(Sk) II := 0, lim II u(Sk)II = 00.
+    By (7.4), Ilu(sk)ll~oo if and only if ISkl~oo. Thus x(Sk) approaches an
+asymptotic B-vector in ker 0, i.e. x(s oc,)EY OClnker 0 = 8#nker 0 by Theorem
+5.13. Furthermore, we have 1/k·llu(sk)/1 = II0x(sk,ll. Substituting in (7.4) gives
+                    t~(lskllk-iXlk)~ II OX(Sk) II ~f3(ISkllk+iXlk)
+Letting k~oo gives lim ISkllk=lim II0x(sk)11 =0. Thus ISkl~oo more slowly
+than k, if and only if x(sk)~ker O. The closed-loop eigenvalues which go to
+infinity slower than k are called higher-order infinite zeros (Kouvaritakis and
+Shaked 1976). Thus the asymptotic eigenvectors corresponding to higher-
+order infinite zeros must lie in 8#nker O. The subspace 8#nker 0 is, by
+Theorem 4.1, an almost c.s. It is part of &4!a *, which corresponds to i.e.d.
+of the zero pencil, for a non-degenerate system, or the i.e.d. and c.m.i. o:E the
+zero pencil for a degenerate system.
+    A vector bE8#nker 0 can be given a physical interpretation analogous to a
+zero direction. Since 1;' = (b> is an almost c.s., it is possible to find an input
+u(t) which forces the trajectory to remain arbitrarily close to 6. Since 6cker 0,
+the resulting output is arbitrarily small. Thus b may be thought of as an
+'almost zero' direction. The subspace r a *(ker 0), which includes both
+r*(ker 0) and &4!a *(ker 0), has the property that, for every initial condition
+in r a * there is a trajeetory for which the output is arbitrarily small. Thus
+r a * may be called the almost zero subspace.
+    Because we are considering a 'square' system, for which 8# and Irn (0)
+have the same dimensions, the zero pencil sNM - N AllI is square. Therefore
+it has r.m.i. only if it has c.m.i. Therefore the zero pencil of a non-degenerate
+square system has only f.e.d. and i.e.d., and thus ker 0 is itself an almost
+(A, B)-invariant subspace. Thus it is possible to produce an arbitrarily small
+output for any initial condition in ker O.
+    (iii) II OX(Sk) II ~Y > 0, lim \IU(Sk) II = 00.
+    As in the previous ease, lim Ilu(sk)1I = 00 implies that ISkl~oo. Thus
+x(Sk)~YOCl=8#. However, since lim II0x(Sk)II=Y>O, x(so:»)¢kerO.           Thus
+x(sOCl)~gg\ker O.        Furthermore, as we saw in case (ii) lim l/k'18kl =
+lim II0x(sk)11 =y>O. Therefore, ISkl~oo as fast as k. Kouvaritakis and
+Shaked (1976) call this a first order infinite zero. Thus the asymptotic eigen-
+vector corresponding to a first order infinite zero lies in 8#\ker O.
+    Recall that the eigenvectors of gA + BO are the same as those of A +kBO,
+and the corresponding eigenvalues are 11k times the eigenvalues of A +kBO.
+Thus, as g~O the eigenvalues of A + kBO which approach finite or higher-order
+infinite zeros correspond to eigenvalues of gA + BO which go to zero. The
+corresponding eigenvectors therefore approach eigenveetors of BO with eigen-
+value O.
+    We can take this further by considering the subspace spanned by all such
+eigenvectors. Let the eigenvalues of gA + BO which approach 0 as g~O
+                          Almost.. (A, B}-invariant eubspaces                           87
+
+be 81' ... , 8 z ' and let "l'/S1' Y S 2 ' ••• , Y S z be the corresponding eigenspaces (or
+generalized eigenspaces). Note that these eigenvalues and eigenspaces are
+functions of g. These eigenspaces are exactly those corresponding to all the
+eigenvalues of A +kBO that approach finite or higher-order infinite zeros.
+Let Yo(BG) be the generalized eigenspace of BG with eigenvalue O. We now
+make use of the following result from perturbation theory (Kato 1976).
+
+Lemma 7.1
+   Let T, T' be square matrices of the same dimension, and let T(g) = T +gT'.
+Denote the eigenvalues of T(g) by \(g). Suppose Ais an eigenvalue of T(O) = T.
+Then a subset of the \(g), say ,\(g), ... , \(g), approach A as g-;O. Let
+Y AI' ••• , Y Ar be the corresponding (generalized) eigenspaces of T (g), and let
+Y;: be the generalized eigenspace of T with eigenvalue A. Then
+                           Y Al EB ... EB1'-A r-;1'-;:   as g-;O                         •
+    The application of this result to the present case gives
+                     Y S I EBYS 2 EB ... EBi/'sz -;"f/' o(BG)   as g-~O               (7.5)
+In other words, the subspace spanned by all the eigenvectors of A + kBG whose
+eigenvalues approach finite or higher-order infinite zeros, approaches the
+generalized eigenspace of BG with eigenvalue O. Similarly, the eigenvalues of
+A +kBG that approach CfJ as fast as k, correspond to eigenvalues of gA + BG
+that approach non-zero values as g-;O. Thus the corresponding closed-loop
+eigenvectors approach the eigenvectors of BG with non-zero eigenvalue. It
+may happen that two (or more) of these first-order eigenvalues of gA + BG,
+say A1(g), A2(g), approach the same value Aas g-;O. (That is, two of the first-
+order root loci are asymptotically parallel.) Then the result' above shows that
+the sum of the eigenspaces for \(g) and A2 (g) approaches the eigenspace of BG
+with eigenvalue A.
+    The preceding discussion has separated the asymptotic eigenvalues into two
+classes: those where l/k'sk-;O (finite and higher-order infinite zeros), and
+those where 11/k· Sk 1-;)' > 0 (first-order infinite zeros). An outstanding problem
+is to separate the asymptotic behaviour of the eigenspaees corresponding to
+higher-order infinite zeros, from those corresponding to finite zeros. The
+following remarks outline .the problem. Assume for simplicity that the system
+is non-degenerate andzl +kBG has n distinct eigenvalues forall non-exceptional
+k. Then the asymptotic eigenvectors corresponding to both finite and first-
+order infinite zeros are completely determined. Those corresponding to finite
+zeros approach the finite zero directions, corresponding tof.e.d, of the zero
+pencil, which are uniquely defined since 31:* = {O}. Thosevcorresponding to
+first-order infinite zeros~pproach the eigenvectors of Bp with non-zero
+eigenvalues.
+     In the simplest case all these eigenvectors {which are Iinearly independent
+for k-; CfJ ) approach limits which are linearly independent. Ifseveral approach
+the same limit we lose some information about the asymptotic behaviour of the
+system, which must be replaced by knowledge of the asymptotic behaviour of
+the subspace spanned by these' degenerate 'eigenvectors. We have such a
+result when t.he eigenvectors correspond to first-order infinite zeros, but it does
+not seem to be possible at this point to make a similar statement about
+88                          S. Jaffe and N. Karcanias
+
+, degenerate' finite zero directions. It seems very plausible that if several
+eigenvectors approach the same finite zero direction, then sNM- N AM must
+have a corresponding ,Jordan-structure f.e.d. block, and that the subspace
+spanned by these eigenvectors then approaches the corresponding Jordan-
+structure B-space in ker O. What is needed is some WiLY to separate the finite
+part of A + kBO from the part which becomes infinite as k---? 00 •
+    The problem is rnore serious for the case of asymptotic eigenvectors corres-
+ponding to higher-order infinite zeros. We know that they approach vectors
+in gjnker 0, and that these vectors lie in the subspace corresponding to the i.e.d.
+of the zero pencil. However, each i.e.d.-subspace has a one-dimensional
+intersection with 81. Therefore if the zero pencil has more than one i.e.d., the
+fact that the asymptotic eigenvectors lie in gjnker 0 does not determine them
+uniquely. The problern here is one of degeneracy: there is more than one
+independent' infinite frequency' B-vector in ker O. The same problem arises
+if there is more than one B-vector in ker 0 with the same finite B-value (i.e.
+more than one f.e.d. with the same root). In either case, the B-vectors are
+not unique. Even when the zero pencil has only a single i.e.d. there is a problem
+of degeneracy. For example, suppose dim (81) = 1. The zero pencil is then
+(n ~ 1) x (n -1). If it has an i.e.d. 3d then there are n - 1 - d finite zeros.
+Standard results for single-input single-output systems then show that (d + 1)
+closed-loop eigenvalues-s co as k1i(d+!). Therefore (d + 1) independent eigen-
+vectors approach [krnker 0, which has dimension 1. The question is what
+happens to the subspace spanned by these eigenvectors. Since it has dimension
+(d+ 1) its limit cannot be just the i.e.d.-subspace of the zero pencil, but it seems
+plausible that it contains this subspace. When dim (,g~) > 1, the degree of the
+i.e.d. of the zero pencil no longer even determines the number of higher-order
+infinite zeros.
+     It seems that more than the' geometric 'properties of ~ and ker 0 are
+needed to determine the asymptotic behaviour of the eigenspaces, which
+ultimately depends on the precise relationship between the operators 0, A
+and B. This is a chellenging problem which must be left for future research.
+
+8.   Conclusions
+    It was shown that the subspaces of the state space may be completely
+characterized in geometric (vector space), algebraic (matrix pencil invariants),
+dynamic (physical probJlems) and feedback (closed loop) terms. The restriction
+pencil approach (Karcanias 1979) suggests naturally the way to extend the
+concepts of (A, B)·-invariant subspaces (characterized by f.e.d. and c.m.i.)
+and c.s. to that of infinite spectrum (A, B)-invariant subspaces (characterized
+by i.e.d.). The relationship between the subspaces characterized by f.e.d.,
+c.m.i. and i.e.d. and the concepts of almost (A, B)-invariant and almost c.s.
+(Willems 1979) was established. It was shown that almost (A, B)-invariant
+subspaces are those characterized hy f.e.d., c.m.i. and i.e.d. and that almost c.s.
+are those characterized by c.m.i. and i.e.d. only and vice-versa; what Willems
+calls ' coasting' and ' sliding' subspaces were shown to be subspaces charac-
+terized only by f.e.d. and i.e.d. respectively. Furthermore, it was shown that
+subspaces associated with i.e.d. are limits of generalized closed-loop eigenspaces
+of infinitely large frequency and as such they were called 'asymptotic' or
+infinite spectrum subspaces. The distinctive feature of asymptotic (sliding)
+                                 Almost (A, B)·-invariant subspacee                                   89
+
+subspaces with respect to the classical notion of (A, B)-illllariance is that they
+are characterized by unbounded norm feedback and unbounded spectrum; it
+is such properties which make the asymptotic subspaces of crucial importance
+in the root locus analysis, which was briefly discussed in the final section.
+
+Appendix A
+Proof of Lemma 5.1
+      Assume i( "Y)=k, and define "Yk--I = <VE"Y li(v) ~ k -I). It is easy to see
+that "Yk-I is a subspace, and that the chains generated by vectors VE"Y u-:
+must lie in "Yts-t- Now let "Y k c "Y be any subspace such that 1/"= "Yk-I EB "Yk.
+Since "Ykn "Yk-I = {O}, any non-zero VkE"Yk has index k. Also, dim ("Y k ) ~ 1
+since i( "Y)=k.
+      Let {VIk, ... , v/,} be any basis for "f/k. Each vl generates a minimal chain
+                            , b Y. d efimiitiion, Vik-I , ... , ViO"J/"
+ { Vik 'Vi k-I , ... , Vi O}.                                                         . []
+                                                                                . 11 tE
+                                                                   E Y u-: flor H,       r . D e fime Uj
+                                                                                                      I1lJ
+
+
+as f!lJi&<VIi, ... ,V,/), j=O, ... ,k. Note that [JJJk=")'/'k, and [JJJic"Y k-1 for
+.1 = 0, ... , k -1, hence &kn([JJJk-1 + ... + [JJJo) = {O}. In fact, we claim that
+ [JJJin([JJJi-1 + '" + [JJJo) =: {O} for all jE[k]. To prove this, we show two things
+         (i) {VIi, ... , vri} are linearly independent, and
+        (ii) if x # 0, XE [JJJi , then i(x) = j.
+   We prove (i) and (ii) by reverse induction on .1, starting with .1 =k and
+working down to .1 = O. For .1 =k (i) and (ii) are true by construction. So
+assume true for .1 and consider j - 1. Suppose ~~i-IE:[JJJi_ll where x i- I =
+  r
+ L aiv/-I.        Note that we do not assume Xi-I#O; this will follow from the
+ 'i=l
+proof. Then xi-I=Laivii-I, xi-2=L.aivii-2, ... , xO=Laivio IS a chain, so
+i(Xi - 1 ) ~j-1.
+     N ow suppose that j\(:tc.i - I ) = p ~ .1 -- 2. Then there is a chain
+   {)Ci-I, x p _ ll x p _ 2, ... , x o}; but    xj-I=Laiv/- 1        and    (sol -A)v/=.-v/-I
+(mod B) implies that (sol - A)Laivii = - Laj~v/-I (mod B):= --:. Xi-I.                       Therefore,
+{La~iv/, xi-I, x p _   ll   x p _ 2 , ••• , x o} is a chain; it has length p -+- 2, so i(   .± aiv/) ~
+                                                                                            t=1
+p+ 1 ~j -1.        But this is a contradiction: by hypothesis (i) {v/, .1 = 1, ... , r}
+                                                              r
+are independent, so a i not all zero implies L aivii # O.                      Then hypothesis (ii)
+                                                            i=l
+implies that i(Laiv/) =: j'; therefore, it is not possible for i(Xi - l ) ~ .1 - 1, so we
+have proved (ii). But this also proves (i), since if Laivii-I = 0 then i(Laiv/) = O.
+     From result (ii) it is immediate that ,q)'in([JJJj-1 + '" + [JJJo) = {O} for jE[k].
+This implies that ?J~~[JJJk+[JJJk-l+ ... + [JJJo= [JJJkEB[JJJk-IED ... EB[JJJo' Then (i)
+implies that a basis for f!} is given by {VIk, vIk-I, ... , vIO}U .... U{v r k , V/-l, ... , vrO},
+i.e. ?J has a basis of .Iordan-st.ruoture B-vector chains, or ?J is a generalized
+B-space with B-value so.
+     irhis construction has given us a partial basis for ~(/ consisting of B-vector
+chains. We want to show that this can be extended to a hasis for "Y consisting
+of B-vector chains. That is, we want to show that there is a 17C "Y, so that 17
+is a generalized B-space with B-value so' and "Y = ·17 (£)f!). To do this, we
+proceed by induction on k = i( "Y). If k = 0, then "Yk-lL = {O}, "Y= -e» = [JJJk =?J,
+90                              'S: Jal]« and N. Karcanias
+
+so a basis for go 'is automatically abasis for "Y. So assume true for k, and con-
+sider k + 1. The construction above generates an go = &" k+lEB ... EB &"0 where
+&,'k+' + "Y k= 1', {v,k+l, ... , vrk+l} is a basis for &'k+l' each vl+l generates a
+  . . I C.hai
+rmrnma               vi ' Vi k, .. " Vi o} ,an d {"
+             tarn {k+'                                                   asis f or cr
+                                                 VI)' Vl, "0' v/'}'IS a baai       /1lJ' i'
+
+j =0, ... , k+ 1.
+    Now i( "Yk) = k, so the induction hypothesis applies; that is, apply the
+construction to "Y k. Start by defining "Y k_, ~<vE"Ykli(v) ,,;,k-l>. Note that
+&"k-,EB ... EB&,'oc"Yk_, and that &"kc"Y k. Since &,'kn"Y k_, = {O}, we can
+find %kc"Y k such that "Yk="Yk_,EB(&,'kEBj(k)' Then &"kEBj(k,plays the
+role of &'k in the construction for "Y k' , Therefore, if we extend {V,k, ... , v/}
+to a basis for &'k then this basis generates a set of minimal B-vector chains, a
+subset of which are just those generated by {V,k, ... , v/}; that is, there are
+subspaccs j(j such that &'j=&"jEB'j(j, j=O, ... .k, where j(kEB ... EB j(o is
+spanned by minimal chains generated by j( k' By the induction hypothesis,
+these chains can be augmented by other B-vector chains to form a basis for
+"Yk' That is, "Yk = (&'kEB ... EB&'o) ffi j7", where j7" is a generalized B-space.
+Substituting &'j=&"jEBj(j gives
+                    "Yk = (&" kEB ... EEl&,'0) + (j(kEB ... EB j(o) + j7"
+Define j7'= j(kEB ... EBj( oEBj7"; then j7' is a generalized B-space, and
+"Yk=(&"kEB ... EB&"o)EBj7'. Clearly, "Y=&"k+lEB"Yk=(&'\+lEB ... EB&"o)EBj7'
+as required.
+    This completes the proof. . The use of induction, while allowing a rigorous
+proof, somewhat obscures the nature of the construction, which may be
+indicated diagrammatically in :Fig. 5; note that each dot is a basis vector,
+and lines indicate chains. The labels &'i refer to shaded subspaces.
+
+
+
+
+                                             Figure 5.
+
+Appendix B
+Proof of Theorem 5.6                      .        '... '            '. .   . ...
+   Call ':'9 k = <XEf[ I(sol - A)k+lXEaJ +AaJ +..... + AkaJ>.    If xp is a generalized
+B-vector of index p ";'k, then there is a chain {xp , ... , x o} with
+     (sol - A)x p = - x p _ , + bp , ... ,   (sol - A)x, = - xii + b" ,(so! - A)xo = bo
+                            Almost (A, B)-invariant subspaces                                         91
+
+Thus
+       (sel- A )2Xp = - (sel - A )x p_1 + (sol - A )b p = x p_ 2 - bp_ 1 + (sol -.A )b~
+Continuing in this way, we get
+   (sol - A )P+1 x p = ( - )Pbo + ( - 1 )P-l(sol - A )b1 + ... - (sol - A )P-1b",_1
+                                                       +(sol-A)PbpEai'+A@+ ... +APai'
+which implies that
+              (sol-A)k+1XpE~+A~+ ... +Ak~,                           or that ff80kc'§k
+  Now suppose (sol -A)k+1xkE~+A~+ ... +Ak,9B; then (sol - A)k+1xk=
+z+Akb k where zE~+A~+ ... +Ak-l~. Thus,
+          (sol - A)k{(sol - A)x k+ (-1)k-1bd
+              = z+ Akbk+ (-l)k-l(sol - A)kbk
+              =z+ Akbk+ (_l)k-l( - A)kb k+ Jl                      e)      soi(- A)k-i( -1)k- 1bk
+
+
+              =H      f (~)SOi(-A)k-i(-l)k-lbkE~+A~+ ... +Ak-l~
+                     i~ 1     t
+
+Thus by defining - X k_1 ~ (sol - A)x k + ( - 1)k-1b k we have that
+                         (sol -A)kxk_1E~+ A~+ ... +Ak-l~
+Continuing this procedure gives a chain {xk, xk_l> ... , x o} with
+                             - X k:.- 1 = (sol -     A )x k + ( -1 )k-lbk}
+                                                                                                    (B 1)
+                                  -   X   o = (sol - A )x 1 + (- 1 )Ob 1
+such that (sol-A)jxj_1E~+A~+ ... +Aj-l~, j=l, ... ,k+1.                                 In particular,
+(sol - A )XoE~. Together with (B 1), this gives
+                            (sol - A )x k = - Xk_1 + ( - 1)k-1b k, ...
+
+                            (sol-A)x 1 = -xO+b 1
+                            (sol - A)xo = bo
+Therefore, every xkE'§k generates a Jordan structure B-vector chain of length
+:;;; k + 1. By Lemma 5.1 '§k is a generalized B-space with B-value so' and index
+«k, Therefore, by maximality of ff 80k, '§k c ff 80k. Together with the
+opposite inclusion, this gives
+
+                                                                                                       •
+Appendix C
+Proof of Theorem 5.10
+    If lim "Y; ="Y, then, by definition, for each unit vector VE"Y with Ilvll = 1
+there is a sequence of unit vectors ViE"Y; with Ilvi-vll-.O. Now for any
+VE"Y we have v=rv1 where r=llvll and Ilv111=1. Thus there is a sequence
+vi-+v l1 so rvL--+rv 1 ,= V.
+92                               S. Jaj]« and .N". Karcomios
+
+   Conversely, if Ior each VE"f/ there is a sequence Vi~V then I[vil = 1 implies
+Ilvill~1. Let V1i : = l/ll vill·v i. Then VlLi is a sequence of unit vectors in "f/ b
+with Vli~V. Therefore, for each unit 'fE"f/ there is a K(v) such that
+
+                    min {llv-vill : Ilvill =Jl} <E       for all i » K(v)
+                    yieri
+
+
+
+We want to show that K can be chosen independently of v, so that
+
+                 max {min {llv-vill: Ilvill=llvll=l}} <Efori> K
+                 YEf   yiEfi
+
+
+
+    To show this, choose a basis of unit vectors {vv ... , vq} for "f/. Any unit
+vector VE"f/ can be written v = 'L.aivi . Let f2 denote the unit sphere in en.
+Then the map I: "f/(I f2~lR, given by I: V---,l':~~ la i I is continuous. Since
+"f/(I f2 is compact, the image of I is bounded, i.e. there is a constant M> 0
+such that ~ lail < M" for all a i such that II~aivill = 1.
+    Now choose sequences Vli~vv ... , Vqi~Vq aa above, with V/E"f/i and
+Ilv/il =1. For each E>O, choose KCv j ) such that Ilv/-vjll <E/2M for all
+i>K(vj ) , and let ]{=max{K(v1), ... ,.l{(vq)}. Then for all i s- K, Ilv/-vjll<
+E/2M for jE[q].
+    For any VE"f/ with Ilvll = 1 we have v = ~ajvj' and
+
+            II~ajvji-vll ~~Iajl'llv/-Vjll <E/2M·(M)=E,/2              for all i-:«
+
+Note that II~ajvjill is not necessarily 1.          But let vi=:~ajv/E"f/i' and ri = Ilvill ;
+then, 1- E/2< ri <1 + E/2, so
+
+
+
+   Therefore, for every unit vEY and all i >K there is a unit vector viEYi
+with Ilv i -vii < Eo Thus min {Il"i - vii: Ilvill = 1}< Efor every unit vector vE"f/,
+so                        ~Efi
+
+
+                 max { min {Ilvi - vii: Ilvill = Ilvll = 1}}= d( "f/ "f/) < E
+                                                                     i,
+                 YEf   yiEf i
+
+
+
+for all i > K.   Therefore, lim d( ~(/b "f/) = O.
+                                i-HfJ                                                      •
+   This proves part (i). Now let r, = {xEq'1 :x=1im Vi' viE"f/i} be the set
+of all limit points of {"f/i}, and suppose "f/=lim "f/i' "f/A is a subspace, and
+part (i) implies that "f/A::> "f/. Lemma 5.2, together with part (i), implies that
+dim ("f/A) ~ dim ("1/ i) = q. But since dim ("f/) = q, this forces -r: = "f/A'  •
+
+
+
+Proo] 01 Lemma 5.2
+   Expand {vv ... , vq} to a basis for PC, say {v, ... , v q , Vq+V ... , vn } and define
+M=max{~lail: II~aivill=l} (e.f. proof of Theorem 5.10). Now choose K
+such that Ilv/-yjll < l/M for a~l jE[q] whenever t-:«. Suppose ~ajv/=O,
+                                        q
+with not all aj = 0, i.e. with          L la 1= 8 > O.
+                                             j           Then
+                                    j=l
+                        Almost (A, B)-invariant subepaces                        93
+
+But by definition of M", we must have that M~~lajljIIL:ajvjll or, II~ajvjll ~
+~lajljM =SjM. However, this contradicts the previous inequality, so the
+assumption that not an aj=O is false. Therefore, {,tI i , ... , vq i } are linearly
+independent for all i > If.                                                      •
+
+Proof of Theorem 5.11
+    Suppose "f/i~"f/ and let {v!,      , v q} be a basis for "Y. Then by Theorem
+5.10 there" are sequences VIi~V!, , Vqi~Vq' By Lemma 5.2 {VIi, ... , v qi} are
+linearly independent for all i > X, so they are a basis for "P"i'
+    Conversely, suppose {v!, ... , v q} is a basis for "f/ and there are sequences
+VIi~1~!, ... , Vqi~Vq with V/E"f/i' If v=".f.ajviE"f/ choose vi:=".f.ajv/E"f/i' Then
+Vi~V, so by Theorem 5.10 "f/i~"f/.                                                 •
+
+
+                                   REF:ElRENCE:S
+BASILE, G., and MARRO, G., 1969, J. Optim. Th. & Appl., a, 306.
+DAVIS, C., and KAHAN, W. M., 1970, SIAM J. Num. Anal., 7, 1.
+GANTMACHER, G., 1959, The Theory of Matrices (New York: Chelsea).
+HIRSCH, M. W., and SMALE, S., 1974, Difterentia,l Equations, Dynamical Systems and
+       Linear Algebra (New York: Academic Press).
+JAFF]l, S., 1979, M.Phil. thesis (Engin. Dept., Univ. of Cambridge).
+JONES, B. F., Jr., 1971, Rudimenie of Riemann Surfaces, Rice Univ. Lect. Notes in
+       Math., No.2, Houston, Texas.
+KARCANIAS, N., 1976, Camb. Univ. R,es. R,eJP., CVEDjJ8'-ControljTR,-132, 1978,
+       Camb. Univ. R,es. Rep., CVEDjF-CAMSjTR,-167; 197!g a, Proc. lEE, 126,
+       585; 1979 b, Camb. Univ. R,es. Rep., CUEDjF-CAMSjTR,-188.
+KARCANIAS, N., and KOUVARITAKIS, B., 1978, Int. J. Control, ~~8, 197; 1979 a, Int.
+       J. Control, 29, 749; 1979 b, Int. J. Control, 30, 395.
+KATO, T., 1976, Perturbation Theory for Linear Operators (Berlin: Springer-Verlag),
+       2nd ed.
+KIMURA, H., 1975,I.E.E.E. Trans. auiom: Control, 20, 509.
+KNOPP, K., 1947, Theory at Functions, Part II (New York, Dover).
+KOUVARITAKIS, B., and SHAKED, V., 1976, Int. J. Control, 2;3, 297.
+MACF'ARLANE, A. G. J., 1\)75, Measmt. & Control, 8, 179.
+MACF'ARLANE, A. G. J., and KARCANIAS, N., 1978, Proc. of 7th IFAC Cong., Helsinki.
+MACF'ARLANE, A. G. J., and POSTLETHWAITE, 1., 1977, Int. J. Control, 25, 81.
+MIRSKY, L., 1955, An Introduction to Linear Algebra (Oxford: qlarendon Press).
+MOORE, B. C., 1976, I.E.1iJ.E. Trans. autom. Control, 21, 689.
+SHAKED, V., and KARCANIAS, N., 1976, Int. J. Control, 23, 113.
+WARREN, M. E., and ECKJB:EJRG, A. E., 1\)75, SI.AM J. Control & Opt., 13,434.
+WILL:EMS, J. C., 1\)79, Asterisque (J. French Math. Soc.) (in press).
+WONHAM, W. M., 1974, Linear Multivariable Control: A Geometric Approach (Berlin:
+       Springer-Verlag).
+WONHAM, W. M., and MORSE, A. S., 1970, SIA1~ J. Control & Opt., 8, 1.
+

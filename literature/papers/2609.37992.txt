@@ -1,0 +1,1983 @@
+1
+Complete Characterization of Minimum-Order
+Functional Observers from Darouach to
+Luenberger
+T yrone Fernando
+Abstract— This paper gives an order-by-order character-
+ization of linear functional observers between the minimum
+dimension permitted by the algebraic observer condition
+and the upper endpoint determined by functional observ-
+ability. Functional observability indices determine the mini-
+mum algebraically admissible order
+q0 =
+rX
+j=1
+ηj ,
+whereris the number of independent functionals to be
+estimated andη j is the functional observability index asso-
+ciated with thejth functional. For ann-dimensional system
+withpindependent measured outputs, letn 0 denote the
+rank of the observability matrix. Under functional observ-
+ability, the upper endpoint of the functional-observer order
+range isn 0 −p. The algebraic and spectral observer con-
+ditions are characterized at each prescribed order between
+these two endpoints. A nullspace representation in the orig-
+inal state space yields rank and matrix-pencil characteriza-
+tions of the algebraic and spectral conditions, respectively.
+The minimum observer order is obtained as the smallest
+spectrally feasible order in the resulting order spectrum.
+The two endpoints include the classical Darouach and
+Luenberger orders as special cases: the lower endpoint
+reduces to the Darouach order whenq 0 =r, while, under
+complete observability, the upper endpoint reduces to the
+Luenberger ordern−p.
+Index Terms— Functional observers, functional observ-
+ability indices, minimum-order observer, functional observ-
+ability, Luenberger observer, Darouach observer.
+I. INTRODUCTION
+Functional observers estimate prescribed linear functions
+of the state without necessarily reconstructing the complete
+state. Their dimension may therefore be substantially smaller
+than that required for state observation [1]. The determination
+of the smallest possible observer dimension has consequently
+received sustained attention; see, among others, [2]–[13].
+More recently, functional-observer theory has been extended to
+large-scale and interconnected systems [14]–[16], networked
+systems [17]–[20], sampled-data systems [21] and nonlinear
+systems [22]–[24].
+Consider the linear system
+˙x(t) =Ax(t) +Bu(t), y(t) =Cx(t),
+T . Fernando is with the Department of Electrical, Electronic
+and Computer Engineering, University of Western Australia (UWA),
+35 Stirling Highway , Crawley , WA 6009, Australia. (email: ty-
+rone.fernando@uwa.edu.au)
+and the prescribed functional
+z(t) =Lx(t).
+Letndenote the state dimension,p= rankC, and letr
+denote the number of independent functional rows modulo
+the measured output. The dimensionris the natural lower
+bound on the observer order and is the order of the classical
+Darouach observer [8].
+In our previous work [25], the functional observability
+indices were used to determine the minimum dimension
+permitted by the algebraic observer condition. Ifη 1, . . . , ηr
+are the functional observability indices associated with ther
+functional rows, this dimension is
+q0 =
+rX
+j=1
+ηj ≥r.
+The same construction gives the complete family of order-
+q0 augmented functional matrices satisfying the algebraic
+condition, with observer existence at this order determined by
+a spectral rank condition.
+At the opposite end, let
+n0 := rankO C,
+whereO C is the observability matrix of(A, C). Under
+functional observability, we show that the lower and upper
+endpoints of the admissible functional-observer order range
+areq 0 andn 0 −p, respectively. Hence
+r≤q 0 ≤ν min ≤n 0 −p≤n−p.
+The classical Darouach and reduced-order Luenberger ob-
+server orders arise as the limiting cases of these endpoints:
+q0 =rgives the Darouach order, whereas, when(A, C)is
+observable,n 0 =nand the upper endpoint becomesn−p,
+the order of the classical reduced-order Luenberger observer.
+The question addressed in this paper is what lies between the
+algebraic lower endpointq 0 and the functional-observability
+upper endpointn 0 −p. In particular, if every algebraically
+admissible realization at orderq 0 fails the spectral condition,
+at which subsequent orders can a functional observer exist,
+and can existence at each such order be characterized without
+prescribing a particular augmentation mechanism?
+The first main result concerns the algebraically admissible
+orders between these two endpoints. Starting from the mini-
+mum algebraic orderq 0, the admissible orders are character-
+ized up to the functional-observability endpointn 0 −p. The
+arXiv:2609.37992v1  [eess.SY]  29 Sep 2026
+2
+second main result gives an exact matrix characterization of
+the algebraic and spectral observer conditions at an arbitrary
+prescribed orderq. For each orderq, a full-column-rank matrix
+Zis used to represent the nullspace associated with a reduced
+order-qrealization. The analysis is carried out entirely in the
+originaln-dimensional state space. The algebraic condition be-
+comes a rank test involvingZand a basis ofker(CAZ), while
+the spectral condition becomes an equivalent rank condition
+on a matrix pencil.
+The principal contributions are therefore as follows. First,
+the complete algebraically admissible family is characterized
+at every prescribed admissible order, not only at the minimum
+algebraic orderq 0. Second, the algebraic and spectral observer
+conditions are converted into dual nullspace tests expressed
+entirely in the original state coordinates. Third, a finite matrix-
+chart parameterization covers all admissible nullspaces at a
+prescribed order, so failure of the tests over all charts proves
+nonexistence at that order. Fourth, these fixed-order results
+are assembled into a complete characterization of the feasible-
+order spectrumΣ F O(L)and hence of the minimum functional-
+observer order. Finally, the minimum-order characterization
+of our previous work [25] is recovered explicitly as the
+specializationq=q 0.
+The resulting theory characterizes the functional-observer
+order spectrum betweenq 0 andn 0 −p, recovering the classical
+Darouach and Luenberger orders as its two limiting cases. The
+minimum observer orderν min is then obtained as the smallest
+order in this spectrum satisfying both the algebraic and spectral
+observer conditions.
+II. NOTATION ANDPROBLEMFORMULATION
+A. Notation
+For a matrixM,row(M),rank(M),ker(M),im(M)and
+eig(M)denote its row space, rank, nullspace, column space,
+and spectrum (set of eigenvalues), respectively. The symbolI
+denotes the identity matrix when its dimension is clear from
+context; otherwise,I k denotes thek×kidentity matrix.
+Let
+OC :=
+
+
+C
+CA
+...
+CA n−1
+
+ ,O L :=
+
+
+L
+LA
+...
+LAn−1
+
+
+denote the observability matrices of(A, C)and(A, L), respec-
+tively. We also use a full-column-rank matrixVsatisfying
+imV= ker
+ C
+CA
+
+.(1)
+All nullspaces are taken overRunless complex values ofλ
+are involved, in which case the corresponding complexified
+spaces are understood.
+B. Problem Formulation
+Consider the linear time-invariant system
+˙x(t) =Ax(t) +Bu(t), y(t) =Cx(t),
+where
+A∈R n×n, B∈R n×m, C∈R p×n.
+The functional to be estimated is
+z(t) =Lx(t), L∈R r×n.
+Throughout, redundant measured outputs and redundant func-
+tional rows are removed so that
+rank(C) =p,rank
+C
+L
+
+=p+r.
+Thus, components ofLalready contained inrow(C)are
+excluded from the functional estimation problem.
+Recall that
+n0 = rank(OC)
+is the dimension of the observable part of(A, C). Functional
+observability is characterized by [26]
+rank
+
+OC
+OL
+
+= rank(OC) =n 0.
+The originaln-dimensional state-space representation is re-
+tained throughout; no separaten 0-dimensional state realization
+is introduced.
+LetL ∈Rq×n be an augmented functional matrix of order
+q. The prescribed functionalLx(t)is required to be recover-
+able fromLx(t)and the measured outputCx(t). Equivalently,
+row(L)⊆row
+C
+L
+
+.
+In rank form, this condition is
+rank
+
+
+C
+L
+L
+
+ = rank
+
+C
+L
+
+.
+A reduced order-qrealization further satisfies
+rank
+C
+L
+
+=p+q.
+Thus, the observer order is determined directly by the rank
+increase produced by adjoiningLtoC. For estimating the
+augmented functionalLx(t), the algebraic observer condition
+is
+rank
+
+
+LA
+L
+CA
+C
+
+ = rank
+
+
+L
+CA
+C
+
+ ,(A)
+and the spectral observer condition is
+rank
+
+
+λL − LA
+CA
+C
+
+ = rank
+
+
+L
+CA
+C
+
+ , λ∈Ω S,(S)
+whereΩ S =Cfor pole assignability. For the detectability
+formulation of Darouach [8],
+ΩS ={λ∈C:ℜ(λ)≥0}.
+All real subspaces are understood through their complexifica-
+tions when complex values ofλare considered.
+T . FERNANDO: 3
+The objective of this paper is to characterize the functional-
+observer order spectrum within
+q0 ≤q≤n 0 −p,
+and, in particular, to determine the smallest order for which
+there exists an augmented functional matrixLsatisfying the
+recoverability and reducedness requirements together with
+conditions (A) and (S).
+III. ALGEBRAICALLYADMISSIBLEOBSERVERORDERS
+A. Order Endpoints
+We recall only the part of the functional observability
+indices construction required for the subsequent development.
+Write
+C= (C T1 , . . . , CTp )T , L= (L T1 , . . . , LTr )T ,
+whereC 1, . . . , Cp andL 1, . . . , Lr denote the rows ofCand
+L, respectively. We refer to these rows as generators and order
+them as
+g1, . . . , gp+r =C 1, . . . , Cp, L1, . . . , Lr.(2)
+The candidates
+giAk, k= 0,1,2, . . . ,
+are processed by increasing powers ofAand, at each power,
+according to the fixed generator order (2). A candidate is
+appended if and only if its inclusion increases the rank of
+the matrix constructed up to that point. Since
+rank
+C
+L
+
+=p+r,
+all candidates corresponding tok= 0are appended. Hence
+the firstp+rrows of the functional observability matrix are
+
+C
+L
+
+.
+Fork≥1, the candidates are therefore processed in the order
+C1Ak, . . . , CpAk, L1Ak, . . . , LrAk.
+Ifk i denotes the largest power for whichg iAki is appended,
+define
+αi = 1 +k i.
+The functional observability indices associated with the pre-
+scribed functional are
+ηj =α p+j, j= 1, . . . , r.
+The result of [25] gives the minimum order for which condi-
+tion (A) can be satisfied:
+q0 :=
+rX
+j=1
+ηj.
+Moreover, the complete family of order-q 0 augmented func-
+tional matricesLsatisfying condition (A) is parameterized
+in [25]. We denote this family by
+LAq0 (L) :=
+
+
+L ∈Rq0×n :
+row
+C
+L
+
+⊆row
+C
+L
+
+,
+rank
+C
+L
+
+=p+q 0,
+Lsatisfies condition (A)
+
+
+ .
+ThusL Aq0 (L)is the complete algebraically admissible family
+at the minimum algebraic order, and no orderq < q 0 can
+satisfy condition (A).
+The lower and upper endpoints established above therefore
+restrict the orders considered in the sequel to
+q0 ≤q≤n 0 −p.
+The purpose of this section is to characterize the algebraically
+admissible families throughout this entire interval.
+B. No-Gap Property
+The rank formulation of condition (A) permits an order-
+qrealization to be extended by adjoining one independent
+row. The following result is the matrix counterpart of the one-
+dimensional extension property.
+Theorem 1 (One-row admissible extension):Assume
+(A, C, L)is functionally observable. LetL ∈Rq×n satisfy
+rank
+
+
+C
+L
+L
+
+ = rank
+C
+L
+
+=p+q,
+condition (A), and
+row
+C
+L
+
+⊆row(O C).
+Ifq < n0 −p, then there exists a row vectorv∈row(O C)
+such that
+rank
+
+
+C
+L
+v
+
+ =p+q+ 1,
+and the augmented matrix
+L+ :=
+L
+v
+
+satisfies condition (A) at orderq+ 1.
+Proof:Put
+X:=
+
+C
+L
+
+, H:=
+
+C
+CA
+
+.
+ThenrankX=p+q < n 0 androw(X)⊆row(O C).
+Condition (A) is equivalent to
+row(XA)⊆row
+X
+H
+
+.
+Ifrow(H)⊆row(X), then
+row(XA)⊆row(X),
+4
+sorow(X)is rightA-invariant. Since
+row(C)⊆row(X),
+it follows successively that
+row(CAk)⊆row(X), k= 0,1, . . . , n−1.
+Hence
+row(OC)⊆row(X),
+and therefore
+n0 = rank(OC)≤rankX.
+This contradictsrankX=p+q < n 0. Therefore
+row(H)̸⊆row(X),
+and hence
+rank
+X
+H
+
+>rankX.
+By the Cayley–Hamilton theorem,row(O C)A⊆row(O C).
+Define
+V:=
+
+v∈row(O C) :vA∈row
+X
+H
+
+.
+This is a linear subspace ofrow(O C). To estimate its dimen-
+sion, consider
+T: row(O C)− →row(OC), T(v) =vA,
+and let
+π: row(O C)− →row(OC)/row
+X
+H
+
+be the quotient map. By definition,
+ker(π◦T) =V.
+Sincedim row(O C) =n 0, rank–nullity gives
+dimV=n 0 −rank(π◦T).
+Moreover,
+rank(π◦T)≤dim row(OC)
+row
+X
+H
+ =n 0 −rank
+X
+H
+
+.
+Consequently,
+dimV ≥rank
+X
+H
+
+>rankX,
+where the strict inequality follows fromrow(H)⊈row(X).
+Sincerow(X)⊆row(O C)and
+row(XA)⊆row
+X
+H
+
+,
+the definition ofVgives
+row(X)⊆ V.
+Since
+dimV>rankX= dim row(X),
+there exists
+v∈ V \row(X).
+Thusvis independent of the rows ofX, and hence
+rank
+
+
+C
+L
+v
+
+ =p+q+ 1.
+Moreover, by the definition ofV,
+vA∈row
+X
+H
+
+.
+Together with
+row(XA)⊆row
+X
+H
+
+,
+this yields
+row
+XA
+vA
+
+⊆row
+
+
+X
+v
+H
+
+ .
+Since X
+v
+
+=
+ C
+L+
+
+,
+this is precisely condition (A) forL +.
+The theorem is an extension result: starting from an admis-
+sible order-qmatrix, it constructs at least one admissible order-
+(q+ 1)matrix by adjoining one row, but it does not parame-
+terize all admissible matrices at the higher order. Combining
+it with the minimum condition-(A) order from [25] gives the
+following no-gap result.
+Theorem 2 (No gaps in condition-(A) feasibility):Assume
+that the triple(A, C, L)is functional observable, and let
+q0 := Prj=1 ηj. Then condition (A) is feasible at every order
+q∈ {q0, q0 + 1, . . . , n0 −p},
+whereas no orderq < q0 satisfies condition (A).
+Proof:By [25],q 0 is the minimum order for which
+condition (A) can be satisfied. Hence no orderq < q 0 is
+algebraically admissible, while an order-q 0 realization exists.
+Under functional observability, the functional-observability-
+index construction uses rows ofC,L, and theirA-iterates.
+Since functional observability gives
+row(OL)⊆row(O C),
+all rows used in this construction belong torow(O C). Conse-
+quently, the order-q 0 realization may be chosen so that
+row
+C
+L
+
+⊆row(O C).
+Suppose now that a condition-(A) realization of orderqhas
+been obtained with
+q0 ≤q < n0 −p
+and
+row
+C
+L
+
+⊆row(O C).
+By Theorem 1, there existsv∈row(O C)such that
+L+ =
+L
+v
+
+T . FERNANDO: 5
+is a condition-(A) realization of orderq+1. Moreover, because
+bothrow(C,L)andvbelong torow(O C),
+row
+ C
+L+
+
+⊆row(O C).
+Thus the hypothesis required to apply Theorem 1 is preserved
+after each extension.
+Starting from the order-q 0 realization and applying Theo-
+rem 1 successively therefore yields condition-(A) realizations
+at every order
+q=q 0, q0 + 1, . . . , n0 −p.
+Together with the nonexistence of condition-(A) realizations
+forq < q0, this proves the result.
+Accordingly, the set of orders at which condition (A) is
+feasible is
+{q0, q0 + 1, . . . , n0 −p}.(3)
+When(A, C)is observable,n 0 =n, and (3) becomes
+{q0, q0 + 1, . . . , n−p}.
+The preceding theorem establishes feasibility, not a complete
+parameterization. Atq=q 0, the complete condition-(A)
+familyL Aq0 (L)is available from [25]. Hence an order-q 0
+functional observer exists if and only if at least one member
+ofL Aq0 (L)satisfies condition (S), in which caseν min =q 0.
+Otherwise, the observer order must be increased. Forq > q 0,
+Theorem 2 guarantees condition-(A) feasibility but does not
+characterize all admissible matrices at a prescribed order. The
+next sections give the complete fixed-order characterization
+using nullspace basis matrices.
+Remark 1:The functional observability indices determine
+the lower endpointq 0. Onceq 0 is reached, condition (A)
+is feasible at every successive order throughn 0 −p. The
+result does not imply corresponding monotonicity for the joint
+conditions (A) and (S).
+IV. NULLSPACEMATRIXCHARACTERIZATION OF
+CONDITION(A)
+We now seek a matrix characterization of all condition-
+(A) realizations at a prescribed order. Rather than parame-
+terizing the rows ofLdirectly, it is convenient to represent
+row
+C
+L
+
+through its nullspace. This leads to a column-space
+representation in which both the realization requirement and
+condition (A) admit simple matrix forms.
+Theorem 3 (Matrix characterization of condition (A)):Let
+L ∈Rq×n be a reduced order-qrealization satisfying
+rank
+C
+L
+
+=p+q,row
+C
+L
+
+⊆row
+C
+L
+
+,
+and letd=n−p−q. LetZ∈R n×d have full column rank
+and satisfy
+imZ= ker
+
+C
+L
+
+.
+LetR Z be any full-column-rank matrix satisfying
+imR Z = ker(CAZ).
+Then condition (A) is equivalent to
+im(AZR Z)⊆imZ.
+Equivalently,
+rank
+ 
+Z AZR Z
+
+=d.
+Proof:Condition (A) is equivalent to
+row
+C
+L
+
+A⊆row
+
+
+C
+L
+CA
+
+ .
+Taking nullspaces gives the equivalent implication
+
+
+C
+L
+CA
+
+ z= 0 =⇒
+C
+L
+
+Az= 0.
+Since
+imZ= ker
+
+C
+L
+
+andZhas full column rank, every vector satisfyingCz=
+Lz= 0can be written uniquely as
+z=Zξ.
+The additional conditionCAz= 0is therefore equivalent to
+CAZξ= 0,
+that is,
+ξ∈ker(CAZ) = imR Z.
+Henceξ=R Zηfor someη, and consequently every vector
+satisfying the premise of the above implication has the form
+z=ZR Zη.
+Substituting this expression into the conclusion of the above
+implication gives
+C
+L
+
+AZR Zη= 0for everyη.
+Using again
+ker
+C
+L
+
+= imZ,
+this is equivalent to
+AZR Zη∈imZfor everyη,
+or, equivalently,
+im(AZR Z)⊆imZ.
+This proves the image inclusion.
+Finally, sinceZ∈R n×d has full column rank,rankZ=d.
+Therefore,
+im(AZR Z)⊆imZ⇐ ⇒rank
+ 
+Z AZR Z
+
+=d,
+which proves the rank condition.
+Corollary 1 (Fixed-order condition-(A) parameterization):
+For a prescribedq∈ {q0, . . . , n0 −p}, putd=n−p−q. The
+complete family of reduced matricesL ∈R q×n satisfying the
+6
+realization requirement and condition (A) is parameterized by
+all full-column-rank matricesZ∈R n×d satisfying
+CZ= 0, LZ= 0,
+and
+rank
+ Z AZR Z =d,imR Z = ker(CAZ).(4)
+For each suchZ, the corresponding matricesLare exactly
+those satisfying
+ker
+C
+L
+
+= imZ.
+Remark 2:For a prescribed orderq, Theorem 3 gives
+an equivalent nullspace condition for a given realizationL,
+whereas Corollary 1 parameterizes all realizationsLsatisfying
+condition (A) at that order.
+Thus Corollary 1 parameterizes the complete condition-(A)
+family through nullspace basis matrices. The representation is
+not unique:ZandZQ, withQnonsingular, define the same
+nullspace. Likewise, two reduced matricesLand bLrepresent
+the same nullspace if and only if
+bL=QL+EC, Qnonsingular.(5)
+The matrixR Z is not an independent design variable; onceZ
+is fixed, it is simply a basis matrix forker(CAZ). The rank
+test (4) states that multiplication byAof the columns ofZR Z
+produces no column direction outsideimZ.
+V. NULLSPACEMATRIXCHARACTERIZATION OF
+CONDITION(S)
+The spectral condition can be expressed using the same
+nullspace basis matrixZ. LetVbe any full-column-rank
+matrix satisfying (1).
+Theorem 4 (Matrix-pencil form of condition (S)):Assume
+condition (A) holds, and letZbe a full-column-rank matrix
+satisfying
+imZ= ker
+C
+L
+
+.
+Then condition (S) is equivalent to
+rank
+ 
+(λI−A)V Z
+
+= rank
+ 
+V Z
+
+, λ∈Ω S.(6)
+Proof:Letv∈imV. Thenv=V ξfor someξ. By (1),
+Cv=CAv= 0.
+Since
+imZ= ker
+C
+L
+
+,
+we have
+w∈imZ⇐ ⇒Cw= 0,Lw= 0, w∈C n.(7)
+Takingw=vand usingCv= 0gives
+v∈imZ⇐ ⇒ Lv= 0.
+Takingw= (λI−A)vin (7) gives
+(λI−A)v∈imZ
+if and only if
+C(λI−A)v= 0,L(λI−A)v= 0.
+Since
+C(λI−A)v=λCv−CAv= 0,
+we obtain
+(λI−A)v∈imZ⇐ ⇒(λL − LA)v= 0.
+Under condition (A),
+row(LA)⊆row
+
+
+L
+CA
+C
+
+ .
+Sincerow(L)is contained in the latter row space, it follows
+that
+row
+
+
+λL − LA
+CA
+C
+
+ ⊆row
+
+
+L
+CA
+C
+
+ .
+Hence condition (S) is equivalent to equality of these row
+spaces, and therefore to equality of their nullspaces. Thus
+
+
+λL − LA
+CA
+C
+
+ v= 0⇐ ⇒
+
+
+L
+CA
+C
+
+ v= 0.
+Both nullspaces are contained in
+ker
+ C
+CA
+
+= imV.
+Hence it is sufficient to compare them onimV.
+Forv∈imV, we haveCv=CAv= 0. Hence the
+right-hand nullspace condition reduces toLv= 0, which
+is equivalent tov∈imZ, while the left-hand nullspace
+condition reduces to(λL − LA)v= 0, which is equivalent
+to(λI−A)v∈imZ. Therefore condition (S) is equivalent to
+(λI−A)v∈imZ⇐ ⇒v∈imZ, v∈imV.
+Writingv=V ξ, this becomes
+(λI−A)V ξ∈imZ⇐ ⇒V ξ∈imZ.
+Define
+Xλ ={ξ: (λI−A)V ξ∈imZ}
+X0 ={ξ:V ξ∈imZ}.
+We first show that condition (A) implies
+X0 ⊆X λ.
+Letξ∈X 0 and putv=V ξ. Thenv∈imZ, and hence
+Lv= 0.
+Sincev∈imV,
+Cv=CAv= 0.
+Condition (A) gives
+row(LA)⊆row
+
+
+L
+CA
+C
+
+ ,
+T . FERNANDO: 7
+and therefore
+LAv= 0.
+Consequently,
+L(λI−A)v=λLv− LAv= 0,
+and
+C(λI−A)v=λCv−CAv= 0.
+Hence
+(λI−A)v∈ker
+C
+L
+
+= imZ,
+soξ∈X λ. Therefore
+X0 ⊆X λ.
+Now
+(λI−A)V ξ∈imZ⇐ ⇒V ξ∈imZ
+for everyξif and only if
+Xλ =X 0.
+SinceX 0 ⊆X λ, this equality holds if and only if
+dimX 0 = dimX λ.
+By the rank–nullity theorem, this is equivalent to
+rank
+ (λI−A)V Z  = rank  V Z  , λ∈Ω S,
+which proves (6).
+Remark 3 (Basis invariance):ReplacingZbyZQ, where
+Qis nonsingular, leaves (4) and (6) unchanged. Thus the
+tests depend only on the column space ofZ, although the
+formulation itself uses matrices throughout.
+VI. COMPLETEFIXED-ANDALL-ORDER
+CHARACTERIZATION
+A. Fixed-Order Characterization
+Atq=q 0, the complete condition-(A) familyL Aq0 (L)is
+available from [25]. For every prescribed order in the admis-
+sible range, Corollary 1 parameterizes the complete condition-
+(A) family throughZ. Applying the spectral condition of
+Theorem 4 to this family yields the following necessary and
+sufficient fixed-order existence test.
+Theorem 5 (Fixed-order functional-observer existence):
+Assume(A, C, L)is functionally observable and
+q0 ≤q≤n 0 −p.
+Put
+d=n−p−q, r 1 = rank
+ C
+CA
+
+,
+and letV∈R n×(n−r1) have full column rank and satisfy
+imV= ker
+ C
+CA
+
+.
+Then an order-qfunctional observer exists if and only if there
+is a full-column-rank matrixZ∈R n×d such that
+CZ= 0, LZ= 0,(8a)
+rank
+ Z AZR Z =d,imR Z = ker(CAZ),(8b)
+rank
+ 
+(λI−A)V Z
+
+= rank
+ 
+V Z
+
+, λ∈Ω S.(8c)
+Proof:If an order-qfunctional observer exists, choose
+a reduced augmented functional matrixL ∈R q×n and a full-
+column-rank matrixZ∈R n×d whose columns form a basis
+of
+ker
+C
+L
+
+.
+Since the prescribed functionalLxis recoverable fromLxand
+the measured output,
+row(L)⊆row
+C
+L
+
+.
+Hence
+CZ= 0, LZ= 0,
+which gives (8a). Theorem 3 gives (8b), and Theorem 4 gives
+(8c).
+Conversely, suppose that a full-column-rank matrixZsat-
+isfies (8). Since
+rankZ=d=n−p−q
+andCZ= 0, we have
+imZ⊆kerC,dim(imZ) =n−p−q.
+Therefore, there exists a matrixL ∈R q×n such that
+ker
+C
+L
+
+= imZ
+and
+rank
+C
+L
+
+=p+q.
+ThusLis a reduced order-qaugmented functional matrix.
+Moreover,LZ= 0implies
+imZ⊆kerL.
+Since
+imZ= ker
+
+C
+L
+
+,
+it follows that
+ker
+C
+L
+
+⊆kerL,
+or equivalently,
+row(L)⊆row
+
+C
+L
+
+.
+Hence the prescribed functionalLxis recoverable fromLx
+and the measured output.
+Finally, (8b), together with Theorem 3, gives condition (A),
+while (8c), together with Theorem 4, gives condition (S).
+Hence an order-qfunctional observer exists.
+Corollary 2 (Recovery of the minimum-order family):
+Atq=q 0, the nullspace characterization of Theorem 5 is
+8
+equivalent to the complete minimum-order characterization
+of [25]. In particular, if the complete condition-(A) family in
+[25] is written as
+LJ (Θ, K) =
+
+L
+XJ (Θ)MC +KC
+
+,(9)
+then, withd 0 =n−p−q 0, its corresponding nullspace is
+represented by any full-column-rank matrixZ J (Θ)∈R n×d0
+satisfying
+imZ J (Θ) = ker
+
+
+C
+L
+XJ (Θ)MC
+
+ .(10)
+The parameterKdoes not affect this nullspace. Conversely,
+every order-q0 matrixZsatisfying (8a)–(8b) corresponds, up
+to a change of nullspace basis and the row equivalence (5), to
+a member of (9). Moreover, (8c) is equivalent to condition (S)
+of [25] for the correspondingL J (Θ, K).
+Proof:A vectorξ∈R n belongs toker
+ C
+LJ (Θ, K)
+
+if
+and only if
+Cξ= 0, Lξ= 0,
+ 
+XJ (Θ)MC +KC
+
+ξ= 0.
+SinceCξ= 0, the last equality is equivalent toX J (Θ)MCξ=
+0. Hence
+ker
+
+C
+LJ (Θ, K)
+
+= ker
+
+
+C
+L
+XJ (Θ)MC
+
+ ,
+which proves (10) and shows explicitly whyKdisappears
+from the nullspace representation. SinceL J (Θ, K)is reduced
+of orderq 0, this nullspace has dimensiond 0.
+Because every member of (9) satisfies condition (A), The-
+orem 3 gives
+rank
+ ZJ (Θ)AZ J (Θ)RZJ (Θ) =d 0
+imR ZJ (Θ) = ker
+ 
+CAZ J (Θ)
+
+.
+Thus every member of the complete family of [25] generates
+a member of the present order-q 0 nullspace family.
+Conversely, letZ∈R n×d0 satisfy (8a)–(8b). By Corol-
+lary 1, the reduced matricesLsatisfying
+ker
+
+C
+L
+
+= imZ
+are exactly the order-q 0 realizations satisfying condition (A).
+Since the parameterization (9) is complete, such anLis rep-
+resented, up to (5), byL J (Θ, K)for an admissible(J,Θ, K).
+ThereforeimZ= imZ J (Θ), or equivalentlyZ=Z J (Θ)Q
+for some nonsingularQ. Finally, Theorem 4 shows that (8c) is
+equivalent to the spectral condition (S) for the corresponding
+L. Hence the present characterization recovers both the com-
+plete condition-(A) family and the minimum-order existence
+test of [25].
+Remark 4:Corollary 2 also exhibits a useful feature of
+the nullspace formulation: the freedomKCin the directL
+parameterization is automatically quotiented out. The matrix
+Zrepresents the underlying subspace rather than a particular
+row realization of it.
+B. Matrix Parameterization at a Prescribed Order
+Theorem 5 characterizes fixed-order observer existence in
+terms of a nullspace matrixZ. We now parameterize all
+candidate matricesZat a prescribed order and then apply
+this parameterization over the entire admissible order range.
+LetK L ∈R n×mL have full column rank and satisfy
+imK L = ker
+
+C
+L
+
+.(11)
+For a prescribedq∈ {q 0, . . . , n0 −p}, put
+d=n−p−q.
+Since every candidateZ∈R n×d must satisfy
+CZ= 0, LZ= 0,
+its columns belong toimK L. Hence every full-column-rank
+candidateZcan be written as
+Z=K LW, W∈R mL×d,rankW=d.
+The matricesWandW Q, whereQ∈R d×d is nonsingular,
+have the same column space and therefore generate the same
+candidate subspace throughZ=K LW. Thus only the column
+space ofWis relevant.
+SincerankW=d, there existdrows ofWthat form a
+nonsingulard×dsubmatrix. Let
+I={i 1, . . . , id} ⊆ {1, . . . , mL}
+denote the indices of thesedrows. LetP I be a permutation
+matrix that reorders the rows ofWso that thedrows indexed
+byIoccupy the firstdpositions. Then write
+PIW=
+ 
+W (1)I
+W (2)I
+!
+,
+whereW (1)I ∈R d×d is nonsingular. Right multiplication by
+W (1)I
+−1
+gives
+PIW
+
+W (1)I
+−1
+=
+Id
+Θ
+
+,Θ =W (2)I
+
+W (1)I
+−1
+.
+Hence
+WI(Θ) :=P TI
+
+Id
+Θ
+
+=W
+
+W (1)I
+−1
+,Θ∈R (mL−d)×d.
+(12)
+Since
+
+W (1)I
+−1
+is nonsingular,
+imW I(Θ) = imW.
+The corresponding nullspace matrix is
+ZI(Θ) =K LWI(Θ).(13)
+By (12),
+ZI(Θ) =Z
+
+W (1)I
+−1
+.
+SinceW (1)I is nonsingular,
+imZ I(Θ) = imZ.
+T . FERNANDO: 9
+Each chart containsd(m L −d)free scalar parameters. The
+finitely many choices ofIcover all full-column-rank matrices
+Wup to right multiplication by a nonsingular matrix. Equiv-
+alently, these are the standard coordinate charts of the Grass-
+mannianGr(d, mL), the set of alld-dimensional subspaces of
+RmL.
+Geometrically, the fixed-order problem selects ad-
+dimensional subspace
+Z ⊆ker
+C
+L
+
+that satisfies theA-compatibility and spectral requirements.
+The matricesW I(Θ)provide finite coordinates for all such
+subspaces; no geometric machinery is needed in the subse-
+quent computations.
+The following result gives a complete chart-based parame-
+terization of the fixed-order characterization in Theorem 5 and
+reduces its spectral condition to a finite polynomial test.
+Theorem 6 (Matrix parameterization at a prescribed order):
+For a prescribedq∈ {q 0, . . . , n0 −p}, putd=n−p−q.
+LetK L satisfy (11), and letZ I(Θ)be defined by (12)–(13).
+Then an order-qfunctional observer exists if and only if, for
+at least one matrix chart, there existsΘ∈R (mL−d)×d such
+that
+rank
+ ZI(Θ)AZ I(Θ)RZI (Θ)=d,(14a)
+rank
+ (λI−A)V Z I(Θ) = rank  V Z I(Θ) ,
+λ∈Ω S.(14b)
+where
+imR ZI (Θ) = ker
+ 
+CAZ I(Θ)
+
+.
+For a prescribed chart and parameter valueΘ, put
+hI,Θ = rank
+ V Z I(Θ) ,
+and let∆ j(λ)denote the nonzeroh I,Θ ×h I,Θ minors of
+PI,Θ(λ) =
+ (λI−A)V Z I(Θ) .
+Under (14a),
+rankP I,Θ(λ)≤h I,Θ, λ∈C.
+Hence, with
+gI,Θ(λ) = gcd
+λ
+{∆j(λ)},
+condition (14b) is equivalent to
+gI,Θ(λ)̸= 0, λ∈Ω S.
+In particular, for pole assignability,g I,Θ is a nonzero constant
+and may be normalized tog I,Θ = 1. For detectability,g I,Θ
+has no zeros in the closed right half-plane.
+Proof:Since
+imK L = ker
+C
+L
+
+,
+every full-column-rank matrixZ∈R n×d satisfyingCZ=
+LZ= 0can be written asZ=K LW, whereW∈R mL×d
+has rankd. Conversely, every suchWproduces a full-column-
+rank matrixZ=K LWsatisfyingCZ=LZ= 0.
+SincerankW=d, somed×drow submatrix ofWis
+nonsingular. LetIdenote its row-index set and letP I be a
+permutation matrix that moves the rows indexed byIto the
+firstdpositions. Right multiplication by the inverse of the
+resulting leadingd×dsubmatrix gives
+PIW Q=
+Id
+Θ
+
+for some nonsingularQ. Equivalently,
+W Q=P TI
+Id
+Θ
+
+=W I(Θ).
+SinceQis nonsingular,
+im(KLW Q) = im(KLW).
+HenceZ I(Θ) =K LWI(Θ)represents the same nullspace
+asZ=K LW. VaryingIover alld-element subsets of
+{1, . . . , mL}therefore covers all candidate nullspaces appear-
+ing in Theorem 5.
+The conditionsCZ= 0andLZ= 0hold by construction.
+Substitution ofZ=Z I(Θ)into the remaining conditions of
+Theorem 5 therefore gives (14a)–(14b).
+It remains to establish the finite spectral test. For brevity,
+write
+Z=Z I(Θ),
+P(λ)=
+ (λI−A)V Z  ,
+h=rank
+ V Z  .
+Define
+Xλ={ξ: (λI−A)V ξ∈imZ},
+X0={ξ:V ξ∈imZ}.
+By (14a), condition (A) holds. Hence, as in the proof of
+Theorem 4,
+X0 ⊆X λ, λ∈C.
+Letr V denote the number of columns ofV. SinceZhas full
+column rankd, rank–nullity gives
+dimX λ =r V +d−rankP(λ),
+and
+dimX 0 =r V +d−h.
+ThereforeX 0 ⊆X λ implies
+rankP(λ)≤h, λ∈C.
+Consequently,rankP(λ) =hif and only if at least oneh×h
+minor ofP(λ)is nonzero. Thus (14b) holds if and only if these
+minors have no common zero inΩ S. Their common zeros are
+precisely the zeros ofg I,Θ(λ). Hence (14b) is equivalent to
+gI,Θ(λ)̸= 0, λ∈Ω S.
+For pole assignability,Ω S =C, so the gcd is a nonzero
+constant and may be normalized to one. For detectability,
+ΩS ={λ∈C:ℜ(λ)≥0},
+so the gcd must have no zeros in the closed right half-plane.
+10
+Remark 5 (Testing the fixed-order conditions):For a pre-
+scribed chart and parameter valueΘ, (14a) is tested by
+computing a basisR ZI (Θ) ofker(CAZ I(Θ))and evaluating
+the indicated rank. For pole assignability, (14b) is tested by
+the maximal-minor gcd condition in Theorem 6, avoiding a
+pointwise search overλ∈C.
+Remark 6 (Observer construction):In general, once a re-
+duced matrixLsatisfying condition (A) and condition (S) at
+a prescribed orderqhas been found – whether via the chart
+parameterization above or by any other means – the observer
+parameters can be constructed directly using the procedure
+in [8], with the functional matrixLtherein replaced by this
+L.
+Thus the complete fixed-order search is reduced to finitely
+many matrix charts, each parameterized byd(m L −d)scalar
+variables and subject to the two rank tests (14a)–(14b). In
+particular, the realization conditionsCZ= 0andLZ= 0are
+satisfied by construction.
+C. All-Order Characterization and Procedure
+We now pass from the fixed-order characterization to the
+complete characterization of feasible observer orders.
+Definition 1 (Observer families and order spectra):For
+eachq 0 ≤q≤n 0 −p, define
+LAq (L):={L:Lis an order-qrealization satisfying (A)}
+LF Oq (L):={L ∈LAq (L) :Lsatisfies (S)}.
+The corresponding order spectra are
+ΣA(L) :={q:L Aq (L)̸=∅},
+ΣF O(L) :={q:L F Oq (L)̸=∅}.
+By Theorem 2,
+ΣA(L) ={q 0, q0 + 1, . . . , n0 −p}.
+Membership inΣ F O(L)is characterized at each prescribed or-
+der by Theorem 5, with the complete matrix parameterization
+and finite spectral test provided by Theorem 6. No interval
+property ofΣ F O(L)is assumed.
+Parameterize the admissible orders by
+kmax =n 0 −p−q 0, q k =q 0 +k, d k =n−p−q k,
+fork= 0,1, . . . , kmax. At the terminal orderq kmax =n 0 −p,
+dkmax =n−n 0,
+which is zero only under full observability.
+For eachk= 0,1, . . . , kmax, define the condition-(A)
+nullspace family
+ZAdk (L) := Z∈R n×dk : rankZ=d k,(8a)–(8b) hold 	 ,
+and the algebraic-spectral nullspace family
+ZASdk (L) := Z∈Z Adk (L) :(8c) holds 	 .
+Thus
+ZASdk (L)⊆Z Adk (L).
+Since these conditions depend only onimZ, matrices
+related by
+Z∼ZQ, Q∈R dk×dk nonsingular,
+represent the same candidate nullspace.
+1) T erminal Functional-Observability Endpoint:The upper
+endpointn 0 −pis spectrally feasible. In matrix terms, its
+nullspace basis is any full-column-rank matrixZ 0 satisfying
+imZ 0 = ker(OC),rankZ 0 =n−n 0.
+Theorem 7 (Functional-observability endpoint):Assume
+(A, C, L)is functionally observable. Then
+n0 −p∈Σ F O(L).
+Proof:Functional observability gives
+LZ0 = 0,
+while
+CZ 0 = 0
+follows from
+imZ 0 = ker(OC).
+Sinceker(O C)isA-invariant, there exists a matrixF 0 such
+that
+AZ0 =Z 0F0.
+Hence (8b) holds automatically.
+To verify (8c), letv=V ξand suppose
+(λI−A)v∈imZ 0.
+Since
+imZ 0 = ker(OC)
+andker(O C)isA-invariant, we have
+CA k(λI−A)v= 0, k≥0.
+Therefore
+λCA kv−CA k+1v= 0, k≥0.
+Moreover, sincev∈imVand
+imV= ker
+
+C
+CA
+
+,
+we have
+Cv= 0, CAv= 0.
+The preceding recurrence then gives successively
+CA kv= 0, k≥0.
+Hence
+v∈ker(O C) = imZ 0.
+Conversely, ifv∈imZ 0, then theA-invariance ofimZ 0
+gives
+(λI−A)v∈imZ 0
+for everyλ∈C. Therefore
+(λI−A)v∈imZ 0 ⇐ ⇒v∈imZ 0, v∈imV.
+T . FERNANDO: 11
+Thus the two solution sets underlying (6) coincide for every
+λ∈Ω S, and condition (S) holds. Thereforen 0 −p∈Σ F O(L).
+Corollary 3 (Luenberger endpoint):If(A, C)is observ-
+able, thenn 0 =n,Z 0 has no columns, and
+n−p∈Σ F O(L).
+Thus the functional-observability endpoint reduces to the
+classical reduced-order Luenberger order.
+Then Theorem 5 gives
+qk ∈Σ F O(L)⇐ ⇒Z ASdk (L)̸=∅.
+Moreover, Theorem 6 provides a complete matrix parame-
+terization for testing the nonemptiness ofZ ASdk (L)at each
+prescribed order. We first characterize functional observability
+itself before determining the complete spectrum of feasible
+observer orders.
+Theorem 8 (Functional-observability characterization):
+The triple(A, C, L)is functionally observable if and only if
+ΣF O(L)̸=∅.
+Equivalently, there existq∈ {q 0, . . . , n0 −p}and a full-
+column-rank matrixZ∈R n×(n−p−q) satisfying (8a)–(8c).
+Proof:If(A, C, L)is functionally observable, then
+Theorem 7 guarantees a functional observer atq=n 0 −p.
+HenceΣ F O(L)̸=∅.
+Conversely, ifΣ F O(L)̸=∅, then a functional observer
+exists at some admissible order. Its augmented functional
+matrix satisfies conditions (A) and (S), and hence(A, C, L)is
+functional observable by the augmentation characterization of
+functional observability [10].
+The equivalent characterization in terms ofZfollows di-
+rectly from Theorem 5.
+Having established when a functional observer exists, we
+now characterize the complete spectrum of feasible observer
+orders and determine its minimum.
+Theorem 9 (All-Order Observer Characterization):
+Assume(A, C, L)is functionally observable. Then the
+complete feasible-order spectrum is
+ΣF O(L) ={q k :Z ASdk (L)̸=∅, k= 0,1, . . . , kmax}.(15)
+Equivalently,q k is a functional-observer order if and only if at
+least one chartZ I(Θ)at dimensiond k satisfies (14a)–(14b).
+Moreover,
+νmin =q 0 + min{k:Z ASdk (L)̸=∅}.(16)
+Proof:For eachk, Theorem 5 givesq k ∈Σ F O(L)if
+and only ifZ ASdk (L)̸=∅. Theorem 6 covers every full-rank
+candidateZthrough finitely many matrix charts, so this test is
+complete at each order. Taking the union overk= 0, . . . , kmax
+proves (15). By Theorem 7, the terminal set is nonempty, so
+the minimum in (16) exists and gives the smallest feasible
+order.
+Theorem 9 is a completeness statement: at a prescribed
+order, failure of (14a)–(14b) over every chart proves nonexis-
+tence of a functional observer at that order; it is not merely
+failure of a selected realization.
+Algorithm 1Order-by-order functional-observer characteriza-
+tion
+1:Compute the FO indicesη j andq 0 = Pj ηj.
+2:Computen 0 = rankO C andk max =n 0 −p−q 0.
+3:Compute basis matricesVandK L from (1) and (11)
+respectively.
+4:fork= 0,1, . . . , kmax do
+5:Setq k =q 0 +kandd k =n−p−q k.
+6:ifk= 0then
+7:UseL Aq0 (L)from [25] and test the spectral condition.
+8:else ifk=k max then
+9:Use a basisZ 0 ofker(O C)and test the spectral
+condition.
+10:else
+11:ParameterizeZ=K LWI(Θ)using (12)–(13).
+12:Test (14a)–(14b).
+13:end if
+14:Record whetherq k ∈Σ F O(L).
+15:end for
+16:ReturnΣ F O(L)andν min = min ΣF O(L).
+VII. ILLUSTRATIVEEXAMPLE
+We illustrate the all-order characterization with an example
+in which the algebraic lower boundq 0 is separated by two
+orders from the actual minimum functional-observer order.
+Condition(A)first becomes possible atq=q 0, but condi-
+tion(S)excludes every admissible realization at bothq=q 0
+andq=q 0 +1. A functional observer first exists atq=q 0 +2,
+strictly below the functional-observability endpointn 0 −p.
+Consider
+˙x(t) =Ax(t) +Bu(t), y(t) =Cx(t), z(t) =Lx(t),
+where
+A=
+
+
+0 1 0 1 0 0 0 0
+0−1 1 0 0 0 0−1
+1 0−1 1 0 0 1−1
+−1−1 0−2 0 0 0 0
+0 0 0 0−2 0 0 1
+0 0 0 0 0−2 1 0
+0 0 0 0 0−1−2 1
+0 0 0 0 0 0 1−2
+
+
+B=e 1 +e 8
+C=
+−2−2 2−2−1 0 1−3
+0 0 1 2 2 3−1−2
+
+L=
+−2−1−2−3−1 3 2 0
+1−1−2 1 0 2 0 1
+
+wheree i is thei-th standard basis vector ofR 8. Thus
+n= 8, p= rankC= 2, r= rankL= 2.
+The observability matrix satisfies
+n0 = rankO C = 8 =n,
+so that(A, C)is completely observable.
+12
+Applying the functional-observability-index construction
+gives
+η1 = 2, η 2 = 1,
+and hence
+q0 =η 1 +η 2 = 3.
+Therefore
+r= 2< q 0 = 3.
+Since(A, C)is observable, the functional-observability end-
+point reduces to the classical reduced-order Luenberger order,
+n0 −p= 6,
+and the complete order range that must be considered is
+q0 ≤q≤n 0 −p,that is,q∈ {3,4,5,6}.
+For this example,
+dim ker
+C
+L
+
+= 4,dim ker
+ C
+CA
+
+= 4.
+Consequently, every candidate nullspace matrixZat orders
+q0 andq 0 + 1has its image in the four-dimensional subspace
+ker
+C
+L
+
+. The fixed-order characterization of Theorem 5,
+together with the Grassmann-chart parameterization, can there-
+fore be applied at each of the four admissible orders.
+A. Failure at the lower boundq=q 0 =3
+At the lower endpoint,
+q=q 0 = 3, d=n−p−q= 3.
+ThusimZmust be a three-dimensional subspace of
+ker
+C
+L
+
+,
+which has dimension four.
+Let
+KL ∈R 8×4,imK L = ker
+C
+L
+
+,
+be any full-column-rank basis matrix. Every candidate can
+then be written as
+Z=K LW, W∈R 4×3,rankW= 3.
+The complete family of such subspaces is covered by the four
+standard Grassmann charts ofGr(3,4).
+For each chart, the chart matrixW I(Θ)is substituted into
+ZI(Θ) =K LWI(Θ),
+and condition(A)is imposed through
+rank
+ ZI(Θ)AZ I(Θ)RZI (Θ) = 3,
+imR ZI (Θ) = ker
+ 
+CAZ I(Θ)
+
+.
+On each chart, imposing condition(A)reduces the complete
+candidate family to a one-parameter familyZ I(Θ). Condi-
+tion(S)is then tested along each of these families through
+rank
+ (λI−A)V Z I(Θ) = rank  V Z I(Θ) , λ∈C,
+where
+imV= ker
+ C
+CA
+
+.
+Exact evaluation of condition(S)over the condition-(A)
+families obtained from all four charts ofGr(3,4)shows that
+no member satisfies condition(S). Since these charts cover
+all three-dimensional subspaces of
+ker
+C
+L
+
+,
+this proves that no order-3functional observer exists. Hence
+3/∈ΣF O(L).
+Thusq 0 = 3is the algebraic lower bound predicted by the
+functional-observability indices, but it is not itself a functional-
+observer order.
+B. Failure atq=q 0 +1=4
+Consider next
+q=q 0 + 1 = 4, d=n−p−q= 2.
+NowimZmust be a two-dimensional subspace of the same
+four-dimensional space
+ker
+C
+L
+
+.
+Writing
+Z=K LW, W∈R 4×2,rankW= 2,
+the complete candidate family is covered by the six standard
+Grassmann charts ofGr(2,4).
+For each chart, the complete condition-(A)family is ob-
+tained by substituting
+ZI(Θ) =K LWI(Θ)
+into
+rank
+ 
+ZI(Θ)AZ I(Θ)RZI (Θ)
+
+= 2,
+where
+imR ZI (Θ) = ker
+ 
+CAZ I(Θ)
+
+.
+Condition(S)is then tested on every retained condition-(A)
+branch through
+rank
+ (λI−A)V Z I(Θ) = rank  V Z I(Θ) , λ∈C,
+where
+imV= ker
+ C
+CA
+
+.
+Exact evaluation of condition(S)over all condition-(A)
+branches obtained from the six charts ofGr(2,4)shows that
+T . FERNANDO: 13
+no branch satisfies condition(S). Since these six charts cover
+all two-dimensional subspaces of
+ker
+C
+L
+
+,
+this proves that no order-4functional observer exists. Conse-
+quently,
+4/∈ΣF O(L).
+Hence feasibility need not occur even at the first order above
+the algebraic lower bound.
+C. Feasibility atq=q 0 +2=5
+Consider now
+q=q 0 + 2 = 5, d=n−p−q= 1.
+A feasible one-dimensional subspace is generated by
+Z5 =
+ 1 1 1 0−2 1 0 0 T .
+Indeed,
+rankZ 5 = 1, CZ 5 = 0, LZ 5 = 0.
+Moreover,
+CAZ 5 =
+−3
+−1
+
+,
+which has full column rank, so that
+ker(CAZ5) ={0}
+andR Z5 has no columns. Condition(A)therefore reduces to
+rank
+ Z5 = 1,
+which holds trivially.
+For condition(S), choose any full-column-rank matrixV
+satisfying
+imV= ker
+
+C
+CA
+
+,rankV= 4.
+For the presentZ 5,
+h= rank
+ V Z 5 = 5.
+Consider
+P5(λ) =
+ (λI−A)V Z 5 .
+Let∆ j(λ)denote its nonzero5×5minors. Exact symbolic
+computation with rational coefficients gives
+gcd
+λ
+{∆j(λ)}= 1.
+Hence the maximal minors have no common zero inC, and
+therefore
+rank
+ 
+(λI−A)V Z 5
+
+= rank
+ 
+V Z 5
+
+= 5, λ∈C.
+Condition(S)is therefore satisfied, and
+5∈Σ F O(L).
+Since the only admissible orders belowq= 5areq= 3and
+q= 4, both of which have been proved infeasible, it follows
+that
+νmin = 5 =q 0 + 2.
+D. Existence at the functional-observability endpoint
+It remains to consider
+q=n 0 −p= 6.
+At this order,
+d=n−p−q= 0.
+Sinced= 0, the terminal nullspace is trivial. Hence Theorem 7
+gives
+6∈Σ F O(L).
+Combining the four admissible orders therefore gives
+ΣF O(L) ={5,6}
+and
+νmin = 5 =q 0 + 2< n0 −p= 6.
+Equivalently,
+q= 3 :infeasible, q= 4 :infeasible,
+q= 5 :feasible, q= 6 :feasible.
+E. Explicit Observer Realization atq=5
+We complete the example by exhibiting an explicit order-5
+realization and the resulting observer parameters. An explicit
+Lsatisfying conditions(A)and(S)atq= 5, obtained by
+augmentingLwith three additional rows spanning a comple-
+ment of a one-dimensional admissibleimZwithinker
+C
+L
+
+,
+is
+L=
+
+
+−2−1−2−3−1 3 2 0
+1−1−2 1 0 2 0 1
+−47/460 1 0 0 0 0 0 0
+−137/230 0 1 0 0 0 0 0
+313/460 0 0 1 0 0 0 0
+
+ .
+The first two rows ofLare exactlyL, so thatˆz(t) =
+ˆz1(t)
+ˆz2(t)
+
+,
+the first two components of the observer’s output estimate,
+recovers an estimate of the original functionalLx(t); the
+remaining three rows completeLto order5.
+WithLfixed, the classical construction of Darouach [8]
+applies directly to the augmented functionalz(t) =Lx(t):
+writingL + for the Moore–Penrose pseudoinverse ofLand
+¯A=A(I− L +L), ¯C=C(I− L +L), the matricesFand
+14
+Gof [8] are computed fromΣ =
+ 
+C ¯A; ¯C exactly as in
+[8, eq. (18)–(19)]. Choosing the pole-placement gainZin [8,
+eq. (17)] so that
+eig(N) ={−1,−2,−3,−4,−5},
+the resulting observer
+˙w(t) =N w(t) +J y(t) +Hu(t)
+ˆz(t) =w(t) +Ey(t)
+withB=e 1 +e 8, has parameters (to four decimal places)
+N=
+
+
+−6.4875 5.9071 8.4553−4.8640−20.234
+12.169−18.141−9.5627 5.1427 34.253
+1.8872−2.7798−3.9721 1.3778 6.3501
+−4.3193 5.4644 3.6803−4.9568−12.670
+6.4681−8.7816−6.4945 3.6414 18.557
+
+
+J=
+
+
+−3.7981−5.1655
+−41.180 28.916
+−6.3270 4.6726
+13.788−10.727
+−17.718 14.100
+
+ , H=
+
+
+−1.2552
+37.467
+1.9827
+−11.249
+16.003
+
+
+E=
+
+
+−1.0312 2.9504
+8.1345−2.6025
+0.74289−0.81478
+−2.7973 1.6668
+3.8531−1.9714
+
+ .
+Direct substitution confirms that these parameters satisfy the
+Sylvester equationP A−N P−J C= 0of [8, eq. (3)],
+whereP=L −EC, to within machine precision (residual
+norm≈1.4×10 −13), andH=P Bas required by [8,
+eq. (4)]. This exhibits, for the present example, a complete
+and numerically verified order-5functional observer at the
+true minimum orderν min = 5, with eigenvalues placed
+at−1,−2,−3,−4,−5, realized via the classical Sylvester-
+equation construction applied to the augmented functionalL
+rather than toLitself.
+F . Interpretation
+Combining the relevant dimensions gives
+r= 2< q 0 = 3< νmin = 5< n0 −p= 6.
+Unlike an example in which the minimum functional-observer
+order coincides with the functional-observability endpoint,
+hereν min is strictly interior to the admissible range: one order,
+q= 6, remains feasible above the minimum. The example
+therefore separates all four quantitiesr,q 0,ν min, andn 0 −p
+simultaneously.
+The gap between the algebraic lower bound and the actual
+minimum is again greater than one:
+q0 = 3, q 0 + 1 = 4,
+are both excluded by condition(S)– in both cases through
+the same underlying mechanism, in which condition(A)’s
+complete family is confined to a locus on which the pencil
+matrixHis provably full-rank – whereas
+q0 + 2 = 5
+is feasible. This confirms thatq 0 is an algebraic lower bound,
+not a guarantee that a functional observer exists either at that
+order or at the immediately succeeding order, and that this two-
+order gap can occur independently of whetherν min coincides
+with the functional-observability endpoint.
+For the present example, we also apply the functional-
+observer design algorithm of Darouach and Fernando [27],
+which is based on sufficient solvability conditions. The order-
+rexistence condition fails atq= 2. Atq= 3,4,and
+5, the corresponding solvability conditions impose nontrivial
+restrictions on the pole-placement matrixNand hence fail
+for a generic choice ofN. Atq= 6 =n−p, by contrast,
+O(C, A,4)has full column rank, so the solvability condition is
+satisfied for arbitraryN. Thus the algorithm of [27] generically
+reaches the reduced-order Luenberger endpointq= 6, whereas
+the present order-by-order characterization establishes that the
+true minimum functional-observer order isν min = 5.
+VIII. DISCUSSION ANDCONCLUSION
+A. Discussion
+The characterization separates three questions that are easily
+conflated in minimum-order observer design.
+First, the FO indices determine the smallest order at which
+the algebraic condition can hold. Second, functional observ-
+ability implies that algebraic feasibility then persists at every
+higher order throughn 0 −p. Third, spectral feasibility is a sep-
+arate fixed-order question. The nullspace pencil (6) provides
+the same spectral test at every one of these predetermined
+orders.
+This distinction also avoids a replacement-versus-
+augmentation difficulty: a higher-order realizationLmay
+eitheraugmenta smaller one, in the sense of containing
+the rows of a particular minimum-order realization as a
+submatrix (moduloC), or it may be areplacementrealization
+whose rows bear no such relationship to any specific smaller
+solution, yet still satisfy condition (A) at the higher order in
+their own right. Consequently, parameterizing only one-row
+extensions of the complete minimum-(A) family would not
+in general describe all higher-order realizations. The matrix
+representationZ=K LW, together with the rank conditions
+(14a)–(14b), parameterizes the order-qproblem directly and
+therefore includes replacement realizations automatically.
+An important consequence is thatΣ F O(L)need not in-
+herit the interval structure of the algebraic spectrumΣ A(L);
+functional-observer existence must therefore be determined
+independently at each admissible order.
+For the all-λpole-assignability formulation, additional rank
+screening can be developed from the common columns repre-
+sented byZandV. Such screening is useful computationally
+but is not required for the main equivalence. For the detectabil-
+ity formulation, care is required because rank loss at a strictly
+stable value ofλis permitted.
+B. Conclusion
+This paper has given an order-by-order characterization of
+functional observers between the algebraic lower endpoint and
+the endpoint determined by functional observability. The FO
+T . FERNANDO: 15
+indices determineq 0 = Prj=1 ηj, the minimum order for
+which condition (A) is feasible, and the one-row extension
+theorem shows that condition (A) remains feasible at every
+orderq 0, q0 + 1, . . . , n0 −punder functional observability. At
+each such order, the fixed-order problem is expressed entirely
+through matrix ranks, nullspaces, and column spaces in the
+original state coordinates, yielding a complete matrix param-
+eterization of the algebraic and spectral observer conditions.
+Evaluating these conditions overq∈ {q0, . . . , n0−p}yields
+the complete functional-observer order spectrumΣ F O(L)and
+hence the true minimum order
+νmin = min ΣF O(L).
+As the example in Section VII demonstrates, the algebraic
+lower boundq 0 need not itself be feasible, nor need feasibility
+occur at the immediately succeeding order. Thusq 0 determines
+where the search begins, whereasν min identifies the first
+order at which both the algebraic and spectral conditions are
+satisfied.
+The upper endpointn 0 −pis represented by a basis of
+ker(OC); whenn 0 =n, this basis has no columns and the
+endpoint reduces to the classical reduced-order Luenberger
+ordern−p. Whenq 0 =r, the lower endpoint reduces to
+Darouach’s prescribed order. Thus the Darouach and Luen-
+berger orders arise as specializations of the two endpoints
+of the same matrix-based functional-observer framework, with
+νmin characterized as the smallest order in this range at which
+the algebraic and spectral conditions hold jointly.
+REFERENCES
+[1] D. G. Luenberger, “Observers for multivariable systems,”IEEE Trans.
+Autom. Control, vol. AC-11, no. 2, pp. 190–197, Apr. 1966.
+[2] T. E. Fortmann and D. Williamson, “Design of a low order observer for
+linear feedback control laws,”IEEE Trans. Autom. Control, vol. AC-17,
+no. 3, pp. 301–308, Jun. 1972.
+[3] P. Murdoch, “Observer design of a linear functional of the state vector,”
+IEEE Trans. Autom. Control, vol. AC-18, no. 3, pp. 308–310, Jun. 1973.
+[4] J. R. Roman and T. E. Bullock, “Design of minimal-order stable
+observers for linear functions of the state via realization theory,”IEEE
+Trans. Autom. Control, vol. AC-20, no. 5, pp. 613–622, Oct. 1975.
+[5] J. B. Moore and G. F. Ledwich, “Minimal-order observers for estimating
+linear functionals of a state vector,”IEEE Trans. Autom. Control, vol.
+AC-20, no. 5, pp. 623–632, Oct. 1975.
+[6] K. Furuta and S. Kawaji, “Linear functional observer with possible
+minimal dimension,”IEEE Trans. Autom. Control, vol. AC-22, no. 6,
+pp. 977–980, Dec. 1977.
+[7] H. R. Sirisena, “Minimal-order observer for linear functions of the state
+vector,”Int. J. Control, vol. 29, pp. 235–254, 1979.
+[8] M. Darouach, “Existence and design of functional observers,”IEEE
+Trans. Autom. Control, vol. 45, no. 5, pp. 940–943, 2000.
+[9] H. Trinh, T. D. Tran, and S. Nahavandi, “Design of scalar functional
+observers of order less thanν−1,”International Journal of Control,
+vol. 79, no. 12, pp. 1654–1659, 2006.
+[10] T. Fernando, H. Trinh, and L. Jennings, “Functional observability and
+the design of minimum order linear functional observers,”IEEE Trans.
+Autom. Control, vol. 55, no. 5, pp. 1268–1273, 2010.
+[11] L. Jennings, T. Fernando, and H. Trinh, “Existence conditions for
+functional observability from an eigenspace perspective,”IEEE Trans.
+Autom. Control, vol. 56, no. 12, pp. 2957–2961, 2011.
+[12] F. Rotella and I. Zambettakis, “Minimal single linear functional ob-
+servers for linear systems,”Automatica, vol. 47, no. 1, pp. 164–169,
+Jan. 2011.
+[13] M. Hamdoun, M. Ayadi, F. Rotella, and I. Zambettakis, “Minimal single
+linear functional observers for discrete-time linear systems,” inProc.
+4th Int. Conf. Control, Decision and Inf. Technol. (CoDIT), Barcelona,
+Spain, pp. 772–777, 2017.
+[14] K. Kumar, A. Prakash, S. K. Parida, S. Ghosh, and C. Kumar, “A
+novel multi-functional observer based distributed W ADC for large power
+system using modified decoupled control approach,”IEEE Trans. Power
+Systems, vol. 39, no. 5, pp. 6662–6674, 2024.
+[15] H. H. Alhelou, M. E. H. Golshan, and N. D. Hatziargyriou, “A decen-
+tralized functional observer based optimal LFC considering unknown
+inputs, uncertainties, and cyber-attacks,”IEEE Trans. Power Systems,
+vol. 34, no. 6, pp. 4408–4417, 2019.
+[16] D. C. Huong and H. Trinh, “Dynamic event-triggered distributed interval
+functional observers for interconnected systems,”Asian Journal of
+Control, vol. 25, pp. 2194–2203, 2023.
+[17] Y . Zhang, R. Cheng, and Y . Xia, “On the structural output controlla-
+bility and functional observability of undirected networks,”Automatica,
+vol. 173, Art. no. 112063, 2025.
+[18] Y . Zhang, R. Cheng, and Y . Xia, “Observability blocking for functional
+privacy of linear dynamic networks,” inProc. 62nd IEEE Conf. Decision
+and Control, 2023, pp. 7469–7474.
+[19] A. N. Montanari, C. Duan, L. A. Aguirre, and A. E. Motter, “Functional
+observability and target state estimation in large-scale networks,”Proc.
+Natl. Acad. Sci. USA, vol. 119, no. 1, e2113750119, 2022.
+[20] A. N. Montanari, C. Duan, and A. E. Motter, “Duality between control-
+lability and observability for target control and estimation in networks,”
+IEEE Trans. Autom. Control, 2025, doi: 10.1109/TAC.2025.3552001.
+[21] I. Krauss, V . G. Lopez, and M. A. M ¨uller, “On sample-based functional
+observability of linear systems,”IEEE Control Systems Letters, 2025,
+doi: 10.1109/LCSYS.2025.3582512.
+[22] S. Muntwiler, J. K ¨ohler, and M. N. Zeilinger, “Nonlinear functional
+estimation: Functional detectability and full information estimation,”
+Automatica, vol. 171, Art. no. 111945, 2025.
+[23] C. Kravaris, “Functional observers for nonlinear systems,”IFAC-
+PapersOnLine, vol. 49, no. 18, pp. 505–510, 2016.
+[24] C. Kravaris and S. Venkateswaran, “Functional observers with linear
+error dynamics for nonlinear systems,”Systems & Control Letters,
+vol. 157, Art. no. 105021, 2021.
+[25] T. Fernando, “A minimum-order functional observer beyond
+the Darouach and Luenberger constructions,”arXiv preprint
+arXiv:2609.33615, 2026, doi: 10.48550/arXiv.2609.33615. [Online].
+Available: https://arxiv.org/abs/2609.33615
+[26] T. Fernando, H. Trinh, and L. Jennings, “Functional observability,” in
+Proc. 5th Int. Conf. Information and Automation for Sustainability,
+Colombo, Sri Lanka, 2010, pp. 421–423.
+[27] M. Darouach and T. Fernando, “On functional observability and func-
+tional observer design,”Automatica, vol. 173, Art. no. 112115, 2025.
+BIOGRAPHY
+Tyrone Fernandoreceived his B.E.
+(Hons.) and Ph.D. degrees in Electrical
+Engineering from the University of Mel-
+bourne, Victoria, Australia, in 1990 and
+1996, respectively. In 1996, he joined
+the Department of Electrical, Electronic
+and Computer Engineering, University of
+Western Australia (UW A), Crawley, W A,
+Australia, where he currently holds the
+position of Professor of Electrical Engi-
+neering. He previously served as Associate Head and Deputy
+Head of the department from 2008 to 2010.
+Prof. Fernando is currently the Head of the Power and
+Clean Energy Research Group at UW A. He has provided
+professional consultancy to Western Power on the integration
+and management of distributed energy resources in the electric
+grid. In recognition of his professional contributions, he was
+named the Outstanding W A IEEE PES/PELS Engineer in
+2018. His research interests include theoretical control, ob-
+server design, and power system stability and control. He has
+received multiple teaching awards from UW A in recognition
+of his contributions to control systems and power systems
+education.

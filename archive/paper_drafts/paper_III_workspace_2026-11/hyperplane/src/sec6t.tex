@@ -1,0 +1,306 @@
+\section{A repeated-eigenspace counterexample}\label{sec:counterexample}
+
+This section presents a complete rational instance that refutes a natural simplification in the
+hyperplane layer: \emph{taking, for each distinct real eigenvalue of the compression, one eigenvector as
+the representative direction}, and deciding feasibility from that representative alone. In the instance
+the compression has a two-dimensional real eigenspace, and different projective directions inside it
+lead to \emph{different} answers: one direction is feasible, the others tested are infeasible. What is
+refuted is exactly that reduction; the example does not show that the repeated case is computationally
+hard, nor that geometric simplicity of the real spectrum is necessary for polynomial-time decidability
+(Section~\ref{sec6:sub:conclusion}). All computations are exact rational arithmetic: infeasibility of a
+direction is certified by a divisibility identity over the function field of the fibre, using the
+maximal-minor test of \cite{companion1}, and feasibility of the good direction is certified at a single
+rational chart point.
+
+\subsection{Notation}\label{sec6:sub:notation}
+
+We use the notation of the preceding sections. The section lives in the hyperplane layer $c=1$, so
+$\ker H$ is one-dimensional, say $\ker H=\mathbb{R}v$ with $v\in K_0$, every row of $\mathcal{L}$
+annihilates $v$ and $Av$, and with $U_v=\operatorname{span}\{v,Av\}$ the admissible row spaces obey
+$V\subseteq U_v^{\perp}$ and $\dim(V\cap K_0)=k-1$. Write
+\begin{equation}\label{sec6:eq:defs}
+D_v=K_0\cap U_v^{\perp},\qquad \mathcal{Q}_v=U_v^{\perp}/D_v,\qquad s=q-k+1 .
+\end{equation}
+Since $L_0$ is empty, the admissible directions are exactly the real eigenvector directions of the
+compression, and for fixed $[v]$ the fibre is $\mathbb{P}(\mathcal{Q}_v)$, of dimension $r(v)-1$ with
+$r(v)=\dim\mathcal{Q}_v=\rho$ for an eigen direction ($Av\in\operatorname{span}v$) and $\rho-1$ for a
+non-eigen direction. In this section $s=1$, so every fibre is a projective space and a single
+computation over the function field of the fibre covers it entirely: no chart decomposition is needed.
+
+\subsection{The instance}\label{sec6:sub:instance}
+
+Take
+\begin{equation}\label{sec6:eq:data}
+n=8,\quad p=2,\quad q=4,\qquad
+C=\begin{bmatrix}e_1\\ e_2\end{bmatrix},\qquad L_0\ \text{empty},
+\end{equation}
+and let the state matrix be
+\begin{equation}\label{sec6:eq:A}
+A=\begin{bmatrix}
+0&0&1&0&0&0&0&0\\
+0&0&0&1&0&0&0&0\\
+1&-2&1&0&-1&1&1&-1\\
+-1&2&1&0&2&-2&-1&2\\
+0&0&0&0&1&0&0&0\\
+0&0&0&0&0&1&0&0\\
+0&0&0&0&0&0&2&0\\
+0&0&0&0&0&0&0&3
+\end{bmatrix}.
+\end{equation}
+Its lower-right block is $\operatorname{diag}(1,1,2,3)$, its upper-right block is
+$\begin{bsmallmatrix}0&0&0&0\\0&0&0&0\\-1&1&1&-1\\2&-2&-1&2\end{bsmallmatrix}$, its lower-left block
+vanishes, and its upper-left block has first two rows giving $CA=[e_3;e_4]$.
+
+It follows that
+\begin{equation}\label{sec6:eq:K0}
+K_0=\operatorname{span}\{e_5,e_6,e_7,e_8\},
+\qquad
+N=\begin{bmatrix}
+0&0&0&0\\0&0&0&0\\0&0&0&0\\0&0&0&0\\
+1&0&0&0\\0&1&0&0\\0&0&1&0\\0&0&0&1
+\end{bmatrix},
+\end{equation}
+hence
+\begin{equation}\label{sec6:eq:invariants}
+\rho=k=4,\qquad \omega=k-1=3,\qquad s=q-k+1=1 ,
+\end{equation}
+and, in the coordinates of $K_0$,
+\begin{equation}\label{sec6:eq:M}
+\begin{aligned}
+M&=\pi_{K_0}A|_{K_0}=\operatorname{diag}(1,1,2,3),\\
+\chi_M(x)&=(x-3)(x-2)(x-1)^2 .
+\end{aligned}
+\end{equation}
+\begin{equation}\label{sec6:eq:A21}
+A_{21}=\pi_{K_0^{\perp}}A|_{K_0}=
+\begin{bmatrix}
+0&0&0&0\\0&0&0&0\\-1&1&1&-1\\2&-2&-1&2\\
+0&0&0&0\\0&0&0&0\\0&0&0&0\\0&0&0&0
+\end{bmatrix}.
+\end{equation}
+
+The following identities hold in exact arithmetic: $[C;CA]=[e_1;e_2;e_3;e_4]$; $N^{\mathsf{T}}N=I_4$ and
+$N^{\mathsf{T}}AN=\operatorname{diag}(1,1,2,3)$; $AN=NM+A_{21}$; and $\chi_M(x)=(x-3)(x-2)(x-1)^2$. The
+instance is obtained from a larger example by keeping $C$ and the action of $A$ outside $K_0$ and
+replacing only the action on $K_0$, which creates a two-dimensional real eigenspace while leaving
+$K_0$, $\rho$, $k$ and $\omega$ unchanged.
+
+\subsection{Direction geometry}\label{sec6:sub:direction}
+
+The factor $(x-1)^2$ produces a two-dimensional eigenspace
+$E_1=\ker(M-I)=\operatorname{span}\{e_1,e_2\}\subseteq\mathbb{R}^{4}$, in the coordinates of $K_0$
+(corresponding to $e_5,e_6$ in the state space); the eigenspaces of the eigenvalues $2$ and $3$ are
+one-dimensional. Directions in $E_1$ are written
+\begin{equation}\label{sec6:eq:v}
+v(c_1,c_2)=c_1e_5+c_2e_6,\qquad (c_1,c_2)\neq(0,0),
+\end{equation}
+so the direction space is the projective line $\mathbb{P}(E_1)\cong\mathbb{P}^{1}$.
+
+\textbf{The eigen/non-eigen stratification.} For $c=(c_1,c_2,0,0)^{\mathsf{T}}\in E_1$,
+\begin{equation}\label{sec6:eq:A21c}
+\begin{aligned}
+A_{21}c&=(c_2-c_1)\begin{bmatrix}1&-2&0&0&0&0&0&0\end{bmatrix}^{\mathsf{T}},\\
+A_{21}c&=0\quad\iff\quad c_1=c_2 .
+\end{aligned}
+\end{equation}
+Thus $E_1$ contains exactly \emph{one} eigen direction, $[1\!:\!1]$, and every other direction of $E_1$
+is a non-eigen direction; this is consistent with the general description, since the eigen directions
+inside $E_\mu$ form the linear subspace $\ker A_{21}$. For $[1\!:\!1]$ one checks directly that $Av=v$,
+so $\dim U_v=1$.
+
+\textbf{Fibres.} With $s=1$ and $\delta=0$ the fibre over a fixed direction is $\mathbb{P}^{2}$ for a
+non-eigen direction ($r(v)=\rho-1=3$) and $\mathbb{P}^{3}$ for the eigen direction
+($r(v)=\rho=4$): the eigen direction has $\dim U_v=1$ instead of $2$, hence $\dim U_v^{\perp}=7$
+instead of $6$, while $\dim D_v=k-1=3$ is unchanged, so its fibre gains exactly one homogeneous
+parameter. The two situations are compared in Table~\ref{sec6:tab:dims}.
+
+\begin{table}[t]
+\centering
+\caption{Dimensions attached to a direction, for $n=8$ and $k=4$. The two columns differ because
+$\dim U_v$ differs: an eigen direction places $Av$ inside $\operatorname{span}v$, so $U_v$ loses one
+dimension and its annihilator gains one.}
+\label{sec6:tab:dims}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+Quantity & Non-eigen & Eigen\\
+\midrule
+$\dim U_v$ & $2$ & $1$\\
+$\dim U_v^{\perp}=n-\dim U_v$ & $6$ & $7$\\
+$r(v)=\dim U_v^{\perp}-(k-1)$ & $3$ & $4$\\
+Fibre $\mathbb{P}^{r(v)-1}$ & $\mathbb{P}^{2}$ & $\mathbb{P}^{3}$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Example: the direction $(1\!:\!0)$.} Here $v=e_5$ and
+$Av=Ae_5=(0,0,-1,2,1,0,0,0)^{\mathsf{T}}$, so in the coordinates of $K_0$
+\begin{equation}\label{sec6:eq:Dv}
+\begin{aligned}
+D_v&=K_0\cap U_v^{\perp}=\{z\in K_0:\ z\cdot v=z\cdot Av=0\}\\
+   &=\operatorname{span}\{e_6,e_7,e_8\},
+\end{aligned}
+\end{equation}
+$\mathcal{Q}_v$ is three-dimensional, the fibre is $\mathbb{P}^{2}$, and the admissible row spaces are
+$\row\mathcal{L}=\operatorname{span}\{e_6,e_7,e_8\}\oplus\langle x\rangle$ with
+$0\neq x\in\mathcal{Q}_v$. Writing $\mathcal{L}=[\ell_1;\ell_2;\ell_3;x]$ with $\ell_1,\ell_2,\ell_3$ a
+basis of $D_v$, we form $H=LN$ and $H_A=LAN$; the maximal minors $m_I(x,\lambda)$ are the
+$\binom{4}{3}\binom{4}{3}=16$ minors of order $3$, some identically zero, each a polynomial in
+$(x,\lambda)$.
+
+\subsection{Decisions for six directions}\label{sec6:sub:six}
+
+We test six directions of $\mathbb{P}(E_1)$; the third is the eigen direction, the other five are
+non-eigen.
+
+\begin{table*}[t]
+\centering
+\caption{Decisions for six projective directions of the repeated eigenspace $E_1$. The fourth column
+counts the $3\times3$ maximal minors that do not vanish identically over the function field; the fifth
+column is the $\lambda$-degree of the greatest common divisor of all maximal minors over that field.
+Degree $0$ means that no common root exists, hence that the fibre is generically good and, by the
+full-rank leading-coefficient lemma of Section~\ref{sec:decision}, good at every point of the chart.}
+\label{sec6:tab:dirs}
+\begin{tabular}{@{}cccccl@{}}
+\toprule
+Direction $(c_1\!:\!c_2)$ & Type & Fibre & Nonzero maximal minors & $\deg_\lambda\gcd$ & Verdict\\
+\midrule
+$(1\!:\!0)$ & non-eigen & $\mathbb{P}^{2}$ & $2$ & $2$ & entire fibre infeasible\\
+$(0\!:\!1)$ & non-eigen & $\mathbb{P}^{2}$ & $2$ & $2$ & entire fibre infeasible\\
+$(1\!:\!1)$ & \textbf{eigen} & $\mathbb{P}^{3}$ & $4$ & $\mathbf{0}$ & \textbf{a feasible point exists}\\
+$(1\!:\!2)$ & non-eigen & $\mathbb{P}^{2}$ & $4$ & $2$ & entire fibre infeasible\\
+$(2\!:\!-1)$ & non-eigen & $\mathbb{P}^{2}$ & $4$ & $2$ & entire fibre infeasible\\
+$(3\!:\!1)$ & non-eigen & $\mathbb{P}^{2}$ & $4$ & $2$ & entire fibre infeasible\\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\textbf{Observation.} Inside one and the same two-dimensional eigenspace, the fibre over $(1\!:\!1)$
+contains a feasible row space, whereas every fibre over the other five directions is infeasible, so
+feasibility on $\mathbb{P}(E_1)$ is \emph{not constant}. The differing numbers of nonzero minors ($2$
+versus $4$) are a consequence of the particular directions and do not affect the decision, which uses
+the gcd of \emph{all} minors.
+
+\textbf{Why the eigen direction is the good one.} The two phenomena are related but not equivalent: the
+eigen direction is the only one whose fibre is a $\mathbb{P}^{3}$ instead of a $\mathbb{P}^{2}$, so its
+parameter space is one dimension larger and has more room to avoid the bad locus. This instance
+therefore also illustrates the general statement that the eigen and non-eigen strata must be handled
+separately; it does not assert that an eigen direction is always the feasible one.
+
+\subsubsection{Location of the common roots}\label{sec6:sub:roots}
+
+The common factors of the infeasible directions have the $\lambda$-parts of Table~\ref{sec6:tab:roots}:
+for $(1\!:\!0)$ the polynomial $(\lambda-1)(\lambda-3)$, and a power of $(\lambda-1)$ for the other
+directions, so all common roots lie in the spectrum $\{1,2,3\}$ of the compression.
+
+\begin{table}[t]
+\centering
+\caption{Location of the common roots. All of them lie in the spectrum $\{1,2,3\}$ of the compression.}
+\label{sec6:tab:roots}
+\begin{tabular}{@{}lll@{}}
+\toprule
+Direction & $\lambda$-part of the common factor & Common roots\\
+\midrule
+$(1\!:\!0)$ & $(\lambda-1)(\lambda-3)$ & $\lambda=1,\ 3$\\
+direction of $\mu=2$ & $(\lambda-1)$ & $\lambda=1$\\
+direction of $\mu=3$ & $(\lambda-1)^{2}$ & $\lambda=1$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Range of the computation.} The direction space $\mathbb{P}(E_1)$ is one-dimensional and we
+have taken six of its points, including the unique eigen direction; this establishes non-constancy but
+is \emph{not} a classification of all directions of $\mathbb{P}(E_1)$.
+
+\subsection{Certificates}\label{sec6:sub:cert}
+
+\textbf{Infeasible directions.} For each of the five non-eigen directions of Table~\ref{sec6:tab:dirs},
+over the function field $\mathbb{Q}(x_1,\dots,x_{r(v)-1})$ the exact computation gives
+$\deg_\lambda g=2$ and $g\mid m_I$ for every maximal minor $I$, divisibility being verified by division
+with remainder over that field (the remainder is zero). For $(1\!:\!0)$, with homogeneous coordinates
+$(x_0\!:\!x_1\!:\!x_2)$ on the fibre, the gcd is exactly
+\begin{equation}\label{sec6:eq:gexplicit}
+g=x_2\,(\lambda-1)(\lambda-3).
+\end{equation}
+Its $\lambda$-part is $(\lambda-1)(\lambda-3)$; the factor $x_2$ comes from the parameters, the locus
+$x_2=0$ being the degenerate locus where $\rank H<\omega$, which is not part of the chart.
+
+\textbf{What the fibre computation covers: the affine cone, not one chart.} The fibre over a direction
+is a projective space $\mathbb P^{\tilde r}$, and the computation is \emph{not} performed on a single
+affine chart of it. The parameter is a nonzero vector $x\in\mathbb R^{\tilde r}$, $\tilde r=r(v)$, that is,
+the affine cone with the origin removed; projective points are the equivalence classes
+$[x]=\{tx:\ t\ne0\}$. Each maximal minor $m_I(x,\lambda)$ is homogeneous of degree $\omega$ in $x$, so
+the condition ``there is $\lambda$ with $m_I(x,\lambda)=0$ for all $I$'' is invariant under
+$x\mapsto tx$ and defines a property of $[x]$ alone. The gcd is taken in $K(x_1,\dots,x_{\tilde r})[\lambda]$,
+the rational function field of the cone; $\deg_\lambda\gcd=0$ there says that no common root exists at
+a \emph{general} cone point, and the full-rank lemma upgrades this to \emph{every} cone point. Hence the
+conclusion concerns the whole projective fibre, as claimed, and not one chart or one sample point.
+
+\textbf{Three assertions, and which certificate supports which.} One must distinguish
+(a) \emph{some point of the fibre is feasible}; (b) \emph{a dense open subset of it is feasible};
+(c) \emph{the whole fibre is infeasible}. A single point with $\gcd=1$ establishes (a); openness of the
+good set then gives (b); a positive-degree gcd together with the full-rank leading-coefficient lemma
+establishes (c). The counterexample uses (a) for the direction $(1\!:\!1)$ and (c) for the five
+non-eigen directions; the contrast between (a) and (c) \emph{is} the non-constancy of feasibility on
+$E_1$.
+
+\textbf{Why divisibility suffices for the whole fibre.} For a general family of polynomials a positive
+degree of the gcd over the function field does \emph{not} imply that every specialization has a common
+root, since the common factor may specialize to a nonzero constant. What licenses the conclusion is the
+full-rank leading-coefficient lemma of Section~\ref{sec:decision}: at every point of the cone
+$\rank H=\omega$, hence some maximal minor has $\lambda$-degree exactly $\omega$, so a nonconstant $g$
+cannot specialize to a nonzero constant; every specialization therefore carries a nontrivial common
+factor. Concretely, $g\mid m_I$ is the family of divisions
+\begin{equation}\label{sec6:eq:division}
+m_I=g\cdot q_I+r_I,\qquad \deg_\lambda r_I<\deg_\lambda g,
+\end{equation}
+all with $r_I=0$, verified for each maximal minor separately in exact rational arithmetic; the
+quotients are of moderate size and the expanded identities are collected in Appendix~\ref{app:data}.
+The computation is carried out in the polynomial ring $\mathbb{Q}(x_0,x_1,x_2)[\lambda]$ with
+$\lambda$-degree at most $3$, so neither the gcd nor the divisions require any algebraic extension.
+
+\textbf{The feasible direction.} For the eigen direction $[1\!:\!1]$, at the rational point
+\begin{equation}\label{sec6:eq:x0}
+\xi_0=(1,2,3,4)
+\end{equation}
+of the cone over the fibre $\mathbb{P}^{3}$ the greatest common divisor of all maximal minors is
+$\gcd_I m_I(\xi_0,\lambda)=1$; Appendix~\ref{app:data} gives the specialized minors and an explicit
+Bezout combination $\sum_I u_I(\lambda)\,m_I(\xi_0,\lambda)=1$. The chart construction of
+Section~\ref{sec:decision} turns $\xi_0$ into a concrete row space, which is then a feasible design: it
+satisfies both structural conditions and the spectral condition. A single point suffices for a good
+direction by (a)$\Rightarrow$(b) above; for a bad direction the whole fibre must be covered, which is
+(c).
+
+\subsection{The precise wording of the conclusion}\label{sec6:sub:conclusion}
+
+\begin{prop}[counterexample]\label{sec6:prop:nonconstant}
+There is a rational instance with $n=8$, $p=2$ and $q=4$ in which the compression has a
+two-dimensional real eigenspace $E_1$; inside $E_1$ the fibre over the direction $[1\!:\!1]$ contains
+a feasible observer, whereas the fibres over the five non-eigen directions tested are all infeasible.
+Hence feasibility is not constant on that eigenspace.
+\end{prop}
+
+\begin{cor}[failure of the representative-direction reduction]\label{sec6:cor:reduction}
+The procedure ``take one eigenvector for each distinct real eigenvalue of the compression and decide
+feasibility from that representative'' is not correct: the representative $(1\!:\!0)$ would declare the
+instance of Proposition~\ref{sec6:prop:nonconstant} infeasible, whereas the instance is feasible.
+\end{cor}
+
+\textbf{Limitations.} The conclusion does \emph{not} prove that the repeated-eigenspace case is
+computationally hard (it refutes a particular reduction, not the existence of a general algorithm); it
+does \emph{not} show that geometric simplicity of the real spectrum is necessary for polynomial-time
+decidability (that hypothesis controls the dimension of the direction parameter, and the example only
+shows that this dimension cannot be ignored); and it asserts nothing about the untested directions of
+$E_1$.
+
+\textbf{Reproducibility.} The matrices $A$, $C$, $N$, $M$, $A_{21}$ and the characteristic polynomial
+are given in full in Section~\ref{sec6:sub:instance}; the six decisions, the divisibility certificates
+and the chart-point certificate are exact rational computations whose expanded forms, together with a
+short reproduction recipe, are given in Appendix~\ref{app:data}.
+
+\subsection{Relation to the fixed-parameter theorem}\label{sec6:sub:relation}
+
+The counterexample shows that the direction parameter must retain the \emph{whole} projective eigenspace
+$\mathbb{P}(E_\mu)$: the complexity theorem of Section~\ref{sec:complexity} takes geometric simplicity of
+the real spectrum as a hypothesis, and the general decision problem for repeated eigenspaces lies
+outside its scope; the direction is also a genuine degree of freedom which cannot be absorbed into the
+row-space parameters.

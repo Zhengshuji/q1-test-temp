@@ -1,0 +1,2092 @@
+arXiv:2307.08923v3  [eess.SY]  17 Sep 2024
+1
+Functional Observability, Structural Functional Observability and
+Optimal Sensor Placement
+Y uan Zhang, Tyrone Fernando, and Mohamed Darouach
+Abstract—In this paper , new characterizations for functional
+observability, functional detectability, and structural functional
+observability (SFO) are developed, and based on them, the re lated
+optimal sensor placement problems are investigated. A nove l concept
+of modal functional observability coinciding with the notion of modal
+observability is proposed. This notion introduces necessa ry and suf-
+ﬁcient conditions for functional observability and detect ability in a
+uniﬁed way without resorting to system observability decom position,
+and facilitates the design of a functionally observable/de tectable
+system. Afterwards, SFO is redeﬁned rigorously from a gener ic
+perspective, contrarily to the deﬁnition of structural obs ervability.
+A complete graph-theoretic characterization for SFO is pro posed.
+Based on these results, the problems of selecting the minima l sensors
+from a prior set to achieve functional observability and SFO are
+shown to be NP-hard. Nevertheless, supermodular set functi ons are
+established, leading to greedy heuristics that can ﬁnd appr oximation
+solutions to these problems with provable guarantees in pol ynomial
+time. A closed-form solution along with a constructive proc edure is
+also given for the unconstrained case on systems with diagon alizable
+state matrices. Notably, our results also yield a polynomia l-time
+veriﬁable case for structural target controllability, a pr oblem that
+may be hard otherwise.
+Index Terms —Modal functional observability, structural func-
+tional observability, graph-theoretic characterization , sensor place-
+ment
+I. INTRODUCTION
+Large-scale complex systems are prevalent in the real world ,
+encompassing various domains such as engineering, biology ,
+and social networks [1–3]. In these systems, the acquisitio n of
+accurate and timely information through sensing and estima tion
+is crucial for effective feedback control [4, 5]. However, a s the
+dynamical networks grow in size and complexity, it often be-
+comes impractical or even infeasible to deploy sensors for e very
+individual state variable. For many real-world problems, i t is
+neither necessary nor desirable to estimate the entire stat e vector
+of a high-dimensional system [2, 6]. Instead, the focus ofte n lies
+on speciﬁc subsets or linear functions of state variables th at are
+of particular interest or relevance [7]. The design of funct ional
+observers to estimate linear functions of states addresses this
+need [8, 9]. An analogous scenario is to control a target subs et of
+state variables, rather than the whole state variables in co mplex
+systems [3].
+The idea of designing functional observers could date back t o
+the pioneering work of Luenberger [10]. Since then, a signiﬁ cant
+Y . Zhang is with the School of Automation, Beijing Institute of Technology,
+Beijing, China (email: zhangyuan14@bit.edu.cn). T. Ferna ndo is with the Depart-
+ment of Electrical Electronic and Computer Engineering, Un iversity of Western
+Australia, Crawley, W A 6009, Australia (email: tyrone.fer nando@uwa.edu.au).
+M. Darouach is with the Centre de Recherche en Automatique de Nancy, IUT
+de Longwy, Universit´ e de Lorraine, 54400 Cosnes et Romain, France (email:
+modar@pt.lu).
+The work of Dr. Zhang is supported by the National Natural Sci ence Foun-
+dation of China under Grant 62373059. The work of Professor D arouach is
+supported by Robert and Maude Gledden, Senior Visiting Fell owship, Institute
+of Advanced Studies and by the Forrest fellowship, UW A, Aust ralia.
+amount of research has been devoted to the functional observ er
+design problems, ranging from linear systems [8, 9, 11–13]
+to nonlinear systems [14]. Particularly, Darouach [8] gave a
+complete algebraic condition for the existence of a minimum
+order functional observer. Fernando et al. [9], Rotella et a l.
+[11], and Darouach and Fernando [15–17] addressed the desig n
+of reduced-order functional observers when the aforementi oned
+condition was not satisﬁed by augmenting the functional of s tates
+to be estimated. Functional observers have been applicable
+to various practical scenarios, such as disturbance observ ation
+of servo control systems [18, 19], cyberattack detection an d
+epidemic spreading estimation [6], average state monitori ng of
+clustered network systems [7, 20], and load frequency contr ol of
+real-world power systems [21, 22], just to name a few.
+It was very recently that the concept of functional observab ility
+was proposed by Fernando et al. [9]. Functional observabili ty
+encompasses the ability to design an observer with arbitrar y poles
+to estimate a linear function of states asymptotically from system
+inputs and outputs. Notably, it has been discovered that fun ctional
+observability can be alternatively deﬁned as the capabilit y to
+infer the function of states solely from system external out puts
+[12, 16, 23]. A closely related concept to functional observ ability
+is functional detectability, which was ﬁrst proposed by Fer nando
+et al. [9] and further developed by Darouach and Fernando [15 ].
+Functional detectability is a weaker constraint than funct ional
+observability, which enables the existence of an observer w ith
+stable poles to track a functional of states asymptotically . These
+generalizations of concepts of state observability and det ectability
+have sparked interest in developing algebraic criteria tha t charac-
+terize functional observability and detectability, indep endent of
+the design of functional observers. In this regard, similar to state
+observability, existing conditions for functional observ ability fall
+into two classes, those involving products of system matric es
+(e.g., system observability matrix), and those involving e igen-
+values and eigenspaces of system state matrices, resemblin g the
+PBH test for state observability [12, 13]. The advantage of t he lat-
+ter class of conditions lies in its capability to deconstruc t the roles
+of system eigenvalues/modes, thus providing uniﬁed condit ions
+for functional observability and detectability, akin to th e PBH test
+for state observability and detectability [12, 15]. Unfort unately, as
+we can see and also pointed out in [16, 17] recently, the PBH-l ike
+conditions are generally only necessary. A complete eigenv alue
+and eigenspace based characterization would be desirable. As we
+shall show, such a characterization not only offers a unifyi ng view
+for conditions of functional observability and detectabil ity, but
+also provides a deconstructed way to design system measurem ent
+structure for achieving functional observability/detect ability (see
+Section IV).
+Furthermore, the concept of structural functional observability
+(SFO) has recently been proposed by Montanari et al. [6]. This
+novel notion deﬁnes SFO as the existence of a functionally
+2
+observable realization for a linear system, considering it s known
+zero-nonzero structure. Similar to other structural prope rties
+like structural controllability [24], SFO leverages the in herent
+system structure, speciﬁcally the network topology of larg e-
+scale systems. By avoiding dependence on precise numerical
+values of system parameters, SFO enables scalable combinat orial
+algorithms for functional observability veriﬁcation and s ensor
+placement optimizations, getting rid of parameter uncerta inty
+and rounding-off errors. The notable feature of SFO offers
+a complementary perspective that is particularly valuable for
+the analysis and design of large-scale systems. However, as
+demonstrated later, the SFO has not been deﬁned rigorously,
+and its graph-theoretic criterion given in [6] relies heavi ly on
+a PBH-like rank condition for functional observability, ma king
+its sufﬁciency questionable.
+In this paper, we develop new characterizations for functio nal
+observability, functional detectability, and SFO that are valid for
+general systems, and leverage them to the associated system
+design problem, more precisely, optimally deploying senso rs to
+achieve functional observability/detectability. The con tributions
+of this work are fourfold:
+First, we propose a novel concept of modal functional ob-
+servability, which generalizes the notion of modal observability
+and naturally introduces new necessary and sufﬁcient condi tions
+for functional observability and detectability from an eig enspace
+perspective. The obtained conditions directly facilitate the mea-
+surement structure design of a functional observable/dete ctable
+system, as they only concern the property of each individual
+mode and are independent of the system canonical observabil ity
+decomposition.
+Second, we justify that the notion of SFO cannot be solely
+deﬁned as the existence of a functionally observable realiz ation
+and redeﬁne it rigorously from a generic property perspecti ve. As
+a result, SFO exhibits some dramatically different propert ies from
+structural observability, one of which is that adding addit ional
+links among states or from states to sensors may destroy SFO.
+Third, we give a complete graph-theoretic characterizatio n
+for SFO, utilizing the concept of maximum independent walk
+family. This characterization provides valuable insights into ho w
+the system structure inﬂuences SFO. A by-product ﬁnding is
+that, verifying the structural target controllability of n − 1 state
+variables is achievable in polynomial time, where n is the system
+state dimension. This gives a positive answer to a special ca se
+of the long-standing structural target controllability ve riﬁcation
+problem [25, 26].
+Fourthly, based on the obtained criteria, we prove that the
+problems of selecting the minimal sensors from a prior set to
+achieve functional observability and SFO are NP-hard. Neve r-
+theless, we establish supermodular functions that lead to g reedy
+heuristics to ﬁnd near-optimal solutions for these problem s with
+approximation guarantees. We also give a closed-form solut ion
+and a constructive procedure to design an output matrix with the
+minimum number of rows to achieve functional observability
+for diagonalizable systems. This is based on modal function al
+observability and the real Jordan normal form. By consideri ng
+only unstable modes, these results carry over for functiona l
+detectability.
+The rest is organized as follows. Section II introduces some
+preliminaries. Section III presents the deﬁnitions of func tional
+observability and detectability, and Section IV is devoted to
+modal functional observability and new criteria for functi onal
+observability and detectability. SFO is redeﬁned in Sectio n V.
+A complete graph-theoretic characterization is given for S FO
+in Section VI. The minimal sensor placement problems are
+addressed in Section VII. The last section concludes this pa per.
+II. P RELIMINARIES
+This section introduces notational conventions and some pr e-
+liminaries in graph theory, structured system theory, and s ubmod-
+ular set function.
+A. Notations
+Deﬁne [n] .= {1, 2, ..., n} for an integer n ≥ 1. Denote the set
+of eigenvalues of a square matrix M by eig(M ). For a number
+λ ∈ C, Re(λ) denotes the real part of λ. Let C− and C+0 be
+the open left and the closed right halfplanes of the complex
+plane, respectively. Let col{Xi|ni=1} be the composite matrix
+stacked by X1, ..., Xn, with Xi being the ith row block. When
+n is small, col{X1, ..., Xn} is also denoted by [X1; ...; Xn].
+Similarly, diag{Xi|ni=1} denotes a block-diagonal matrix whose
+diagonal blocks are X1, ..., Xn. In denotes the n dimensional
+identify matrix, where the subscript n may be omitted if inferred
+from the context. Given an m × n matrix M and a set S ⊆ [m],
+MS denotes the sub-matrix of M formed by rows indexed by S.
+The space spanned by rows of a matrix M is given by R(M ).
+The number of rows of a matrix M is denoted by row(M ). The
+dimension of a subspace is denoted by dim(·).
+B. Graph theory
+Let G = ( V, E) be a directed graph (digraph) with vertex set
+V and edge set E ⊆ V × V . A subgraph Gs = (Vs, Es) of G is
+a graph such that Vs ⊆ V and Es ⊆ E, and is called a subgraph
+induced by Vs if Es = (Vs × Vs) ∩ E. We say Gs covers V ′s , if
+V ′s ⊆ Vs. A path P from i1 to ik in G is a sequence of edges
+(i1, i2), (i2, i3),...,(ik−1, ik) with (ij, ij+1) ∈ E, j = 1, ..., k− 1,
+which is also denoted by P = ( i1, i2, ..., ik). If i1, i2, ..., ik are
+distinct vertices, then P is called a simple path. If i1 and ik are
+the only repeated vertices in P , then P is a cycle. The length of
+a path is the edges it contains.
+C. Structured system theory
+Consider a linear-time invariant system described by
+˙x(t) = Ax(t) + Bu(t), (1a)
+y(t) = Cx(t), (1b)
+where x(t) ∈ Rn is the state vector, u(t) ∈ Rm is the input
+vector, y(t) ∈ Rp is the output vector, A ∈ Rn×n, B ∈ Rn×m,
+and C ∈ Rp×n. System (1) is also denoted by the pair (A, C).
+A structured matrix is a matrix with entries that are either
+ﬁxed zeros or undetermined, capable of taking arbitrary val ues
+independently. Denote the set of n1 × n2 structured matrices by
+{0, ∗}n1×n2 , where ∗ represents an undetermined entry, and 0
+a ﬁxed zero entry. For a structured matrix ¯M ∈ { 0, ∗}n1×n2 , a
+realization is obtained by assigning some speciﬁc values to the
+∗ entries (termed free entries), and the set of all realizatio ns is
+given by S( ¯M ) = {M ∈ Rn1×n2 : Mij = 0 if ¯Mij = 0}.
+3
+Given a structured pair ( ¯A, ¯C), with ¯A ∈ {0, ∗}n×n and ¯C ∈
+{0, ∗}p×n, (A, C) is called a realization of ( ¯A, ¯C) if A ∈ S ( ¯A)
+and C ∈ S ( ¯C). ( ¯A, ¯C) is said to be structurally observable, if
+there is a observable realization (A, C) of ( ¯A, ¯C) [24].
+For a structured pair ( ¯A, ¯C), let G( ¯A, ¯C) = ( X ∪ Y, EXX ∪
+EXY ) be its system digraph , with state vertices X =
+{x1, ..., xn}, output vertices Y = {y1, ..., yp}, and edges EXX =
+{(xi, xj) : ¯Aji ⁄= 0 }, EXY = {(xi, yj) : ¯Cji ⁄= 0 }. A state
+vertex xi ∈ X is said to be output-reachable, if there is a path
+from xi to some output vertex yj ∈ Y in G( ¯A, ¯C). V ertexxi ∈ X
+has a self-loop if (xi, xi) ∈ EXX . An output stem is a simple
+path from a state vertex to an output vertex in G( ¯A, ¯C).
+Deﬁnition 1: A subset of state vertices Xs ⊆ X is said to be
+covered by a cactus conﬁguration in G( ¯A, ¯C), if 1) every xi ∈ Xs
+is output-reachable in G( ¯A, ¯C), and 2) Xs can be covered by a
+collection of vertex-disjoint cycles and output stems in G( ¯A, ¯C).
+The following result is well-known in structured system the ory.
+Lemma 1: [27, 28] The pair ( ¯A, ¯C) is structurally observable,
+if and only if the whole state vertex set X is covered by a cactus
+conﬁguration in G( ¯A, ¯C).
+D. Submodular set function
+Given a ﬁnite set V = {1, 2, ..., p}, a set function: f : 2 V → R
+assigns a scalar value to a subset of V . A set function f : 2 V → R
+is said to be monotone decreasing , if for all V1 ⊆ V2 ⊆ V ,
+it holds f (V1) ≥ f (V2); f is monotone increasing if −f is
+monotone decreasing. A set function f : 2 V → R is said to
+be submodular, if for all V1 ⊆ V2 ⊆ V and all elements s ∈ V ,
+f (V1 ∪ {s}) − f (V1) ≥ f (V2 ∪ {s}) − f (V2); f is supermodular,
+if −f is submodular (see [29, Def. 1.2]). Roughly speaking,
+submodularity is such a property that adding an element to a
+smaller set gives a larger gain than adding one to a larger set ,
+and supermodular is on the contrary. For any s ∈ V , deﬁne the
+gain function fa : 2 V \{a} → R as fa(S) = f (S ∪ {a}) − f (S).
+By deﬁnition, f is submodular if fa is monotone decreasing for
+each a ∈ V .
+Submodular set functions in combinatorial optimization pl ay a
+similar role to convex functions in continuous optimizatio n [30].
+It is known that a simple greedy heuristic can ﬁnd near-optim al
+solutions to minimization of monotone decreasing supermod ular
+functions with provable guarantees [31].
+III. F UNCTIONAL OBSERVABILITY AND DETECTABILITY
+Consider a linear-time invariant system described by
+˙x(t) = Ax(t) + Bu(t), (2a)
+y(t) = Cx(t), (2b)
+z(t) = F x(t), (2c)
+where x(t) ∈ Rn is the state vector, u(t) ∈ Rm is the input
+vector, y(t) ∈ Rp is the output vector, and z(t) ∈ Rr is
+the functional of states to be estimated. Accordingly, matr ices
+A ∈ Rn×n, B ∈ Rn×m, C ∈ Rp×n, and F ∈ Rr×n.
+Each nonzero row of C corresponds to a sensor. System (2)
+is also denoted by the triple (A, C, F).1 Throughout, we use
+O(A, C) = col{C, CA, ..., CAn−1} to denote the observability
+matrix of (A, C).
+1Since matrix B does not affect the results of this paper, we ignore B in the
+matrix triple representation of system (2).
+The notion of functional observability of the triple (A, C, F)
+was ﬁrst proposed by Fernando et al. [9], which generalizes t he
+conventional notion of observability. Functional observa bility can
+be deﬁned in a variety of ways, either the existence of an obse rver
+with arbitrary poles that can track the functional state vec tor
+z(t) asymptotically [9], or the ability to infer z(t) from system
+external outputs and inputs. Those deﬁnitions are shown to b e
+equivalent [12, 23].
+Deﬁnition 2 (Functional observability, [23]): System (2) (or
+the triple (A, C, F)) is said to be functionally observable, if for
+any initial state x(0) and input u(t), there exists a ﬁnite time T
+such that the value of F x(0) can be uniquely determined from
+the outputs y(t) and inputs u(t), 0 ≤ t ≤ T .
+By the additivity of linear systems, (A, C, F) is functionally
+observable, if and only if for any initial state x(0) and the
+zero input u(t) ≡ 0, y(t) = Cx(t) = 0 , ∀t ∈ [0, ∞) implies
+that z(t) = F x(t) = 0 [16]. It is easy to see that when
+F = In, functional observability collapses to the conventional
+observability. It is shown in [9] that (A, C, F) is functionally
+observable, if and only if there exists a matrix F0 ∈ R¯r×n with
+R(F ) ⊆ R(F0) satisfying
+rank[F0A; CA; C; F0] = rank[ CA; C; F0],
+rank[sF0 − F0A; CA; C] = rank[ CA; C; F0], ∀s ∈ C, (3)
+where r ≤ ¯r ≤ n, such that an observer with order ¯r and arbitrary
+poles can be constructed to estimate z(t) asymptotically [8].
+Recently, functional observability has been found to bear c lose
+relationship with differential privacy and the privacy pro tection
+of system initial values from being inferred by adversarial
+eavesdroppers in [32, 33]. The underlying concept posits th at
+the initial value privacy z(0) = F x(0) is protected if and only
+if z(t) is not functionally observable.
+A related concept to functional observability is functional
+detectability [15], formally deﬁned as follows.
+Deﬁnition 3 (Functional detectability, [15]): System (2) (or
+the triple (A, C, F)) is said to be functionally detectable, if for
+any initial state x(0) and the zero input u(t) ≡ 0, we have y(t) =
+Cx(t) = 0 , ∀t ∈ [0, ∞) implies that limt→∞ z(t) = 0 .
+It was pointed out in [15] that a functional observer with sta ble
+poles exists that can track the functional state z(t) asymptotically,
+if and only if (A, C, F) is functionally detectable. Obviously,
+by taking F = In, functional detectability reduces to the
+conventional concept of detectability. While functional o bserv-
+ability implies functional detectability, the reverse dir ection is
+not always true. Moreover, (A, C, F) is functionally detectable
+if and only if there exists a matrix F0 ∈ R¯r×n satisfying
+rank[F0A; CA; C; F0] = rank[ CA; C; F0],
+rank[sF0 − F0A; CA; C] = rank[ CA; C; F0], ∀s ∈ C+0 , (4)
+where R(F ) ⊆ R (F0) and r ≤ ¯r ≤ n. However, since ¯r is
+undetermined and there may be inﬁnitely many s to be veriﬁed
+in the second equation of (4), ﬁnding an F0 satisfying the above
+equations is a challenging task [9, 15].
+The goal of this paper is to develop new characterizations
+for functional observability, functional detectability, and SFO
+(deﬁned in the sequel), and then leverage the obtained resul ts
+to the associated sensor placement problems, more precisel y,
+deploying the minimal sensors to achieve (structural) func tional
+observability.
+4
+IV. M ODAL FUNCTIONAL OBSERVABILITY AND NEW
+CRITERIA FOR FUNCTIONAL OBSERVABILITY /DETECTABILITY
+This section introduces a novel concept of modal functional
+observability, leading to new necessary and sufﬁcient cond itions
+for functional observability and functional detectabilit y.
+Suppose A has k distinct eigenvalues, and denote the ith one
+by λi, i = 1, ..., k. Let the invertible matrix T ∈ Cn×n transform
+A to its Jordan normal form J, i.e., T −1AT = J. Recall that
+the Jordan normal form J is a block diagonal matrix. Assume
+that the ith diagonal block of J, given by Ji, is associated
+with the eigenvalue λi. Note that each Ji may contain multiple
+Jordan blocks along its diagonal, each matrix of which has no n-
+zero super-diagonal entries all equal to 1, and main diagonal
+entries equal to λi. Let di be the dimension of Ji, and denote
+t(i, j) as the (d1 + · · · + di−1 + j)th column of T . Deﬁne
+Ti
+.= [t(i, 1), t(i, 2), · · · , t(i, di)]. Accordingly, Ti consists of di
+generalized eigenvectors of A associated with λi [34].
+Notice that J and T are typically complex-valued if some
+λi is. The real Jordan normal form is introduced here (see [34,
+Chap. 3.4] for details). Its immediate relevance is periphe ral to
+this section but proves invaluable in Section VII-C, facili tating
+the design of real-valued output matrices based on the propo sed
+modal functional observability. To this end, assume that A ∈
+Rn×n has 2kc distinct non-real eigenvalues and kr distinct real
+eigenvalues (k = 2kc + kr). There exists a real invertible matrix
+˜T ∈ Rn×n such that ˜T −1A ˜T = Jr is a real block diagonal
+matrix with each block being a real Jordan block . A real Jordan
+block is either identical to a complex Jordan block (corresp onding
+to a real eigenvalue λi), or is a block matrix, consisting of q
+2 × 2 blocks Di =
+[ ai bi
+−bi ai
+]
+on the main block diagonal and
+q − 1 blocks I2 on the block superdiagonal, corresponding to a
+pair of complex conjugate eigenvalue λi = ai + bii and λ∗i =
+ai − bii (ai, bi ∈ R), where q is the dimension of a Jordan block
+associated with λi (notice that λi may correspond to multiple
+Jordan blocks, and each one corresponds to a real Jordan bloc k),
+i is the imaginary unit, and (·)∗ takes the (entry-wisely) complex
+conjugate of a scalar or matrix.
+Let Ci = CT i and Fi = F Ti for i = 1, ..., k. It is easy to see
+that rankO(A, C) = rank O(T −1AT, CT ) = rank O(J, CT ).
+Building on (Ji, Ci, Fi), we introduce the concept of modal
+functional observability.
+Deﬁnition 4 (Modal functional observability): An eigenvalue
+λi of A is said to be modal functionally observable, if
+rank
+[ O(Ji, Ci)
+Fi
+]
+= rankO(Ji, Ci). (5)
+The concept of modal functional observability naturally gen-
+eralizes the conventional modal observability [35]. As can be
+seen, when Fi = Idi (or Fi = Ti), Deﬁnition 4 collapse to
+rankO(Ji, Ci) = di, i.e., the observability of (Ji, Ci). Since
+all other Jj’s have different eigenvalues from Ji, this is further
+equivalent to rank[J − λiI; CT ] = rank[ A − λiI; C] = n, which
+is exactly the deﬁnition of modal observability of λi.
+Lemma 2: When the algebraic multiplicity of λi equals its
+geometric multiplicity, λi is modal functionally observable, if
+and only if
+rank
+
+
+A − λiIn
+C
+F
+
+ = rank
+[ A − λiIn
+C
+]
+. (6)
+Proof: In the above-mentioned case, Ji = λiIdi . Con-
+sequently, O(Ji, Ci) = [ Ci; λiCi; · · · ; λdi−1i Ci], yielding
+rankO(Ji, Ci) = rank Ci. Similarly, rank[O(Ji, Ci); Fi] =
+rank[Ci; Fi]. As a result, (5) is equivalent to rank[Ci; Fi] =
+rankCi. Since different Jj (j = 1, ..., k) have different eigenval-
+ues, Jj − λiIdi is invertible if j ⁄= i. Due to the block-diagonal
+structure of J − λiI, it turns out that
+rank
+
+
+J − λiI
+CT
+F T
+
+ = ∑
+j⁄=i
+dj + rank
+
+
+Ji − λiIdi
+Ci
+Fi
+
+ ,
+where the equality comes from elementary row transformatio ns.
+Similarly, we have
+rank
+[ J − λiI
+CT
+]
+=
+∑
+j⁄=i
+dj + rank
+[ Ji − λiIdi
+Ci
+]
+.
+As J = T −1AT and Ji = λiIdi, it follows that rank[Ci; Fi] =
+rankCi, if and only if (6) holds. □
+The following two lemmas are required for further derivatio ns.
+The ﬁrst one reveals the relation between rankO(A, C) and∑k
+i=1 rankO(Ji, Ci).
+Lemma 3: [36, Lem 8] Let Pi ∈ Cdi×di be any invertible
+matrix, i = 1, ..., k. It holds that 2
+rankO(A, C) =
+k∑
+i=1
+rankO(PiJiP −1i , CiP −1i ).
+Lemma 4: Given M ∈ Cn×n, N ∈ Cr×n, if N eM tv = 0 for
+t ∈ [0, ∞) holds for all vectors v ∈ Cn, then N = 0. Moreover, if
+eig(M ) ⊆ C+0 , then limt→∞ N eM tv = 0 for all vectors v ∈ Cn
+implies that N = 0.
+Proof: Given a v ∈ Cn\{0n}, N eM tv = 0 for t ∈ [0, ∞)
+implies that v is in the unobservable subspace of (M, N ) (i.e.,
+the null space of O(M, N )) [37, page 42]. Since this condition
+holds for all v ∈ Cn, it follows that the unobservable subspace
+of (M, N ) is Cn. This only happens when N = 0 . Consider
+the second condition. For a given initial state v ∈ Cn, the state
+response with zero input of system (M, N ) is x(t) = eM tv.
+Since eig(M ) ⊆ C+0 , we have limt→∞ eM tv ⁄= 0 for any
+v ⁄= 0 . The condition limt→∞ N eM tv = 0 but limt→∞ x(t) =
+limt→∞ eM tv ⁄= 0 implies that v is in the undetectable subspace
+of (M, N ) [37, page 117]. Since this holds for all v ∈ Cn
+and eig(M ) ⊆ C+0 , it follows that the undetectable subspace
+of (M, N ) is Cn. This only happens when N = 0. □
+To reveal the connection between functional observabil-
+ity/detectability and modal functional observability, so me canon-
+ical observability decompositions are needed. Let (A, B, C, F )
+in (2) be transformed to its observable canonical form by the
+2The original [36, Lem 8] deals with the dual controllability matrix with a
+single input, where Ji comprises a single Jordan block. It is trivial to extend
+that result to the observability matrix with multiple input s when Ji comprises
+multiple Jordan blocks.
+5
+invertible matrix P ∈ Rn×n as follows
+[ ˙˜xo(t)
+˙˜x¯o(t)
+]
+=
+[ ˜Ao 0
+˜A21 ˜A¯o
+]
+/bracehtipupleft /bracehtipdownright/bracehtipdownleft /bracehtipupright
+P AP −1
+[
+˜xo(t)
+˜x¯o(t)
+]
++
+[ ˜Bo
+˜B¯o
+]
+/bracehtipupleft /bracehtipdownright/bracehtipdownleft /bracehtipupright
+P B
+u(t),
+y(t) =
+[ ˜Co 0 ]/bracehtipupleft /bracehtipdownright/bracehtipdownleft /bracehtipupright
+CP −1
+[
+˜xo(t)
+˜x¯o(t)
+]
+, z(t) =
+[ ˜Fo ˜F¯o ]/bracehtipupleft /bracehtipdownright/bracehtipdownleft /bracehtipupright
+F P −1
+[
+˜xo(t)
+˜x¯o(t)
+]
+,
+(7)
+where ˜xo(t) ∈ Rl and ˜x¯o(t) ∈ Rn−l represent the states of
+observable and unobservable subsystems of system (2) [37].
+Accordingly, ( ˜Ao, ˜Co) is observable. Moreover, introduce an
+(n − l) × (n − l) invertible Q such that
+Q ˜A¯oQ−1 =
+[ ˜A¯o1 0
+0 ˜A¯o2
+]
+, ˜F¯oQ−1 = [ ˜F¯o1, ˜F¯o2] (8)
+where ˜A¯o1 ∈ Cls×ls, ˜A¯o2 ∈ Clu×lu (0 ≤ ls, lu ≤ n − l),
+eig( ˜A¯o1) ⊆ C−, eig( ˜A¯o2) ⊆ C+0 , and ˜F¯o1 ( ˜F¯o2) has the same
+number of columns as ˜A¯o1 ( ˜A¯o2). It is easy to see that such Q
+always exists, for example, taking Q to be the invertible matrix
+that transforms ˜A¯o into its (real) Jordan normal form.
+It follows from (7) and (8) that there exists an invertible
+coordinate transformation ˜x(t) = ˜P x(t) = [ Il 00 Q ]P x(t)
+transforming system (2) into
+
+
+˙˜xo(t)
+˙˜x¯o1(t)
+˙˜x¯o2(t)
+
+ =
+
+
+˜Ao 0 0
+˜A211 ˜A¯o1 0
+˜A212 0 ˜A¯o2
+
+
+
+
+˜xo(t)
+˜x¯o1(t)
+˜x¯o2(t)
+
+ +
+
+
+˜Bo
+˜B¯o1
+˜B¯o2
+
+u(t),
+y(t) =
+[ ˜Co 0 0 ]
+
+
+˜xo(t)
+˜x¯o1(t)
+˜x¯o2(t)
+
+ ,
+z(t) =
+[ ˜Fo ˜F¯o1 ˜F¯o2 ]
+
+
+˜xo(t)
+˜x¯o1(t)
+˜x¯o2(t)
+
+ .
+(9)
+Proposition 1: Given a triple (A, C, F), the following state-
+ments hold:
+1) it is functionally detectable, if and only if ˜F¯o2 = 0 .
+2) it is functionally observable, if and only if ˜F¯o = 0.
+Proof: Since the transformation ˜x(t) = ˜P x(t) is invertible,
+it sufﬁces to consider system (9). We ﬁrst prove statement 1) .
+Necessity: consider the initial state ˜x(0) = [0 l×1; 0ls×1; ˜x¯o2(0)],
+where ˜x¯o2(0) ∈ Clu . It turns out that ∀˜x¯o2(0) ∈ Clu with the
+zero input u(t) ≡ 0, the system response y(t) = 0 and z(t) =
+˜F¯o2e ˜A¯o2t ˜x¯o2(0). From Lemma 4, to make limt→∞ z(t) = 0
+∀ ˜x¯o2(0) ∈ Clu , it is necessary that ˜F¯o2 = 0. Sufﬁciency: suppose
+an initial state ˜x(0) = [˜ xo(0); ˜x¯o1(0); ˜x¯o2(0)] corresponds to
+y(t) = ˜Coe ˜Aot ˜xo(0) = 0 , ∀t, with the zero input u(t) ≡ 0.
+Since ( ˜Ao, ˜Co) is observable, this is possible only if ˜xo(0) = 0 ,
+and thus ˜xo(t) = 0 , ∀t. As a result, ˜x¯o1(t) = e ˜A¯o1t ˜x¯o1(0), and
+it turns out that limt→∞ ˜x¯o1(t) = 0 as ˜A¯o1 is stable. Therefore,
+limt→∞ z(t) = lim t→∞ ¯F¯o1 ˜x¯o1(t) = 0 .
+Based on Lemma 4, statement 2) can be proved using a similar
+argument to statement 1). The details are thus omitted. □
+From Proposition 1, it is not difﬁcult to obtain the followin g
+Corollary 1. The equivalence of item i) and ii) of Corollary 1
+was originally proposed in [12, Theo. 5]. However, the PBH-
+like condition ([12, Theo. 4]) utilized therein, as demonst rated
+in Corollary 2, proves insufﬁcient for general systems. The
+equivalence of item ii) and item iii) of Corollary 1 was repor ted
+in [13]. Herein, due to its pivotal role in subsequent deriva tions,
+we provide a complete and self-contained proof for this coro llary.
+Corollary 1: The following statements are equivalent:
+i) The triple (A, C, F) is functionally observable.
+ii)
+rank
+[
+O(A, C)
+O(A, F )
+]
+= rankO(A, C).
+iii)
+rank
+[ O(A, C)
+F
+]
+= rankO(A, C).
+Proof: If condition iii) holds, then R(F ) ⊆ R (O(A, C)).
+From [37, Sec. 3.4], in the observable canonical form (7), P
+can be chosen such that its ﬁrst l rows span R(O(A, C)) and its
+last n − l rows can be arbitrary such that P is non-singular. As
+F = [ ˜Fo, ˜F¯o]P , we have ˜F¯o = 0 (noting that [ ˜Fo, ˜F¯o] = F P −1
+is unique), leading to the functional observability of (A, C, F) by
+Proposition 1. On the other hand, if ˜F¯o = 0, then F = [ ˜Fo, 0]P ,
+implying that R(F ) ⊆ R (O(A, C)), leading to condition iii).
+This proves condition i) ⇔ condition iii). Next, since R(F ) ⊆
+R(O(A, F )), condition ii) ⇒ condition iii) is obvious. If con-
+dition iii) holds, then there are Ei ∈ Rr×p, i = 0 , ..., n − 1,
+such that F = ∑n−1i=0 EiCAi. By the Cayley-Hamilton theorem,
+we have R(O(A, F )) ⊆ R(O(A, C)), implying condition iii) ⇒
+condition ii). □
+Remark 1: It should be noted that statement 2) of Proposition
+1 was ﬁrst reported in [12], which was derived from the existe nce
+condition (3) for reduced-order functional observers, and the
+proof of item ii) of Corollary 1 based on the Kalman decompo-
+sition given in (7) was reported in [23]. Here, we directly de rive
+these results from Deﬁnition 2.
+The following theorem gives necessary and sufﬁcient condi-
+tions for functional observability and functional detecta bility in
+terms of modal functional observability . It exhibits that modal
+functional observability severs a similar role to modal obs erv-
+ability w.r.t. observability and detectability.
+Theorem 1: Given a triple (A, C, F), the following statements
+hold:
+1) (A, C, F) is functionally observable, if and only if each
+eigenvalue λi ∈ eig(A) is modal functionally observable.
+2) (A, C, F) is functionally detectable, if and only if each
+unstable eigenvalue λi ∈ eig(A) ∩ C+0 is modal functionally
+observable.
+Proof: The proof is accomplished with a reﬁned decompo-
+sition on (J, CT, F T ), recalling that (J, CT, F T ) is the Jor-
+dan normal form transformed from (A, C, F) by the invertible
+coordination transformation x′(t) ֋ T −1x(t). For each block
+(Ji, Ci, Fi), let us do its canonical observability decomposition
+by a di × di invertible matrix Pi as
+
+
+Pi 0 0
+0 Ip 0
+0 0 Ir
+
+
+
+
+Ji
+Ci
+Fi
+
+ P −1i =
+
+
+˜Aoi 0
+˜A21i ˜A¯oi
+˜Coi 0
+˜Foi ˜F¯oi
+
+ , (10)
+where ( ˜Aoi, ˜Coi) is observable, and the remaining matrices have
+compatible dimensions. Without losing any generality, ass ume
+that λ1, ..., λk0−1 ∈ C−, and λk0 , ..., λk ∈ C+0 , 1 ≤ k0 ≤ k. Let
+6
+Q be an n × n permutation matrix such that
+Q
+
+
+˜Ao1 0 · · · 0 0
+˜A211 ˜A¯o1 · · · 0 0
+0 0 . . . 0 0
+0 0 · · · ˜Aok 0
+0 0 · · · ˜A21k ˜A¯ok
+
+ Q−1
+=
+
+
+˜Ao1 · · · 0 0 · · · 0
+... . . . ... ... . . . ...
+0 · · · ˜Aok 0 · · · 0
+˜A211 · · · 0 ˜A¯o1 · · · 0
+... . . . ... ... . . . ...
+0 · · · ˜A211k 0 · · · ˜A¯ok
+
+ .
+Then, the invertible coordination transformation x′′(t) ֋
+Qdiag{P1, ..., Pk}T −1x(t) transforms (A, C, F) into
+
+
+˜Ao1 · · · 0 0 · · · 0 · · · 0
+... . . . ... ... ... ...
+0 · · · ˜Aok 0 · · · 0 · · · 0
+˜A211 · · · 0 ˜A¯o1 · · · 0 · · · 0
+... . . . ... ... . . . ... · · · 0
+0 · · · 0 0 · · · ˜A¯ok0 · · · 0
+... . . . ... ... ... ... .. . ...
+0 · · · ˜A211k 0 · · · 0 · · · ˜A¯ok
+˜Co1 · · · ˜Cok 0 · · · 0 · · · 0
+˜Fo1 · · · ˜Fok ˜F¯o1 · · · ˜F¯ok0 · · · ˜F¯ok
+
+ . (11)
+Denote Ao = diag{ ˜Ao1, · · · , ˜Aok} and Co = [ ˜Co1, · · · , ˜Cok].
+Notice that different ˜Aoi have different eigenvalues ( i = 1, ..., k).
+By Lemma 3, we have rankO(Ao, Co) = ∑ki=1 O( ˜Aoi, ˜Coi) =∑k
+i=1 row( ˜Aoi) = row( Ao), meaning that (Ao, Co) is
+observable. Additionally, notice that ∑ki=1 O( ˜Aoi, ˜Coi) =∑k
+i=1 O(Ji, Ci) = rank O(A, C) (Lemma 3), implying that
+rankO(Ao, Co) = rank O(A, C). As a result, (Ao, Co) is exactly
+the observable part of (A, C) in its observable decomposition.
+By Proposition 1, (A, C, F) is functionally observable, if and
+only if ˜F¯oi = 0, ∀i ∈ [k]. From the observability decomposition
+(10), this is equivalent to that each eigenvalue of A is modal
+functionally observable.
+Furthermore, notice that diag{ ˜A¯o1, · · · , ˜A¯o(k0−1)} has only
+stable eigenvalues, and diag{ ˜A¯ok0 , · · · , ˜A¯ok} contains only un-
+stable eigenvalues. From Proposition 1, (A, C, F) is functionally
+detectable if and only if ˜F¯oi = 0 , for i = k0, ..., k. Using
+Corollary 1 on (Ji, Ci, Fi) yields that ¯F¯oi = 0 , if and only if
+the eigenvalue λi is modal functionally observable. This leads to
+the second statement. □
+To illustrate the system decompositions utilized in the pro of of
+Theorem 1, as well as the modal functional observability bas ed
+criterion, below we provide an example.
+Example 1: Consider a triple (A, C, F) as
+A =
+
+
+−1 0 0 0 1
+0 1 0 0 0
+0 1 1 0 0
+0 0 0 0 0
+0 0 0 0 −1
+
+ , C = [0, 1, 0, 1, 1];F = [1, 1, 0, 0, 0].
+There is a matrix T (given as follows) that transforms (A, C, F)
+to the Jordan normal form
+J =
+
+
+1 1 0 0 0
+0 1 0 0 0
+0 0 −1 1 0
+0 0 0 −1 0
+0 0 0 0 0
+
+ , T =
+[ 0 0 1 0 0
+0 1 0 0 0
+1 0 0 0 0
+0 0 0 0 1
+0 0 0 1 0
+]
+,
+CT = [0, 1, 0, 1, 1],
+F T = [0, 1, 1, 0, 0].
+It is easy to check that the eigenvalues λ = 1 and λ = 0 are
+modal functionally observable, while λ = −1 is not. By Theorem
+1, (A, C, F) is not functionally observable, but is functionally
+detectable. Furthermore, the observable canonical forms i n the
+right hand side of (10) corresponding to each Jordan block ar e
+respectively
+
+
+1 0
+1 1
+1 0
+1 0
+
+ ,
+
+
+−1 0
+1 −1
+1 0
+0 1
+
+ ,
+
+
+0
+1
+0
+
+ . (12)
+Accordingly, the decomposition corresponding to (11) read s
+
+
+−1 0 0 0 0
+0 1 0 0 0
+0 0 0 0 0
+1 0 0 −1 0
+0 1 0 0 1
+1 1 1 0 0
+0 1 0 1 0
+
+ ,
+which can be obtained by suitably permuting the blocks in (12 ). It
+follows that ˜F¯o1 ⁄= 0 and ˜F¯o2 = 0, which implies that (A, C, F)
+is not functionally observable, but is functionally detect able,
+consistent with Theorem 1.
+Notably, the proposed modal functional observability provides
+not only an eigenspace based characterization for function al
+observability, but also a complete criterion for functiona l de-
+tectability without using the observability decompositio n as in
+Proposition 1. Recall that the transformation matrix T only
+depends on the eigenspace of A, independent of C and F . This
+property facilitates greatly the design of measurement str ucture
+for a system to achieve functional observability. Say, by Th eorem
+1, to estimate a functional of state z(t) = F x(t), it sufﬁces
+to construct Ci with the same row(Ci) for each individual
+eigenvalue λi of A independently, such that (5) holds. Then,
+the output matrix C ensuring the functional observability of
+(A, C, F) can be constructed as C = [C1, ..., Ck]T −1 (to ensure
+that C is real, each non-real eigenvalue and its complex conjugate
+need to be considered together; see section VII-C). By accou nting
+only unstable eigenvalues, a similar idea can be adopted to c on-
+struct the measure structure to achieve functional detecta bility. In
+section VII-C, we shall show this approach can lead to a close d-
+form solution to the minimum number of sensors needed to
+achieve functional observability for systems with diagona lizable
+state matrices (i.e. the algebraic multiplicity equals the geometric
+one for each eigenvalue of A; called diagonalizable systems for
+short).
+Remark 2: It is worth mentioning that [12] initiated the idea of
+using the eigenspace of A to characterize functional observability.
+They used the inner product of C and Ti to deﬁne what they
+referred to as ‘a matrix C observing an eigenspace of A’.
+However, except when (Ji, Ci) is observable or Ji is diagonal,
+7
+rank[λiI − Ji; Ci] may fail to coincide with rankO(Ji, Ci). To
+see this, suppose Ji consists of ri Jordan blocks, and the jth
+block has dimension d′j, j = 1 , ..., ri. Let Ci[j] be jth column
+of Ci, and deﬁne lj
+.= d′1 + · · ·+ d′j−1 + 1 for j = 1, ..., ri, where
+l0 = 0. Ci[lj] is called the jth leading vector of Ci. We then have
+rank[λiI − Ji; Ci] = rank[ Ci[l1], Ci[l2], · · · , Ci[lri]] + (di − ri).
+From it, rank[λiI − Ji; Ci] only depends on the leading vectors
+of Ci, while the information of non-leading vectors may be
+lost. However, the non-leading vectors do affect rankO(Ji, Ci)
+especially when Ci[lj] = 0 for j = 1, ..., ri. Indeed, independent
+of Ci, we always have rank[λiI − Ji; Ci] ≥ rank(λiI − Ji) =
+di − ri. By contrast, depending on Ci, rankO(Ji, Ci) can range
+from 0 to di.
+By combining Lemma 2 with Theorem 1, we obtain the
+subsequent PBH-like condition for functional observabili ty and
+detectability of diagonalizable systems. This condition, previ-
+ously asserted as necessary and sufﬁcient for general syste ms
+as shown in [6, 12, 15, 38, 39], is in fact valid for a subclass o f
+systems. This has also been noticed by [17] recently.
+Corollary 2: Suppose that A is diagonalizable. The triple
+(A, C, F) is functionally observable if and only if
+rank
+
+
+A − λIn
+C
+F
+
+ = rank
+[
+A − λIn
+C
+]
+, ∀λ ∈ C. (13)
+Moreover, the triple (A, C, F) is functionally detectable if and
+only if
+rank
+
+
+A − λIn
+C
+F
+
+ = rank
+[
+A − λIn
+C
+]
+, ∀λ ∈ C+0 . (14)
+Proof: Notice that both sides of (13) and (14) lose full rank
+only when λ is an eigenvalue of A. The required result then
+follows immediately from Theorem 1 and Lemma 2. □
+It is worth mentioning that when A is not diagonalizable, con-
+ditions (13) and (14) are necessary for functional observab ility
+and functional detectability, respectively, which can be o btained
+from the proof for necessity parts of [12, Theo. 4] and [15, Th eo.
+1]. However, their sufﬁciency cannot be guaranteed. This ca n be
+seen from the following example.
+Example 2: Consider (A, C, F) with
+A =
+
+
+0 1 0
+0 0 1
+0 0 0
+
+, C = [ 0 0 1 ], F = [ 0 1 0 ] .
+Since eig(A) = {0}, and
+rank
+
+
+A
+C
+F
+
+ = 2 = rank
+[ A
+C
+]
+, (15)
+conditions (13) and (14) are satisﬁed for this system. Howev er,
+using Corollary 1, it can be validated that rank[O(A, C); F ] =
+2 ⁄= rank O(A, C) = 1 , implying that (A, C, F) is not func-
+tionally observable. Similarly, it follows from Theorem 1 t hat
+(A, C, F) is not functionally detectable.
+V. R EDEFINED STRUCTURAL FUNCTIONAL OBSERVABILITY
+In this section, we redeﬁne SFO rigorously, and highlight it s
+distinctions with structural observability.
+Before presenting the deﬁnition of SFO, some notations and
+concepts are introduced. Given a structured triple ( ¯A, ¯C, ¯F ),
+with ¯A ∈ { 0, ∗}n×n, ¯C ∈ { 0, ∗}p×n, and ¯F ∈ { 0, ∗}r×n,
+let (A, C, F) be a realization of ( ¯A, ¯C, ¯F ), i.e. A ∈ S ( ¯A),
+C ∈ S ( ¯C), and F ∈ S ( ¯F ). An algebraic variety is deﬁned as the
+set of solutions of a system of polynomial equations over rea l or
+complex numbers. A proper variety of Rn is an algebraic variety
+that is not the whole space Rn, which has Lebesgue measure
+zero in Rn. Let M be a matrix whose entries are polynomials
+of a set of free parameters θ. The generic rank of M , given by
+grankM , is the maximum rank that M can achieve as a function
+of θ, which equals the rank M can achieve for almost all values
+of θ [40, page 38]. Note that the generic rank only concerns how
+M is parameterized by θ, but is independent of a speciﬁc value
+of θ.
+Deﬁnition 5 (Redeﬁned SFO): Let θ be a vector with di-
+mension d consisting of the parameters for the ∗ entries in the
+triple ( ¯A, ¯C, ¯F ). ( ¯A, ¯C, ¯F ) is said to be structurally functionally
+observable (SFO), if there is a proper variety V of Rd, such that
+for all θ ∈ Rd\V (in other words, for almost all θ ∈ Rd), the cor-
+responding realizations (A, C, F) of ( ¯A, ¯C, ¯F ) are functionally
+observable.
+SFO generalizes the concept structural observability in [2 4].
+The latter is deﬁned for a structured pair ( ¯A, ¯C) as the property
+to allow an observable realization (see Section II-C). It is known
+that observability is a generic property in the sense that ei ther
+almost all realizations of ( ¯A, ¯C) are observable, or there is
+no observable realization. As shown in Corollary 3 of Sectio n
+VI, functional observability is still a generic property bu t with
+subtly different behaviors: given a triple ( ¯A, ¯C, ¯F ), either almost
+all its realizations are functionally observable, or almos t all its
+realizations are functionally unobservable. In particula r, unlike
+structural observability, the existence of a functionally observable
+realization of ( ¯A, ¯C, ¯F ) does not imply that almost all its
+realizations are functionally observable.
+The terminology SFO was ﬁrst proposed in [6]. It is important
+to note that [6] has deﬁned it as the property of ( ¯A, ¯C, ¯F ) to
+have a functionally observable realization. This deﬁnitio n cannot
+capture the embedded generic property and may lead to confus ing
+results, as shown in the following example.
+Example 3: Consider ( ¯A, ¯C, ¯F ) as
+¯A =
+
+
+0 0 0
+∗ 0 0
+0 0 0
+
+ , ¯C = [0, ∗, ∗] , ¯F = [0, ∗, 0] .
+There is a realization (A, C, F) of ( ¯A, ¯C, ¯F ) as
+A =
+
+
+0 0 0
+1 0 0
+0 0 0
+
+ , C = [0, 1, 0] , F = [0, 1, 0]
+that is functionally observable (via Corollary 1). However , assign
+parameters (a21, c12, c13, f12) to the ∗ entries of ( ¯A, ¯C, ¯F ) (the
+correspondence is indicated by the subscripts). We have
+[O(A, C); F ] =
+
+
+0 c12 c13
+a21c12 0 0
+0 0 0
+0 f12 0
+
+ .
+It is seen readily that for almost each (a21, c12, c13, f12) ∈ R4,
+rankO(A, C) = 2 < rank[O(A, C); F ] = 3 , implying that
+(A, C, F) is not functionally observable.
+8
+Example 3 also exhibits a dramatically different property
+between structural observability and SFO. That is, adding a d-
+ditional free entries (parameter c13 in this example) to [ ¯A, ¯C],
+corresponding to adding new connections/links among state s or
+from states to outputs, may break the property of being SFO,
+which can be explained by the proposed criteria for SFO in the
+next section. By contrast, such a phenomenon never happens f or
+structural observability.
+VI. C RITERIA FOR SFO
+Although a graph-theoretic necessary and sufﬁcient condit ion
+for SFO was given in [6], this condition was based on conditio n
+(13) that is applicable only to diagonalizable systems, the reby
+raising concerns about its validness for general systems. I n this
+section, we propose complete graph-theoretic characteriz ations
+for SFO. Our results also have some interesting implication for
+structural target controllability.
+A. Linking and independent walk family
+Given a structured triple ( ¯A, ¯C, ¯F ), the digraph G( ¯A, [ ¯C; ¯F ])
+is deﬁned in a similar way to G( ¯A, ¯C) (see Section II-C)
+by changing ¯C to the extended output matrix [ ¯C; ¯F ], and
+accordingly changing the output vertices Y = {y1, ..., yp} to
+{y1, ..., yp, yp+1, ..., yp+r}. The functional state set is deﬁned as
+XF
+.= {xi : ¯Fji ⁄= 0 , ∃j ∈ { 1, ..., r}}, corresponding to nonzero
+columns of ¯F , which is the set of state vertices that contribute
+directly to z(t).
+For the structured matrix pair ( ¯A, ¯C), construct a digraph
+D( ¯A, ¯C) = ( ¯X ∪ ¯Y , E ¯X ¯X ∪ E ¯X ¯Y ), where the vertex set ¯X =
+{xqj : j = 1 , ..., n, q = 0 , ..., n − 1}, ¯Y = {yqj : j = 1 , ..., p, q =
+1, ..., n}, and the edge set E ¯X ¯X = {(xqj , xq+1i ) : ¯Aij ⁄= 0 , q =
+0, ..., n − 2}, E ¯X ¯Y = {(xqj , yq+1i ) : ¯Cij ⁄= 0 , q = 0 , ..., n − 1}.
+An illustration of G( ¯A, ¯C) and D( ¯A, ¯C) can be found in Fig. 1.
+As can be seen, ¯X (resp. ¯Y ) is obtained from X (resp. Y ) by
+duplicating each of its vertices n times, and the qth copy of xj
+(yj) is xqj (yq+1j ), q = 0, 1, ..., n− 1. Correspondingly, each edge
+(xi, xj ) ∈ EXX corresponds to n − 1 edges (xqi , xq+1j ) ∈ E ¯X ¯X
+for q = 0, · · · , n−2, and (xi, yj) ∈ EXY corresponds to n edges
+(xqi , yq+1j ) ∈ E ¯X ¯Y for q = 0 , · · · , n − 1. Therefore, D( ¯A, ¯C)
+contains n(n + p) vertices and (n − 1)|EXX | + n|EXY | edges.
+Here, the subscript q indicates the order of a vertex in a path from
+xi to yj in G( ¯A, ¯C), such that any path from xi to yj with length
+l ≤ n (with possibly repeated vertices, which will be called a
+walk) in G( ¯A, ¯C) corresponds to a unique path from x0i to ylj
+in D( ¯A, ¯C) (for example, the path x2 → x1 → y1 in G( ¯A, ¯C)
+corresponds to x02 → x11 → y21 in D( ¯A, ¯C) in Fig. 1). Such an
+acyclic digraph is called the dynamic graph of ( ¯A, ¯C) [41].
+Let ˆY .= {ykj : j = 1 , ..., p + r, k = 1 , ..., n}. The dynamic
+digraph D( ¯A, [ ¯C; ¯F ]) on the vertex set ¯X ∪ ˆY is deﬁned in the
+same way as D( ¯A, ¯C) by considering [ ¯C; ¯F ] as the output matrix
+corresponding to the extended output composed by the concat e-
+nation of y and z. Deﬁne another dynamic graph D( ¯A, ¯C, ¯F ) .=
+( ¯X ∪ ¯Y ∪ ˜Y , E ¯X ¯X ∪ E ¯X ¯Y ∪ E ¯F ), with ˜Y = {y1p+1, ..., y1p+r},
+E ¯F = {(x0i , y1p+j) : ¯Fji ⁄= 0 }. Let ¯X0 = {x01, ..., x0n}. A linking
+in D( ¯A, ¯C) (resp., D( ¯A, [ ¯C; ¯F ]) and D( ¯A, ¯C, ¯F )) is a collection
+of vertex-disjoint paths from ¯X0 to ¯Y (resp. ˆY and ¯Y ∪ ˜Y ). The
+size of a linking is the number of paths it contains. A linking
+Fig. 1. An example of G( ¯A, ¯C) and its associated D( ¯A, ¯C), where ( ¯A, ¯C) is
+given in Example 4.
+with the maximum size among all linkings of D( ¯A, ¯C) is called
+a maximum linking .
+The following lemma states the equivalence of several expre s-
+sions for grankO( ¯A, ¯C). Notice that n−grankO( ¯A, ¯C) is exactly
+the generic dimension of unobservable subspaces of ( ¯A, ¯C).
+Lemma 5: [41] The following numbers are equal:
+i) grankO( ¯A, ¯C).
+ii) The maximum size of a set Xs ⊆ X that can be covered
+by a cactus conﬁguration in G( ¯A, ¯C).
+iii) The maximum size of a linking in D( ¯A, ¯C).
+Deﬁnition 6 (Independent walks): A walk w = (v0, v1, ..., vk)
+in G( ¯A, ¯C) is a path (with possibly repeated vertices) from a
+state vertex v0 ∈ X to an output vertex vk ∈ Y , where vi is
+the ith vertex of the path, i = 0 , ..., k, with k ≤ n the length
+of w. Two walks w = ( v0, v1, ..., vk) and w′ = ( v′0, v′1, ..., v′k′ )
+(k, k′ ≤ n) are independent if vi ⁄= v′i for i = 0, 1, ..., min{k, k′}.
+A collection of k independent walks in which any two walks
+are independent is called an independent walk family of size
+k. An independent walk family with the maximum size among
+all independent walk families of G( ¯A, ¯C) is called a maximum
+independent walk family.
+Deﬁnition 7: (Reached by an independent walk family) A
+vertex xi ∈ X is said to be reached by an independent walk
+family (in G( ¯A, ¯C)), if it is the initial vertex of a walk in this
+independent walk family.
+To illustrate the above deﬁnitions, consider G( ¯A, ¯C) in Fig.
+1. An independent walk family with size 3, for instance, could
+consist of three walks (x3, x2, x1, y1), (x2, x1, y1), and (x1, y1),
+which reaches vertices {x3, x2, x1}. By the constructions of
+G( ¯A, ¯C) and D( ¯A, ¯C), it follows that there is a one-to-one
+correspondence between an independent walk family of size
+k in G( ¯A, ¯C) and a linking of size k in D( ¯A, ¯C). Indeed,
+a linking consisting of 2 paths (x0i0 , x1i1 , · · · , xk1−1ik1 −1, yk1ik1 ) and
+(x0i′0 , x1i′1 , · · · , xk2−1i′k2 −1 , yk2i′k2 ) corresponds to an independent walkfamily with 2 independent walks (xi0 , xi1 , · · · , xik1 −1, yik1 ) and
+(xi′0 , xi′1 , · · · , xi′k2 −1 , yi′k2 ), where k1, k2 ≤ n. Hence, xi is
+reached by an independent walk family of size k in G( ¯A, ¯C),
+if and only if x0i is covered by a linking of size k in D( ¯A, ¯C).
+B. Characterizations of structural functional observabil ity
+Proposition 2: The following statements are equivalent:
+i) The triple ( ¯A, ¯C, ¯F ) is SFO.
+9
+ii) grank[O( ¯A, ¯C); ¯F ] = grank O( ¯A, ¯C).
+iii) grank[O( ¯A, ¯C); O( ¯A, ¯F )] = grank O( ¯A, ¯C).3
+Proof: ii)⇒i): Let the free parameters for the ∗ entries in
+( ¯A, ¯C, ¯F ) form a vector θ with dimension d. Suppose ii) holds.
+By the deﬁnition of generic rank, there is a proper variety
+V1 ⊆ Rd such that for all θ ∈ Rd\V1, rank[O(A, C); F ] =
+grank[O( ¯A, ¯C); ¯F ], where (A, C, F) is obtained by substi-
+tuting the value of θ into ( ¯A, ¯C, ¯F ). Similarly, there is a
+proper variety V2 ⊆ Rd such that for all θ ∈ Rd\V2,
+rankO(A, C) = grank O( ¯A, ¯C). Hence, for all θ ∈ Rd\(V2 ∪
+V1), rank[O(A, C); F ] − rankO(A, C) = grank[ O( ¯A, ¯C); ¯F ] −
+grankO( ¯A, ¯C) = 0 . This implies that, for all θ ∈ Rd\(V2 ∪ V1),
+the corresponding realizations (A, C, F) are functionally observ-
+able. Since V2 ∪ V1 is still a proper variety of Rd, by deﬁnition,
+( ¯A, ¯C, ¯F ) is SFO.
+i)⇒ii): If ii) does not hold, i.e., grank[O( ¯A, ¯C); ¯F ] >
+grankO( ¯A, ¯C), following an analysis as previous, it turns out
+that there is a property variety of Rd, given by V3, such that
+for all θ ∈ Rd\V3, rank[O(A, C); F ] = grank[ O( ¯A, ¯C); ¯F ] >
+grankO( ¯A, ¯C) = rank[ O(A, C)], i.e., the corresponding real-
+izations (A, C, F) are functionally unobservable. This indicates,
+there does not exist a proper variety V satisfying the condition
+in Deﬁnition 5 (as the set of θ making the associated realization
+(A, C, F) functionally observable must be a subset of V3). It
+follows that ( ¯A, ¯C, ¯F ) cannot be SFO by Deﬁnition 5.
+Consequently, i) is equivalent to ii). Notice that entries
+of [O( ¯A, ¯C); O( ¯A, ¯F )] are polynomials of θ. By changing
+[O( ¯A, ¯C); O( ¯A, ¯F )] to O( ¯A, [ ¯C; ¯F ]) and following a similar
+manner to i) ⇔ii), we can prove i) ⇔iii). Afterwards, ii) ⇔iii) is
+immediate. □
+From the proof of Proposition 2, it is easy to get the followin g
+corollary on the generic property of functional observabil ity.
+Corollary 3: Given a triple ( ¯A, ¯C, ¯F ), either almost all its
+realizations are functionally observable (when ( ¯A, ¯C, ¯F ) is SFO),
+or almost all its realizations are functionally unobservab le (when
+( ¯A, ¯C, ¯F ) is not SFO).
+By Proposition 2, verifying SFO can reduce to checking
+whether condition iii) thereof is satisﬁed. From Lemma 5,
+both grankO( ¯A, [ ¯C; ¯F ]) and grankO( ¯A, ¯C) can be attained by
+computing the maximum size of state vertices that can be cove red
+by a cactus conﬁguration or the maximum size of a linking
+in the respective graph. From [25, 41], these two numbers can
+be computed in polynomial time by resorting to some graph-
+theoretic algorithms, more precisely, algorithms for the m aximum
+weighted matching problem or the maximum ﬂow problem in
+O(n3) time (see [25, Theo. 6]). However, in the left-hand-side
+of condition iii), due to the fusion of ¯C and ¯F within a single
+output matrix [ ¯C; ¯F ] in grank[O( ¯A, ¯C); O( ¯A, ¯F )], the manner in
+which the inclusion of ¯F impacts the maximum size of cactus
+conﬁgurations in G( ¯A, [ ¯C; ¯F ]) remains implicit, obscuring the
+inﬂuence of the structure of ( ¯A, ¯C, ¯F ) on the SFO.
+In what follows, we look deeper into SFO. In particular, the
+following Proposition 3 transforms the SFO of ( ¯A, ¯C, ¯F ) into
+the SFO of ( ¯A, ¯C, ¯ei), where ¯ei ∈ {0, ∗}1×n and its ith entry is
+∗ and the rest zero, for each xi ∈ XF .
+Proposition 3: The triple ( ¯A, ¯C, ¯F ) is not SFO, if and only if
+3Notice that grank[O( ¯A, ¯C); O( ¯A, ¯F )] ≡ grankO( ¯A, [ ¯C; ¯F ]). Hence, iii) is
+equivalent to grankO( ¯A, [ ¯C; ¯F ]) = grank O( ¯A, ¯C). We adopt the expression
+of iii) because it is parallel to condition ii) of Corollary 1 .
+there exists a xi ∈ XF such that ( ¯A, ¯C, ¯ei) is not SFO, with ¯ei
+deﬁned above.
+Proof: The sufﬁciency is obvious, observing that when such xi
+exists, it holds that grank[O( ¯A, ¯C); ¯F ] ≥ grank[O( ¯A, ¯C); ¯ei] >
+grankO( ¯A, ¯C). Now suppose the triple ( ¯A, ¯C, ¯F ) is not SFO,
+i.e., grank[O( ¯A, ¯C); ¯F ] > grankO( ¯A, ¯C). Let ¯fi be the jth row
+of ¯F . By the property of generic rank function [40], there must
+be a j ∈ [r] such that grank[O( ¯A, ¯C); ¯fj] > grank O( ¯A, ¯C).
+Indeed, if this is not true, then one has grank[O( ¯A, ¯C); ¯F ] =
+grank O( ¯A, ¯C). Suppose do = grank O( ¯A, ¯C). Then, it holds
+that grank[O( ¯A, ¯C); ¯fj] = do + 1. This indicates there is a (do +
+1) × (do + 1) sub-matrix in [O( ¯A, ¯C); ¯fj] whose determinant is
+not identically zero. In addition, this sub-matrix must con tain
+a nonzero sub-row of ¯fj. Since all nonzero entries in ¯fj take
+independent values, it follows that there exists a xi ∈ X ¯fj such
+that grank[O( ¯A, ¯C); ¯ei] = do + 1 > grankO( ¯A, ¯C). That is,
+( ¯A, ¯C, ¯ei) is not SFO. This proves the necessity. □
+An interesting corollary of Proposition 3 is that SFO only
+depends on the set of states that contribute to z(t) (i.e., the indices
+of nonzero columns in ¯F ), but independent of how these states
+are linearly combined.
+Let do, ¯do, and ˜do be the maximum size of a linking
+in D( ¯A, ¯C), D( ¯A, ¯C, ¯ei), and D( ¯A, [ ¯C; ¯ei]), respectively, i ∈
+{1, ..., n}, recalling D( ¯A, ¯C, ¯ei) .= ( ¯X ∪ ¯Y ∪ { y1p+1}, E ¯X ¯X ∪
+E ¯X ¯Y ∪ { (x0i , y1p+1)}). By Lemma 5, do = grank O( ¯A, ¯C),
+and equals the size of a maximum independent walk family
+of G( ¯A, ¯C). Below, Proposition 4 establishes the relation be-
+tween grank[O( ¯A, ¯C); ¯ei] and the maximum size of a linking
+in D( ¯A, ¯C, ¯ei).
+Proposition 4: grank[O( ¯A, ¯C); ¯ei] = ¯do.
+Proof: By the construction of dynamic graphs, D( ¯A, ¯C, ¯ei)
+is obtained from D( ¯A, ¯C) by adding an edge (x0i , y1p+1) to the
+vertex y1p+1. We therefore have do ≤ ¯do ≤ do + 1 . By [25,
+Lem 1 and Theo 2], we have grank[O( ¯A, ¯C); ¯ei] ≤ ¯do. Next, we
+consider two cases. If ¯do = do, since do ≤ grank[O( ¯A, ¯C); ¯ei] ≤¯do, we have grank[O( ¯A, ¯C); ¯ei] = ¯do = grank O( ¯A, ¯C). If¯do = do + 1, since D( ¯A, ¯C, ¯ei) is a subgraph of D( ¯A, [ ¯C; ¯ei]),
+we have ˜do ≥ ¯do = do + 1. Note that ˜do = grank O( ¯A, [ ¯C; ¯ei])
+by Lemma 5. It follows that grankO( ¯A, [ ¯C; ¯ei]) ≥ do + 1 >
+grankO( ¯A, ¯C), which indicates that ( ¯A, ¯C, ¯ei) is not SFO. By
+Proposition 2, we have grank[O( ¯A, ¯C); ¯ei] > grankO( ¯A, ¯C) =
+do. This restricts that grank[O( ¯A, ¯C); ¯ei] = do + 1 = ¯do, as
+grank[O( ¯A, ¯C); ¯ei] ≤ grankO( ¯A, ¯C) + 1 . Therefore, in both
+cases, grank[O( ¯A, ¯C); ¯ei] = ¯do. □
+Remark 3: It is important to note that, in general, a linking
+terminated at ¯Y ′ ⊆ ¯Y in D( ¯A, ¯C) does not imply that the
+columns of O( ¯A, ¯C) corresponding to ¯Y ′ have full column rank
+generically, even when each sensor measures only one state. In
+addition, the maximum size of a linking in D( ¯A, ¯C, ¯F ) can only
+upper bound grank[O( ¯A, ¯C); ¯F ], with no guarantee to coincide
+with grank[O( ¯A, ¯C); ¯F ] (see [25]). It is still open whether
+grank[O( ¯A, ¯C); ¯F ] can be computed in polynomial time [25, 26].
+The key to establishing the equality in Proposition 4 when ¯F = ¯ei
+is the utilization of Proposition 2, i.e., the equivalence b etween
+conditions ii) and iii) thereof.
+Based on Propositions 2, 3, and 4, we give a complete graph-
+theoretic characterization of SFO as follows.
+Theorem 2 (Graph-theoretic characterization of SFO): The
+triple ( ¯A, ¯C, ¯F ) is SFO, if and only if the functional state set XF
+10
+does not contain any vertex that is not reached by a maximum
+independent walk family in G( ¯A, ¯C). In other words, ( ¯A, ¯C, ¯F )
+is SFO, if and only if each state vertex xi ∈ XF is reached by
+every maximum independent walk family (of size do) in G( ¯A, ¯C),
+or put differently, x0i for each xi ∈ XF is covered by every
+maximum linking of D( ¯A, ¯C).
+Proof: Necessity: Suppose there is a xi ∈ XF such that x0i is
+not covered by a maximum linking L of D( ¯A, ¯C). Then, by the
+construction of D( ¯A, ¯C, ¯ei), the size of a maximum linking of
+D( ¯A, ¯C, ¯ei) is do+1 (indeed, L∪{(x0i , y1p+1)} forms a maximum
+linking of size do+1). From Proposition 4, grank[O( ¯A, ¯C); ¯ei] =
+do + 1 > grankO( ¯A, ¯C), indicting that ( ¯A, ¯C, ¯F ) is not SFO
+according to Proposition 3.
+Sufﬁciency: For any xi ∈ XF , since x0i ∈ XF is covered by
+every maximum linking of D( ¯A, ¯C), it follows that the maximum
+size of a linking in D( ¯A, ¯C, ¯ei) is still do. Indeed, if there is a
+linking of size do + 1 in D( ¯A, ¯C, ¯ei), given by L′, then the path
+(x0i , y1p+1) must be contained in L′ (otherwise the maximum size
+of a linking in D( ¯A, ¯C) is do + 1). As a result, the linking L
+obtained from L′ after removing the path (x0i , y1p+1) is of size do,
+which does not cover x0i , causing a contradiction. By Proposition
+4, grank[O( ¯A, ¯C); ¯ei] = do = grank O( ¯A, ¯C), indicting that
+( ¯A, ¯C, ¯ei) is SFO. Since this is true for each xi ∈ XF , ( ¯A, ¯C, ¯F )
+is SFO by Proposition 3. □
+Notice that when XF = X, each xi ∈ X is reached by every
+maximum independent walk family in G( ¯A, ¯C), if and only if
+any maximum independent walk family in G( ¯A, ¯C) reaches all
+state vertices, i.e., do = n, which reduces to exactly the condition
+in Lemma 1 for structural observability.
+Remark 4: It is worth noting that a set Xs ⊆ X of size do
+covered by a cactus conﬁguration must be reached by a maximum
+independent walk family, while the converse is not necessar ily
+true (see Example 4). Hence, even though a vertex xi ∈ X
+is covered by every cactus conﬁguration that covers do state
+vertices, it does not imply that ( ¯A, ¯C, ¯ei) is SFO.
+Remark 5: To verify whether a given xi ∈ XF is reached by
+every maximum independent walk family of G( ¯A, ¯C), we can
+determine the maximum size of a linking from ¯X0\{x0i } to ¯Y
+in D( ¯A, ¯C). If the size is do, meaning a linking of size do not
+covering x0i exists, the answer is NO; otherwise, YES.
+Remark 6: From Theorem 2, adding a link e ∈ X × (X ∪ Y )
+to G( ¯A, ¯C) may either increase do or generate new maximum
+independent walk families, making a vertex xi ∈ XF that is
+reached by every maximum independent walk family in G( ¯A, ¯C)
+not necessarily satisfy the same property in the new system
+digraph. This is consistent with the fact that adding new lin ks to
+G( ¯A, ¯C) may destroy SFO (see Example 3).
+Under the additional assumptions that each row of ¯F has only
+one ∗ entry and grank[ ¯C; ¯F ] = p + r, it is claimed in [6] that
+( ¯A, ¯C, ¯F ) is SFO, if and only if a) every state vertex xi ∈ XF is
+output-reachable, and b) no xi ∈ XF is contained in a minimal
+dilation of G( ¯A, ¯C) (labeled conditions a) and b) ). Here, a subset
+X ′ ⊆ X is a dilation of G( ¯A, ¯C) if |T (X ′)| < |X|, where
+T (X ′) = {v : (x, v) ∈ EXX ∪ EXY , x ∈ X ′} is the set of out-
+neighbors of vertices in X ′, and a dilation X ′ is minimal if any
+proper subset X ′′ ⫋ X ′ is not a dilation. The following example
+shows that these conditions are not sufﬁcient for SFO.
+Example 4: Consider a pair ( ¯A, ¯C) as follows
+¯A =
+
+
+0 ∗ 0 0 0 0 0
+0 0 ∗ 0 0 ∗ 0
+0 0 0 ∗ 0 0 0
+0 0 0 0 ∗ 0 0
+0 0 0 0 0 0 0
+0 0 0 0 0 0 ∗
+0 0 0 0 0 0 0
+
+ , ¯C = [∗, 0, 0, 0, 0, 0, 0],
+whose associated G( ¯A, ¯C) is given in Fig. 1. It is easy to see
+that every state vertex is output-reachable, and there is on ly
+one minimal dilation {x3, x6}. Hence, the criterion in [6] gives
+that ( ¯A, ¯C, ¯ei) is SFO for each i ∈ { 1, 2, 4, 5, 7}. However,
+using Proposition 2 directly yields that ( ¯A, ¯C, ¯ei) is not SFO for
+i ∈ { 4, 7}. Now let us use Theorem 2 to reproduce this result.
+Notice that the maximum size of a state set that is covered by a
+cactus conﬁguration is 5, and there is only one such set, being
+{x1, x2, ..., x5} (covered by an output-stem (x5, x4, ..., x1, y1)).
+This set corresponds to a maximum independent walk family of
+G( ¯A, ¯C), consisting of 5 independent paths (x1, y1), (x2, x1, y1),
+(x3, x2, x1, y1), (x4, x3, x2, x1, y1), and (x5, x4, x3, x2, x1, y1),
+which does not reach {x6, x7}. Hence, Theorem 2 yields that
+( ¯A, ¯C, ¯ei) is not SFO for i ∈ { 6, 7}. Moreover, there is an-
+other maximum independent walk family consisting of 5 paths
+(x1, y1), (x2, x1, y1), (x6, x2, x1, y1), (x7, x6, x2, x1, y1), and
+(x5, x4, x3, x2, x1, y1), which does not reach {x3, x4}. As a
+result, ( ¯A, ¯C, ¯ei) is not SFO for i ∈ { 3, 4} from Theorem 2.
+Furthermore, it can be veriﬁed that every maximum indepen-
+dent walk family of G( ¯A, ¯C) reaches {x1, x2, x5}. Therefore,
+( ¯A, ¯C, ¯ei) is SFO for i ∈ { 1, 2, 5}, which can also be validated
+via Proposition 2.
+The following corollary, derived from Theorem 2, shows that
+the above-mentioned two conditions, namely, conditions a) and
+b), are necessary for SFO. Note that this necessity does not
+require any additional constraint on the structure of ¯C and ¯F .
+Corollary 4: If ( ¯A, ¯C, ¯F ) is SFO, then every state vertex
+xi ∈ XF is output-reachable, and no xi ∈ XF is contained
+in a minimal dilation of G( ¯A, ¯C).
+Proof: If there is a state xi ∈ XF that is not output-
+reachable, xi cannot be reached by any independent walk family
+of G( ¯A, ¯C). By Theorem 2, ( ¯A, ¯C, ¯F ) is not SFO. Now consider
+the second condition. Assume that ( ¯A, ¯C, ¯F ) is SFO. Suppose
+xi ∈ XF is contained in some minimal dilation X ′. Since X ′ is a
+minimal dilation, by deﬁnition, for any proper subset X ′′ ⫋ X ′,
+|T (X ′′)| ≥ | X ′′| and |T (X ′)| < |X ′|. It turns out that for any
+x ∈ X ′, |T (X ′\{x})| = |X ′| − 1 and therefore T (X ′\{x}) =
+T (X ′). Consider any Xs ⊆ T (X ′) and any x ∈ X ′. Deﬁne¯T (Xs) = {¯x ∈ X ′\{x} : (¯x, x′) ∈ EXX ∪ EXY , x′ ∈ Xs} as
+the set of in-neighbors of Xs that belong to X ′\{x}. We are to
+show that | ¯T (Xs)| ≥ | Xs|. Indeed, when T ({x}) ∩ Xs ⁄= ∅, if
+| ¯T (Xs)| < |Xs|, then |T (X ′\({x} ∪ ¯T (Xs)))| = |T (X ′)\Xs| =
+|T (X ′)| − |Xs| = |T (X ′\{x})| − |Xs| < |X ′\{x}| − |¯T (Xs)| =
+|X ′\({x} ∪ ¯T (Xs))|, implying that X ′\({x} ∪ ¯T (Xs)) is a dila-
+tion, contradicting the fact that X ′ is a minimal dilation. When
+T ({x}) ∩ Xs = ∅, if | ¯T (Xs)| < |Xs|, then |T (X ′\ ¯T (Xs))| =
+|T (X ′)\Xs| = |T (X ′)|−| Xs| < |X ′|−| ¯T (Xs)| = |X ′\ ¯T (Xs)|,
+meaning that X ′\ ¯T (Xs) is dilation, again causing a contradic-
+tion.
+Let ¯X ′0 = {x0j : xj ∈ X ′} and ¯X ′1 = {x1j : xj ∈ T (X ′)}.
+11
+Let L be a maximum linking of D( ¯A, ¯C) that covers x0i , and¯XL be the set of vertices in L. Deﬁne ¯X ′′0 = ¯XL ∩ ¯X ′0 and¯X ′′1 = ¯XL ∩ ¯X ′1. Then, | ¯X ′′0 | = | ¯X ′′1 |. It follows from the above
+analysis and the correspondence between G( ¯A, ¯C) and D( ¯A, ¯C)
+that there are | ¯X ′′1 | disjoint edges between ¯X ′0\{x0i } and ¯X ′′1 .
+It is not difﬁcult to see that, by changing the edges between
+¯X ′′0 and ¯X ′′1 in L to the edges between ¯X ′0\{x0i } and ¯X ′′1 , a
+new maximum linking L′ can be obtained from L that does not
+cover x0i . This contradicts the fact that every maximum linking
+of D( ¯A, ¯C) covers x0i from Theorem 2. Hence, ( ¯A, ¯C, ¯F ) cannot
+be SFO. □
+Remark 7: Recently, [42] introduced the concept structurally
+diagonalizable systems , referring to structured systems of which
+almost all realizations are diagonalizable (for detailed c haracter-
+izations, see [42, Sec. 4]). They demonstrated that conditi ons a)
+and b) obtained in [6] are actually necessary and sufﬁcient f or
+the SFO of this class of systems.
+Corollary 5: If every state xi ∈ X has a self-loop, then
+( ¯A, ¯C, ¯F ) is SFO, if and only if each state xi ∈ XF is output-
+reachable in G( ¯A, ¯C).
+Proof: The necessity of output-reachability comes from Corol-
+lary 4. For sufﬁciency, let Xre ⊆ X be the set of output-reachable
+state vertices. Denote G′( ¯A, ¯C) the subgraph of G( ¯A, ¯C) induced
+by Xre ∪ Y . It turns out that grankO( ¯A, ¯C) equals |Xre| from
+Lemma 5. Hence, each xi ∈ Xre is reached by every maximum
+independent walk family with size |Xre| of G′( ¯A, ¯C). Since
+XF ⊆ Xre, ( ¯A, ¯C, ¯F ) is SFO from Theorem 2. □
+C. Implication to structural target controllability
+A triple (A, B, F ) is said to be output controllable, if for
+any pair z0, zf ∈ Rr, there exists a ﬁnite time T and an
+input u(t) over [0, T ] that steers z(t) = F x(t) from the initial
+vector z0 = F x(0) to the ﬁnal vector zf = F x(T ) [43]. Let
+Q(A, B) = [ B, AB, ..., An−1B] be the controllability matrix of
+(A, B). (A, B, F ) is output controllable, if and only if F Q(A, B)
+has full row rank [25]. A structured triple ( ¯A, ¯B, ¯F ) is said to
+be structurally output controllable, if there exists a real ization
+of it that is output controllable [25]. Particularly, when ¯F = ¯IS,
+S ⊆ [n] ( ¯I is an n×n diagonal matrix with diagonal entries being
+∗), if ( ¯A, ¯B, ¯F ) is structurally output controllable, ( ¯A, ¯B, S)
+is called structurally target controllable [3]. Unlike the duality
+between controllability and observability, criteria for ( structural)
+output/target controllability and SFO are not simply dual t o each
+other; that is, the (structural) output controllability of (A, B, F )
+is not equivalent to the (structural) functional observabi lity of
+(A⊺, B⊺, F ).4 Specially, our results show that SFO can be
+veriﬁed in polynomial time, while the same veriﬁcation prob lem
+for structural output/target controllability is a long-st anding open
+problem [25, 26]. Interestingly, our results reveal that a s pecial
+case of the latter problem is polynomially solvable.
+Corollary 6 (Polynomially veriﬁable structural target control-
+lability): There is a polynomial-time algorithm that can verify
+whether a triple ( ¯A, ¯B, S) is structurally target controllable for
+any S ⊆ [n] with |S| = n − 1.
+Proof: Notice that ( ¯A, ¯B, S) is structurally target controllable,
+if and only if ¯ISQ( ¯A, ¯B) = Q( ¯A, ¯B)S has full row generic
+4We remark that some weak and strong duality between output co ntrollability
+and functional observability (i.e., one implies the other u nder certain conditions)
+are recently established in [44].
+rank [3]. Therefore, it sufﬁces to prove that grankQ( ¯A, ¯B)S can
+be determined in polynomial time. Let i = [ n]\S. Notice that
+grank[Q( ¯A, ¯B), ¯e⊺i ] = 1 + grank Q( ¯A, ¯B)S. By transposing all
+matrices in Proposition 4, we can determine grank[Q( ¯A, ¯B), ¯e⊺i ]
+in polynomial time by computing the maximum size of a linking
+in the dynamic graph associated with [Q( ¯A, ¯B), ¯e⊺i ]. As a result,
+grankQ( ¯A, ¯B)S can be determined in polynomial time. □
+Remark 8: When S ⊆ [n] is such that |S| ≤ n−2, upon deﬁn-
+ing ¯S = [n]\S, we can determine whether grank[Q( ¯A, ¯B), ¯I ⊺¯S] >
+grankQ( ¯A, ¯B) by verifying the SFO of ( ¯A⊺, ¯B⊺, I ¯S) in poly-
+nomial time. In particular, if ( ¯A⊺, ¯B⊺, I ¯S) is not SFO, then
+grank[Q( ¯A, ¯B), ¯I ⊺¯S] > grankQ( ¯A, ¯B). It follows that whether
+grank[Q( ¯A, ¯B), ¯I ⊺¯S] is within the range [grankQ( ¯A, ¯B) +
+1, grankQ( ¯A, ¯B) + | ¯S|] can be determined in polynomial time.
+With grankQ( ¯A, ¯B)S = grank[ Q( ¯A, ¯B), ¯I ⊺¯S] − | ¯S|, we obtain
+that determining whether grankQ( ¯A, ¯B)S is within the range
+[grankQ( ¯A, ¯B) + 1 − | ¯S|, grankQ( ¯A, ¯B)] is achievable in poly-
+nomial time. Additionally, observe that grank[O( ¯A, ¯C); ¯I ¯S] =
+grank[Q( ¯A⊺, ¯C⊺), ¯I ⊺¯S] = grank Q( ¯A⊺, ¯C⊺)S + | ¯S|. The previous
+results hold for computing grank[O( ¯A, ¯C); ¯I ¯S] when verifying
+SFO via condition ii) of Proposition 2.
+VII. M INIMAL SENSOR PLACEMENT FOR FUNCTIONAL
+OBSERVABILITY
+In this section, we consider the problems of selecting the mi n-
+imum number of sensors from a prior set of possible placement s
+to achieve functional observability and SFO. These problem s may
+be desirable when one aims to estimate linear functions of st ates
+while minimizing sensor usage; see [21] for an application o f
+these problems in the load frequency control of power system s
+using distributed functional observers. Based on the previ ous
+results, we will prove their NP-hardness and propose efﬁcie nt
+algorithms to ﬁnd approximation solutions. We also identif y a
+special case that allows a closed-form solution, which gene ralizes
+the maximum geometric multiplicity result for the unconstr ained
+minimal observability problem [45].
+Let C ∈ Rp×n be the output matrix corresponding to the avail-
+able sensor set. Formally, given a triple (A, C, F) (( ¯A, ¯C, ¯F )),
+the minimal sensor placement problems for functional obser v-
+ability and SFO can be respectively formulated as
+min
+S⊆[p]
+|S|
+s.t. (A, CS, F ) functionally observable
+(P1)
+and
+min
+S⊆[p]
+|S|
+s.t. ( ¯A, ¯CS, ¯F ) structurally functionally observable . (P2)
+A. Computational complexity
+Proposition 5: Both problems P1 and P2 are NP-hard, even
+with dedicated sensors, i.e., there is only one nonzero entr y (resp.
+∗ entry) in each row of C (resp. ¯C).
+Proof: By setting F = In, P1 collapses to the minimal
+observability problem considered in [36], which is shown to be
+NP-hard even when C = In. Therefore, P1 is NP-hard even with
+dedicated sensors.
+To prove the NP-hardness of P2, we reduce the set cover
+problem to an instance of P2. See Fig. 2 for illustration of such
+12
+Fig. 2. Illustration of the construction from a set cover pro blem to an instance
+of P2. Filled nodes represent functional states. Since each stat e has a dedicated
+sensor, only G( ¯A) is present.
+a reduction. Given a ground set S = {1, 2, ..., r} and a collection
+of its subsets Si ⊆ S, i = 1 , ..., p, the set cover problem
+seeks to determine a subset I ⊆ [p] with the minimum |I|
+such that ⋃i∈I Si = S. This problem is NP-hard [46]. Consider
+the aforementioned set cover problem with ground set S and
+its p subsets Si ⊆ S. Without loss of generality, assume that⋃
+i∈[p] Si = S. Construct G( ¯A, ¯C) with X = {x1, ..., xr+p},
+Y = {y1, ..., yr+p}, EXX = {(xj, xr+i) : j ∈ Si, i =
+1, ..., p, j = 1 , ..., r)} ∪ { (xi, xi) : i = 1 , ..., r + p}, and
+EXY = {(xi, yi) : i = 1 , ..., r + p}. In other words, each state
+vertex of ( ¯A, ¯C) has a self-loop, there is an edge (xj, xr+i) if
+j ∈ Si, and a dedicated sensor is available for each state. Let the
+functional state set XF = {x1, ..., xr} (i.e., ¯F = col{¯e1, ..., ¯er}).
+It is claimed that, there is a I ⊆ [p] with |I| ≤ k such that⋃
+i∈I Si = S, if and only if P2 on ( ¯A, ¯C, ¯F ) has a solution J ⊆
+[r+p] with |J | ≤ k. For the one direction, if a set |I| ≤ k makes⋃
+i∈I Si = S, then J = {r + i : i ∈ I} makes every xi ∈ XF
+output reachable in G( ¯A, ¯CJ ). By Corollary 5, ( ¯A, ¯CJ , ¯F ) is
+SFO with |J | ≤ k. For the other direction, suppose J ⊆ [r + p]
+with |J | ≤ k makes ( ¯A, ¯CJ , ¯F ) SFO. From Corollary 5, this
+requires every xi ∈ XF to be output-reachable in G( ¯A, ¯CJ ),
+equivalently, ⋃i∈J ,i>r Si ∪ {i : i ∈ J , i ≤ r} = S. For any
+i ∈ J with i ≤ r, let l(i) ∈ [p] be such that i ∈ Sl(i). Deﬁne
+I = {i − r : i ∈ J , i > r } ∪ {l(i) : i ∈ J , i ≤ r}. It follows that⋃
+i∈I Si = S, i.e., there is a solution to the set cover problem
+with |I| ≤ |J | ≤ k. Since deciding whether there is a solution
+I with |I| ≤ k for the set cover problem is NP-complete, we
+conclude that P2 is NP-hard. □
+A problem akin to P1, labeled as P3, involves identifying the
+smallest subset of sensors S ⊆ [p] that renders the resulting
+(A, CS, F ) functionally detectable. Notably, when F is the
+identity matrix In and A lacks stable eigenvalues, this problem
+reduces to the minimal observability problem within the cla ss
+of systems devoid of stable eigenvalues, which is shown to be
+NP-hard in [36]. Hence, P3 is also NP-hard.
+Remark 9: When ¯F = ¯In, P2 reduces to the problem of
+determining the minimum number of dedicated sensors to achi eve
+structural observability . Remarkably, this problem admits a
+polynomial-time solution [28] (this does not contradict th e NP-
+hardness of P1 when F = In, since structural observability
+concerns generic system realizations rather than every realization
+as in P1). The NP-hardness of P2 with dedicated sensors sharply
+contrasts with this fact.
+B. Supermodularity and greedy heuristics
+Despite the NP-hardness, in the following, by establishing
+supermodular functions that map the possible selections to some
+scalar functions, we show problems P1 and P2 can be ap-
+proximated using greedy heuristics with provable guarante es.
+Please refer to Section II-D for deﬁnitions of supermodular ity
+and monotonicity.
+Proposition 6: Deﬁne set functions f (S) .=
+rank[O(A, CS); F ] − rankO(A, CS ) and ¯f (S) .=
+rank[O(A, [CS; F ])] − rankO(A, CS ), S ⊆ [p]. Both f (S) and¯f (S) are supermodular and monotone decreasing.
+Proof: Note rank[O(A, CS ); F ] = rank O(A, CS) + rankF −
+dim(R(O(A, CS )) ∩ R(F )). This yields
+f (S) = rank F − dim(R(O(A, CS )) ∩ R(F )).
+Since rankF is constant and dim(R(O(A, CS )) ∩ R (F )) in-
+creases with S, f (S) is monotone decreasing. Moreover, to show
+the supermodularity of f (S), it sufﬁces to show the submodu-
+larity of dim(R(O(A, CS )) ∩ R(F )). For any a ∈ [p], deﬁne
+the gain function ha(S) = dim( R(O(A, CS∪{a})) ∩ R(F )) −
+dim(R(O(A, CS )) ∩ R(F )). Observing that
+dim(R(O(A, CS∪{a})) ∩ R(F ))
+=dim(R(O(A, CS )) ∩ R(F ))
++ dim(R(O(A, C{a})) ∩ R(F ))
+− dim(R(O(A, CS )) ∩ R(F ) ∩ O(A, C{a})),
+we have
+ha(S) = dim( R(O(A, C{a})) ∩ R(F ))
+− dim(R(O(A, CS )) ∩ R(F ) ∩ O(A, C{a})).
+Notice that the ﬁrst term in the above ha(S) is constant and
+the second term increases with S since dim(O(A, CS)) does.
+Hence, ha(S) deceases with S. This proves the submodularity
+of dim(R(O(A, CS )) ∩ R (F )) on S ⊆ [p], leading to the
+supermodularity of f (S).
+Furthermore, observe that ¯f (S) = rank[ O(A, CS ); O(A, F )]−
+rankO(A, CS). We can change R(F ) to R(O(A, F )), and it is
+readily seen that the remaining arguments of the above proof are
+still valid for ¯f (S). □
+Remark 10: From [30, Theo. 7], both rankO(A, CS ) and
+rank[O(A, [CS; F ])] are submodular on S ⊆ [p]. However,
+there is generally no guarantee that the difference of the tw o
+submodular functions is supermodular (or submodular). In t his
+sense, Proposition 6 is not a trivial extension of [30, Theo. 7].
+Proposition 7: Deﬁne set functions g(S) .=
+grank[O( ¯A, ¯CS); ¯F ] − grankO( ¯A, ¯CS) and ¯g(S) .=
+grank[O( ¯A, [ ¯CS; ¯F ])] − grankO( ¯A, ¯CS), S ⊆ [p]. Then,
+both g(S) and ¯g(S) are supermodular and monotone decreasing.
+Proof: Let the free parameters in ( ¯A, ¯C, ¯F ) form a vector θ
+with dimension d. By regarding ¯CS as ¯C in the proof of i) ⇒ii)
+in Proposition 2, for each S ⊆ [p], we get that there is a proper
+variety of Rd, denoted by VS, such that for all θ ∈ Rd\VS,
+rank[O(A, CS); F ] − rankO(A, CS) = grank[ O( ¯A, ¯CS); ¯F ] −
+grankO( ¯A, ¯CS) = g(S), where (A, CS, F ) is obtained by
+substituting the value of θ into ( ¯A, ¯CS, ¯F ) (notice that this
+property holds regardless of whether ( ¯A, ¯CS, ¯F ) is SFO or
+not). Deﬁne V0
+.= ⋃S⊆[p] VS. Since V0 is the union
+of a ﬁnite number (at most 2p) of proper algebraic vari-
+eties, V0 is still a proper algebraic variety. It turns out that
+there is a ˆθ ∈ Rd\V0, denoting the corresponding realiza-
+tion of ( ¯A, ¯C, ¯F ) as (A(ˆθ), C(ˆθ), F (ˆθ)), such that for every
+S ⊆ [p], g(S) = grank[ O( ¯A, ¯CS); ¯F ] − grankO( ¯A, ¯CS) =
+rank[O(A(ˆθ), C(ˆθ)S); F (ˆθ)] − rankO(A(ˆθ), C(ˆθ)S) .= f (S; ˆθ).
+13
+In other words, g(S) shares the same property as f (S; ˆθ) for all
+S ⊆ [p]. Since we have proven that f (S; ˆθ) is supermodular and
+monotone decreasing for any ﬁxed ˆθ ∈ Rd in Proposition 6, it
+follows that g(S) is supermodular and monotone decreasing on
+S ⊆ [p]. Similarly, the supermodularity and monotone decreasing
+of ¯g(S) come from the respective properties of ¯f (S). □
+Remark 11: The key in the proof of Proposition 7 lies in
+picking a numerical realization (A(ˆθ), C(ˆθ), F (ˆθ)) such that
+g(S) = f (S; ˆθ) for every S ⊆ [p] (similar is for ¯g(S)). It
+is expected that Proposition 7 can also be proved from a pure
+graph-theoretic perspective, e.g., using the gammoid stru cture of
+linkings (cf. [40, Chap 2.3]).
+Problem P1 (resp. P2) can be solved by minimizing |S|
+subject to f (S) = 0 (resp. ¯g(S) = 0 ). Since f (S) and ¯g(S)
+are supermodular and monotone decreasing, a simple greedy
+heuristic can ﬁnd an approximation solution to the respecti ve
+problem that is usually close to the optimal solution [29]. W e
+brieﬂy introduce the procedure of the greedy algorithm. In t he
+following, h(·) = f (·) or ¯g(·) (g(·) is not chosen because it is
+unclear how to compute it in polynomial time; see Remark 8).
+The greedy algorithm starts with S0 = ∅. In the ith iteration,
+compute the gain h(a; Si) = h(Si) − h(Si ∪ { a}) for each
+a ∈ [p]\Si, select an element a∗ with the maximum gain, and
+add it to Si, i.e.,
+a∗ = arg maxa∈[p]\Si h(a; Si),
+Si+1 = Si ∪ {a∗}.
+The iteration terminates until h(Si) = 0 .
+We conclude the performance guarantees of the greedy heuris -
+tic here, which follow from the known approximation bound fo r
+submodular set covering problems, i.e., minimizing |S| subject
+to h(S) = h(V ), where h : 2 V → R is monotone decreasing and
+supermodular [29, 31], thus with proofs omitted. Such an app rox-
+imation bound is the best one that can be found in polynomial
+time for general submodular set covering problems [31].
+Theorem 3: Let S∗1 and S∗2 be respectively the optimal solu-
+tions to P1 and P2. Then, the above-mentioned greedy heuristic
+based on the set function f (S) can ﬁnd a solution Sf to P1
+satisfying
+|Sf | ≤ (1 + ln(rankF ))|S∗1 |.
+Moreover, the above-mentioned greedy heuristic based on ¯g(S)
+can ﬁnd a solution S¯g to P2 satisfying
+|S¯g| ≤ (1 + ln(grankO( ¯A, ¯F )))|S∗2 |.
+Concerning P3, i.e., the problem of selecting the minimal
+sensors to achieve functional detectability, we have the fo llowing
+result, which follows directly from Proposition 6 and the fa ct
+that the sum of a ﬁnite number of supermodular (resp. mono-
+tone decreasing) functions is still supermodular (resp. mo notone
+decreasing) [29].
+Corollary 7: Given a triple (A, C, F), let (Ji, Ci, Fi) be
+deﬁned as in Section IV, i = 1 , ..., k. Denote eig+(A) as the
+set of unstable eigenvalues of A. Then, the function fd(S) .=∑
+λi∈eig+(A)(rank[O(Ji, CiS); Fi] − rankO(Ji, CiS)) is super-modular and monotone decreasing. Consequently, the greedy
+heuristic based on the set function fd(S) can ﬁnd a solution
+Sfd to P3 satisfying |Sfd | ≤ (1 + ln(∑λi∈eig+(A) rankFi))|S∗3 |,where S∗3 is the optimal solution to P3.
+C. Modal functional observability based sensor placement
+A special case of P1 is when there is no prior constraint on
+the available C, that is, C can be arbitrarily designed, termed the
+unconstrained case. Formally, given a pair (A, F ), this problem
+can be formulated as follows
+min
+C∈Rp×n
+p
+s.t. (A, C, F) functionally observable .
+(P4)
+Problem P4 asks the minimum number of linear functions of
+states needed to be measured to estimate z(t) = F x(t). When
+F = In, i.e., the purpose is to make (A, C) observable, it is
+known that P4 has a closed-form solution, being the maximum
+geometric multiplicity of eigenvalues of matrix A [45]. In what
+follows, based on the proposed modal functional observabil ity,
+we generalize this result to P4 on the class of diagonalizable
+systems. Notice that diagonalizable systems commonly aris e
+in practical settings, such as systems whose state matrices are
+symmetric or have simple spectra [47].
+As (Ji, Ci, Fi) in Deﬁnition 4 can be complex valued, in order
+to construct a real output matrix C, the real Jordan normal form
+of diagonalizable matrices is introduced; see Section IV an d [34,
+Chap. 3.4] for the general case. Suppose A ∈ Rn×n has 2kc
+distinct non-real eigenvalues and kr distinct real eigenvalues, of
+which the kc pairs of complex conjugate eigenvalues are denoted
+by λi = ai + bii and λk+1−i = λ∗i = ai − bii, ai ∈ R,
+bi > 0, i = 1 , ..., kc, and λkc+1, ..., λkc+kr are real eigenvalues
+(accordingly, k = 2 kc + kr). When A is diagonalizable, in its
+real Jordan normal form, the diagonal block associated with a
+non-real λi = ai + bii (also λ∗i ) with algebraic multiplicity
+di is given by ˜Ji = diag{Di, ..., Di} ∈ R2di×2di with Di =[ ai bi
+−bi ai
+]
+. Let Φ =
+[ −i −i
+1 −1
+]
+. As Di = Φ
+[ λi 0
+0 λ∗i
+]
+Φ−1,
+the complex Jordan normal form T −1AT = J and the real
+one ˜T −1A ˜T = Jr can be related as follows. Let ti1, ..., tidi
+be di linearly independent eigenvectors associated with a non-
+real eigenvalue λi (then t∗i1, ..., t∗idi are the corresponding eigen-
+vectors associated with λ∗i ), comprising sub-columns of T , and
+let [˜ti1, ..., ˜ti2di] be the columns of ˜T corresponding to ˜Ji.
+Then, [˜ti1, ..., ˜ti2di ] = [ ti1, t∗i1, ..., tidi , t∗idi]Φ−1di , where Φdi =
+diag{Φ, ..., Φ} ∈ C2di×2di. Meanwhile, for a real eigenvalue
+λi, the corresponding ti1, ..., tidi and ˜ti1, ..., ˜tidi coincide. Con-
+sequently, there exists an n × n permutation matrix Γ such that
+˜T = T Γ ˜Φ−1, with ˜Φ .= {Φd1, ..., Φdkc , Idkc+1, ..., Idkc +kr }.
+Theorem 4: Given a pair (A, F ), suppose A is diagonalizable.
+Let (Ji, Fi) be deﬁned as in Section IV, i = 1 , ..., k. Then,
+the minimum number of sensors making (A, C, F) functionally
+observable, denoted as p∗, is
+p∗ = max
+1≤i≤k
+rankFi,
+and, there is a deterministic procedure that can determine s uch
+a C ∈ Rp∗×n in polynomial time.
+Proof: Suppose ˆC is a matrix such that (A, ˆC, F ) is func-
+tionally observable. By Theorem 1, rank[O(Ji, ˆCi); Fi] =
+rankO(Ji, ˆCi) should hold for each i ∈ [k], where ˆCi = ˆCT i.
+Since A is diagonalizable, this is equivalent to (c.f. Lemma 2)
+rank[ ˆCi; Fi] = rank ˆCi,
+which requires row( ˆCi) ≥ rankFi. As a result, row( ˆC) ≥
+rankFi for each i ∈ [k], meaning p∗ lower bounds row( ˆC) for
+14
+any ˆC making (A, ˆC, F ) functionally observable.
+We shall give a procedure to construct a C ∈ Rp∗×n and
+then prove that (A, C, F) is functionally observable. Suppose
+Jr = ˜T −1A ˜T = diag{ ˜J1, ..., ˜Jkc, ..., ˜Jkc+kr } is the real Jordan
+normal form of A as described above. Let ˜F = F ˜T , and partition
+˜F = [ ˜F1, ..., ˜Fkc+kr ], in which ˜Fi has the same number of
+columns as ˜Ji, i = 1 , ..., kc + kr. For i ∈ [kc + kr], let ˜C′i
+consist of ˜di linearly independent rows of ˜Fi such that
+rank
+
+
+˜Ji − λiI
+˜Fi
+˜C′i
+
+ = rank
+[ ˜Ji − λiI
+˜C′i
+]
+, (16)
+with ˜di = rank[ ˜Ji − λiI; ˜Fi] − rank( ˜Ji − λiI). Such a ˜C′i can
+be found by iteratively choosing one row from ˜Fi to increase
+the rank of [ ˜Ji − λiI; ˜C′i] by one per iteration until it reaches
+rank[ ˜Ji − λiI; ˜Fi], Moreover, let ˜Ci = [ ˜C′i; 0(p∗− ˜di)×2di] for
+i ∈ [kc] and ˜Ci = [ ˜C′i; 0(p∗− ˜di)×di] for i ∈ [kc + kr]\[kc], i.e.,
+adding zero matrices of appropriate dimensions to ˜C′i to make
+them have the same number of rows (why ˜di ≤ p∗ is explained
+later). Construct C ∈ Rp∗×n as
+C = [ ˜C1, ..., ˜Ckr +kc ] ˜T −1.
+Since the real Jordan normal form can be obtained in polynomi al
+time [34], C can be determined in polynomial time.
+We are to prove that (A, C, F) is functionally observable.
+By deﬁnition, for each real eigenvalue λi of A, its real Jordan
+block and complex one coincide, leading to ˜Ji = Ji and˜Fi = Fi. Moreover, notice that CT = [ ˜C1, ..., ˜Ckr +kc ] ˜T −1T =
+[ ˜C1, ..., ˜Ckr +kc] ˜ΦΓ−1, resulting in Ci .= CT i = ˜Ci, where˜T = T Γ ˜Φ−1 has been used. The construction (16) then yields
+that each real eigenvalue of A is modal functionally observable.
+Therefore, from Theorem 1, it remains to prove that each non-
+real eigenvalue of A is modal functionally observable.
+For each i ∈ [kc], observe that
+rank
+
+
+˜Ji − λiI
+˜Fi
+˜Ci
+
+ = rank
+[ Φ−1di 0
+0 I
+] 
+
+˜Ji − λiI
+˜Fi
+˜Ci
+
+ Φdi
+= rank
+
+
+Ji − λiI 0
+0 Jk+1−i − λiI
+Fi Fk+1−i
+Ci Ck+1−i
+
+ = rank [ FiCi ] + di,
+where the second equality is the result of some column permu-
+tations. Similarly, by looking at the ﬁrst two row blocks and
+the ﬁrst and third row blocks of the left most matrix in the
+above relation, we have rank[ ˜Ji − λiI; ˜Fi] = rank Fi + di and
+rank[ ˜Ji −λiI; ˜Ci] = rank Ci +di. Note that rank( ˜Ji −λiI) = di,
+which leads to ˜di = rank[ ˜Ji − λiI; ˜Fi] − rank( ˜Ji − λiI) =
+rankFi ≤ p∗. Since rank[ ˜Ji−λiI; ˜Fi; ˜Ci] = rank[ ˜Ji−λiI; ˜Fi] =
+rank[ ˜Ji − λiI; ˜Ci] by the construction of ˜C′i in (16), we have
+rank[Fi; Ci] = rank Ci, meaning that λi is modal functionally
+observable. Moreover, as C is real, it follows that Fk+1−i = F ∗i
+and Ck+1−i = C∗i (notice that the eigenvectors associated with
+λi and with λk+1−i = λ∗i are complex conjugate). Because
+rankC∗i = rank Ci and rank[F ∗i ; C∗i ] = rank[ Fi; Ci] ([48, Lem
+1]), the modal functional observability of λk+1−i follows from
+the same property of λi, ∀i ∈ [kc]. □
+Remark 12: By considering only unstable modes, Theorem
+4 can be easily extended to the functional detectability cas e.
+When A is not necessarily diagonalizable, let p∗i be the minimum
+row(Ci) such that (5) holds. It follows from Theorem 1 that the
+minimum row(C) making (A, C, F) functionally observable then
+equals max1≤i≤k p∗i . However, as explained in Remark 2, deter-
+mining p∗i in the non-diagonalizable case is more complicated,
+which is left for future exploration.
+Remark 13: It can be seen that when F = Id, then
+p∗ = max i∈[k] di, which coincides with the maximum geometric
+multiplicity solution for the unconstrained minimal obser vability
+problem [47]. On the other hand, if (A, C) is observable for some
+C ∈ Rp∗×n, then an unstructured random C′ ∈ Rp∗×n (meaning
+that C′ does not have any prescribed structure) will make (A, C′)
+observable with probability one. 5 However, things are different
+for functional observability, as the matrix C ∈ Rp∗×n making
+(A, C, F) functionally observable may fall in some hyperplane
+in Rp∗×n.
+We end this section by providing an example to illustrate the
+procedure mentioned in the proof of Theorem 4.
+Example 5: Consider a pair (A, F ) as
+A =
+
+
+0 4 3 −2 −3 0 −4 1
+−1 −1 −1 1 0 3 1 4
+2 10 1 −3 −3 3 −3 5
+−1 9 1 −2 −3 9 −1 13
+0 0 0 0 1 1 0 0
+0 0 0 0 −1 1 0 0
+0 0 0 0 0 0 1 1
+0 0 0 0 0 0 −1 1
+
+
+F = [I4, 04×4].
+Simple calculations show that A has two pairs of complex
+conjugate eigenvalues, being 1 ± i (with algebraic multiplicity
+d1 = d4 = 3) and −2 ± i (with algebraic multiplicity d2 = d3 =
+1), respectively. There exists a real invertible matrix ˜T ∈ R8×8
+that transforms A to its real Jordan normal form Jr, with
+Jr = ˜T −1A ˜T = diag{D1, D1, D1, D2}
+˜F .= F ˜T = [ ˜F1, ˜F2] =
+
+
+1 3 2 2 1 0 1 0
+0 1 2 1 0 1 0 0
+1 4 4 3 1 1 0 1
+1 6 8 5 1 3 1 1
+
+ ,
+where
+˜T =
+[ ˜F
+[I4, 04×4]
+]
+, D1 =
+[ 1 1
+−1 1
+]
+, D2 =
+[ −2 1
+−1 −2
+]
+.
+As a result, ˜d1 = 2 , ˜d2 = 1 , p∗ = max { ˜d1, ˜d2} = 2 . By the
+procedure mentioned in the proof of Theorem 4, we can choose
+the ﬁrst two rows from ˜F1 and the last row from ˜F2 to form a
+5To see this, consider C′ as a structured matrix full of ∗ entries. As (A, C) is
+observable, from the PBH test, for each i ∈ [k], upon letting matrix Xi ∈ Cn×gi
+consist of a set of linearly independent vectors spanning th e eigenspace associated
+with λi, where gi is the geometric multiplicity of λi, we obtain that CXi has
+full column rank. By regarding C as a realization of C′, we get that there
+is a gi × gi submatrix in C′Xi, whose determinant is not identically zero.
+Consequently, there is a proper variety in Rp∗×n, given by Vi, such that for
+each realization of C′ in Rp∗×n\Vi, the aforementioned determinant is not
+zero, implying that the corresponding C′Xi has full column rank. It follows that
+for each realization in Rp∗×n\(⋃i∈[k] Vi), the corresponding C′Xi has full
+column rank, ∀i ∈ [k], leading to the observability of (A, C′). As ⋃i∈[k] Vi
+has zero measure in Rp∗×n, the claim is immediate.
+15
+matrix ˜C = [ ˜C1, ˜C2] as
+˜C =
+[ 1 3 2 2 1 0 1 1
+0 1 2 1 0 1 0 0
+]
+.
+Note that the choice is not unique. The required output matri x
+with the minimum number p∗ = 2 of rows is then
+C = ˜C ˜T −1 =
+[ 0 −3 0 1 0 0 0 0
+0 1 0 0 0 0 0 0
+]
+.
+It can be veriﬁed that rankO(A, C) = 6 = rank[ O(A, C); F ],
+implying (A, C, F) is indeed functionally observable. Mean-
+while, adding unstructured random perturbations to C to obtain
+C′ makes rankO(A, C′) = 6 ⁄= rank[ O(A, C′); F ] = 8 with
+overwhelming probability. This indicates the output matri x C
+with the minimum number of rows making (A, C, F) function-
+ally observable may fall in some hyperplane of the space R2×8.
+On the other hand, we can also use the greedy algorithm to
+select dedicated sensors for achieving functional observa bility. It
+happens that deploying 2 dedicated sensors at the ﬁrst two state
+variables is sufﬁcient for this goal.
+VIII. C ONCLUSIONS
+In this paper, motivated by the fact that the existing PBH-
+like conditions for functional observability and detectab ility are
+only valid for diagonalizable sytems, we developed novel ch ar-
+acterizations for functional observability, functional d etectability,
+and SFO that are valid for general systems. We ﬁrst introduce d
+a new notion modal functional observability to establish new
+necessary and sufﬁcient conditions for functional observa bility
+and detectability. Then, we rigorously redeﬁned SFO from a
+generic perspective, highlighting its distinctions from t he conven-
+tional structural observability. A complete graph-theore tic char-
+acterization for SFO is further put forward. Building upon t hese
+results, we proved that the minimal sensor placement proble ms
+for functional observability and SFO are NP-hard. Neverthe less,
+we devised efﬁcient algorithms that leverage supermodular set
+functions to ﬁnd near-optimal solutions. Additionally, we offered
+a closed-form solution based on modal functional observabi lity
+and the real Jordan normal form for deploying the minimum
+number of sensors to achieve functional observability for d iag-
+onalizable systems. Exploring the generalization of this r esult
+to non-diagonalizable systems and structured systems is le ft for
+future research.
+REFERENCES
+[1] Y . Y . Liu, J. J. Slotine, A. L. Barabasi, Controllability of complex networks,
+Nature 48 (7346) (2011) 167–173.
+[2] Y .-Y . Liu, J.-J. Slotine, A.-L. Barab´ asi, Observability of complex systems,
+Proceedings of the National Academy of Sciences 110 (7) (201 3) 2460–
+2465.
+[3] J. Gao, Y .-Y . Liu, R. M. D’souza, A.-L. Barab´ asi, Targetcontrol of complex
+networks, Nature communications 5 (1) (2014) 1–8.
+[4] S. H. Wang, E. J. Davison, On the stabilization of decentr alized control
+systems, IEEE Transactions on Automatic Control 18 (5) (197 3) 473–478.
+[5] S. Allesina, S. Tang, Stability criteria for complex eco systems, Nature
+483 (7388) (2012) 205–208.
+[6] A. N. Montanari, C. Duan, L. A. Aguirre, A. E. Motter, Func tional observ-
+ability and target state estimation in large-scale network s, Proceedings of
+the National Academy of Sciences 119 (1) (2022) e2113750119 .
+[7] M. U. B. Niazi, C. Canudas-de Wit, A. Y . Kibangou, Average state
+estimation in large-scale clustered network systems, IEEE Transactions on
+Control of Network Systems 7 (4) (2020) 1736–1745.
+[8] M. Darouach, Existence and design of functional observe rs for linear
+systems, IEEE Transactions on Automatic Control 45 (5) (200 0) 940–943.
+[9] T. L. Fernando, H. M. Trinh, L. Jennings, Functional obse rvability and the
+design of minimum order linear functional observers, IEEE T ransactions
+on Automatic Control 55 (5) (2010) 1268–1273.
+[10] D. Luenberger, Observers for multivariable systems, I EEE Transactions on
+Automatic Control 11 (2) (1966) 190–197.
+[11] F. Rotella, I. Zambettakis, Minimal single linear func tional observers for
+linear systems, Automatica 47 (1) (2011) 164–169.
+[12] L. S. Jennings, T. L. Fernando, H. M. Trinh, Existence co nditions for
+functional observability from an eigenspace perspective, IEEE Transactions
+on Automatic Control 56 (12) (2011) 2957–2961.
+[13] F. Rotella, I. Zambettakis, A note on functional observ ability, IEEE Trans-
+actions on Automatic Control 61 (10) (2015) 3197–3202.
+[14] H. Trinh, T. Fernando, S. Nahavandi, Partial-state obs ervers for nonlinear
+systems, IEEE Transactions on Automatic Control 51 (11) (20 06) 1808–
+1812.
+[15] M. Darouach, T. L. Fernando, Functional detectability and asymptotic
+functional observer design, IEEE Transactions on Automati c Control 68
+(2023) 975–990.
+[16] M. Darouach, T. Fernando, Functional observability, f unctional observers
+design and application to reduced-order observer-based co ntrol, Internal
+Report of University of Western Australia, 2022.
+[17] M. Darouach, T. Fernando, On functional observability and functional
+observers design, under review (2024).
+[18] K.-S. Kim, K.-H. Rew, Reduced order disturbance observ er for discrete-
+time linear systems, Automatica 49 (4) (2013) 968–975.
+[19] J. Su, W.-H. Chen, Further results on reduced order dist urbance observer
+for discrete-time linear systems, Automatica 93 (2018) 550 –553.
+[20] M. U. B. Niazi, X. Cheng, C. Canudas-de Wit, J. M. Scherpe n, Clustering-
+based average state observer design for large-scale networ k systems, Auto-
+matica 151 (2023) 110914.
+[21] T. N. Pham, H. Trinh, L. V . Hien, Load frequency control o f power systems
+with electric vehicles and diverse transmission links usin g distributed
+functional observers, IEEE Transactions on Smart Grid 7 (1) (2016) 238–
+252.
+[22] H. H. Alhelou, M. E. H. Golshan, N. D. Hatziargyriou, A de centralized
+functional observer based optimal lfc considering unknown inputs, uncer-
+tainties, and cyber-attacks, IEEE Transactions on Power Sy stems 34 (6)
+(2019) 4408–4417.
+[23] T. Fernando, L. Jennings, H. Trinh, Functional observa bility, in: 2010 Fifth
+International Conference on Information and Automation fo r Sustainability,
+IEEE, 2010, pp. 421–423.
+[24] C. T. Lin, Structural controllability, IEEE Transacti ons on Automatic
+Control 48 (3) (1974) 201–208.
+[25] K. Murota, S. Poljak, Note on a graph-theoretic criteri on for structural
+output controllability, IEEE Transactions on Automatic Co ntrol 35 (8)
+(1990) 939–942.
+[26] E. Czeizler, K.-C. Wu, C. Gratie, K. Kanhaiya, I. Petre, Structural target
+controllability of linear networks, IEEE/ACM Transaction s on Computa-
+tional Biology and Bioinformatics 15 (4) (2018) 1217–1228.
+[27] J. M. Dion, C. Commault, J. V an DerWoude, Generic proper ties and control
+of linear structured systems: a survey, Automatica 39 (2003 ) 1125–1144.
+[28] G. Ramos, A. P . Aguiar, S. D. Pequito, An overview of stru ctural systems
+theory, Automatica 140 (2022) 110229.
+[29] A. Krause, D. Golovin, Submodular function maximizati on, Tractability 3
+(2014) 71–104.
+[30] T. H. Summers, F. L. Cortesi, J. Lygeros, On submodulari ty and control-
+lability in complex dynamical networks, IEEE Transactions on Control of
+Network Systems 3 (1) (2016) 91–101.
+[31] L. A. Wolsey, An analysis of the greedy algorithm for the submodular set
+covering problem, Combinatorica 2 (4) (1982) 385–393.
+[32] Y . Zhang, R. Cheng, Y . Xia, Observability blocking for f unctional privacy
+of linear dynamic networks, in: 2023 62nd IEEE Conference on Decision
+and Control (CDC), IEEE, 2023, pp. 7469–7474.
+[33] L. Wang, I. R. Manchester, J. Trumpf, G. Shi, Differenti al initial-value
+privacy and observability of linear dynamical systems, Aut omatica 148
+(2023) 110722.
+[34] R. A. Horn, C. R. Johnson, Matrix Analysis, Cambridge Un iversity Press,
+2013.
+[35] A. M. A. Hamdan, A. H. Nayfeh, Measures of modal controll ability and
+observability for ﬁrst-and second-order linear systems, J ournal of Guidance,
+Control, and Dynamics 48 (3) (1989) 421–428.
+[36] A. Olshevsky, Minimal controllability problems, IEEE Transactions on
+Control of Network Systems 1 (3) (2014) 249–258.
+[37] H. Trentelman, A. A. Stoorvogel, H. Hautus, Control The ory for Linear
+Systems, Springer Science and Business Media, 2012.
+[38] J. Moreno, Quasi-unknown input observers for linear sy stems, in: 2001
+IEEE International Conference on Control Applications (CC A), IEEE, 2001,
+pp. 732–737.
+[39] R. Mohajerpoor, H. Abdi, S. Nahavandi, Minimal unknown -input functional
+16
+observers for multi-input multi-output LTI systems, Journ al of Process
+Control 35 (2015) 143–153.
+[40] K. Murota, Matrices and Matroids for Systems Analysis, Springer Science
+Business Media, 2009.
+[41] S. Poljak, On the generic dimension of controllable sub spaces, IEEE
+Transactions on Automatic Control 35 (3) (1990) 367–369.
+[42] Y . Zhang, T. Fernando, M. Darouach, Generic diagonaliz ability, structural
+functional observability and output controllability, und er review (2024).
+[43] K. Ogata, Y . Y ang, Modern Control Engineering, V ol. 4, P rentice-Hall,
+2002.
+[44] A. N. Montanari, C. Duan, A. E. Motter, Duality between c ontrollability and
+observability for target control and estimation in network s, arXiv preprint
+arXiv:2401.16372 (2024).
+[45] T. Zhou, Minimal inputs/outputs for a networked system , IEEE Control
+Systems Letters 1 (2) (2017) 298–303.
+[46] M. R. Garey, D. S. Johnson, Computers and Intractabilit y: A Guide to the
+Theory of NP-Completeness, V ol. 174, freeman San Francisco , 1979.
+[47] Y . Zhang, Y . Xia, K. Liu, Observability robustness unde r sensor failures: A
+computational perspective, IEEE Transactions on Automatic Control 68 (12)
+(2023) 8279–8286.
+[48] Y . Zhang, Y . Xia, Y . Zhan, On real structured controllab il-
+ity/stabilizability/stability radius: Complexity and un iﬁed rank-relaxation
+based methods, System & Control Letters 178 (2023) 105578.
+Yuan Zhang (Member, IEEE) received the B.S.
+degree in control science and engineering from Tongji
+University, Shanghai, China in 2014, and the Ph.D de-
+gree in control science and engineering from Tsinghua
+University, Beijing, China in 2019. Since then, he has
+worked in Beijing Institute of Technology, Beijing,
+China, ﬁrst as a postdoctoral fellow, and currently an
+associate professor. He was a visiting research fellow
+at University of Western Australia, Australia in 2024.
+He received the Excellent Doctoral Dissertation
+Award from Tsinghua University, and was selected in
+the China Postdoctoral Innovative Talent Support Program, both in 2020. His
+research interests include analysis, control and optimiza tion of network systems
+and data-driven analysis.
+Tyrone Fernando (Senior Member, IEEE) earned
+his Bachelor of Electrical Engineering (Hons.) and
+Ph.D. from the University of Melbourne, Australia,
+in 1990 and 1996, respectively. In 1996, he joined
+the Department of Electrical, Electronic, and Computer
+Engineering at the University of Western Australia
+(UW A) in Crawley, W A, where he currently serves as
+a professor. From 2008 to 2010, he held the roles of
+Associate Head and Deputy Head of the department.
+Prof. Fernando is presently the Head of the Power and
+Clean Energy Research Group at UW A. Since 2021,
+he has also provided ongoing consultancy to Western Power, f ocusing on the
+management of distributed energy resources within the elec tric grid. His research
+interests encompass control systems, observer design, and applications in power
+systems. In 2018, he was recognized as the Outstanding W A PES/PELS Engineer.
+Prof. Fernando has served as an associate editor for several scholarly journals
+and has received multiple teaching awards from UW A for his co ntributions to
+control systems and power systems education.
+Mohamed Darouach received his graduate degree
+in electrical engineering from Ecole Mohammadia
+d’Ingenieurs, Rabat, Morocco, in 1978, the Doctor En-
+gineer in automatic control and Doctor of Sciences de-
+grees in Physics from Nancy University, Nancy, France,
+in 1983 and 1986, respectively, and the Honoris Causa
+degree from the Technical University of IASI, Iasi,
+Romania.
+From 1978 to 1986, he was an Associate Professor
+and a Professor of automatic control at Ecole Hassania
+des Travaux Publics, Casablanca, Morocco. From 1987
+to 2024 he was a Professor at Universit´ e de Lorraine, France . Since 2024, he
+has been Distinguished Professor Emeritus at Universit´ e d e Lorraine, France.
+He was a Vice Director of the Research Center in Automatic Con trol of Nancy
+(CRAN UMR 7039, Universite de Lorraine, CNRS) from 2005 to 20 13. Since
+2010, he is a member of the scientiﬁc council of Luxembourg Un iversity. From
+2013 to 2018 he was a Vice Director of the University Institut e of Technology
+of Longwy (Universit´ e de Lorraine). He held invited positi ons at University
+of Alberta, Edmonton, Canada, and University of Western Aus tralia, Perth,
+Australia. Since 2017, he has been a Robert and Maude Gledden Senior Visiting
+Fellow, administrated by the Institute of Advanced Studies at UW A. In 2019,
+2022 and 2023 he also held a Forrest Visiting Fellow, UW A. His research
+interests include theoretical control, and observers desi gn and control of large-
+scale systems with applications.

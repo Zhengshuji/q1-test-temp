@@ -1,0 +1,934 @@
+A polynomial characterization of (A,B)-invariant and
+reachability subspaces
+Citation for published version (APA):
+Emre, E., & Hautus, M. L. J. (1980). A polynomial characterization of (A,B)-invariant and reachability subspaces.
+SIAM Journal on Control and Optimization, 18(4), 420-436. https://doi.org/10.1137/0318031
+
+
+
+
+DOI:
+10.1137/0318031
+
+
+Document status and date:
+Published: 01/01/1980
+
+
+Document Version:
+Publisher’s PDF, also known as Version of Record (includes final page, issue and volume numbers)
+
+
+Please check the document version of this publication:
+• A submitted manuscript is the version of the article upon submission and before peer-review. There can be
+important differences between the submitted version and the official published version of record. People
+interested in the research are advised to contact the author for the final version of the publication, or visit the
+DOI to the publisher's website.
+• The final author version and the galley proof are versions of the publication after peer review.
+• The final published version features the final layout of the paper including the volume, issue and page
+numbers.
+Link to publication
+
+
+
+
+General rights
+Copyright and moral rights for the publications made accessible in the public portal are retained by the authors and/or other copyright owners
+and it is a condition of accessing publications that users recognise and abide by the legal requirements associated with these rights.
+
+       • Users may download and print one copy of any publication from the public portal for the purpose of private study or research.
+       • You may not further distribute the material or use it for any profit-making activity or commercial gain
+       • You may freely distribute the URL identifying the publication in the public portal.
+
+If the publication is distributed under the terms of Article 25fa of the Dutch Copyright Act, indicated by the “Taverne” license above, please
+follow below link for the End User Agreement:
+www.tue.nl/taverne
+
+Take down policy
+If you believe that this document breaches copyright please contact us at:
+openaccess@tue.nl
+providing details and we will investigate your claim.
+
+
+
+
+Download date: 28. 10月. 2026
+SIAM J. CONTROL AND OPTIMIZATION                                    980 Society for Industrial and Applied Mathematics
+Vol. 18, No. 4, July 1980                                                         0363-0129/80/1804-0007 $01.00/0
+
+
+                  A POLYNOMIAL CHARACTERIZATION OF
+            (/, M)-INVARIANT AND REACHABILITY SUBSPACES*
+                                  E. EMRE-? AND M. L. J. HAUTUS{
+
+     Abstract. Based on the state space model of P. Fuhrmann, a link is laid between the geometric approach
+to linear system theory, as developed by W. M. Wonham and A. S. Morse, and the approach based on
+polynomial matrices. In particular polynomial characterizations of (A,B)-invariant and reachability
+subspaces are given. These characterizations are used to prove the equivalence of the disturbance decoupling
+problem and the exact model matching problem and also to connect the polynomial matrix and the geometric
+approach to the construction of observers.
+    Finally, constructive procedures and conditions are given for computing the supremal (A, B)-invariant
+subspace and reachability space and for checking the solvability of the exact model matching problem.
+
+       1. Introduction. The geometric approach to linear system theory has proved very
+successful in solving a variety of problems (see 17] for a detailed account of this theory).
+The principal concepts in this theory, which are instrumental in the description of many
+results, are (A, B)-invariant subspaces and reachability (controllability) subspaces. An
+alternative approach to linear system design has been developed in [13], [14], [16]. This
+theory depends to a large extent on polynomial matrix techniques. It is evident that a
+method for translating results of one theory to another is very desirable, because such a
+method would yield a better understanding of the relations between the two different
+approaches. This would be very useful, in particular since the geometric method may be
+viewed as exponent of the so-called "modern control theory" and the polynomial
+matrix method may be considered a generalization of the classical frequency domain
+methods.
+       A number of papers with the objective of translating the results of geometric
+control theory into polynomial matrix terms have appeared (e.g., [1], [3], [10], [12]).
+       It is the purpose of this paper to show that a very useful link between the two
+approaches can be based on the work of P. Fuhrmann ([7], [8], [9]). Specifically, it will
+be shown that using the state space model associated with a system matrix, introduced
+by Fuhrmann, one can give characterizations of the concepts of (A, B)-invariant
+subspaces and teachability subspaces in terms of polynomial matrices. This will be the
+subject of 3 and 6. One application of the polynomial characterization of (A, B)-
+invariant subspaces will be given in 4, where it will be shown that the disturbance
+decoupling problem (see [ 17, Chap. 4]) and the exact model matching problem (see [ 16],
+ [ 14], [5]) are equivalent problems. Another application is given in 5, where it is shown
+that the equivalence of the polynomial matrix and the geometric formulation of
+observers can be derived from the results of 3. In 7, the concept of row properness
+defined in [14], [16] is used to formulate a necessary and sufficient condition for the
+existence of a solution of the exact model matching problem and, hence, of the
+disturbance decoupling problem in terms of degrees of polynomial matrices. Also in 7
+a constructive characterization of the supremal (A,B)-invariant subspace and
+reachability space contained in ker C is given. Finally, in 8, the results of 3 are
+extended to the situation where the system is described by Rosenbrock’s system matrix.
+       The preliminary 2 contains a short description of Fuhrmann’s state space model.
+      * Received by the editors October 18, 1978, and in revised form October 5, 1979.
+      5" Center for Mathematical System Theory, University of Florida, Gainesville, Florida 32611. The work
+of this author was supported in part by the United States Army Research Office under Grant DAA29-77-G-
+0225, and by the United States Air Force under Grant AFOSR76-3034 Mod. B through the Center for
+Mathematical Systems Theory, University of Florida, Gainesville, Florida.
+         Department of Mathematics, Eindhoven University of Technology, Eindhoven, the Netherlands.
+                                                     420
+                         A POLYNOMIAL CHARACTERIZATION                              421
+     2. The state space model associated with a matrix fraction representation. Let K
+
+
+                                                                         .
+be a field. We denote by K[s] the set of polynomials, and by K(s) the set of rational
+functions over K. If 6 is any set and p, q N, we denote by 6ep the set of p-vectors with
+components in 6e and by 5e pq the set of p x q matrices with entries in 5 If A is a p x q
+matrix, we denote by {A} the K-linear space generated by the columns of A. If
+U(s)eKqr[s] and :Kq[s]K"[s] is a linear map, then U(s) denotes the result
+obtained by applying to each of the columns of U(s).
+     Let x(s)6K’(s). We denote by (x(s))_, the strictly proper part of x(s) and by
+(x(s))_l, the coefficient of s -1 in the expansion of x(s) in powers of s -1.
+     DEFINITION 2.1. Let T(s) Keq[s]. Then Xr denotes the set of x(s) K[s] for
+which there exists a strictly proper u(s) Ka(s) such that T(s)u(s) x(s).
+     In what follows, XT- plays a fundamental role (compare the closely related concept
+of right rational annihilator [4]).
+     In particular, if p =q and T(s) is nonsingular, then
+                     XT- {x(s) K"[s] T-X(s)x(s) is strictly proper}.
+
+
+                                            -
+In this particular situation we define the map
+                       zrT-:KP[s]X7 x (s)        T(s)(T-l(s)x(s))_.
+(Compare [7] and [8] where further properties of this map are given.) In the following
+we consider XT- a K-linear space. We consider a linear system whose transfer matrix is
+given by the left matrix fraction representation
+(2.2)                            G(s) T-(s)U(s).
+We assume that G(s) is strictly proper, T(s) K[s], U(s) Kr[s].
+        Define the linear maps
+
+
+(2.3)
+                                   -
+                               :X- ---, X- x(s) (sx(s)),
+                             Yd K XT- u U(s)u,
+                               :XT- K q :x(s)--(T-(s)x(s))-.
+By definition, for x(s)XT, we have 4x(s)= sx(s)-T(s)c(s) for some c(s)6Kq[s].
+Since T-l(s)x(s) and T-l4,x(s) are strictly proper it follows that c(s) must be constant.
+Hence
+(2.4)                         x(s) sx(s)- T(s)c
+for some c K q, depending on x(s).
+                                   ,
+      The following result is proved in [7].
+                                            .,
+      THEOrEM 2.5. The system := ((, ) with state space XT- is an observable
+realization of G(s). The realization is reachable iff T(s) and U(s) are left coprime.
+      We will call this realization Z the T-realization of G(s).
+      Conversely, if we are given an observable system Z (C, A, B), then we construct a
+left matrix fraction representation of the transfer matrix of Z in the following way. Let
+(2.6)                            C(sI-a)   -= T-(s)S(s),
+where S and T are left coprime. Define
+(2.7)                                  U(s):=S(s)B.
+Then G(s)= T-a(s)U(s) is the required representation. We have the following result.
+422                          E. EMRE AND M. L. J. HAUTUS
+
+
+                                                 ,.
+    THEOREM 2.8. The T-realization of G(s) T-I(s)U(s), where Tand Uare defined
+by (2.6) and (2.7) is isomorphic to the system
+    Proof. Using the dual of [11, Cor. 4.11], we see that $(s) is a basis matrix of XT.
+Hence the linear map
+                                    :K     XT :x--S(s)x
+is an isomorphism. Using the equation
+                                  T(s)C=S(s)(sI-A),
+which follows from (2.6), one derives easily the relations g6e 6eA,    6eB, 6e C.
+In particular, g6ex =g(S(s)x)= zrT.(S(s)(sI-A)x)+zrT-(S(s)Ax)= zrT-(T(s)Cx)+
+zrT-(S(s)Ax) $(s)Ax YAx.
+     It follows that (C, A, B) and (c, g, ) are isomorphic.                        [3
+
+         ,
+     Using Theorem 2.8, we may transform results obtained for the particular realiza-
+tion (’,    ) to any observable system.
+     3. (, )-invariant sulslaees. We give a characterization of the (’, )-invariant
+subspaces of the T-realization of a transfer matrix G(s) T-l(s)U(s), as defined in the
+previous section. For the definition of (4, )-invariant subspaces we refer to 17].
+     THEOREM 3.1. Let (s) be a q m polynomical matrix. Then {(s)} is an
+(, )-invariantsubspace of XT-iff there exist Ca g qm, F1 Kr’and A K""such
+that
+(3.2)                      T(s)C1 + U(s)F1 (s)(sI-A1).
+
+(3.3)                                                    .
+      Proof. Suppose that {(s)} is an (’, )-invariant subspace, i.e.,
+                               {(s)} c_ {(s)} + Im
+Applying (2.4) to each column of (s), we fine that 4(s)= l(S), where
+(3.4)                          a(s) := s(s)-T(s)C1
+for some C1 K q". On the other hand, (3.3) implies
+(3.5)                          l(S) (s)A1 + U(s)F1
+for some A K "" and F1 K r". Combining (3.4) and (3.5) yields (3.2). Conversely,
+if we assume (3.2), then
+(3.6)                 T-l(s)(s) (C1 + T-I(s)U(s)F1)(sI-A1) -1
+is strictly proper and hence {(s)} Xr. Furthermore, if we define l(s) by (3.4), then
+(3.5) follows from (3.2) and, hence, {l(S)} XT-. It follows that
+                   ’(xI)’(S)) "rt’T(SXIt(s)) 7rT(XI(S) + T(s)C1) xItl(s).
+ Thus, (3.5) implies (3.3).                                                                 El
+      If the matrix (s) occurring in Theorem 3.1 has full column rank, it is possible to
+ give an interpretation to the matrices A 1, F1, C1. For in that case there exists a K-linear
+ map :XT K satisfying
+ (3.7)                                   (s) F.
+ Then (3.2) implies
+ (3.8)                            (./- -’)(x) (s)A 1.
+                         A POLYNOMIAL CHARACTERIZATION                                423
+
+It follows that {(s)} is an (M- -)-invariant subspace, and that A is the matrix of the
+
+.
+restriction of s4-      to {(s)} with respect to the basis matrix (s). In addition, F1 is
+the matrix (with respect to the basis matrix (s) of {(s)} and the natural basis in K r) of
+    Finally, we have
+(3.9)                                   (s)-- C1
+so that C1 is the matrix of the restriction of to {(s)} with respect to the basis matrix
+  (s) of {(s)} and the natural basis of K q.
+     The last result gives a characterization of (d, )-invariant subspaces contained in
+ker.
+     COROLLARY 3.10. Let (s)Kq"[s]. Then {(s)} is an (M,)-invariant
+subspace contained in ker iff there exist matrices F, A such that
+(3.11)                           U(s)F (s)(sI-Ax).
+        Proof. According to (3.9), we must have C1 0 in formula (3.2).           [3
+        COROLLARY 3.12. Xu is the largest (M, )-invariant subspace o]XTcontained in
+ker ’.
+        Proof. According to (3.10), we have for an arbitrary (M, )-invariant subspace
+{(s)} contained in ker :
+                                W(s)= U(s)F(sI-A)           -.
+Hence {(s)}c__Xu (see Definition 2.1). It remains to be shown that Xu itself is an
+(s4, )-invariant subspace. If (s) is a basis matrix of Xu then there exists a strictly
+proper matrix Q(s) such that U(s)Q(s) (s). Let (F1, A1, B1) be a reachable realiza-
+tion of Q(s), so that
+                              (I)(s)   U(s)FI(sI-A1)-IB1.
+It follows from Lemma 3.13 that
+                               W(s) := U(s)F(sI-AI) -1
+is a polynomial matrix. By Corollary 3.10, {(s)} is an (s4, )-invariant subspace. Hence
+{(s)}_ {(s)}. On the other hand, since (s) (s)B, it follows that {(s)} c__ {(s)}.
+Consequently, Xu {(s)} {(s)} is an (M, )-invariant subspace.
+
+
+                                                            --
+      LEMMA 3.13. Let O(s) gln[s], A K nn, B K nr, (A, B) reachable. If O(s)
+(sI-A)-aB is a polynomial matrix then O(s)(sI-A) is a polynomial matrix.
+      Proof. We decompose the rational matrix O(s)(sI-A) into its polynomial and its
+                                                                                      I-I
+
+
+strictly proper part"
+
+
+then
+                          O(s)(sI -A)
+                                        -   P(s) + R (s);
+
+                          Ro := R(s)(sI-A)= O(s)-P(s)(sI-A)
+is a polynomial of degree zero and hence constant. It follows that
+                        Ro(sI-A)-XB O(s)(sI-A)-B-P(s)B
+is a strictly proper polynomial and hence zero. Since (A, B) is reachable, this implies
+Ro 0 and hence
+                                   O(s)(sI-A)
+                                                -    P(s).                               l
+424                           .E. EMRE AND M. L. J. HAUTUS
+
+    The foregoing implies that the set of (M, )-invariant subspaces in ker is
+uniquely determined by the numerator polynomial matrix of the matrix fraction
+representation of the transfer function matrix:
+    COROLLARY 3.14. Let U(s) gqXr[s], Ti(s) gqXq[s],       1, 2, such that
+                                 G,(s) := T.1 (s)U(s)
+is strictly proper for  1, 2. Let %, Mi, i) be the Ti-realization of Gi(s) fori 1, 2. Then
+M Xcr is an (M1, 31)-invariant subspace o] Xrl contained in ker 1 iff M is an
+(2, 32)-invariant subspace o]’Xr2 contained in ker 2.
+      REMARK 3.15. Theorem 3.1 may be specialized to the case U(s) 0, that is,           0.
+In this case we have a realization of G(s) 0 with the same state space Xr and the same
+map        as before. An (M, )-invariant subspace of Xr then is just an M-invariant
+subspace. Thus we obtain the following characterization of M-invariant subspaces.
+     PROPOSITION. Let (s) be a q x m polynomial matrix. Then, {(s)} is an sC-
+invariant subspace of Xr iff there exist C K q", A1 Km" such that
+                                     T(s)C1 (s)(sI A 1).
+     4. Exact model matching and disturbance decoupling. If we have an observable
+system (C, A, B) with state space X then we may consider the problem of characterizing
+the (A, B)-invariant subspaces contained in ker C. Using the isomorphism given in
+
+
+
+
+                                                                 _
+Theorem 2.8, we transform the problem to the case of a suitable T-realization. For this
+case we may appeal to Corollary 3.10, by which a complete characterization is given. It
+is important that, as already noted in Corollary 3.14, this characterization depends only
+                        ,
+on the numerator poly_nomial U(s). Consequently, we have the following result.
+     THEOREM. Let
+                                                                                  ,
+                           (C, A, B) be a realization with state space X of a transfer
+matrix G(s) T-l(s)U(s), and let          (q, sg, 3) be the T-realization of G(s). If and Z
+are isomorphic by the isomorphism ." X-, Xr, then M X is an (A, B)-invariant
+subspace contained in ker c iff there exist constant matrices F1, A satisfying
+                                     U(s)F W(s)(sI-A ),
+where q(s) is a basis matrix of (M).
+     Thus we see how characterizations for (, )-invariant subspaces of the particular
+state space model Y., can be generalized to arbitrary (observable) state space models.
+     In this section we use the theory developed thus far to show the equivalence of the
+exact model matching problem and the disturbance decoupling problem.
+     PROBLEM 4.1. (Disturbance decoupling problem (DDP)). Given the system
+(4.2)                  2(t) Ax(t) + Bu(t) + Eq(t),        y(t)       Cx(t),
+where (C, A) is observable, determine a constant matrix F such that if
+                                 u(t) Fx(t),          >-_ O,
+
+
+
+equivalent formulation"
+
+space such that                  _
+the output y(t) does not depend on q(t), >= 0.
+    The following result has been given in [17, Thm. 4.2] in a slightly different but
+
+    THEOREM 4.3. Problem 4.1 has a solution iff there exists a subspace M of the state
+
+                            AM M + {B},          {E} c_ M c_ ker C.                      l-1
+        In this paper we will also consider a slightly modified problem (compare also 18]).
+                        A POLYNOMIAL CHARACTERIZATION                               425
+
+     PROBLEM 4.4. (Modified disturbance decoupling problem (MDDP)). Given system
+(4.2), determine constant matrices F and D such that if
+                                  u(t) =Fx(t)+Dq(t),
+the output does not depend on q(t).
+     In the modified problem, one assumes that not only the state but also the
+disturbance is directly available for measurement. Similarly to (4.3) we have the
+following result.
+    THEOREM 4.5. Problem 4.4 has a solution iff there exists a subspace M such that
+                    AMcM+{B}, {E}cM+{B}, MckerC.
+      The exact model matching problem is defined as follows.
+      PROBLEM 4.6. Given transfer function matrices Gx(s) and G2(s) determine a (i)
+strictly proper or (ii) proper rational matrix O(s) such that
+                                  Gl(s)O(s)=G2(s).
+     Problem 4.6(i) will be called the exact model matching problem (EMMP), and
+Problem 4.6(ii) will be called the modified exact model matching problem (MEMMP). It
+is the purpose of this section to show that the existence of a solution of Problem 4.1 is
+equivalent to the existence of a solution of Problem 4.6(i). Similarly" Problem 4.4 has a
+solution itt Problem 4.6(ii) has a solution. We will concentrate on the modified
+problems. The original problems can be dealt with similarly.
+     First we have to indicate which MEMMP corresponds to a given MDDP and vice
+versa. Let us start with system (4.2). The data Gx(s) and G2(s) of MEMMP are then
+defined by
+                  GI(S) :- C(sI-A)-IB,          G2(s) := C(sI-A)-XE.
+Conversely, if we are given Gx(s) and G2(s) in MEMMP, we construct an observable
+realization (C, A, [B, El) of the transfer matrix [Gx(s), G2(s)]. Then C, A, B, E are the
+data for MDDP. Thus, we have a one to one correspondence between MEMMP’s and
+MDDP’s.
+     Following Theorem 2.8, we assume that
+                               C(sI-A)-X= T-l(s)S(s)
+                ,
+with T(s) and $(s) relatively prime, and U(s)=S(s)B; and we consider the T-
+realization (,     N) of Gl(S)= T-l(s)U(s). According to Theorem 2.8, the map
+5:x S(s)x :K Xr is an isomorphism. Consequently, we introduce the polynomial
+matrix R (s) := $(s)E as representative of E in Xr. Then we have G2(s)= T-I(s)R (s)
+and we can state the following result.
+                                                                          ,
+     THEOREM 4.7. Let {(s)} be an (sg, )-invariant subspace in ker so that there
+exist constant matrices Fx and A satisfying
+(4.8)                           U(s)F1 (s)(sI A 1).
+In addition, assume that {R (s)}_ {(s)}+{U(s)}, so that there exist matrices B1 and D1
+such that
+(4.9)                          R (S)= xIt(s)B1 + U(s)D1.
+Then Q(s) := Fl(sI-Ax)-XB1 +Dx is a solution of MEMMP. Conversely, let Q(s) be a
+solution of MEMMP and let (F1, A x, Bx, Dx) be a reachable realization of Q(s). Then
+there exists a polynomial matrix (s) satisfying (4.8) and (4.9).
+426                           E. EMRE AND M. L. J. HAUTUS
+
+
+      Proof. If (s) satisfies (4.8) and (4.9) then
+                          U(s)Q(s)- (s)B1 + U(s)D1 R (s),
+which implies Gl(s)Q(s)       G2(s). Conversely the latter equation implies U(s)Q(s)-
+R (s). Hence,
+(4.10)                    U(s)FI(sI-A1)-IB1 R(s)- U(s)D1.
+Since (A1, B1) is reachable it follows from Lemma 3.13 that
+
+(4.11)                             (s) := U(s)F(sI-A1) -1
+is a polynomial. Now (4.10) and (4.11) imply (4.9) and (4.8).
+      COROLLARY 4.12. MEMMP has a solution iff the corresponding MMDP has a
+solution.
+      Similarly one proves
+      PROPOSITION 4.13. EMMP has a solution iff the corresponding DDP has a solution.
+      Thus, if we want to solve (M)EMMP, we may construct the data A, B, C, E of
+(M)DDP and solve the latter problem. Then we do not only obtain a solution Q(s) of
+(M)EMMP but also a realization Of this solution. In this respect, it is important to note
+that the solution of (M)EMMP only depends on the numerator polynomials U(s) and
+R (s). Consequently, by a suitable choice of T(s) (not necessarily equal to the original
+denominator polynomial) we may try to obtain a simple (M)DDP; compare [3]. We will
+formulate this idea more explicitly in 6. Also in 6, we will give existence conditions
+for a solution of (M)EMMP and, hence, of (M)DDP in terms of U(s) and R (s).
+     The following result states that if disturbance decoupling is at all possible by a
+(dynamic) control depending causally upon q(t), then it is possible by a feedback control
+of the form u Fx + D lq.
+      COROLLARY 4.14. Let there exist a proper rational matrix H(s) such that, if the
+control u H(s)q is used in (4.2), the output does not depend on q. Then MDDP has a
+solution. If there exists a strictly proper matrix H(s) with this property, then DDP has a
+solution.
+     Proof. If the control u H(s)q is used in (4.2), then the transfer function matrix
+from q to y is Gl(s)H(s)+ G(s). If y does not depend on q, then this transfer matrix
+must be zero, hence
+                                  GI(s)H(s) -a2(s),
+that is, -H(s) is a solution of MEMMP. Consequently, by Corollary 4.12, MDDP has a
+solution.
+     5. Observers. We consider several formulations of the observer problem, which is
+a well-known problem in linear system theory. Further references on the subject can be
+found in [14], [15], [16], [19], [20], [2] and [6].
+     Thus far two types of formulation of this problem have appeared in the literature:
+the geometric formulation (see [19], [20], and [2]) and the polynomial matrix formula-
+tion (see [14], [15], and 16]).
+     Here, our purpose is (based on the results on the connections of the geometric
+theory of linear systems and polynomial matrix approaches developed in 3) to show
+explicitly the algebraic equivalence of the geometric and the polynomial matrix
+formulations of this problem, including the case where some of the inputs may be
+unknown.
+                              A POLYNOMIAL CHARACTERIZATION                           427
+
+
+             .
+     Let 5; (C, A, B) be a given system over R. Let C- be a subset of C satisfying
+C-f’l R #    We call a rational function u(s) stable (with respect to C-) if u(s) has no
+poles in C\C-. In the continuous time interpretation of E, one might choose C-=
+{s e CIRe s < 0} and in discrete time C- {s e CI Isl < 1}, but also different choices
+of C- are possible.
+                                                                        ,
+     We assume that C Nqn, B e Nnr and that in addition to we are given a
+feedthrough matrix D x Nqr. In continuous time, the interpretation (Y_,, D) reads:
+(5.1)                       2 Ax + Bu,        y Cx + Du,
+and the transfer function of (, D) is
+                           G(s) G.D(S) C(sI-A)-IB + D.
+    DEFINITION 5.2. Let L ". A system (,, ) (,                 :,   ,
+                                                                  :) is an L-observer of
+
+
+
+
+             -
+(, D) iffor every initial value      E,
+                                Xo of Yo of X and every control function u, the output of
+(5.3)                               =+iy,          =+Dy
+satisfies"    Lx is stable (in particular rational).
+     The observer uses only the output of (Y_,, D). If one wants to consider the situation
+in which partial or total knowledge of the input of 5; is available, one can incorporate
+this in the problem by a suitable choice of D. In particular, if the input is completely
+known, one introduces new matrices ,/ and a new output 37 of E according to
+
+
+
+so that 7      x  +/u represents the total data available for the estimation of Lx.
+        Let us use the following notation"
+                            G(s) := G.,(s)= C(sI-A)-B +D,
+                            (S) := O,,l(S) (sI- /)-IB -1-/,
+                                GL(S) := L(sI-A)-IB.
+Then we have the following result.
+     THEOREM 5.4. Let the system             be reachable and let   be observable. Then the
+following statements are equivalent:
+          (i) (Y.,, D) is an L-observer of (:E, D).
+         (ii) GL(s)= G(s)G(s) and tr(a)_ C-.
+        (iii) There exists a real matrix M such that
+                                         DD O,
+                                         MA AM +BC,
+                                         L CM+DC,
+                                         MB BD
+                                         and o’(A c_ C-.
+        Proof. (i)=), (ii). If Xo   0, o 0, then we have
+                            -L =H(s)a,
+where H(s)= G(s)G(s)-G(s), and y,, u are Laplace transforms. Choosing, in
+428                            E. EMRE AND M. L. J. HAUTUS
+
+particular, u       e^’uo with A C, we find
+
+Since )3-L has to be stable for all n N, h C, Uo it follows that H(s)
+    Furthermore, if Xo O, u O, then
+
+
+Since (C, A) is observable, the stability of -L implies that r(A)
+          =>
+                               :9-L= y.(s-A)-"-H(s)Uo.
+
+
+                                   :-L,f (sI-)-$o.
+                                              :
+     (ii) (iii). We use the matrix fraction representation
+                                                           ,
+
+                           O’o(S) := B’(sI-A’)-IC ’= T-I(s)U(s)
+                                                                          _    C-.
+                                                                                     O.
+
+
+
+
+defined by B’(sI-A’)      -=
+                          T-(s)S(s), U(s)= S(s)C’, and we consider the T-realiza-
+tion (, M, ) of G’o(S) (see Theorem 2.8). Then the equation G(s)G(s)= GL(s) may
+be rewritten as
+                                U(s) + T(s)D’)’(s) S(s)L’.
+Hence, if we write
+(5.5)                       W(s) := (U(s)+ T(s)D’):’(sI-’)      -,
+then
+(5.6)                           W(s)C’ SL’        U + TD’)D’.
+     Since (C, A) is observable, it follows from Lemma 3.13 that W(s) is a polynomial
+matrix. Equation (5.5) implies
+                             U(s)B’ + T(s)D’B’= W(s)(si-A’).
+Hence, {W(s)} is an (M, )-invariant subspace, and
+(5.7)             M(s) sg(s)- T(s)D’B’ = (s)A’ + U(s)B’
+(see (3.4)). We consider again the map      defined in the proof of Theorem 2.8"
+x S(s)x. Then we define M’ b-lW(s), so that S(s)M’ W(s). It follows from (5.7)
+that
+         A’M’ MSfM’ dW(s) W(s)A’ + U(s)B’ M’A’ x C’B’.
+Hence, A’M’ M’A’ + C’B’.
+        Furthermore, (5.6) implies"
+                       T-l(s)W(s) ’- T-(s)S(s)L’ + T -1UD’=
+Since the left-hand Side is strictly proper, it follows that D’D       0 and
+                                  5M’ C’ L’ + C’D          O,
+Hence,
+                                      M’C’-L’+C’D’ =0.
+        Finally, it follows from (5.7) that
+                      T-l(s)U(s)’ + T-(s)(s)fix’ sT-XW(s)-D’: ’.
+Hence,
+                           B’M’ W(s) (T-(s)*(s))_x              D’:’
+                           A POLYNOMIAL CHARACTERIZATION                                   429
+
+since T-l(s)U(s) and T-l(s)(s) are strictly proper.
+     (iii) ::> (i). A short calculation yields
+                               -Lx       C(-Mx),
+                                d
+                                        Mx       A      Mx ),
+                               d--
+
+
+
+                            - -
+and the result follows from r(A)_ C-                                                          [3
+     The equivalence (ii):> (i) is given in 15], and the equivalence (i):> (iii), with the a
+priori assumption (in the proof of (i)::), (ii)) that     Mx is stable, is given in [2]. Notice
+that here the stability of        Mx is a consequence, rather than an assumption (see the
+proof of (iii) ::), (i)). For the situation of availability of the whole input, this was also
+shown in [6].
+     REMARK 5.8. The results of this section can easily be extended to systems over an
+arbitrary field K, provided an appropriate definition of stable rational function has been
+defined. Such a definition can be given as follows: Let :t/be a multiplicative subset of
+K[s] (i.e., p(s) l, g(s) ell ::>p(s)g(s) ; 1 ). Then we say that a rational
+function r(s)e K(s) is stable if r(s) has the representation r(s)= p(s)/q(s) with p(s)
+K[s], q(s) l. Then the stable functions form a ring. In the situation described above
+we have
+                              {p(s) K[s]lp(s) 0=> s C-}.
+    In the general situation Theorem 5.4 remains valid if one replaces the condition
+r(A) C- with "(sI- fi)-i is stable".
+    A particular example, which is relevant for discrete time systems, over arbitrary
+fields, is
+                                     /:= {s"   In =0, 1,...}.
+An observer constructed according this multiplicative set is called a deadbeat
+observer.
+     {i. Reaehalility snlslaees. Let (s) be a full column rank basis matrix of an
+(, )-invariant subspace. Recall the interpretation of the matrices A 1, F1, C1 given in
+(3.7), (3.8) and (3.9). Let B1 be any constant m x p matrix such that {(s)B1} {U(s)},
+say
+                                         (s)B1       U(s)L1.
+Then B1 is the matrix of the (codomain) restriction of Y3L1 to {(s)}. It follows that
+                               (g- 3)’Ll v             (s)A B v
+for every v e K p. Consequently,
+
+
+
+
+                     _
+(6.1)                    (4-IL)={(s)[B,..., An-IB1]}.
+This formula immediately implies the following result.
+     THEOREM 6.2. Let (s) be a (full column rank) basis matrix of an (4, )-invariant
+subspace. Then
+         (i) {(s)} is a teachability subspace iff there exists a constant matrix B such that
+             {T(s)B1} {U(s)}, and (A1, Ul) is reachable (here A1 is given by (3.2)).
+        (ii) If B is a constant matrix such that
+(6.3)                            {(s)B 1} { U (s)} (’] {xI)’(s)},
+430                          E. EMRE AND M. L. J. HAUTUS
+
+           then {q(s)[B1,’’’, A’-IB1]} is the supremal reachability subspace contained
+           in {(s)}.
+
+
+
+
+           _
+    Let us now consider reachability subspaces contained in ker c. Let (s) be a basis
+matrix of such a space. According to Corollary 3.1 0, there exist matrices F1 and A such
+that
+(6.4)                         (s) U(s)FI(sI-A1) -1.
+It follows from Theorem 6.2 that there exists B1 such that (A1, B1) is reachable and
+{(s)B1} {U(s)}, say (s)B1 U(s)L1. Hence
+(6.5)                             U(s)Q(s) U(S)tl,
+where Q(s):= FI(sl-A1)-IB1. Also, since (s) has full column rank, (F1, A1) is
+observable, as follows from (6.4). Hence (F1, A 1, B1) is a minimal realization of Q(s).
+      COROLLARY 6.6. There exists a nontrivial reachability subspace contained in ker
+iff
+                                   { U(s)} 0 xt, {o}.
+     Proof. If (s) is a basis matrix of the (, )-invariant subspace Xtr and (s)=
+U(s)FI(sI-A1) -1, then the supremal reachability subspace contained in Xt (or,
+equivalently, in ker ) is nontrivial iff B1 0,whereB1 is a matrix satisfying (6.3). [3
+     According to (6.5), O(s)-L1 is a nontrivial right zero matrix of U(s).
+Consequently, if the supremal reachability subspace contained in is nonzero, then
+U(s) is not left invertible. The converse, however, is not true. For example, if
+U(s) Ul(S), 0] where Ul(s) is left invertible, then it is easily seen that U(s) is not left
+invertible, and {U(s)} 71Xtr {0}. In order to give a necessary and sufficient condition
+for the existence of a maximal reachability subspace contained in ker c, we consider the
+K[s]-module
+(6.7)                       A := {v(s)   Kr[s]l U(s)v(s) 0}.
+This module is generated by the columns of a matrix M(s) (see 15, Thm. 3.1]).
+      COROLLARY 6.8. There exists a nontrivial reachability subspace contained in ker c
+iff the module A defined in (6.7) is not generated by a constant matrix.
+      Proof. Let M(s) be a generator matrix of minimal degree, say M(s)=
+Mos k +" "+Mk. Then s-kM(s)= O(s)-L1, where O(s)=Mls -1 +. +Mks -k and
+L1 =-M0. We have
+                                    U(s)O(s)=U(s)L1
+and U(s)L1 O, since, otherwise, [M(s)-skMo, M0] would be a generator matrix of
+lower degree than k. It follows that {U(s)L1} {U(s)}f’]Xu, so that {U(s)}fqXcr # {0}.
+      Conversely, suppose that A is generated by a constant matrix, say D, and that
+v{U(s)}f’lXtz, say v U(s)c U(s)r(s), where c is a constant vector and r(s) is a
+strictly proper rational vector. It follows that there exists a rational vector q(s) such that
+c-r(s)=Dq(s). Decomposing q(s) into a polynomial and a strictly proper part
+q(s) =ql(s)+q2(s), we conclude that c =Dql(s), so that v U(s)c 0. Hence,
+
+       .
+{ U(s)} o x {0}.
+     Now we have a procedure for constructing reachability subspaces contained in
+ker Choosing any matrix L1 such that {U(s)L1}_Xu, we have U(s)O(s)= U(s)L1
+for some strictly proper O(s). If (F1, A1, B1) is a minimal realization of O(s), it follows
+that q(x) := U(s)FI(sI-A 1) -1 is a basis matrix of a reachability subspace, provided the
+columns of q(s) are independent. In general, it seems difficult to formulate conditions
+                        A POLYNOMIAL CHARACTERIZATION                                   431
+
+upon L1 and Q(s) that guarantee that (s) has full column rank. A sufficient condition
+for this is that Q(s) be a strictly proper rational matrix with minimal McMillan degree
+satisfying the equation U(s)Q(s)= U(s)LI. Indeed, if in this case (s) does not have
+full column rank, there exists (s) with less columns than such that {(s)} {(s)}.
+Since {(s)} is an (sg, )-invariant subspace, there exist F2, A2 such that (s)=
+                 -a.
+U(s)F2(sI-A2) Also, there exists D1 such that (s)= (s)D1. Hence,
+                U(s)O(s)-- xIt(s)B1 ((s)D1B1            U(s)Q2(s)   U(s)L1,
+where Q2(s):= F2(sI-A2)-aDIB1 has lower McMillan degree than O(s).
+
+
+
+
+                                                              _
+      THEOREM 6.9. Let L1 be a constant matrix such that {U(s)LI}={U(s)}fqXu. Let
+Q(s) be a strictly proper rational matrix of minimal McMillan degree, satisfying the
+
+
+       .
+                                                         _ ._ __.
+equation U(s)Q(s) U(s)LI. Let (F1, AI, B1) be a minimal realization of Q(s). Then
+xlz(s) := U(s)FI(sI-AI) -1 is a basis matrix of the supremal reachability space contained
+
+
+
+
+                 _
+in ker
+      Proof. The supremal reachability subspace contained in ker c is the (unique)
+minimal (, )-invariant subspace satisfying (Im ) (3 o/_ 7/" o/g, where o/# is the
+supremal (sg, )-invariant subspace gontained in ker To see this, observe that an
+(4, )-invariant subspace 7/" satisfying (Im ) f3 /d/" 7/’       is ( --)-invariant for
+every such that        is (1 -’)-invariant. Indeed, ( ") 7/" (4 -) //V W
+and (4- Y3’) 7/’ 7/’ + Im imply
+                 (1- )c_ Wf3 (+Im )= o//.+ o/g.f-)i m
+Since {U(s)}f]Xu={U(s)L1}={xIt(s)B}_{xIt(s)}Xu, and because of the minimal
+McMillan degree of Q(s), the result follows.                                        71
+    In the next section, it will be shown how Theorem 6.9 can be used for the explicit
+construction of the supremal reachability subspace.
+     7. Constructive characterizations. Conditions for solvability and the charac-
+terization of solutions of various problems can be made explicit by the use of row and
+column proper matrices (see [16]). This will be the subject of this section.
+     If R KPq[s] has rows rx(s), ", rp(s), then deg ri(s) is called the ith row degree
+                                    ’
+of R (s). The coefficient vector of s in ri(s), where ui deg ri(s) is called the ith leading
+coefficient row vector, and is denoted by [ri]r. We denote by [R]r the matrix of leading
+coefficient row vectors, that is, the constant matrix with rows [rx]r, ", [rp]r. Similarly,
+[R ]c denotes the matrix of leading coefficient column vectors, that is, [R ]c ([R’])’. A
+matrix is called row (column) proper if [R ]([R ]c) is nonsingular. A row proper matrix is
+easily seen to be right invertible. Conversely, we have (see [16, Thm, 2.5.7])
+     LEMMA 7.1. If L(s) KPq[s] is right invertible there exists a unimodular matrix
+M(s) KPP[s] such that M(s)L(s) is row proper with row degrees u,              , up satisfying
+,  <-... <= up. If L(s) KPq[s] is not right invertible, them exists a unimodular matrix
+M(s) such that
+
+                                   M(s)L(s)=[ Ll(s)]0
+                                              ,
+where L(s) is row proper with row degrees <-. <= ’l. The number of rows of Ll(S)
+equals the rank of L(s).
+     The row degrees u are independent of M(s) (which is not unique) and will be
+called the row indices of L(s).
+     The following result (see [14, Property 2.2]) states a simple criterion for the
+properness of a rational matrix T-(s) U(s) if the denominator polynomial matrix is row
+proper.
+432                            E. EMRE AND M. L. J. HAUTUS
+
+       LEMMA 7.2. Let T(s) be row proper with row degrees 1)1,       1)q. If the row degrees of
+U(s) are hi,"   ,  hq  then T-(s)U(s)  is proper iff h <-_ vi (i 1,.  ,  q) and strictly proper
+iff Ai < 1}i (i i,  ", q).
+       Observe that if T is not row proper, there exists a unimodular matrix M(s) such
+that T(s):= M(s)T(s) is row proper. If we define Ua(s):= M(s)U(s), we have
+T-(s)U(s) T- (s)U(s), and we may apply Lemma 7.2.
+       Let us now consider (M)EMMP as defined in Problem 4.6. Assume that we have a
+matrix fraction representation T-(s)[ U(s), R (s)] of [G(s), G_(s)]. Then the equation
+for O(s) reads
+(7.3)                                U(s)Q(s)=R(s).
+       In order that this equation has a (not necessarily proper) rational solution, it is
+necessary and sufficient that rank U(s)=rank [U(s),R(s)]. For the existence of a
+proper solution additional conditions have to be imposed. Writing down the ith row of
+(7.3)
+                                      Ui(S)((S)- ri(s),
+we note that a necessary condition for the existence of a proper solution is deg ui(s)>=
+deg ri(s). The following result shows that this is also sufficient provided that U(s) has the
+form
+
+
+
+with U(s) row proper. According to Lemma 7.1, this can always be obtained by
+premultiplying (7.3) with a suitable unimodular matrix M(s).
+    THEOREM 7.4. Let M(s) be a unimodular matrix such that
+                                     U(s)
+                     M(s)U(s)                      M(s)R(s)
+                                       0                        I_R(s)J
+where U(s) is row proper Let the row degrees of U(s) be v,            1)l and let the row
+degrees of R(s) be A,     .,
+                           At. Then (7.3) has a proper solution iff R(s)=0 and Ai <-_
+(i 1,..., l). Equation (7.3) has a strictly proper solution iff R(s)=0 and Ai <
+(i=1,...,l).
+    Proof. The conditions are necessary according to the foregoing discussions. Now
+assume that the conditions hold. Then there exists L g rl such that U(s)L is a row
+proper      matrix with row degrees u,         ,
+                                             Ul. Define
+                              O(s) := L(UI(s)L)-IRI(S).
+Then Q(s) satisfies (7.3). It follows from (7.2) that Q(s) is proper. The proof for the
+strictly proper solution is similar.
+     We can express the result of Theorem 7.4 in a way not involving explicitly the
+matrix M(s):
+      COROLLARY 7.5. Equation (7.3) has a proper solution iff U(s) and [U(s), R(s)]
+have the same rank and the same row indices.
+      In [14], no explicit condition for the solvability is given. In [5], a condition is given
+in terms of the kernel of the matrix U(s), R (s)]. The conditions given in Theorem 7.4
+and Corollary 7.5 are directly expressed in terms of the matrices U(s) and R (s).
+      The set Xu is the largest (M, )-invariant subspace contained in ker c. By
+definition x(s) Xu iff the equation
+                                       U(s)v(s)=x(s)
+                        A POLYNOMIAL CHARACTERIZATION                                   433
+
+has a strictly proper solution v(s). Therefore, using Theorem 7.4, we can give a
+constructive characterization of Su.
+     COROLLARY 7.6. Let M(s) be as in Theorem 7.4. Then x(s)Xu iff
+y(s) := M(s)x(s) satisfies the conditions
+                          deg yi(s) < vi         (i   i,   l),
+                          yi(s)   0              (i=/+1,... ,q).
+Here yi(s) denotes the ith component o] y(s). In particular, if we introduce the row vector
+w(s) := [s -,        ,1], then M-(s) W(s) is a basis matrix of Xu, where
+
+                                       W(s) :=   [ W(s)
+with Wx(s) := diag (wl-a(S),         Wl-X(s)).
+     One way of solving (7.3), already mentioned in 4, is the reformulation of (7.3) as a
+(M)DDP. In doing so, it is not necessary to use the original denominator matrix T(s).
+One might try to find a new denominator matrix Tx(s) such that T- (s)U(s) is strictly
+proper and Tl(s) is as simple as possible. If we choose Tl(s) row proper, then according
+to Lemma 7.2, it suffices for the strict properness of T-1 U, that the row degrees of Tx
+are larger than the row degrees of U. If we denote the latter by A x,     ,
+                                                                         A 1, the simplest
+choice of Tx(s) is Tl(s)= diag (sX,+x,     .,sXl+l).
+     For this computation, it is not necessary that U(s) be in row proper form. But if we
+transform U(s) such that it has the form given in Theorem 7.4, then the dimension of
+
+
+                  .
+the state space will be minimal. These ideas are worked out in more detail in [3].
+     We conclude this section with a construction of the supremal reachability subspace
+contained in ker To this end, we consider the space
+                         A :- {v(s)K(s)l U(s)v(s)-O},
+and we choose a minimal basis for A (see [5]), that is, a basis for A (see (6.7)) which is
+column proper. We define La :-[M]c. Furthermore we choose any D(s)Kl[s]
+which has the same column degrees M(s) and such that [D]c L Then we observe (by
+Lemma 7.2) that, if
+                              N(s):=LaD(s)-M(s),
+then O(s) := N(s)D-X(s) is strictly proper. Now we have
+    THEOREM 7.7. (i) { U(s)L1} Xu ( { U(s)},
+     (ii) O(s) is a strictly proper rational matrix of minimal McMillan degree satisfying
+
+(7.8)                                 U(s)O(s)=U(s)La.
+
+is a basis of the supremal reachability subspace contained in ker     .
+Hence, if (F1, A1, B1) is a minimal realization of O(s), then (s) := U(s)Fx(sI-Ax)
+                                                                                           -1
+
+
+
+
+     Proof. (i) Since U(s)M(s) 0, it is easily seen that (7.8) is satisfied. This implies that
+{ U(s)L 1} c__ Xu 71 { U(s)}. Suppose that there exists a matrix L Of full column rank such
+that {U(s)L1}c_ {U(s)/Sx}, and U(s)/S1 U(s)O(s) for some strictly proper O(s). Let
+ ),/ be right coprime polynomial matrices such that ((s)- l(s)l-a(s), and/(s) is
+ column proper with [D]       I. Then
+                                  U(s)(N(s)- LID(S)) O.
+ Since 0(s) is strictly proper, the columns of/(s)-/S1/(s) are linearly independent
+434                           E. EMRE AND M. L. J. HAUTUS
+
+over K(s). But then L1 cannot have more columns than L1. Consequently, {U(s)L}
+{U(s)L}.
+     (ii) Suppose that O(s)- lql’(s)-(s) has a lower McMillan degree than O(s) and
+that N(s) and D(s) are relatively prime and that D(s) is column proper with [D (s)] I.
+Then we have
+                               U(s)(N(s)-LD(s)) O,
+and hence, N(s)-LID(S)= M(s)R(s). By the "predictable degree property" (see [5,
+ 3, Remark]), this implies that the sum of the column degrees of D(s), and hence
+deg det D(s) is not less than deg det D(s), which contradicts our assumption.
+     8. Generalization to systems represented by Rosenbrock’s system matrix. In this
+section, we indicate how the result of 3 can be generalized to the case where the system
+is represented by a system matrix
+                                   T(s) U(s)]
+(8.1)                            P(s)
+                                   V(s) W(s)J’
+where T(s) K’’[s] is nonsingular and P(s) K (q+l)(q+r) Is]. We assume that the
+transfer function matrix
+                             G(s) := V(s)T-I(s)U(s)+ W(s)
+and the matrix T-l(s)U(s) are strictly proper. If the latter condition is not satisfied, we
+can obtain this by strict system equivalence (see [13, 3.1]). Indeed, if we define
+                               U(s) := rr(U(s)),
+then
+                               O(s) := T-l(s)(U(s) Ul(S))
+is a polynomial matrix. Therefore,
+                                     T(s)       U(s)
+                           P(s) := [
+                                   I.-V(s) W(s) + V(s)O(s)
+is a polynomial system matrix with the same transfer matrix G(s).
+      In [9], it is shown that the maps
+                           sC Xr --, Xr x (s       zrr(sx (s )),
+                           3 K --> XT U          U s u,
+                             "XT "> Kl’x(s) ’’> (V(s) T-l(s)x(s))_l
+yield a realization (, M, ) of G(s) which is reachable iff T(s) and U(s) are left
+coprime, and observable iff T(s) and V(s) are right coprime.
+     It is easily seen that Theorem 3.1 is equally valid in this situation. Instead of
+Corollary 3.10 we get
+     THEOREM 8.2. Let W(s) be a q x m polynomial matrix. Then {(s)} is an (M, )-
+invariant subspace in ker iff there exists CI K ", F K "*, A K "" and an
+ x m polynomial matrix (s) such that
+
+(8.3)                          P(s)   IV1]
+                                       F
+                                           [*(s)](si_Ax)"
+                                            !_
+                                            (s).l
+        Proof. By Theorem 3.1, {*(s)} is an (M, 3)-invariant subspace of XT iff for some
+                             A POLYNOMIAL CHARACTERIZATION                                             435
+
+Cx, El, A1 we have (3.2) and hence (3.6). But then
+                  xlt(s) V(s) T-(s)W(s))_l
+                      =((V(s)C +(G(s)- W(s)F))(sI-A)-)-
+
+
+                              -
+                        ((V(s)C- W(s)F)(sI-A)-)_
+since G(s) and (sI-A) are both strictly proper. Now it follows from Lemma (8.5)
+that
+
+                                                         -
+(8.4)
+
+                                                       .
+                         (s) := (-V(s)CI + W(s)Fx)(sI-Ax)
+is a polynomial iff xlt(s)= 0. Combining (3.2) and (8.4) yields the desired result.
+      LEMMA 8.5. Let Q(s) Ktn[s], A K
+
+                      -x
+                                                If
+                                       (O(s)(sI-A-1))_l =0,
+then O(s)(sI-A) is a polynomial matrix.
+    The proof is analogous to the proof of Lemma 3.13 and will be omitted.
+     The generalization of Corollary 3.12 can be expressed in terms of the map
+                                                          r
+                                    Kq+l[s].-> Kq[s]" /x(s)/x(s).
+                                                          L y(s)J
+        COROLLARY 8.6. The largest (sg, Yd )-invariant subspace of XT-contained in ker
+is (Xp).
+        The proof is similar to the proof of Corollary 3.12 and will be omitted.
+    Acknowledgment. One of the authors (E. Emre) would like to thank the Depart-
+ment of Mathematics of the Eindhoven University of Technology for financial support
+and hospitality while this research was being done.
+
+
+                                              REFERENCES
+ [1] G. BENGTSSON, Output regulation and internal modelsma frequency domain approach, Automatica-
+         J.IFAC, 13 (1977), pp. 333-345.
+ [2] P. BHATTACHARYYA, Observer design for linear systems with unknown inputs, IEEE Trans. Automatic
+           Control, AC-23 (1978), pp. 483-484.
+ [3] E. EMRE, Nonsingular factors of polynomial matrices and (A, B)-invariant subspaces, Memorandum
+         COSOR 78-12, Dept. of Math., Eindhoven Univ. of Technology; this Journal, to appear.
+ [4] E. EMRE AND L. M. SILVERMAN, Relatively prime polynomial matrices: Algorithms, Proc. IEEE
+         Conference on Decision and Control, Houston, TX, 1975.
+ [5] G. D. FORNEY, Minimal bases of rational vector spaces, with application to multivariable linear systems,
+         this Journal, 13 (1977), pp. ,493-520.
+ [6] T.E. FORTMANN AND D. WlLLIAMSON, Design for low-order observers for linear feedback control laws,
+         IEEE Trans. Automatic Control, AC-17 (1972), pp. 301-308.
+ [7] P. FUHRMANN, Algebraic system theory, an analyst’s point of view, J. Franklin Inst., 301 (1976), pp.
+           521-540.
+ [8] , Linear algebra and finite dimensional linear systems, Math. Rep. 143, Ben Gurion Univ. of the
+        Negev, Beersheva, Israel.
+ 19] , On strict system equivalence and similarity, Internat. J. Control, 25 (1977), pp. 5-10.
+[10] A. G. J. MACFARLANE AND N. KARCANIAS, Relationships between state-space and frequency-
+         response concepts, Preprints of 7th .World Congress IFAC, Pergamon Press, New York, 1978, pp.
+         1771-1779.
+ 11 M.L.J. HAUTUS AND H. HEYMANN, Linearfeedback--an algebraic approach, this Journal, 16 (1978),
+         pp. 83-105.
+[12] A. S. MORSE, Minimal solutions to transfer matrix equations, IEEE Trans. Automatic Control, AC-21
+         (1976), pp. 131-133.
+436                             E. EMRE AND M. L. J. HAUTUS
+
+
+[13] H. H. ROSEN3OCK, State space and multivariable theory, Wiley, New York, 1970.
+[14] S. H. WANG AND E. J. DAVISON, A minimization algorithm for the design of linear multivariable
+         systems, IEEE Trans. Automatic Control, AC-18 (1973), pp. 220-225.
+[15] , Observing partial states for systems with unmeasurable disturbances, Ibid., AC-23 (1978), pp.
+        481-483.
+[16] W. A. WOLOVICH, Linear Multivariable Systems, Springer-Verlag, New York, 1974.
+[17] W.M. WONHAM, Linear Multivariable Control: A Geometric Approach, Lecture Notes in Mathematical
+        Systems no., 101, Springer-Verlag, New York, 1974.
+[18] , Geometric Methods in the structural synthesis ol linear muttivariable controls. Proc. of Joint
+        Automatic Control Conference, San Francisco, June 1977.
+[19] , Dynamic observers: Geometric theory, IEEE-AC-15, pp. 258-259.
+[20] W. M. WONHAM AND m. S. MORSE, Feedback invariants of linear multivariable systems, Automatica-
+        J.IFAC, 8 (1972), pp. 93-100.
+

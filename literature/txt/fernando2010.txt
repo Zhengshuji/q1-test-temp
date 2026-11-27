@@ -1,0 +1,950 @@
+1268 IEEE TRANSACTIONS ON AUTOMATIC CONTROL, VOL. 55, NO. 5, MAY 2010
+[5] W. Ren and E. Atkins, “Distributed multi-vehicle coordinated control
+via local information exchange,”Int. J. Robust Nonlin. Control, vol. 17,
+no. 10–11, pp. 1002–1033, Jul. 2007.
+[6] S. E. Tuna, LQR-Based Coupling Gain for Synchronization of Linear
+Systems [Online]. Available: http://arxiv.org/abs/0801.3390
+[7] C. Q. Ma, T. Li, and J. F. Zhang, “Linear quadratic decentralized dy-
+namic games for large population discrete-time stochastic multi-agent
+systems,” (in Chinese) J. Syst. Sci. Math. Scis. , vol. 27, no. 3, pp.
+464–480, Jun. 2007.
+[8] C. Q. Ma, T. Li, and J. F. Zhang, “Consensus control for leader-fol-
+lowing multi-agent systems with measurement noises,” J. Syst. Sci.
+Complexity, vol. 23, no. 1, pp. 34–39, Feb. 2010.
+[9] Z. Qu, J. Wang, and A. H. Richard, “Cooperative control of dynamical
+systems with application to autonomous vehicles,”IEEE Trans. Autom.
+Control, vol. 53, no. 4, pp. 894–911, May 2008.
+[10] Y. Zhang and Y. P. Tian, “Consentability and protocol design of multi-
+agent systems with stochastic switching topology,”Automatica, vol. 45,
+no. 5, pp. 1195–1201, May 2009.
+[11] Y. Liu and K. M. Passino, “Cohesive behaviours of multiagent systems
+with information ﬂow constraints,” IEEE Trans. Autom. Control , vol.
+51, no. 11, pp. 1734–1748, Nov. 2006.
+[12] N. E. Leonard and E. Fiorelli, “Virtual leaders, artiﬁcial potentials and
+coordinated control of groups,” in Proc. IEEE Conf. Decis. Control ,
+Orlando, FL, Dec. 2001, vol. 3, pp. 2968–2973.
+[13] Z. Y. Lin, B. Francis, and M. Maggiore, “Necessary and sufﬁcient
+graphical conditions for formation control of unicycles,” IEEE Trans.
+Autom. Control, vol. 50, no. 1, pp. 121–127, May 2005.
+[14] J. W. Brewer, “Kronecker products and matrix calculus in system
+theory,” IEEE Trans. Circuits Syst. , vol. 25, no. 9, pp. 772–781, Sep.
+1978.
+[15] V. L. Syrmos, C. T. Abdallah, P. Dorato, and K. Grigoriadis, “Static
+output feedback: A survey,” Automatica, vol. 33, no. 2, pp. 125–137,
+Feb. 1997.
+[16] Z. Cheng and S. Ma , Linear System Theory . Beijing, China: Science
+Press, 2006.
+[17] C. Q. Ma, “System Analysis and Control Synthesis of Linear Multi-
+Agent Systems,” Ph.D. dissertation, Academy of Mathematics and
+Systems Science, Chinese Academy of Sciences, Beijing, China, Jul.
+2009.
+Functional Observability and the Design of Minimum
+Order Linear Functional Observers
+Tyrone Lucius Fernando, Hieu Minh Trinh, and Les Jennings
+Abstract—The design of a minimum-order linear functional observer
+for linear time-invariant systems has been an open problem for over four
+decades. This technical note provides a solution to this problem. The
+technical note also introduces the concept of Functional Observability/De-
+tectability and shows that the well-known concept of Observability/De-
+tectability is a special case of Functional Observability/Detectability.
+Index Terms— Functional detectability, functional observability, func-
+tional observers, minimum order observers.
+I. I NTRODUCTION
+Linear functional observers estimate linear functions of the state
+vector of a system without estimating all the individual states. Such
+functional estimates are useful in feedback control system design be-
+cause the control signal is often a linear combination of the states, and
+it is possible to utilize a linear functional observer to directly estimate
+the feedback control signal. The concept of linear functional observers
+has been around for more than four decades [1]. Yet to date, a method
+for designing a minimum-order linear functional observer has not been
+reported and this has remained an open problem [2]–[12] until now.
+For a long time, it was understood that an observer that estimates
+linear functions of the state vector can have a lower order than that
+would be required to estimate the entire state vector. The concept of
+estimating linear functions was ﬁrst explored by Luenberger [1]. Fol-
+lowing the pioneering work of Luenberger [1], several other methods
+for solving single-functional and multi-functional observers were pre-
+sented [2]–[16]. Darouach in [16] reported necessary and sufﬁcient
+conditions for the existence and the design of an /114-order linear func-
+tional observer where /114 is the number of linear functions to be esti-
+mated. Conditions to assure minimality of observers are also reported
+in [17], however those minimality conditions cannot always be satis-
+ﬁed, and hence a minimum observer structure cannot always be de-
+signed using previously reported results.
+Despite all the contributions related to linear functional observers
+made so far, the problem of designing a minimum-order linear func-
+tional observer remained unsolved for over four decades. This tech-
+nical note provides a solution to this problem. The proposed solution
+is based on recognizing: (i) Increasing the number of functions to be
+estimated increases the order of the observer by the same magnitude;
+and (ii) In order to estimate the desired linear functions, it is sometimes
+necessary to estimate extra linear functions as well as the desired linear
+functions. Consequently, the problem of designing a minimum-order
+linear functional observer is solved via ﬁnding the minimum number
+of extra linear functions that needs to be estimated. In solving the min-
+imum-order observer problem, the technical note also introduces the
+Manuscript received July 29, 2008; revised August 06, 2008. First published
+February 08, 2010; current version published May 12, 2010. Recommended by
+Associate Editor A. Ferrara.
+T. L. Fernando is with the School of Electrical, Electronic and Computer
+Engineering, University of Western Australia, Crawley, WA 6009, Australia
+(e-mail: tyrone@ee.uwa.edu.au).
+H. M. Trinh is with the School of Engineering, Deakin University, Geelong,
+VIC 3217, Australia (e-mail: hieu.trinh@deakin.edu.au).
+L. Jennings is with the School of Mathematics and Statistics, University of
+Western Australia, Crawley, WA 6009, Australia (e-mail: les@maths.uwa.edu.
+au).
+Digital Object Identiﬁer 10.1109/TAC.2010.2042761
+0018-9286/$26.00 © 2010 IEEE
+IEEE TRANSACTIONS ON AUTOMATIC CONTROL, VOL. 55, NO. 5, MAY 2010 1269
+concept of Functional Observability/Detectability and shows that the
+well-known concept of Observability/Detectability is a special case of
+Functional Observability/Detectability.
+This technical note is organized as follows: Section II details the
+notations used in the technical note, Section III provides a statement
+of the problem. Section IV presents the methodology, here it is shown
+that in some instances it is necessary to estimate extra linear functions
+in order to estimate the desired linear functions. In Section V, the main
+results of the technical note are presented. Two numerical examples are
+presented in Section VI and a conclusion is given in Section VII. The
+proofs for all the Lemmas and Theorems in the technical note can be
+found in Appendix.
+II. N OTATION
+A basis for a subspace of
+ /110 is a set of row vectors /102/113/49 /59/46/46/46/59/113/98 /103
+while the matrix of the basis vectors is the matrix
+/113/49
+...
+/113/98
+. We will also
+use the notation /91/91
+ /93/93to mean a matrix of row basis vectors for the
+subspace
+ . The row space of a matrix is written using the symbol /82
+/82 /40/77 /41/61 /102/29 /58/29 /61 /22/77/59 /56 /22 /103/58
+The (row) nullspace of a matrix is written using the symbol /78
+/78 /40/77 /41/61 /102/29 /58/29/77 /61/48 /103/58
+The perpendicular subspace to a subspace
+ say,
+ /26
+ /110 is deﬁned as
+/63 /61 /102/29 /58/29 /61
+ /110 /59/104/29/59 /22/105 /61/48 /59 /56 /22 /50
+ /103
+where /104/1/59/1/105is an inner product. We will also use/73 to represent the iden-
+tity matrix of appropriate dimensions and/40/1/41/116 to represent the transpose
+of /40/1/41, /114/97/110/107/40/1/41 to represent the rank of /40/1/41, /101/105/103/40/1/41 to represent the set
+of eigenvalues of /40/1/41, /114/111/119/115/40/1/41 and /99/111/108/115/40/1/41 to represent the number of
+rows of /40/1/41 and the number of columns of /40/1/41 respectively. Further-
+more, /98/105/110/99/111/101/11/40/110/59 /107/41 is the binomial coefﬁcient and it is the number
+of /107-element subsets (the /107-combinations) of an /110 -element set.
+III. P ROBLEM STATEMENT
+Consider a linear time-invariant system described by
+/95/120/40/116/41/61 /65/120 /40/116/41/43 /66/117 /40/116/41/59 (1a)
+/121/40/116/41/61 /67/120 /40/116/41/59 (1b)
+/122/48 /40/116/41/61 /76 /48 /120/40/116/41 (1c)
+where /120/40/116/41 /50
+ /110 , /117/40/116/41 /50
+ /109 and /121/40/116/41 /50
+ /112 are the state, input
+and the output vectors, respectively. /122/48 /40/116/41 /50
+ /114 is the vector to be
+estimated. /65 /50
+ /110 /2 /110 , /66 /50
+ /110 /2 /109 , /67 /50
+ /112 /2 /110 and /76 /48 /50
+ /114 /2 /110 are
+known constant matrices. Without loss of generality, it is assumed that
+/114/97/110/107/40/67 /41/61 /112, /114/97/110/107/40/76 /48 /41/61 /114 and /114/97/110/107
+ /67
+/76 /48
+/61/40 /112/43 /114/41. It is assumed
+without loss of generality that there are no stable uncontrollable states
+in the system because the asymptotic value of uncontrollable but stable
+states are zero, those states play no part in an asymptotic estimation of
+/122/48 /40/116/41, and if present, those states can be removed from the system and
+the function /122/48 /40/116/41.
+Let /122/40/116/41/61
+ /122/48 /40/116/41
+/122/49 /40/116/41
+ /61 /76/120 /40/116/41, /122/40/116/41 /50
+ /22/114 be functions that can be
+estimated using a functional observer of order/22/114 (where /22/114 is in the range
+/114 /20 /22/114 /20 /110 ) of the form (2a)–(2b) below
+/95/119 /40/116/41/61 /78/119 /40/116/41/43 /74/121 /40/116/41/43 /72/117 /40/116/41/59 (2a)
+/94/122/40/116/41/61 /119 /40/116/41/43 /69/121 /40/116/41 (2b)
+where /119 /40/116/41 /50
+ /22/114 . The problem to be solved in this technical note is
+the design of a minimum-order linear functional observer of the form
+(2a)–(2b) with arbitrary poles, i.e., determining matrices /72 , /69 , /74 and
+/78 with arbitrary eigenvalues and /22/114 minimum, such that /94/122/40/116/41 /33 /122/40/116/41
+as /116 /33/49 for any /120/40/48/41, /119 /40/48/41and /117/40/116/41.
+IV . METHODOLOGY
+The observer error is /101/40/116/41/61 /122/40/116/41 /0 /94/122/40/116/41 and error dynamics can be
+written as
+/95/101/40/116/41/61 /78/101 /40/116/41/43/40 /76/65 /0 /69/67/65 /0 /78/76 /43 /78/69/67 /0 /74/67 /41/120/40/116/41
+/43/40 /76/66 /0 /69/67/66 /0 /72 /41/117/40/116/41/58 (3)
+Theorem 1: /101/40/116/41 /33 /48 as /116 /33/49 for any /120/40/48/41, /119 /40/48/41and /117/40/116/41 iff /78
+is Hurwitz and
+/76/65 /0 /69/67/65 /0 /78/76 /43 /78/69/67 /0 /74/67 /61/48 /59 (4a)
+/76/66 /0 /69/67/66 /0 /72 /61/48 /58 (4b)
+Theorem 2 [16]: There exists a /22/114-order linear functional observer
+(2a)–(2b) with arbitrary poles such that /94/122/40/116/41 is an asymptotic estimate
+of /122/40/116/41 for any /120/40/48/41, /119 /40/48/41 and /117/40/116/41 iff the following two conditions
+(5a) and (5b) are satisﬁed:
+/67/111/110/100/105/116/105/111/110 /49 /58 /114/97/110/107
+/76/65
+/67/65
+/67
+/76
+/61 /114/97/110/107
+/67/65
+/67
+/76
+/59 (5a)
+/67/111/110/100/105/116/105/111/110 /50 /58 /114/97/110/107
+/115/76 /0 /76/65
+/67/65
+/67
+/61 /114/97/110/107
+/67/65
+/67
+/76
+/59
+/115 /50
+ /58 (5b)
+Once the observer existence conditions (5a) and (5b) are satisﬁed,
+then an observer of order /22/114 can be designed in a straightforward way
+as detailed in [16]. In [16], Condition 2 considers /115 /50
+ , /60 /40/115/41 /21 /48,
+however if we consider/115 /50
+ instead of /115 /50
+ , /60 /40/115/41 /21 /48 in Condition
+2, then the observer can have arbitrary stable poles as opposed to just
+stable poles. Since /22/114 represents the order of the observer, and also /22/114
+represents the number of rows in/76 (which includes /76 /48 ), the problem of
+designing the minimum-order observer reduces to ﬁnding the smallest
+/76 , that is, /76 with the least number of rows, that satisﬁes Condition 1
+and Condition 2. If the two conditions are satisﬁed when /76 /61 /76 /48 then
+the order of the observer is/114, and is the lowest possible order that can be
+had, because a dynamic observer of order less than/114 cannot estimate /114
+linearly independent functions. However, if the two conditions are not
+satisﬁed when /76 /61 /76 /48 then the lowest possible order is greater than/114,
+and the minimum order is equal to the number of rows of the smallest
+/76 that satisﬁes the two conditions. This technical note shows how to
+ﬁnd the smallest /76 .
+V. M AIN RESULTS
+Consider the matrices /126/84/49 and /126/84 /50 such that /126/84/49 /61
+ /67
+/67/65
+ and /126/84/50 /61
+/126/84/49
+/76
+ /58Let /84/49 , /84/50 and /84/51 as follows:
+/84/49 /61
+ /82 /40/126/84/49 /41
+ /59 (6)
+1270 IEEE TRANSACTIONS ON AUTOMATIC CONTROL, VOL. 55, NO. 5, MAY 2010
+/84/50 /61
+ /82 /40 /126/84/50 /41
+ /59 (7)
+/84/51 /61
+/126/76/65
+/84/50
+(8)
+where /126/76 consist of rows of /76 such that /126/76/65 does not belong to the row
+space of /84/50 . Also let
+/97 /61/114 /97 /110 /107/40/84/50 /41/59 (9)
+/98 /61 /114/97/110/107 /40 /84/51 /41/58 (10)
+Condition 1 implies
+/82 /40/84/51 /41/61 /82 /40/84/50 /41/58 (11)
+A ﬁnite iteration, in /106, is needed to increase the size of/76 when Con-
+dition 1 is not true. Let /76 /106 be some linear functions that include /76 /48 ,
+now let /97/106 , /98/106 , /84 /106/50 and /84 /106/51 be the values of /97, /98, /84/50 and /84/51 respectively
+when /76 /61 /76 /106 .
+Lemma 1: Let /76 /61 /76 /106 and also let /8 /106 and /9 /106 have /98/106 columns
+each, such that
+/91/8 /106 /9 /106 /93/61
+ /78
+ /84 /106/51 /65
+/84 /106/51
+ (12)
+and also let /2 /106 (with number of columns equal to number of rows of
+/8 /106 ) and /4 /106 such that
+/91/2 /106 /4 /106 /93/61
+ /78
+ /8 /106 /84 /106/51
+/84 /106/50
+ /58 (13)
+Iff a vector /113 belongs to the row space of /0 /106
+/0 /106 /61
+ /82
+ /8 /106 /84 /106/51
+ /92/82
+ /2 /106 /8 /106 /84 /106/51
+ /63
+/61
+ /82 /40/2 /106 /41/63
+ /8 /106 /84 /106/51 (14)
+then /76 /61
+ /76 /106
+/113
+ will increase /97/106 by 1 for each /113 up to /97/106 /43 /114/97/110/107 /40/0 /106 /41
+but will not increase /98/106 .
+So Lemma 1 chooses a set of vectors from the space of rows of /84/51 ,
+with no subspace entirely within the space of the rows of/84/50 and which
+map to the space of rows of /84/51 under /65 . To satisfy Condition 1 when
+/76 /61 /76 /48 , /76 /48 /65 must belong to the row space of /84 /48/50 . When Condition
+1 is not satisﬁed, /84 /48/51 contains
+ /82
+ /84 /48/51
+ /92/82
+ /84 /48/50
+ /63
+rows linearly
+independent of the rows of/84 /48/50 . From Lemma 1 we know that inclusion
+of /0 /48 in /76 /48 increases /97/48 without increasing /98/48 , so in ﬁnding the min-
+imum /76 that satisﬁes Condition 1, those /0 /48 rows need to be included
+in /76 /48 together with the rows of
+ /82
+ /84 /48/51
+ /92/82
+ /84 /48/50
+/0 /48
+/63
+where
+each row will increase both /97/48 and /98/48 by only one, so
+/76 /61 /76 /49 /61
+/76 /48
+/0 /48
+/82
+ /84 /48/51
+ /92/82
+ /84 /48/50
+/0 /48
+/63
+ /58 (15)
+In general, if Condition 1 is still not satisﬁed for/76 /61 /76 /106/0 /49 the process
+is repeated until it is. Hence, inductively
+/76 /106 /61
+/76 /106/0 /49
+/0 /106/0 /49
+/82
+ /84 /106/0 /49/51
+ /92/82
+ /84 /106/0 /49/50
+/0 /106/0 /49
+/63
+ /58 (16)
+In each iteration, the above procedure maximizes /97/106 and minimizes /98/106
+(see Lemma 1), hence the minimum /76 /61 /76 /106 that satisﬁes Condition 1
+is obtained when
+/82
+ /84 /106/51
+ /61 /82
+ /84 /106/50
+ /58 (17)
+Let /12 be
+/12 /61/109 /105 /110
+/82 /40/84
+ /41/61 /82 /40/84
+ /41
+/106 (18)
+so /76 /61 /76 /12 is the minimum /76 that satisﬁes Condition 1 and can be
+written as
+/76 /12 /61
+/76 /48 if /12 /61/48 ,
+/76 /12 /0 /49
+/0 /12 /0 /49
+if /12/62 /48. (19)
+So in each step of the ﬁnite iterative process (i.e., for each /106) the fol-
+lowing two tasks are performed starting with /76 /61 /76 /48 :
+I. Include vectors to /76 so that /97 is increased but /98 is not (Lemma
+1 suggests how to do this).
+II. For the new /76 obtained in step I above compute/84/51 and /84/50 ,i f /84/51
+and /84/50 spans the same space then let /76 /12 /61 /76 and the iterative
+process stops, otherwise to the resulting /76 from step I, include
+the rows of /76/65 that do not belong to /84/50 and continue with the
+iteration.
+It should be noted that in each iterative step there is no choice in the
+vectors that can be included in/76 except for choosing a linear combina-
+tion of those vectors that can be included as identiﬁed in steps I and II
+of the iterative process. Now we consider satisfying Condition 1 when
+/97/12 /60/97 /61 /98 /20 /110 .
+Lemma 2: Let /88 /50 /61
+ /82
+ /84 /12/50
+ /63
+and /7 /105/106 be a matrix formed by
+taking /106 left eigenvectors of /88 /50 /65/88 /116/50 and then post multiplied by /88 /50 ,
+there are /40/110 /0 /97/12 /41choose /106 possibilities (i.e., /98/105/110/99/111/101/11/40/110 /0 /97/12 /59/106/41many
+possibilities) for /7 /105/106 ,s o /105 /50/102 /49/59/46/46/46/59/98/105/110/99/111/101/11 /40/110 /0 /97/12 /59/106/41/103. Condition
+1 is satisﬁed for /97 /61 /98 /61 /97/12 /43 /106 iff /76 /61/6
+ /76 /12
+/7 /105/106
+ where /6 is any
+non-singular square matrix of appropriate dimensions.
+Lemma 3: If Condition 1 is satisﬁed, but Condition 2 is not satisﬁed
+for some /76 , then including a row vector in /76 from the row space of /67
+cannot satisfy Condition 2.
+Lemma 4: If Condition 1 is satisﬁed, but Condition 2 is not sat-
+isﬁed for some /76 , then including a row vector linearly independent
+of /82 /40/84/50 /41/61 /82 /40/84/51 /41 in /76 such that Condition 1 remains satisﬁed (by
+adding one to both /97 and /98), cannot satisfy Condition 2.
+From Lemmas 3 and 4 it is clear if Condition 2 is not satisﬁed for
+some /76 then Condition 2 can only be satisﬁed (if at all) by including
+row vectors in the row space of/67/65 without violating Condition 1 when
+/97 /61 /98 /61 /97/12 /61 /98/12 ,o r /97 /61 /98 /61 /97/12 /43/49 /61 /98/12 /43/49 ,o r /1/1/1,o r /97 /61 /98 /61 /110 ,
+we now consider satisfying Condition 1 by including row vectors in the
+row space of /67/65 in /76 as detailed in Lemmas 5 and 6 to follow.
+Lemma 5: Let /10 /49 and /1 /49 be such that /99/111/108/115/40/10 /49 /41 /61 /114/111/119/115/40 /67/65 /50 /41/61
+/112 and /99/111/108/115/40/1 /49 /41 /61 /114/111/119/115
+ /84 /12/50
+ and
+/91/10 /49 /1 /49 /93/61
+ /78
+ /67/65 /50
+/84 /12/50
+ /58 (20)
+Also let
+/85 /12 /61/10 /49 /67/65/58 (21)
+For /113 /50/82 /40/67/65 /41, /76 /61
+ /76 /12
+/113
+ satisﬁes Condition 1 for /97 /61 /98 /61 /97/12 /61
+/98/12 iff /113 belongs to the row space of /85 /12 .
+
+IEEE TRANSACTIONS ON AUTOMATIC CONTROL, VOL. 55, NO. 5, MAY 2010 1271
+So, Lemma 5 is suggesting that Condition 1 can still be satisﬁed
+without increasing the LHS and RHS of Condition 1 (i.e., /97 /61 /98 /61
+/97/12 /61 /98/12 ) if a new/76 is formed by picking a row vector from/82 /40/85 /12 /41/61
+/82 /40/10 /49 /67/65 /41 /18/82 /40/67/65 /41and append it with /76 /12 . In fact we could append
+the whole of /85 /12 to /76 /12 to form a new /76 and still satisfy Condition 1
+without increasing its LHS and RHS.
+Lemma 6: Let /76 /12 /43 /106 /61
+ /76 /12
+/7 /105/106
+ , /106 /50/102 /49/59/46/46/46/59/110 /0 /97/12 /103,
+/105 /50/102 /49/59/46/46/46/59/98/105/110/99/111/101/11/40/110 /0 /97/12 /59/106/41/103, /10 /105/50 and /1 /105/50 be such that
+/99/111/108/115
+ /10 /105/50
+ /61 /114/111/119/115/40 /67/65 /50 /41/61 /112 and /99/111/108/115
+ /1 /105/50
+ /61/114 /111 /119 /115
+ /84 /12 /43 /106/50
+and
+/91/10 /105/50 /1 /105/50 /93/61
+ /78
+ /67/65 /50
+/84 /12 /43 /106/50
+ /58 (22)
+Also let
+/85 /105/12 /43 /106 /61/10 /105/50 /67/65/58 (23)
+For /113 /50/82 /40/67/65 /41, /76 /61
+/76 /12
+/7 /105/106
+/113
+satisﬁes Condition 1 for /97 /61 /98 /61
+/97/12 /43 /106 /61 /98/12 /43 /106 iff /113 belongs to the row space of /85 /105/12 /43 /106 .
+So, Lemma 6 is suggesting that Condition 1 can still be satisﬁed
+without increasing the LHS and RHS of Condition 1 when /97 /61 /98 /61
+/97/12 /43 /106 /61 /98/12 /43 /106 if a new /76 is formed by picking a row vector from
+/82
+ /85 /105/12 /43 /106
+ /61 /82 /40/10 /50 /67/65 /41 /18/82 /40/67/65 /41 and append it with /76 /61
+ /76 /12
+/7 /105/106
+ .
+In fact we could append the whole of /85 /105/12 /43 /106 to /76 /61
+ /76 /12
+/7 /105/106
+ to form
+an e w/76 and still satisfy Condition 1 without increasing its LHS and
+RHS.
+Remark 1: For /76 /61 /76 /12 and /76 /61
+ /76 /12
+/85 /12
+Condition 1 is satisﬁed
+for /97 /61 /98 /61 /97/12 /61 /98/12 .F o r /76 /61
+ /76 /12
+/7 /105/106
+ and /76 /61
+/76 /12
+/7 /105/106
+/85 /105/12 /43 /106
+, /106 /50
+/102/49/59/46/46/46/59/110 /0 /97/12 /103, /105 /50/102 /49/59/46/46/46/59/98/105/110/99/111/101/11 /40/110 /0 /97/12 /59/106/41/103 Condition 1 is
+satisﬁed for /97 /61 /98 /61 /97/12 /43 /106 /61 /98/12 /43 /106.
+We can now introduce the concept of Functional Observability .
+Functional Observability is a test of whether linear functions of states
+of a system can be inferred by knowledge of external outputs and
+inputs of the system. For system matrices /65 and /67 , and the function
+to be estimated /76 /48 , Functional Observability can ascertain if /76 /48 can
+be estimated in a similar way that Observability of the pair/40/65/59 /67 /41 can
+ascertain if all the states can be estimated.
+Deﬁnition 1: The triple /40/65/59 /67/59 /76 /48 /41 is Functional Observable iff
+there exists an /76 /50
+ /110 /2 /110 /59/114 /20 /22/114 /20 /110 such that /82 /40/76 /41 /19/82 /40/76 /48 /41
+and /76 satisﬁes conditions 1 and 2.
+Theorem 3: The triple /40/65/59 /67/59 /76 /48 /41is Functional Observable iff Con-
+dition 2 is satisﬁed for /76 /61
+ /76 /12
+/85 /12
+or one of /76 /61
+/76 /12
+/7 /105/106
+/85 /105/12 /43 /106
+, /106 /50
+/102/49/59/46/46/46/59/110 /0 /97/12 /103, /105 /50/102 /49/59/46/46/46/59/98/105/110/99/111/101/11/40/110 /0 /97/12 /59/106/41/103.
+For /106 /50/102 /49/59/46/46/46/59/110 /0 /97/12 /103 and /105 /50/102 /49/59/46/46/46/59/98/105/110/99/111/101/11/40/110 /0 /97/12 /59/106/41/103 let
+/31 /49 /21 /48, /31 /50 /21 /48, /31 /51 /40/105/59 /106/41 /21 /48 and /31 /52 /40/105/59 /106/41 /21 /48 be the maximum
+difference between the RHS and LHS of Condition 2 when /76 /61 /76 /12 ,
+/76 /61
+ /76 /12
+/85 /12
+, /76 /61
+ /76 /12
+/7 /105/106
+ and /76 /61
+/76 /12
+/7 /105/106
+/85 /105/12 /43 /106
+, respectively
+/31 /49 /61 /98/12 /0 /109/105/110/115/50
+ /114/97/110/107
+ /115/76 /12 /0 /76 /12 /65
+/84/49
+/59 (24)
+/31 /50 /61 /98/12 /0 /109/105/110/115/50
+ /114/97/110/107
+/115/76 /12 /0 /76 /12 /65
+/115/85 /12 /0 /85 /12 /65
+/84/49
+/59 (25)
+/31 /51 /40/105/59 /106/41/61 /98/12 /43 /106 /0 /109/105/110/115/50
+ /114/97/110/107
+/115/76 /12 /0 /76 /12 /65
+/115/7 /105/106 /0 /7 /105/106 /65
+/84/49
+/59 (26)
+/31 /52 /40/105/59 /106/41/61 /98/12 /43 /106 /0 /109/105/110/115/50
+ /114/97/110/107
+/115/76 /12 /0 /76 /12 /65
+/115/7 /105/106 /0 /7 /105/106 /65
+/115/85 /105/12 /43 /106 /0 /85 /105/12 /43 /106 /65
+/84/49
+/58 (27)
+Remark 2: Suppose some /76 satisﬁes Condition 1 but doesn’t satisfy
+Condition 2 then always LHS of Condition 2 is less than its RHS at
+some /115 /50
+ and will occur at some /115 /61/101 /105 /103 /40/68 /50 /41 and /68 /50 is such that
+/76/65 /61 /68 /49 /84/49 /43 /68 /50 /76/58 (28)
+The values of /31 /49 , /31 /50 , /31 /51 /40/105/59 /106/41 /21 /48 and /31 /52 /40/105/59 /106/41 /21 /48 can be computed
+by considering the eigenvalues of /68 /50 corresponding to /76 . Since Con-
+dition 1 is satisﬁed, /68 /50 exists.
+Now let /85 /107
+ be a matrix formed by taking /31 /49 rows from
+/85 /12 , there are /114/111/119/115/40/85 /12 /41 choose /31 /49 possibilities for /85 /107
+ ,
+so /107/49 /50/102 /49/59/46/46/46/59/98/105/110/99/111/101/11/40/114/111/119/115/40/85 /12 /41/59/31/49 /41/103. Also let /126/85 /107
+be a matrix formed by taking /31 /51 /40/105/59 /106/41 rows from /85 /105/12 /43 /106 ,
+/106 /50/102 /49/59/46/46/46/59/110 /0 /97/12 /103, /105 /50/102 /49/59/46/46/46/59/98/105/110/99/111/101/11 /40/110 /0 /97/12 /59/106/41/103
+there are /114/111/119/115
+ /85 /105/12 /43 /106
+ choose /31 /51 /40/105/59 /106/41 possibilities for /126/85 /107
+ ,s o
+/107/50 /50
+ /49/59/46/46/46/59/98/105/110/99/111/101/11
+ /114/111/119/115
+ /85 /105/12 /43 /106
+ /59/31 /51 /40/105/59 /106/41
+ .
+Lemma 7: There exist either a /85 /107
+ such that /76 /61
+ /76 /12
+/85 /107
+satisﬁes
+Condition 2 or a /126/85 /107
+ such that /76 /61
+/76 /12
+/7 /105/106
+/126/85 /107
+, /106 /50/102 /49/59/46/46/46/59/110 /0 /97/12 /103,
+/105 /50/102 /49/59/46/46/46/59/98/105/110/99/111/101/11/40/110 /0 /97/12 /59/106/41/103 satisﬁes Condition 2 iff the triple
+/40/65/59 /67/59 /76 /48 /41 is Functional Observable.
+Theorem 4: Let /85 /3/49 /61 /85 /107
+ such that /76 /61
+ /76 /12
+/85 /107
+satisﬁes Condi-
+tion 2 and let/85 /3/50 /61 /126/85 /107
+ such that /76 /61
+/76 /12
+/7 /105/106
+/126/85 /107
+, /106 /50/102 /49/59/46/46/46/59/110 /0 /97/12 /103,
+/105 /50/102 /49/59/46/46/46/59/98/105/110/99/111/101/11 /40/110 /0 /97/12 /59/106/41/103 satisﬁes Condition 2 for some /105 /61
+/105/3 with /106 /61 /106/3 where /106/3 is the minimum /106. If the triple /40/65/59 /67/59 /76 /48 /41 is
+Functional Observable then the minimum /76 that satisﬁes Conditions
+1 and 2 is
+/76 /12 if /31 /49 /61/48 ,
+/76 /12
+/85 /3/49
+ if /31 /49 /54/61/48 /59/31 /50 /61/48 ,
+/76 /12
+/7 /105
+/106
+/85 /3/50
+if /31 /49 /54/61/48 , /31 /50 /54/61/48 .
+Remark 3: Note that if we consider /115 /50
+ , /60 /40/115/41 /21 /48, instead
+of /115 /50
+ in (5b) and in (24)–(27), obviously the minimum /76 that is
+obtained can only guarantee a stable observer, and also Theorem 3 then
+presents the conditions for Functional Detectability.
+Remark 4: The concept of Functional Observability/Detectability
+reduces to Observability/Detectability when /76 /48 /61 /73. It is easy to
+see that Functional Observability of the triple /40/65/59 /67/59 /73/41 reduces to
+Observability of the pair /40/65/59 /67 /41. Furthermore, if we consider the
+right half complex plane instead of the entire complex plane then
+criteria reported in Theorem 3 is Functional Detectability of the triple
+/40/65/59 /67/59 /76 /48 /41. Again Functional Detectability of /40/65/59 /67/59 /73/41 reduces to
+Detectability of /40/65/59 /67 /41.
+1272 IEEE TRANSACTIONS ON AUTOMATIC CONTROL, VOL. 55, NO. 5, MAY 2010
+VI. N UMERICAL EXAMPLES
+Example 1: Consider
+/65 /61
+/49/48 /48 /0 /54 /48 /49/48/50 /0 /50
+/48 /0 /49/50 /57/49 /51 /54 /0 /54/52 /0 /54/52 /0 /49/50/51 /0 /57/49 /49/49/50
+/49 /48 /49 /48 /48 /48/48/48 /49
+/50/49 /48 /0 /50 /51 /50/48/49 /0 /50
+/0 /51/49 /48 /49 /48 /0 /49/48 /48/48
+/0 /49/48 /49 /51 /48 /0 /49/49 /49/48
+/48/48 /50/49 /48 /52 /0 /53/49 /0 /49
+/49/49 /49/48 /49 /0 /50 /0 /51/48/48
+/0 /49/49 /49 /48 /48 /0 /49/50 /52 /0 /51
+/76 /48 /61 /91 /49/52/49/50 /49 /0 /49/54 /0 /49/54 /0 /57 /0 /49/53 /50/48 /93 and
+/67 /61/91 /73/50 /2 /50 /48/50 /2 /55 /93. The system /40/65/59 /67/59 /76 /48 /41 is functional ob-
+servable. From (19), /76 /12 /61 /76 /48 and from (24), /31 /49 /61/49 . From (25),
+/31 /50 /61/48 with /85 /3/49 /61/91 /49 /48 /48 /0 /54/48/49/48/50 /0 /50/93. From The-
+orem 4, a minimum /76 that satisﬁes Conditions 1 and 2 is /76 /61
+ /76 /12
+/85 /3/49
+ ,
+hence a second-order observer can be designed.
+Example 2: Consider /65 /61
+/0 /49/48/48
+/48 /0 /49/48
+/48/48 /50
+, /67 /61/91 /49 /49 /48 /93 and
+/76 /48 /61/91 /49 /50 /48 /93 . This system is not Observable and also not De-
+tectable but Functional Detectable, therefore an observer to estimate
+/76 /48 can be designed. We note that for /76 /61 /76 /48 Condition 1 is satisﬁed
+and also Condition 2 is satisﬁed for /115 /50
+ , /60 /40/115/41 /21 /48, so a ﬁrst-order
+observer can be designed. The pole of the observer cannot be arbitrarily
+chosen, it is ﬁxed at /115 /61 /0 /49.
+VII. C ONCLUSION
+The technical note has introduced the concept ofFunctional Observ-
+ability/Detectability that ascertains the ability to estimate a given linear
+function of the state vector using a dynamical observer. The necessary
+and sufﬁcient condition for a triple /40/65/59 /67/59 /76 /48 /41 to be Functional Ob-
+servable/Detectable is reported in this technical note, and for systems
+which are Functional Observable/Detectable, a solution to the design
+of minimum-order observers has also been presented. It also emerges
+in the technical note that Observability is better expressed in a more
+general sense as a triple /40/65/59 /67/59 /76 /48 /41 than a pair /40/65/59 /67 /41.
+APPENDIX
+Proof of Theorem 1: If (4a)–(4b) are satisﬁed and also if /78 is
+Hurwitz then /101/40/116/41 /33 /48 for any /117/40/116/41 and /101/40/48/41 (hence for any /120/40/48/41
+and /119 /40/48/41as well). If /78 has some of its eigenvalues /21 /105 /50
+ such that
+/60 /40/21/105/41 /21 /48 then even for /120/40/48/41 /61 /48 and /117/40/116/41/61/48 , /101/40/116/41 /33/49 as /116 /33
+/49 . If (4b) is not satisﬁed then a /117/40/116/41 can be chosen to make /101/40/116/41 /54/33 /48
+as /116 /33/49 . If (4a) is not satisﬁed then the uncontrollable states of /120/40/116/41
+(note they are all unstable) approach /49 and the controllable states of
+/120/40/116/41 can be arbitrarily chosen using /117/40/116/41 to make /101/40/116/41 /54/33 /48.
+Proof of Lemma 1: Since we require /98/106 to remain constant for
+/76 /61
+ /76 /106
+/113
+ we choose /113 from /113 /61 /30 /106 /84 /106/51 where /30 /106 /50
+ /98
+ ,s o /113/65 can
+be written as
+/113/65 /61 /30 /106 /84 /106/51 /65 /61 /0 /32 /106 /84 /106/51 /43 /102/49 /58 (29)
+It follows that /98/106 remains unchanged (i.e., /113 and /113/65 belong to /84/51 /40/106/41)
+iff:
+/102/49 /61/91 /30 /106 /32 /106 /93
+ /84 /106/51 /65
+/84 /106/51
+ /61/48 (30)
+or
+/91/8 /106 /9 /106 /93/61
+ /78
+ /84 /106/51 /65
+/84 /106/51
+ /58 (31)
+So it follows iff /113 /50/82
+ /8 /106 /84 /106/51
+ then /98/106 remains constant. Following
+along a similar way it can be shown that /97/106 also remains constant iff /113
+belongs to the row space of /2 /106 /8 /106 /84 /106/51 . It now follows that /97/106 increases
+but /98/106 remains constant iff
+/113 /50/82
+ /8 /106 /84 /106/51
+ /92/82
+ /2 /106 /8 /106 /84 /106/51
+ /63
+/61
+ /82 /40/2 /106 /41/63
+ /8 /106 /84 /106/51 /58 (32)
+Since
+ /84 /106/50
+/0 /106
+is a full row rank matrix,/97/106 can be increased by 1 for each
+/113 up to /97/106 /43 /114/97/110/107 /40/0/106 /41.
+Proof of Lemma 2: We choose elements from the row space of
+/88 /50 /61
+ /82
+ /84 /12/50
+ /63
+(an orthonormal basis), /113 /61 /22/88 /50 say, where
+/22 /50 /82 /110 /0 /97
+ , which satisfy /113/65 being an element of the row space of
+/84 /12/50
+/113
+/113/65 /61 /22/88 /50 /65 /61 /27/84 /12/50 /43 /21/113 /61 /27/84 /12/50 /43 /21/22/88 /50 /58 (33)
+Multiplying on the right by/88 /116/50 and using /88 /50 /88 /116/50 /61 /73/110 /0 /97
+ , /84 /12/50 /88 /116/50 /61/48
+we get
+/22
+ /88 /50 /65/88 /116/50 /0 /21/73
+ /61/48 (34)
+which is to ﬁnd the left eigenvectors of /88 /50 /65/88 /116/50 . Let us deﬁne /22 /105 to
+be the left eigenvector of /88 /50 /65/88 /116/50 then the corresponding /113/105 /61 /22 /105/88 /50
+has the property that /113/105/65 is in the row space of
+ /84 /12/50
+/113/105
+.S o /76 /61
+ /76 /12
+/113/105
+increases /97/12 by one and also increases /98/12 by one for each /113/105. For any
+/76 /61 /76 /48 that satisfy Condition 1, /76 /61/6 /76 /48 also satisﬁes Condition 1
+where /6 is any non-singular square matrix of appropriate dimensions.
+Proof of Lemma 3: If /113 /50/82 /40/67 /41 then /115/113 /0 /113/65 /50/82 /40/84/49 /41, hence
+the LHS of Condition 2 is
+/61 /114/97/110/107
+/115/76 /0 /76/65
+/115/113 /0 /113/65
+/84/49
+/61 /114/97/110/107
+ /115/76 /0 /76/65
+/84/49
+/60 /114/97/110/107
+ /76
+/84/49
+/59/115 /50
+ /58
+Proof of Lemma 4: If Condition 1 is satisﬁed for some /76 then
+/76/65 /61 /68 /49 /84/49 /43 /68 /50 /76/59 and the LHS of Condition 2 is
+/61 /114/97/110/107
+ /115/76 /0 /76/65
+/84/49
+/61 /114/97/110/107
+ /40/115/73 /0 /68 /50 /41/76 /0 /68 /49 /84/49
+/84/49
+/61 /114/97/110/107
+ /73/68 /49
+/48 /73
+/40/115/73 /0 /68 /50 /41/76 /0 /68 /49 /84/49
+/84/49
+/61 /114/97/110/107
+ /40/115/73 /0 /68 /50 /41/76
+/84/49
+/58
+However, if Condition 2 is not satisﬁed then
+/114/97/110/107
+ /40/115/3 /73 /0 /68 /50 /41/76
+/84/49
+/60 /114/97/110/107
+ /76
+/84/49
+(35)
+where /115/3 is some eigenvalue of /68 /50 . Since Condition 1 is also satisﬁed
+if /113 is included in /76
+/113/65 /61 /100/49 /84/49 /43 /100/50 /76 /43 /100/51 /113/58 (36)
+IEEE TRANSACTIONS ON AUTOMATIC CONTROL, VOL. 55, NO. 5, MAY 2010 1273
+With /113 included in /76 , the minimum value of LHS of Condition 2 is
+/61/109 /105 /110
+/115/50
+/114/97/110/107
+/115/76 /0 /76/65
+/115/113 /0 /113/65
+/84/49
+/61 /109/105/110
+/115/50
+/114/97/110/107
+/73 /48 /68 /49
+/48/49 /100/49
+/48/48 /73
+/40/115/73 /0 /68 /50 /41/76 /0 /68 /49 /84/49
+/0 /100/50 /76 /43/40 /115 /0 /100/51 /41/113 /0 /100/49 /84/49
+/84/49
+/61 /109/105/110
+/115/50
+/114/97/110/107
+/40/115/73 /0 /68 /50 /41/76
+/0 /100/50 /76 /43/40 /115 /0 /100/51 /41/113
+/84/49
+/20 /114/97/110/107
+ /40/115/3 /73 /0 /68 /50 /41/76
+/84/49
+/43/49 /60 /114/97/110/107
+/76
+/113
+/84/49
+/58 (37)
+Proof of Lemma 5: We choose elements from the row space of
+/67/65 , /113 /61 /33 /49 /67/65 say, where /33 /49 /50 /82 /112 ,s o /113/65 can be written as
+/113/65 /61 /33 /49 /67/65 /50 /61 /0 /14/49 /84 /12/50 /43 /102/50 /58 (38)
+It follows that /98/12 remains unchanged (and also /97/12 )i f f :
+/102/50 /61/91 /33 /49 /14/49 /93
+ /67/65 /50
+/84 /12/50
+ /61/48 (39)
+that is, iff a row vector /91/33 /49 /14/49 /93 is chosen from the row space of
+/91/10 /49 /1 /49 /93.
+Proof of Lemma 6: Proof of Lemma 6 has steps identical to the
+proof of Lemma 5.
+Proof of Theorem 3: If Condition 2 is not satisﬁed for/76 /61
+ /76 /12
+/85 /12
+or /76 /61
+/76 /12
+/7 /105/12 /43 /106
+/85 /105/12 /43 /106
+then from Lemmas 3 and 4 it follows that Condition
+2 cannot be satisﬁed for any /76 such that /97/12 /20 /97 /20 /110 . On the other
+hand, since /76 /61
+ /76 /12
+/85 /12
+and /76 /61
+/76 /12
+/7 /105/12 /43 /106
+/85 /105/12 /43 /106
+satisﬁes Condition 1,
+if either /76 satisﬁes Condition 2 then an observer can be designed to
+estimate /76 /48 .
+Proof of Lemma 7: From Theorem 3, if /40/65/59 /67/59 /76 /48 /41 is not Func-
+tional Observable then /76 /48 cannot be estimated. If Condition 2 is satis-
+ﬁed for /76 /61
+ /76 /12
+/85 /12
+then /76 /61
+ /76 /12
+/85 /107
+satisﬁes Condition 2 for at least
+some /107/49 /50/102 /49/59/46/46/46/59/98/105/110/99/111/101/11 /40/114/111/119/115/40/85 /12 /41/59/31/49 /41/103, otherwise /76 /61
+ /76 /12
+/85 /12
+cannot also satisfy Condition 2, which is a contradiction. Similarly, if
+Condition 2 is satisﬁed for /76 /61
+/76 /12
+/7 /105/106
+/85 /105/12 /43 /106
+then Condition 2 is satisﬁed
+for at least one /126/85 /107
+ /59/107/50 /50
+ /49/59/46/46/46/59/98/105/110/99/111/101/11
+ /114/111/119/115
+ /85 /105/12 /43 /106
+ /59/31 /51 /40/105/59 /106/41
+otherwise /76 /61
+/76 /12
+/7 /105/106
+/85 /105/12 /43 /106
+cannot also satisfy Condition 2, which is a
+contradiction.
+Proof of Theorem 4:
+/31 /49 /61 /98/12 /0 /109/105/110/115/50
+ /114/97/110/107
+ /115/76 /12 /0 /76 /12 /65
+/84/49
+/61 /98/12 /0 /109/105/110
+/115/50 /101/105/103/40 /126/68
+ /41
+/114/97/110/107
+ /115/76 /12 /0 /76 /12 /65
+/84/49
+(40)
+where /126/68 /50 is such that /76 /12 /65 /61 /126/68 /49 /84/49 /43 /126/68 /50 /76 /12 (see Remark 2)
+/31 /51 /40/105/59 /106/41/61 /98/12 /43 /106 /0 /109/105/110/115/50
+ /114/97/110/107
+/115/76 /12 /0 /76 /12 /65
+/115/7 /105/106 /0 /7 /105/106 /65
+/84/49
+/21 /98/12 /43 /106 /0 /109/105/110
+/115/50 /101/105/103/40 /126/68
+ /41
+/114/97/110/107
+/115/76 /12 /0 /76 /12 /65
+/115/7 /105/106 /0 /7 /105/106 /65
+/84/49
+(41)
+hence /31 /51 /40/105/59 /106/41 /21 /98/12 /0 /109/105/110
+/115/50 /101/105/103/40 /126/68
+ /41
+/114/97/110/107
+ /115/76 /12 /0 /76 /12 /65
+/84/49
+and from (40) it
+follows that/31 /51 /40/105/59 /106/41 /21 /31 /49 . The rest of the proof follows from Theorem
+3 and Lemma 7.
+REFERENCES
+[1] D. G. Luenberger, “Observers for multivariable systems,” IEEE Trans.
+Autom. Control, vol. AC-11, no. 2, pp. 190–197, Apr. 1966.
+[2] T. E. Fortman and D. Williamson, “Design of a low order observer for
+linear feedback control laws,”IEEE Trans. Autom. Control, vol. AC-17,
+no. 3, pp. 301–308, Jun. 1972.
+[3] P. Murdoch, “Observer design of a linear functional of the state vector,”
+IEEE Trans. Autom. Control , vol. AC-18, no. 3, pp. 308–310, Jun.
+1973.
+[4] P. Murdoch, “Design of degenerate observers,” IEEE Trans. Autom.
+Control, vol. AC-19, no. 4, pp. 441–442, Aug. 1974.
+[5] J. R. Roman and T. E. Bullock, “Design of minimal-order stable ob-
+servers for linear functions of the state via realization theory,” IEEE
+Trans. Autom. Control, vol. AC-20, no. 5, pp. 613–622, Oct. 1975.
+[6] J. B. Moore and G. F. Ledwich, “Minimal-order observers for esti-
+mating linear functionals of a state vector,” IEEE Trans. Autom. Con-
+trol, vol. AC-20, no. 5, pp. 623–632, Oct. 1975.
+[7] K. Furuta and S. Kawaji, “Linear functional observer with possible
+minimal dimension,” IEEE Trans. Autom. Control , vol. AC-22, no. 6,
+pp. 977–980, Dec. 1977.
+[8] H. R. Sirisena, “Minimal-order observer for linear functions of the state
+vector,” Int. J. Control, vol. 29, pp. 235–254, 1979.
+[9] T. Kailath , Linear Systems . Englewood Cliffs, NJ: Prentice-Hall,
+1980.
+[10] K. Furuta and T. Suzuki, “Design of functional observer in transfer
+function form,” in Proc. Amer. Control Conf., 1999, pp. 4305–4309.
+[11] C.-C. Tsui, “On the order reduction of linear functional observers,”
+IEEE Trans. Autom. Control , vol. AC-31, no. 5, pp. 447–449, May
+1986.
+[12] C.-C. Tsui, “What is the minimum function observer order,” in Proc.
+3rd World Congress Intell. Control Autom. , Hefei, China, 2000, pp.
+2811–2816.
+[13] B. D. O. Anderson, N. K. Bose, and E. I. Jury, “Output feedback sta-
+bilization and related problems-solution via decision methods,” IEEE
+Trans. Autom. Contol., vol. AC-20, no. 1, pp. 53–65, Feb. 1975.
+[14] R. D. Gupta, F. W. Fairman, and T. Hinamoto, “A direct procedure for
+the design of single functional observers,” IEEE Trans. Circuits Syst.,
+vol. CAS-28, no. 4, pp. 294–300, Apr. 1981.
+[15] J. T. Watson and K. M. Grigoriadis, “Optimal unbiased ﬁltering via
+linear matrix inequalities,” Syst. Control Lett. , vol. 35, pp. 111–118,
+1998.
+[16] M. Darouach, “Existence and design of functional observers for linear
+systems,” IEEE Trans. Autom. Control , vol. 45, no. 5, pp. 940–943,
+May 2000.
+[17] J. O’Reilly , Observers for Linear Systems . New York: Academic,
+1983.
