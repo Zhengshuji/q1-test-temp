@@ -410,3 +410,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   非退化区域恰为 $d'<k$（764 的实例）；733/747 只检验 $(5b)$。
 - [768](attempts/768_FU_affine_geometry.md)：**$\mathcal F_U$ 的仿射几何**——$F_i=g_i+(U\cap T)$、$\dim\mathcal F_U=q\,a$，
   并给出显式参数化 $G'_i(\theta)$ 与坏集 $\mathcal B_U$；B 等价于 $\mathcal B_U\ne K^{qa}$。
+- [769](attempts/769_paper_lean_reuse.md)：**阶段整理 + Paper I/II Lean 复用**——移植 `Q1BezoutDeg`/`Q1HyperplaneAvoid`/`Q1BezoutFamily`，
+  `lake build MyProof` BUILD=0（9123 jobs），`exists_bezout_family` 公理干净；并列出可复用的行空间/秩/gcd 引理清单。
