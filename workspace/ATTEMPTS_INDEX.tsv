@@ -720,3 +720,4 @@ num	file	title	direction	subdirection	strategy
 712	712_experiment_A_fiber.md	实验 A：LW 变化空间恰为 T（693 数据）	q1_false	feasibility_geometry	experiment
 713	713_stage_summary.md	阶段总结：T-纤维、ρ_d 障碍与预筛选链	q1_false	feasibility_geometry	summary
 714	714_experiment_B_TcapU.md	实验 B：Z'=0 时 T∩U=0 ⇒ 不可行；T∩U=U 可构造	q1_false	feasibility_geometry	prove
+715	715_d1_U_in_T.md	d'=1：可行 ⇒ U⊆T（方向必要条件）	q1_false	feasibility_geometry	prove

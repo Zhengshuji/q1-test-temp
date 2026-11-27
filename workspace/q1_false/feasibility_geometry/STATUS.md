@@ -307,3 +307,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   预筛选链与开放问题（$T$-纤维、$\rho_d$ 分类、多 $\mu$、$\exists H$ 复杂度、665/689 的 $T$-版本）。
 - [714](attempts/714_experiment_B_TcapU.md)：实验 B（$Z'=0$）——**$T\cap U=0$ ⇒ 不可行**（$G=0$、$P(0)=0$）；
   $T\cap U=U$ 时 $d'=1$ 可构造可行（$Zu=e_2$，$\operatorname{rank}M=2$）。
+- [715](attempts/715_d1_U_in_T.md)：**$d'=1$：可行 ⇒ $U\subseteq T$**（$v\in T$）；$T\cap U=0$ ⇒ 不可行。
+  推广了 710 的论证；$d'\ge2$ 的 $\dim(T\cap U)$ 作用仍开放。
