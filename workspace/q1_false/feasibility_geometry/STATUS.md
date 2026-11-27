@@ -295,3 +295,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   但 $e_1$ 在三个特征向量上分量全非零）；故 $U+T=\mathbb C^3$，与 706 统计一致。
 - [708](attempts/708_HA_unique.md)：$U\cap T=0$（$U+T=\mathbb C^3$）时 $H_A$ 与 $P$ 被 $H$ 唯一确定——
   $H_A=\Pi_U(HZ')$（沿 $T$ 投影）；638 的 $\rho_2$ 与 $Z$ 自由度无关。
+- [709](attempts/709_638_infeasible_proof.md)：**638 的 $d'=2$ 不可行（完整证明）**——707（$e_1\notin U$）+ 708（$H_A=\Pi_U(HZ')$）
+  ⇒ $P$ 的行都在 2 维 $U$ 内 ⇒ $\rho_2\le1$ ⇒ 705 给 $\operatorname{rank}M\le2<4$；638 彻底撤回为反例。
