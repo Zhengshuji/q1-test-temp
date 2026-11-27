@@ -10,7 +10,10 @@
 
 功能：对给定 $(H,Z',Z,T,\mu)$ 计算
 - $\operatorname{rank}(H(\mu I-Z'))$、$\dim(U\cap T)$、$\operatorname{cls}$ 与 $R+\dim V+\operatorname{cls}$；
-- $P(\lambda)=\lambda H-ZH$ 的全部非零 $d$-子式、$\gcd$、Bézout 矩阵秩。
+- $P(\lambda)=\lambda H-ZH$ 的全部非零 $d$-子式、$\gcd$、Bézout 矩阵秩；
+- 并断言 $\operatorname{row}(ZH)\subseteq U$ 与 $\operatorname{row}(G)\subseteq T$。
+
+**更正记录**：第一版把 638 的自由参数全置 0（$G=0$），这违反 $(5a)$（$HZ'$ 的行不在 $U$），得到的数字不可用。现改为按 $(5a)$ 解出 $ZH$ 的行（$0,e_3,0$）对应的 $Z$，并加断言；修正后 $G=(-e_1,0,0)\in T$。
 
 ## 运行输出
 
@@ -19,11 +22,13 @@
   d'= 2  rank(HM)= 1  dim(U∩T)= 0  cls= 1  R+dV+cls= 2
   #minors= 1  rank M= 2  bound(2d)= 4
   gcd(minors)= lam*(lam - 1)
+  ZH rows in U: True  G rows in T: True
 
 == 733 ==
   d'= 2  rank(HM)= 1  dim(U∩T)= 1  cls= 0  R+dV+cls= 2
   #minors= 3  rank M= 4  bound(2d)= 4
   gcd(minors)= 1
+  ZH rows in U: True  G rows in T: True
 ```
 
 ## 解读

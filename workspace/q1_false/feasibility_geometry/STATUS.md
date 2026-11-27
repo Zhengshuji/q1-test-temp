@@ -366,3 +366,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   638 不可行（$\rho_2=1$）、733 可行（$\rho_2=3,\gcd=1$）；方向性取等不是判据。
 - [746](attempts/746_prefilter_certificate.md)：**预筛选证书脚本**（`certificates/verify_prefilter_733_638.py`）精确复现：
   638 与 733 均取等 $R+\dim V+\operatorname{cls}=2$，但 638 $\rho_2=1,\gcd=\lambda(\lambda-1),\operatorname{rank}M=2$；733 $\rho_2=3,\gcd=1,\operatorname{rank}M=4$。
+- [747](attempts/747_batch_733_family.md)：**625 例枚举**——733 族中 $B=Z'_{12}$ 是判别量：$B\ne0$ 可行（500），$B=0$ 不可行（125），
+  其中 **120 个取等却不可行**；并澄清 687 的“$\gcd$ 与 $Z$ 无关”只在 $G$ 固定时成立。

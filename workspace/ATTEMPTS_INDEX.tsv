@@ -751,3 +751,4 @@ num	file	title	direction	subdirection	strategy
 744	744_prefilter_theorem.md	统一预筛选定理（七条必要条件）	q1_false	feasibility_geometry	prove
 745	745_equality_opposite_outcomes.md	取等但相反：638 不可行 vs 733 可行	q1_false	feasibility_geometry	prove
 746	746_prefilter_certificate.md	预筛选证书脚本：638 vs 733 精确对照	q1_false	feasibility_geometry	experiment
+747	747_batch_733_family.md	625 例：B=Z'12 判别 733 族可行性；120 取等不可行	q1_false	feasibility_geometry	experiment
