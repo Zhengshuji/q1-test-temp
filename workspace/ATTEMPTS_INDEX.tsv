@@ -765,3 +765,4 @@ num	file	title	direction	subdirection	strategy
 758	758_chatgpt_centering_audit.md	ChatGPT 对 757 的裁决与中心化审计清单	q1_false	feasibility_geometry	summary
 759	759_audit_results.md	独立审计：733/747/739/753 通过与两处笔误更正	q1_false	feasibility_geometry	experiment
 760	760_centering_restatement.md	中心化重述（Z'',G'）与 693 不可行证书	q1_false	feasibility_geometry	prove
+761	761_fixed_U_existence.md	固定 U 的仿射存在性定理（F_U 与 gcd）	q1_false	feasibility_geometry	prove

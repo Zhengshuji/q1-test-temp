@@ -8,3 +8,5 @@ __pycache__/
 *.synctex.gz
 paper/v2_test.tex
 paper/current/*副本*
+
+.agent/

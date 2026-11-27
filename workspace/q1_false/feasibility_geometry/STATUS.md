@@ -394,3 +394,5 @@ $v\in E=S\cap(Z'^{\mathsf T})^{-1}S$ 时可构造，$q\ge2$ 下秩一可行 $\if
   修正 733 特征值（实数 $(-1\pm4\sqrt{11})/5$）与 739 符号（$t_i\equiv+H_iM$）；补充 747 实例族说明。
 - [760](attempts/760_centering_restatement.md)：**中心化重述**——697/726/749/753 在 $Z''=Z'+W_{\mathrm{top}}$、$G'\in T^q$ 下逐字成立；
   693 的不可行证书：$H_1Z''=e_2\notin U+T$ ⇒ $(5a)$ 无解。
+- [761](attempts/761_fixed_U_existence.md)：**固定 $U$ 的仿射存在性定理**——在 $Z'',G'$ 下
+  $U$ 可行 $\iff\mathcal F_U=\prod_i(T\cap(U-H_iZ''))\ne\varnothing$ 且 $\exists G'\in\mathcal F_U$ 使 $\gcd=1$；含 $L=[H|M]$ 构造与基不变性。

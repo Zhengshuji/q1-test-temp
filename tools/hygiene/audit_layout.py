@@ -10,7 +10,7 @@ import re
 import sys
 
 ROOT = '.'
-TOP_DIRS = {'docs', 'proof', 'paper', 'tools', 'literature', 'workspace', 'archive', 'trash', '.git'}
+TOP_DIRS = {'docs', 'proof', 'paper', 'tools', 'literature', 'workspace', 'archive', 'trash', '.git', '.agent'}
 ROOT_MD = ['ATTEMPTS.md', 'CLAUDE.md', 'HISTORY.md', 'README.md', 'STATUS.md']  # 2026-11-10：增加 HISTORY.md（项目脉络），与 STATUS 互补
 ATTEMPT_SECTIONS = ['## 目标', '## 设想与理由', '## 做法', '## 进展', '## 最终结论',
                     '## 放弃原因', '## 残留价值', '## 相关文件']  # CLAUDE §5.3 的 8 个小节（按前缀匹配）
